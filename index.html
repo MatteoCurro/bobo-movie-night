@@ -590,6 +590,7 @@
       <span class="player-prov-label">Provider: <strong id="player-prov-name">VidSrc</strong></span>
       <button class="btn btn-ghost" onclick="swapProvider()" type="button">↻ Cambia provider</button>
       <button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>
+      <button class="btn btn-ghost" onclick="copyPlayerLink()" type="button">⧉ Copia link</button>
     </div>
     <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>
   </div>
@@ -997,9 +998,20 @@ function swapProvider() {
   loadProvider(other);
 }
 
+async function copyPlayerLink() {
+  if (!playerState) return;
+  const url = playerURL(playerState.currentProv, playerState);
+  try {
+    await navigator.clipboard.writeText(url);
+    alert('Link copiato. Incollalo direttamente nella barra degli indirizzi del browser per verificare il blocco.');
+  } catch (err) {
+    window.prompt('Copia questo URL e incollalo nella barra degli indirizzi:', url);
+  }
+}
+
 function openInNewTab() {
   if (!playerState) return;
-  window.open(playerURL(playerState.currentProv, playerState), '_blank');
+  window.open(playerURL(playerState.currentProv, playerState), '_blank', 'noopener,noreferrer');
 }
 
 function closePlayer() {
