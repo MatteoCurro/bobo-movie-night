@@ -4,7 +4,7 @@ Sito statico basato su [CasaFlix di scageto](https://github.com/scageto/CasaFlix
 
 ## Pubblicazione
 - GitHub Pages: https://matteocurro.github.io/bobo-movie-night/
-- GitHub → **Settings → Pages** → **Deploy from a branch** → `main` / `/(root)`.
+- GitHub → **Settings → Pages** → **Build and deployment** → Source: **GitHub Actions**. La prima attivazione amministrativa è manuale; dopo il workflow sincronizza e pubblica automaticamente.
 
 ## Aggiornamenti
 La GitHub Action `.github/workflows/sync-upstream.yml` recupera automaticamente `index.html`, `data/movies.json` e `data/tv.json` dall'originale ogni 12 ore. Il nome **Bobo Movie Night** viene riapplicato dopo ogni aggiornamento.
