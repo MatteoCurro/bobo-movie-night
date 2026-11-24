@@ -1,0 +1,57 @@
+/* Bobo Movie Night: lightweight discovery experience */
+#bobo-discover[hidden], #bobo-details[hidden], #bobo-more[hidden] { display: none !important; }
+#bobo-discover { margin-bottom: 34px; }
+.bobo-feature { position: relative; overflow: hidden; border-radius: 16px; min-height: 360px; height: min(47vw, 480px); background: #1d2029; margin-bottom: 34px; isolation: isolate; }
+.bobo-feature > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+.bobo-feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.95) 2%, rgba(0,0,0,.75) 45%, rgba(0,0,0,.09) 90%), linear-gradient(0deg, rgba(0,0,0,.48), transparent 52%); pointer-events: none; }
+.bobo-feature-body { position: absolute; z-index: 1; inset: auto auto 9% 5%; width: min(580px, 85%); }
+.bobo-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #ff5260; text-transform: uppercase; margin-bottom: 12px; }
+.bobo-feature h1 { font-size: clamp(28px, 4.7vw, 56px); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 13px; text-wrap: balance; }
+.bobo-feature-meta, .bobo-detail-meta { font-size: 13px; color: #ddd; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.bobo-feature-description { font-size: clamp(13px, 1.5vw, 16px); line-height: 1.6; max-width: 530px; color: #eee; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 20px; }
+.bobo-feature-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.bobo-btn { border: 0; border-radius: 7px; padding: 12px 19px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .18s, transform .18s; }
+.bobo-btn:hover { transform: translateY(-1px); }
+.bobo-btn-primary { background: #fff; color: #111; }
+.bobo-btn-secondary { background: rgba(115,115,115,.5); color: #fff; }
+.bobo-shelf { margin-bottom: 30px; }
+.bobo-shelf-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.bobo-shelf-head h2 { font-size: clamp(17px, 2.2vw, 23px); font-weight: 800; letter-spacing: -.025em; }
+.bobo-shelf-nav { display: flex; gap: 7px; }
+.bobo-arrow { background: #252525; color: #fff; border: 1px solid #494949; border-radius: 50%; width: 31px; height: 31px; font-size: 19px; line-height: 1; cursor: pointer; }
+.bobo-rail { display: flex; gap: 13px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: #444 transparent; padding: 3px 3px 11px; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+.bobo-tile { padding: 0; flex: 0 0 clamp(126px, 13.8vw, 185px); min-width: 0; color: #fff; background: transparent; border: 0; text-align: left; cursor: pointer; scroll-snap-align: start; }
+.bobo-tile-art { display: block; width: 100%; aspect-ratio: 2 / 3; border-radius: 9px; overflow: hidden; background: #272727; margin-bottom: 8px; }
+.bobo-tile-art img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .23s; }
+.bobo-tile:hover .bobo-tile-art img { transform: scale(1.045); }
+.bobo-tile-art .bobo-fallback { height: 100%; padding: 16px; display: grid; place-content: center; text-align: center; font-size: 12px; color: #ddd; }
+.bobo-tile-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 700; }
+.bobo-tile-meta { display: block; color: #aaa; font-size: 11px; margin-top: 4px; }
+#bobo-more { margin: 22px auto 10px; display: block; background: #282828; border: 1px solid #444; color: #fff; border-radius: 8px; padding: 12px 22px; font-weight: 700; cursor: pointer; }
+.bobo-wait { color: #aaa; padding: 56px 0; text-align: center; }
+#bobo-details { position: fixed; inset: 0; z-index: 950; display: grid; place-items: center; background: rgba(0,0,0,.83); padding: 18px; overflow-y: auto; }
+.bobo-detail-box { position: relative; width: min(680px, 100%); max-height: min(94vh, 930px); overflow-y: auto; background: #1a1a1a; border: 1px solid #353535; border-radius: 16px; box-shadow: 0 16px 75px rgba(0,0,0,.7); }
+.bobo-detail-image { height: clamp(175px, 32vw, 320px); position: relative; background: #222; }
+.bobo-detail-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 27%; }
+.bobo-detail-image::after { content:""; position: absolute; inset: 0; background: linear-gradient(0deg, #1a1a1a, transparent 75%); }
+.bobo-detail-close { position: absolute; top: 15px; right: 15px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(0,0,0,.72); color: #fff; font-size: 22px; cursor: pointer; }
+.bobo-detail-content { padding: 0 26px 28px; position: relative; z-index: 1; }
+.bobo-detail-content h2 { font-size: clamp(24px, 4vw, 36px); line-height: 1.1; margin: 0 0 15px; }
+.bobo-detail-copy { color: #e3e3e3; font-size: 15px; line-height: 1.7; margin: 18px 0 23px; white-space: pre-line; }
+.bobo-genres { font-size: 13px; color: #c6c6c6; margin-bottom: 15px; }
+.bobo-detail-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.bobo-rating { color: #9de1a6; font-weight: 800; }
+@media (max-width: 640px) {
+  .bobo-feature { height: 390px; min-height: 0; border-radius: 11px; margin-bottom: 26px; }
+  .bobo-feature > img { object-position: 60% center; }
+  .bobo-feature::after { background: linear-gradient(0deg, rgba(0,0,0,.96) 0%, rgba(0,0,0,.58) 58%, rgba(0,0,0,.1) 100%); }
+  .bobo-feature-body { inset: auto 18px 20px; width: auto; }
+  .bobo-feature h1 { font-size: 29px; margin-bottom: 9px; }
+  .bobo-feature-description { -webkit-line-clamp: 2; font-size: 13px; margin-bottom: 15px; }
+  .bobo-feature-meta { margin-bottom: 8px; }
+  .bobo-tile { flex-basis: 132px; }
+  .bobo-rail { gap: 10px; }
+  .bobo-shelf { margin-bottom: 22px; }
+  .bobo-detail-content { padding: 0 18px 24px; }
+  .bobo-detail-image { height: 200px; }
+}
