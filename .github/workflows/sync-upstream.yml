@@ -61,7 +61,7 @@ jobs:
               raise SystemExit("Upstream player controls changed; review required")
           content = content.replace(help_button + '\n    </div>', help_button + '\n    </div>\n    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>')
           content = content.replace('</style>', '  .player-help { color: #bbb; font-size: 12px; padding: 0 16px 14px; line-height: 1.45; }\n  </style>')
-                    page.write_text(content, encoding="utf-8")
+          page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
 
