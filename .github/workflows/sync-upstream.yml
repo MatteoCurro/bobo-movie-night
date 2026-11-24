@@ -6,11 +6,9 @@ on:
     - cron: '15 6,18 * * *'
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/sync-upstream.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: bobo-movie-night-sync
@@ -19,6 +17,8 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Bobo Movie Night
         uses: actions/checkout@v4
@@ -59,3 +59,35 @@ jobs:
           fi
           git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
           git push
+
+      - name: Prepare static site for deployment
+        shell: bash
+        run: |
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/movies.json data/tv.json _site/data/
+          touch _site/.nojekyll
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy Bobo Movie Night
+    needs: sync
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
