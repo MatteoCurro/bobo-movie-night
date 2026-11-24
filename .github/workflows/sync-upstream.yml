@@ -61,7 +61,26 @@ jobs:
               raise SystemExit("Upstream player controls changed; review required")
           content = content.replace(help_button + '\n    </div>', help_button + '\n    </div>\n    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>')
           content = content.replace('</style>', '  .player-help { color: #bbb; font-size: 12px; padding: 0 16px 14px; line-height: 1.45; }\n  </style>')
-          page.write_text(content, encoding="utf-8")
+          # Navigation initiated by the site must not send the site's Referer.
+          direct_open = "window.open(playerURL(playerState.currentProv, playerState), '_blank');"
+          if direct_open not in content:
+              raise SystemExit("Upstream direct-open handler changed; review required")
+          content = content.replace(direct_open, "window.open(playerURL(playerState.currentProv, playerState), '_blank', 'noopener,noreferrer');")
+          player_button = '<button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>'
+          content = content.replace(player_button, player_button + '\n      <button class="btn btn-ghost" onclick="copyPlayerLink()" type="button">⧉ Copia link</button>')
+          copy_handler = """async function copyPlayerLink() {
+            if (!playerState) return;
+            const url = playerURL(playerState.currentProv, playerState);
+            try {
+              await navigator.clipboard.writeText(url);
+              alert('Link copiato. Incollalo direttamente nella barra degli indirizzi del browser per verificare il blocco.');
+            } catch (err) {
+              window.prompt('Copia questo URL e incollalo nella barra degli indirizzi:', url);
+            }
+          }
+          """
+          content = content.replace("function openInNewTab() {", copy_handler + "\nfunction openInNewTab() {")
+                    page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
 
