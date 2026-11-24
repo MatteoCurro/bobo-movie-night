@@ -42,7 +42,26 @@ jobs:
               raise SystemExit("Upstream branding changed; review required")
           content = content.replace("<title>CasaFlix</title>", "<title>Bobo Movie Night</title>")
           content = content.replace("🎬 CasaFlix</div>", "🎬 Bobo Movie Night</div>")
-          page.write_text(content, encoding="utf-8")
+          # The previous `cf_provider` preference is intentionally left untouched.
+          # Use a new preference key so existing Vix selections don't force a blocked default.
+          old_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('cf_provider'))
+            ? localStorage.getItem('cf_provider') : 'vix';"""
+          new_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v2'))
+            ? localStorage.getItem('bobo_provider_v2') : 'vidsrc';"""
+          if old_provider not in content:
+              raise SystemExit("Upstream provider preference changed; review required")
+          content = content.replace(old_provider, new_provider)
+          content = content.replace("localStorage.setItem('cf_provider', p)", "localStorage.setItem('bobo_provider_v2', p)")
+          content = content.replace('<button class="prov-btn active" data-prov="vix"', '<button class="prov-btn"        data-prov="vix"')
+          content = content.replace('<button class="prov-btn"        data-prov="vidsrc"', '<button class="prov-btn active" data-prov="vidsrc"')
+          content = content.replace('id="player-current-prov">Vix</strong>', 'id="player-current-prov">VidSrc</strong>')
+          content = content.replace('id="player-prov-name">Vix</strong>', 'id="player-prov-name">VidSrc</strong>')
+          help_button = '<button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>'
+          if help_button not in content:
+              raise SystemExit("Upstream player controls changed; review required")
+          content = content.replace(help_button + '\n    </div>', help_button + '\n    </div>\n    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>')
+          content = content.replace('</style>', '  .player-help { color: #bbb; font-size: 12px; padding: 0 16px 14px; line-height: 1.45; }\n  </style>')
+                    page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
 
