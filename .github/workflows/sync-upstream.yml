@@ -80,6 +80,11 @@ jobs:
           }
           """
           content = content.replace("function openInNewTab() {", copy_handler + "\nfunction openInNewTab() {")
+          # Keep Bobo-specific UI separate so upstream refreshes cannot erase it.
+          if "</head>" not in content or "</body>" not in content:
+              raise SystemExit("Upstream HTML layout changed; review required")
+          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
+          content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
@@ -98,12 +103,20 @@ jobs:
           git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
           git push
 
+      - name: Validate Bobo enhancements
+        shell: bash
+        run: |
+          node --check bobo-ui.js
+          grep -q 'bobo-ui.js' index.html
+          grep -q 'bobo-ui.css' index.html
+
       - name: Prepare static site for deployment
         shell: bash
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
           cp data/movies.json data/tv.json _site/data/
+          cp bobo-ui.css bobo-ui.js _site/
           touch _site/.nojekyll
 
       - name: Upload GitHub Pages artifact
