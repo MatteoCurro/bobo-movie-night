@@ -494,6 +494,7 @@
       .player-actions { flex-direction: column; align-items: stretch; }
       .player-prov-label { text-align: center; margin-right: 0; }
     }
+    .player-help { color: #bbb; font-size: 12px; padding: 0 16px 14px; line-height: 1.45; }
   </style>
 </head>
 <body>
@@ -507,8 +508,8 @@
     <input type="text" id="search-input" placeholder="Cerca film o serie…" autocomplete="off">
   </div>
   <div class="provider-toggle" id="provider-toggle" title="Provider primario">
-    <button class="prov-btn active" data-prov="vix" type="button">Vix</button>
-    <button class="prov-btn"        data-prov="vidsrc" type="button">VidSrc</button>
+    <button class="prov-btn"        data-prov="vix" type="button">Vix</button>
+    <button class="prov-btn active" data-prov="vidsrc" type="button">VidSrc</button>
   </div>
 </header>
 
@@ -582,14 +583,15 @@
       <iframe id="player-iframe" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture" referrerpolicy="no-referrer"></iframe>
       <div class="player-state" id="player-state">
         <div class="spinner"></div>
-        <p>Caricamento da <strong id="player-current-prov">Vix</strong>…</p>
+        <p>Caricamento da <strong id="player-current-prov">VidSrc</strong>…</p>
       </div>
     </div>
     <div class="player-actions">
-      <span class="player-prov-label">Provider: <strong id="player-prov-name">Vix</strong></span>
+      <span class="player-prov-label">Provider: <strong id="player-prov-name">VidSrc</strong></span>
       <button class="btn btn-ghost" onclick="swapProvider()" type="button">↻ Cambia provider</button>
       <button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>
     </div>
+    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>
   </div>
 </div>
 
@@ -603,8 +605,8 @@ let loading    = { movie: false, tv: false };
 let activeTab  = 'movie';
 let selectedShow = null;
 let filters    = { movie: defaultFilters(), tv: defaultFilters() };
-let provider   = ['vix','vidsrc'].includes(localStorage.getItem('cf_provider'))
-  ? localStorage.getItem('cf_provider') : 'vix';
+let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v2'))
+  ? localStorage.getItem('bobo_provider_v2') : 'vidsrc';
 let playerState = null;
 
 const PROVIDERS = {
@@ -916,7 +918,7 @@ function confirmEpisode() {
 function setProvider(p) {
   if (!PROVIDERS[p]) return;
   provider = p;
-  localStorage.setItem('cf_provider', p);
+  localStorage.setItem('bobo_provider_v2', p);
   document.querySelectorAll('.prov-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.prov === p);
   });
