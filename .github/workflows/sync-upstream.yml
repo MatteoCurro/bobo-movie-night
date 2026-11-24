@@ -80,7 +80,7 @@ jobs:
           }
           """
           content = content.replace("function openInNewTab() {", copy_handler + "\nfunction openInNewTab() {")
-                    page.write_text(content, encoding="utf-8")
+          page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
 
