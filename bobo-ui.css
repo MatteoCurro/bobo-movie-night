@@ -1,5 +1,5 @@
 /* Bobo Movie Night: lightweight discovery experience */
-#bobo-discover[hidden], #bobo-details[hidden], #bobo-more[hidden] { display: none !important; }
+#bobo-discover[hidden], #bobo-details[hidden], #bobo-more[hidden], .section-header[hidden], #grid[hidden] { display: none !important; }
 #bobo-discover { margin-bottom: 34px; }
 .bobo-feature { position: relative; overflow: hidden; border-radius: 16px; min-height: 360px; height: min(47vw, 480px); background: #1d2029; margin-bottom: 34px; isolation: isolate; }
 .bobo-feature > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
