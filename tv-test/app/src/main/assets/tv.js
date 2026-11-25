@@ -59,7 +59,7 @@ async function boot(){
 function poster(item){
  const url=image(item.poster,'w500');
  return '<button type="button" class="poster tv-focus" data-title="'+esc(item.type+':'+item.tmdb_id)+'" aria-label="'+esc(item.title)+'">'+
-  '<span class="poster-art" data-focus-title="'+esc(item.title)+'" data-focus-meta="'+esc(meta(item))+'">'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
+  '<span class="poster-art" data-focus-title="'+esc(item.title)+'" data-focus-meta="'+esc(meta(item))+'"><span class="poster-type">'+(item.type==='tv'?'SERIE TV':'FILM')+'</span>'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
    '<span class="poster-placeholder">'+esc(item.title)+'</span>')+'</span>'+
   '<span class="poster-title">'+esc(item.title)+'</span>'+
   '<span class="poster-sub">'+esc([item.year||'',item.vote?'★ '+Number(item.vote).toFixed(1):''].filter(Boolean).join(' · '))+'</span></button>';
@@ -95,7 +95,9 @@ function featuredHome(){
  const movies=recent(status.movies);
  const series=recent(status.series);
  const all=recent(status.items);
- return (first?hero(first,false):'')+
+ return '<div class="home-kicker"><span class="eyebrow">BOBO TV · NUOVA ESPERIENZA</span>'+
+  '<span class="home-kicker-count">'+status.items.length.toLocaleString('it-IT')+' titoli da scoprire</span></div>'+
+  (first?hero(first,false):'')+
   rail('Da scoprire adesso',all,'Film e serie')+
   rail('Film recenti',movies)+rail('Serie TV',series)+
   rail('I più apprezzati',rated(status.items))+
@@ -525,7 +527,7 @@ window.BoboTV={
  rail:rail,
  toast:notify,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.3-TV'
+ version:'1.3.1-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
@@ -535,7 +537,7 @@ document.addEventListener('focusin',e=>{
   if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;
   const el=e.target&&e.target.closest('.poster');
   const item=el&&status.index.get(el.dataset.title);
-  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'TV EDITION';
+  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.3.1';
 },true);
 boot();
 }());
