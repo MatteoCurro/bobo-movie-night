@@ -1,0 +1,6 @@
+# Gandi Web Hosting / Apache — template. NON è attivo finché non viene caricato in htdocs/bobo/.htaccess
+AuthType Basic
+AuthName "Bobo Movie Night"
+AuthUserFile /srv/data/web/vhosts/NOME-REALE-VHOST/.htpasswd
+Require valid-user
+Options -Indexes
