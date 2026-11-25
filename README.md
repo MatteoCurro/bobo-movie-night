@@ -1,13 +1,30 @@
 # Bobo Movie Night
 
-Sito statico basato su [CasaFlix di scageto](https://github.com/scageto/CasaFlix), personalizzato come **Bobo Movie Night**.
+Sito statico basato sul catalogo del progetto [CasaFlix](https://github.com/scageto/CasaFlix).
 
-## Pubblicazione
-- GitHub Pages: https://matteocurro.github.io/bobo-movie-night/
-- GitHub → **Settings → Pages** → **Build and deployment** → Source: **GitHub Actions**. La prima attivazione amministrativa è manuale; dopo il workflow sincronizza e pubblica automaticamente.
+**Sito pubblicato:** https://matteocurro.github.io/bobo-movie-night/
 
-## Aggiornamenti
-La GitHub Action `.github/workflows/sync-upstream.yml` recupera automaticamente `index.html`, `data/movies.json` e `data/tv.json` dall'originale ogni 12 ore. Il nome **Bobo Movie Night** viene riapplicato dopo ogni aggiornamento.
-Non occorrono credenziali TMDB: i cataloghi vengono sincronizzati dal repository originale.
+## Funzioni
 
-L'app utilizza player esterni: la riproduzione dipende dai relativi provider e dalla disponibilità dei contenuti.
+- Catalogo con anteprime, sinossi, generi, valutazioni e sezioni tematiche.
+- **Scheda dedicata per ogni film e serie TV**, con URL condivisibile:
+  `watch.html?type=movie&id=1368337` oppure `watch.html?type=tv&id=12345`.
+- Riproduzione nella scheda tramite iframe, non nel popup di anteprima.
+- Stagioni selezionabili tramite pulsanti, griglia episodi e navigazione precedente/successivo anche fra stagioni.
+- **Vix predefinito**, VidSrc opzionale e sperimentale solo nelle impostazioni.
+- `referrerpolicy="origin"` per l'incorporamento del player; l'apertura in nuova scheda continua a usare `noopener,noreferrer`.
+- Nessuna richiesta TMDB dal browser: la sinossi e le informazioni provengono dai file JSON sincronizzati.
+
+## Aggiornamento e deploy
+
+La GitHub Action `.github/workflows/sync-upstream.yml` recupera periodicamente HTML e cataloghi dall'originale e riapplica le personalizzazioni. Frequenza prevista: ogni 12 ore. Il deploy avviene su GitHub Pages in automatico.
+
+I file specifici **`bobo-ui.js`**, **`bobo-ui.css`**, **`watch.html`**, **`bobo-watch.js`** e **`bobo-watch.css`** rimangono nel repository e non vengono sovrascritti dall'upstream.
+
+La selezione VidSrc non è validata come funzionante; non esiste un fallback automatico tra provider. L'app non può rilevare gli errori visualizzati internamente a un iframe di un altro dominio.
+
+## Fonti
+
+Metadati e immagini: [TMDB](https://www.themoviedb.org/), tramite il catalogo sincronizzato da CasaFlix. Questo progetto non è approvato o certificato da TMDB.
+
+Player: servizi esterni; disponibilità e condizioni di accesso dipendono dai rispettivi fornitori.
