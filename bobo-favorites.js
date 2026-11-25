@@ -88,39 +88,67 @@
   }
   function render(){
     if(!lib())return;
-    updateProfiles();
     const cloud=window.BoboCloud?.status();
     const signed=cloud?.state==='member';
-    const picker=document.querySelector('.bobo-profile-picker-wrap');
-    if(picker)picker.hidden=Boolean(signed);
-    const hint=document.querySelector('.bobo-profile-bar > div > p');
-    if(hint)hint.textContent=signed?
-      'Raccolta salvata sul tuo account. I preferiti si sincronizzano tra dispositivi.':
-      'Raccolta conservata solo in questo browser. Per sincronizzarla accedi dal menu in alto.';
-    const label=el('bobo-profile-title');
-    if(label)label.textContent=signed?'Account: '+cloud.user.username:'Raccolta di';
-    for(const id of ['bobo-share','bobo-recover']){
-      const button=el(id);if(button)button.hidden=Boolean(signed);
+    const bar=document.querySelector('.bobo-profile-bar');
+    const filters=document.querySelector('.bobo-fav-filters');
+    const summary=el('bobo-fav-summary'),container=el('bobo-fav-collections');
+    if(bar)bar.hidden=!signed;
+    if(filters)filters.hidden=!signed;
+    if(summary)summary.hidden=!signed;
+    let footer=el('bobo-favorites-tools');
+    if(!footer) {
+      footer=document.createElement('details');
+      footer.id='bobo-favorites-tools';
+      footer.className='bobo-favorites-tools';
+      const label=document.createElement('summary');
+      label.textContent='Impostazioni e backup della raccolta';
+      footer.appendChild(label);
+      container.insertAdjacentElement('afterend',footer);
+      const controls=document.querySelector('.bobo-backup-actions');
+      if(controls)footer.appendChild(controls);
     }
-    let migration=el('bobo-import-local');
+    footer.hidden=!signed;
+    if(!signed) {
+      const checking=cloud?.state==='checking';
+      const offline=cloud?.state==='offline';
+      container.innerHTML='<div class="bobo-fav-empty bobo-fav-invite">'+
+        '<h2>'+(checking?'Verifica dell’account in corso…':offline?'Account temporaneamente non raggiungibile':'I tuoi titoli, tutti insieme.')+'</h2>'+
+        '<p>'+(checking?'Stiamo controllando la tua sessione.':
+          offline?'Riprova quando il servizio torna disponibile. I tuoi preferiti online non sono stati cancellati.':
+          'Per creare una raccolta personale, ritrovarla su qualsiasi dispositivo e salvare i film che ti interessano, accedi o registrati gratuitamente.')+'</p>'+
+        (checking||offline?'':'<a href="'+window.BoboCloud.accountLink()+'">Accedi o crea il tuo account</a>')+
+        '</div>';
+      return;
+    }
+    const label=el('bobo-profile-title');
+    if(label)label.textContent='Account: '+cloud.user.username;
+    const hint=document.querySelector('.bobo-profile-bar > div > p');
+    if(hint)hint.textContent='Preferiti personali sincronizzati con il tuo account.';
+    const picker=document.querySelector('.bobo-profile-picker-wrap');
+    if(picker)picker.hidden=true;
+    for(const id of ['bobo-share','bobo-recover']){
+      const button=el(id);if(button)button.hidden=true;
+    }
+    const existing=el('bobo-import-local');
+    let migration=existing;
     if(!migration){
       migration=document.createElement('button');
-      migration.id='bobo-import-local';
-      migration.type='button';
+      migration.id='bobo-import-local';migration.type='button';
       migration.className='bobo-compact-button';
       migration.addEventListener('click',()=>{
-        if(!window.confirm('Importare nel tuo account i precedenti preferiti salvati in questo browser?'))return;
+        if(!window.confirm('Importare nel tuo account i vecchi preferiti presenti in questo browser?'))return;
         try {
           const count=window.BoboCloud.importLocal();
           message(count+' preferiti nell’account (sincronizzazione in corso)');
           render();loadMetadata();
         }catch(err){message(err.message);}
       });
-      document.querySelector('.bobo-backup-actions')?.appendChild(migration);
+      footer.appendChild(migration);
     }
     const localCount=window.BoboCloud?.localCount()||0;
-    migration.hidden=!signed||localCount===0;
-    migration.textContent='Importa locali ('+localCount+')';
+    migration.hidden=localCount===0;
+    migration.textContent='Importa precedenti preferiti ('+localCount+')';
     updateGenres();
     const chosen=filter(),saved=lib().read(),container=el('bobo-fav-collections');
     el('bobo-fav-summary').textContent=saved.length+
