@@ -1,0 +1,35 @@
+name: "Bobo · Newsletter settimanale"
+on:
+  schedule:
+    # Sundays 08:00 UTC = 09:00 CET / 10:00 CEST
+    - cron: "0 8 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bobo-weekly-newsletter
+  cancel-in-progress: false
+
+jobs:
+  send:
+    name: Send opted-in newsletter through Gandi + Resend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send only if newsletter secret was configured
+        env:
+          BOBO_NEWSLETTER_SECRET: ${{ secrets.BOBO_NEWSLETTER_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${BOBO_NEWSLETTER_SECRET}" ]; then
+            echo "::notice::BOBO_NEWSLETTER_SECRET not configured. Weekly email remains disabled."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error \
+            --connect-timeout 8 --max-time 120 \
+            -X POST \
+            -H "X-Bobo-Newsletter-Secret: ${BOBO_NEWSLETTER_SECRET}" \
+            -H "Accept: application/json" \
+            "https://movieaccount.curromatteo.it/api.php?route=jobs/newsletter"
