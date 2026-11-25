@@ -229,6 +229,10 @@
       rails.push(shelf(row[0],row[1],picks));
     });
     host.innerHTML = hero(featured(all)) + rails.join('') +
+      (discovery && discovery.streaming && discovery.streaming.items && discovery.streaming.items.length ?
+        '<p class="bobo-source-note">Novità streaming Italia: selezione basata sulle aggiunte segnalate da '+
+        '<a href="https://streamingfilter.com/it/novita" target="_blank" rel="noopener noreferrer">Streamingfilter</a>, '+
+        'incrociate con il catalogo Bobo. Non rappresentano disponibilità garantita presso un singolo servizio.</p>' : '')+
       (discovery && discovery.platforms && discovery.platforms.length ?
         '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
   }
