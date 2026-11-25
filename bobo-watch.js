@@ -135,7 +135,12 @@
       small.textContent = '('+s.episodes+')';
       button.appendChild(small);
       button.addEventListener('click',function () {
-        selectEpisode(s.n, s.n === selectedSeason ? selectedEpisode : 1, false);
+        if (s.n === selectedSeason) return;
+        selectedSeason = s.n;
+        selectedEpisode = 1;
+        updateQuery();
+        if (playing) pausePlayer();
+        renderEpisodeNavigation();
       });
       seasonHost.appendChild(button);
     });
@@ -162,7 +167,8 @@
       button.addEventListener('click',function () { selectEpisode(selectedSeason,e,true); });
       episodeHost.appendChild(button);
     }
-    byId('watch-episode-progress').textContent = 'S'+selectedSeason+' · E'+selectedEpisode;
+    byId('watch-episode-progress').textContent = (selectedSeason===0 ? 'Speciali' : 'S'+selectedSeason)+' · E'+selectedEpisode;
+    byId('watch-start').textContent = '▶ Riproduci S'+selectedSeason+' E'+selectedEpisode;
     updateEpisodeNavigation();
   }
   function renderTitle(info) {
