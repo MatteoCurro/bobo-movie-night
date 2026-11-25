@@ -113,7 +113,8 @@
   async function copyShare(){
     const code=lib().recoveryCode();
     const url=new URL('favorites.html',location.href);
-    url.searchParams.set('recover',code);
+    // Fragment is not transmitted in HTTP requests or ordinary Referer headers.
+    url.hash='recover='+encodeURIComponent(code);
     // Browser links are fragile above 2000 chars; code and full JSON are safer.
     const output=url.toString().length<=1900?url.toString():code;
     try{await navigator.clipboard.writeText(output);message(output===code?
@@ -179,7 +180,7 @@
   }
   function start(){
     events();render();loadMetadata();
-    const code=new URLSearchParams(location.search).get('recover');
+    const code=new URLSearchParams(location.hash.slice(1)).get('recover');
     if(code){
       history.replaceState(null,'','favorites.html');
       if(window.confirm('È stato aperto un link di recupero. Vuoi importare questa raccolta di preferiti?'))restore(code);
