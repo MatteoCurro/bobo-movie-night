@@ -86,6 +86,9 @@ jobs:
           # Avoid sharing the site address with external services by default;
           # the Vix iframe explicitly overrides this with its required 'origin' policy.
           content = content.replace("</head>", '  <meta name="referrer" content="no-referrer">\n</head>', 1)
+          # While GitHub Pages is public, avoid normal search-engine indexing.
+          # This is NOT authentication; the Gandi password gate is still required.
+          content = content.replace("</head>", '  <meta name="robots" content="noindex,nofollow,noarchive">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
           content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
