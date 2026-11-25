@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.content.Context;
 import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -38,6 +40,9 @@ public final class MainActivity extends Activity {
     private WebChromeClient.CustomViewCallback customCallback;
     private boolean inPlayer = false;
     private boolean playingStarted = false;
+    private int scrubDirection = 0;
+    private int scrubSeconds = 0;
+    private long lastScrubPreviewAt = 0;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +109,8 @@ public final class MainActivity extends Activity {
 
         String html = asset("tv.html")
             .replace("<!--TV_STYLES-->", "<style>" + asset("tv.css") + "</style>")
-            .replace("<!--TV_SCRIPT-->", "<script>" + asset("tv.js") + "</script>");
+            .replace("<!--TV_SCRIPT-->", "<script>" + asset("tv.js") + "</script>")
+            .replace("<!--TV_ACCOUNT_SCRIPT-->", "<script>" + asset("tv-account.js") + "</script>");
         browser.loadDataWithBaseURL(SITE, html, "text/html", "UTF-8", SITE);
         browser.requestFocus();
     }
@@ -144,6 +150,12 @@ public final class MainActivity extends Activity {
                                     playingStarted = started;
                                     Log.d(TAG, "Playback state player=" + player + " started=" + started);
                                 });
+                            } else if ("keyboard-hide".equals(kind)) {
+                                runOnUiThread(() -> {
+                                    InputMethodManager ime = (InputMethodManager)
+                                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    if (ime != null) ime.hideSoftInputFromWindow(browser.getWindowToken(), 0);
+                                });
                             } else if ("exit".equals(kind)) {
                                 runOnUiThread(this::finish);
                             }
@@ -172,6 +184,23 @@ public final class MainActivity extends Activity {
         // The event is delivered to our own local TV UI, not the iframe.
         browser.evaluateJavascript(
             "window.BoboTV && window.BoboTV.remoteKey('" + key + "')", null);
+    }
+
+    private void scrubPreview(String direction, int seconds) {
+        browser.evaluateJavascript(
+            "window.BoboTV && window.BoboTV.scrubPreview('" + direction + "'," + seconds + ")",null);
+    }
+
+    private void scrubCommit(String direction, int seconds) {
+        browser.evaluateJavascript(
+            "window.BoboTV && window.BoboTV.scrubCommit('" + direction + "'," + seconds + ")",null);
+    }
+
+    private static int acceleratedSeek(long heldMs) {
+        if (heldMs < 450) return 10;
+        if (heldMs < 850) return 30;
+        if (heldMs < 1200) return 60;
+        return (int) Math.min(7200L, 60L + ((heldMs - 1200L) / 260L + 1L) * 60L);
     }
 
     private void closeCustomView() {
@@ -224,6 +253,32 @@ public final class MainActivity extends Activity {
                 default: break;
             }
             if (command != null) {
+                if ("left".equals(command) || "right".equals(command)) {
+                    final int direction = "left".equals(command) ? -1 : 1;
+                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                        long held = Math.max(0, event.getEventTime() - event.getDownTime());
+                        int seconds = acceleratedSeek(held);
+                        if (scrubDirection != direction || scrubSeconds != seconds) {
+                            scrubDirection = direction;
+                            scrubSeconds = seconds;
+                            if (event.getEventTime() - lastScrubPreviewAt > 100 ||
+                                event.getRepeatCount() == 0) {
+                                scrubPreview(command, seconds);
+                                lastScrubPreviewAt = event.getEventTime();
+                            }
+                        }
+                    } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                        int seconds = scrubDirection == direction ? scrubSeconds : 10;
+                        scrubDirection = 0;
+                        scrubSeconds = 0;
+                        scrubCommit(command, Math.max(10, seconds));
+                        Log.d(TAG, "Seek " + command + " " + seconds + " seconds");
+                    } else if (event.getAction() == KeyEvent.ACTION_CANCEL) {
+                        scrubDirection = 0;
+                        scrubSeconds = 0;
+                    }
+                    return true;
+                }
                 if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
                     Log.d(TAG, "Remote command: " + command);
                     send(command);
