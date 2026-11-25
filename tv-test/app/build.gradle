@@ -10,8 +10,8 @@ android {
         applicationId 'it.bobomovieclub.tvprobe'
         minSdk 26
         targetSdk 32
-        versionCode 5
-        versionName '1.1-tv-playback-fix'
+        versionCode 6
+        versionName '1.2-tv-features'
     }
 
     compileOptions {
