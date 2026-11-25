@@ -58,7 +58,7 @@ async function boot(){
 function poster(item){
  const url=image(item.poster,'w500');
  return '<button type="button" class="poster tv-focus" data-title="'+esc(item.type+':'+item.tmdb_id)+'" aria-label="'+esc(item.title)+'">'+
-  '<span class="poster-art">'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
+  '<span class="poster-art" data-focus-title="'+esc(item.title)+'" data-focus-meta="'+esc(meta(item))+'">'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
    '<span class="poster-placeholder">'+esc(item.title)+'</span>')+'</span>'+
   '<span class="poster-title">'+esc(item.title)+'</span>'+
   '<span class="poster-sub">'+esc([item.year||'',item.vote?'★ '+Number(item.vote).toFixed(1):''].filter(Boolean).join(' · '))+'</span></button>';
