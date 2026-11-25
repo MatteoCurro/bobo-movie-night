@@ -134,6 +134,18 @@ async function toggleFavorite(){
  busy=true;
  const btn=$('#tv-favorite');if(btn){btn.disabled=true;btn.textContent='Salvataggio…';}
  try{
+  // Prefer the atomic endpoint: only one request, no cross-device overwrite.
+  // The legacy route remains as a fallback until the PHP deployment is updated.
+  try {
+   const result=await request('favorites/toggle',{item:{
+    type:item.type,tmdb_id:Number(item.tmdb_id),title:item.title,
+    year:item.year||null,poster:item.poster||'',overview:item.overview||'',
+    genres:item.genres||[],saved_at:new Date().toISOString()
+   }});
+   favorites=normalized(result.items);setAccount(profile.username);
+   notify(result.saved?'Aggiunto ai preferiti':'Rimosso dai preferiti');
+   return;
+  }catch(err){if(err.status!==404)throw err;}
   // Always read the latest collection to avoid overwriting changes made
   // from another device before saving on this TV.
   const data=await request('favorites');
