@@ -292,11 +292,32 @@
     nearEndLastTime=elapsed;
     if(nearEndSamples>=2 && Date.now()-nearEndSince>=800)completeEpisode('prima dei titoli di coda');
   }
+  function vixOrigin(origin) {
+    try {
+      const url=new URL(origin);
+      return url.protocol==='https:' &&
+        (url.hostname==='vixsrc.to' || url.hostname.endsWith('.vixsrc.to'));
+    }catch(_){return false;}
+  }
   function onPlayerMessage(event) {
     const frame=byId('watch-iframe');
     if(!frame || !playing || provider!=='vix')return;
-    if(event.origin!=='https://vixsrc.to')return;
     let msg=event.data;
+    // Debug mode records *only* the signal type and sender's origin; never
+    // dump unrelated messages or sensitive player internals.
+    if(params.get('debug')==='player') {
+      let name=typeof msg==='object'&&msg!==null?msg?.data?.event:'';
+      if(typeof msg==='string') {
+        try {name=JSON.parse(msg)?.data?.event || '';}catch(_){}
+      }
+      if(name || String(event.origin).includes('vixsrc')) {
+        const diagnostic=byId('watch-event-diagnostic');
+        if(diagnostic)diagnostic.textContent=
+          'Ultimo messaggio · origine: '+String(event.origin).slice(0,100)+
+          ' · evento: '+String(name||'(non riconosciuto)').slice(0,40);
+      }
+    }
+    if(!vixOrigin(event.origin))return;
     if(typeof msg==='string') {
       try {msg=JSON.parse(msg);}catch(_){return;}
     }
