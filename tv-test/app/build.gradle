@@ -10,8 +10,8 @@ android {
         applicationId 'it.bobomovieclub.tvprobe'
         minSdk 26
         targetSdk 32
-        versionCode 3
-        versionName '1.0-tv-leanback'
+        versionCode 4
+        versionName '1.0.1-tv-leanback'
     }
 
     compileOptions {
