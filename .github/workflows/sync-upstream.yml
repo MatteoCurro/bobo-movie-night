@@ -106,7 +106,7 @@ jobs:
           set -euo pipefail
           python3 scripts/build_discovery.py
           python3 scripts/build_streaming_feed.py
-          python3 scripts/vendor_silhouettes.py
+          python3 scripts/vendor_flaticon.py
           python3 scripts/build_catalog_ledger.py
 
       - name: Commit only if changed
@@ -115,7 +115,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json assets/bobo-climb.svg assets/bobo-faiva.svg assets/easter/ .nojekyll
+          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -152,11 +152,12 @@ jobs:
           for asset in ('assets/bobo-climb.svg','assets/bobo-faiva.svg'):
               ET.parse(asset)
               assert Path(asset).stat().st_size > 1000
-          candidates = list(Path('assets/easter').glob('*.svg'))
-          assert len(candidates) >= 12, f'Not enough CC0 silhouette choices: {len(candidates)}'
-          for asset in candidates:
-              ET.parse(asset)
-              assert Path(asset).stat().st_size > 1000
+          import json
+          manifest = json.loads(Path('assets/flaticon/manifest.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 1 and isinstance(manifest['icons'],list)
+          for asset in manifest['icons']:
+              path=Path(asset['file'])
+              assert path.is_file() and path.read_bytes()[:3] == b'GIF'
           PY
           node tests/autonext.cjs
           node tests/library.cjs
@@ -209,8 +210,7 @@ jobs:
           cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json _site/data/
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-enhance.js _site/
           mkdir -p _site/assets
-          cp assets/bobo-climb.svg assets/bobo-faiva.svg _site/assets/
-          cp -R assets/easter _site/assets/
+          cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css _site/
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
           touch _site/.nojekyll
