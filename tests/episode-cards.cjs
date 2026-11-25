@@ -42,7 +42,7 @@ assert(code.includes(anchor),'Watch script testing seam absent');
 code=code.replace(anchor,[
   "  globalThis.__episodeTests={",
   "    init(info,data){item=info;seasons=episodeData(info);episodeStills=data;selectedSeason=1;selectedEpisode=1;playing=false;},",
-  "    render:renderEpisodeNavigation,heading:episodeHeading",
+  "    render:renderEpisodeNavigation,heading:episodeHeading,load:loadEpisodeIndex",
   "  };",anchor
 ].join('\n'));
 vm.runInNewContext(code,context,{filename:'bobo-watch.js'});
@@ -82,4 +82,27 @@ api.init({...info,poster:''},{});
 api.render();
 cards=nodes['watch-episode-list'].children;
 assert.equal(cards[0].children[0].tagName,'SPAN','No imagery keeps numeric tile');
-console.log('OK: names without images, small stills, default posters, broken-image fallback, season navigation.');
+// Complete names are not truncated in JS or CSS; grid row heights stretch.
+const css=fs.readFileSync('bobo-watch.css','utf8');
+assert.match(css,/\.episode-list\{align-items:stretch;/);
+assert.match(css,/\.episode-card\{height:100%;/);
+assert.match(css,/\.bobo-episode-copy strong\{display:block;white-space:normal;overflow:visible;/);
+assert(!css.includes('line-clamp:2'),'No line-clamp may hide the full episode name');
+const longName='L’episodio con un titolo particolarmente lungo che deve restare completamente leggibile, anche quando contiene una spiegazione estesa della trama, dei personaggi e delle conseguenze degli avvenimenti precedenti senza essere troncato.';
+assert(longName.length>160);
+api.init(info,{'1':{'1':{name:longName}}});
+api.render();
+assert.equal(nodes['watch-episode-list'].children[0].children[2].children[0].textContent,longName);
+assert(api.heading().endsWith(longName),'Current episode must preserve the full name');
+// Simulate loading a real per-title JSON index from the GitHub Pages data path.
+api.init(info,{});
+context.fetch=async url=>{
+  assert.equal(url,'data/episodes/700.json');
+  return {ok:true,json:async()=>({
+    schema:1,type:'tv',tmdb_id:700,episode_images:{source:'tmdb',seasons:{'1':{'1':{name:longName}}}}
+  })};
+};
+api.load().then(()=>{
+  assert.equal(nodes['watch-episode-list'].children[0].children[2].children[0].textContent,longName);
+  console.log('OK: full names, symmetric grid CSS, per-series HTTP index, fallback posters and navigation.');
+}).catch(error=>{console.error(error);process.exitCode=1});
