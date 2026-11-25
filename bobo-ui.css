@@ -72,3 +72,20 @@
 .bobo-provider-choice strong { color: #fff; font-size: 14px; }
 .bobo-provider-choice small { color: #bfbfc8; font-size: 12px; line-height: 1.4; }
 @media (max-width: 640px) { #bobo-settings-open { order: 2; margin-left: auto; } .bobo-settings-box { padding: 20px; } }
+
+
+/* Catalogo unico: film e serie condividono home, ricerca e filtri. */
+.tabs[hidden] { display: none !important; }
+.bobo-tile-art { position: relative; }
+.bobo-tile-tag { position: absolute; top: 8px; left: 8px; z-index: 1; border-radius: 4px; padding: 4px 7px; font-size: 10px; line-height: 1.1; font-weight: 800; color: #fff; background: rgba(10,10,13,.87); border: 1px solid rgba(255,255,255,.2); }
+.bobo-kind { font-weight: 800; color: #fff; }
+.bobo-tile-meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bobo-result { display: flex; flex-direction: column; text-align: left; gap: 7px; border: 0; background: #242429; border-radius: 10px; padding: 0 0 11px; color: white; min-width: 0; cursor: pointer; overflow: hidden; }
+.bobo-result:hover { background: #34343a; }
+.bobo-result:focus-visible { outline: 3px solid #ff6475; outline-offset: 2px; }
+.bobo-result-poster { position: relative; display: block; width: 100%; aspect-ratio: 2/3; background: linear-gradient(145deg, #1b1b2c, #26263d); overflow: hidden; }
+.bobo-result-poster img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.bobo-result-title { font-size: 13px; font-weight: 750; padding: 0 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%; }
+.bobo-result-meta { font-size: 11px; padding: 0 10px; color: #c3c3c8; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%; }
+.filter-bar .filter-group { flex: 1 1 150px; }
+@media (max-width:640px) { .bobo-tile-tag { font-size: 9px; padding: 3px 6px; } .bobo-result-meta { font-size: 10px; } }
