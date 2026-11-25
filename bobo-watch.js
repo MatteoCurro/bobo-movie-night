@@ -24,6 +24,8 @@
   let playing = false;
   let consecutiveEpisodes = 1;
   let observedPlayback = false;
+  let episodeNavigation = 0;
+  let theaterFallback = false;
   let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
   let autoNextLimit = Math.max(2, Math.min(5, Number(readOption(STORAGE_AUTO_LIMIT, '5')) || 5));
   let provider = (function () {
@@ -115,28 +117,86 @@
     observedPlayback = false;
     updateAutoStatus();
   }
+  function isBoboFullscreen() {
+    const stage = byId('watch-player-stage');
+    return document.fullscreenElement === stage || theaterFallback;
+  }
+  function updateTheaterButton() {
+    const enabled = isBoboFullscreen();
+    const button = byId('watch-theater-button');
+    if (!button) return;
+    button.setAttribute('aria-label',enabled ? 'Esci dallo schermo intero Bobo' : 'Attiva schermo intero Bobo');
+    button.querySelector('span').textContent = enabled ? 'Esci da schermo intero' : 'Schermo intero';
+  }
+  function exitTheater() {
+    if (theaterFallback) {
+      theaterFallback = false;
+      document.documentElement.classList.remove('bobo-theater-open');
+      byId('watch-player-stage').classList.remove('bobo-theater-fallback');
+      updateTheaterButton();
+    } else if (document.fullscreenElement === byId('watch-player-stage') && document.exitFullscreen) {
+      document.exitFullscreen().catch(function () {});
+    }
+  }
+  function toggleTheater() {
+    if (isBoboFullscreen()) { exitTheater(); return; }
+    const stage = byId('watch-player-stage');
+    // Element fullscreen is unsupported on iPhone Safari; retain a CSS theater fallback.
+    if (stage.requestFullscreen && document.fullscreenEnabled) {
+      stage.requestFullscreen().then(updateTheaterButton).catch(function () {
+        theaterFallback = true;
+        document.documentElement.classList.add('bobo-theater-open');
+        stage.classList.add('bobo-theater-fallback');
+        updateTheaterButton();
+      });
+    } else {
+      theaterFallback = true;
+      document.documentElement.classList.add('bobo-theater-open');
+      stage.classList.add('bobo-theater-fallback');
+      updateTheaterButton();
+    }
+  }
+  function loadNewPlayer(url) {
+    const oldFrame = byId('watch-iframe');
+    const nextFrame = oldFrame.cloneNode(false);
+    nextFrame.removeAttribute('src');
+    nextFrame.referrerPolicy = 'origin';
+    const sequence = ++episodeNavigation;
+    const label = byId('watch-stage-loading');
+    if (label) label.hidden = false;
+    nextFrame.addEventListener('load',function () {
+      if (sequence === episodeNavigation && label) label.hidden = true;
+    },{ once:true });
+    // Replacing the iframe (not only its src) discards the previous Vix player
+    // and all of its media state, including an internal fullscreen session.
+    oldFrame.replaceWith(nextFrame);
+    nextFrame.src = url;
+  }
   function pausePlayer() {
     playing = false;
     resetSequence();
     const iframe = byId('watch-iframe');
+    ++episodeNavigation;
     iframe.src = 'about:blank';
+    const loading = byId('watch-stage-loading');
+    if (loading) loading.hidden = true;
+    exitTheater();
     byId('watch-play-section').hidden = true;
   }
   function playNow(scroll, automatic) {
     if (!item) return;
     playing = true;
     observedPlayback = false;
-    const frame = byId('watch-iframe');
-    // Vix explicitly requires an origin Referer for embedded playback.
-    frame.referrerPolicy = 'origin';
+    // Every episode gets a fresh iframe; updating only the URL in the address
+    // bar does not replace the old provider player or its native fullscreen UI.
     byId('watch-play-section').hidden = false;
     byId('watch-current-episode').textContent = type === 'tv' ? episodeHeading() : item.title;
     byId('watch-previous').hidden = type !== 'tv';
     byId('watch-next').hidden = type !== 'tv';
-    frame.src = playerURL(Boolean(automatic));
+    loadNewPlayer(playerURL(Boolean(automatic)));
     updateEpisodeNavigation();
     updateAutoStatus();
-    if (scroll) byId('watch-play-section').scrollIntoView({ behavior:'smooth',block:'start' });
+    if (scroll && !isBoboFullscreen()) byId('watch-play-section').scrollIntoView({ behavior:'smooth',block:'start' });
   }
   function updateEpisodeNavigation() {
     const prev = byId('watch-previous');
@@ -310,6 +370,8 @@
   function setup() {
     byId('watch-start').addEventListener('click',function () { resetSequence(); playNow(true); });
     byId('watch-hide-player').addEventListener('click',pausePlayer);
+    byId('watch-theater-button').addEventListener('click',toggleTheater);
+    document.addEventListener('fullscreenchange',updateTheaterButton);
     byId('watch-previous').addEventListener('click',function () {
       const target = adjacent(-1);
       if (target) selectEpisode(target.season,target.episode,true);
@@ -358,6 +420,7 @@
       });
     });
     document.addEventListener('keydown',function (event) {
+      if (event.key === 'Escape' && theaterFallback) exitTheater();
       if (event.key === 'Escape' && !byId('watch-settings').hidden) settings(false);
     });
     loadTitle();
