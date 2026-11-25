@@ -416,6 +416,11 @@ document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
 window.addEventListener('message',onPlayerEvent);
 document.addEventListener('keydown',handleKey,true);
-document.addEventListener('focusin',e=>{if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;},true);
+document.addEventListener('focusin',e=>{
+  if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;
+  const el=e.target&&e.target.closest('.poster');
+  const item=el&&status.index.get(el.dataset.title);
+  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'TV EDITION';
+},true);
 boot();
 }());
