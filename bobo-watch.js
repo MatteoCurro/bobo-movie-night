@@ -357,7 +357,7 @@
       const record=data.items[type+':'+id];
       if(!record || !item)return;
       const platforms=record.providers_it;
-      if(platforms && platforms.region==='IT' && /^\\d{4}-\\d{2}-\\d{2}$/.test(platforms.observed_at||'')) {
+      if(platforms && platforms.region==='IT' && /^\d{4}-\d{2}-\d{2}$/.test(platforms.observed_at||'')) {
         const checked=Date.parse(platforms.observed_at+'T00:00:00Z');
         const current=Date.now();
         if(Number.isFinite(checked) && current-checked>=0 && current-checked<45*86400000) {
