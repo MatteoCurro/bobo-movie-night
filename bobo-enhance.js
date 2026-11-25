@@ -259,6 +259,30 @@
           if(!map.get(k).includes(platform.id))map.get(k).push(platform.id);
         });
       });
+      // If the current public feed omits a provider, retain a recent,
+      // date-stamped observation for at most 35 days. Never invent a match.
+      try {
+        const response=await fetch('data/catalog-ledger.json',{cache:'no-store'});
+        if(response.ok) {
+          const history=await response.json();
+          const boundary=Date.now()-35*86400000;
+          for(const kind of ['movie','tv']) {
+            const entries=history.items?.[kind] || {};
+            for(const [id,values] of Object.entries(entries)) {
+              const providers=Array.isArray(values)?values[2]:null;
+              if(!providers || typeof providers!=='object')continue;
+              for(const [provider,date] of Object.entries(providers)) {
+                if(!PROVIDERS[provider])continue;
+                const when=Date.parse(date+'T00:00:00Z');
+                if(!Number.isFinite(when) || when<boundary)continue;
+                const k=key(kind,id);
+                if(!map.has(k))map.set(k,[]);
+                if(!map.get(k).includes(provider))map.get(k).push(provider);
+              }
+            }
+          }
+        }
+      }catch(_) { /* Ledger is optional, current verified feed still works. */ }
       sourceMap=map;
       schedule();
     }catch(_){}
