@@ -2,80 +2,86 @@
   "issues": [
     {
       "ids": [
-        "tv:330800",
-        "movie:1718300",
-        "movie:1627922",
-        "movie:1560001",
-        "movie:1532959",
-        "movie:1472406",
-        "movie:1392621",
-        "movie:1121694",
-        "movie:1150638",
-        "tv:305551",
-        "movie:1015977",
-        "movie:871722",
-        "movie:1105876",
-        "movie:1055221",
-        "movie:95519",
-        "movie:1210060",
-        "movie:1156489",
-        "movie:1278101",
-        "movie:765613",
-        "movie:1291559",
-        "movie:496243",
-        "movie:372058",
-        "tv:255053",
-        "tv:158340",
-        "tv:306074",
-        "tv:312359",
-        "tv:256695",
-        "tv:254799",
-        "tv:133153",
-        "tv:276161",
-        "tv:247718",
-        "tv:248123",
-        "tv:211031",
-        "tv:305644",
-        "movie:335140",
-        "movie:209437",
-        "movie:1765072",
-        "tv:133529",
+        "movie:687163",
         "movie:969681",
-        "movie:1381273",
-        "tv:259909",
-        "tv:329394",
-        "tv:299167",
-        "tv:284833",
-        "tv:231801",
-        "tv:224022",
-        "movie:157336",
+        "movie:936075",
+        "tv:119051",
+        "movie:569094",
+        "tv:100088",
+        "movie:1007757",
+        "movie:1339713",
+        "tv:94997",
+        "movie:1184918",
+        "movie:466420",
+        "movie:866398",
+        "movie:1022256",
+        "movie:664280",
+        "movie:396194",
+        "movie:359364",
+        "movie:576712",
+        "movie:1291559",
+        "tv:60625",
+        "tv:66732",
+        "tv:87108",
+        "tv:1399",
+        "tv:60059",
+        "tv:94605",
+        "tv:60574",
+        "tv:63174",
+        "tv:71712",
+        "tv:76479",
+        "tv:69050",
+        "tv:75006",
+        "tv:1396",
         "movie:278",
-        "movie:155",
-        "movie:244786",
         "movie:238",
-        "movie:122",
-        "movie:27205",
-        "movie:424",
-        "movie:497",
+        "movie:155",
+        "tv:37854",
         "movie:240",
-        "movie:77338",
-        "movie:598",
-        "tv:288120",
-        "tv:278573",
-        "tv:282727",
-        "tv:289423",
-        "tv:213375",
-        "tv:291496",
-        "tv:291507",
-        "movie:1465063",
+        "movie:424",
+        "movie:157336",
+        "movie:122",
+        "movie:680",
+        "movie:496243",
+        "movie:497",
+        "movie:13",
+        "movie:120",
+        "movie:550",
+        "movie:121",
+        "movie:769",
+        "movie:27205",
+        "movie:637",
+        "movie:807",
+        "movie:1891",
+        "movie:244786",
+        "movie:105",
+        "movie:274",
         "movie:1368337",
-        "tv:300523"
+        "tv:153312",
+        "tv:247718",
+        "movie:603692",
+        "movie:718930",
+        "tv:84773",
+        "movie:346698",
+        "tv:157239",
+        "movie:929590"
       ],
       "week": "2026-W48"
     }
   ],
   "schema": 1,
   "titles": {
+    "movie:1007757": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:1015977": {
       "categories": [
         "hidden"
@@ -84,6 +90,28 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "movie:1022256": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:105": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1055221": {
@@ -136,6 +164,39 @@
         "bobo-editorial"
       ]
     },
+    "movie:1184918": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:120": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:121": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:1210060": {
       "categories": [
         "hidden"
@@ -148,12 +209,14 @@
     },
     "movie:122": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1278101": {
@@ -173,7 +236,30 @@
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:13": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:1339713": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1368337": {
@@ -184,7 +270,8 @@
       "last_seen": "2026-11-25",
       "sources": [
         "tmdb-trending",
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1381273": {
@@ -241,12 +328,14 @@
     },
     "movie:155": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1560001": {
@@ -261,12 +350,14 @@
     },
     "movie:157336": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:1627922": {
@@ -300,6 +391,17 @@
         "bobo-editorial"
       ]
     },
+    "movie:1891": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:209437": {
       "categories": [
         "cinephiles"
@@ -312,22 +414,26 @@
     },
     "movie:238": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:240": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:244786": {
@@ -337,7 +443,8 @@
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:27205": {
@@ -347,18 +454,32 @@
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
-    "movie:278": {
+    "movie:274": {
       "categories": [
         "classics"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:278": {
+      "categories": [
+        "classics",
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
         "streaming-observation",
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:335140": {
@@ -371,6 +492,29 @@
         "bobo-editorial"
       ]
     },
+    "movie:346698": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:359364": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:372058": {
       "categories": [
         "hidden"
@@ -381,34 +525,95 @@
         "bobo-editorial"
       ]
     },
-    "movie:424": {
-      "categories": [
-        "classics"
-      ],
-      "first_seen": "2026-11-25",
-      "last_seen": "2026-11-25",
-      "sources": [
-        "bobo-editorial"
-      ]
-    },
-    "movie:496243": {
+    "movie:396194": {
       "categories": [
         "hidden"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:424": {
+      "categories": [
+        "classics",
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:466420": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:496243": {
+      "categories": [
+        "hidden",
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:497": {
+      "categories": [
+        "classics",
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:550": {
       "categories": [
         "classics"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:569094": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:576712": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:598": {
@@ -421,6 +626,74 @@
         "bobo-editorial"
       ]
     },
+    "movie:603692": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:637": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:664280": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:680": {
+      "categories": [
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:687163": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:718930": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:765613": {
       "categories": [
         "hidden"
@@ -429,6 +702,17 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "movie:769": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:77338": {
@@ -441,6 +725,28 @@
         "bobo-editorial"
       ]
     },
+    "movie:807": {
+      "categories": [
+        "classics"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:866398": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:871722": {
       "categories": [
         "hidden"
@@ -449,6 +755,29 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "movie:929590": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:936075": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:95519": {
@@ -463,13 +792,37 @@
     },
     "movie:969681": {
       "categories": [
-        "cinephiles"
+        "cinephiles",
+        "week"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
         "tmdb-trending",
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:100088": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:119051": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "tv:133153": {
@@ -490,6 +843,52 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "tv:1396": {
+      "categories": [
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:1399": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:153312": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "tmdb-trending",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:157239": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "tv:158340": {
@@ -545,13 +944,15 @@
     },
     "tv:247718": {
       "categories": [
-        "mini"
+        "mini",
+        "new"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
       "sources": [
         "tmdb-trending",
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "tv:248123": {
@@ -772,6 +1173,162 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "tv:37854": {
+      "categories": [
+        "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "tmdb-trending",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:60059": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:60574": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:60625": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:63174": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:66732": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:69050": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:71712": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:75006": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:76479": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:84773": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "tmdb-trending",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:87108": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:94605": {
+      "categories": [
+        "mini"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:94997": {
+      "categories": [
+        "week"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     }
   }
