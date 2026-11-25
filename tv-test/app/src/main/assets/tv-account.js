@@ -82,6 +82,9 @@ function signInUI(){
  '<p class="account-help">Non hai un account? Registrati dal telefono su <strong>movieaccount.curromatteo.it/account.html</strong>, poi accedi qui.</p></div>';
 }
 function accountScreen(){
+ if(!profile&&offline)return '<div class="account-screen"><p class="eyebrow">CONNESSIONE</p>'+
+ '<h1>La TV è temporaneamente offline</h1><p class="section-desc">I dati del tuo account non sono stati cancellati. Riprova la sincronizzazione quando torna la rete.</p>'+
+ '<div class="actions"><button class="action tv-focus" id="tv-refresh">↻ Riprova</button></div></div>';
  return profile?'<div class="account-screen"><p class="eyebrow">ACCOUNT BOBO</p>'+
  '<h1>Ciao, '+esc(profile.username)+'</h1>'+
  '<p class="section-desc">I tuoi preferiti sono sincronizzati con Bobo Movie Club.</p>'+ '<p class="account-status">'+(offline?'● Connessione da verificare · i dati rimangono disponibili':'✓ Accesso protetto · puoi restare collegato su questa TV')+'</p>'+
@@ -90,6 +93,9 @@ function accountScreen(){
  signInUI();
 }
 function favoriteScreen(){
+ if(!profile&&offline)return '<div class="account-screen"><h1>Sincronizzazione non disponibile</h1>'+
+ '<p class="section-desc">Il login non è stato cancellato. Controlla la rete e riprova.</p>'+
+ '<div class="actions"><button class="action tv-focus" id="tv-refresh">↻ Riprova</button></div></div>';
  if(!profile)return '<div class="account-screen"><h1>I tuoi preferiti</h1>'+
  '<p class="section-desc">Accedi per vedere i film e le serie che hai salvato.</p>'+
  '<div class="actions"><button class="action tv-focus" data-view="account">Accedi</button></div></div>';
