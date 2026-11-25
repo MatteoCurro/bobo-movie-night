@@ -71,11 +71,12 @@
   function clearPending(){
     try {localStorage.removeItem(pendingKey());}catch(_){}
   }
-  function read(){return state==='member'?items.slice():state==='checking'?[]:Local.read();}
+  function read(){return state==='member'?items.slice():state==='guest'?Local.read():[];}
   function profile(){return state==='member'&&user?user.username:Local.profile();}
   function has(type,id){return read().some(x=>x.type===type&&String(x.tmdb_id)===String(id));}
   function save(next){
-    if(state!=='member')return Local.save(next);
+    if(state==='guest')return Local.save(next);
+    if(state!=='member')return false;
     const clean=unique(next);
     if(clean.length>MAX)return false;
     items=clean;revision+=1;
@@ -85,7 +86,8 @@
     return queued;
   }
   function toggle(raw){
-    if(state!=='member')return Local.toggle(raw);
+    if(state==='guest')return Local.toggle(raw);
+    if(state!=='member')return {saved:false,error:'Account non raggiungibile: riprova tra poco'};
     const x=normalize(raw);
     if(!x)return {saved:false,error:'Titolo non valido'};
     const next=items.slice(),at=next.findIndex(t=>t.type===x.type&&t.tmdb_id===x.tmdb_id);
@@ -94,11 +96,13 @@
     return {saved:at<0,count:next.length};
   }
   function exportText(){
-    if(state!=='member')return Local.exportText();
+    if(state==='guest')return Local.exportText();
+    if(state!=='member')throw Error('Attendi la verifica dell’account o riconnettiti');
     return JSON.stringify({format:'bobo-favorites',version:2,profile:profile(),items:read()},null,2);
   }
   function importText(text){
-    if(state!=='member')return Local.importText(text);
+    if(state==='guest')return Local.importText(text);
+    if(state!=='member')throw Error('Account non raggiungibile: importazione sospesa');
     const data=JSON.parse(text);
     if(!data||data.format!=='bobo-favorites'||![1,2].includes(data.version)||
        !Array.isArray(data.items)||data.items.length>MAX)throw Error('Backup Bobo non valido');
@@ -170,7 +174,24 @@
     emit();renderControls();
   }
   function status(){return {state,user:user?{...user}:null,pending:Boolean(user&&readPending())};}
-  function accountLink(){return ORIGIN+'/account.html';}
+  function accountLink(){
+    const file=location.pathname.split('/').pop()||'index.html';
+    const allowed=['index.html','favorites.html','watch.html'];
+    const base=allowed.includes(file)?file:'index.html';
+    let suffix='';
+    if(base==='watch.html'){
+      const q=new URLSearchParams(location.search);
+      const clean=new URLSearchParams();
+      for(const key of ['type','id','s','e']){
+        const value=q.get(key);
+        if(value&&/^[a-z0-9]{1,12}$/i.test(value))clean.set(key,value);
+      }
+      if(clean.toString())suffix='?'+clean;
+    }
+    if(base==='index.html'&&['#tv','#movies'].includes(location.hash))suffix=location.hash;
+    const target=location.origin+'/'+base+suffix;
+    return ORIGIN+'/account.html?return='+encodeURIComponent(target);
+  }
   function renderControls(){
     if(!document.body)return;
     const header=document.querySelector('header');
@@ -206,7 +227,7 @@
       node.appendChild(menu);
     }else{
       const link=document.createElement('a');link.href=accountLink();link.className='bobo-account-login';
-      link.textContent='Accedi / Registrati';
+      link.textContent=state==='offline'?'Account non raggiungibile':'Accedi / Registrati';
       node.appendChild(link);
     }
   }
