@@ -3,22 +3,26 @@
 // APK-only account integration. The web app and PHP backend remain unchanged.
 const API='https://movieaccount.curromatteo.it/api.php?route=';
 const root=document.getElementById('main');
-let profile=null, favorites=[],busy=false,ready=false;
+let profile=null, favorites=[],busy=false,ready=false,offline=false,refreshPromise=null;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','"':'&quot;',"'":'&#39;'}[c]));
 function notify(text){if(window.BoboTV?.toast)window.BoboTV.toast(text);else {
  const toast=$('#toast');if(toast){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2700);}
 }}
 async function request(route,payload,method){
- const response=await fetch(API+encodeURIComponent(route),{
-  method:payload===undefined?'GET':(method||'POST'),
-  credentials:'include',cache:'no-store',
-  headers:payload===undefined?{}:{'Content-Type':'application/json'},
-  body:payload===undefined?undefined:JSON.stringify(payload)
- });
- const data=await response.json().catch(()=>({}));
- if(!response.ok)throw Object.assign(new Error(data.error||'Servizio account non disponibile'),{status:response.status});
- return data;
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),14000);
+ try{
+  const response=await fetch(API+encodeURIComponent(route),{
+   method:payload===undefined?'GET':(method||'POST'),
+   credentials:'include',cache:'no-store',signal:controller.signal,
+   headers:payload===undefined?{}:{'Content-Type':'application/json'},
+   body:payload===undefined?undefined:JSON.stringify(payload)
+  });
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw Object.assign(new Error(data.error||'Servizio account non disponibile'),{status:response.status});
+  return data;
+ }finally{clearTimeout(timer);}
 }
 function key(x){return x.type+':'+x.tmdb_id;}
 function normalized(list){
@@ -36,20 +40,31 @@ function setAccount(username){
  if(favButton)favButton.textContent='♥ Preferiti'+(username?' ('+favorites.length+')':'');
 }
 async function refresh(){
- try{
-  const user=await request('me');
-  if(!user.username)throw Error('Sessione non valida');
-  const data=await request('favorites');
-  profile=user;
-  favorites=normalized(data.items);
- }catch(err){
-  profile=null;favorites=[];
-  if(err.status&&err.status!==401)notify('Account: '+err.message);
- }
- ready=true;setAccount(profile?.username);updateDetail();
- if(window.BoboTV?.state().player)return;
- if(window.BoboTV?.state().view==='account')render('account');
- if(window.BoboTV?.state().view==='favorites')render('favorites');
+ // Opening the app and loading the catalog can both request refresh;
+ // coalesce them so a slower failed request cannot undo a newer login.
+ if(refreshPromise)return refreshPromise;
+ refreshPromise=(async()=>{
+  try{
+   const user=await request('me');
+   if(!user.username)throw Object.assign(Error('Accesso richiesto'),{status:401});
+   profile=user;
+   const data=await request('favorites');
+   favorites=normalized(data.items);
+   offline=false;
+  }catch(err){
+   if(err.status===401){profile=null;favorites=[];offline=false;}
+   else{
+    // The network being temporarily unavailable is NOT a logout.
+    offline=true;
+    if(profile)notify('Sincronizzazione non disponibile, riprova tra poco');
+   }
+  }
+  ready=true;setAccount(profile?.username);updateDetail();
+  if(window.BoboTV?.state().player)return;
+  const view=window.BoboTV?.state().view;
+  if(view==='account'||view==='favorites')render(view);
+ })();
+ try{return await refreshPromise;}finally{refreshPromise=null;}
 }
 function signInUI(){
  return '<div class="account-screen"><div class="account-heading">'+
@@ -67,9 +82,9 @@ function signInUI(){
 function accountScreen(){
  return profile?'<div class="account-screen"><p class="eyebrow">ACCOUNT BOBO</p>'+
  '<h1>Ciao, '+esc(profile.username)+'</h1>'+
- '<p class="section-desc">I tuoi preferiti sono sincronizzati con Bobo Movie Club.</p>'+
+ '<p class="section-desc">I tuoi preferiti sono sincronizzati con Bobo Movie Club.</p>'+ '<p class="account-status">'+(offline?'● Connessione da verificare · i dati rimangono disponibili':'✓ Accesso protetto · puoi restare collegato su questa TV')+'</p>'+
  '<div class="actions"><button class="action tv-focus" data-view="favorites">♥ Vedi i preferiti ('+favorites.length+')</button>'+
- '<button class="action secondary tv-focus" id="tv-logout">Esci dall’account</button></div></div>':
+ '<button class="action secondary tv-focus" id="tv-refresh">↻ Sincronizza</button>'+ '<button class="action secondary tv-focus" id="tv-check-update">Controlla aggiornamenti</button>'+ '<button class="action secondary tv-focus" id="tv-logout">Esci dall’account</button></div></div>':
  signInUI();
 }
 function favoriteScreen(){
@@ -115,7 +130,7 @@ async function toggleFavorite(){
  if(busy)return;
  const item=window.BoboTV?.getChosen();
  if(!item)return;
- if(!profile){notify('Accedi prima al tuo account');window.BoboTV?.openView('account');return;}
+ if(!profile){notify('Accedi da Account per salvare questo titolo',3500);return;}
  busy=true;
  const btn=$('#tv-favorite');if(btn){btn.disabled=true;btn.textContent='Salvataggio…';}
  try{
@@ -136,8 +151,8 @@ async function toggleFavorite(){
   await request('favorites',{items:fresh},'PUT');
   favorites=fresh;setAccount(profile.username);notify(label);
  }catch(err){
-  if(err.status===401){profile=null;favorites=[];setAccount(null);}
-  notify('Preferiti: '+err.message);
+  if(err.status===401){profile=null;favorites=[];setAccount(null);notify('Sessione scaduta: accedi da Account',3500);}
+  else notify('Salvataggio non riuscito. Riprova quando la rete è disponibile',3500);
  }finally{
   busy=false;updateDetail(item);if(btn)btn.disabled=false;
  }
@@ -154,6 +169,8 @@ async function signIn(form){
  try{
   await request('login',{username,password});
   form.querySelector('#tv-password').value='';
+  // An optional TV-only backend endpoint issues a secure 365-day device cookie.
+  try{await request('tv/remember',{});}catch(e){notify('Accesso riuscito, ma ricorda dispositivo non ancora attivo',3500);}
   await refresh();
   if(profile){notify('Bentornato, '+profile.username);window.BoboTV?.openView('favorites');}
   else error.textContent='Accesso effettuato ma sessione non disponibile. Riprova.';
@@ -169,6 +186,8 @@ async function logout(){
 function onClick(e){
  if(e.target.closest('#tv-favorite')){toggleFavorite();return true;}
  if(e.target.closest('#tv-logout')){logout();return true;}
+ if(e.target.closest('#tv-refresh')){refresh();return true;}
+ if(e.target.closest('#tv-check-update')){window.BoboTVUpdates?.check();return true;}
  return false;
 }
 root.addEventListener('submit',e=>{
