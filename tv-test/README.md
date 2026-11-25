@@ -62,3 +62,18 @@ che è limitato all'origine e al frame principale.
    con startAt soltanto se il controllo diretto non risponde.
 5. Se non funziona, i log sono filtrabili con
    `~/Downloads/platform-tools/adb logcat -s BoboTV:D *:S`.
+
+## Versione 1.2 – comandi, ricerca, account e icona
+- Tenendo premuto sinistra/destra selezioni salti progressivi (10 s, 30 s,
+  1 minuto, poi +1 minuto circa ogni 260 ms); il video salta solo quando
+  rilasci la freccia, senza continui ricaricamenti.
+- La ricerca mostra anteprime compatte mentre la tastiera virtuale è aperta.
+  Premi Invio o seleziona "Mostra risultati" per chiudere la tastiera.
+- Login con credenziali dell'account Bobo esistente: URL API fisso HTTPS
+  movieaccount.curromatteo.it, cookie di sessione e nessuna password salvata
+  nell'APK. L'API restituisce raccolta preferiti sincronizzata; aggiorna un
+  titolo dalla sua pagina di dettaglio.
+- Nuovo logotipo app e banner Google TV generati durante la compilazione.
+- Ramo autonomo tv-features-1-2; main non viene modificato.
+- L'APK è ancora firmato per debug dal runner GitHub. Per aggiornamenti
+  senza disinstallazione serve una firma stabile conservata in segreti CI.
