@@ -19,14 +19,15 @@ ROOT=Path("assets/flaticon")
 AUTHOR="Magnific"
 # label, category, id, official free-icon detail page
 ITEMS=[
-    ("climbing","climb",17091804,"https://www.flaticon.com/free-animated-icon/climbing_17091804"),
     ("climber-1","climb",16780820,"https://www.flaticon.com/free-animated-icon/climber_16780820"),
     ("climber-2","climb",16780819,"https://www.flaticon.com/free-animated-icon/climber_16780819"),
     ("hiking","climb",17513885,"https://www.flaticon.com/free-animated-icon/hiking_17513885"),
     ("summit","climb",16780825,"https://www.flaticon.com/free-animated-icon/summit_16780825"),
     ("dog-1","dog",12280731,"https://www.flaticon.com/free-animated-icon/dog_12280731"),
     ("dog-2","dog",11684052,"https://www.flaticon.com/free-animated-icon/dog_11684052"),
-    ("dog-3","dog",9874154,"https://www.flaticon.com/free-animated-icon/dog_9874154"),
+    ("dog-3","dog",14401925,"https://www.flaticon.com/free-animated-icon/dog_14401925"),
+    ("dog-4","dog",14644765,"https://www.flaticon.com/free-animated-icon/dog_14644765"),
+    ("dog-5","dog",18998061,"https://www.flaticon.com/free-animated-icon/dog_18998061"),
 ]
 MAX=2_000_000
 
