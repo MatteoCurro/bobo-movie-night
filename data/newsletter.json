@@ -143,7 +143,7 @@
     }
   ],
   "schema": 1,
-  "updated_at": "2026-11-25T12:05:53+00:00",
+  "updated_at": "2026-11-25T12:22:30+00:00",
   "weekly": [
     {
       "poster": "https://image.tmdb.org/t/p/w342/fxLooktejTUqCvZl9ARhKMFNpbf.jpg",
@@ -188,18 +188,18 @@
       "year": 2026
     },
     {
+      "poster": "https://image.tmdb.org/t/p/w342/9mmOjx2bWuLd9NnVpC71OUEXBym.jpg",
+      "title": "The Blue Road",
+      "tmdb_id": 300523,
+      "type": "tv",
+      "year": 2026
+    },
+    {
       "poster": "https://image.tmdb.org/t/p/w342/hOomPc8x2lDxWRS8ltDE0gHUK7z.jpg",
       "title": "Lo show di Patrick Stella",
       "tmdb_id": 126824,
       "type": "tv",
       "year": 2021
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/hiX70sXdvEPVE11QqmLuaX16gdh.jpg",
-      "title": "The Altruists",
-      "tmdb_id": 308007,
-      "type": "tv",
-      "year": 2026
     }
   ]
 }
