@@ -182,7 +182,9 @@ def update(root:Path, fetch=api, limit:int=120) -> dict:
     for kind,tid,extra in selected:
         if kind!="tv" or episodes_checked>=8:continue
         key="tv:"+str(tid);record=facts.setdefault(key,{})
-        if record.get("episode_images"):continue
+        old_images=record.get("episode_images") or {}
+        last_seen=old_images.get("observed_at", "")
+        if last_seen and (dt.date.today()-dt.date.fromisoformat(last_seen)).days < 14:continue
         info=extra
         if info is None:
             try:info=fetch("/tv/"+str(tid),{"language":"it-IT"})
@@ -192,12 +194,12 @@ def update(root:Path, fetch=api, limit:int=120) -> dict:
                         and s.get("episode_count",0)>0 and s["season_number"]>=0})
         if not numbers:continue
         chosen=sorted(set(numbers[:1]+numbers[-1:]))
-        images={}
+        images=dict(old_images.get("seasons") or {})
         for season in chosen:
             try:response=fetch(f"/tv/{tid}/season/{season}",{"language":"it-IT"})
             except (ValueError,urllib.error.URLError,TimeoutError):continue
             found=episode_facts(response)
-            if found:images[str(season)]=found
+            if found:images[str(season)]={**images.get(str(season),{}),**found}
         if images:
             record["episode_images"]={"source":"tmdb","observed_at":DATE,"seasons":images}
             episodes_checked+=1
