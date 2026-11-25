@@ -82,7 +82,7 @@
       '<div class="bobo-feature-body"><div class="bobo-eyebrow">Bobo Movie Night · In primo piano</div>'+
       '<h1>'+text(item.title)+'</h1><div class="bobo-feature-meta">'+meta(item)+'</div>'+
       '<p class="bobo-feature-description">'+text(item.overview||'Scopri il titolo e tutti i dettagli.')+'</p>'+
-      '<div class="bobo-feature-actions"><button type="button" class="bobo-btn bobo-btn-primary" data-bobo-play="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">▶ Riproduci</button>'+
+      '<div class="bobo-feature-actions"><button type="button" class="bobo-btn bobo-btn-primary" data-bobo-play="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">▶ Apri scheda</button>'+
       '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">ⓘ Dettagli</button></div></div></section>';
   }
   function renderHome() {
@@ -163,7 +163,7 @@
       '<p class="bobo-genres">'+text(genres)+'</p>'+
       '<p class="bobo-detail-copy">'+text(item.overview || 'Trama non disponibile nel catalogo.')+'</p>'+
       '<div class="bobo-detail-actions"><button type="button" class="bobo-btn bobo-btn-primary" data-bobo-play="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">'+
-      (item.type === 'tv'?'▶ Scegli episodio':'▶ Riproduci')+'</button>'+
+      'ⓘ Vai alla scheda completa'+'</button>'+
       '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-close>Chiudi</button></div></div></article>';
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -179,19 +179,83 @@
     document.body.style.overflow = '';
     if (previousFocus && previousFocus.isConnected) previousFocus.focus();
   }
+  function goToPage(item, season, episode) {
+    if (!item) return;
+    try { sessionStorage.setItem('bobo_selected_title', JSON.stringify(item)); }
+    catch (_) { /* A normal fetch on the dedicated page will work without storage. */ }
+    const url = new URL('watch.html', location.href);
+    url.searchParams.set('type',item.type);
+    url.searchParams.set('id',String(item.tmdb_id));
+    if (item.type === 'tv' && season && episode) {
+      url.searchParams.set('s',String(season));
+      url.searchParams.set('e',String(episode));
+    }
+    location.assign(url.toString());
+  }
   function play(id,kind) {
     const item = getItem(id,kind);
     if (!item) return;
     closeDetail();
-    if (kind === 'tv') openEpModal(item);
-    else openPlayer({ kind:'movie', tmdbId:item.tmdb_id, title:item.title });
+    goToPage(item);
   }
+  function openSettings() {
+    const modal = document.getElementById('bobo-settings');
+    if (!modal) return;
+    const value = localStorage.getItem('bobo_provider_v3') === 'vidsrc' ? 'vidsrc' : 'vix';
+    const selected = modal.querySelector('input[value="'+value+'"]');
+    if (selected) selected.checked = true;
+    modal.hidden = false;
+    if (selected) selected.focus();
+  }
+  function closeSettings() {
+    const modal = document.getElementById('bobo-settings');
+    if (modal) modal.hidden = true;
+    const button = document.getElementById('bobo-settings-open');
+    if (button) button.focus();
+  }
+  function initSettings() {
+    const toggle = document.querySelector('.provider-toggle');
+    if (toggle) toggle.hidden = true;
+    const head = document.querySelector('header');
+    if (!head) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'bobo-settings-open';
+    button.title = 'Impostazioni riproduzione';
+    button.setAttribute('aria-label','Impostazioni riproduzione');
+    button.textContent = '⚙';
+    head.appendChild(button);
+    document.body.insertAdjacentHTML('beforeend',
+      '<div id="bobo-settings" hidden><div class="bobo-settings-box" role="dialog" aria-modal="true" aria-label="Impostazioni riproduzione">'+
+      '<div class="bobo-settings-head"><h2>Impostazioni riproduzione</h2><button type="button" data-close-settings aria-label="Chiudi impostazioni">×</button></div>'+
+      '<p>Vix è il provider predefinito. Seleziona un altro player soltanto se desideri provare un\u0027alternativa.</p>'+
+      '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vix"><span><strong>Vix</strong><small>Provider consigliato</small></span></label>'+
+      '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vidsrc"><span><strong>VidSrc</strong><small>Sperimentale; potrebbero esserci reindirizzamenti</small></span></label>'+
+      '</div></div>');
+    button.addEventListener('click',openSettings);
+    const modal = document.getElementById('bobo-settings');
+    modal.addEventListener('click',function(event) {
+      if (event.target === modal || event.target.closest('[data-close-settings]')) closeSettings();
+    });
+    modal.querySelectorAll('input[name="bobo-settings-provider"]').forEach(function(radio) {
+      radio.addEventListener('change',function() {
+        if (typeof setProvider === 'function') setProvider(radio.value);
+        else localStorage.setItem('bobo_provider_v3',radio.value);
+        closeSettings();
+      });
+    });
+    document.addEventListener('keydown',function(event) {
+      if (event.key === 'Escape' && !modal.hidden) closeSettings();
+    });
+  }
+
   function init() {
     const main = document.querySelector('main');
     if (!main || document.getElementById('bobo-discover')) return;
     main.insertAdjacentHTML('afterbegin','<div id="bobo-discover"></div>');
     main.insertAdjacentHTML('beforeend','<button id="bobo-more" type="button" hidden>Carica altri</button>');
     document.body.insertAdjacentHTML('beforeend','<div id="bobo-details" hidden></div>');
+    initSettings();
 
     document.getElementById('bobo-more').addEventListener('click', function () {
       shown += PAGE_SIZE;
@@ -217,6 +281,7 @@
       if (evt.key === 'Escape') closeDetail();
     });
     update();
+    if (location.hash === '#tv') switchTab('tv');
   }
 
   window.renderGrid = function(items) {
