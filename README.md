@@ -26,6 +26,23 @@ Sito statico basato sul catalogo del progetto [CasaFlix](https://github.com/scag
 - "Schermo intero Bobo" applicato al contenitore del player per restare aperto quando cambia l'iframe. Il fullscreen nativo interno a Vix è fuori dal controllo della pagina; Safari su iPhone può usare la modalità cinema CSS.
 - Riproduzione consecutiva attiva di default, massimo cinque episodi, personalizzabile nelle impostazioni.
 
+## Novità streaming italiane senza token
+
+La sezione **Nuovi sulle piattaforme in Italia** viene aggiornata automaticamente
+da `scripts/build_streaming_feed.py` tramite l'indice pubblico
+[Streamingfilter](https://streamingfilter.com/it/novita), con massimo due accessi
+al giorno attraverso GitHub Actions. Lo script confronta nome, anno e tipo di opera
+e pubblica solo corrispondenze univoche con i film e le serie presenti in Bobo:
+**nessuna API key e nessun costo**. La fonte viene attribuita nella homepage.
+
+La sezione viene nascosta se il sito esterno non risponde, cambia struttura o
+non fornisce corrispondenze valide. Non viene attribuito un titolo a una
+piattaforma specifica senza dati verificati.
+
+Il feed opzionale TMDB/JustWatch descritto sotto consente in aggiunta
+la suddivisione per Netflix, Prime Video, Disney+ e Apple TV+, ma **non è
+necessario per il funzionamento di Bobo**: la home è già aggiornata senza di esso.
+
 ## Selezioni streaming Italia (TMDB / JustWatch)
 
 `scripts/build_discovery.py` produce `data/discovery.json` insieme all'aggiornamento CasaFlix, incrociando i risultati TMDB con **soli ID realmente presenti nel catalogo Bobo**. Se configurato, mostra i trend della settimana TMDB e selezioni di titoli **recenti per data di uscita originale** disponibili in abbonamento in Italia su Netflix, Prime Video, Disney+ e Apple TV+.
@@ -37,7 +54,7 @@ Per abilitare gli aggiornamenti autentici, aggiungere una sola volta il segreto 
 3. Valore: il token **API Read Access Token** ottenuto da [TMDB → Settings → API](https://www.themoviedb.org/settings/api).
 4. Eseguire manualmente [Sync upstream CasaFlix](https://github.com/MatteoCurro/bobo-movie-night/actions/workflows/sync-upstream.yml), oppure attendere il normale aggiornamento programmato.
 
-Il segreto non viene scritto nei file web; senza il token la home mantiene le categorie editoriali locali senza inventare disponibilità streaming. Il feed registra **disponibilità per territorio Italia**, non la data effettiva di aggiunta sulle piattaforme. Queste categorie non modificano la provenienza o i diritti dei flussi video esterni.
+Il segreto non viene scritto nei file web; senza il token la home mantiene sia le categorie editoriali locali sia il feed Streamingfilter delle novità italiane, senza inventare disponibilità specifiche per piattaforma. Il feed registra **disponibilità per territorio Italia**, non la data effettiva di aggiunta sulle piattaforme. Queste categorie non modificano la provenienza o i diritti dei flussi video esterni.
 
 ## Costi GitHub Actions
 
