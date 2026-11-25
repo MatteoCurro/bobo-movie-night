@@ -29,12 +29,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git clone --quiet --depth=1 --branch main https://github.com/scageto/CasaFlix.git /tmp/casaflix
-          install -m 0644 /tmp/casaflix/index.html ./index.html
-          mkdir -p data
-          install -m 0644 /tmp/casaflix/data/movies.json ./data/movies.json
-          install -m 0644 /tmp/casaflix/data/tv.json ./data/tv.json
-          python3 - <<'PY'
+          if git clone --quiet --depth=1 --branch main https://github.com/scageto/CasaFlix.git /tmp/casaflix; then
+            install -m 0644 /tmp/casaflix/index.html ./index.html
+            mkdir -p data
+            install -m 0644 /tmp/casaflix/data/movies.json ./data/movies.json
+            install -m 0644 /tmp/casaflix/data/tv.json ./data/tv.json
+            python3 - <<'PY'
           from pathlib import Path
           page = Path("index.html")
           content = page.read_text(encoding="utf-8-sig")
@@ -96,6 +96,12 @@ jobs:
           content = content.replace("</body>", '  <script defer src="bobo-library.js"></script>\n  <script defer src="bobo-ui.js"></script>\n  <script defer src="bobo-enhance.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
+          else
+            echo "::warning::CasaFlix upstream unavailable. Keep last validated Bobo catalog and continue deployment."
+            test -s index.html
+            test -s data/movies.json
+            test -s data/tv.json
+          fi
           touch .nojekyll
 
       - name: Refresh streaming discovery (Italy)
