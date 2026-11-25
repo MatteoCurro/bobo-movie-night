@@ -156,7 +156,10 @@
     const art = image ? '<img src="'+text(image)+'" loading="lazy" alt="" decoding="async">' :
       '<span class="bobo-fallback">'+text(item.title)+'</span>';
     return '<button type="button" class="bobo-tile" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'" aria-label="Dettagli: '+text(item.title)+'">'+
-      '<span class="bobo-tile-art">'+art+'<span class="bobo-tile-tag">'+typeTag(item)+'</span></span>'+
+      '<span class="bobo-tile-art">'+art+'<span class="bobo-tile-tag">'+typeTag(item)+'</span>'+
+      '<span class="bobo-poster-hover" aria-hidden="true"><strong>'+text(item.title)+'</strong>'+
+      '<span class="bobo-poster-hover-meta">'+meta(item)+'</span>'+
+      '<span class="bobo-poster-hover-hint">ⓘ Dettagli</span></span></span>'+
       '<span class="bobo-tile-title">'+text(item.title)+'</span>'+
       '<span class="bobo-tile-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
       (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
@@ -167,10 +170,10 @@
     return '<section class="bobo-shelf" aria-label="'+text(title)+'">'+
       '<div class="bobo-shelf-head"><h2>'+text(title)+'</h2>'+
       (subtitle ? '<small class="bobo-shelf-source">'+text(subtitle)+'</small>' : '')+
-      '<div class="bobo-shelf-nav">'+
-      '<button class="bobo-arrow" type="button" data-bobo-scroll="'+text(id)+'" data-direction="-1" aria-label="Scorri a sinistra">‹</button>'+
-      '<button class="bobo-arrow" type="button" data-bobo-scroll="'+text(id)+'" data-direction="1" aria-label="Scorri a destra">›</button></div></div>'+
-      '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(posterTile).join('')+'</div></section>';
+      '</div><div class="bobo-rail-frame">'+
+      '<button class="bobo-arrow bobo-arrow--left" type="button" data-bobo-scroll="'+text(id)+'" data-direction="-1" aria-label="Scorri '+text(title)+' verso sinistra">‹</button>'+
+      '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(posterTile).join('')+'</div>'+
+      '<button class="bobo-arrow bobo-arrow--right" type="button" data-bobo-scroll="'+text(id)+'" data-direction="1" aria-label="Scorri '+text(title)+' verso destra">›</button></div></section>';
   }
   function chooseFeedFeature() {
     if (!discovery || !discovery.streaming) return null;
@@ -215,6 +218,16 @@
   }
   function shuffleFeedFeature() {
     if(heroSlides.length) setHeroSlide(heroIndex+1,true);
+  }
+  function updateRailButtons(rail) {
+    if(!rail)return;
+    const frame=rail.closest('.bobo-rail-frame');
+    if(!frame)return;
+    const left=frame.querySelector('.bobo-arrow--left');
+    const right=frame.querySelector('.bobo-arrow--right');
+    const overflow=rail.scrollWidth-rail.clientWidth>3;
+    if(left){left.hidden=!overflow;left.disabled=rail.scrollLeft<=2;}
+    if(right){right.hidden=!overflow;right.disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-2;}
   }
   function startHeroRotation() {
     if(heroTimer)clearInterval(heroTimer);
@@ -340,6 +353,7 @@
       (discovery && discovery.platforms && discovery.platforms.length ?
         '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
     startHeroRotation();
+    requestAnimationFrame(function(){ document.querySelectorAll('.bobo-rail').forEach(updateRailButtons); });
   }
   function renderResults() {
     const more = document.getElementById('bobo-more');
@@ -355,8 +369,11 @@
     else grid.innerHTML = rows.map(function(item) {
       const image = safeImage(item.poster);
       const poster = image ? '<img src="'+text(image)+'" loading="lazy" decoding="async" alt="">' : '';
-      return '<button type="button" class="bobo-result" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">'+
-        '<span class="bobo-result-poster">'+poster+'<span class="bobo-tile-tag">'+typeTag(item)+'</span></span>'+
+      return '<button type="button" class="bobo-result" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'" aria-label="Dettagli: '+text(item.title)+'">'+
+        '<span class="bobo-result-poster">'+poster+'<span class="bobo-tile-tag">'+typeTag(item)+'</span>'+
+        '<span class="bobo-poster-hover" aria-hidden="true"><strong>'+text(item.title)+'</strong>'+
+        '<span class="bobo-poster-hover-meta">'+meta(item)+'</span>'+
+        '<span class="bobo-poster-hover-hint">ⓘ Dettagli</span></span></span>'+
         '<span class="bobo-result-title">'+text(item.title)+'</span>'+
         '<span class="bobo-result-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
         (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
@@ -562,7 +579,10 @@
       const scrolling = target.closest('[data-bobo-scroll]');
       if (scrolling) {
         const rail = document.getElementById('bobo-rail-'+scrolling.getAttribute('data-bobo-scroll'));
-        if (rail) rail.scrollBy({left: (Number(scrolling.dataset.direction)||1)*rail.clientWidth*.85,behavior:'smooth'});
+        if (rail) {
+          rail.scrollBy({left: (Number(scrolling.dataset.direction)||1)*rail.clientWidth*.85,behavior:'smooth'});
+          updateRailButtons(rail);
+        }
         return;
       }
       if (target.closest('[data-bobo-slide-prev]')) { setHeroSlide(heroIndex-1,true); return; }
@@ -574,6 +594,12 @@
       if (playing) { play(playing.dataset.boboPlay,playing.dataset.boboType); return; }
       const opening = target.closest('[data-bobo-id]');
       if (opening) { detail(getItem(opening.dataset.boboId,opening.dataset.boboType)); }
+    });
+    document.addEventListener('scroll',function(evt) {
+      if(evt.target?.classList?.contains('bobo-rail'))updateRailButtons(evt.target);
+    },true);
+    window.addEventListener('resize',function() {
+      document.querySelectorAll('.bobo-rail').forEach(updateRailButtons);
     });
     document.addEventListener('keydown',function(evt) {
       if (evt.key === 'Escape') closeDetail();

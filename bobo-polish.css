@@ -500,3 +500,126 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
   background: transparent !important;
   object-fit: contain !important;
 }
+
+
+/* Catalog 2026: a quiet wall of posters. Only true mouse/trackpad hover reveals
+   the editorial info and independent actions; touch devices keep the old cards. */
+.bobo-rail-frame{position:relative;min-width:0}
+.bobo-rail-frame>.bobo-arrow{
+  position:absolute;z-index:8;top:50%;transform:translateY(-50%);
+  width:39px;height:60px;display:grid;place-items:center;padding:0;
+  background:rgba(16,29,37,.94)!important;border:1px solid #6a8991!important;
+  color:#ecf8f7;box-shadow:0 6px 24px #0008;
+  font:600 29px/1 var(--bobo-font-body)!important;
+  transition:opacity .15s,background .15s,border-color .15s;
+}
+.bobo-rail-frame>.bobo-arrow--left{left:-12px}
+.bobo-rail-frame>.bobo-arrow--right{right:-12px}
+.bobo-rail-frame>.bobo-arrow:hover{background:#2b454e!important;border-color:#a7d9d2!important}
+.bobo-rail-frame>.bobo-arrow:disabled{opacity:.16;cursor:default;pointer-events:none}
+.bobo-rail-frame>.bobo-arrow[hidden]{display:none!important}
+.bobo-poster-hover,.bobo-quick-open{display:none}
+@media (hover:hover) and (pointer:fine){
+  .bobo-rail{scrollbar-width:none}
+  .bobo-rail::-webkit-scrollbar{display:none}
+  .bobo-item-wrap{isolation:isolate;align-self:stretch}
+  .bobo-item-wrap>.bobo-tile,.bobo-item-wrap>.bobo-result{
+    height:100%;width:100%;min-height:0;padding:0!important;margin:0!important;
+    display:block;background:transparent!important;border:0!important;overflow:visible;
+    border-radius:5px!important;color:#fff;outline-offset:3px;
+  }
+  .bobo-item-wrap .bobo-tile-art,.bobo-item-wrap .bobo-result-poster{
+    position:relative;display:block;width:100%;height:auto;aspect-ratio:2/3;
+    overflow:hidden;margin:0!important;border-radius:5px!important;
+  }
+  .bobo-item-wrap .bobo-tile-art>img,.bobo-item-wrap .bobo-result-poster>img{
+    display:block;width:100%;height:100%;object-fit:cover;transition:transform .28s ease;
+  }
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-tile-art>img,
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-result-poster>img{transform:scale(1.03)}
+  .bobo-item-wrap .bobo-tile-title,.bobo-item-wrap .bobo-tile-meta,
+  .bobo-item-wrap .bobo-result-title,.bobo-item-wrap .bobo-result-meta{display:none!important}
+  .bobo-item-wrap .bobo-tile-tag{opacity:0;transition:opacity .2s}
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-tile-tag{opacity:1}
+  .bobo-item-wrap .bobo-poster-hover{
+    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:12px 10px 55px;gap:7px;min-width:0;
+    background:linear-gradient(180deg,rgba(7,12,17,.40) 0%,rgba(7,12,17,.76) 35%,rgba(7,12,17,.96) 79%,rgba(7,12,17,.98) 100%);
+    opacity:0;visibility:hidden;transform:translateY(5px);pointer-events:none;
+    transition:opacity .23s ease,transform .23s ease,visibility .23s;
+    color:#fff;text-align:left;
+  }
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-poster-hover{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .bobo-poster-hover strong{
+    font:700 clamp(11px,1.05vw,14px)/1.22 var(--bobo-font-display);
+    overflow-wrap:anywhere;max-height:6.1em;overflow-y:auto;scrollbar-width:none;
+    text-shadow:0 1px 5px #0009;
+  }
+  .bobo-poster-hover-meta{display:flex;flex-wrap:wrap;gap:3px 6px;
+    font:600 10px/1.28 var(--bobo-font-mono);color:#d8e8e7}
+  .bobo-poster-hover-meta .bobo-kind{padding:0!important;border:0!important;background:transparent!important;
+    font:inherit!important;color:#c3e6e3!important}
+  .bobo-poster-hover-hint{display:block;margin-top:2px;
+    font:600 10px/1.3 var(--bobo-font-mono);color:#d5e7e7}
+  .bobo-item-wrap>.bobo-quick-open{
+    position:absolute;z-index:6;bottom:10px;left:9px;right:9px;width:calc(100% - 18px);
+    display:block;min-height:33px;padding:6px 4px;border-radius:4px;
+    background:#a4d9d4;color:#11242a;border:1px solid #b6e4df;
+    font:700 11px/1.2 var(--bobo-font-body);text-align:center;cursor:pointer;
+    opacity:0;visibility:hidden;transform:translateY(6px);
+    transition:opacity .2s,transform .2s,visibility .2s;
+  }
+  .bobo-item-wrap>.bobo-save-corner{
+    opacity:0;visibility:hidden;transform:translateY(-5px);
+    transition:opacity .2s,transform .2s,visibility .2s;
+  }
+  .bobo-item-wrap:is(:hover,:focus-within)>.bobo-quick-open,
+  .bobo-item-wrap:is(:hover,:focus-within)>.bobo-save-corner{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .bobo-item-wrap>.bobo-quick-open:hover{background:#c7f1ec}
+  /* Source badges remain after the main button on mobile, but float over the
+     poster at desktop when additional information is requested. */
+  .bobo-item-wrap .bobo-tile>.bobo-source-tags,
+  .bobo-item-wrap .bobo-result>.bobo-source-tags{
+    display:flex;position:absolute;z-index:5;top:34px;left:9px;right:9px;
+    margin:0!important;padding:0!important;max-width:calc(100% - 18px);
+    opacity:0;visibility:hidden;pointer-events:none;
+  }
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-tile>.bobo-source-tags,
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-result>.bobo-source-tags{
+    opacity:1;visibility:visible;
+  }
+}
+@media(max-width:640px){
+  .bobo-rail-frame>.bobo-arrow{width:29px;height:48px;font-size:23px!important}
+  .bobo-rail-frame>.bobo-arrow--left{left:-8px}
+  .bobo-rail-frame>.bobo-arrow--right{right:-8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bobo-poster-hover,.bobo-quick-open,.bobo-save-corner,.bobo-rail-frame>.bobo-arrow{
+    transition:none!important;transform:none!important
+  }
+}
+
+/* Detail-page hero: fade the image itself to transparent, revealing the exact
+   body wallpaper underneath (including its subtle dotted pattern). */
+#watch-main .title-backdrop{
+  background:transparent!important;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 45%,rgba(0,0,0,.90) 62%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 45%,rgba(0,0,0,.90) 62%,transparent 100%);
+}
+#watch-main .title-backdrop::after{
+  background:linear-gradient(90deg,rgba(12,17,22,.94) 0%,rgba(12,17,22,.70) 38%,rgba(12,17,22,.12) 93%)!important;
+}
+@media(max-width:760px){
+  #watch-main .title-backdrop{
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 28%,rgba(0,0,0,.78) 55%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 0%,#000 28%,rgba(0,0,0,.78) 55%,transparent 100%);
+  }
+  #watch-main .title-backdrop::after{
+    background:linear-gradient(0deg,rgba(12,17,22,.53),rgba(12,17,22,.08))!important;
+  }
+}

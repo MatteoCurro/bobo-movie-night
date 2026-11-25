@@ -26,6 +26,7 @@ jobs:
           node --check bobo-friends.js
           node tests/autonext.cjs
           node tests/episode-cards.cjs
+          node tests/catalog-hover.cjs
           node tests/hero-images.cjs
           node tests/library.cjs
       - name: Validate backend PHP

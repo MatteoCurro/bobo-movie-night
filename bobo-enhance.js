@@ -125,6 +125,16 @@
       parent.insertBefore(wrap,button);
       wrap.appendChild(button);
       wrap.appendChild(favoriteButton(kind,id,'bobo-save-corner'));
+      // An actual sibling control: never nest a button inside the poster button.
+      // The outer poster keeps opening Details, whereas this opens the full page.
+      const open=document.createElement('button');
+      open.type='button';
+      open.className='bobo-quick-open';
+      open.dataset.boboPlay=id;
+      open.dataset.boboType=kind;
+      open.setAttribute('aria-label','Apri la scheda di '+(button.getAttribute('aria-label')||'questo titolo').replace(/^Dettagli:\s*/,''));
+      open.textContent='▶ Apri scheda';
+      wrap.appendChild(open);
     });
   }
 

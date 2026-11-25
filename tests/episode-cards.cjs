@@ -42,7 +42,8 @@ assert(code.includes(anchor),'Watch script testing seam absent');
 code=code.replace(anchor,[
   "  globalThis.__episodeTests={",
   "    init(info,data){item=info;seasons=episodeData(info);episodeStills=data;selectedSeason=1;selectedEpisode=1;playing=false;},",
-  "    render:renderEpisodeNavigation,heading:episodeHeading,load:loadEpisodeIndex",
+  "    render:renderEpisodeNavigation,heading:episodeHeading,load:loadEpisodeIndex,",
+  "    updateArrows:updateSeasonArrows,scrollSeasons:scrollSeasons",
   "  };",anchor
 ].join('\n'));
 vm.runInNewContext(code,context,{filename:'bobo-watch.js'});
@@ -79,6 +80,29 @@ cards=nodes['watch-episode-list'].children;
 assert.equal(cards.length,1);
 assert.equal(cards[0].children[2].children[0].textContent,'Finale di stagione');
 assert.match(location.href,/s=2&e=1/,'Season navigation keeps URL parameters');
+// The season scroller should only reveal arrows when its content overflows.
+const seasonRail=nodes['watch-season-buttons'];
+const back=nodes['watch-season-prev'],forward=nodes['watch-season-next'];
+seasonRail.scrollWidth=720;seasonRail.clientWidth=240;seasonRail.scrollLeft=0;
+seasonRail.scrollBy=function(options){this.scrollLeft+=options.left;};
+api.updateArrows();
+assert.equal(back.hidden,false);
+assert.equal(forward.hidden,false);
+assert.equal(back.disabled,true);
+assert.equal(forward.disabled,false);
+api.scrollSeasons(1);
+assert(seasonRail.scrollLeft>0,'Season arrow must scroll the actual row');
+seasonRail.scrollLeft=480;
+api.updateArrows();
+assert.equal(back.disabled,false);
+assert.equal(forward.disabled,true);
+seasonRail.scrollWidth=240;seasonRail.clientWidth=240;
+api.updateArrows();
+assert.equal(back.hidden,true);
+assert.equal(forward.hidden,true);
+assert.match(fs.readFileSync('watch.html','utf8'),/id="watch-season-prev"/);
+assert.match(fs.readFileSync('watch.html','utf8'),/id="watch-season-next"/);
+
 api.init({...info,poster:''},{});
 api.render();
 cards=nodes['watch-episode-list'].children;
@@ -116,5 +140,5 @@ context.fetch=async url=>{
 };
 api.load().then(()=>{
   assert.equal(nodes['watch-episode-list'].children[0].children[2].children[0].textContent,longName);
-  console.log('OK: full names, symmetric grid CSS, per-series HTTP index, fallback posters and navigation.');
+  console.log('OK: episode cards, full titles, season carousel boundaries, per-series metadata and poster fallbacks.');
 }).catch(error=>{console.error(error);process.exitCode=1});
