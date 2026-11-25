@@ -105,6 +105,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/build_discovery.py
+          python3 scripts/build_streaming_feed.py
 
       - name: Commit only if changed
         shell: bash
@@ -130,6 +131,7 @@ jobs:
           node --check bobo-friends.js
           node tests/autonext.cjs
           python3 -m py_compile scripts/build_discovery.py
+          python3 -m py_compile scripts/build_streaming_feed.py
           grep -q 'bobo-ui.js' index.html
           grep -q 'bobo-retro.css' index.html
           grep -q 'bobo-polish.css' index.html
