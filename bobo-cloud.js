@@ -177,7 +177,7 @@
   function status(){return {state,user:user?{...user}:null,pending:Boolean(user&&readPending())};}
   function accountLink(mode='login'){
     const file=location.pathname.split('/').pop()||'index.html';
-    const allowed=['index.html','favorites.html','watch.html'];
+    const allowed=['index.html','favorites.html','watch.html','discover.html'];
     const base=allowed.includes(file)?file:'index.html';
     let suffix='';
     if(base==='watch.html'){
