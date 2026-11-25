@@ -32,8 +32,8 @@ jobs:
           if git clone --quiet --depth=1 --branch main https://github.com/scageto/CasaFlix.git /tmp/casaflix; then
             install -m 0644 /tmp/casaflix/index.html ./index.html
             mkdir -p data
-            install -m 0644 /tmp/casaflix/data/movies.json ./data/movies.json
-            install -m 0644 /tmp/casaflix/data/tv.json ./data/tv.json
+            python3 scripts/merge_upstream_catalog.py --kind movie --current ./data/movies.json --upstream /tmp/casaflix/data/movies.json
+            python3 scripts/merge_upstream_catalog.py --kind tv --current ./data/tv.json --upstream /tmp/casaflix/data/tv.json
             python3 - <<'PY'
           from pathlib import Path
           page = Path("index.html")
@@ -131,6 +131,8 @@ jobs:
           node --check bobo-cloud.js
           node --check bobo-favorites.js
           python3 -m py_compile scripts/build_catalog_ledger.py
+          python3 -m py_compile scripts/merge_upstream_catalog.py
+          python3 tests/incremental_catalog.py
           python3 -m py_compile scripts/build_poster_index.py
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 -m py_compile scripts/prepare_flaticon.py
