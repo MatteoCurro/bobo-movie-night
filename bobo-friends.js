@@ -140,22 +140,47 @@
   };
 
   /* Flat decorative micro-animations. No image/video downloads and reduced-motion friendly. */
-  const SCENES = {
-    climb: '<img src="assets/bobo-climb.svg" alt="" loading="lazy" decoding="async">',
-    ridge: '<img src="assets/bobo-faiva.svg" alt="" loading="lazy" decoding="async">'
+  const EASTER_ICONS = {
+    climb: [
+      'climbing-silhouette','mountain-climb','mountain-running','rock-climbing',
+      'climbing','mountain-climbing'
+    ],
+    dog: [
+      'border-collie','dog-running','running-dog','cute-dog',
+      'dog','walking-dog','dog-outline','paw-footprint','dog-pawprint'
+    ]
   };
+  const chosenIcons = new Set();
+  function pickEasterIcon(kind) {
+    const list=EASTER_ICONS[kind] || [];
+    const unused=list.filter(name=>!chosenIcons.has(name));
+    const pool=unused.length?unused:list;
+    const choice=pool[Math.floor(Math.random()*pool.length)] || list[0];
+    if(choice)chosenIcons.add(choice);
+    return choice;
+  }
   function addTinyScenes() {
     const targets = [
-      ['.bobo-feature','climb'],
-      ['.title-hero','ridge']
+      ['.bobo-feature','climb','hero'],
+      ['.title-hero','dog','hero'],
+      ['.bobo-feed-group:not(.bobo-feed-group-secondary)','dog','section'],
+      ['.bobo-feed-group-secondary','climb','section'],
+      ['.bobo-fav-heading','dog','favorites']
     ];
-    targets.forEach(function(pair) {
-      const host = document.querySelector(pair[0]);
-      if (!host || host.querySelector('.bobo-mini-scene')) return;
-      const scene = document.createElement('div');
-      scene.className = 'bobo-mini-scene bobo-mini-scene--'+pair[1];
+    targets.forEach(function(entry) {
+      const host=document.querySelector(entry[0]);
+      if(!host || host.querySelector('.bobo-mini-scene'))return;
+      const icon=pickEasterIcon(entry[1]);
+      if(!icon)return;
+      const scene=document.createElement('span');
+      scene.className='bobo-mini-scene bobo-mini-scene--'+entry[2];
       scene.setAttribute('aria-hidden','true');
-      scene.innerHTML = SCENES[pair[1]];
+      const img=document.createElement('img');
+      img.src='assets/easter/'+icon+'.svg';
+      img.alt='';
+      img.loading='lazy';
+      img.decoding='async';
+      scene.appendChild(img);
       host.appendChild(scene);
     });
   }
