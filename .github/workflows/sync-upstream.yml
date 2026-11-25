@@ -46,16 +46,16 @@ jobs:
           # Use a new preference key so existing Vix selections don't force a blocked default.
           old_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('cf_provider'))
             ? localStorage.getItem('cf_provider') : 'vix';"""
-          new_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v2'))
-            ? localStorage.getItem('bobo_provider_v2') : 'vidsrc';"""
+          new_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v3'))
+            ? localStorage.getItem('bobo_provider_v3') : 'vix';"""
           if old_provider not in content:
               raise SystemExit("Upstream provider preference changed; review required")
           content = content.replace(old_provider, new_provider)
-          content = content.replace("localStorage.setItem('cf_provider', p)", "localStorage.setItem('bobo_provider_v2', p)")
-          content = content.replace('<button class="prov-btn active" data-prov="vix"', '<button class="prov-btn"        data-prov="vix"')
-          content = content.replace('<button class="prov-btn"        data-prov="vidsrc"', '<button class="prov-btn active" data-prov="vidsrc"')
-          content = content.replace('id="player-current-prov">Vix</strong>', 'id="player-current-prov">VidSrc</strong>')
-          content = content.replace('id="player-prov-name">Vix</strong>', 'id="player-prov-name">VidSrc</strong>')
+          content = content.replace("localStorage.setItem('cf_provider', p)", "localStorage.setItem('bobo_provider_v3', p)")
+          # Vix explicitly rejects embeds that suppress the origin Referer.
+          if 'referrerpolicy="no-referrer"' not in content:
+              raise SystemExit("Upstream iframe referrer policy changed; review required")
+          content = content.replace('referrerpolicy="no-referrer"', 'referrerpolicy="origin"')
           help_button = '<button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>'
           if help_button not in content:
               raise SystemExit("Upstream player controls changed; review required")
@@ -107,8 +107,24 @@ jobs:
         shell: bash
         run: |
           node --check bobo-ui.js
+          node --check bobo-watch.js
           grep -q 'bobo-ui.js' index.html
           grep -q 'bobo-ui.css' index.html
+          grep -q 'referrerpolicy="origin"' index.html
+          grep -q 'referrerpolicy="origin"' watch.html
+          grep -q 'bobo-watch.js' watch.html
+          test -s watch.html
+          test -s bobo-watch.css
+          test -s bobo-watch.js
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for name in ('movies','tv'):
+              data = json.loads(Path(f'data/{name}.json').read_text(encoding='utf-8'))
+              assert data.get('items'), f'Empty catalog: {name}'
+              example = data['items'][0]
+              assert 'tmdb_id' in example and 'overview' in example, f'Missing metadata: {name}'
+          PY
 
       - name: Prepare static site for deployment
         shell: bash
@@ -117,6 +133,7 @@ jobs:
           cp index.html _site/index.html
           cp data/movies.json data/tv.json _site/data/
           cp bobo-ui.css bobo-ui.js _site/
+          cp watch.html bobo-watch.js bobo-watch.css _site/
           touch _site/.nojekyll
 
       - name: Upload GitHub Pages artifact
