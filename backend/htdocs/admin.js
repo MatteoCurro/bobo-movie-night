@@ -38,6 +38,16 @@ $('login-form').addEventListener('submit',async event=>{
  }catch(e){status(e.message)}
 });
 $('refresh').addEventListener('click',load);
+$('newsletter-test').addEventListener('click',async()=>{
+ const button=$('newsletter-test');
+ button.disabled=true;
+ status('Invio della newsletter di prova al tuo indirizzo verificato…');
+ try{
+   const result=await api('admin/newsletter/test',{});
+   status(result.message||'Newsletter di prova inviata: controlla la tua casella email.');
+ }catch(error){status('Prova non riuscita: '+error.message);}
+ finally{button.disabled=false;}
+});
 $('logout').addEventListener('click',async()=>{
  try{await api('logout',{});}catch(_){};location.reload();
 });
