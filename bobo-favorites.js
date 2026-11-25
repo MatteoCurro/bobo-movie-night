@@ -9,6 +9,7 @@
   let catalog=new Map();
   let loading=false;
   let cacheKey='';
+  let metadataKey='';
   let msgTimer=null;
   function k(item){return item.type+':'+item.tmdb_id;}
   function current(item){return catalog.get(k(item))||item;}
@@ -23,6 +24,9 @@
     if(loading)return;
     const items=lib().read(),needed=new Set(items.map(k));
     if(!items.length)return;
+    const key=Array.from(needed).sort().join('|');
+    if(loading||metadataKey===key)return;
+    metadataKey=key;
     loading=true;
     await Promise.all(['movie','tv'].map(async kind=>{
       if(!items.some(x=>x.type===kind))return;
@@ -85,6 +89,38 @@
   function render(){
     if(!lib())return;
     updateProfiles();
+    const cloud=window.BoboCloud?.status();
+    const signed=cloud?.state==='member';
+    const picker=document.querySelector('.bobo-profile-picker-wrap');
+    if(picker)picker.hidden=Boolean(signed);
+    const hint=document.querySelector('.bobo-profile-bar > div > p');
+    if(hint)hint.textContent=signed?
+      'Raccolta salvata sul tuo account. I preferiti si sincronizzano tra dispositivi.':
+      'Raccolta conservata solo in questo browser. Per sincronizzarla accedi dal menu in alto.';
+    const label=el('bobo-profile-title');
+    if(label)label.textContent=signed?'Account: '+cloud.user.username:'Raccolta di';
+    for(const id of ['bobo-share','bobo-recover']){
+      const button=el(id);if(button)button.hidden=Boolean(signed);
+    }
+    let migration=el('bobo-import-local');
+    if(!migration){
+      migration=document.createElement('button');
+      migration.id='bobo-import-local';
+      migration.type='button';
+      migration.className='bobo-compact-button';
+      migration.addEventListener('click',()=>{
+        if(!window.confirm('Importare nel tuo account i precedenti preferiti salvati in questo browser?'))return;
+        try {
+          const count=window.BoboCloud.importLocal();
+          message(count+' preferiti nell’account (sincronizzazione in corso)');
+          render();loadMetadata();
+        }catch(err){message(err.message);}
+      });
+      document.querySelector('.bobo-backup-actions')?.appendChild(migration);
+    }
+    const localCount=window.BoboCloud?.localCount()||0;
+    migration.hidden=!signed||localCount===0;
+    migration.textContent='Importa locali ('+localCount+')';
     updateGenres();
     const chosen=filter(),saved=lib().read(),container=el('bobo-fav-collections');
     el('bobo-fav-summary').textContent=saved.length+
@@ -163,7 +199,7 @@
       try{
         if(file.size>500000)throw Error('File troppo grande');
         const value=await file.text(),obj=JSON.parse(value);
-        if(obj.profile&&obj.profile!==lib().profile()&&
+        if(window.BoboCloud?.status().state!=='member' && obj.profile&&obj.profile!==lib().profile()&&
           window.confirm('Il backup appartiene a "'+obj.profile+'". Vuoi usare quel nome di raccolta?'))
             lib().switchProfile(obj.profile);
         const count=lib().importText(value);
@@ -180,6 +216,8 @@
   }
   function start(){
     events();render();loadMetadata();
+    window.addEventListener('bobo:account-change',()=>{metadataKey='';render();loadMetadata();});
+    window.addEventListener('bobo:favorites-change',()=>{render();loadMetadata();});
     const code=new URLSearchParams(location.hash.slice(1)).get('recover');
     if(code){
       history.replaceState(null,'','favorites.html');
