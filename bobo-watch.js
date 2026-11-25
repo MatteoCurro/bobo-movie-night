@@ -331,6 +331,9 @@
   }
   function renderTitle(info) {
     item = info;
+    // Favorites page extension can capture complete title data without
+    // looking up the multi-megabyte catalog a second time.
+    window.BoboCurrentTitle=Object.assign({},info,{type:type});
     seasons = type === 'tv' ? episodeData(info) : [];
     if (type === 'tv' && !seasons.length) seasons = [{ n:1,episodes:1 }];
     selectionFromQuery();
