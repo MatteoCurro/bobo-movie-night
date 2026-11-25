@@ -529,6 +529,15 @@
     });
     if (location.hash === '#tv') unifiedFilters.type = 'tv';
     if (location.hash === '#movies') unifiedFilters.type = 'movie';
+    window.addEventListener('hashchange',function () {
+      const requested=location.hash==='#tv'?'tv':location.hash==='#movies'?'movie':'all';
+      if(requested!==unifiedFilters.type){
+        unifiedFilters.type=requested;
+        const select=document.getElementById('bobo-type-filter');
+        if(select)select.value=requested;
+        renderUnified();
+      }
+    });
     document.getElementById('search-input').placeholder = 'Cerca film e serie TV…';
     loadDiscovery();
     Promise.all([ensureLoaded('movie'), ensureLoaded('tv')]).then(function() {
