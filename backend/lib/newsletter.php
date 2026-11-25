@@ -53,7 +53,7 @@ function bobo_newsletter_compose(array $feed,string $username,string $unsubscrib
         $sections[]=[substr($section['title'],0,80),array_slice($section['items'],0,2)];
     }
     $labels=['netflix'=>'Netflix','prime'=>'Prime Video','disney'=>'Disney+','apple'=>'Apple TV+'];
-    foreach(($feed['sections']??[]) ? [] : $feed['platforms'] as $entry){
+    foreach((!empty($feed['sections']) ? [] : ($feed['platforms']??[])) as $entry){
         if(!is_array($entry)||!isset($labels[$entry['id']??'']))continue;
         $items=is_array($entry['items']??null)?array_slice($entry['items'],0,4):[];
         if($items)$sections[]=['Nel catalogo italiano di '.$labels[$entry['id']], $items];
