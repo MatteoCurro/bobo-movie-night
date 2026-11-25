@@ -1,9 +1,9 @@
-name: Bobo TV · Remote playback controls
+name: Bobo TV · Preferiti + ricerca + telecomando
 
 on:
   push:
     branches:
-      - tv-playback-fix
+      - tv-features-1-2
     paths:
       - 'tv-test/**'
       - '.github/workflows/tv-test-apk.yml'
@@ -28,6 +28,7 @@ jobs:
         run: |
           node --check tv-test/app/src/main/assets/tv.js
           node --check tv-test/app/src/main/assets/vix-bridge.js
+          node --check tv-test/app/src/main/assets/tv-account.js
       - name: Android SDK
         uses: android-actions/setup-android@v3
         with:
@@ -36,12 +37,31 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.10.2'
+      - name: Prepare TV launcher icon and banner
+        run: |
+          python -m pip install --quiet pillow
+          mkdir -p tv-test/app/src/main/res/drawable-nodpi
+          base64 --decode tv-test/app/src/main/assets/bobo-icon.jpg.base64 > tv-test/app/src/main/res/drawable-nodpi/bobo_icon.jpg
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          root=Path('tv-test/app/src/main/res/drawable-nodpi')
+          src=Image.open(root/'bobo_icon.jpg').convert('RGB')
+          src.load()
+          canvas=Image.new('RGB',(320,180),(12,17,22))
+          mark=src.crop((7,45,120,85))
+          mark.thumbnail((282,108),Image.Resampling.LANCZOS)
+          mark=mark.resize((282,100),Image.Resampling.LANCZOS)
+          canvas.paste(mark,((320-mark.width)//2,(180-mark.height)//2))
+          canvas.save(root/'tv_banner.png',optimize=True)
+          print('Launcher icon and TV banner validated:',src.size)
+          PY
       - name: Compile debug APK
         run: gradle -p tv-test :app:assembleDebug --stacktrace --no-daemon
       - name: Publish test APK
         uses: actions/upload-artifact@v4
         with:
-          name: Bobo-Movie-Club-TV-1.1-playback-fix-APK
+          name: Bobo-Movie-Club-TV-1.2-APK
           path: tv-test/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
