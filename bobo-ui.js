@@ -277,10 +277,10 @@
     const autoToggle = modal.querySelector('#bobo-settings-auto-next');
     const autoLimit = modal.querySelector('#bobo-settings-auto-limit');
     try {
-      autoToggle.checked = localStorage.getItem('bobo_auto_next_enabled') === 'true';
+      autoToggle.checked = localStorage.getItem('bobo_auto_next_enabled') !== 'false';
       const value = Number(localStorage.getItem('bobo_auto_next_limit') || 5);
       autoLimit.value = String([2,3,4,5].includes(value) ? value : 5);
-    } catch (_) { autoToggle.checked = false; autoLimit.value = '5'; }
+    } catch (_) { autoToggle.checked = true; autoLimit.value = '5'; }
     autoLimit.disabled = !autoToggle.checked;
     modal.hidden = false;
     if (selected) selected.focus();
