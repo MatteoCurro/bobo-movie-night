@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* BOBO / Movie Night — 2000s screen-language, distilled.
+   A few measured references: small tech labels, flat controls, compact grids. */
+:root {
+  --bg: #0c1116;
+  --bg2: #141b22;
+  --bg3: #202a34;
+  --accent: #a4d9d4;
+  --accent2: #82bbb5;
+  --text: #f0f2f3;
+  --text2: #a1aeb8;
+  --radius: 7px;
+  --bobo-ink: #0c1116;
+  --bobo-panel: #141b22;
+  --bobo-panel-raised: #1c2630;
+  --bobo-outline: rgba(179,207,218,.18);
+  --bobo-mint: #a4d9d4;
+  --bobo-coral: #f0a98d;
+  --bobo-font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --bobo-font-body: 'DM Sans', 'Segoe UI', sans-serif;
+  --bobo-font-mono: 'IBM Plex Mono', Consolas, monospace;
+}
+html { color-scheme: dark; }
+html:not(.bobo-unlocked) body { visibility: hidden; }
+html:not(.bobo-unlocked) body > #bobo-gate { visibility: visible !important; }
+body { background-color: var(--bobo-ink) !important; color: #edf0f2; font-family: var(--bobo-font-body) !important; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(179,207,218,.078) .65px, transparent .9px);
+  background-size: 19px 19px;
+  mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+h1,h2,h3,h4, .section-header h2, .bobo-shelf-head h2, .bobo-feature h1, .bobo-detail-content h2,
+.hero-content h1, .section-heading h2, #watch-title { font-family: var(--bobo-font-display) !important; letter-spacing: -.035em; }
+button,input,select,textarea { font-family: var(--bobo-font-body); }
+button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
+  outline: 2px solid var(--bobo-mint) !important; outline-offset: 3px;
+}
+
+/* Logotype: intentionally only type and one quiet square marker. */
+.bobo-wordmark { display: inline-flex; gap: 10px; align-items: center; white-space: nowrap;
+  user-select: none; line-height: 1; text-decoration: none !important; color: #eff4f6 !important; }
+.bobo-wordmark-main { display: inline-flex; align-items: baseline; font-family: var(--bobo-font-display);
+  font-size: clamp(22px,2.6vw,30px); font-weight: 700; letter-spacing: -.11em; text-transform: lowercase; }
+.bobo-wordmark-main > i { font-style: normal; color: var(--bobo-mint); letter-spacing: -.12em; }
+.bobo-wordmark-side { display: flex; flex-direction: column; gap: 3px; font: 600 9px/1.05 var(--bobo-font-mono);
+  letter-spacing: .13em; text-transform: uppercase; color: #b5c5cc; }
+.bobo-wordmark-side b { font-weight: 500; color: var(--bobo-mint); letter-spacing: .07em; }
+.logo, .site-header .brand { color: #f1f4f5 !important; }
+header, .site-header {
+  background: rgba(10,16,22,.96) !important; border-bottom: 1px solid var(--bobo-outline) !important;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+header { padding-top: 15px; padding-bottom: 15px; }
+#bobo-settings-open,.settings-trigger,.icon-btn { border-radius: 5px !important; background: #1c2630 !important;
+  border: 1px solid var(--bobo-outline) !important; color: #d8e8ea !important; }
+.search-wrap input, #search-input, .filter-group select, .filter-bar select {
+  background: #172029 !important; border: 1px solid #34434d !important; border-radius: 5px !important;
+  color: #f0f4f4 !important; }
+.search-wrap input:focus,.filter-group select:focus { border-color: var(--bobo-mint) !important; }
+.filter-bar, #filter-bar { background: transparent !important; border: none !important; }
+.filter-group label, .bobo-eyebrow, .eyebrow, .bobo-shelf-head .bobo-shelf-sub,
+.section-count, .bobo-tile-tag, .bobo-detail-meta {
+  font-family: var(--bobo-font-mono) !important;
+}
+.filter-group label { color: #aebec5 !important; font-size: 10px !important; letter-spacing: .05em; }
+.section-header h2 { font-weight: 600; }
+.section-count { font-size: 11px !important; color: #8fa7b0 !important; }
+
+/* Editorial rows rather than glossy streaming cards. */
+.bobo-feature { background: #17222b !important; border: 1px solid var(--bobo-outline);
+  border-radius: 7px !important; }
+.bobo-feature::after { background: linear-gradient(90deg,rgba(10,15,20,.97) 0%,rgba(10,15,20,.78) 44%,rgba(10,15,20,.16) 94%),linear-gradient(0deg,rgba(10,15,20,.67),transparent 65%) !important; }
+.bobo-feature h1 { font-weight: 700 !important; letter-spacing: -.06em !important; }
+.bobo-eyebrow { color: var(--bobo-mint) !important; letter-spacing: .08em !important; font-weight: 500 !important; }
+.bobo-feature-meta,.bobo-detail-meta,.bobo-rating { color: #b9d8d4 !important; }
+.bobo-btn,.action { border-radius: 5px !important; box-shadow: none !important; }
+.bobo-btn-primary,.action-primary { background: var(--bobo-mint) !important; color: #102020 !important; }
+.bobo-btn-primary:hover,.action-primary:hover { background: #c3ece6 !important; }
+.bobo-btn-secondary,.action-secondary { background: rgba(25,35,46,.88) !important;
+  color: #f0f4f4 !important; border: 1px solid #55616b !important; }
+.bobo-shelf { margin-bottom: 33px; }
+.bobo-shelf-head h2 { font-weight: 600; font-size: 21px; }
+.bobo-arrow { background: #1a252f !important; border: 1px solid #40515b !important;
+  border-radius: 4px !important; font-family: var(--bobo-font-mono) !important; }
+.bobo-tile-art,.bobo-result-poster { border-radius: 5px !important; outline: 1px solid rgba(176,195,207,.14); outline-offset: -1px; }
+.bobo-tile-tag { background: #182a32 !important; border: 1px solid #56717a !important;
+  color: #b5e0dc !important; border-radius: 3px !important; font-size: 9px !important; }
+.bobo-tile-title, .bobo-result-title { font-family: var(--bobo-font-display); font-weight: 600; }
+.bobo-tile-meta,.bobo-result-meta { color: #aabac2 !important; font-family: var(--bobo-font-mono); font-size: 10px !important; }
+.bobo-result { border: 1px solid var(--bobo-outline) !important; background: #18222b !important; border-radius: 6px !important; }
+.bobo-result:hover { background: #222f3b !important; border-color: #5a7b83 !important; }
+#bobo-more,.bobo-detail-box,.bobo-settings-box { background: #17212a !important; border: 1px solid var(--bobo-outline) !important; border-radius: 7px !important; }
+#bobo-details { background: rgba(7,12,18,.86) !important; }
+.bobo-detail-image::after { background: linear-gradient(0deg,#17212a,transparent 74%) !important; }
+.bobo-detail-close,.bobo-settings-head button { background: #293745 !important; border-radius: 4px !important; }
+.bobo-provider-choice { background: #1c2934 !important; border-color: #33454e !important; border-radius: 5px !important; }
+
+/* Dedicated film / series view. */
+.site-header { max-width: none; }
+.site-header nav a { color: #b9c6ce !important; }
+.site-header nav a:hover { color: #fff !important; }
+.title-hero { min-height: 360px !important; }
+.title-backdrop { background: #17232d !important; }
+.title-backdrop::after { background: linear-gradient(90deg,rgba(11,17,23,.96) 1%,rgba(11,17,23,.7) 43%,rgba(11,17,23,.12) 92%),linear-gradient(0deg,#0c1116,transparent 58%) !important; }
+.hero-content { padding-top: 37px !important; padding-bottom: 34px !important; }
+.hero-content h1 { font-weight: 600; max-width: 860px; font-size: clamp(35px,4.4vw,62px) !important; }
+.eyebrow { color: var(--bobo-mint) !important; font-weight: 600 !important; }
+.metadata,.genres { color: #b8c9d0 !important; }
+.synopsis { max-width: 770px; }
+#watch-main { max-width: none !important; }
+#watch-play-section { margin-left: clamp(12px,2.1vw,40px) !important;
+  margin-right: clamp(12px,2.1vw,40px) !important; }
+#watch-play-section .section-heading { max-width: 1680px; margin-inline: auto; }
+#watch-play-section .player-container { width: 100%; max-width: 1680px; margin-inline: auto;
+  border-radius: 6px !important; border: 1px solid #344752 !important;
+  box-shadow: 0 0 0 1px rgba(8,12,17,.8),0 16px 44px rgba(0,0,0,.3); }
+#watch-play-section .player-controls, #watch-play-section .player-caption { max-width: 1680px; margin-left: auto; margin-right: auto; }
+#watch-play-section .player-controls { margin-top: 15px; }
+.section { border-color: #31414b; }
+.section-heading h2, .info-section h2 { font-weight: 600; }
+.player-caption { color: #9eb1ba !important; }
+.quiet-button,.season-button { background: #1c2934 !important; border-color: #344955 !important;
+  color: #d8e6ec !important; border-radius: 5px !important; }
+.season-button[aria-pressed=true],.episode-card[aria-current=true] {
+  background: #173238 !important; border-color: #74b6ae !important; }
+.episode-card { background: #19242d !important; border-color: #314450 !important; border-radius: 6px !important; }
+.episode-card:hover { background: #24323c !important; }
+.episode-card .episode-number { border-radius: 3px !important; background: #2a3e48 !important; font-family: var(--bobo-font-mono); }
+.episode-card[aria-current=true] .episode-number { background: #537d7a !important; }
+.settings-dialog { background: #18242e !important; border-color: #41535d !important; border-radius: 7px !important; }
+.provider-option { background: #21303a !important; border-color: #354952 !important; border-radius: 5px !important; }
+
+/* Tiny flat line icons: a dog tag, a carabiner and a ridge only appear down here. */
+.bobo-footer { max-width: 1300px; margin: 52px auto 0; padding: 21px 32px 35px;
+  display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;
+  border-top: 1px solid var(--bobo-outline); color: #758a98; }
+.bobo-footer-copy { display: flex; align-items: center; gap: 11px; font: 500 10px/1.5 var(--bobo-font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.bobo-footer-copy .bobo-footer-signal { width: 6px; height: 6px; border-radius: 1px; background: var(--bobo-mint); }
+.bobo-easter { display: flex; gap: 7px; align-items: center; }
+.bobo-easter button { width: 34px; height: 34px; border: 1px solid #2b3f49; border-radius: 4px;
+  color: #6f8692; background: #142028; display: grid; place-items: center; padding: 8px; cursor: pointer; }
+.bobo-easter button:hover,.bobo-easter button:focus-visible { color: #b4d9d4; border-color: #729d9c; }
+.bobo-easter svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.bobo-easter-note { font: 500 11px/1.5 var(--bobo-font-mono); color: #b0d3d0; min-height: 17px; }
+.bobo-easter-note:empty { display: none; }
+
+/* Friendly front-door, deliberately not a security mechanism. */
+#bobo-gate { position: fixed; z-index: 10000; inset: 0; display: grid; place-items: center;
+  padding: 24px; background: #0a1015;
+  background-image: radial-gradient(rgba(154,186,191,.15) 0.7px,transparent 1px);
+  background-size: 21px 21px; }
+#bobo-gate[hidden] { display: none !important; }
+.bobo-gate-card { width: min(480px,100%); background: #17222b; border: 1px solid #52616b;
+  box-shadow: 0 18px 75px rgba(0,0,0,.34); border-radius: 7px; padding: clamp(24px,5vw,39px); }
+.bobo-gate-kicker { color: var(--bobo-mint); text-transform: uppercase; letter-spacing: .14em;
+  font: 600 11px/1.5 var(--bobo-font-mono); margin-bottom: 21px; }
+.bobo-gate-card .bobo-wordmark-main { font-size: 52px; }
+.bobo-gate-card .bobo-wordmark-side { font-size: 10px; }
+.bobo-gate-card h1 { font: 600 clamp(23px,4.8vw,32px)/1.13 var(--bobo-font-display) !important;
+  letter-spacing: -.055em; margin: 31px 0 12px; }
+.bobo-gate-intro { color: #b4c1c9; font-size: 14px; line-height: 1.5; margin: 0 0 26px; }
+.bobo-gate-card label { display: block; color: #e2eeee; font: 600 12px/1.45 var(--bobo-font-mono);
+  margin-bottom: 10px; }
+.bobo-gate-fields { display: flex; gap: 9px; }
+.bobo-gate-fields input { flex: 1 1 0; min-width: 0; background: #0e1820; color: #fff;
+  padding: 13px 15px; border: 1px solid #52616b; border-radius: 4px; font-size: 15px; }
+.bobo-gate-fields button { padding: 12px 18px; background: var(--bobo-mint); color: #112024;
+  border: 0; border-radius: 4px; font: 700 13px var(--bobo-font-body); }
+.bobo-gate-error { margin: 10px 0 0; color: #f0b5a3; font-size: 13px; }
+.bobo-gate-error:empty { display: none; }
+.bobo-gate-meta { margin-top: 26px; padding-top: 14px; border-top: 1px solid #344550;
+  font: 500 10px/1.5 var(--bobo-font-mono); color: #7e98a2; text-transform: uppercase; letter-spacing: .06em; }
+@media (max-width: 760px) {
+  .bobo-wordmark-main { font-size: 25px; }
+  .bobo-wordmark-side { font-size: 8px; }
+  header { padding: 12px 14px !important; gap: 9px !important; }
+  #bobo-settings-open { margin-left: auto; }
+  .bobo-feature { min-height: 365px !important; }
+  .bobo-feature::after { background: linear-gradient(0deg,rgba(10,15,20,.98) 0%,rgba(10,15,20,.63) 60%,rgba(10,15,20,.04) 100%) !important; }
+  .title-hero { min-height: 0 !important; }
+  .title-backdrop::after { background: linear-gradient(0deg,#0c1116,transparent 82%) !important; }
+  .hero-content { padding: 0 18px 30px !important; }
+  .hero-content h1 { font-size: 34px !important; }
+  #watch-play-section { margin-inline: 8px !important; }
+  #watch-play-section .player-container { border-radius: 4px !important; }
+  .bobo-footer { padding: 19px 17px 34px; margin-top: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
