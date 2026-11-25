@@ -64,6 +64,7 @@
         {name:'Home',url:'index.html'},
         {name:'Film',url:'index.html#movies'},
         {name:'Serie TV',url:'index.html#tv'},
+        {name:'Discover',url:'discover.html'},
         {name:'Preferiti',url:'favorites.html'}
       ];
       pages.forEach(p=>{
@@ -85,6 +86,7 @@
       nav.querySelectorAll('a').forEach(a=>{
         const dest=a.getAttribute('href');
         const current=(file==='favorites.html'&&dest==='favorites.html')||
+          (file==='discover.html'&&dest==='discover.html')||
           (home&&dest==='index.html'&&!['#tv','#movies'].includes(location.hash))||
           (home&&dest==='index.html#movies'&&location.hash==='#movies')||
           (home&&dest==='index.html#tv'&&location.hash==='#tv');
