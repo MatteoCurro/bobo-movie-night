@@ -140,6 +140,9 @@
       type:x[0]==='s'?'tv':'movie',tmdb_id:x[1],title:x[2],year:x[3],genres:x[4]
     }));
     if(incoming.some(x=>!normalize(x)))throw Error('Uno o più titoli non validi');
+    // A recovery link carries the collection name; restore into the same
+    // local namespace instead of merging it into an unrelated person's list.
+    if(typeof payload[0]==='string')switchProfile(validate(payload[0]));
     const result=unique([...read(),...incoming]);
     if(!save(result))throw Error('Impossibile salvare nel browser');
     return result.length;
