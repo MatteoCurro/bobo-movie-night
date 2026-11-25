@@ -55,3 +55,20 @@
   .bobo-detail-content { padding: 0 18px 24px; }
   .bobo-detail-image { height: 200px; }
 }
+
+
+/* Player selection lives in settings, not in the catalog header. */
+.provider-toggle[hidden], #bobo-settings[hidden] { display: none !important; }
+#bobo-settings-open { margin-left: auto; padding: 7px 11px; min-height: 36px; border-radius: 9px; background: #27272d; border: 1px solid #494950; font-size: 19px; color: #fff; cursor: pointer; }
+#bobo-settings { position: fixed; z-index: 1100; inset: 0; background: rgba(0,0,0,.82); display: grid; place-items: center; padding: 18px; }
+.bobo-settings-box { background: #1c1c21; border: 1px solid #494950; border-radius: 14px; max-width: 460px; width: 100%; padding: 24px; }
+.bobo-settings-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.bobo-settings-head h2 { font-size: 21px; line-height: 1.2; margin-bottom: 16px; }
+.bobo-settings-head button { font-size: 25px; padding: 0; border: 0; width: 33px; height: 33px; background: #34343a; border-radius: 50%; color: #fff; cursor: pointer; }
+.bobo-settings-box p { font-size: 13px; color: #bdbdc5; line-height: 1.6; margin: 0 0 20px; }
+.bobo-provider-choice { display: flex; align-items: center; gap: 13px; padding: 15px; margin-top: 9px; border-radius: 9px; background: #292930; border: 1px solid #43434c; cursor: pointer; }
+.bobo-provider-choice input { accent-color: #e50914; transform: scale(1.2); }
+.bobo-provider-choice span { display: flex; flex-direction: column; gap: 4px; }
+.bobo-provider-choice strong { color: #fff; font-size: 14px; }
+.bobo-provider-choice small { color: #bfbfc8; font-size: 12px; line-height: 1.4; }
+@media (max-width: 640px) { #bobo-settings-open { order: 2; margin-left: auto; } .bobo-settings-box { padding: 20px; } }
