@@ -274,6 +274,14 @@
     const value = localStorage.getItem('bobo_provider_v3') === 'vidsrc' ? 'vidsrc' : 'vix';
     const selected = modal.querySelector('input[value="'+value+'"]');
     if (selected) selected.checked = true;
+    const autoToggle = modal.querySelector('#bobo-settings-auto-next');
+    const autoLimit = modal.querySelector('#bobo-settings-auto-limit');
+    try {
+      autoToggle.checked = localStorage.getItem('bobo_auto_next_enabled') === 'true';
+      const value = Number(localStorage.getItem('bobo_auto_next_limit') || 5);
+      autoLimit.value = String([2,3,4,5].includes(value) ? value : 5);
+    } catch (_) { autoToggle.checked = false; autoLimit.value = '5'; }
+    autoLimit.disabled = !autoToggle.checked;
     modal.hidden = false;
     if (selected) selected.focus();
   }
@@ -301,6 +309,11 @@
       '<p>Vix è il provider predefinito. Seleziona un altro player soltanto se desideri provare un\u0027alternativa.</p>'+
       '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vix"><span><strong>Vix</strong><small>Provider consigliato</small></span></label>'+
       '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vidsrc"><span><strong>VidSrc</strong><small>Sperimentale; potrebbero esserci reindirizzamenti</small></span></label>'+
+      '<div class="bobo-auto-settings"><h3>Serie TV · riproduzione consecutiva</h3>'+
+      '<label class="bobo-auto-option"><input id="bobo-settings-auto-next" type="checkbox"><span>Passa al prossimo episodio quando Vix segnala la fine del video</span></label>'+
+      '<label for="bobo-settings-auto-limit">Numero massimo di episodi consecutivi, compreso il primo</label>'+
+      '<select id="bobo-settings-auto-limit"><option value="2">2 episodi</option><option value="3">3 episodi</option><option value="4">4 episodi</option><option value="5">5 episodi</option></select>'+
+      '<p>Funziona nel player incorporato Vix. Disattivato per impostazione predefinita.</p></div>'+
       '</div></div>');
     button.addEventListener('click',openSettings);
     const modal = document.getElementById('bobo-settings');
@@ -313,6 +326,16 @@
         else localStorage.setItem('bobo_provider_v3',radio.value);
         closeSettings();
       });
+    });
+    const autoToggle = modal.querySelector('#bobo-settings-auto-next');
+    const autoLimit = modal.querySelector('#bobo-settings-auto-limit');
+    autoToggle.addEventListener('change',function() {
+      try { localStorage.setItem('bobo_auto_next_enabled',String(this.checked)); } catch (_) {}
+      autoLimit.disabled = !this.checked;
+    });
+    autoLimit.addEventListener('change',function() {
+      const value = [2,3,4,5].includes(Number(this.value)) ? this.value : '5';
+      try { localStorage.setItem('bobo_auto_next_limit',value); } catch (_) {}
     });
     document.addEventListener('keydown',function(event) {
       if (event.key === 'Escape' && !modal.hidden) closeSettings();
