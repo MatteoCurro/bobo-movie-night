@@ -91,11 +91,20 @@ jobs:
           content = content.replace("</head>", '  <meta name="robots" content="noindex,nofollow,noarchive">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-retro.css">\n</head>', 1)
+          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-polish.css">\n</head>', 1)
           content = content.replace("</head>", '  <script defer src="bobo-friends.js"></script>\n</head>', 1)
           content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
+
+      - name: Refresh streaming discovery (Italy)
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN || secrets.TMDB_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_discovery.py
 
       - name: Commit only if changed
         shell: bash
@@ -103,12 +112,14 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/movies.json data/tv.json .nojekyll
+          git add index.html data/movies.json data/tv.json data/discovery.json .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
           fi
           git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
+          git fetch origin main
+          git rebase origin/main
           git push
 
       - name: Validate Bobo enhancements
@@ -117,8 +128,12 @@ jobs:
           node --check bobo-ui.js
           node --check bobo-watch.js
           node --check bobo-friends.js
+          python3 -m py_compile scripts/build_discovery.py
           grep -q 'bobo-ui.js' index.html
           grep -q 'bobo-retro.css' index.html
+          grep -q 'bobo-polish.css' index.html
+          grep -q 'bobo-polish.css' watch.html
+          test -s bobo-polish.css
           grep -q 'bobo-friends.js' index.html
           grep -q 'bobo-friends.js' watch.html
           grep -q 'bobo-retro.css' watch.html
@@ -139,6 +154,9 @@ jobs:
               assert data.get('items'), f'Empty catalog: {name}'
               example = data['items'][0]
               assert 'tmdb_id' in example and 'overview' in example, f'Missing metadata: {name}'
+          discovery = json.loads(Path('data/discovery.json').read_text(encoding='utf-8'))
+          assert discovery['schema'] == 1 and discovery['region'] == 'IT'
+          assert isinstance(discovery['platforms'], list)
           PY
 
       - name: Prepare static site for deployment
@@ -146,8 +164,8 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json _site/data/
-          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-friends.js _site/
+          cp data/movies.json data/tv.json data/discovery.json _site/data/
+          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js _site/
           cp watch.html bobo-watch.js bobo-watch.css _site/
           touch _site/.nojekyll
 
