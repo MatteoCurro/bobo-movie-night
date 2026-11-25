@@ -24,6 +24,8 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - name: Validate TV navigation JavaScript
+        run: node --check tv-test/app/src/main/assets/bobo-tv-nav.js
       - name: Android SDK
         uses: android-actions/setup-android@v3
         with:

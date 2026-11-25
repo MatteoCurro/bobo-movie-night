@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
+import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
 import android.graphics.Color;
 import android.net.Uri;
 import android.view.Gravity;
@@ -33,6 +35,7 @@ public final class MainActivity extends Activity {
     private TextView loading;
     private View fullScreenView;
     private WebChromeClient.CustomViewCallback fullScreenCallback;
+    private String tvNavScript;
 
     @Override
     public void onCreate(Bundle saved) {
@@ -73,6 +76,7 @@ public final class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 loading.setVisibility(View.GONE);
+                if (isBoboHost(Uri.parse(url))) view.evaluateJavascript(loadTvScript(), null);
             }
         });
         browser.setWebChromeClient(new WebChromeClient() {
@@ -126,7 +130,36 @@ public final class MainActivity extends Activity {
         browser.setVisibility(View.GONE);
         menu.setVisibility(View.VISIBLE);
         String requested = getIntent().getStringExtra("url");
-        if (requested != null) openUrl(requested);
+        openUrl(requested != null ? requested : SITE);
+    }
+
+    private boolean isBoboHost(Uri uri) {
+        return uri != null && "https".equalsIgnoreCase(uri.getScheme())
+            && "movie.curromatteo.it".equalsIgnoreCase(uri.getHost());
+    }
+
+    private String loadTvScript() {
+        if (tvNavScript != null) return tvNavScript;
+        try (InputStream stream = getAssets().open("bobo-tv-nav.js");
+             ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+            byte[] buf = new byte[4096];
+            int n;
+            while ((n = stream.read(buf)) != -1) output.write(buf, 0, n);
+            tvNavScript = output.toString("UTF-8");
+        } catch (Exception err) {
+            tvNavScript = "void 0;";
+        }
+        return tvNavScript;
+    }
+
+    private void onBoboBack() {
+        browser.evaluateJavascript(
+            "(function(){return !!(window.BoboTVNav && window.BoboTVNav.back());})()",
+            result -> {
+                if ("true".equals(result)) return;
+                if (browser.canGoBack()) browser.goBack();
+                else showMenu();
+            });
     }
 
     private boolean isAllowedTopLevel(Uri uri) {
@@ -285,8 +318,7 @@ public final class MainActivity extends Activity {
                 return true;
             }
             if (menu.getVisibility() != View.VISIBLE) {
-                if (browser.canGoBack()) browser.goBack();
-                else showMenu();
+                onBoboBack();
                 return true;
             }
         }
