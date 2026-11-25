@@ -9,8 +9,8 @@ const guide=document.getElementById('player-start-guide');
 const toastNode=document.getElementById('toast');
 const status={view:'home',items:[],movies:[],series:[],index:new Map(),chosen:null,season:1,episode:1,
   focus:null,player:false,started:false,paused:false,bridge:false,time:0,duration:0,playerUrl:'',
-  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true};
-let hudTimer=0,toastTimer=0,loadCount=0,requestVersion=0;
+  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true,mediaSeen:false};
+let hudTimer=0,toastTimer=0,topTimer=0,loadCount=0,requestVersion=0,commandSerial=0,pendingCommand=null,mediaWall=0,playerLoadedAt=0;
 const $=s=>document.querySelector(s);
 const els=s=>Array.from(document.querySelectorAll(s));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -264,16 +264,35 @@ function progress(){
  $('#play-symbol').textContent=status.paused?'▶':'Ⅱ';
  $('#play-hint').textContent=status.paused?'OK · Riprendi':'OK · Pausa / riprendi';
 }
-function showHud(ms=3600){
+function showHud(ms=2800){
  hud.classList.remove('quiet');clearTimeout(hudTimer);
  if(ms)hudTimer=setTimeout(()=>{if(status.player&&!status.paused)hud.classList.add('quiet');},ms);
 }
+function setPlayerNote(text){const el=$('#player-note');if(el)el.textContent=text;}
+function hideTopSoon(){
+ const top=$('.player-top');
+ if(!top)return;
+ top.classList.remove('quiet');clearTimeout(topTimer);
+ topTimer=setTimeout(()=>top.classList.add('quiet'),2600);
+}
 function playFrame(at){
- status.bridge=false;status.paused=false;status.started=false;
- status.playerUrl=playerLink(at||0);frame.src=status.playerUrl;
- guide.hidden=false;guide.textContent='Se necessario, premi OK per avviare il video';
- nativeState();showHud(5000);progress();
- frame.addEventListener('load',()=>{if(status.player&&!status.started)frame.focus();},{once:true});
+ status.bridge=false;status.paused=false;status.started=false;status.mediaSeen=false;
+ mediaWall=0;playerLoadedAt=0;
+ status.playerUrl=playerLink(at||0);
+ frame.src=status.playerUrl;
+ guide.hidden=true;
+ setPlayerNote('Avvia il film normalmente; OK per pausa, ◀/▶ per saltare 10 secondi.');
+ nativeState();showHud(3500);hideTopSoon();progress();
+ const url=status.playerUrl;
+ frame.addEventListener('load',function onload(){
+  frame.removeEventListener('load',onload);
+  if(!status.player||frame.src!==url)return;
+  playerLoadedAt=performance.now();
+  status.started=true;nativeState();guide.hidden=true;
+  // The video is on a different origin. Keep remote controls available even
+  // if Vix does not emit PLAYER_EVENT to the parent on this TV.
+  setTimeout(()=>{if(status.player&&!status.paused)hud.classList.add('quiet');},3100);
+ },{once:true});
 }
 function startPlayer(){
  if(!status.chosen)return;
@@ -286,8 +305,10 @@ function startPlayer(){
 }
 function exitPlayer(restoreFocus=true){
  status.player=false;status.started=false;status.paused=false;status.bridge=false;
+ status.mediaSeen=false;
+ if(pendingCommand){clearTimeout(pendingCommand.timer);pendingCommand=null;}
  frame.src='about:blank';player.hidden=true;$('#topbar').hidden=false;app.hidden=false;
- clearTimeout(hudTimer);nativeState();
+ clearTimeout(hudTimer);clearTimeout(topTimer);nativeState();
  if(restoreFocus)focusFirst('#hero-play');
 }
 function previousPage(){
@@ -314,80 +335,117 @@ function handleEnd(){
  }
  status.paused=true;progress();showHud(0);
 }
-function direct(action,delta=0){
- if(!status.bridge)return false;
- const target=new URL(status.playerUrl).origin;
- frame.contentWindow.postMessage({type:'BOBO_TV_COMMAND',action,delta},target);
- return true;
+function estimatedTime(){
+ if(status.mediaSeen && mediaWall){
+  return Math.max(0,status.time+(status.paused?0:(performance.now()-mediaWall)/1000));
+ }
+ return Math.max(0,status.time+(status.paused||!playerLoadedAt?0:(performance.now()-playerLoadedAt)/1000));
 }
 function fallbackPause(){
  if(!status.paused){
-  status.paused=true;status.started=true;
+  status.time=estimatedTime();
+  status.paused=true;status.started=true;mediaWall=performance.now();
   frame.src='about:blank';
-  guide.hidden=false;guide.textContent='In pausa · Premi OK per riprendere';
-  notify('Pausa alternativa: ripresa dal punto salvato',2800);
+  setPlayerNote(status.mediaSeen?'Video fermato. Premi OK per riprendere.':
+    'Video fermato, posizione stimata: premi OK per riprendere.');
+  notify('Pausa alternativa',2600);
  }else{
   const at=status.time;
-  status.paused=false;playFrame(at);
-  notify('Riprendi da '+timer(at),2400);
+  status.paused=false;
+  playFrame(at);
+  notify('Riprendo da '+timer(at),2600);
  }
- progress();showHud(status.paused?0:5000);nativeState();
+ progress();showHud(status.paused?0:3600);nativeState();
 }
-function seek(delta){
+function fallbackSeek(delta){
+ const current=estimatedTime();
+ const destination=Math.max(0,Math.min(status.duration||Infinity,current+delta));
+ status.time=destination;
  if(status.paused){
-  status.time=Math.max(0,Math.min(status.duration||Infinity,status.time+delta));
   progress();showHud(0);return;
  }
- if(direct('seek',delta)){status.time=Math.max(0,Math.min(status.duration||Infinity,status.time+delta));
-  progress();showHud();return;}
- status.time=Math.max(0,Math.min(status.duration||Infinity,status.time+delta));
- notify('Riprendo da '+timer(status.time)+' · caricamento…',3500);
- playFrame(status.time);
+ setPlayerNote(status.mediaSeen?'Spostamento video: caricamento dal punto selezionato…':
+   'Posizione stimata: riprendo dal punto selezionato…');
+ notify((delta>0?'+':'')+delta+' s · '+timer(destination),3300);
+ playFrame(destination);
+}
+function acceptMedia(data,isAck){
+ if(!data||data.supported===false)return;
+ status.bridge=true;status.started=true;status.mediaSeen=true;
+ const time=Number(data.time);
+ const duration=Number(data.duration);
+ if(data.time!==null&&Number.isFinite(time)){status.time=Math.max(0,time);mediaWall=performance.now();}
+ if(data.duration!==null&&Number.isFinite(duration)&&duration>0)status.duration=duration;
+ if(typeof data.paused==='boolean')status.paused=data.paused;
+ guide.hidden=true;
+ if(isAck)showHud(status.paused?0:2800);
+ progress();nativeState();
+ setPlayerNote('Controllo diretto del video disponibile.');
+}
+function finishCommand(success,data){
+ if(!pendingCommand)return;
+ const p=pendingCommand;pendingCommand=null;clearTimeout(p.timer);
+ if(success){acceptMedia(data,true);return;}
+ status.bridge=false;
+ if(p.action==='toggle')fallbackPause();
+ else if(p.action==='seek')fallbackSeek(p.delta);
+}
+function issueCommand(action,delta=0){
+ if(pendingCommand)return;
+ const id=++commandSerial;
+ pendingCommand={id,action,delta,timer:setTimeout(()=>{
+  finishCommand(false,{reason:'no-response'});
+ },1000)};
+ setPlayerNote('Verifica del controllo video…');
+ try {
+  frame.contentWindow.postMessage({type:'BOBO_TV_COMMAND',action,delta,cmdId:id},new URL(status.playerUrl).origin);
+ }catch(e){finishCommand(false,{reason:'post-message-failed'});}
 }
 function remote(key){
  if(!status.player)return false;
  if(key==='back'){previousPage();return true;}
- if(!status.started&&!status.paused)return false;
- if(key==='left'){seek(-10);return true;}
- if(key==='right'){seek(10);return true;}
+ if(!status.started&&!status.paused){showHud(2600);return false;}
+ if(key==='left'||key==='right'){issueCommand('seek',key==='right'?10:-10);showHud(3200);return true;}
  if(key==='center'){
-  if(status.paused){fallbackPause();return true;}
-  if(!direct('toggle'))fallbackPause();
-  showHud();return true;
+  if(status.paused&&!status.bridge){fallbackPause();return true;}
+  issueCommand('toggle');showHud(3300);return true;
  }
- if(key==='up'||key==='down'){showHud(5000);return true;}
+ if(key==='up'||key==='down'){
+  showHud(4500);return true;
+ }
  return false;
 }
 function onPlayerEvent(event){
- if(!status.player||!frame.contentWindow||event.source!==frame.contentWindow)return;
- if(!/^https:\/\/([a-z0-9-]+\.)*vixsrc\.to$/i.test(event.origin))return;
+ if(!status.player||!/^https:\/\/([a-z0-9-]+\.)*vixsrc\.to$/i.test(event.origin))return;
  let obj=event.data;
  if(typeof obj==='string'){try{obj=JSON.parse(obj);}catch(e){return;}}
  if(!obj||typeof obj!=='object')return;
  if(obj.type==='BOBO_TV_BRIDGE_READY'){
-  status.bridge=!!obj.supported;
-  if(status.bridge){$('#player-note').textContent='Controllo diretto video disponibile: frecce e OK.';notify('Controlli video disponibili',1600);}
+  if(obj.supported)acceptMedia(obj,false);
+  return;
+ }
+ if(obj.type==='BOBO_TV_MEDIA_STATE'){
+  if(obj.supported)acceptMedia(obj,false);
+  if(obj.event==='ended')handleEnd();
   return;
  }
  if(obj.type==='BOBO_TV_BRIDGE_ACK'){
-  if(obj.supported===false){status.bridge=false;$('#player-note').textContent='Controllo diretto non disponibile. Uso il riavvio al punto salvato.';}
-  else if(obj.supported){status.bridge=true;status.paused=!!obj.paused;
-   if(Number.isFinite(obj.time))status.time=obj.time;
-   if(Number.isFinite(obj.duration))status.duration=obj.duration;
-   if(!status.paused){status.started=true;guide.hidden=true;}
-   progress();showHud();nativeState();
-  }
+  if(!pendingCommand||obj.cmdId!==pendingCommand.id)return;
+  finishCommand(obj.supported===true,obj);
   return;
  }
- if(obj.type!=='PLAYER_EVENT'||!obj.data)return;
+ if(obj.type!=='PLAYER_EVENT'||!obj.data||typeof obj.data!=='object')return;
  const d=obj.data;
- if(Number.isFinite(Number(d.currentTime)))status.time=Math.max(0,Number(d.currentTime));
- if(Number.isFinite(Number(d.duration)))status.duration=Number(d.duration);
- if(d.event==='play'||d.event==='timeupdate'){if(!status.started){status.started=true;nativeState();}status.paused=false;guide.hidden=true;}
+ const t=Number(d.currentTime),duration=Number(d.duration);
+ if(d.currentTime!==null&&Number.isFinite(t)){status.time=Math.max(0,t);mediaWall=performance.now();status.mediaSeen=true;}
+ if(d.duration!==null&&Number.isFinite(duration)&&duration>0)status.duration=duration;
+ if(d.event==='play'||d.event==='timeupdate'){
+  status.started=true;status.paused=false;guide.hidden=true;
+ }
  if(d.event==='pause')status.paused=true;
  if(d.event==='ended')handleEnd();
- progress();
- if(['play','pause','seeked'].includes(d.event))showHud(d.event==='pause'?0:3000);
+ progress();nativeState();
+ if(['play','pause','seeked'].includes(d.event))showHud(d.event==='pause'?0:2600);
 }
 function handleKey(e){
  if(status.player){
