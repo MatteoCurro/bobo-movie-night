@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Dettagli · Bobo Movie Night</title>
+  <meta name="description" content="Film, serie TV, trame, stagioni ed episodi su Bobo Movie Night.">
+  <link rel="stylesheet" href="bobo-watch.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Bobo Movie Night — Home">🎬 <span>Bobo Movie Night</span></a>
+    <nav aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#tv">Serie TV</a>
+    </nav>
+    <button type="button" class="settings-trigger" id="watch-settings-trigger" aria-haspopup="dialog">⚙ <span>Impostazioni</span></button>
+  </header>
+
+  <main id="watch-main">
+    <div id="watch-loading" class="status">Caricamento informazioni…</div>
+    <div id="watch-error" class="status" hidden><h1>Impossibile caricare il titolo</h1><p id="watch-error-reason"></p><a href="index.html">Torna al catalogo</a></div>
+
+    <section class="title-hero" id="watch-hero" hidden aria-labelledby="watch-title">
+      <div class="title-backdrop" id="watch-backdrop"></div>
+      <div class="hero-content">
+        <p class="eyebrow" id="watch-kind">Film</p>
+        <h1 id="watch-title"></h1>
+        <div class="metadata" id="watch-meta"></div>
+        <div class="genres" id="watch-genres"></div>
+        <p class="synopsis" id="watch-overview"></p>
+        <div class="hero-actions">
+          <button class="action action-primary" type="button" id="watch-start">▶ Riproduci</button>
+          <button class="action action-secondary" type="button" id="watch-copy">⧉ Copia link alla scheda</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="watch-play-section" class="section player-section" hidden aria-labelledby="watch-player-heading">
+      <div class="section-heading">
+        <h2 id="watch-player-heading">Riproduzione</h2>
+        <button id="watch-hide-player" type="button" class="quiet-button">Chiudi player</button>
+      </div>
+      <div class="player-container">
+        <iframe id="watch-iframe" title="Riproduttore esterno" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture" referrerpolicy="origin"></iframe>
+      </div>
+      <div class="player-controls">
+        <span id="watch-current-episode" class="current-episode"></span>
+        <button id="watch-previous" type="button" class="quiet-button" hidden>← Episodio precedente</button>
+        <button id="watch-next" type="button" class="quiet-button" hidden>Episodio successivo →</button>
+        <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
+      </div>
+      <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. La pagina non può verificare se il video stia effettivamente riproducendo.</p>
+    </section>
+
+    <section id="watch-episodes-section" class="section episodes-section" hidden aria-labelledby="watch-episodes-heading">
+      <div class="section-heading"><h2 id="watch-episodes-heading">Stagioni ed episodi</h2><span id="watch-episode-progress"></span></div>
+      <p class="section-subtitle">Seleziona una stagione e scegli direttamente l'episodio da riprodurre.</p>
+      <div id="watch-season-buttons" class="season-list" role="group" aria-label="Seleziona una stagione"></div>
+      <div id="watch-episode-list" class="episode-list"></div>
+    </section>
+
+    <section id="watch-info-section" class="section info-section" hidden aria-labelledby="watch-about">
+      <h2 id="watch-about">Informazioni</h2>
+      <p id="watch-about-body"></p>
+    </section>
+  </main>
+
+  <div id="watch-settings" class="dialog-shade" hidden>
+    <div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="watch-settings-title">
+      <div class="dialog-heading">
+        <h2 id="watch-settings-title">Impostazioni riproduzione</h2>
+        <button type="button" id="watch-settings-close" aria-label="Chiudi impostazioni">×</button>
+      </div>
+      <p>Vix è il provider predefinito. La scelta rimane memorizzata in questo browser.</p>
+      <label class="provider-option"><input type="radio" name="watch-provider" value="vix"> <span><strong>Vix</strong><small>Consigliato</small></span></label>
+      <label class="provider-option"><input type="radio" name="watch-provider" value="vidsrc"> <span><strong>VidSrc</strong><small>Alternativa sperimentale: riproduzione non verificata e possibili reindirizzamenti</small></span></label>
+    </div>
+  </div>
+  <script src="bobo-watch.js" defer></script>
+</body>
+</html>
