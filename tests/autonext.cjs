@@ -109,4 +109,18 @@ event('timeupdate',null,'https://vixsrc.to',{currentTime:1196.8,duration:1200});
 virtualTime+=850;
 event('timeupdate',null,'https://vixsrc.to',{currentTime:1198.5,duration:1200});
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/2\?lang=it&autoplay=true$/);
-console.log('OK: ended-only messages, near-end progress fallback, trusted origin, player swap, cap, fullscreen retained.');
+// Manual seek near the end: a pause should not skip, but subsequent playback
+// progress should switch episodes 8-14 s before the actual 'ended' event.
+event('play',null,'https://video.vixsrc.to');
+event('pause',null,'https://video.vixsrc.to');
+event('timeupdate',null,'https://video.vixsrc.to',{currentTime:2989,duration:3000});
+virtualTime+=1200;
+event('timeupdate',null,'https://video.vixsrc.to',{currentTime:2990,duration:3000});
+assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/2\?lang=it&autoplay=true$/);
+event('play',null,'https://video.vixsrc.to');
+event('seeked',null,'https://video.vixsrc.to');
+event('timeupdate',null,'https://video.vixsrc.to',{currentTime:2989,duration:3000});
+virtualTime+=1050;
+event('timeupdate',null,'https://video.vixsrc.to',{currentTime:2990.5,duration:3000});
+assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/3\?lang=it&autoplay=true$/);
+console.log('OK: ended, 8-14-second pre-end, seek/pause, trusted Vix subdomains, player swap, cap and fullscreen.');
