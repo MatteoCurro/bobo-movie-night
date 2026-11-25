@@ -1,16 +1,51 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101014"><meta name="robots" content="noindex,nofollow,noarchive">
-<title>Discover · Bobo Movie Night</title>
-<meta name="description" content="Selezioni di film e serie TV da scoprire su Bobo Movie Night.">
-<link rel="stylesheet" href="bobo-retro.css"><link rel="stylesheet" href="bobo-polish.css">
-<link rel="stylesheet" href="bobo-discover.css"><script defer src="bobo-friends.js"></script>
-<script defer src="bobo-discover.js"></script></head>
-<body><header class="discover-header"><a href="index.html" class="discover-brand">🎬 Bobo Movie Night</a>
-<nav aria-label="Navigazione principale"><a href="index.html">Catalogo</a><a href="discover.html" aria-current="page">Discover</a><a href="favorites.html">Preferiti</a></nav></header>
-<main class="discover-main">
-<div class="discover-intro"><span class="discover-kicker">BOBO / DISCOVER</span><h1>Non sai cosa guardare?</h1>
-<p>Abbiamo selezionato film e serie che meritano il tuo tempo. Niente quiz, solo buone idee da esplorare.</p></div>
-<div id="discover-sections" aria-live="polite"><p class="discover-status">Caricamento selezioni…</p></div>
-<p class="discover-note">Le selezioni sono generate automaticamente dai metadati del catalogo e aggiornate periodicamente. Non rappresentano recensioni indipendenti o date certe di disponibilità sulle piattaforme.</p>
-</main></body></html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1116">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Discover · Bobo Movie Night</title>
+  <meta name="description" content="Selezioni aggiornate di film e serie TV da scoprire su Bobo Movie Night.">
+  <!-- Same design system and account scripts used by the existing Bobo pages. -->
+  <link rel="stylesheet" href="bobo-watch.css">
+  <link rel="stylesheet" href="bobo-ui.css">
+  <link rel="stylesheet" href="bobo-retro.css">
+  <link rel="stylesheet" href="bobo-polish.css">
+  <link rel="stylesheet" href="bobo-favorites.css">
+  <link rel="stylesheet" href="bobo-cloud.css">
+  <link rel="stylesheet" href="bobo-discover.css">
+  <script defer src="bobo-friends.js"></script>
+  <script defer src="bobo-library.js"></script>
+  <script defer src="bobo-cloud.js"></script>
+  <script defer src="bobo-discover.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Bobo Movie Night — Home">Bobo Movie Night</a>
+    <!-- Progressive fallback: bobo-friends.js rebuilds this with the canonical shared navigation. -->
+    <nav aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#movies">Film</a>
+      <a href="index.html#tv">Serie TV</a>
+      <a href="discover.html" aria-current="page">Discover</a>
+      <a href="favorites.html">Preferiti</a>
+    </nav>
+  </header>
+  <main class="bobo-discover-page">
+    <div class="bobo-fav-heading bobo-discover-heading">
+      <span class="bobo-fav-eyebrow">BOBO / DISCOVER</span>
+      <h1>Non sai cosa guardare<span>.</span></h1>
+      <p>Selezioni di film e serie da scoprire, aggiornate automaticamente. Nessun quiz, solo buone idee per stasera.</p>
+    </div>
+    <div id="discover-sections" aria-live="polite">
+      <p class="bobo-discover-status">Caricamento selezioni…</p>
+    </div>
+    <p class="bobo-discover-note">
+      Le selezioni sono elaborate dai metadati del catalogo Bobo; non sono recensioni indipendenti.
+      Le disponibilità sulle piattaforme possono cambiare.
+    </p>
+  </main>
+</body>
+</html>
