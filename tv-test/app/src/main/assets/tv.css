@@ -91,3 +91,46 @@ h1,h2,.logo,.player-brand,.poster-focus-info{font-family:var(--bobo-font-display
 .start-guide{display:none!important}
 .player-hud.quiet{opacity:0;visibility:hidden}
 .player-hud{transition:opacity .22s ease,visibility .22s}
+
+/* APK v1.2: search remains usable with Android TV's on-screen keyboard. */
+#search-done{margin:12px 0 0;min-height:47px;padding:10px 22px;font-size:17px}
+body.tv-search-editing #search-results{
+ display:flex!important;grid-template-columns:none!important;
+ gap:15px;overflow-x:auto;overflow-y:hidden;
+ height:min(240px,28vh);max-height:240px;
+ padding:9px 10px 5px;scrollbar-width:none;
+}
+body.tv-search-editing #search-results::-webkit-scrollbar{display:none}
+body.tv-search-editing #search-results .poster{
+ flex:0 0 125px!important;width:125px!important;height:190px!important;
+}
+body.tv-search-editing #search-results .poster-art{width:125px;height:188px;aspect-ratio:auto}
+body.tv-search-editing #search-results .poster:focus .poster-art::before{padding:35px 9px 12px;font-size:12px}
+body.tv-search-editing main{padding-top:14px}
+body.tv-search-editing .section-header{margin-bottom:10px}
+body.tv-search-editing .search-bar{margin:0 0 12px}
+body.tv-search-editing .search-input{padding:12px 18px;max-width:760px}
+body.tv-search-editing #search-done{margin:8px 0 0}
+body.tv-search-editing #search-message{font-size:13px;padding:4px}
+/* TV account and saved collection use the same spatial D-pad focus. */
+.account-screen{max-width:970px;padding:27px 16px 30px}
+.account-screen h1{font-size:clamp(38px,3.5vw,62px);margin:14px 0 22px}
+.account-screen .section-desc{font-size:20px;line-height:1.5;max-width:810px}
+.account-form{display:grid;max-width:680px;gap:12px;margin:35px 0 15px;
+ padding:27px 30px;border:1px solid #425d66;background:#162530;border-radius:12px}
+.account-form label{font:650 16px var(--bobo-font-body);color:#d8ece8}
+.account-form input{font:500 19px var(--bobo-font-body);padding:14px 17px;
+ border:2px solid #5c7e87;border-radius:8px;background:#0e1d27;color:white}
+.account-form input:focus{border-color:var(--green);outline:3px solid #c5f38d}
+.account-form .actions{margin-top:10px}
+.account-help{font-size:17px;line-height:1.6;color:#a5bcbf;max-width:700px}
+.account-help strong{font-family:var(--bobo-font-mono);color:#d8e7e6;word-break:break-word}
+#tv-login-error{font-size:16px;color:#f3c4b6;min-height:22px}
+#tv-favorite{min-width:225px}
+.topbar{gap:16px}
+nav{gap:6px}
+.tab{padding:11px 15px;font-size:17px;white-space:nowrap}
+@media(max-width:1300px){.top-hint{display:none}.topbar{padding:0 28px}.tab{font-size:15px;padding:10px 12px}}
+/* Make the long press transport hint legible while minimizing the footprint. */
+.player-hud-guide{font-size:14px}
+.player-hud-primary{font-family:var(--bobo-font-display)}
