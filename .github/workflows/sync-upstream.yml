@@ -160,6 +160,7 @@ jobs:
           PY
           node tests/autonext.cjs
           node tests/library.cjs
+          node tests/profiles.cjs
           python3 -m py_compile scripts/build_discovery.py
           python3 -m py_compile scripts/build_streaming_feed.py
           grep -q 'bobo-ui.js' index.html
