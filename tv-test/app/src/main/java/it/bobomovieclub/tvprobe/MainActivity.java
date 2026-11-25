@@ -2,13 +2,9 @@ package it.bobomovieclub.tvprobe;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.content.Intent;
-import android.content.res.Configuration;
-import java.io.InputStream;
-import java.io.ByteArrayOutputStream;
 import android.graphics.Color;
 import android.net.Uri;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,37 +15,43 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.text.InputType;
+
+import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
+
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Collections;
 
 public final class MainActivity extends Activity {
+    private static final String TAG = "BoboTV";
     private static final String SITE = "https://movie.curromatteo.it/";
     private FrameLayout root;
     private WebView browser;
-    private View menu;
-    private TextView loading;
-    private View fullScreenView;
-    private WebChromeClient.CustomViewCallback fullScreenCallback;
-    private String tvNavScript;
+    private View customView;
+    private WebChromeClient.CustomViewCallback customCallback;
+    private boolean inPlayer = false;
+    private boolean playingStarted = false;
 
-    @Override
-    public void onCreate(Bundle saved) {
-        super.onCreate(saved);
+    @Override public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         immersive();
 
         root = new FrameLayout(this);
-        root.setBackgroundColor(Color.rgb(12, 12, 18));
+        root.setBackgroundColor(Color.BLACK);
         browser = new WebView(this);
-        browser.setBackgroundColor(Color.BLACK);
+        browser.setBackgroundColor(Color.rgb(16, 21, 27));
         browser.setFocusable(true);
         browser.setFocusableInTouchMode(true);
+        browser.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         WebSettings settings = browser.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -58,277 +60,201 @@ public final class MainActivity extends Activity {
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
-        settings.setSupportMultipleWindows(false);
+        settings.setSupportZoom(false);
+        settings.setBuiltInZoomControls(false);
         settings.setJavaScriptCanOpenWindowsAutomatically(false);
+        settings.setSupportMultipleWindows(false);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setDefaultTextEncodingName("UTF-8");
         CookieManager.getInstance().setAcceptCookie(true);
         CookieManager.getInstance().setAcceptThirdPartyCookies(browser, true);
-        WebView.setWebContentsDebuggingEnabled(true);
 
         browser.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 if (!request.isForMainFrame()) return false;
-                Uri uri = request.getUrl();
-                if ("about".equals(uri.getScheme())) return false;
-                return !isAllowedTopLevel(uri);
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                loading.setVisibility(View.GONE);
-                if (isBoboHost(Uri.parse(url))) view.evaluateJavascript(loadTvScript(), null);
+                // This application never navigates to a third-party web page.
+                // Vix must remain inside its dedicated iframe.
+                return true;
             }
         });
         browser.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView view, int progress) {
-                if (loading == null || browser.getVisibility() != View.VISIBLE) return;
-                loading.setText("Bobo · Caricamento " + progress + "%");
-                loading.setVisibility(progress >= 100 ? View.GONE : View.VISIBLE);
-            }
-
-            @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
-                if (fullScreenView != null) {
+            @Override public void onShowCustomView(View view, CustomViewCallback callback) {
+                if (customView != null) {
                     callback.onCustomViewHidden();
                     return;
                 }
-                fullScreenView = view;
-                fullScreenCallback = callback;
+                customView = view;
+                customCallback = callback;
                 root.addView(view, new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                browser.setVisibility(View.GONE);
-                if (loading != null) loading.setVisibility(View.GONE);
+                browser.setVisibility(View.INVISIBLE);
                 immersive();
             }
-
-            @Override
-            public void onHideCustomView() {
-                leaveFullScreen();
+            @Override public void onHideCustomView() {
+                closeCustomView();
             }
         });
+
         root.addView(browser, new FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-        menu = makeMenu();
-        root.addView(menu, new FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-        loading = new TextView(this);
-        loading.setTextColor(Color.WHITE);
-        loading.setTextSize(13);
-        loading.setPadding(dp(16), dp(8), dp(16), dp(8));
-        loading.setBackgroundColor(0xCC161620);
-        loading.setVisibility(View.GONE);
-        FrameLayout.LayoutParams loadingParams = new FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
-            Gravity.BOTTOM | Gravity.RIGHT);
-        loadingParams.setMargins(dp(16), dp(16), dp(16), dp(16));
-        root.addView(loading, loadingParams);
         setContentView(root);
 
-        browser.setVisibility(View.GONE);
-        menu.setVisibility(View.VISIBLE);
-        String requested = getIntent().getStringExtra("url");
-        openUrl(requested != null ? requested : SITE);
+        setupOriginRestrictedBridge();
+
+        String html = asset("tv.html")
+            .replace("<!--TV_STYLES-->", "<style>" + asset("tv.css") + "</style>")
+            .replace("<!--TV_SCRIPT-->", "<script>" + asset("tv.js") + "</script>");
+        browser.loadDataWithBaseURL(SITE, html, "text/html", "UTF-8", SITE);
+        browser.requestFocus();
     }
 
-    private boolean isBoboHost(Uri uri) {
-        return uri != null && "https".equalsIgnoreCase(uri.getScheme())
-            && "movie.curromatteo.it".equalsIgnoreCase(uri.getHost());
-    }
-
-    private String loadTvScript() {
-        if (tvNavScript != null) return tvNavScript;
-        try (InputStream stream = getAssets().open("bobo-tv-nav.js");
+    private String asset(String path) {
+        try (InputStream stream = getAssets().open(path);
              ByteArrayOutputStream output = new ByteArrayOutputStream()) {
-            byte[] buf = new byte[4096];
-            int n;
-            while ((n = stream.read(buf)) != -1) output.write(buf, 0, n);
-            tvNavScript = output.toString("UTF-8");
-        } catch (Exception err) {
-            tvNavScript = "void 0;";
+            byte[] bytes = new byte[8192];
+            int length;
+            while ((length = stream.read(bytes)) >= 0) {
+                if (length > 0) output.write(bytes, 0, length);
+            }
+            return output.toString("UTF-8");
+        } catch (Exception error) {
+            Log.e(TAG, "Unable to load asset " + path, error);
+            return "";
         }
-        return tvNavScript;
     }
 
-    private void onBoboBack() {
+    private void setupOriginRestrictedBridge() {
+        // Modern Android WebView: only trusted first-party TV UI can update
+        // native playback state. Third-party iframes cannot reach this bridge.
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            try {
+                WebViewCompat.addWebMessageListener(browser, "BoboNative",
+                    Collections.singleton(SITE.substring(0, SITE.length() - 1)),
+                    (view, message, sourceOrigin, isMainFrame, replyProxy) -> {
+                        if (!isMainFrame) return;
+                        try {
+                            JSONObject data = new JSONObject(message.getData());
+                            String kind = data.optString("event", "");
+                            if ("state".equals(kind)) {
+                                boolean player = data.optBoolean("player", false);
+                                boolean started = data.optBoolean("started", false);
+                                runOnUiThread(() -> {
+                                    inPlayer = player;
+                                    playingStarted = started;
+                                });
+                            } else if ("exit".equals(kind)) {
+                                runOnUiThread(this::finish);
+                            }
+                        } catch (Exception ignored) {
+                        }
+                    });
+            } catch (Exception error) {
+                Log.w(TAG, "Trusted TV UI bridge not available", error);
+            }
+        }
+        // The optional player bridge is injected ONLY into Vix frames and
+        // exposes no Java/native objects to external content.
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+            try {
+                WebViewCompat.addDocumentStartJavaScript(
+                    browser, asset("vix-bridge.js"),
+                    new HashSet<>(Arrays.asList(
+                        "https://vixsrc.to", "https://*.vixsrc.to")));
+            } catch (Exception error) {
+                Log.w(TAG, "Direct Vix media control unavailable; fallback will be used", error);
+            }
+        }
+    }
+
+    private void send(String key) {
+        // The event is delivered to our own local TV UI, not the iframe.
         browser.evaluateJavascript(
-            "(function(){return !!(window.BoboTVNav && window.BoboTVNav.back());})()",
-            result -> {
-                if ("true".equals(result)) return;
-                if (browser.canGoBack()) browser.goBack();
-                else showMenu();
-            });
+            "window.BoboTV && window.BoboTV.remoteKey('" + key + "')", null);
     }
 
-    private boolean isAllowedTopLevel(Uri uri) {
-        return "https".equalsIgnoreCase(uri.getScheme())
-            && ("movie.curromatteo.it".equalsIgnoreCase(uri.getHost())
-                || "vixsrc.to".equalsIgnoreCase(uri.getHost()));
-    }
-
-    private void openUrl(String url) {
-        try {
-            Uri uri = Uri.parse(url);
-            if (!isAllowedTopLevel(uri)) return;
-            menu.setVisibility(View.GONE);
-            browser.setVisibility(View.VISIBLE);
-            browser.onResume();
-            browser.loadUrl(url);
-            browser.requestFocus();
-        } catch (Exception ignored) {
-        }
-    }
-
-    private View makeMenu() {
-        ScrollView scroll = new ScrollView(this);
-        scroll.setFillViewport(true);
-        scroll.setBackgroundColor(0xFF101014);
-
-        LinearLayout panel = new LinearLayout(this);
-        panel.setOrientation(LinearLayout.VERTICAL);
-        panel.setGravity(Gravity.CENTER);
-        panel.setPadding(dp(48), dp(26), dp(48), dp(26));
-        scroll.addView(panel);
-
-        TextView title = new TextView(this);
-        title.setText("BOBO · TEST PLAYER TV");
-        title.setTextColor(0xFFBDFF56);
-        title.setTextSize(27);
-        title.setGravity(Gravity.CENTER);
-        panel.addView(title, new LinearLayout.LayoutParams(-1, dp(52)));
-
-        TextView desc = new TextView(this);
-        desc.setText("WebView Android TV · Vix nell'iframe originale di Bobo. Seleziona un titolo dal catalogo oppure inserisci un ID TMDB.");
-        desc.setTextColor(Color.WHITE);
-        desc.setTextSize(16);
-        desc.setGravity(Gravity.CENTER);
-        panel.addView(desc, new LinearLayout.LayoutParams(-1, dp(58)));
-
-        Button site = button("Apri Bobo Movie Club");
-        panel.addView(site, new LinearLayout.LayoutParams(dp(500), dp(54)));
-        site.setOnClickListener(v -> openUrl(SITE));
-
-        EditText idField = new EditText(this);
-        idField.setHint("ID TMDB (es. dal link della scheda)");
-        idField.setSingleLine(true);
-        idField.setInputType(InputType.TYPE_CLASS_NUMBER);
-        idField.setTextColor(Color.WHITE);
-        idField.setHintTextColor(0xFFAAAAAA);
-        idField.setTextSize(18);
-        idField.setPadding(dp(16), 0, dp(16), 0);
-        panel.addView(idField, new LinearLayout.LayoutParams(dp(500), dp(54)));
-
-        LinearLayout actions = new LinearLayout(this);
-        actions.setGravity(Gravity.CENTER);
-        panel.addView(actions, new LinearLayout.LayoutParams(-1, dp(64)));
-
-        Button movie = button("Prova film");
-        actions.addView(movie, new LinearLayout.LayoutParams(dp(238), dp(54)));
-        Button series = button("Prova serie S1 E1");
-        LinearLayout.LayoutParams seriesP = new LinearLayout.LayoutParams(dp(238), dp(54));
-        seriesP.leftMargin = dp(20);
-        actions.addView(series, seriesP);
-
-        movie.setOnClickListener(v -> {
-            String id = idField.getText().toString().trim();
-            if (id.matches("[0-9]{1,10}")) {
-                openUrl(SITE + "watch.html?type=movie&id=" + id + "&debug=player");
-            } else idField.setError("Inserisci un ID TMDB numerico");
-        });
-        series.setOnClickListener(v -> {
-            String id = idField.getText().toString().trim();
-            if (id.matches("[0-9]{1,10}")) {
-                openUrl(SITE + "watch.html?type=tv&id=" + id + "&s=1&e=1&debug=player");
-            } else idField.setError("Inserisci un ID TMDB numerico");
-        });
-
-        TextView guide = new TextView(this);
-        guide.setText("Dal Mac puoi aprire direttamente una scheda con adb shell am start ... --es url <indirizzo>.\nBACK torna indietro; MENU riapre questa schermata. Il fullscreen del player è gestito da Android.");
-        guide.setTextColor(0xFFB0B0C0);
-        guide.setTextSize(13);
-        guide.setGravity(Gravity.CENTER);
-        panel.addView(guide, new LinearLayout.LayoutParams(-1, dp(65)));
-
-        site.requestFocus();
-        return scroll;
-    }
-
-    private Button button(String label) {
-        Button button = new Button(this);
-        button.setText(label);
-        button.setAllCaps(false);
-        button.setTextSize(16);
-        return button;
-    }
-
-    private int dp(int px) {
-        return Math.round(px * getResources().getDisplayMetrics().density);
-    }
-
-    private void immersive() {
-        getWindow().getDecorView().setSystemUiVisibility(
-            View.SYSTEM_UI_FLAG_FULLSCREEN |
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
-
-    private void leaveFullScreen() {
-        if (fullScreenView == null) return;
-        root.removeView(fullScreenView);
-        fullScreenView = null;
+    private void closeCustomView() {
+        if (customView == null) return;
+        root.removeView(customView);
+        customView = null;
         browser.setVisibility(View.VISIBLE);
-        if (fullScreenCallback != null) {
-            fullScreenCallback.onCustomViewHidden();
-            fullScreenCallback = null;
+        if (customCallback != null) {
+            WebChromeClient.CustomViewCallback callback = customCallback;
+            customCallback = null;
+            callback.onCustomViewHidden();
         }
         immersive();
         browser.requestFocus();
     }
 
-    private void showMenu() {
-        if (fullScreenView != null) leaveFullScreen();
-        browser.onPause();
-        browser.setVisibility(View.GONE);
-        menu.setVisibility(View.VISIBLE);
-        menu.requestFocus();
+    private void immersive() {
+        getWindow().getDecorView().setSystemUiVisibility(
+            View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        setIntent(intent);
-        String requested = intent.getStringExtra("url");
-        if (requested != null) {
-            browser.onResume();
-            openUrl(requested);
-        }
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_MENU) {
-            showMenu();
+    @Override public boolean onKeyDown(int code, KeyEvent event) {
+        if (code == KeyEvent.KEYCODE_BACK || code == KeyEvent.KEYCODE_ESCAPE) {
+            if (customView != null) {
+                closeCustomView();
+            } else {
+                browser.evaluateJavascript(
+                    "window.BoboTV && window.BoboTV.back()", null);
+            }
             return true;
         }
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (fullScreenView != null) {
-                leaveFullScreen();
-                return true;
-            }
-            if (menu.getVisibility() != View.VISIBLE) {
-                onBoboBack();
-                return true;
+        // Standard Google TV remotes lack Play/Pause and FF/Rewind buttons.
+        // Once video is playing these D-pad keys are forwarded to Bobo's
+        // simple playback control layer, even if the iframe owns web focus.
+        if (inPlayer && playingStarted) {
+            switch (code) {
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+                case KeyEvent.KEYCODE_ENTER:
+                case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+                    send("center");
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    send("left");
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    send("right");
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    send("down");
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    send("up");
+                    return true;
+                default:
+                    break;
             }
         }
-        return super.onKeyDown(keyCode, event);
+        return super.onKeyDown(code, event);
     }
 
-    @Override
-    protected void onDestroy() {
-        if (fullScreenView != null) leaveFullScreen();
-        browser.destroy();
+    @Override public void onBackPressed() {
+        if (customView != null) closeCustomView();
+        else browser.evaluateJavascript("window.BoboTV && window.BoboTV.back()", null);
+    }
+
+    @Override protected void onResume() {
+        super.onResume();
+        if (browser != null) browser.onResume();
+        immersive();
+    }
+
+    @Override protected void onPause() {
+        if (browser != null) browser.onPause();
+        super.onPause();
+    }
+
+    @Override protected void onDestroy() {
+        if (customView != null) closeCustomView();
+        if (browser != null) {
+            browser.loadUrl("about:blank");
+            browser.destroy();
+        }
         super.onDestroy();
     }
 }
