@@ -178,4 +178,4 @@ def main():
             "items": [],
         })
         stream["platforms"] = platform_rows
-    DISCOVERY.write_text(json.dumps(feed,ensure_ascii=False,indent=2,sort_keys=True)+"\\n",encoding="utf-8")
+    DISCOVERY.write_text(json.dumps(feed,ensure_ascii=False,indent=2,sort_keys=True)+"\n",encoding="utf-8")
