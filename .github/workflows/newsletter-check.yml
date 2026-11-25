@@ -1,0 +1,30 @@
+name: "Bobo · Test newsletter"
+on:
+  push:
+    paths:
+      - "backend/lib/newsletter.php"
+      - "backend/htdocs/admin.html"
+      - "backend/htdocs/admin.js"
+      - "tests/newsletter-smoke.php"
+      - ".github/workflows/newsletter-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PHP and admin JavaScript
+        run: |
+          php -l backend/lib/newsletter.php
+          node --check backend/htdocs/admin.js
+          php tests/newsletter-smoke.php
+      - name: Export newsletter preview (without sending emails)
+        uses: actions/upload-artifact@v4
+        with:
+          name: bobo-newsletter-preview
+          path: newsletter-preview/
+          retention-days: 7
