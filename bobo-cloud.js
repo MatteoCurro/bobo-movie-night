@@ -12,6 +12,11 @@
   const MAX=500;
   let state='checking', user=null, items=[], revision=0, flushing=false, timer=null;
   const guestProfile=Local.profile();
+  const tmdbPoster=raw=>{
+    const value=String(raw||'');
+    if(/^\/[a-zA-Z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$/.test(value))return 'https://image.tmdb.org/t/p/w342'+value;
+    return /^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\//.test(value)?value.slice(0,350):'';
+  };
   const normalize=x=>{
     if(!x||!['movie','tv'].includes(x.type)||!/^[0-9]{1,12}$/.test(String(x.tmdb_id||'')))return null;
     const title=String(x.title||'').trim().slice(0,180);
@@ -19,7 +24,7 @@
     return {
       type:x.type,tmdb_id:Number(x.tmdb_id),title,year:Number(x.year)||null,
       saved_at:String(x.saved_at||new Date().toISOString()).slice(0,40),
-      poster:/^https:\/\/image\.tmdb\.org\//.test(x.poster||'')?String(x.poster).slice(0,350):'',
+      poster:tmdbPoster(x.poster),
       backdrop:/^https:\/\/image\.tmdb\.org\//.test(x.backdrop||'')?String(x.backdrop).slice(0,350):'',
       genres:Array.isArray(x.genres)?x.genres.filter(t=>typeof t==='string').slice(0,10):[],
       overview:String(x.overview||'').slice(0,500)
