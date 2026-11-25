@@ -181,6 +181,7 @@ function navActive(){
 }
 function render(view){
  if(status.player)exitPlayer(false);
+ let external=false;
  status.view=view;
  navActive();
  if(view==='home')app.innerHTML=featuredHome();
@@ -196,10 +197,10 @@ function render(view){
     e.preventDefault();e.stopImmediatePropagation();closeSearchKeyboard();
    }
   });
- }else if(window.BoboTVExtras?.render(view)){}
+ }else if(window.BoboTVExtras?.render(view)){external=true;}
 
  window.scrollTo(0,0);
- focusFirst(view==='search'?'#q':view==='home'?'#hero-play':'.results .poster');
+ if(!external)focusFirst(view==='search'?'#q':view==='home'?'#hero-play':'.results .poster');
 }
 function closeSearchKeyboard(){
  const field=$('#q');if(!field)return;
@@ -337,6 +338,9 @@ function exitPlayer(restoreFocus=true){
  if(restoreFocus)focusFirst('#hero-play');
 }
 function previousPage(){
+ if(status.view==='search'&&document.activeElement?.id==='q'){
+  closeSearchKeyboard();return;
+ }
  if(status.player){exitPlayer();return;}
  if(status.view==='detail'){render('home');return;}
  if(status.view!=='home'){render('home');return;}
@@ -431,7 +435,7 @@ function scrubPreview(direction,seconds){
  const delta=(direction==='left'?-1:1)*Math.min(7200,Math.max(10,seconds|0));
  const target=Math.max(0,Math.min(status.duration||Infinity,estimatedTime()+delta));
  showHud(0);
- $('#play-timestamp').textContent='Vai a '+timer(target)+' ('+(delta>0?'+':'')+timer(delta)+')';
+ $('#play-timestamp').textContent='Vai a '+timer(target)+' ('+(delta>0?'+':'−')+timer(Math.abs(delta))+')';
  $('#play-hint').textContent='Rilascia la freccia per saltare';
  return true;
 }
