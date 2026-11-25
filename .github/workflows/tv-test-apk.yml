@@ -1,10 +1,11 @@
-name: Bobo TV · 1.3 test
+name: Bobo TV · 1.3.x test
 
 on:
   push:
     branches:
       - tv-features-1-2
       - feature/tv-1-3-stable-session-updates
+      - feature/tv-1-3-1-visual-refresh
     paths:
       - 'tv-test/**'
       - '.github/workflows/tv-test-apk.yml'
@@ -68,7 +69,7 @@ jobs:
       - name: Publish test APK
         uses: actions/upload-artifact@v4
         with:
-          name: Bobo-Movie-Club-TV-1.3-debug-APK
+          name: Bobo-Movie-Club-TV-debug-APK
           path: tv-test/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
