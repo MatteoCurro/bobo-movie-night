@@ -50,3 +50,26 @@
 }
 @media(max-width:520px){.episode-list{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.episode-card .bobo-episode-still{transition:none}}
+
+
+/* Long-running series: overlay navigation arrows without shrinking the season
+   buttons; touch scrolling and keyboard navigation remain available. */
+.bobo-season-frame{position:relative;min-width:0;margin-bottom:12px}
+.bobo-season-frame .season-list{
+  width:100%;margin:0;padding:1px 3px 9px;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+}
+.bobo-season-frame .season-list::-webkit-scrollbar{display:none}
+.bobo-season-arrow{
+  position:absolute;z-index:8;top:calc(50% - 4px);transform:translateY(-50%);
+  display:grid;place-items:center;padding:0;width:34px;height:41px;
+  color:#edf7f5;background:rgba(18,35,43,.96);border:1px solid #789b9f;
+  border-radius:5px;font:600 28px/1 var(--bobo-font-body,Arial,sans-serif);
+  box-shadow:0 4px 14px #0008;cursor:pointer;
+}
+.bobo-season-arrow--left{left:0}
+.bobo-season-arrow--right{right:0}
+.bobo-season-arrow:hover{background:#30535c;border-color:#a1ded5}
+.bobo-season-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
+.bobo-season-arrow[hidden]{display:none!important}
+@media(max-width:640px){.bobo-season-arrow{width:30px;height:39px;font-size:24px}}
