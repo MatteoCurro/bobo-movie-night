@@ -273,9 +273,6 @@ public final class MainActivity extends Activity {
                         scrubSeconds = 0;
                         scrubCommit(command, Math.max(10, seconds));
                         Log.d(TAG, "Seek " + command + " " + seconds + " seconds");
-                    } else if (event.getAction() == KeyEvent.ACTION_CANCEL) {
-                        scrubDirection = 0;
-                        scrubSeconds = 0;
                     }
                     return true;
                 }
