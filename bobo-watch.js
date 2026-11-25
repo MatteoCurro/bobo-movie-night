@@ -382,6 +382,20 @@
       }
     }catch(_){ /* Optional indexes never block the player. */ }
   }
+  async function loadEpisodeIndex() {
+    if(type!=='tv')return;
+    try {
+      const response=await fetch('data/episodes/'+id+'.json',{cache:'no-store'});
+      if(!response.ok)return;
+      const data=await response.json();
+      if(data.schema!==1 || data.type!=='tv' || String(data.tmdb_id)!==String(id))return;
+      const episodes=data.episode_images;
+      if(!episodes || !episodes.seasons || typeof episodes.seasons!=='object')return;
+      episodeStills=episodes.seasons;
+      renderEpisodeNavigation();
+      if(playing)byId('watch-current-episode').textContent=episodeHeading();
+    }catch(_){ /* An unfinished episode index must never interrupt playback. */ }
+  }
   function renderEpisodeNavigation() {
     if (!seasons.length) return;
     const seasonHost = byId('watch-season-buttons');
@@ -495,6 +509,7 @@
       byId('watch-start').textContent = '▶ Riproduci S'+selectedSeason+' E'+selectedEpisode;
     }
     void loadEnrichment();
+    if(type==='tv')void loadEpisodeIndex();
   }
   async function loadTitle() {
     if (!validRequest) {
