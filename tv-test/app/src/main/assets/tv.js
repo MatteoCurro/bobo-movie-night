@@ -525,7 +525,7 @@ window.BoboTV={
  rail:rail,
  toast:notify,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.2-TV'
+ version:'1.3-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);

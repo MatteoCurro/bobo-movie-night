@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#10151b">
 <title>Bobo TV</title>
 <!--TV_STYLES-->
+<!-- Optional first-party TV theme; local CSS remains available offline. -->
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://movie.curromatteo.it/tv-app/theme.css">
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -18,6 +20,7 @@
     <button type="button" class="tab" data-view="favorites">♥ Preferiti</button>
     <button type="button" class="tab" data-view="account">Account</button>
   </nav>
+  <button id="tv-update-pill" class="tv-update-pill tv-focus" type="button" hidden>↑ Aggiorna</button>
   <div id="clock" class="top-hint" aria-hidden="true">TV EDITION</div>
 </header>
 <main id="main" tabindex="-1"><div class="loading"><span class="spinner"></span><p>Caricamento catalogo Bobo…</p></div></main>
@@ -39,5 +42,6 @@
 <div id="toast" role="status" aria-live="polite"></div>
 <!--TV_SCRIPT-->
 <!--TV_ACCOUNT_SCRIPT-->
+<!--TV_UPDATES_SCRIPT-->
 </body>
 </html>
