@@ -9,9 +9,66 @@
   let renderedKey = '';
   let previousFocus = null;
 
-  const originalRenderGrid = window.renderGrid;
-  const originalRenderCurrentTab = window.renderCurrentTab;
-  const originalOnSearch = window.onSearch;
+  const unifiedFilters = { q: '', genre: '', year: '', sort: 'year_desc', type: 'all' };
+  function allItems() {
+    return (catalogs.movie || []).concat(catalogs.tv || []);
+  }
+  function ready() { return loaded.movie && loaded.tv; }
+  function seasonSummary(item) {
+    if (item.type !== 'tv') return '';
+    const seasons = (item.seasons || []).filter(function(s) { return Number(s.n) > 0 && Number(s.episodes) > 0; });
+    const episodes = seasons.reduce(function(total,season) { return total + Number(season.episodes || 0); }, 0);
+    return seasons.length + (seasons.length === 1 ? ' stagione' : ' stagioni') +
+      (episodes ? ' · ' + episodes + (episodes === 1 ? ' episodio' : ' episodi') : '');
+  }
+  function typeTag(item) { return item.type === 'tv' ? 'Serie TV' : 'Film'; }
+  function applyUnifiedFilters(items) {
+    const f = unifiedFilters;
+    const query = f.q.toLocaleLowerCase('it');
+    let out = items.filter(function(item) {
+      if (f.type !== 'all' && item.type !== f.type) return false;
+      if (f.genre && !(item.genres || []).includes(f.genre)) return false;
+      if (f.year && Number(item.year) !== Number(f.year)) return false;
+      if (query && !(String(item.title || '').toLocaleLowerCase('it').includes(query))) return false;
+      return true;
+    });
+    const sorters = {
+      year_desc: (a,b) => (b.year||0)-(a.year||0) || (b.vote||0)-(a.vote||0),
+      year_asc: (a,b) => (a.year||0)-(b.year||0),
+      vote_desc: (a,b) => (b.vote||0)-(a.vote||0),
+      vote_asc: (a,b) => (a.vote||0)-(b.vote||0)
+    };
+    return out.sort(sorters[f.sort] || sorters.year_desc);
+  }
+  function filterOptions() {
+    if (!ready()) return;
+    const list = allItems();
+    const genre = [...new Set(list.flatMap(function(item) { return item.genres || []; }).filter(Boolean))]
+      .sort(function(a,b) { return a.localeCompare(b,'it'); });
+    const years = [...new Set(list.map(function(item) { return item.year; }).filter(Boolean))]
+      .sort(function(a,b) { return b-a; });
+    const genreSelect = document.getElementById('filter-genre');
+    genreSelect.innerHTML = '<option value="">Tutti i generi</option>' +
+      genre.map(function(value) { return '<option value="'+text(value)+'">'+text(value)+'</option>'; }).join('');
+    genreSelect.value = genre.includes(unifiedFilters.genre) ? unifiedFilters.genre : '';
+    const yearSelect = document.getElementById('filter-year');
+    yearSelect.innerHTML = '<option value="">Tutti gli anni</option>' +
+      years.map(function(value) { return '<option value="'+text(value)+'">'+text(value)+'</option>'; }).join('');
+    yearSelect.value = years.includes(Number(unifiedFilters.year)) ? unifiedFilters.year : '';
+    document.getElementById('filter-sort').value = unifiedFilters.sort;
+    document.getElementById('bobo-type-filter').value = unifiedFilters.type;
+    document.getElementById('filter-bar').classList.remove('disabled');
+  }
+  function renderUnified() {
+    update();
+    if (!ready()) return;
+    if (isHome()) return;
+    lastResults = applyUnifiedFilters(allItems());
+    shown = PAGE_SIZE;
+    document.getElementById('section-title').textContent = unifiedFilters.q
+      ? 'Risultati per "'+unifiedFilters.q+'"' : 'Esplora il catalogo';
+    renderResults();
+  }
 
   function safeImage(value) {
     return typeof value === 'string' && /^https:\/\/image\.tmdb\.org\//.test(value) ? value : '';
@@ -19,8 +76,8 @@
   function text(value) { return escH(String(value == null ? '' : value)); }
   function typeName(kind) { return kind === 'tv' ? 'Serie TV' : 'Film'; }
   function isHome() {
-    const f = filters[activeTab] || {};
-    return !f.q && !f.genre && !f.year && (!f.sort || f.sort === 'year_desc');
+    const f = unifiedFilters;
+    return !f.q && !f.genre && !f.year && f.type === 'all' && f.sort === 'year_desc';
   }
   function validItems(items) { return items.filter(function(x) { return x && x.title && x.poster; }); }
   function quality(items) {
@@ -53,7 +110,8 @@
     if (item.year) bits.push('<span>'+text(item.year)+'</span>');
     if (item.vote) bits.push('<span class="bobo-rating">★ '+text(Number(item.vote).toFixed(1))+'</span>');
     if (item.runtime) bits.push('<span>'+text(item.runtime)+' min</span>');
-    bits.push('<span>'+typeName(item.type)+'</span>');
+    bits.push('<span class="bobo-kind">'+typeTag(item)+'</span>');
+    if (item.type === 'tv') bits.push('<span>'+text(seasonSummary(item))+'</span>');
     return bits.join('<span aria-hidden="true">•</span>');
   }
   function posterTile(item) {
@@ -61,9 +119,10 @@
     const art = image ? '<img src="'+text(image)+'" loading="lazy" alt="" decoding="async">' :
       '<span class="bobo-fallback">'+text(item.title)+'</span>';
     return '<button type="button" class="bobo-tile" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'" aria-label="Dettagli: '+text(item.title)+'">'+
-      '<span class="bobo-tile-art">'+art+'</span>'+
+      '<span class="bobo-tile-art">'+art+'<span class="bobo-tile-tag">'+typeTag(item)+'</span></span>'+
       '<span class="bobo-tile-title">'+text(item.title)+'</span>'+
-      '<span class="bobo-tile-meta">'+text(item.year||'')+(item.vote?' · ★ '+text(Number(item.vote).toFixed(1)):'')+'</span></button>';
+      '<span class="bobo-tile-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
+      (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
   }
   function shelf(id, title, items) {
     const list = items.slice(0, 16);
@@ -86,10 +145,10 @@
       '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">ⓘ Dettagli</button></div></div></section>';
   }
   function renderHome() {
-    const all = catalogs[activeTab] || [];
+    const all = allItems();
     const host = document.getElementById('bobo-discover');
     if (!host || !all.length) return;
-    const key = activeTab + ':' + all.length;
+    const key = 'all:' + catalogs.movie.length + ':' + catalogs.tv.length;
     if (renderedKey === key) return;
     renderedKey = key;
     const good = quality(all);
@@ -99,7 +158,9 @@
     const rails = [
       shelf('highlights','In evidenza',promoted),
       shelf('new','Le novità',fresh),
-      shelf('rated','I più apprezzati',good)
+      shelf('rated','I più apprezzati',good),
+      shelf('movies','Film da scoprire',promoted.filter(function(item) { return item.type === 'movie'; })),
+      shelf('series','Serie TV da scoprire',promoted.filter(function(item) { return item.type === 'tv'; }))
     ];
     const genreRows = [
       ['action','Azione e avventura',['azione','avventura']],
@@ -123,7 +184,18 @@
       more.hidden = true;
       return;
     }
-    originalRenderGrid(lastResults.slice(0,shown));
+    const grid = document.getElementById('grid');
+    const rows = lastResults.slice(0,shown);
+    if (!rows.length) grid.innerHTML = '<div class="state-box"><p>Nessun titolo trovato.</p></div>';
+    else grid.innerHTML = rows.map(function(item) {
+      const image = safeImage(item.poster);
+      const poster = image ? '<img src="'+text(image)+'" loading="lazy" decoding="async" alt="">' : '';
+      return '<button type="button" class="bobo-result" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">'+
+        '<span class="bobo-result-poster">'+poster+'<span class="bobo-tile-tag">'+typeTag(item)+'</span></span>'+
+        '<span class="bobo-result-title">'+text(item.title)+'</span>'+
+        '<span class="bobo-result-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
+        (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
+    }).join('');
     document.getElementById('section-count').textContent = lastResults.length + ' titoli';
     more.hidden = shown >= lastResults.length;
     if (!more.hidden) more.textContent = 'Carica altri (' + Math.min(PAGE_SIZE,lastResults.length-shown) + ')';
@@ -131,20 +203,18 @@
   function update() {
     const host = document.getElementById('bobo-discover');
     if (!host) return;
-    const ready = loaded[activeTab];
+    const loadedBoth = ready();
     const home = isHome();
-    const showHome = home && ready;
     host.hidden = !home;
-    document.querySelector('.section-header').hidden = showHome;
-    document.getElementById('grid').hidden = showHome;
+    document.querySelector('.section-header').hidden = home;
+    document.getElementById('grid').hidden = home;
     const more = document.getElementById('bobo-more');
     if (home) {
       more.hidden = true;
-      if (ready) renderHome();
-      else host.innerHTML='<p class="bobo-wait">Caricamento catalogo…</p>';
+      if (loadedBoth) renderHome();
+      else host.innerHTML='<p class="bobo-wait">Caricamento film e serie TV…</p>';
     } else {
-      host.hidden = true;
-      if (!ready) more.hidden = true;
+      if (!loadedBoth) more.hidden = true;
     }
   }
   function detail(item) {
@@ -256,7 +326,26 @@
     main.insertAdjacentHTML('beforeend','<button id="bobo-more" type="button" hidden>Carica altri</button>');
     document.body.insertAdjacentHTML('beforeend','<div id="bobo-details" hidden></div>');
     initSettings();
-
+    const tabs = document.querySelector('.tabs');
+    if (tabs) tabs.hidden = true;
+    const filtersBar = document.getElementById('filter-bar');
+    const typeField = document.createElement('div');
+    typeField.className = 'filter-group';
+    typeField.innerHTML = '<label for="bobo-type-filter">Tipologia</label>'+
+      '<select id="bobo-type-filter"><option value="all">Film e serie</option>'+
+      '<option value="movie">Solo film</option><option value="tv">Solo serie TV</option></select>';
+    filtersBar.insertBefore(typeField,filtersBar.firstChild);
+    document.getElementById('bobo-type-filter').addEventListener('change',function() {
+      unifiedFilters.type = this.value;
+      renderUnified();
+    });
+    if (location.hash === '#tv') unifiedFilters.type = 'tv';
+    if (location.hash === '#movies') unifiedFilters.type = 'movie';
+    document.getElementById('search-input').placeholder = 'Cerca film e serie TV…';
+    Promise.all([ensureLoaded('movie'), ensureLoaded('tv')]).then(function() {
+      filterOptions();
+      renderUnified();
+    });
     document.getElementById('bobo-more').addEventListener('click', function () {
       shown += PAGE_SIZE;
       renderResults();
@@ -281,30 +370,27 @@
       if (evt.key === 'Escape') closeDetail();
     });
     update();
-    if (location.hash === '#tv') switchTab('tv');
   }
 
-  window.renderGrid = function(items) {
-    lastResults = items;
-    shown = PAGE_SIZE;
-    renderResults();
-  };
-  window.renderCurrentTab = function() {
-    originalRenderCurrentTab();
-    update();
+  window.renderGrid = function() { renderUnified(); };
+  window.renderCurrentTab = function() { filterOptions(); renderUnified(); };
+  window.populateFilterOptions = function() { filterOptions(); };
+  window.onFilterChange = function() {
+    unifiedFilters.genre = document.getElementById('filter-genre').value;
+    unifiedFilters.year = document.getElementById('filter-year').value;
+    unifiedFilters.sort = document.getElementById('filter-sort').value;
+    renderUnified();
   };
   window.onSearch = function(evt) {
-    originalOnSearch(evt);
-    update();
+    unifiedFilters.q = evt.target.value.trim();
+    renderUnified();
   };
-  window.onCardClick = function(id,kind) {
-    detail(getItem(id,kind));
-  };
-  const originalSwitchTab = window.switchTab;
+  window.onCardClick = function(id,kind) { detail(getItem(id,kind)); };
   window.switchTab = function(kind) {
-    renderedKey = '';
-    originalSwitchTab(kind);
-    update();
+    unifiedFilters.type = kind === 'tv' ? 'tv' : kind === 'movie' ? 'movie' : 'all';
+    const select = document.getElementById('bobo-type-filter');
+    if (select) select.value = unifiedFilters.type;
+    renderUnified();
   };
   document.addEventListener('DOMContentLoaded',init);
 })();
