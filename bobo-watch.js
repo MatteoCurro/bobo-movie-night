@@ -3,6 +3,15 @@
   'use strict';
 
   const STORAGE_PROVIDER = 'bobo_provider_v3';
+  const STORAGE_AUTO_NEXT = 'bobo_auto_next_enabled';
+  const STORAGE_AUTO_LIMIT = 'bobo_auto_next_limit';
+  function readOption(key, fallback) {
+    try { return localStorage.getItem(key) ?? fallback; }
+    catch (_) { return fallback; }
+  }
+  function saveOption(key, value) {
+    try { localStorage.setItem(key, String(value)); } catch (_) {}
+  }
   const params = new URLSearchParams(location.search);
   const type = params.get('type');
   const id = params.get('id');
@@ -13,6 +22,10 @@
   let selectedSeason = 1;
   let selectedEpisode = 1;
   let playing = false;
+  let consecutiveEpisodes = 1;
+  let observedPlayback = false;
+  let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'false') === 'true';
+  let autoNextLimit = Math.max(2, Math.min(5, Number(readOption(STORAGE_AUTO_LIMIT, '5')) || 5));
   let provider = (function () {
     try {
       const value = localStorage.getItem(STORAGE_PROVIDER);
@@ -74,7 +87,7 @@
     return selectedSeason === 0 ? 'Speciali · Episodio '+selectedEpisode :
       'Stagione '+selectedSeason+' · Episodio '+selectedEpisode;
   }
-  function playerURL() {
+  function playerURL(automatic) {
     if (!item) return '';
     const tid = encodeURIComponent(String(item.tmdb_id));
     if (provider === 'vidsrc') {
@@ -84,17 +97,35 @@
     }
     return type === 'movie'
       ? 'https://vixsrc.to/movie/'+tid+'?lang=it'
-      : 'https://vixsrc.to/tv/'+tid+'/'+selectedSeason+'/'+selectedEpisode+'?lang=it';
+      : 'https://vixsrc.to/tv/'+tid+'/'+selectedSeason+'/'+selectedEpisode+'?lang=it'+
+          (automatic ? '&autoplay=true' : '');
+  }
+  function updateAutoStatus(note) {
+    const node = byId('watch-auto-next-status');
+    if (!node) return;
+    const active = playing && type === 'tv' && provider === 'vix' && autoNextEnabled;
+    node.hidden = !active;
+    if (active) {
+      node.textContent = note || 'Riproduzione consecutiva: episodio '+consecutiveEpisodes+
+        ' di '+autoNextLimit+' (il passaggio avviene solo alla fine del video).';
+    }
+  }
+  function resetSequence() {
+    consecutiveEpisodes = 1;
+    observedPlayback = false;
+    updateAutoStatus();
   }
   function pausePlayer() {
     playing = false;
+    resetSequence();
     const iframe = byId('watch-iframe');
     iframe.src = 'about:blank';
     byId('watch-play-section').hidden = true;
   }
-  function playNow(scroll) {
+  function playNow(scroll, automatic) {
     if (!item) return;
     playing = true;
+    observedPlayback = false;
     const frame = byId('watch-iframe');
     // Vix explicitly requires an origin Referer for embedded playback.
     frame.referrerPolicy = 'origin';
@@ -102,8 +133,9 @@
     byId('watch-current-episode').textContent = type === 'tv' ? episodeHeading() : item.title;
     byId('watch-previous').hidden = type !== 'tv';
     byId('watch-next').hidden = type !== 'tv';
-    frame.src = playerURL();
+    frame.src = playerURL(Boolean(automatic));
     updateEpisodeNavigation();
+    updateAutoStatus();
     if (scroll) byId('watch-play-section').scrollIntoView({ behavior:'smooth',block:'start' });
   }
   function updateEpisodeNavigation() {
@@ -112,14 +144,42 @@
     prev.disabled = !adjacent(-1);
     next.disabled = !adjacent(1);
   }
-  function selectEpisode(s,e,autoplay) {
+  function selectEpisode(s,e,autoplay,automatic) {
     if (!available(s,e)) return;
+    if (!automatic) resetSequence();
     selectedSeason = s;
     selectedEpisode = e;
     updateQuery();
     renderEpisodeNavigation();
-    if (autoplay) playNow(true);
+    if (autoplay) playNow(true,Boolean(automatic));
     else if (playing) playNow(false);
+  }
+  function onPlayerMessage(event) {
+    const frame = byId('watch-iframe');
+    if (!frame || event.origin !== 'https://vixsrc.to' ||
+        event.source !== frame.contentWindow || !playing || provider !== 'vix') return;
+    const msg = event.data;
+    if (!msg || typeof msg !== 'object' || msg.type !== 'PLAYER_EVENT' ||
+        !msg.data || typeof msg.data !== 'object') return;
+    const kind = msg.data.event;
+    if (kind === 'play' || kind === 'timeupdate') {
+      observedPlayback = true;
+      return;
+    }
+    if (kind !== 'ended' || !observedPlayback || type !== 'tv' || !autoNextEnabled) return;
+    // An ended event can be delivered more than once by an iframe.
+    observedPlayback = false;
+    if (consecutiveEpisodes >= autoNextLimit) {
+      updateAutoStatus('Limite raggiunto: '+autoNextLimit+' episodi consecutivi. Seleziona un episodio per ripartire.');
+      return;
+    }
+    const next = adjacent(1);
+    if (!next) {
+      updateAutoStatus('Ultimo episodio disponibile: la riproduzione consecutiva è terminata.');
+      return;
+    }
+    consecutiveEpisodes += 1;
+    selectEpisode(next.season,next.episode,true,true);
   }
   function renderEpisodeNavigation() {
     if (!seasons.length) return;
@@ -248,7 +308,7 @@
     } else byId('watch-settings-trigger').focus();
   }
   function setup() {
-    byId('watch-start').addEventListener('click',function () { playNow(true); });
+    byId('watch-start').addEventListener('click',function () { resetSequence(); playNow(true); });
     byId('watch-hide-player').addEventListener('click',pausePlayer);
     byId('watch-previous').addEventListener('click',function () {
       const target = adjacent(-1);
@@ -270,6 +330,19 @@
         window.prompt('Copia questo indirizzo:',location.href);
       }
     });
+    byId('watch-auto-next-enabled').checked = autoNextEnabled;
+    byId('watch-auto-next-limit').value = String(autoNextLimit);
+    byId('watch-auto-next-enabled').addEventListener('change',function () {
+      autoNextEnabled = this.checked;
+      saveOption(STORAGE_AUTO_NEXT,autoNextEnabled);
+      resetSequence();
+    });
+    byId('watch-auto-next-limit').addEventListener('change',function () {
+      autoNextLimit = Math.max(2,Math.min(5,Number(this.value)||5));
+      saveOption(STORAGE_AUTO_LIMIT,autoNextLimit);
+      resetSequence();
+    });
+    window.addEventListener('message',onPlayerMessage);
     byId('watch-settings-trigger').addEventListener('click',function () { settings(true); });
     byId('watch-settings-close').addEventListener('click',function () { settings(false); });
     byId('watch-settings').addEventListener('click',function (event) {
@@ -279,6 +352,7 @@
       radio.addEventListener('change',function () {
         provider = this.value === 'vidsrc' ? 'vidsrc' : 'vix';
         try { localStorage.setItem(STORAGE_PROVIDER,provider); } catch (_) {}
+        resetSequence();
         if (playing) playNow(false);
         settings(false);
       });
