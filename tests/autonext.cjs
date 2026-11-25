@@ -47,12 +47,13 @@ const info={
   ]
 };
 const store={};
+let virtualTime=1700000000000;
 const ctx={
   window:{addEventListener(type,handler){(signals['window:'+type]??=[]).push(handler);}},
   document,location:loc,history,
   localStorage:{getItem(k){return store[k]??null;},setItem(k,v){store[k]=v;}},
   sessionStorage:{getItem(k){return k==='bobo_selected_title'?JSON.stringify(info):null;}},
-  console,URL,URLSearchParams
+  console,URL,URLSearchParams,Date:{now:()=>virtualTime}
 };
 const stage=document.getElementById('watch-player-stage');
 stage.requestFullscreen=function(){document.fullscreenElement=stage;return Promise.resolve();};
@@ -62,11 +63,11 @@ assert.equal((signals['document:DOMContentLoaded']||[]).length,1);
 signals['document:DOMContentLoaded'][0]();
 
 function click(id) { const b=document.getElementById(id); assert(b.listeners.click?.length); b.dispatch('click'); }
-function event(kind,src,origin='https://vixsrc.to') {
+function event(kind,src,origin='https://vixsrc.to',progress=null) {
   (signals['window:message']||[]).forEach(fn=>fn({
     origin,
     source:src||document.getElementById('watch-iframe').contentWindow,
-    data:{type:'PLAYER_EVENT',data:{event:kind,currentTime:43,duration:43,video_id:1}}
+    data:{type:'PLAYER_EVENT',data:{event:kind,currentTime:progress?.currentTime??43,duration:progress?.duration??43,video_id:1}}
   }));
 }
 click('watch-start');
@@ -101,4 +102,11 @@ click('watch-next');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/2\/3\?lang=it$/);
 event('play');event('ended');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/1\?lang=it&autoplay=true$/);
-console.log('OK: ended-only message, trusted Vix origin, non-sandboxed Vix compatibility, player swap, duplicate suppression, theater retained.');
+// Vix implementations may send progress through the final seconds but omit
+// the ended event. Two separate near-end ticks must also advance the episode.
+event('play');
+event('timeupdate',null,'https://vixsrc.to',{currentTime:1196.8,duration:1200});
+virtualTime+=850;
+event('timeupdate',null,'https://vixsrc.to',{currentTime:1198.5,duration:1200});
+assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/2\?lang=it&autoplay=true$/);
+console.log('OK: ended-only messages, near-end progress fallback, trusted origin, player swap, cap, fullscreen retained.');
