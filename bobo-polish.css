@@ -394,3 +394,59 @@ body > header, .site-header {
  .bobo-hero-nav{right:10px;bottom:8px}
 }
 @media(prefers-reduced-motion:reduce){.bobo-mini-scene img,.bobo-feature{animation:none!important}}
+
+
+/* Final micro-motion: genuine free Flaticon animations, tinted to one color.
+   No old CC0 silhouettes, no CSS-induced rotation of the GIF content. */
+.bobo-mini-scene img {
+  animation:none !important;
+  filter:brightness(0) saturate(100%) invert(82%) !important;
+  opacity:.95;
+  mix-blend-mode:screen;
+}
+.bobo-mini-scene,.bobo-mini-scene--hero {
+  width:42px!important;height:42px!important;opacity:.65!important;
+}
+.bobo-mini-scene--section,.bobo-mini-scene--favorites {
+  width:34px!important;height:34px!important;opacity:.60!important;
+}
+.bobo-flaticon-credit {
+  font:400 9px/1.4 var(--bobo-font-mono);
+  color:#829ba3;text-decoration:none;opacity:.77;
+}
+.bobo-flaticon-credit:hover { opacity:1; text-decoration:underline; }
+.bobo-site-nav{
+  display:flex;align-items:center;gap:clamp(3px,.8vw,12px);
+  margin-left:auto;flex-wrap:nowrap;white-space:nowrap;
+}
+.bobo-site-nav>a {
+  display:inline-flex;align-items:center;min-height:32px;
+  padding:6px 10px;border:1px solid transparent;border-radius:4px;
+  color:#b7c9d0;text-decoration:none;
+  font:600 12px/1 var(--bobo-font-body);
+}
+.bobo-site-nav>a:hover{background:#1c2e39;color:#f5f8f8}
+.bobo-site-nav>a[aria-current="page"]{
+  color:#c1e7de;background:#1a343b;border-color:#36555d;
+}
+body>header,header.site-header {display:flex;align-items:center}
+body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
+.bobo-library-nav{display:none!important}
+/* The technical player diagnostics are explicitly opt-in via ?debug=player. */
+#watch-player-diagnostics[hidden]{display:none!important}
+@media(max-width:950px){
+  body>header{flex-wrap:wrap}
+  .bobo-site-nav{order:5;width:100%;justify-content:center;margin:4px auto 0}
+  body>header .search-wrap{order:2}
+  body>header #bobo-settings-open{order:3}
+  .site-header .bobo-site-nav{order:initial;width:auto;margin-left:auto}
+}
+@media(max-width:600px){
+  .bobo-site-nav{gap:1px}
+  .bobo-site-nav>a{padding:6px 7px;font-size:11px}
+  .bobo-mini-scene,.bobo-mini-scene--hero{width:33px!important;height:33px!important}
+  .bobo-mini-scene--section{width:27px!important;height:27px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .bobo-mini-scene{display:none!important}
+}
