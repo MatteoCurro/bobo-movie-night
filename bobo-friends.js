@@ -125,7 +125,7 @@
     faiva: {
       label: 'Faiva sta osservando',
       message: 'Faiva dice: focus. Poi popcorn.',
-      svg: '<path d="m6 7-3-3v9l4 7h10l4-7V4l-3 3-4h-4L6 7Z"/><path d="M9 12h.01M15 12h.01"/><path d="m10 16 2 1 2-1"/>'
+      svg: '<path d="m6 7-3-3v9l4 7h10l4-7V4l-3 3-4-2h-4L6 7Z"/><path d="M9 12h.01M15 12h.01"/><path d="m10 16 2 1 2-1"/>'
     },
     carabiner: {
       label: 'Controllo del moschettone',
