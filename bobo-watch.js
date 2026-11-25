@@ -19,6 +19,8 @@
 
   let item = null;
   let seasons = [];
+  let episodeStills = {};
+  const platformNames = {netflix:'Netflix',prime:'Prime Video',disney:'Disney+',apple:'Apple TV+'};
   let selectedSeason = 1;
   let selectedEpisode = 1;
   let playing = false;
@@ -346,6 +348,29 @@
     }
     if(kind==='ended')completeEpisode('ended');
   }
+  async function loadEnrichment() {
+    try {
+      const response=await fetch('data/enrichment.json',{cache:'no-store'});
+      if(!response.ok)return;
+      const data=await response.json();
+      if(data.schema!==1 || !data.items)return;
+      const record=data.items[type+':'+id];
+      if(!record || !item)return;
+      const platforms=record.providers_it;
+      if(platforms && platforms.region==='IT' && /^\\d{4}-\\d{2}-\\d{2}$/.test(platforms.observed_at||'')) {
+        const checked=Date.parse(platforms.observed_at+'T00:00:00Z');
+        const current=Date.now();
+        if(Number.isFinite(checked) && current-checked>=0 && current-checked<45*86400000) {
+          const available=(platforms.flatrate||[]).filter(p=>platformNames[p]).map(p=>platformNames[p]);
+          if(available.length)byId('watch-meta').textContent+='  ·  In abbonamento (Italia): '+available.join(', ');
+        }
+      }
+      if(type==='tv' && record.episode_images && record.episode_images.seasons) {
+        episodeStills=record.episode_images.seasons;
+        renderEpisodeNavigation();
+      }
+    }catch(_){ /* Optional indexes never block the player. */ }
+  }
   function renderEpisodeNavigation() {
     if (!seasons.length) return;
     const seasonHost = byId('watch-season-buttons');
@@ -388,6 +413,14 @@
       const description = document.createElement('small');
       description.textContent = e === selectedEpisode ? 'Selezionato · Riproduci' : 'Riproduci episodio';
       content.append(heading,description);
+      const still=episodeStills[String(selectedSeason)]?.[String(e)];
+      if(still && imageURL(still.image)) {
+        const preview=document.createElement('img');
+        preview.className='bobo-episode-still';
+        preview.src=still.image;preview.alt='';preview.loading='lazy';preview.decoding='async';
+        button.append(preview);
+        if(still.name)heading.textContent=still.name;
+      }
       button.append(number,content);
       button.addEventListener('click',function () { selectEpisode(selectedSeason,e,true); });
       episodeHost.appendChild(button);
@@ -435,6 +468,7 @@
       renderEpisodeNavigation();
       byId('watch-start').textContent = '▶ Riproduci S'+selectedSeason+' E'+selectedEpisode;
     }
+    void loadEnrichment();
   }
   async function loadTitle() {
     if (!validRequest) {
