@@ -24,6 +24,9 @@
   let playing = false;
   let consecutiveEpisodes = 1;
   let observedPlayback = false;
+  let lastEventName = '';
+  let lastHandledEpisode = '';
+  let lastPlayerSignalAt = 0;
   let episodeNavigation = 0;
   let theaterFallback = false;
   let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
@@ -115,6 +118,7 @@
   function resetSequence() {
     consecutiveEpisodes = 1;
     observedPlayback = false;
+    lastHandledEpisode = '';
     updateAutoStatus();
   }
   function isBoboFullscreen() {
@@ -125,8 +129,9 @@
     const enabled = isBoboFullscreen();
     const button = byId('watch-theater-button');
     if (!button) return;
-    button.setAttribute('aria-label',enabled ? 'Esci dallo schermo intero Bobo' : 'Attiva schermo intero Bobo');
-    button.querySelector('span').textContent = enabled ? 'Esci da schermo intero' : 'Schermo intero';
+    button.hidden = enabled;
+    const exit = byId('watch-theater-exit');
+    if (exit) exit.hidden = !enabled;
   }
   function exitTheater() {
     if (theaterFallback) {
@@ -161,6 +166,11 @@
     const nextFrame = oldFrame.cloneNode(false);
     nextFrame.removeAttribute('src');
     nextFrame.referrerPolicy = 'origin';
+    // Deliberately omit allow-popups and allow-top-navigation. The external
+    // player may play video, but cannot open advertising tabs or take over Bobo.
+    nextFrame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-pointer-lock');
+    nextFrame.removeAttribute('allowfullscreen');
+    nextFrame.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
     const sequence = ++episodeNavigation;
     const label = byId('watch-stage-loading');
     if (label) label.hidden = false;
@@ -187,6 +197,7 @@
     if (!item) return;
     playing = true;
     observedPlayback = false;
+    lastEventName = '';
     // Every episode gets a fresh iframe; updating only the URL in the address
     // bar does not replace the old provider player or its native fullscreen UI.
     byId('watch-play-section').hidden = false;
@@ -216,18 +227,40 @@
   }
   function onPlayerMessage(event) {
     const frame = byId('watch-iframe');
-    if (!frame || event.origin !== 'https://vixsrc.to' ||
-        event.source !== frame.contentWindow || !playing || provider !== 'vix') return;
-    const msg = event.data;
+    if (!frame || !playing || provider !== 'vix') return;
+    // Vix may send events from its nested player context rather than from
+    // the top-level iframe. Requiring event.source === iframe.contentWindow
+    // dropped legitimate events on some browser/provider combinations.
+    // The exact HTTPS origin and payload type remain mandatory.
+    if (event.origin !== 'https://vixsrc.to') return;
+    let msg = event.data;
+    if (typeof msg === 'string') {
+      try { msg = JSON.parse(msg); } catch (_) { return; }
+    }
     if (!msg || typeof msg !== 'object' || msg.type !== 'PLAYER_EVENT' ||
         !msg.data || typeof msg.data !== 'object') return;
     const kind = msg.data.event;
+    if (!['play','pause','seeked','ended','timeupdate'].includes(kind)) return;
+    lastEventName = kind;
+    lastPlayerSignalAt = Date.now();
+    const status = byId('watch-event-diagnostic');
+    if (status && type === 'tv') {
+      status.hidden = false;
+      status.textContent = 'Segnale player ricevuto: '+kind+
+        ' · '+episodeHeading() +
+        (kind === 'ended' ? ' · Passaggio in elaborazione' : '');
+    }
     if (kind === 'play' || kind === 'timeupdate') {
       observedPlayback = true;
       return;
     }
-    if (kind !== 'ended' || !observedPlayback || type !== 'tv' || !autoNextEnabled) return;
-    // An ended event can be delivered more than once by an iframe.
+    // Vix documents ended as an authoritative completion event. Requiring
+    // a prior play/timeupdate message prevented advancement on browsers that
+    // delivered only the final event to the parent page.
+    if (kind !== 'ended' || type !== 'tv' || !autoNextEnabled) return;
+    const episodeKey = selectedSeason+':'+selectedEpisode;
+    if (lastHandledEpisode === episodeKey) return;
+    lastHandledEpisode = episodeKey;
     observedPlayback = false;
     if (consecutiveEpisodes >= autoNextLimit) {
       updateAutoStatus('Limite raggiunto: '+autoNextLimit+' episodi consecutivi. Seleziona un episodio per ripartire.');
@@ -371,6 +404,7 @@
     byId('watch-start').addEventListener('click',function () { resetSequence(); playNow(true); });
     byId('watch-hide-player').addEventListener('click',pausePlayer);
     byId('watch-theater-button').addEventListener('click',toggleTheater);
+    byId('watch-theater-exit').addEventListener('click',exitTheater);
     document.addEventListener('fullscreenchange',updateTheaterButton);
     byId('watch-previous').addEventListener('click',function () {
       const target = adjacent(-1);
