@@ -62,9 +62,9 @@ assert.equal((signals['document:DOMContentLoaded']||[]).length,1);
 signals['document:DOMContentLoaded'][0]();
 
 function click(id) { const b=document.getElementById(id); assert(b.listeners.click?.length); b.dispatch('click'); }
-function event(kind,src) {
+function event(kind,src,origin='https://vixsrc.to') {
   (signals['window:message']||[]).forEach(fn=>fn({
-    origin:'https://vixsrc.to',
+    origin,
     source:src||document.getElementById('watch-iframe').contentWindow,
     data:{type:'PLAYER_EVENT',data:{event:kind,currentTime:43,duration:43,video_id:1}}
   }));
@@ -76,11 +76,14 @@ const firstWindow=frame.contentWindow;
 click('watch-theater-button');
 assert.equal(document.fullscreenElement,stage);
 
-event('play');
-event('ended');
+event('ended',null,'https://untrusted.invalid');
+assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/1\/1\?lang=it$/);
+event('ended'); // Valid ended can arrive without earlier play/timeupdate.
 const second=document.getElementById('watch-iframe');
 assert.notEqual(second,frame,'The old iframe must be replaced, not merely re-addressed');
 assert.notEqual(second.contentWindow,firstWindow);
+assert.match(second.attributes.sandbox,/allow-scripts/);
+assert.doesNotMatch(second.attributes.sandbox,/allow-popups|allow-top-navigation/);
 assert.match(second.src,/tv\/1234\/1\/2\?lang=it&autoplay=true$/);
 assert.match(loc.href,/s=1&e=2/);
 assert.equal(document.fullscreenElement,stage,'Bobo theater must stay fullscreen');
@@ -98,4 +101,4 @@ click('watch-next');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/2\/3\?lang=it$/);
 event('play');event('ended');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/1\?lang=it&autoplay=true$/);
-console.log('OK: episode iframe really replaced, old events ignored, cap enforced, theater retained.');
+console.log('OK: ended-only message, trusted Vix origin, sandbox popup protection, player swap, duplicate suppression, theater retained.');
