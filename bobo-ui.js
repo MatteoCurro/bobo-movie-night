@@ -181,6 +181,11 @@
     const promoted = validItems(all).filter(function(x) { return x.overview && x.year >= currentYear-3; })
       .sort(function(a,b) { return ((b.vote||0)*1.4+(b.year||0)*.6)-((a.vote||0)*1.4+(a.year||0)*.6); });
     const rails = [];
+    if (discovery && discovery.streaming && Array.isArray(discovery.streaming.items)) {
+      rails.push(shelf('it-weekly','Nuovi sulle piattaforme in Italia',
+        resolveDiscovery(discovery.streaming.items),
+        'Arrivi degli ultimi 7 giorni · Streamingfilter'));
+    }
     if (discovery && discovery.source === 'TMDB+JustWatch') {
       rails.push(shelf('weekly-trending','Di tendenza questa settimana',
         resolveDiscovery(discovery.trending),'Classifica TMDB · ultimi 7 giorni'));
