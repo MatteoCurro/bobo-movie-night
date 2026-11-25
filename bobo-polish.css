@@ -490,3 +490,13 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
   #watch-main .title-hero > .hero-content {padding-top:0!important;}
   #watch-main > .section {margin-bottom:30px!important;}
 }
+
+
+/* Source GIFs are now converted to transparent monochrome on GitHub Actions.
+   A CSS recolor would recolor the matte too: the image must be rendered as-is. */
+.bobo-mini-scene img {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  object-fit: contain !important;
+}
