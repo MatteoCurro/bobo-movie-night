@@ -30,6 +30,8 @@
   let lastPlayerSignalAt = 0;
   let nearEndSince = 0;
   let nearEndSamples = 0;
+  let nearEndLastTime = -1;
+  let playerPaused = false;
   let episodeNavigation = 0;
   let theaterFallback = false;
   let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
@@ -125,6 +127,8 @@
     awaitingNextPlayback = false;
     nearEndSince = 0;
     nearEndSamples = 0;
+    nearEndLastTime = -1;
+    playerPaused = false;
     updateAutoStatus();
   }
   function isBoboFullscreen() {
@@ -213,6 +217,8 @@
     awaitingNextPlayback = Boolean(automatic);
     nearEndSince = 0;
     nearEndSamples = 0;
+    nearEndLastTime = -1;
+    playerPaused = false;
     // Every episode gets a fresh iframe; updating only the URL in the address
     // bar does not replace the old provider player or its native fullscreen UI.
     byId('watch-play-section').hidden = false;
@@ -265,22 +271,26 @@
     selectEpisode(next.season,next.episode,true,true);
   }
   function nearEndProgress(data) {
-    if(type!=='tv' || !autoNextEnabled || awaitingNextPlayback)return;
+    if(type!=='tv' || !autoNextEnabled || awaitingNextPlayback || playerPaused)return;
     const elapsed=Number(data.currentTime);
     const total=Number(data.duration);
     if(!Number.isFinite(elapsed) || !Number.isFinite(total) || total<60 || elapsed<0)return;
+    // 8–14 seconds before the end depending on the duration. This also works
+    // if the viewer seeks near the end to test autoplay; no need to reach 'ended'.
+    const threshold=Math.max(8,Math.min(14,total*0.004));
     const remains=total-elapsed;
-    if (remains < -2 || remains > Math.min(3.5,Math.max(1.5,total*.003))) {
-      nearEndSince=0;nearEndSamples=0;return;
+    if(remains < -1.5 || remains>threshold) {
+      nearEndSince=0;nearEndSamples=0;nearEndLastTime=-1;
+      return;
     }
+    if(nearEndLastTime>=0 && elapsed<nearEndLastTime-0.25) {
+      nearEndSince=0;nearEndSamples=0;
+    }
+    // Do not mistake a single seeked/timeupdate event for resumed playback.
     if(!nearEndSince)nearEndSince=Date.now();
     nearEndSamples+=1;
-    // Some builds emit progress until the last moment but omit 'ended'.
-    // Two distinct near-end events prevent ordinary seeking or brief
-    // buffering from skipping episodes prematurely.
-    if(nearEndSamples>=2 && Date.now()-nearEndSince>=650) {
-      completeEpisode('progress');
-    }
+    nearEndLastTime=elapsed;
+    if(nearEndSamples>=2 && Date.now()-nearEndSince>=800)completeEpisode('prima dei titoli di coda');
   }
   function onPlayerMessage(event) {
     const frame=byId('watch-iframe');
@@ -304,10 +314,15 @@
     if(kind==='play' || kind==='timeupdate') {
       observedPlayback=true;
       awaitingNextPlayback=false;
+      if(kind==='play')playerPaused=false;
       if(kind==='timeupdate')nearEndProgress(msg.data);
       return;
     }
-    if(kind==='seeked'){nearEndSince=0;nearEndSamples=0;return;}
+    if(kind==='pause'){playerPaused=true;return;}
+    if(kind==='seeked'){
+      nearEndSince=0;nearEndSamples=0;nearEndLastTime=-1;
+      return;
+    }
     if(kind==='ended')completeEpisode('ended');
   }
   function renderEpisodeNavigation() {
