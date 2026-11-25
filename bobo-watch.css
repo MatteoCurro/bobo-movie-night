@@ -16,3 +16,7 @@
 .autonext-limit-label { display: block; color: #dedee4; font-size: 13px; font-weight: 700; margin: 14px 0 7px; }
 #watch-auto-next-limit { width: 100%; max-width: 225px; padding: 9px 12px; border-radius: 7px; border: 1px solid #54545b; background: #29292f; color: #fff; }
 .autonext-settings p { margin: 10px 0 0; color: #bdbdc5; font-size: 12px; line-height: 1.5; }
+
+/* Optional still images supplied by Bobo's enrichment index. */
+.bobo-episode-still{width:94px;height:58px;object-fit:cover;border-radius:6px;flex:0 0 94px;background:#17171d}
+@media(max-width:640px){.bobo-episode-still{width:64px;height:45px;flex-basis:64px}.episode-card:has(.bobo-episode-still) .episode-number{display:none}}
