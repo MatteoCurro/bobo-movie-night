@@ -10,8 +10,8 @@ android {
         applicationId 'it.bobomovieclub.tvprobe'
         minSdk 26
         targetSdk 32
-        versionCode 10301
-        versionName '1.3.1'
+        versionCode 10302
+        versionName '1.3.2'
     }
 
     // Secrets are provided only by the protected release workflow.
