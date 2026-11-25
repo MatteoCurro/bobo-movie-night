@@ -10,6 +10,10 @@
   let previousFocus = null;
   let discovery = null;
   let featuredFromFeed = null;
+  let heroSlides = [];
+  let heroIndex = 0;
+  let heroTimer = null;
+  let heroPauseUntil = 0;
   async function loadDiscovery() {
     try {
       const response = await fetch('data/discovery.json',{cache:'no-store'});
@@ -129,6 +133,11 @@
   function getItem(id,kind) {
     return (catalogs[kind]||[]).find(function(x) { return String(x.tmdb_id) === String(id); });
   }
+  // Read-only bridge for the favorites extension; the catalog remains owned here.
+  window.BoboCatalogAPI=Object.freeze({
+    getItem:function(kind,id){return getItem(id,kind);},
+    items:function(kind){return catalogs[kind]||[];}
+  });
   function meta(item) {
     let bits = [];
     if (item.year) bits.push('<span>'+text(item.year)+'</span>');
@@ -161,6 +170,7 @@
   }
   function chooseFeedFeature() {
     if (!discovery || !discovery.streaming) return null;
+    if (heroSlides.length) return heroSlides[heroIndex];
     const stream = discovery.streaming;
     const candidates = resolveDiscovery(stream.items || []);
     (stream.platforms || []).forEach(function(platform) {
@@ -174,25 +184,43 @@
     });
     const options = Array.from(unique.values());
     if (!options.length) return null;
-    if (featuredFromFeed && options.some(function(item) {
-      return item.type === featuredFromFeed.type &&
-        String(item.tmdb_id) === String(featuredFromFeed.tmdb_id);
-    })) return featuredFromFeed;
-    let last = '';
-    try { last = localStorage.getItem('bobo_last_feed_hero') || ''; } catch (_) {}
-    const pool = options.length > 1 ? options.filter(function(item) {
-      return item.type+':'+item.tmdb_id !== last;
-    }) : options;
-    const selection = pool[Math.floor(Math.random()*pool.length)] || options[0];
-    featuredFromFeed = selection;
-    try { localStorage.setItem('bobo_last_feed_hero',selection.type+':'+selection.tmdb_id); } catch (_) {}
-    return selection;
+    // Curate six real arrivals; start with a new one on each page refresh.
+    for (let i=options.length-1;i>0;i--) {
+      const j=Math.floor(Math.random()*(i+1));
+      const tmp=options[i];options[i]=options[j];options[j]=tmp;
+    }
+    let previous='';
+    try { previous=localStorage.getItem('bobo_last_feed_hero')||''; } catch (_) {}
+    if (options.length>1 && options[0].type+':'+options[0].tmdb_id===previous) {
+      options.push(options.shift());
+    }
+    heroSlides=options.slice(0,Math.min(6,options.length));
+    heroIndex=0;
+    featuredFromFeed=heroSlides[0];
+    try {localStorage.setItem('bobo_last_feed_hero',featuredFromFeed.type+':'+featuredFromFeed.tmdb_id);}catch(_){}
+    return featuredFromFeed;
+  }
+  function setHeroSlide(index,manual) {
+    const host=document.getElementById('bobo-discover');
+    const stage=host&&host.querySelector('.bobo-feature');
+    if (!stage || !heroSlides.length || !isHome()) return;
+    heroIndex=(index+heroSlides.length)%heroSlides.length;
+    featuredFromFeed=heroSlides[heroIndex];
+    if(manual)heroPauseUntil=Date.now()+18000;
+    stage.outerHTML=hero(featuredFromFeed,true);
   }
   function shuffleFeedFeature() {
-    if (!discovery || !discovery.streaming) return;
-    featuredFromFeed = null;
-    renderedKey = '';
-    renderHome();
+    if(heroSlides.length) setHeroSlide(heroIndex+1,true);
+  }
+  function startHeroRotation() {
+    if(heroTimer)clearInterval(heroTimer);
+    if(heroSlides.length<2)return;
+    heroTimer=setInterval(function() {
+      if(!isHome() || document.hidden || Date.now()<heroPauseUntil)return;
+      const heroNode=document.querySelector('#bobo-discover .bobo-feature');
+      if(!heroNode || heroNode.matches(':hover') || heroNode.contains(document.activeElement))return;
+      setHeroSlide(heroIndex+1,false);
+    },11000);
   }
   function hero(item,isFeed) {
     if (!item) return '';
@@ -205,8 +233,16 @@
       '<p class="bobo-feature-description">'+text(item.overview||'Scopri il titolo e tutti i dettagli.')+'</p>'+
       '<div class="bobo-feature-actions"><button type="button" class="bobo-btn bobo-btn-primary" data-bobo-play="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">▶ Apri scheda</button>'+
       '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">ⓘ Dettagli</button>'+
-      (isFeed ? '<button type="button" class="bobo-btn bobo-btn-secondary bobo-shuffle" data-bobo-hero-shuffle aria-label="Mostra un altro titolo dalle novità streaming">↻ Un\u0027altra idea</button>' : '')+
-      '</div></div></section>';
+      '</div></div>'+
+      (isFeed && heroSlides.length>1 ? '<div class="bobo-hero-nav" aria-label="Slideshow">'+
+        '<button type="button" data-bobo-slide-prev aria-label="Titolo precedente">‹</button>'+
+        '<div class="bobo-hero-dots">'+heroSlides.map(function(_,i) {
+          return '<button type="button" data-bobo-hero-index="'+i+'" aria-label="Mostra titolo '+(i+1)+'"'+
+            (i===heroIndex?' aria-current="true"':'')+'></button>';
+        }).join('')+'</div>'+
+        '<button type="button" data-bobo-slide-next aria-label="Titolo successivo">›</button>'+
+        '</div>' : '')+
+      '</section>';
   }
   function renderHome() {
     const all = allItems();
@@ -297,6 +333,7 @@
         '<p class="bobo-source-note">Le piattaforme indicate rappresentano disponibilità segnalate nei cataloghi italiani; non sono i provider di riproduzione del video.</p>' : '')+
       (discovery && discovery.platforms && discovery.platforms.length ?
         '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
+    startHeroRotation();
   }
   function renderResults() {
     const more = document.getElementById('bobo-more');
@@ -513,6 +550,10 @@
         if (rail) rail.scrollBy({left: (Number(scrolling.dataset.direction)||1)*rail.clientWidth*.85,behavior:'smooth'});
         return;
       }
+      if (target.closest('[data-bobo-slide-prev]')) { setHeroSlide(heroIndex-1,true); return; }
+      if (target.closest('[data-bobo-slide-next]')) { setHeroSlide(heroIndex+1,true); return; }
+      const directSlide=target.closest('[data-bobo-hero-index]');
+      if(directSlide) { setHeroSlide(Number(directSlide.dataset.boboHeroIndex),true); return; }
       if (target.closest('[data-bobo-hero-shuffle]')) { shuffleFeedFeature(); return; }
       const playing = target.closest('[data-bobo-play]');
       if (playing) { play(playing.dataset.boboPlay,playing.dataset.boboType); return; }
