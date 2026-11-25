@@ -83,6 +83,9 @@ jobs:
           # Keep Bobo-specific UI separate so upstream refreshes cannot erase it.
           if "</head>" not in content or "</body>" not in content:
               raise SystemExit("Upstream HTML layout changed; review required")
+          # Avoid sharing the site address with external services by default;
+          # the Vix iframe explicitly overrides this with its required 'origin' policy.
+          content = content.replace("</head>", '  <meta name="referrer" content="no-referrer">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
           content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
@@ -135,6 +138,13 @@ jobs:
           cp bobo-ui.css bobo-ui.js _site/
           cp watch.html bobo-watch.js bobo-watch.css _site/
           touch _site/.nojekyll
+
+      - name: Package site for private Gandi hosting
+        uses: actions/upload-artifact@v4
+        with:
+          name: bobo-gandi-static
+          path: _site/
+          retention-days: 7
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
