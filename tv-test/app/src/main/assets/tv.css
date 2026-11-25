@@ -1,0 +1,60 @@
+:root{--bg:#10151b;--bg2:#15212b;--line:#38515c;--accent:#a6dbd2;--green:#c5f38d;--fg:#f4fbfa;--muted:#abbec2}
+*{box-sizing:border-box}
+html{background:var(--bg);font:18px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg);overscroll-behavior:contain}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 42% 9%,#1a313c 0%,#10151b 62%)}
+button,input{font:inherit}button{color:inherit;border:0;cursor:pointer;outline:none}button:disabled{opacity:.32;cursor:default}
+[hidden]{display:none!important}
+.topbar{position:sticky;top:0;z-index:40;height:88px;display:flex;align-items:center;justify-content:space-between;gap:45px;padding:0 70px;background:rgba(14,22,29,.97);border-bottom:1px solid #38515c77;backdrop-filter:blur(14px)}
+.logo{font-size:36px;line-height:1;font-weight:950;letter-spacing:-.06em;white-space:nowrap}.logo span,.player-brand span{color:var(--green)}.logo small{font:600 10px/1 monospace;text-transform:uppercase;display:block;letter-spacing:.33em;margin-top:4px;color:#b0d6d4}
+nav{display:flex;gap:14px;align-items:center;justify-content:center;flex:1}.tab{padding:11px 24px;font-size:18px;font-weight:700;border-radius:8px;background:transparent;color:#c3d4d7}.tab.active{background:#2e4853;color:white}
+.top-hint{font:600 12px/1 monospace;letter-spacing:.2em;color:#86aab0}
+main{padding:30px 70px 75px;min-height:calc(100vh - 88px);outline:0}
+.hero{position:relative;min-height:340px;border-radius:18px;overflow:hidden;display:flex;align-items:flex-end;background:linear-gradient(108deg,#13202a,#263f4d);margin:0 0 30px;isolation:isolate}
+.hero-art{position:absolute;inset:0;background-position:80% center;background-size:cover;z-index:-2;opacity:.8}
+.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,17,22,.98) 1%,rgba(11,17,22,.88) 35%,rgba(11,17,22,.12) 94%),linear-gradient(0deg,#10151baa,transparent 75%);z-index:-1}
+.hero-content{width:min(75%,820px);padding:37px 45px}.eyebrow{text-transform:uppercase;letter-spacing:.23em;font:800 12px monospace;color:var(--green)}
+h1{font-size:clamp(34px,3.1vw,59px);line-height:1.08;margin:10px 0 16px;letter-spacing:-.035em}
+h2{font-size:26px;letter-spacing:-.025em;margin:0 0 17px}p{margin:0}.synopsis{font-size:18px;line-height:1.45;color:#d3e2e4;max-width:760px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{font-size:16px;color:var(--muted);margin:12px 0 18px}
+.action{padding:14px 25px;min-width:145px;border-radius:8px;background:var(--green);color:#14252a;font-weight:850;font-size:19px;display:inline-flex;gap:10px;align-items:center;justify-content:center}
+.action.secondary{background:#2d424d;color:#ecfbf9}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:23px}
+.shelf{margin-bottom:38px;scroll-margin-top:115px}.shelf-head{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 15px}.shelf-note{font:500 14px monospace;color:#91b2b8}
+.rail{display:flex;gap:20px;overflow-x:auto;padding:7px 8px 22px;scrollbar-width:none;scroll-behavior:smooth;scroll-snap-type:x proximity}.rail::-webkit-scrollbar{display:none}
+.poster{flex:0 0 clamp(154px,13.3vw,235px);width:clamp(154px,13.3vw,235px);background:none;text-align:left;padding:0;position:relative;scroll-snap-align:start}
+.poster-art{display:block;position:relative;aspect-ratio:2/3;border-radius:9px;overflow:hidden;background:linear-gradient(130deg,#284050,#121c25);box-shadow:0 11px 18px #0005}
+.poster-art img{width:100%;height:100%;display:block;object-fit:cover}.poster-art .poster-placeholder{padding:20px;display:grid;place-items:center;height:100%;text-align:center;font-weight:750}
+.poster-title{display:block;font-size:14px;font-weight:700;line-height:1.3;margin-top:12px;color:#e7f4f3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.poster-sub{display:block;font-size:12px;color:#91b6ba;margin-top:3px}
+.poster:focus .poster-art,.episode:focus,.tab:focus,.action:focus,.season:focus,.search-result:focus,.search-input:focus{outline:4px solid var(--green);outline-offset:5px;box-shadow:0 0 0 8px rgba(7,15,20,.82),0 0 38px #d0fc91a6}
+.poster:focus{transform:scale(1.045);z-index:5}
+button:focus-visible{outline:4px solid var(--green)!important;outline-offset:4px}
+.poster:focus .poster-title{color:var(--green)}
+section,button{scroll-margin-top:112px;scroll-margin-bottom:55px}
+.section-header{display:flex;align-items:center;gap:25px;margin:9px 0 25px}
+.section-header h1{margin:0}.section-desc{color:var(--muted);font-size:16px}
+.results{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:25px 19px}
+.results .poster{width:100%;max-width:none;min-width:0}
+.detail-backdrop{min-height:360px}.detail-backdrop .hero-content{padding:40px 45px}
+.season-list{display:flex;gap:13px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:11px 7px 21px}.season{padding:13px 22px;background:#29414d;color:#e8f8f5;border-radius:8px;flex:none;font-weight:700}.season.active{background:var(--green);color:#172730}
+.episodes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:4px 0 30px}
+.episode{min-height:90px;text-align:left;padding:18px;background:#1e303b;border:1px solid #45616d;border-radius:10px}
+.episode strong{display:block;font-size:17px;margin-bottom:6px}.episode span{display:block;color:#bad0d4;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.episode.active{border-color:var(--green);background:#284439}
+.search-bar{max-width:980px;margin:15px 0 30px}.search-label{display:block;font-weight:800;margin-bottom:13px;font-size:19px}
+.search-input{width:100%;padding:20px 24px;background:#20313c;color:white;border:2px solid #6b8590;border-radius:10px;font-size:23px}
+.search-input::placeholder{color:#9db1b8}
+.loading{display:flex;align-items:center;flex-direction:column;justify-content:center;min-height:55vh;color:#d6eced;gap:22px;font-size:23px}
+.spinner{width:42px;height:42px;border-radius:50%;border:4px solid #3f6675;border-top-color:var(--green);animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.message{font-size:20px;color:#c1d6da;padding:15px}
+.player{position:fixed;z-index:90;inset:0;background:#000}.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.player-top{position:absolute;left:35px;top:20px;right:35px;z-index:5;display:flex;gap:25px;align-items:center;padding:12px 22px;background:linear-gradient(90deg,#101a22ed,#101a2208);pointer-events:none;opacity:.8}
+.player-brand{font-weight:900;font-size:25px}.player-top #playing-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:18px}
+.start-guide{position:absolute;top:37%;left:50%;transform:translateX(-50%);pointer-events:none;z-index:5;padding:14px 24px;border-radius:8px;background:#0d1823cc;color:#f5fcfa;font-size:20px;text-align:center}
+.player-hud{position:absolute;left:4%;right:4%;bottom:4%;z-index:6;background:linear-gradient(90deg,#0b1318f5,#10262cf0);border:1px solid #54777b99;border-radius:12px;padding:18px 28px;pointer-events:none;transition:opacity .25s}
+.player-hud.quiet{opacity:0}.player-hud-primary{display:flex;gap:25px;align-items:center;font-size:19px}.player-hud-primary #play-symbol{font-size:28px;color:var(--green)}#play-timestamp{margin-left:auto;color:#c6d9dc;font:600 17px monospace}
+.hud-progress{height:6px;margin:15px 0;background:#44616b;border-radius:10px;overflow:hidden}.hud-progress>div{height:100%;width:0;background:var(--green);transition:width .2s}
+.player-hud-guide{display:flex;justify-content:space-between;gap:16px;color:#d7ecec;font:650 16px monospace}
+#player-note{font-size:13px;margin-top:12px;color:#9fb7bb}
+#toast{position:fixed;z-index:150;bottom:40px;left:50%;transform:translateX(-50%);padding:12px 21px;border-radius:8px;background:#2a4651;color:white;box-shadow:0 5px 30px #0008;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}
+@media(max-width:1050px){.topbar{padding:0 32px;gap:18px}.tab{padding:11px}.top-hint{display:none}main{padding:28px 35px}.results{grid-template-columns:repeat(4,1fr)}.episodes{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
