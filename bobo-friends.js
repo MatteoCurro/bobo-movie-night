@@ -11,10 +11,12 @@
 
   function storedAccess() {
     try {
-      const timestamp = Number(localStorage.getItem(KEY));
-      return Number.isFinite(timestamp) && timestamp > 0 &&
-        (Date.now() - timestamp) >= 0 && (Date.now() - timestamp) < MAX_AGE_MS;
-    } catch (_) { return false; }
+      const timestamp=Number(localStorage.getItem(KEY));
+      if(Number.isFinite(timestamp) && timestamp>0 && Date.now()-timestamp>=0 && Date.now()-timestamp<MAX_AGE_MS)return true;
+    }catch(_){ /* Cookie-based shared welcome may still work. */ }
+    const match=document.cookie.match(/(?:^|;\\s*)bobo_friends_welcome_v1=(\\d+)/);
+    const seconds=match?Number(match[1]):0;
+    return seconds>0 && Date.now()/1000-seconds>=0 && Date.now()/1000-seconds<MAX_AGE_MS/1000;
   }
 
   function normalizeAnswer(value) {
@@ -24,6 +26,7 @@
 
   function unlock() {
     try { localStorage.setItem(KEY, String(Date.now())); } catch (_) {}
+    document.cookie=KEY+'='+Math.floor(Date.now()/1000)+'; Domain=curromatteo.it; Path=/; Max-Age=2592000; Secure; SameSite=Lax';
     document.documentElement.classList.add('bobo-unlocked');
     const gate = document.getElementById('bobo-gate');
     if (gate) gate.remove();
