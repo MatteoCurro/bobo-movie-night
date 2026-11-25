@@ -48,7 +48,7 @@ def main():
   arrivals.update(str(x.get("type"))+":"+str(x.get("tmdb_id")) for x in provider.get("items",[]))
  archive=read(HISTORY,{"schema":1,"titles":{},"issues":[]})
  known=archive.get("titles",{})
- previous={k for issue in archive.get("issues",[])[-4:] for k in issue.get("ids",[])}
+ previous={k for issue in archive.get("issues",[])[-4:] if issue.get("week")!=NOW.strftime("%G-W%V") for k in issue.get("ids",[])}
  eligible=[x for x in items.values() if fit(x)]
  def order(rows,penalty=True):
   return sorted(rows,key=lambda x:(score(x)+(0.8 if key(x) in trending else 0)-(.95 if penalty and key(x) in previous else 0),key(x)),reverse=True)
