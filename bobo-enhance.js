@@ -192,7 +192,7 @@
     }
     const saved=lib()?.read() || [];
     const catalogReady=typeof catalogs!=='undefined' && catalogs &&
-      (catalogs.movie?.length || catalogs.tv?.length);
+      String(catalogs.movie?.length || 0)+':'+String(catalogs.tv?.length || 0);
     const signature=saved.map(x=>key(x.type,x.tmdb_id)+':'+x.title).join('|')+':'+catalogReady;
     if(signature===lastShelfSignature)return;
     lastShelfSignature=signature;
