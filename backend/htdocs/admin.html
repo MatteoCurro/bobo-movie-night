@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bobo · Amministrazione</title><meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c1116;color:#e9f2f2}*{box-sizing:border-box}
+body{margin:0;padding:28px 18px}.wrap{max-width:1080px;margin:auto}h1{font-size:27px;letter-spacing:-.06em}h1 em{color:#a4d9d4;font-style:normal}p{color:#aabcc4;line-height:1.5}
+.card{border:1px solid #334c55;background:#17242e;padding:22px;border-radius:7px;margin:22px 0}
+label{display:block;font:600 11px monospace;letter-spacing:.06em;color:#b5d4cf;margin:12px 0 7px}
+input{width:100%;background:#0f1d27;color:#fff;border:1px solid #57717a;border-radius:5px;padding:12px;font-size:15px}
+button{border:0;background:#a4d9d4;color:#103036;font:700 13px system-ui;padding:11px 16px;margin:15px 7px 0 0;border-radius:5px;cursor:pointer}
+button.secondary{background:#30434f;color:#d9e9e7}table{border-collapse:collapse;width:100%;font-size:13px} .card{overflow-x:auto}
+th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #324751}th{color:#98c5c2;font:600 11px monospace}
+#status{min-height:18px;font-size:13px;color:#a4d9d4}a{color:#a4d9d4}
+</style><script defer src="gate.js"></script></head><body><div class="wrap"><h1>bobo<em>.</em> / admin</h1>
+<p>Utenti e raccolte personali · Servizio PHP autonomo. Nessuna password viene mostrata.</p>
+<section id="login" class="card"><h2>Accesso amministratore</h2><form id="login-form">
+<label for="username">USERNAME</label><input id="username" autocomplete="username" required>
+<label for="password">PASSWORD</label><input type="password" id="password" autocomplete="current-password" required>
+<button type="submit">Accedi</button></form></section>
+<section id="dashboard" class="card" hidden><h2>Utenti <span id="count"></span></h2>
+<table><thead><tr><th>Username</th><th>Email</th><th>Verificata</th><th>Ruolo</th><th>Registrato</th><th>Preferiti</th><th>Newsletter</th><th>Raccolta</th></tr></thead><tbody id="rows"></tbody></table>
+<button id="refresh" class="secondary">Aggiorna</button><button id="logout" class="secondary">Esci</button></section>
+<p id="status" role="status"></p>
+</div><script src="admin.js" defer></script></body></html>

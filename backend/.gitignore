@@ -1,0 +1,4 @@
+config.local.php
+private/*
+!private/.htaccess
+*.log
