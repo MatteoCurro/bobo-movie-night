@@ -1,34 +1,53 @@
-# Bobo Movie Club - Android TV player probe
+# Bobo Movie Club TV — interfaccia esclusiva per Google TV
 
-Branch sperimentale indipendente dalla produzione: **tv-player-probe**.
+Ramo separato `tv-native-ui`. Nessun file del sito web e nessun contenuto pubblicato
+su `movie.curromatteo.it` viene modificato. Il catalogo e le immagini sono letti
+direttamente dagli JSON pubblici: `data/movies.json`, `data/tv.json` e
+`data/episodes/{id}.json`.
 
-Questo APK non e una distribuzione completa dell'app: carica la vera home
-https://movie.curromatteo.it/ e le vere pagine `watch.html` che incorporano
-Vix in iframe con `referrerpolicy="origin"`. Serve a verificare su TCL Google TV:
-riproduzione audio/video, fullscreen WebChromeClient, input del telecomando,
-accesso a sottotitoli e cambio episodio.
+## Differenze dalla versione web
+- Interfaccia nuova, specifica per 10-foot UI: Home, Film, Serie TV, Cerca.
+- Nessuna domanda iniziale, nessuna schermata di login, nessuna voce preferiti.
+- Locandine con singolo pulsante ciascuna; focus visibile e scorrimento automatico.
+- Schede, stagioni, episodi e player progettati per le frecce e il tasto centrale.
+- Player Vix in iframe; `referrerpolicy="origin"`, senza sandbox (altrimenti Vix lo rifiuta).
+- Non sono richiesti Android Studio, Play Store o una pubblicazione pubblica.
 
-## Costruzione
+## Riproduzione e limiti verificabili sulla TCL
+Dopo il caricamento del video, OK = pausa/ripresa, sinistra = -10 s,
+destra = +10 s, Indietro = torna alla scheda.
+Quando supportato dalla WebView, AndroidX WebKit inietta un mini bridge JavaScript
+solo nei frame originati da `vixsrc.to` e invia comandi al media element.
+Il bridge non bypassa DRM o controlli di origine e non concede API native a terzi.
+Se il video non è accessibile direttamente, la **pausa alternativa** arresta il
+frame ricordando il timestamp comunicato da Vix e riprende con il parametro
+`startAt`. Anche l'avanzamento riposiziona la riproduzione ricaricando il video;
+può richiedere buffering o un nuovo OK. È un fallback sperimentale, non un
+controllo ufficiale del player.
 
-Workflow GitHub Actions: **Bobo TV · Player test APK**. Dalla relativa esecuzione
-scaricare l'artifact `Bobo-Movie-Club-TV-test-APK` (zip), estrarre
-`app-debug.apk` e copiarlo in `~/Downloads/` del Mac.
+## Compilazione e installazione
+Workflow `Bobo TV · Leanback APK` -> artifact
+`Bobo-Movie-Club-TV-1.0-APK`. Estrai `app-debug.apk` e copialo in
+`~/Downloads` sul Mac già associato alla TV via ADB.
 
-## Installazione e aggiornamento dal Mac gia associato con ADB
-
+Poiché le firme **debug** dei runner GitHub cambiano, per passare tra versioni
+sperimentali esegui (cancella solo i dati locali della vecchia app):
 ```sh
-~/Downloads/platform-tools/adb devices
-~/Downloads/platform-tools/adb install -r ~/Downloads/app-debug.apk
+~/Downloads/platform-tools/adb uninstall it.bobomovieclub.tvprobe
+~/Downloads/platform-tools/adb install ~/Downloads/app-debug.apk
 ~/Downloads/platform-tools/adb shell am start -n it.bobomovieclub.tvprobe/.MainActivity
 ```
 
-Per aprire una scheda film senza passare dalla navigazione su TV (sostituire
-l'ID con uno presente nel catalogo):
+## Sicurezza
+L'app non imposta né memorizza credenziali. La pagina TV interna viene caricata
+con `loadDataWithBaseURL` usando l'origine HTTPS di Bobo per permettere il
+fetch degli indici JSON; JavaScript di terze parti non può usare il bridge nativo,
+che è limitato all'origine e al frame principale.
 
-```sh
-~/Downloads/platform-tools/adb shell am start -n it.bobomovieclub.tvprobe/.MainActivity --es url 'https://movie.curromatteo.it/watch.html?type=movie&id=12345&debug=player'
-```
-
-Controllare il player con il telecomando e premere BACK per uscire dal fullscreen.
-I log del sistema si ottengono con `adb logcat`. Il player appartiene a un
-servizio esterno: nessuna modifica di iframe, DRM o stream garantisce che funzioni.
+## Verifiche TCL
+1. Frecce e OK tra home, caroselli e schede.
+2. Ricerca con tastiera di Google TV.
+3. Cambio stagione e apertura episodio.
+4. Avvio manuale Vix, play e audio.
+5. OK su video avviato e frecce +/- 10 s.
+6. Indietro da player, schede e home.
