@@ -175,7 +175,7 @@
 
   function nav() {
     const header=document.querySelector('header');
-    if(!header || header.querySelector('.bobo-library-nav'))return;
+    if(!header || header.querySelector('.bobo-site-nav') || header.querySelector('.bobo-library-nav'))return;
     const link=document.createElement('a');
     link.className='bobo-library-nav';
     link.href='favorites.html';
