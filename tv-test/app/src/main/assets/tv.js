@@ -50,6 +50,7 @@ async function boot(){
   status.items=status.movies.concat(status.series);
   status.items.forEach(i=>status.index.set(i.type+':'+i.tmdb_id,i));
   render('home');
+  window.BoboTVExtras?.catalogReady();
  }catch(error){
   app.innerHTML='<div class="message"><h1>Impossibile caricare il catalogo</h1><p>Controlla la connessione della TV.</p><button class="action" id="retry">Riprova</button></div>';
   $('#retry').addEventListener('click',boot);$('#retry').focus();
@@ -111,7 +112,8 @@ function browse(type){
 function searchScreen(){
  return '<div class="section-header"><h1>Cerca</h1><span class="section-desc">Film e serie TV</span></div>'+
   '<div class="search-bar"><label class="search-label" for="q">Cerca un titolo</label>'+
-  '<input class="search-input tv-focus" id="q" autocomplete="off" placeholder="Scrivi con il telecomando" value="'+esc(status.search)+'"></div>'+
+  '<input class="search-input tv-focus" id="q" autocomplete="off" enterkeyhint="done" placeholder="Scrivi con il telecomando" value="'+esc(status.search)+'">'+
+  '<button type="button" class="action secondary tv-focus search-finish" id="search-done">Mostra risultati ↓</button></div>'+
   '<div class="results" id="search-results"></div><p class="message" id="search-message"></p>';
 }
 function normalize(s){return String(s||'').toLocaleLowerCase('it').normalize('NFKD').replace(/[\u0300-\u036f]/g,'');}
@@ -170,6 +172,7 @@ function detail(item){
  app.innerHTML=hero(item,true)+seasonControls();
  $('#hero-play').textContent=item.type==='tv'?'▶ Riproduci S'+status.season+' E1':'▶ Riproduci';
  drawEpisodes();episodeNames(item);
+ window.BoboTVExtras?.updateDetail(item);
  navActive();window.scrollTo(0,0);
  focusFirst('#hero-play');
 }
@@ -182,10 +185,28 @@ function render(view){
  navActive();
  if(view==='home')app.innerHTML=featuredHome();
  else if(view==='movie'||view==='tv')app.innerHTML=browse(view);
- else if(view==='search'){app.innerHTML=searchScreen();searchNow();
-  const field=$('#q');field.addEventListener('input',()=>{status.search=field.value;searchNow();});}
+ else if(view==='search'){
+  app.innerHTML=searchScreen();searchNow();
+  const field=$('#q');
+  field.addEventListener('input',()=>{status.search=field.value;searchNow();});
+  field.addEventListener('focus',()=>document.body.classList.add('tv-search-editing'));
+  field.addEventListener('blur',()=>document.body.classList.remove('tv-search-editing'));
+  field.addEventListener('keydown',e=>{
+   if(e.key==='Enter'||e.key==='ArrowDown'){
+    e.preventDefault();e.stopImmediatePropagation();closeSearchKeyboard();
+   }
+  });
+ }else if(window.BoboTVExtras?.render(view)){}
+
  window.scrollTo(0,0);
  focusFirst(view==='search'?'#q':view==='home'?'#hero-play':'.results .poster');
+}
+function closeSearchKeyboard(){
+ const field=$('#q');if(!field)return;
+ field.blur();document.body.classList.remove('tv-search-editing');
+ tellNative({event:'keyboard-hide'});
+ const first=$('#search-results .poster')||$('#search-done')||field;
+ requestAnimationFrame(()=>{first.focus({preventScroll:true});ensure(first);});
 }
 function focusFirst(selector){
  requestAnimationFrame(()=>{
@@ -227,6 +248,10 @@ function move(key){
  if(ranked.length){ranked[0].el.focus({preventScroll:true});ensure(ranked[0].el);}
 }
 function onClick(e){
+ if(window.BoboTVExtras?.onClick(e))return;
+ if(e.target.closest('#search-done')){closeSearchKeyboard();return;}
+ const targetView=e.target.closest('[data-view]');
+ if(targetView){render(targetView.dataset.view);return;}
  const tab=e.target.closest('.tab');
  if(tab){render(tab.dataset.view);return;}
  const title=e.target.closest('[data-title]');
@@ -401,11 +426,28 @@ function issueCommand(action,delta=0){
   frame.contentWindow.postMessage({type:'BOBO_TV_COMMAND',action,delta,cmdId:id},new URL(status.playerUrl).origin);
  }catch(e){finishCommand(false,{reason:'post-message-failed'});}
 }
+function scrubPreview(direction,seconds){
+ if(!status.player)return false;
+ const delta=(direction==='left'?-1:1)*Math.min(7200,Math.max(10,seconds|0));
+ const target=Math.max(0,Math.min(status.duration||Infinity,estimatedTime()+delta));
+ showHud(0);
+ $('#play-timestamp').textContent='Vai a '+timer(target)+' ('+(delta>0?'+':'')+timer(delta)+')';
+ $('#play-hint').textContent='Rilascia la freccia per saltare';
+ return true;
+}
+function scrubCommit(direction,seconds){
+ if(!status.player)return false;
+ const delta=(direction==='left'?-1:1)*Math.min(7200,Math.max(10,seconds|0));
+ progress();
+ if(status.paused&&!status.bridge){fallbackSeek(delta);return true;}
+ issueCommand('seek',delta);showHud(3200);
+ return true;
+}
 function remote(key){
  if(!status.player)return false;
  if(key==='back'){previousPage();return true;}
  if(!status.started&&!status.paused){showHud(2600);return false;}
- if(key==='left'||key==='right'){issueCommand('seek',key==='right'?10:-10);showHud(3200);return true;}
+ if(key==='left'||key==='right'){scrubCommit(key,10);return true;}
  if(key==='center'){
   if(status.paused&&!status.bridge){fallbackPause();return true;}
   issueCommand('toggle');showHud(3300);return true;
@@ -458,17 +500,28 @@ function handleKey(e){
  }
  if(e.key==='Escape'||e.key==='Backspace'){
   if(e.key==='Backspace'&&e.target.matches('input'))return;
+  if(status.view==='search'&&document.activeElement?.id==='q'){
+   e.preventDefault();closeSearchKeyboard();return;
+  }
   e.preventDefault();previousPage();return;
  }
  if(!/^Arrow(Left|Right|Up|Down)$/.test(e.key))return;
  if(e.target.matches('input')&&(e.key==='ArrowLeft'||e.key==='ArrowRight'))return;
+ if(e.target.id==='q'&&e.key==='ArrowDown'){e.preventDefault();closeSearchKeyboard();return;}
  e.preventDefault();move(e.key);
 }
 window.BoboTV={
  remoteKey:remote,
+ scrubPreview:scrubPreview,
+ scrubCommit:scrubCommit,
  back:previousPage,
- state:()=>({player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.0-TV'
+ openView:render,
+ getChosen:()=>status.chosen,
+ getIndex:()=>status.index,
+ rail:rail,
+ toast:notify,
+ state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
+ version:'1.2-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
