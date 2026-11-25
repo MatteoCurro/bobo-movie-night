@@ -142,6 +142,7 @@ public final class MainActivity extends Activity {
                                 runOnUiThread(() -> {
                                     inPlayer = player;
                                     playingStarted = started;
+                                    Log.d(TAG, "Playback state player=" + player + " started=" + started);
                                 });
                             } else if ("exit".equals(kind)) {
                                 runOnUiThread(this::finish);
@@ -192,6 +193,45 @@ public final class MainActivity extends Activity {
             View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    @Override public boolean dispatchKeyEvent(KeyEvent event) {
+        // Activity-level dispatch occurs BEFORE the focused WebView/iframe,
+        // unlike onKeyDown(), which the WebView may consume first.
+        if (inPlayer) {
+            final int code = event.getKeyCode();
+            if (code == KeyEvent.KEYCODE_BACK || code == KeyEvent.KEYCODE_ESCAPE) {
+                if (event.getAction() == KeyEvent.ACTION_UP) {
+                    if (customView != null) closeCustomView();
+                    else browser.evaluateJavascript("window.BoboTV && window.BoboTV.back()", null);
+                }
+                return true;
+            }
+            String command = null;
+            switch (code) {
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+                case KeyEvent.KEYCODE_ENTER:
+                case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+                    command = "center"; break;
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    command = "left"; break;
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    command = "right"; break;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    command = "down"; break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    command = "up"; break;
+                default: break;
+            }
+            if (command != null) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
+                    Log.d(TAG, "Remote command: " + command);
+                    send(command);
+                }
+                return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     @Override public boolean onKeyDown(int code, KeyEvent event) {
