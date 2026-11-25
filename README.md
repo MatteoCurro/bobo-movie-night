@@ -6,7 +6,9 @@ Sito statico basato sul catalogo del progetto [CasaFlix](https://github.com/scag
 
 ## Funzioni
 
-- Catalogo con anteprime, sinossi, generi, valutazioni e sezioni tematiche.
+- **Home unificata**: film e serie TV nello stesso catalogo, un'unica ricerca e filtri facoltativi per tipologia, genere e anno.
+- Anteprime e locandine con tag **Film** / **Serie TV**; per le serie sono indicati il numero di stagioni e gli episodi disponibili.
+- Sinossi, generi, valutazioni e sezioni tematiche.
 - **Scheda dedicata per ogni film e serie TV**, con URL condivisibile:
   `watch.html?type=movie&id=1368337` oppure `watch.html?type=tv&id=12345`.
 - Riproduzione nella scheda tramite iframe, non nel popup di anteprima.
@@ -17,7 +19,9 @@ Sito statico basato sul catalogo del progetto [CasaFlix](https://github.com/scag
 
 ## Aggiornamento e deploy
 
-La GitHub Action `.github/workflows/sync-upstream.yml` recupera periodicamente HTML e cataloghi dall'originale e riapplica le personalizzazioni. Frequenza prevista: ogni 12 ore. Il deploy avviene su GitHub Pages in automatico.
+La GitHub Action `.github/workflows/sync-upstream.yml` recupera periodicamente HTML e cataloghi dall'originale e riapplica le personalizzazioni. Frequenza prevista: ogni 12 ore. Il deploy attuale avviene su GitHub Pages in automatico.
+
+**Privacy e Gandi**: GitHub Pages rimane pubblico finché non viene disattivato. La protezione con password server-side su Gandi non è ancora attiva: sono disponibili la [guida e il file di configurazione](deploy/gandi/README.md) e il pacchetto `bobo-gandi-static` scaricabile come artifact del workflow. Pubblicare `.htaccess` e `.htpasswd` su Gandi e disattivare GitHub Pages dopo la verifica del controllo accessi.
 
 I file specifici **`bobo-ui.js`**, **`bobo-ui.css`**, **`watch.html`**, **`bobo-watch.js`** e **`bobo-watch.css`** rimangono nel repository e non vengono sovrascritti dall'upstream.
 
