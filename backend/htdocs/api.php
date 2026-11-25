@@ -138,8 +138,96 @@ function rate_limit(string $identity): void {
     },true);
     if (!$allowed) send_json(429,['error'=>'Troppi tentativi. Riprova più tardi.']);
 }
+
+/**
+ * TV-only durable sign-in. The opaque token lives in an HttpOnly Secure cookie;
+ * only its SHA-256 hash is stored on the server. Web sessions remain unchanged.
+ * Activity automatically extends the 365-day expiry during the final 30 days.
+ */
+function tv_cookie(string $value, int $expires): void {
+    global $config;
+    setcookie('BOBOTV', $value, [
+        'expires'=>$expires, 'path'=>'/', 'secure'=>empty($config['allow_insecure_localhost']),
+        'httponly'=>true, 'samesite'=>'Lax'
+    ]);
+}
+function tv_device_parts(): ?array {
+    $value=(string)($_COOKIE['BOBOTV']??'');
+    if (!preg_match('/^([a-f0-9]{24})\.([a-f0-9]{64})$/D', $value, $match))return null;
+    return [$match[1],$match[2]];
+}
+function tv_restore(): ?array {
+    $parts=tv_device_parts();
+    if (!$parts)return null;
+    [$id,$secret]=$parts;
+    $record=state(static fn($db)=>$db['tv_devices'][$id]??null);
+    if (!is_array($record) || !hash_equals((string)($record['hash']??''),hash('sha256',$secret)) ||
+        (int)($record['expires']??0)<=time()) {
+        tv_cookie('',time()-3600);
+        return null;
+    }
+    $remaining=(int)$record['expires']-time();
+    if ($remaining < 30*86400) {
+        $expires=time()+365*86400;
+        state(static function (&$db) use ($id,$expires) {
+            if(isset($db['tv_devices'][$id]))$db['tv_devices'][$id]['expires']=$expires;
+        },true);
+        tv_cookie($id.'.'.$secret,$expires);
+    }
+    return ['user_id'=>(string)$record['user_id'],'version'=>(int)$record['version']];
+}
+function tv_forget(): void {
+    $parts=tv_device_parts();
+    if ($parts) {
+        [$id,$secret]=$parts;
+        state(static function (&$db) use ($id,$secret) {
+            $entry=$db['tv_devices'][$id]??null;
+            if(is_array($entry) && hash_equals((string)($entry['hash']??''),hash('sha256',$secret)))
+                unset($db['tv_devices'][$id]);
+        },true);
+    }
+    tv_cookie('',time()-3600);
+}
+function tv_remember(array $user): void {
+    $id=bin2hex(random_bytes(12));
+    $secret=bin2hex(random_bytes(32));
+    $expires=time()+365*86400;
+    $userId=(string)$user['id'];
+    $version=(int)($user['session_version']??1);
+    // Replace this TV's prior token rather than accumulating redundant devices.
+    tv_forget();
+    state(static function (&$db) use ($id,$secret,$expires,$userId,$version) {
+        $db['tv_devices']=array_filter($db['tv_devices']??[],
+            static fn($row)=>is_array($row) && (int)($row['expires']??0)>time());
+        foreach($db['tv_devices'] as $key=>$row)
+            if(($row['user_id']??'')===$userId && ($row['issued_at']??0)<time()-365*86400)
+                unset($db['tv_devices'][$key]);
+        $owned=[];
+        foreach($db['tv_devices'] as $key=>$row)if(($row['user_id']??'')===$userId)
+            $owned[$key]=(int)($row['issued_at']??0);
+        asort($owned);
+        while(count($owned)>=10){
+            $old=array_key_first($owned);unset($db['tv_devices'][$old],$owned[$old]);
+        }
+        $db['tv_devices'][$id]=[
+            'user_id'=>$userId,'hash'=>hash('sha256',$secret),'version'=>$version,
+            'issued_at'=>time(),'expires'=>$expires
+        ];
+    },true);
+    tv_cookie($id.'.'.$secret,$expires);
+}
+
 function authenticated(): array {
     $id = $_SESSION['user_id'] ?? null;
+    if (!is_string($id)) {
+        $device=tv_restore();
+        if ($device) {
+            session_regenerate_id(true);
+            $_SESSION['user_id']=$device['user_id'];
+            $_SESSION['session_version']=$device['version'];
+            $id=$device['user_id'];
+        }
+    }
     if (!is_string($id)) send_json(401,['error'=>'Accesso richiesto']);
     $user=state(function ($db) use ($id) {
         foreach ($db['users'] as $username=>$row) if (($row['id'] ?? '')===$id) return $row + ['username'=>$username];
@@ -490,9 +578,15 @@ if ($route==='recover' && $method==='POST') {
     send_json(200,$result);
 }
 if ($route==='logout' && $method==='POST') {
+    tv_forget();
     $_SESSION=[];session_destroy();send_json(200,['ok'=>true]);
 }
 $user=authenticated();
+if ($route==='tv/remember' && $method==='POST') {
+    request_json();
+    tv_remember($user);
+    send_json(200,['ok'=>true,'lifetime_days'=>365]);
+}
 if ($route==='me' && $method==='GET') send_json(200,[
     'username'=>$user['username'],'role'=>$user['role'],
     'email'=>$user['email']??null,'email_verified'=>(bool)($user['email_verified_at']??null),
