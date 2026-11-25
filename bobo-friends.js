@@ -199,7 +199,7 @@
       if(!data || data.schema!==1 || !Array.isArray(data.icons))return;
       for(const icon of data.icons) {
         if(!['climb','dog'].includes(icon.category) ||
-           !/^assets\/flaticon\/[a-z0-9-]+\.gif$/.test(icon.file))continue;
+           !/^assets\/flaticon\/mono\/[a-z0-9-]+\.gif$/.test(icon.file))continue;
         EASTER_ICONS[icon.category].push(icon.file);
       }
       if(EASTER_ICONS.climb.length||EASTER_ICONS.dog.length){
@@ -210,7 +210,7 @@
           credit.href='https://www.flaticon.com/';
           credit.target='_blank';
           credit.rel='noopener noreferrer';
-          credit.textContent='Animated icons designed by Magnific from Flaticon';
+          credit.textContent='Animazioni: Freepik e Magnific via Flaticon';
           footer.appendChild(credit);
         }
       }
