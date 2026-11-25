@@ -37,6 +37,7 @@ jobs:
           node --check tv-test/app/src/main/assets/vix-bridge.js
           node --check tv-test/app/src/main/assets/tv-account.js
           node --check tv-test/app/src/main/assets/tv-updates.js
+          node tv-test/tests/navigation.cjs
           php -l backend/htdocs/api.php
       - name: Android SDK
         uses: android-actions/setup-android@v3
