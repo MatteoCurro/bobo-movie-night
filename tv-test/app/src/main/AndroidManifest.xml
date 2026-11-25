@@ -4,7 +4,7 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
     <application
-        android:label="Bobo TV - Player test"
+        android:label="Bobo Movie Club TV"
         android:icon="@android:drawable/ic_media_play"
         android:banner="@drawable/tv_banner"
         android:theme="@android:style/Theme.Material.NoActionBar"
