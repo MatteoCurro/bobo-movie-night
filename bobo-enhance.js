@@ -187,7 +187,18 @@
   function message(text) {
     let toast=byId('bobo-library-notice');
     if(!toast){toast=document.createElement('div');toast.id='bobo-library-notice';toast.setAttribute('role','status');document.body.appendChild(toast);}
-    toast.textContent=text;
+    toast.replaceChildren();
+    const span=document.createElement('span');
+    span.textContent=text;
+    toast.appendChild(span);
+    const state=window.BoboCloud?.status().state;
+    if(state && state!=='member') {
+      const action=document.createElement('a');
+      action.href=window.BoboCloud.accountLink();
+      action.className='bobo-heart-login';
+      action.textContent='Accedi / Registrati';
+      toast.appendChild(action);
+    }
     toast.hidden=false;
     clearTimeout(message.timer);
     message.timer=setTimeout(()=>{toast.hidden=true;},3900);
@@ -258,6 +269,12 @@
       if(t) {
         event.preventDefault();event.stopPropagation();
         const kind=t.dataset.boboSaveType,id=t.dataset.boboSave;
+        const account=window.BoboCloud?.status();
+        if(!account || account.state!=='member') {
+          message(account?.state==='offline'?'Account non raggiungibile. Riprova tra poco.':
+            'Per salvare un titolo nei Preferiti devi creare un account o accedere.');
+          return;
+        }
         const item=currentItem(kind,id);
         if(!item){message('Informazioni sul titolo non disponibili');return;}
         const changed=lib()?.toggle(Object.assign({},item,{type:kind,tmdb_id:id}));
