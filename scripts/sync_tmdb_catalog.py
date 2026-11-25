@@ -102,9 +102,13 @@ def episode_facts(payload: dict) -> dict:
         number=row.get("episode_number")
         if not isinstance(number,int) or number<1:continue
         image=safe_image(row.get("still_path"))
-        if not image:continue
-        result[str(number)]={"image":image,"name":str(row.get("name") or "")[:160],
-                             "source":"tmdb","observed_at":DATE}
+        name=str(row.get("name") or "").strip()[:160]
+        # Episode names remain useful even when TMDB has no specific still.
+        if not image and not name:continue
+        data={"source":"tmdb","observed_at":DATE}
+        if name:data["name"]=name
+        if image:data["image"]=image
+        result[str(number)]=data
     return result
 
 def update(root:Path, fetch=api, limit:int=120) -> dict:
@@ -184,7 +188,7 @@ def update(root:Path, fetch=api, limit:int=120) -> dict:
         key="tv:"+str(tid);record=facts.setdefault(key,{})
         old_images=record.get("episode_images") or {}
         last_seen=old_images.get("observed_at", "")
-        if last_seen and (dt.date.today()-dt.date.fromisoformat(last_seen)).days < 14:continue
+        images=dict(old_images.get("seasons") or {})
         info=extra
         if info is None:
             try:info=fetch("/tv/"+str(tid),{"language":"it-IT"})
@@ -193,8 +197,14 @@ def update(root:Path, fetch=api, limit:int=120) -> dict:
                         if isinstance(s,dict) and isinstance(s.get("season_number"),int)
                         and s.get("episode_count",0)>0 and s["season_number"]>=0})
         if not numbers:continue
-        chosen=sorted(set(numbers[:1]+numbers[-1:]))
-        images=dict(old_images.get("seasons") or {})
+        # Fill unvisited seasons first, at most two per title/run.
+        # Previously first+last were repeatedly fetched and middle seasons never filled.
+        missing=[n for n in numbers if str(n) not in images]
+        if not missing and last_seen:
+            try:
+                if (dt.date.today()-dt.date.fromisoformat(last_seen)).days < 14:continue
+            except ValueError:pass
+        chosen=missing[:2] if missing else sorted(set(numbers[:1]+numbers[-1:]))
         for season in chosen:
             try:response=fetch(f"/tv/{tid}/season/{season}",{"language":"it-IT"})
             except (ValueError,urllib.error.URLError,TimeoutError):continue

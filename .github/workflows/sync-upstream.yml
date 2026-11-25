@@ -62,6 +62,7 @@ jobs:
           python3 -m py_compile scripts/build_catalog_ledger.py
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
+          test -s data/enrichment.json
           python3 -m py_compile scripts/build_poster_index.py
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 -m py_compile scripts/prepare_flaticon.py
@@ -83,6 +84,7 @@ jobs:
                   assert gif.convert('RGBA').getpixel((0,0))[3] == 0
           PY
           node tests/autonext.cjs
+          node tests/episode-cards.cjs
           node tests/library.cjs
           node tests/profiles.cjs
           python3 -m py_compile scripts/build_discovery.py
