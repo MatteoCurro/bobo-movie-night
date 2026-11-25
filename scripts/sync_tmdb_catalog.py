@@ -313,7 +313,8 @@ def update(root:Path, fetch=api, limit:int=120, episode_limit:int=80, season_bud
         if failed_requests>=12:
             print("::warning::Too many episode fetch failures; preserving queued series for retry")
             break
-    indexed_series=sum(1 for p in episodes_dir.glob("*.json") if p.is_file())
+    indexed_series=sum(1 for p in episodes_dir.glob("*.json")
+                       if p.is_file() and (load_json(p).get("episode_images") or {}).get("seasons"))
     for kind,name in (("movie","movies.json"),("tv","tv.json")):
         save_json(root/"data"/name,catalog[kind])
     save_json(root/"data"/"enrichment.json",enrichment)
