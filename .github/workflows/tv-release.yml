@@ -2,8 +2,13 @@ name: Bobo TV · Signed release
 
 on:
   push:
+    branches:
+      - tv-features-1-2
     tags:
       - 'tv-v*'
+    paths:
+      - 'tv-test/**'
+      - '.github/workflows/tv-release.yml'
 
 permissions:
   contents: write
@@ -28,9 +33,12 @@ jobs:
         shell: bash
         run: |
           expected="tv-v$(sed -n "s/.*versionName '\([^']*\)'.*/\1/p" tv-test/app/build.gradle)"
-          test "$GITHUB_REF_NAME" = "$expected" || {
-            echo "::error::Tag does not match versionName: $expected"; exit 1;
-          }
+          echo "BOBO_RELEASE_TAG=$expected" >> "$GITHUB_ENV"
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            test "$GITHUB_REF_NAME" = "$expected" || {
+              echo "::error::Tag does not match versionName: $expected"; exit 1;
+            }
+          fi
           node --check tv-test/app/src/main/assets/tv.js
           node --check tv-test/app/src/main/assets/tv-account.js
           node --check tv-test/app/src/main/assets/tv-updates.js
@@ -84,7 +92,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" Bobo-Movie-Club-TV.apk \
-            --title "Bobo Movie Club TV $GITHUB_REF_NAME" \
-            --notes "Aggiornamento TV: account persistente, preferiti più affidabili, nuova interfaccia e aggiornamenti nell'app." \
-            --verify-tag
+          if gh release view "$BOBO_RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $BOBO_RELEASE_TAG già pubblicata: nessuna duplicazione."
+            exit 0
+          fi
+          gh release create "$BOBO_RELEASE_TAG" Bobo-Movie-Club-TV.apk \
+            --target "$GITHUB_SHA" \
+            --title "Bobo Movie Club TV $BOBO_RELEASE_TAG" \
+            --notes "Aggiornamento TV: account persistente, preferiti più affidabili, nuova interfaccia e aggiornamenti nell'app."
