@@ -26,6 +26,7 @@
   let observedPlayback = false;
   let lastEventName = '';
   let lastHandledEpisode = '';
+  let awaitingNextPlayback = false;
   let lastPlayerSignalAt = 0;
   let episodeNavigation = 0;
   let theaterFallback = false;
@@ -119,6 +120,7 @@
     consecutiveEpisodes = 1;
     observedPlayback = false;
     lastHandledEpisode = '';
+    awaitingNextPlayback = false;
     updateAutoStatus();
   }
   function isBoboFullscreen() {
@@ -198,12 +200,14 @@
     playing = true;
     observedPlayback = false;
     lastEventName = '';
+    awaitingNextPlayback = Boolean(automatic);
     // Every episode gets a fresh iframe; updating only the URL in the address
     // bar does not replace the old provider player or its native fullscreen UI.
     byId('watch-play-section').hidden = false;
     byId('watch-current-episode').textContent = type === 'tv' ? episodeHeading() : item.title;
     byId('watch-previous').hidden = type !== 'tv';
     byId('watch-next').hidden = type !== 'tv';
+    byId('watch-stage-next').hidden = type !== 'tv' || !adjacent(1);
     loadNewPlayer(playerURL(Boolean(automatic)));
     updateEpisodeNavigation();
     updateAutoStatus();
@@ -252,12 +256,13 @@
     }
     if (kind === 'play' || kind === 'timeupdate') {
       observedPlayback = true;
+      awaitingNextPlayback = false;
       return;
     }
     // Vix documents ended as an authoritative completion event. Requiring
     // a prior play/timeupdate message prevented advancement on browsers that
     // delivered only the final event to the parent page.
-    if (kind !== 'ended' || type !== 'tv' || !autoNextEnabled) return;
+    if (kind !== 'ended' || type !== 'tv' || !autoNextEnabled || awaitingNextPlayback) return;
     const episodeKey = selectedSeason+':'+selectedEpisode;
     if (lastHandledEpisode === episodeKey) return;
     lastHandledEpisode = episodeKey;
@@ -405,6 +410,10 @@
     byId('watch-hide-player').addEventListener('click',pausePlayer);
     byId('watch-theater-button').addEventListener('click',toggleTheater);
     byId('watch-theater-exit').addEventListener('click',exitTheater);
+    byId('watch-stage-next').addEventListener('click',function() {
+      const next = adjacent(1);
+      if (next) selectEpisode(next.season,next.episode,true);
+    });
     document.addEventListener('fullscreenchange',updateTheaterButton);
     byId('watch-previous').addEventListener('click',function () {
       const target = adjacent(-1);
