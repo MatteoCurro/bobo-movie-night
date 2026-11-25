@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import importlib.util, json, tempfile
 from pathlib import Path
-source=Path(__file__).parent/'scripts/sync_tmdb_catalog.py'
+source=Path(__file__).resolve().parents[1]/'scripts/sync_tmdb_catalog.py'
 spec=importlib.util.spec_from_file_location('bobo_tmdb_sync',source)
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 assert m.candidate('movie',{'id':5,'title':'','release_date':'2026-11-20'}, {}, None) is None
