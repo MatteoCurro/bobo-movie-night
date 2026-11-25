@@ -3,7 +3,7 @@ name: Bobo TV · Leanback APK
 on:
   push:
     branches:
-      - tv-player-probe
+      - tv-native-ui
     paths:
       - 'tv-test/**'
       - '.github/workflows/tv-test-apk.yml'
