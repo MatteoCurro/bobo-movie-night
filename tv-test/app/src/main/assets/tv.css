@@ -134,3 +134,27 @@ nav{gap:6px}
 /* Make the long press transport hint legible while minimizing the footprint. */
 .player-hud-guide{font-size:14px}
 .player-hud-primary{font-family:var(--bobo-font-display)}
+
+/* TV 1.3 — quieter cinematic treatment, with more legible D-pad selection. */
+:root{--bg:#0c1219;--bg2:#14232c;--fg:#f5faf8;--line:#334b55}
+body{background:radial-gradient(ellipse at 67% 4%,#1b303c 0%,#101b24 39%,#0c1219 78%)}
+.topbar{background:rgba(10,17,24,.95);border-color:#334d564d;box-shadow:0 10px 24px #0003}
+.logo{font-size:34px;letter-spacing:-.055em}
+.tab{border-radius:13px;transition:background .16s,color .16s;line-height:1.2}
+.tab.active{background:#28404b;box-shadow:inset 0 0 0 1px #4b747b77;color:var(--fg)}
+.tab:focus-visible,.action:focus-visible,.season:focus-visible{outline-offset:3px!important}
+.hero{border-radius:20px;box-shadow:0 16px 35px #0005;border:1px solid #ffffff11}
+.hero:before{background:linear-gradient(90deg,rgba(9,16,22,.96) 4%,rgba(9,16,22,.83) 38%,rgba(9,16,22,.10) 93%),linear-gradient(0deg,#0c1219a8,transparent 75%)}
+.poster-art{border-radius:13px;box-shadow:0 11px 22px #0006;transition:transform .18s ease,box-shadow .18s ease}
+.poster:focus .poster-art,.poster:focus-visible .poster-art{transform:translateY(-4px);box-shadow:0 17px 29px #000b}
+.poster:focus .poster-art::after,.poster:focus-visible .poster-art::after{border-radius:13px;border-width:4px}
+.shelf{margin-bottom:34px}.shelf-head h2{font-size:27px}
+.action{border-radius:12px;min-height:54px}.action.secondary{background:#29404b}
+.account-screen{padding:35px 18px 40px}
+.account-status{display:inline-flex;align-items:center;gap:8px;color:#bbddcb;background:#1c3b36;
+ border:1px solid #416657;border-radius:999px;padding:9px 15px;margin:17px 0 4px;font-size:16px}
+.account-form{border-radius:18px;background:linear-gradient(145deg,#182b35,#111e27);box-shadow:0 15px 38px #0004}
+.tv-update-pill{flex-shrink:0;border:1px solid #a7e2a69a;border-radius:999px;background:#294735;
+ color:#d9ffd5;font-size:15px;font-weight:800;padding:12px 17px;white-space:nowrap}
+.tv-update-pill:focus-visible{outline:4px solid var(--green);outline-offset:4px}
+@media(max-width:1300px){.tv-update-pill{padding:9px 11px;font-size:13px}}
