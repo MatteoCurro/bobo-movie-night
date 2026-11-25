@@ -27,9 +27,17 @@ jobs:
             echo "::notice::BOBO_NEWSLETTER_SECRET not configured. Weekly email remains disabled."
             exit 0
           fi
-          curl --fail-with-body --silent --show-error \
-            --connect-timeout 8 --max-time 120 \
-            -X POST \
-            -H "X-Bobo-Newsletter-Secret: ${BOBO_NEWSLETTER_SECRET}" \
-            -H "Accept: application/json" \
-            "https://movieaccount.curromatteo.it/api.php?route=jobs/newsletter"
+          # Small HTTP batches keep each PHP execution below shared-host timeouts.
+          # At most 40 batches x 2 emails = 80 Resend sends/day (Free cap: 100).
+          for batch in $(seq 1 40); do
+            result=$(curl --fail-with-body --silent --show-error \
+              --connect-timeout 8 --max-time 45 \
+              -X POST \
+              -H "X-Bobo-Newsletter-Secret: ${BOBO_NEWSLETTER_SECRET}" \
+              -H "Accept: application/json" \
+              "https://movieaccount.curromatteo.it/api.php?route=jobs/newsletter")
+            read -r sent failed < <(python3 -c 'import json,sys; d=json.load(sys.stdin); print(int(d.get("sent",0)),int(d.get("failed",0)))' <<< "$result")
+            echo "Batch ${batch}: ${sent} email accettate, ${failed} errori."
+            if [ "${failed}" -gt 0 ]; then exit 1; fi
+            if [ "${sent}" -eq 0 ]; then break; fi
+          done
