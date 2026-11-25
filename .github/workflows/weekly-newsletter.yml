@@ -1,8 +1,9 @@
 name: "Bobo · Newsletter settimanale"
 on:
   schedule:
-    # Sundays 08:00 UTC = 09:00 CET / 10:00 CEST
-    - cron: "0 8 * * 0"
+    # Friday 18:00 Europe/Rome = 16:00 UTC (summer), 17:00 UTC (winter).
+    # Run both UTC hours; the Europe/Rome guard below permits one delivery.
+    - cron: "0 16,17 * * 5"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +18,18 @@ jobs:
     name: Send opted-in newsletter through Gandi + Resend
     runs-on: ubuntu-latest
     steps:
+      - name: Respect Friday 18:00 Europe/Rome (manual dispatch remains available)
+        id: schedule_gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(TZ=Europe/Rome date +%u-%H)" = "5-18" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Not 18:00 on Friday in Europe/Rome; skip."
+          fi
       - name: Send only if newsletter secret was configured
+        if: steps.schedule_gate.outputs.enabled == 'true'
         env:
           BOBO_NEWSLETTER_SECRET: ${{ secrets.BOBO_NEWSLETTER_SECRET }}
         shell: bash
