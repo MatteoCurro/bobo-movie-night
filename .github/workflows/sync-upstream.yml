@@ -1,4 +1,4 @@
-name: Sync upstream CasaFlix
+name: Bobo · Catalogo autonomo
 
 on:
   workflow_dispatch:
@@ -25,84 +25,13 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Pull latest CasaFlix and apply branding
+      - name: Incrementally update the Bobo-owned catalog from TMDB
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN || secrets.TMDB_API_KEY }}
         shell: bash
         run: |
           set -euo pipefail
-          if git clone --quiet --depth=1 --branch main https://github.com/scageto/CasaFlix.git /tmp/casaflix; then
-            install -m 0644 /tmp/casaflix/index.html ./index.html
-            mkdir -p data
-            python3 scripts/merge_upstream_catalog.py --kind movie --current ./data/movies.json --upstream /tmp/casaflix/data/movies.json
-            python3 scripts/merge_upstream_catalog.py --kind tv --current ./data/tv.json --upstream /tmp/casaflix/data/tv.json
-            python3 - <<'PY'
-          from pathlib import Path
-          page = Path("index.html")
-          content = page.read_text(encoding="utf-8-sig")
-          if "<title>CasaFlix</title>" not in content or "🎬 CasaFlix</div>" not in content:
-              raise SystemExit("Upstream branding changed; review required")
-          content = content.replace("<title>CasaFlix</title>", "<title>Bobo Movie Night</title>")
-          content = content.replace("🎬 CasaFlix</div>", "🎬 Bobo Movie Night</div>")
-          # The previous `cf_provider` preference is intentionally left untouched.
-          # Use a new preference key so existing Vix selections don't force a blocked default.
-          old_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('cf_provider'))
-            ? localStorage.getItem('cf_provider') : 'vix';"""
-          new_provider = """let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v3'))
-            ? localStorage.getItem('bobo_provider_v3') : 'vix';"""
-          if old_provider not in content:
-              raise SystemExit("Upstream provider preference changed; review required")
-          content = content.replace(old_provider, new_provider)
-          content = content.replace("localStorage.setItem('cf_provider', p)", "localStorage.setItem('bobo_provider_v3', p)")
-          # Vix explicitly rejects embeds that suppress the origin Referer.
-          if 'referrerpolicy="no-referrer"' not in content:
-              raise SystemExit("Upstream iframe referrer policy changed; review required")
-          content = content.replace('referrerpolicy="no-referrer"', 'referrerpolicy="origin"')
-          help_button = '<button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>'
-          if help_button not in content:
-              raise SystemExit("Upstream player controls changed; review required")
-          content = content.replace(help_button + '\n    </div>', help_button + '\n    </div>\n    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>')
-          content = content.replace('</style>', '  .player-help { color: #bbb; font-size: 12px; padding: 0 16px 14px; line-height: 1.45; }\n  </style>')
-          # Navigation initiated by the site must not send the site's Referer.
-          direct_open = "window.open(playerURL(playerState.currentProv, playerState), '_blank');"
-          if direct_open not in content:
-              raise SystemExit("Upstream direct-open handler changed; review required")
-          content = content.replace(direct_open, "window.open(playerURL(playerState.currentProv, playerState), '_blank', 'noopener,noreferrer');")
-          player_button = '<button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>'
-          content = content.replace(player_button, player_button + '\n      <button class="btn btn-ghost" onclick="copyPlayerLink()" type="button">⧉ Copia link</button>')
-          copy_handler = """async function copyPlayerLink() {
-            if (!playerState) return;
-            const url = playerURL(playerState.currentProv, playerState);
-            try {
-              await navigator.clipboard.writeText(url);
-              alert('Link copiato. Incollalo direttamente nella barra degli indirizzi del browser per verificare il blocco.');
-            } catch (err) {
-              window.prompt('Copia questo URL e incollalo nella barra degli indirizzi:', url);
-            }
-          }
-          """
-          content = content.replace("function openInNewTab() {", copy_handler + "\nfunction openInNewTab() {")
-          # Keep Bobo-specific UI separate so upstream refreshes cannot erase it.
-          if "</head>" not in content or "</body>" not in content:
-              raise SystemExit("Upstream HTML layout changed; review required")
-          # Avoid sharing the site address with external services by default;
-          # the Vix iframe explicitly overrides this with its required 'origin' policy.
-          content = content.replace("</head>", '  <meta name="referrer" content="no-referrer">\n</head>', 1)
-          # While GitHub Pages is public, avoid normal search-engine indexing.
-          # This is NOT authentication; the Gandi password gate is still required.
-          content = content.replace("</head>", '  <meta name="robots" content="noindex,nofollow,noarchive">\n</head>', 1)
-          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
-          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-retro.css">\n</head>', 1)
-          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-polish.css">\n</head>', 1)
-          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-cloud.css">\n</head>', 1)
-          content = content.replace("</head>", '  <script defer src="bobo-friends.js"></script>\n</head>', 1)
-          content = content.replace("</body>", '  <script defer src="bobo-library.js"></script>\n  <script defer src="bobo-cloud.js"></script>\n  <script defer src="bobo-ui.js"></script>\n  <script defer src="bobo-enhance.js"></script>\n</body>', 1)
-          page.write_text(content, encoding="utf-8")
-          PY
-          else
-            echo "::warning::CasaFlix upstream unavailable. Keep last validated Bobo catalog and continue deployment."
-            test -s index.html
-            test -s data/movies.json
-            test -s data/tv.json
-          fi
+          python3 scripts/sync_tmdb_catalog.py
           touch .nojekyll
 
       - name: Refresh streaming discovery (Italy)
@@ -131,8 +60,8 @@ jobs:
           node --check bobo-cloud.js
           node --check bobo-favorites.js
           python3 -m py_compile scripts/build_catalog_ledger.py
-          python3 -m py_compile scripts/merge_upstream_catalog.py
-          python3 tests/incremental_catalog.py
+          python3 -m py_compile scripts/sync_tmdb_catalog.py
+          python3 tests/sync_tmdb_catalog.py
           python3 -m py_compile scripts/build_poster_index.py
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 -m py_compile scripts/prepare_flaticon.py
@@ -198,6 +127,10 @@ jobs:
           assert posters['schema']==1
           assert all(isinstance(posters['items'][t],dict) for t in ('movie','tv'))
           assert sum(len(x) for x in posters['items'].values())>100
+          overlay=json.loads(Path('data/enrichment.json').read_text(encoding='utf-8'))
+          assert overlay['schema']==1 and isinstance(overlay['items'],dict)
+          status=json.loads(Path('data/catalog-status.json').read_text(encoding='utf-8'))
+          assert status['schema']==1
           discovery = json.loads(Path('data/discovery.json').read_text(encoding='utf-8'))
           assert discovery['schema'] == 1 and discovery['region'] == 'IT'
           assert isinstance(discovery['platforms'], list)
@@ -211,7 +144,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/newsletter.json assets/flaticon/ .nojekyll
+          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
