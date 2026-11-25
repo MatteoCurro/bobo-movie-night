@@ -99,6 +99,7 @@ jobs:
           node tests/autonext.cjs
           node tests/episode-cards.cjs
           node tests/catalog-hover.cjs
+          node tests/discover-integration.cjs
           node tests/hero-images.cjs
           node tests/library.cjs
           node tests/profiles.cjs
