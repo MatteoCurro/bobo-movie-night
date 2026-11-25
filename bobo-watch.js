@@ -97,7 +97,7 @@
   }
   function episodeTitle(s,e) {
     const name=episodeStills[String(s)]?.[String(e)]?.name;
-    return typeof name==='string' ? name.trim().slice(0,160) : '';
+    return typeof name==='string' ? name.trim() : '';
   }
   function episodeHeading() {
     const location=selectedSeason === 0 ? 'Speciali · Episodio '+selectedEpisode :
