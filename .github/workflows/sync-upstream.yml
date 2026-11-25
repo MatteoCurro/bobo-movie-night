@@ -93,7 +93,7 @@ jobs:
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-retro.css">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-polish.css">\n</head>', 1)
           content = content.replace("</head>", '  <script defer src="bobo-friends.js"></script>\n</head>', 1)
-          content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
+          content = content.replace("</body>", '  <script defer src="bobo-library.js"></script>\n  <script defer src="bobo-ui.js"></script>\n  <script defer src="bobo-enhance.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
           touch .nojekyll
@@ -107,6 +107,7 @@ jobs:
           python3 scripts/build_discovery.py
           python3 scripts/build_streaming_feed.py
           python3 scripts/vendor_silhouettes.py
+          python3 scripts/build_catalog_ledger.py
 
       - name: Commit only if changed
         shell: bash
@@ -114,7 +115,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/movies.json data/tv.json data/discovery.json assets/bobo-climb.svg assets/bobo-faiva.svg .nojekyll
+          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json assets/bobo-climb.svg assets/bobo-faiva.svg .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -130,6 +131,9 @@ jobs:
           node --check bobo-ui.js
           node --check bobo-watch.js
           node --check bobo-friends.js
+          node --check bobo-library.js
+          node --check bobo-enhance.js
+          python3 -m py_compile scripts/build_catalog_ledger.py
           python3 - <<'PY'
           from pathlib import Path
           import xml.etree.ElementTree as ET
@@ -147,6 +151,10 @@ jobs:
           test -s bobo-polish.css
           grep -q 'bobo-friends.js' index.html
           grep -q 'bobo-friends.js' watch.html
+          grep -q 'bobo-library.js' index.html
+          grep -q 'bobo-enhance.js' index.html
+          grep -q 'bobo-library.js' watch.html
+          grep -q 'bobo-enhance.js' watch.html
           grep -q 'bobo-retro.css' watch.html
           test -s bobo-retro.css
           test -s bobo-friends.js
@@ -175,8 +183,8 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json data/discovery.json _site/data/
-          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js _site/
+          cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json _site/data/
+          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp assets/bobo-climb.svg assets/bobo-faiva.svg _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css _site/
