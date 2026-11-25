@@ -115,9 +115,92 @@
     });
   }
 
+
+  const SMALL_SIGNS = {
+    ridge: {
+      label: 'A due passi dalla cima',
+      message: 'Ancora un tiro e poi scegliamo il film.',
+      svg: '<path d="m2 18 6-9 4 5 3-4 7 8"/><path d="m8 9 1.7 2.6L12 14"/>'
+    },
+    faiva: {
+      label: 'Faiva sta osservando',
+      message: 'Faiva dice: focus. Poi popcorn.',
+      svg: '<path d="m6 7-3-3v9l4 7h10l4-7V4l-3 3-4h-4L6 7Z"/><path d="M9 12h.01M15 12h.01"/><path d="m10 16 2 1 2-1"/>'
+    },
+    carabiner: {
+      label: 'Controllo del moschettone',
+      message: 'Check del nodo completato. Premi play.',
+      svg: '<path d="M15 3a5 5 0 0 0-5 0L5.4 7.5a6 6 0 0 0 0 8.5l2.6 2.6a5 5 0 0 0 7 0l2.6-2.6a6 6 0 0 0 0-8.5L15 5"/><path d="m16.7 6.5-5.4 5.4"/>'
+    },
+    whistle: {
+      label: 'Un piccolo richiamo',
+      message: 'Due fischi, uno stop, e il film comincia.',
+      svg: '<circle cx="8" cy="15" r="4"/><path d="m12 14 5-5h4v5h-9"/><path d="M16 9V6"/>'
+    }
+  };
+
+  let eggToastTimer;
+  function smallEasterEggs() {
+    const positions = [
+      ['.bobo-feature .bobo-eyebrow','ridge'],
+      ['.bobo-filter-dock-head','whistle'],
+      ['.hero-content .eyebrow','faiva'],
+      ['.bobo-shelf[aria-label="Voglia di anni 2000?"] .bobo-shelf-head h2','carabiner'],
+      ['.bobo-shelf[aria-label="Film da scoprire"] .bobo-shelf-head h2','faiva']
+    ];
+    positions.forEach(function(entry) {
+      const host = document.querySelector(entry[0]);
+      if (!host || host.querySelector('.bobo-tiny-egg')) return;
+      const sign = SMALL_SIGNS[entry[1]];
+      const el = document.createElement('button');
+      el.className = 'bobo-tiny-egg';
+      el.type = 'button';
+      el.dataset.boboSign = entry[1];
+      el.title = sign.label;
+      el.setAttribute('aria-label',sign.label);
+      el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">'+sign.svg+'</svg>';
+      host.appendChild(el);
+    });
+  }
+  function showEasterMessage(message) {
+    let toast = document.querySelector('.bobo-easter-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'bobo-easter-toast';
+      toast.setAttribute('role','status');
+      document.body.appendChild(toast);
+    }
+    toast.hidden = false;
+    toast.textContent = message;
+    clearTimeout(eggToastTimer);
+    eggToastTimer = setTimeout(function() { toast.hidden = true; },5500);
+  }
+  function installSmallEasterEggs() {
+    document.addEventListener('click',function(event) {
+      const button = event.target.closest && event.target.closest('[data-bobo-sign]');
+      if (!button) return;
+      const sign = SMALL_SIGNS[button.dataset.boboSign];
+      if (sign) showEasterMessage(sign.message);
+    });
+    smallEasterEggs();
+    const main = document.querySelector('main');
+    if (!main || typeof MutationObserver !== 'function') return;
+    let queued = false;
+    const observer = new MutationObserver(function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function() {
+        queued = false;
+        smallEasterEggs();
+      });
+    });
+    observer.observe(main,{ childList:true,subtree:true });
+  }
+
   function start() {
     wordmark();
     footer();
+    installSmallEasterEggs();
     if (storedAccess()) document.documentElement.classList.add('bobo-unlocked');
     else welcomeQuestion();
   }
