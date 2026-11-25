@@ -313,7 +313,7 @@
       '<label class="bobo-auto-option"><input id="bobo-settings-auto-next" type="checkbox"><span>Passa al prossimo episodio quando Vix segnala la fine del video</span></label>'+
       '<label for="bobo-settings-auto-limit">Numero massimo di episodi consecutivi, compreso il primo</label>'+
       '<select id="bobo-settings-auto-limit"><option value="2">2 episodi</option><option value="3">3 episodi</option><option value="4">4 episodi</option><option value="5">5 episodi</option></select>'+
-      '<p>Funziona nel player incorporato Vix. Disattivato per impostazione predefinita.</p></div>'+
+      '<p>Funziona nel player incorporato Vix. Attivo per impostazione predefinita.</p></div>'+
       '</div></div>');
     button.addEventListener('click',openSettings);
     const modal = document.getElementById('bobo-settings');
