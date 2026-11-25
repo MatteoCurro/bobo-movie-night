@@ -58,3 +58,7 @@ section,button{scroll-margin-top:112px;scroll-margin-bottom:55px}
 #toast.show{opacity:1}
 @media(max-width:1050px){.topbar{padding:0 32px;gap:18px}.tab{padding:11px}.top-hint{display:none}main{padding:28px 35px}.results{grid-template-columns:repeat(4,1fr)}.episodes{grid-template-columns:repeat(3,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* TV artwork already contains the title: only the focused title is shown in the header. */
+.poster-title,.poster-sub{display:none!important}
+.top-hint{max-width:330px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 16px/1.3 system-ui,sans-serif;letter-spacing:0;color:#cfe8e4}
