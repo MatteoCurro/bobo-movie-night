@@ -1,205 +1,78 @@
 {
-  "disclaimer": "Provider lists are monthly additions reported for Italy; weekly section is separate.",
-  "platforms": [
+  "disclaimer": "Selezioni di qualità dal catalogo Bobo; non sono classifiche delle nuove aggiunte alle piattaforme.",
+  "platforms": [],
+  "schema": 1,
+  "sections": [
     {
-      "id": "netflix",
+      "id": "hidden",
       "items": [
         {
-          "poster": "https://image.tmdb.org/t/p/w342/5bsXFYXOlbzHBpl9mPaxmOPIQJ9.jpg",
-          "title": "Guarding Stars",
-          "tmdb_id": 1551025,
+          "overview": "Federico, un giovane ragazzo di 17 anni studia, lavora e si allena duramente per realizzare il suo sogno: diventare un ciclista professionista. Vive con i suoi genitori che vivono in una situazione economica drammatica a",
+          "poster": "https://image.tmdb.org/t/p/w342/6SC962ycN3lN7KbY5ehWb7PXOeS.jpg",
+          "title": "Stessi battiti",
+          "tmdb_id": 1015977,
           "type": "movie",
-          "year": 2026
+          "year": 2022
         },
         {
-          "poster": "https://image.tmdb.org/t/p/w342/szQ0FWlldWrbgq5t5HNlEWqnPgc.jpg",
-          "title": "Never Surrender",
-          "tmdb_id": 1616687,
+          "overview": "Questo documentario è incentrato su un pastore sardo, Francesco Mattu detto “Kiodo”. Egli, partito dalla sua terra, lavora adesso in Val Tramontina, in Friuli-Venezia-Giulia. Francesco evoca i ricordi del proprio passato",
+          "poster": "https://image.tmdb.org/t/p/w342/jqQxRceEmMeEhHn4B3RdNr6ErQG.jpg",
+          "title": "Il profumo del mirto",
+          "tmdb_id": 871722,
           "type": "movie",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/9oexlNHpUaJIaXhwKKsxkcbytPF.jpg",
-          "title": "The Body",
-          "tmdb_id": 291507,
-          "type": "tv",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/gXEMhP3LSrVNQ7iV6SPV4sqHKjU.jpg",
-          "title": "Steps",
-          "tmdb_id": 1595124,
-          "type": "movie",
-          "year": 2026
+          "year": 2021
         }
       ],
-      "label": "Netflix",
-      "period": "month"
+      "title": "Gemme nascoste"
     },
     {
-      "id": "prime",
+      "id": "mini",
       "items": [
         {
-          "poster": "https://image.tmdb.org/t/p/w342/bk2Bh5mD3uvyKDaXKTAOGfoCTq5.jpg",
-          "title": "Hunger Games - La ballata dell'usignolo e del serpente",
-          "tmdb_id": 695721,
-          "type": "movie",
-          "year": 2023
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/1EgU1QFb9TXhMusCDHgwadkI73y.jpg",
-          "title": "Scontrarsi a Natale",
-          "tmdb_id": 1611767,
-          "type": "movie",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/dMaxXSH6FIlBloyCLjDjhtdMQbE.jpg",
-          "title": "Madden",
-          "tmdb_id": 1131943,
-          "type": "movie",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/bC42ksckQpjfck2BZ5McaEDN4pk.jpg",
-          "title": "Masters of Sex",
-          "tmdb_id": 58937,
+          "overview": "Il viaggio della troupe di Avamposti al seguito dei Nuclei Operativi dell’Arma dei Carabinieri, per documentare le operazioni in cui sono impegnati gli uomini e le donne dell’Arma che difendono la legalità delle principa",
+          "poster": "https://image.tmdb.org/t/p/w342/6TflJ2DvLpmWm3ohjXO6TCrg82P.jpg",
+          "title": "Avamposti - Nucleo operativo",
+          "tmdb_id": 255053,
           "type": "tv",
-          "year": 2013
+          "year": 2022
+        },
+        {
+          "overview": "I quartieri più degradati italiani racontati attraverso il lavoro dei Carabinieri. Questo è Avamposti - Uomini in prima linea, serie di quattro puntate in cui il focus sarà centrato sulla figura dei Carabinieri in perife",
+          "poster": "https://image.tmdb.org/t/p/w342/z38qMqjC8IGLETfsX4YxcIrDiQR.jpg",
+          "title": "Avamposti - Uomini in prima linea",
+          "tmdb_id": 158340,
+          "type": "tv",
+          "year": 2022
         }
       ],
-      "label": "Prime Video",
-      "period": "month"
-    },
-    {
-      "id": "disney",
-      "items": [
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/iNOXveSqB5tUTmGKxp5flQuQ72f.jpg",
-          "title": "R.J. Decker",
-          "tmdb_id": 302074,
-          "type": "tv",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/oSQwD0JCeqezgmVj9UtxDAn1B2a.jpg",
-          "title": "Alien: Pianeta Terra",
-          "tmdb_id": 157239,
-          "type": "tv",
-          "year": 2025
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/hpKIZO05WwgAWQlv2VcpqZtg6ap.jpg",
-          "title": "Perfect Crown",
-          "tmdb_id": 278573,
-          "type": "tv",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/fRY6P6lWpwyI97WpKIf8mfaWFkZ.jpg",
-          "title": "Coven Academy: l’Accademia delle Streghe",
-          "tmdb_id": 298505,
-          "type": "tv",
-          "year": 2026
-        }
-      ],
-      "label": "Disney+",
-      "period": "month"
-    },
-    {
-      "id": "apple",
-      "items": [
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/cuk89BAhoyDKCByq7tyJHv5Wa8W.jpg",
-          "title": "12 12 12",
-          "tmdb_id": 254630,
-          "type": "tv",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/vb1gfEOuRZPlWp5ymAoxQ2G1wkx.jpg",
-          "title": "Hijack",
-          "tmdb_id": 198102,
-          "type": "tv",
-          "year": 2023
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
-          "title": "Being Heumann",
-          "tmdb_id": 1050981,
-          "type": "movie",
-          "year": 2026
-        },
-        {
-          "poster": "https://image.tmdb.org/t/p/w342/39pC4gr8GTD7dDcuoGLbbyZSyTk.jpg",
-          "title": "Small Prophets",
-          "tmdb_id": 312693,
-          "type": "tv",
-          "year": 2026
-        }
-      ],
-      "label": "Apple TV+",
-      "period": "month"
+      "title": "La serie da recuperare"
     }
   ],
-  "schema": 1,
-  "updated_at": "2026-11-25T18:32:57+00:00",
+  "updated_at": "2026-11-25T19:10:51+00:00",
   "weekly": [
     {
-      "poster": "https://image.tmdb.org/t/p/w342/fxLooktejTUqCvZl9ARhKMFNpbf.jpg",
-      "title": "I Simpson",
-      "tmdb_id": 456,
-      "type": "tv",
-      "year": 1989
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
-      "title": "The Rookie",
-      "tmdb_id": 79744,
-      "type": "tv",
-      "year": 2018
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/5bsXFYXOlbzHBpl9mPaxmOPIQJ9.jpg",
-      "title": "Guarding Stars",
-      "tmdb_id": 1551025,
-      "type": "movie",
-      "year": 2026
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/gXEMhP3LSrVNQ7iV6SPV4sqHKjU.jpg",
-      "title": "Steps",
-      "tmdb_id": 1595124,
-      "type": "movie",
-      "year": 2026
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/1EgU1QFb9TXhMusCDHgwadkI73y.jpg",
-      "title": "Scontrarsi a Natale",
-      "tmdb_id": 1611767,
-      "type": "movie",
-      "year": 2026
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/dMaxXSH6FIlBloyCLjDjhtdMQbE.jpg",
-      "title": "Madden",
-      "tmdb_id": 1131943,
-      "type": "movie",
-      "year": 2026
-    },
-    {
-      "poster": "https://image.tmdb.org/t/p/w342/9mmOjx2bWuLd9NnVpC71OUEXBym.jpg",
-      "title": "The Blue Road",
-      "tmdb_id": 300523,
+      "overview": "Ambientata in un futuro prossimo immaginario, la serie simula la possibile risposta del governo britannico a un attacco russo sul suolo del Regno Unito. Esponenti politici, vertici militari e funzionari dell'intelligence",
+      "poster": "https://image.tmdb.org/t/p/w342/hQMau6PTLOHBJ70f8J0GK9rGS12.jpg",
+      "title": "The Wargame",
+      "tmdb_id": 330800,
       "type": "tv",
       "year": 2026
     },
     {
-      "poster": "https://image.tmdb.org/t/p/w342/hOomPc8x2lDxWRS8ltDE0gHUK7z.jpg",
-      "title": "Lo show di Patrick Stella",
-      "tmdb_id": 126824,
-      "type": "tv",
-      "year": 2021
+      "overview": "Dodo, uno spiantato cameriere di hotel, ha l’occasione di realizzare il suo sogno: incontrare la Principessa Monique du Sciardò. Con l’aiuto del suo amico Lello, e della fedele amica della Principessa, la Marchesa Du Sci",
+      "poster": "https://image.tmdb.org/t/p/w342/bX4y33NtLfE93khcvRKAqDNVWnW.jpg",
+      "title": "Dodo e la principessa",
+      "tmdb_id": 1718300,
+      "type": "movie",
+      "year": 2026
+    },
+    {
+      "overview": "Portrait of an anonymous overdose hotline where people call before using, and volunteers stay on the line, racing against time, forging collective hope amid addiction.",
+      "poster": "https://image.tmdb.org/t/p/w342/qTgC6JjpEkaWFYR3dSMBxSITGJD.jpg",
+      "title": "The Hotline",
+      "tmdb_id": 1627922,
+      "type": "movie",
+      "year": 2026
     }
   ]
 }
