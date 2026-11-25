@@ -64,7 +64,10 @@
         <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
       </div>
       <p id="watch-auto-next-status" class="player-caption" aria-live="polite" hidden></p>
-      <p id="watch-event-diagnostic" class="player-caption" aria-live="polite" hidden></p>
+      <details id="watch-player-diagnostics" class="bobo-player-diagnostics">
+        <summary>Diagnostica avanzamento episodi</summary>
+        <p id="watch-event-diagnostic" class="player-caption" aria-live="polite">Nessun segnale ricevuto dal player in questa sessione.</p>
+      </details>
       <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. L'avanzamento automatico dipende dall'evento di fine video comunicato da Vix.</p>
       <p class="player-caption">Usa <strong>Schermo intero Bobo</strong> per mantenere la modalità cinema tra gli episodi. Il fullscreen interno a Vix e i popup del player sono limitati tramite sandbox; su alcuni dispositivi questo può incidere sulla compatibilità. Se la riproduzione non parte, usa il collegamento esterno.</p>
     </section>
