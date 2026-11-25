@@ -65,7 +65,7 @@
     if(!/^[0-9]{1,12}$/.test(id))return null;
     const title=String(x.title||'').trim().slice(0,180);
     if(!title)return null;
-    const img=s=>/^https:\/\/image\.tmdb\.org\//.test(s||'')?String(s).slice(0,350):'';
+    const img=s=>{const v=String(s||'');return /^\/[a-zA-Z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$/.test(v)?'https://image.tmdb.org/t/p/w342'+v:/^https:\/\/image\.tmdb\.org\/t\/p\//.test(v)?v.slice(0,350):'';};
     return {
       type:x.type,tmdb_id:Number(id),title,year:Number(x.year)||null,
       poster:img(x.poster),backdrop:img(x.backdrop),
