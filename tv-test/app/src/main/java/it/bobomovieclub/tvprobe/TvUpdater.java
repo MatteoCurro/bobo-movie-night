@@ -113,7 +113,7 @@ final class TvUpdater {
                 JSONObject json=new JSONObject(new String(output.toByteArray(),StandardCharsets.UTF_8));
                 String tag=json.optString("tag_name");
                 int offered=versionCode(tag);
-                if(offered<=BuildConfig.VERSION_CODE){
+                if(offered<=installedVersion()){
                     this.release=null;status("latest","Versione aggiornata","",interactive);
                     return;
                 }
@@ -138,6 +138,14 @@ final class TvUpdater {
                 status("error","Verifica aggiornamenti non riuscita","",interactive);
             }finally{checking.set(false);}
         });
+    }
+    private int installedVersion() {
+        try {
+            android.content.pm.PackageInfo info =
+                activity.getPackageManager().getPackageInfo(activity.getPackageName(),0);
+            if (Build.VERSION.SDK_INT>=28) return (int)info.getLongVersionCode();
+            return info.versionCode;
+        } catch (PackageManager.NameNotFoundException e) { return 0; }
     }
     private static int versionCode(String tag){
         Matcher matcher=TAG.matcher(tag);
