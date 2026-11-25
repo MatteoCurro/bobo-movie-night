@@ -72,8 +72,10 @@
     return items;
   }
   function poster(item){
-    const img=/^https:\/\/image\.tmdb\.org\//.test(item.poster||'')
-      ?'<img src="'+escape(item.poster)+'" loading="lazy" decoding="async" alt="">':'<span class="bobo-favorites-poster-fallback">BOBO</span>';
+    const posterPath=String(item.poster||'');
+    const posterUrl=/^\/[a-zA-Z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$/.test(posterPath)?'https://image.tmdb.org/t/p/w342'+posterPath:posterPath;
+    const img=/^https:\/\/image\.tmdb\.org\//.test(posterUrl)
+      ?'<img src="'+escape(posterUrl)+'" loading="lazy" decoding="async" alt="">':'<span class="bobo-favorites-poster-fallback">BOBO</span>';
     const available=catalog.has(k(item))||!item.title;
     const href='watch.html?type='+encodeURIComponent(item.type)+'&id='+encodeURIComponent(item.tmdb_id);
     return '<article class="bobo-favorites-card">'+
