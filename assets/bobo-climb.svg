@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 230" role="img" aria-label="Piccolo arrampicatore che raggiunge una presa in palestra">
+  <title>Bobo Beta 07 — un piccolo boulder</title>
+  <style>
+    .reacher{transform-origin:164px 133px;animation:step 10s ease-in-out infinite}
+    .right-forearm{transform-origin:187px 106px;animation:reach 10s ease-in-out infinite}
+    .spark{animation:blink 10s ease-in-out infinite}
+    @keyframes step{0%,12%,100%{transform:translate(0px,7px) rotate(-2deg)}38%,52%{transform:translate(2px,-3px) rotate(1deg)}70%,83%{transform:translate(5px,-13px) rotate(2deg)}}
+    @keyframes reach{0%,18%,100%{transform:rotate(8deg)}40%,70%{transform:rotate(-7deg)}}
+    @keyframes blink{0%,33%,80%,100%{opacity:0}43%,69%{opacity:1}}
+    @media(prefers-reduced-motion: reduce){.reacher,.right-forearm,.spark{animation:none!important}}
+  </style>
+  <rect x="1.5" y="1.5" width="317" height="227" rx="16" fill="#10222d" fill-opacity=".93" stroke="#45616a" stroke-opacity=".7" stroke-width="2"/>
+  <path d="M22 192 62 32 256 22 293 190Z" fill="#1b3440" stroke="#4d6971" stroke-width="1.5"/>
+  <path d="M62 32 162 48 256 22M22 192 142 178 293 190M162 48 142 178" fill="none" stroke="#577381" stroke-width="1" opacity=".45"/>
+  <g fill="#7eabb0" opacity=".55">
+    <circle cx="82" cy="58" r="1.8"/><circle cx="162" cy="65" r="1.8"/><circle cx="240" cy="56" r="1.8"/>
+    <circle cx="62" cy="118" r="1.8"/><circle cx="118" cy="101" r="1.8"/><circle cx="218" cy="133" r="1.8"/>
+    <circle cx="76" cy="172" r="1.8"/><circle cx="190" cy="173" r="1.8"/><circle cx="261" cy="173" r="1.8"/>
+  </g>
+  <!-- Irregular climbing holds have recognizable volume, shadows and chalk edges. -->
+  <g stroke="#0a1b24" stroke-width="2" stroke-linejoin="round">
+    <path d="m87 65 14-9 19 5 6 13-14 7-18-2Z" fill="#e7b28f"/><path d="m92 65 11-4 12 2" stroke="#fff1d9" stroke-width="2" fill="none"/>
+    <path d="m214 57 10-11 18 3 6 14-16 8-17-4Z" fill="#a5d5cd"/><path d="m220 57 9-5 9 2" stroke="#e9fff9" stroke-width="2" fill="none"/>
+    <path d="m53 134 9-10 21 6 3 14-19 8-15-8Z" fill="#90b4c5"/><path d="m59 135 10-4 11 4" stroke="#c9e1e8" stroke-width="2" fill="none"/>
+    <path d="m238 139 17-7 12 9-4 15-23 2-7-10Z" fill="#e7b28f"/><path d="m244 143 10-3 6 5" stroke="#ffead9" stroke-width="2" fill="none"/>
+    <path d="m116 181 17-10 16 4 4 13-14 7-23-4Z" fill="#a7d7cf"/><path d="m122 183 14-6 9 3" stroke="#e8fff7" stroke-width="2" fill="none"/>
+    <path d="m205 190 16-7 14 7-5 15-22 2-7-8Z" fill="#a0b9cd"/>
+  </g>
+  <path d="M168 21 C162 50 177 75 162 101 S144 168 151 211" stroke="#f0b18b" stroke-width="2.3" stroke-dasharray="6 5" fill="none" opacity=".8"/>
+  <!-- Human silhouette: helmet, face, clothes, harness, chalkbag, hands and feet. -->
+  <g class="reacher">
+    <path d="m139 148-12 30-17 11 9 8 28-10 18-33" fill="#547e8c" stroke="#0a1920" stroke-width="2"/>
+    <path d="m164 151 18 30 23 9 10-7-25-17-10-28" fill="#628b96" stroke="#0a1920" stroke-width="2"/>
+    <path d="m107 187 17 0 3 8-21 7-12-3Z" fill="#a6d8d0" stroke="#0a1920" stroke-width="2"/>
+    <path d="m199 182 14-5 12 11-9 9-21-8Z" fill="#a6d8d0" stroke="#0a1920" stroke-width="2"/>
+    <path d="m140 106-9 23 8 28 29 4 19-25-7-28-23-8Z" fill="#abd8d1" stroke="#0a1920" stroke-width="2.5"/>
+    <path d="m140 116 20 9 21-7-2 16-18 7-25-11Z" fill="#70a6aa" opacity=".8"/>
+    <path d="m139 151 30 7 14-11-2 15-18 11-26-11Z" fill="#edab88" stroke="#0a1920" stroke-width="2"/>
+    <path d="m156 161 9 11 13-13" stroke="#12313b" stroke-width="3" fill="none"/>
+    <circle cx="164" cy="166" r="4.2" fill="#eaf3e9" stroke="#0a1920" stroke-width="2"/>
+    <path d="m135 112-17-10-16-19 8-8 23 20 18 9" fill="#e8b28f" stroke="#0a1920" stroke-width="2"/>
+    <circle cx="106" cy="78" r="7" fill="#f1bd9a" stroke="#0a1920" stroke-width="2"/>
+    <path d="m179 111 15-4 18-24-9-7-17 16-17 7" fill="#e7b28f" stroke="#0a1920" stroke-width="2"/>
+    <g class="right-forearm"><path d="m208 78 9-16 8 4-4 18-13 5" fill="#f1bd9a" stroke="#0a1920" stroke-width="2"/><circle cx="220" cy="65" r="6" fill="#f1bd9a" stroke="#0a1920" stroke-width="2"/></g>
+    <path d="m147 103-2-10 24-3 4 14" fill="#e8b28f" stroke="#0a1920" stroke-width="2"/>
+    <ellipse cx="157" cy="76" rx="15.5" ry="18" fill="#e9b390" stroke="#0a1920" stroke-width="2.4"/>
+    <path d="m141 70 5-15 17-4 11 8 1 13-14-7-12 6Z" fill="#183744" stroke="#0a1920" stroke-width="2"/>
+    <path d="m143 62 7-10 18 0 7 11" fill="#edab88" stroke="#0a1920" stroke-width="2.2"/>
+    <path d="m153 79 2 1m12-2 1 1" stroke="#173341" stroke-width="2" stroke-linecap="round"/>
+    <path d="m158 86 6-1" stroke="#9c685a" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="m137 146-11 3-2 18 10 6 10-7" fill="#6a8793" stroke="#0a1920" stroke-width="2"/>
+    <circle cx="129" cy="158" r="2" fill="#e1ebe8"/>
+  </g>
+  <path class="spark" d="m245 90 5-10 5 10 11 5-11 5-5 10-5-10-11-5Z" fill="#a6d9cf" opacity="0"/>
+  <text x="21" y="217" fill="#739aa6" font-family="monospace" font-size="9" letter-spacing="2">BOBO / BETA 07</text>
+</svg>
