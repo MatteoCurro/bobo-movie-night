@@ -8,6 +8,29 @@
   let currentDetail = null;
   let renderedKey = '';
   let previousFocus = null;
+  let discovery = null;
+  async function loadDiscovery() {
+    try {
+      const response = await fetch('data/discovery.json',{cache:'no-store'});
+      if (!response.ok) return;
+      const payload = await response.json();
+      if (!payload || payload.schema !== 1 || payload.region !== 'IT') return;
+      discovery = payload;
+      renderedKey = '';
+      if (ready() && isHome()) renderHome();
+    } catch (_) { /* Optional feed: normal category browsing remains available. */ }
+  }
+  function resolveDiscovery(entries) {
+    if (!Array.isArray(entries)) return [];
+    const result = [], seen = new Set();
+    entries.forEach(function(row) {
+      if (!row || !['movie','tv'].includes(row.type)) return;
+      const target = getItem(row.tmdb_id,row.type);
+      const key = row.type+':'+row.tmdb_id;
+      if (target && !seen.has(key)) { result.push(target); seen.add(key); }
+    });
+    return result;
+  }
 
   const unifiedFilters = { q: '', genre: '', year: '', sort: 'year_desc', type: 'all' };
   function allItems() {
@@ -124,11 +147,13 @@
       '<span class="bobo-tile-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
       (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
   }
-  function shelf(id, title, items) {
+  function shelf(id, title, items, subtitle) {
     const list = items.slice(0, 16);
     if (list.length < 4) return '';
     return '<section class="bobo-shelf" aria-label="'+text(title)+'">'+
-      '<div class="bobo-shelf-head"><h2>'+text(title)+'</h2><div class="bobo-shelf-nav">'+
+      '<div class="bobo-shelf-head"><h2>'+text(title)+'</h2>'+
+      (subtitle ? '<small class="bobo-shelf-source">'+text(subtitle)+'</small>' : '')+
+      '<div class="bobo-shelf-nav">'+
       '<button class="bobo-arrow" type="button" data-bobo-scroll="'+text(id)+'" data-direction="-1" aria-label="Scorri a sinistra">‹</button>'+
       '<button class="bobo-arrow" type="button" data-bobo-scroll="'+text(id)+'" data-direction="1" aria-label="Scorri a destra">›</button></div></div>'+
       '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(posterTile).join('')+'</div></section>';
@@ -155,26 +180,52 @@
     const fresh = recent(all);
     const promoted = validItems(all).filter(function(x) { return x.overview && x.year >= currentYear-3; })
       .sort(function(a,b) { return ((b.vote||0)*1.4+(b.year||0)*.6)-((a.vote||0)*1.4+(a.year||0)*.6); });
-    const rails = [
+    const rails = [];
+    if (discovery && discovery.source === 'TMDB+JustWatch') {
+      rails.push(shelf('weekly-trending','Di tendenza questa settimana',
+        resolveDiscovery(discovery.trending),'Classifica TMDB · ultimi 7 giorni'));
+      (discovery.platforms || []).forEach(function(platform) {
+        if (!platform || !platform.id || !platform.label) return;
+        rails.push(shelf('it-'+platform.id,
+          'Titoli recenti su '+platform.label,
+          resolveDiscovery(platform.items),
+          'Disponibilità in Italia · TMDB / JustWatch'));
+      });
+    }
+    rails.push(
       shelf('highlights','In evidenza',promoted),
-      shelf('new','Le novità',fresh),
+      shelf('new','Le uscite recenti',fresh),
       shelf('rated','I più apprezzati',good),
       shelf('movies','Film da scoprire',promoted.filter(function(item) { return item.type === 'movie'; })),
-      shelf('series','Serie TV da scoprire',promoted.filter(function(item) { return item.type === 'tv'; }))
-    ];
+      shelf('series','Serie TV da scoprire',promoted.filter(function(item) { return item.type === 'tv'; })),
+      shelf('short','Un film prima di dormire',good.filter(function(item) {
+        return item.type === 'movie' && Number(item.runtime) >= 65 && Number(item.runtime) <= 105;
+      })),
+      shelf('classics','Voglia di anni 2000?',good.filter(function(item) {
+        return Number(item.year) >= 1998 && Number(item.year) <= 2009;
+      }))
+    );
     const genreRows = [
       ['action','Azione e avventura',['azione','avventura']],
-      ['thriller','Thriller e mistero',['thriller','mistero','crime','giallo']],
+      ['thriller','Thriller e mistero',['thriller','mistero','giallo']],
+      ['crime','Storie crime',['crime','poliziesco','criminale']],
       ['comedy','Commedie',['commedia']],
-      ['sci-fi','Fantascienza e fantasy',['fantascienza','fantasy']],
+      ['scifi','Fantascienza',['fantascienza','science fiction']],
+      ['fantasy','Mondi fantastici',['fantasy']],
       ['drama','Storie drammatiche',['dramma']],
-      ['animation','Animazione',['animazione']]
+      ['animation','Animazione',['animazione']],
+      ['horror','Per una serata horror',['horror','orrore']],
+      ['romance','Storie d’amore',['romance','romantico','sentimentale']],
+      ['docu','Documentari',['documentario']],
+      ['family','Da guardare insieme',['famiglia','family']]
     ];
     genreRows.forEach(function(row) {
       const picks = good.filter(function(x) { return genresMatch(x,row[2]); });
       rails.push(shelf(row[0],row[1],picks));
     });
-    host.innerHTML = hero(featured(all))+rails.join('');
+    host.innerHTML = hero(featured(all)) + rails.join('') +
+      (discovery && discovery.platforms && discovery.platforms.length ?
+        '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
   }
   function renderResults() {
     const more = document.getElementById('bobo-more');
@@ -352,6 +403,12 @@
     const tabs = document.querySelector('.tabs');
     if (tabs) tabs.hidden = true;
     const filtersBar = document.getElementById('filter-bar');
+    const dock = document.createElement('section');
+    dock.className = 'bobo-filter-dock';
+    dock.setAttribute('aria-label','Filtra il catalogo');
+    dock.innerHTML = '<div class="bobo-filter-dock-head"><span>Esplora / tutti i titoli</span><span>SELECT · 001</span></div>';
+    main.insertBefore(dock,document.getElementById('bobo-discover'));
+    dock.appendChild(filtersBar);
     const typeField = document.createElement('div');
     typeField.className = 'filter-group';
     typeField.innerHTML = '<label for="bobo-type-filter">Tipologia</label>'+
@@ -365,6 +422,7 @@
     if (location.hash === '#tv') unifiedFilters.type = 'tv';
     if (location.hash === '#movies') unifiedFilters.type = 'movie';
     document.getElementById('search-input').placeholder = 'Cerca film e serie TV…';
+    loadDiscovery();
     Promise.all([ensureLoaded('movie'), ensureLoaded('tv')]).then(function() {
       filterOptions();
       renderUnified();
