@@ -61,10 +61,12 @@ Il segreto non viene scritto nei file web. **Senza token il catalogo esistente r
 - **Archivio centrale**: `data/movies.json` e `data/tv.json`, compatibili con il frontend corrente; ID TMDB come chiave primaria. Il sync non riscrive automaticamente metadati esistenti con valori vuoti.
 - **Storia di catalogo**: `data/catalog-ledger.json` registra la prima/ultima volta in cui un ID è stato osservato, senza dipendere dalla presenza attuale nel feed.
 - **Locandine**: `data/poster-index.json` associa tipo + ID alla locandina, utile anche al backend Gandi.
-- **Arricchimenti**: `data/enrichment.json` contiene fatti per `movie:ID` / `tv:ID`, con `source` e `observed_at` per ciascun gruppo; ora include provider italiani in abbonamento e anteprime di alcuni episodi. Dati di fonti future (TVmaze, altri provider autorizzati) possono aggiungere nuove proprietà senza toccare i cataloghi.
+- **Arricchimenti**: `data/enrichment.json` contiene i fatti compatti sui provider italiani, con `source` e `observed_at` per ciascun gruppo.
+- **Episodi**: `data/episodes/<tmdb_id>.json` contiene i nomi completi, le immagini e le stagioni già esaminate di una singola serie. Il frontend scarica soltanto il file della serie aperta, non tutti gli episodi delle altre serie; se manca la foto dell'episodio usa una piccola locandina della serie.
+- **Backfill**: ogni sincronizzazione esamina fino a 80 serie dall'intero archivio (non soltanto dai trend), con massimo 140 richieste per le singole stagioni. Una quota del lavoro completa le stagioni rimaste incomplete; gli indici già acquisiti vengono preservati e i dati disponibili vengono rinnovati periodicamente.
 - **Diagnostica**: `data/catalog-status.json` registra le acquisizioni riuscite; il workflow mantiene i file precedenti se la fonte è irraggiungibile.
 
-Non si tratta di un database relazionale: sono piccoli indici JSON versionati. L'aggiornamento è incrementale **per ID**; solo i titoli osservati dai feed TMDB vengono aggiornati. Non è una risincronizzazione integrale di ogni titolo storico. I provider indicano la disponibilità segnalata in Italia, non la provenienza del video né la data di ingresso nel servizio.
+Non si tratta di un database relazionale: sono piccoli indici JSON versionati. Il **catalogo base** è aggiornato per ID dai feed TMDB; l'**arricchimento episodico** scorre invece progressivamente tutte le serie già archiviate. Non è una risincronizzazione integrale dei dati storici a ogni esecuzione. I provider indicano la disponibilità segnalata in Italia, non la provenienza del video né la data di ingresso nel servizio.
 
 ## Newsletter e amministrazione
 
