@@ -39,16 +39,21 @@ function bobo_newsletter_valid_item(mixed $raw): ?array {
     $poster=(string)($raw['poster']??'');
     if(!preg_match('~^https://image\.tmdb\.org/t/p/(?:w\d+|original)/[a-zA-Z0-9_/.-]{3,200}$~D',$poster))$poster='';
     return ['tmdb_id'=>$id,'type'=>$type,'title'=>substr($title,0,160),
-        'poster'=>$poster,'year'=>(int)($raw['year']??0)];
+        'poster'=>$poster,'year'=>(int)($raw['year']??0),
+        'overview'=>substr(trim((string)($raw['overview']??'')),0,220)];
 }
 function bobo_newsletter_compose(array $feed,string $username,string $unsubscribe): array {
-    $title='BOBO / Le novità streaming della settimana';
+    $title='BOBO / Cosa guardare questa settimana';
     $safe=static fn(string $value):string=>htmlspecialchars($value,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');
     $sections=[];
-    $weekly=is_array($feed['weekly']??null)?array_slice($feed['weekly'],0,6):[];
-    if($weekly)$sections[]=['Novità segnalate questa settimana',$weekly];
+    $weekly=is_array($feed['weekly']??null)?array_slice($feed['weekly'],0,3):[];
+    if($weekly)$sections[]=['I consigli della settimana',$weekly];
+    foreach(($feed['sections']??[]) as $section){
+        if(!is_array($section)||!is_string($section['title']??null)||!is_array($section['items']??null))continue;
+        $sections[]=[substr($section['title'],0,80),array_slice($section['items'],0,2)];
+    }
     $labels=['netflix'=>'Netflix','prime'=>'Prime Video','disney'=>'Disney+','apple'=>'Apple TV+'];
-    foreach($feed['platforms'] as $entry){
+    foreach(($feed['sections']??[]) ? [] : $feed['platforms'] as $entry){
         if(!is_array($entry)||!isset($labels[$entry['id']??'']))continue;
         $items=is_array($entry['items']??null)?array_slice($entry['items'],0,4):[];
         if($items)$sections[]=['Nel catalogo italiano di '.$labels[$entry['id']], $items];
@@ -64,7 +69,8 @@ function bobo_newsletter_compose(array $feed,string $username,string $unsubscrib
             $cells[]='<td width="50%" valign="top" style="padding:9px 9px 17px">'.
                 '<a href="'.$safe($url).'" style="color:#dff3ef;text-decoration:none">'.$image.
                 '<span style="font-size:14px;font-weight:700;line-height:1.4;display:block;padding-top:8px">'.$safe($label).'</span></a>'.
-                '<span style="font-size:11px;color:#8da8ac">'.($item['type']==='tv'?'Serie TV':'Film').'</span></td>';
+                '<span style="font-size:11px;color:#8da8ac">'.($item['type']==='tv'?'Serie TV':'Film').'</span>'.
+                 ($item['overview']?'<div style="color:#aec2c7;font-size:12px;line-height:1.45;margin-top:7px">'.$safe($item['overview']).'</div>':'').'</td>';
             $lines[]='• '.$label.' — '.$url;
         }
         if(!$cells)continue;
@@ -80,9 +86,10 @@ function bobo_newsletter_compose(array $feed,string $username,string $unsubscrib
         '<div style="max-width:560px;margin:0 auto;background:#172630;border:1px solid #38565d;border-radius:9px;padding:26px">'.
         '<div style="color:#a8ded4;font-size:12px;letter-spacing:2px">BOBO / MOVIE NIGHT</div>'.
         '<h1 style="font-size:29px;letter-spacing:-1px;line-height:1.2;margin:12px 0">Cosa si guarda questa settimana?</h1>'.
-        '<p style="color:#adbdc2;font-size:14px;line-height:1.55">Ciao '.$safeName.', ecco una selezione dalle principali piattaforme italiane. I titoli sono collegati al catalogo Bobo.</p>'.
+        '<p style="color:#adbdc2;font-size:14px;line-height:1.55">Ciao '.$safeName.', questa settimana abbiamo selezionato alcune storie che meritano il tuo tempo. Niente elenchi infiniti: pochi titoli da scoprire.</p>'.
         implode('',$blocks).
-        '<p style="color:#92aab0;font-size:11px;line-height:1.6;margin-top:25px">Le disponibilità sono segnalazioni editoriali e possono cambiare; non indicano il provider del player incorporato.</p>'.
+        '<p style="margin-top:25px"><a href="https://movie.curromatteo.it/discover.html" style="color:#b8e5dd;font-weight:bold">Scopri tutte le selezioni su Bobo →</a></p>'.
+        '<p style="color:#92aab0;font-size:11px;line-height:1.6">Selezioni automatiche basate sui metadati disponibili. La disponibilità dei titoli può variare.</p>'.
         '<hr style="border:0;border-top:1px solid #34525a;margin:20px 0">'.
         '<p style="color:#91a6aa;font-size:11px;line-height:1.6">Ricevi questo riepilogo come membro del piccolo club Bobo; puoi disiscriverti in qualsiasi momento. '.
         '<a href="'.$safe($unsubscribe).'" style="color:#b8e5dd">Annulla iscrizione</a> · '.
