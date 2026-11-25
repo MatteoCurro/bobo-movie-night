@@ -65,9 +65,15 @@ ul{padding-left:23px}li{padding:5px;color:#cad8dd}a{color:#a4d9d4}
     <p>Una volta alla settimana: nuove segnalazioni di film e serie con locandine e collegamenti a Bobo, selezionate tra Netflix, Prime Video, Disney+ e Apple TV+.</p>
     <form id="newsletter-form"><label class="newsletter-checkbox" for="newsletter-opt-in">
       <input type="checkbox" id="newsletter-opt-in">
-      <span>Desidero ricevere il riepilogo settimanale all'indirizzo email del mio account.</span>
+      <span>Ricevi il riepilogo del venerdì alle 18. Puoi disattivarlo in qualsiasi momento.</span>
     </label><button type="submit" class="secondary" id="newsletter-save">Salva preferenza</button></form>
     <p id="newsletter-status" role="status" aria-live="polite">Non iscritto.</p>
+    <div id="newsletter-test-panel" hidden style="border-top:1px solid #395762;padding-top:15px;margin-top:18px">
+      <h4 style="margin:0 0 7px;font-size:14px">Strumenti amministratore</h4>
+      <p style="font-size:12px;color:#b1c7c7">Invia una copia di prova solo al tuo indirizzo verificato. Non modifica il calendario degli invii.</p>
+      <button type="button" id="newsletter-test-send" class="secondary">Inviami la newsletter di prova</button>
+      <p id="newsletter-test-status" role="status" aria-live="polite" style="font-size:12px;color:#a4d9d4"></p>
+    </div>
   </section>
   <details class="account-advanced"><summary>Gestione e backup della raccolta</summary>
     <p>Queste funzioni sono facoltative. Per gestire i singoli titoli usa la pagina Preferiti di Bobo.</p>
