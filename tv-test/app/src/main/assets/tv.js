@@ -217,38 +217,113 @@ function focusFirst(selector){
   if(item){item.focus({preventScroll:true});ensure(item);}
  });
 }
-function ensure(item){
+function ensure(item,axis){
  if(!item||!item.isConnected)return;
- try{item.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});}
- catch(e){item.scrollIntoView(false);}
+ // The sticky header stays visible while the document is far down the catalog.
+ // Once focus returns to the menu, put the page genuinely back at the top.
+ if(item.closest('#topbar')){
+  window.scrollTo({top:0,behavior:'smooth'});
+  return;
+ }
+ const rail=item.closest('.rail,.season-list');
+ if(axis==='horizontal'){
+  // Horizontal navigation may scroll ONLY the associated carousel.
+  // Calling scrollIntoView() here also scrolled the document vertically,
+  // making left/right feel like up/down on Android TV.
+  if(rail){
+   const itemBox=item.getBoundingClientRect(),box=rail.getBoundingClientRect();
+   const pad=22;
+   let distance=0;
+   if(itemBox.left<box.left+pad)distance=itemBox.left-box.left-pad;
+   else if(itemBox.right>box.right-pad)distance=itemBox.right-box.right+pad;
+   if(Math.abs(distance)>1)rail.scrollBy({left:distance,behavior:'smooth'});
+  }
+  return;
+ }
+ // Keep the selected target outside the sticky header, with a safe TV margin.
+ const bounds=item.getBoundingClientRect();
+ const header=document.getElementById('topbar');
+ const safeTop=(header&&!header.hidden?header.getBoundingClientRect().height:0)+24;
+ const safeBottom=window.innerHeight-42;
+ if(bounds.top<safeTop){
+  window.scrollBy({top:bounds.top-safeTop,behavior:'smooth'});
+ }else if(bounds.bottom>safeBottom){
+  window.scrollBy({top:bounds.bottom-safeBottom,behavior:'smooth'});
+ }
 }
 function focusChoices(){
  return els('.tab,.tv-focus').filter(el=>{
   if(el.disabled||el.closest('[hidden]'))return false;
-  const r=el.getBoundingClientRect();return r.width>5&&r.height>5&&getComputedStyle(el).visibility!=='hidden';
+  const r=el.getBoundingClientRect();
+  return r.width>5&&r.height>5&&getComputedStyle(el).visibility!=='hidden';
  });
 }
 function move(key){
  const choices=focusChoices();
  if(!choices.length)return;
  let current=document.activeElement;
- if(!choices.includes(current)){current=choices[0];current.focus();ensure(current);return;}
- const from=current.getBoundingClientRect(),fx=from.left+from.width/2,fy=from.top+from.height/2;
- const horizontal=key==='ArrowLeft'||key==='ArrowRight',forward=key==='ArrowRight'||key==='ArrowDown';
- const rail=horizontal?current.closest('.rail,.season-list'):null;
- function score(el){
+ if(!choices.includes(current)){
+  current=choices[0];current.focus({preventScroll:true});ensure(current,'vertical');return;
+ }
+ const from=current.getBoundingClientRect();
+ const fx=from.left+from.width/2,fy=from.top+from.height/2;
+ const horizontal=key==='ArrowLeft'||key==='ArrowRight';
+ const forward=key==='ArrowRight'||key==='ArrowDown';
+ const direction=forward?1:-1;
+ if(horizontal){
+  const rail=current.closest('.rail,.season-list');
+  if(rail){
+   const row=choices.filter(el=>el.closest('.rail,.season-list')===rail);
+   const i=row.indexOf(current);
+   const next=row[i+direction];
+   // End of carousel = stay here. Never accidentally jump to another row.
+   if(next){next.focus({preventScroll:true});ensure(next,'horizontal');}
+   return;
+  }
+  // The catalog grid has multiple rows inside one container. Stay on the
+  // SAME visual row; crossing a row boundary belongs to the Up/Down keys.
+  const grid=current.closest('.results');
+  if(grid){
+   const row=choices.filter(el=>{
+    if(el.closest('.results')!==grid)return false;
+    const r=el.getBoundingClientRect();
+    return Math.abs((r.top+r.height/2)-fy)<Math.max(26,Math.min(65,from.height*.22));
+   });
+   const ordered=row.sort((a,b)=>a.getBoundingClientRect().left-b.getBoundingClientRect().left);
+   const next=ordered[ordered.indexOf(current)+direction];
+   if(next){next.focus({preventScroll:true});ensure(next,'horizontal');}
+   return;
+  }
+  const nav=current.closest('#topbar');
+  const row=choices.filter(el=>!!el.closest('#topbar')===!!nav);
+  const ranked=row.map(el=>{
+   if(el===current)return null;
+   const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+   const dx=x-fx,dy=Math.abs(y-fy);
+   // Sideways input cannot select a different vertical level.
+   if(dx*direction<=2||dy>Math.max(28,from.height*.55))return null;
+   return {el,score:Math.abs(dx)+dy*2};
+  }).filter(Boolean).sort((a,b)=>a.score-b.score);
+  if(ranked.length){ranked[0].el.focus({preventScroll:true});ensure(ranked[0].el,'horizontal');}
+  return;
+ }
+ // Vertical remote input finds the nearest title/control in the next visual
+ // row and prioritizes the same horizontal column.
+ const candidates=choices.map(el=>{
   if(el===current)return null;
   const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
-  const main=horizontal?x-fx:y-fy,cross=horizontal?Math.abs(y-fy):Math.abs(x-fx);
-  if(forward?main<=2:main>=-2)return null;
-  const d=Math.abs(main);
-  return {el,score:d+2.4*cross+(cross*cross)/(d+45)};
+  const dy=y-fy,dx=Math.abs(x-fx);
+  const tolerance=Math.min(38,from.height*.18);
+  if(dy*direction<=tolerance)return null;
+  const horizontalOverlap=Math.max(0,Math.min(from.right,r.right)-Math.max(from.left,r.left));
+  const penalty=horizontalOverlap>0?dx*.35:dx*1.8;
+  return {el,score:Math.abs(dy)+penalty};
+ }).filter(Boolean).sort((a,b)=>a.score-b.score);
+ if(candidates.length){
+  const next=candidates[0].el;
+  next.focus({preventScroll:true});
+  ensure(next,'vertical');
  }
- let pool=choices;
- if(rail)pool=choices.filter(el=>el.closest('.rail,.season-list')===rail);
- let ranked=pool.map(score).filter(Boolean).sort((a,b)=>a.score-b.score);
- if(!ranked.length && rail)ranked=choices.map(score).filter(Boolean).sort((a,b)=>a.score-b.score);
- if(ranked.length){ranked[0].el.focus({preventScroll:true});ensure(ranked[0].el);}
 }
 function onClick(e){
  if(window.BoboTVExtras?.onClick(e))return;
@@ -527,7 +602,7 @@ window.BoboTV={
  rail:rail,
  toast:notify,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.3.1-TV'
+ version:'1.3.2-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
@@ -537,7 +612,7 @@ document.addEventListener('focusin',e=>{
   if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;
   const el=e.target&&e.target.closest('.poster');
   const item=el&&status.index.get(el.dataset.title);
-  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.3.1';
+  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.3.2';
 },true);
 boot();
 }());
