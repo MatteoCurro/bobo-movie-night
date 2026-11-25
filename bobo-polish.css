@@ -450,3 +450,43 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
 @media(prefers-reduced-motion:reduce){
   .bobo-mini-scene{display:none!important}
 }
+
+
+/* Watch-page editorial grid: identical horizontal rhythm for titles, synopsis,
+   player controls, episode navigation and secondary information sections. */
+:root { --bobo-detail-max: 1180px; --bobo-detail-gutter:clamp(16px,3.2vw,42px); }
+#watch-main { width:100%!important; max-width:none!important; margin-inline:auto!important; }
+#watch-main .title-hero { width:100%; }
+#watch-main .title-hero > .hero-content {
+  width:calc(100% - 2 * var(--bobo-detail-gutter))!important;
+  max-width:var(--bobo-detail-max)!important;
+  padding-left:0!important;padding-right:0!important;
+  margin-inline:auto!important;box-sizing:border-box;
+}
+#watch-main > .section {
+  width:calc(100% - 2 * var(--bobo-detail-gutter))!important;
+  max-width:var(--bobo-detail-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+}
+#watch-main .hero-content h1 {max-width:860px!important;}
+#watch-main .hero-content .synopsis,
+#watch-main .info-section p,
+#watch-main #watch-about-body {
+  width:100%;max-width:860px!important;
+  margin-left:0!important;margin-right:0!important;
+  line-height:1.65;
+}
+#watch-main .hero-content .genres,#watch-main .hero-content .metadata {
+  max-width:860px;margin-left:0;margin-right:0;
+}
+#watch-play-section .section-heading,#watch-play-section .player-controls,
+#watch-play-section .player-caption,#watch-play-section .bobo-player-diagnostics {
+  width:100%;max-width:var(--bobo-detail-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+}
+#watch-play-section .player-container {max-width:var(--bobo-detail-max)!important;}
+@media(max-width:760px) {
+  #watch-main .title-hero > .hero-content {padding-top:0!important;}
+  #watch-main > .section {margin-bottom:30px!important;}
+}
