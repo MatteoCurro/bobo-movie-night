@@ -92,8 +92,9 @@ jobs:
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-retro.css">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-polish.css">\n</head>', 1)
+          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-cloud.css">\n</head>', 1)
           content = content.replace("</head>", '  <script defer src="bobo-friends.js"></script>\n</head>', 1)
-          content = content.replace("</body>", '  <script defer src="bobo-library.js"></script>\n  <script defer src="bobo-ui.js"></script>\n  <script defer src="bobo-enhance.js"></script>\n</body>', 1)
+          content = content.replace("</body>", '  <script defer src="bobo-library.js"></script>\n  <script defer src="bobo-cloud.js"></script>\n  <script defer src="bobo-ui.js"></script>\n  <script defer src="bobo-enhance.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
           else
@@ -152,6 +153,7 @@ jobs:
           node --check bobo-friends.js
           node --check bobo-library.js
           node --check bobo-enhance.js
+          node --check bobo-cloud.js
           node --check bobo-favorites.js
           python3 -m py_compile scripts/build_catalog_ledger.py
           python3 -m py_compile scripts/prepare_flaticon.py
@@ -188,6 +190,9 @@ jobs:
           grep -q 'bobo-enhance.js' index.html
           grep -q 'bobo-library.js' watch.html
           grep -q 'bobo-enhance.js' watch.html
+          grep -q 'bobo-cloud.js' index.html
+          grep -q 'bobo-cloud.js' watch.html
+          grep -q 'bobo-cloud.js' favorites.html
           grep -q 'bobo-favorites.js' favorites.html
           grep -q 'bobo-library.js' favorites.html
           test -s bobo-favorites.css
@@ -221,7 +226,7 @@ jobs:
           mkdir -p _site/data
           cp index.html _site/index.html
           cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json _site/data/
-          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-enhance.js _site/
+          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css _site/
