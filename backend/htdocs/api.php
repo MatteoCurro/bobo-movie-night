@@ -635,6 +635,34 @@ if ($route==='admin/newsletter/test' && $method==='POST') {
     send_json(200,['ok'=>true,'message'=>'Newsletter di prova inviata alla tua email']);
 }
 if ($route==='favorites' && $method==='GET') send_json(200,['items'=>$user['favorites']??[]]);
+// One atomic action instead of GET collection + PUT collection.
+// This avoids lost updates when the web app and TV change favorites concurrently.
+if ($route==='favorites/toggle' && $method==='POST') {
+    $input=request_json();
+    $items=clean_favorites([$input['item']??null]);
+    if(count($items)!==1)send_json(422,['error'=>'Titolo non valido']);
+    $item=$items[0];
+    $name=$user['username'];$id=$user['id'];
+    $result=state(static function (&$db) use ($name,$id,$item) {
+        if (!isset($db['users'][$name])||$db['users'][$name]['id']!==$id)
+            return ['error'=>'Sessione scaduta'];
+        $list=$db['users'][$name]['favorites']??[];
+        $found=null;
+        foreach($list as $i=>$entry){
+            if(($entry['type']??'')===$item['type'] &&
+                (int)($entry['tmdb_id']??0)===(int)$item['tmdb_id']){$found=$i;break;}
+        }
+        if($found!==null){array_splice($list,$found,1);$saved=false;}
+        else {
+            if(count($list)>=500)return ['error'=>'Massimo 500 titoli'];
+            array_unshift($list,$item);$saved=true;
+        }
+        $db['users'][$name]['favorites']=$list;
+        return ['saved'=>$saved,'items'=>$list,'count'=>count($list)];
+    },true);
+    if(isset($result['error']))send_json($result['error']==='Sessione scaduta'?401:422,$result);
+    send_json(200,$result);
+}
 if ($route==='favorites' && $method==='PUT') {
     $input=request_json();$items=clean_favorites($input['items']??null);
     $name=$user['username'];$id=$user['id'];
