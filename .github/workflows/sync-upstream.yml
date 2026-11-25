@@ -149,7 +149,7 @@ jobs:
             echo "Already up to date."
             exit 0
           fi
-          git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
+          git commit -m "sync: refresh Bobo-owned catalog and metadata"
           # The catalog and Pages UI may be updated concurrently. Retry only
           # ordinary fast-forward pushes, never force-push or overwrite history.
           for attempt in 1 2 3 4; do
@@ -170,7 +170,9 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/newsletter.json _site/data/
+          cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json _site/data/
+          test -s _site/data/enrichment.json
+          test -s _site/data/catalog-status.json
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
