@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: bobo-movie-night-sync
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   sync:
@@ -122,7 +122,7 @@ jobs:
           fi
           git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
           git fetch origin main
-          git rebase origin/main
+          git rebase -X theirs origin/main
           git push
 
       - name: Validate Bobo enhancements
