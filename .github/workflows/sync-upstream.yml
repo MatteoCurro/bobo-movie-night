@@ -196,6 +196,11 @@ jobs:
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css _site/
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
+          # The TV installation page is a separate directory; it must be part
+          # of the deployed _site artifact, not merely present in GitHub.
+          mkdir -p _site/tv
+          cp tv/index.html _site/tv/index.html
+          test -s _site/tv/index.html
           touch _site/.nojekyll
 
       - name: Package site for private Gandi hosting
