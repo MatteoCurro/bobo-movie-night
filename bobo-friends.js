@@ -187,49 +187,69 @@
   };
 
   /* Flat decorative micro-animations. No image/video downloads and reduced-motion friendly. */
-  const EASTER_ICONS = {
-    climb: [
-      'climbing-silhouette','mountain-climb','mountain-running','rock-climbing',
-      'climbing','mountain-climbing'
-    ],
-    dog: [
-      'border-collie','dog-running','running-dog','cute-dog',
-      'dog','walking-dog','dog-outline','paw-footprint','dog-pawprint'
-    ]
-  };
-  const chosenIcons = new Set();
+  // Only the animated previews obtained from the user's Flaticon examples.
+  // Do not fall back to the unrelated static silhouette set.
+  const EASTER_ICONS={climb:[],dog:[]};
+  const chosenIcons=new Set();
+  async function loadFlaticonIcons() {
+    try {
+      const response=await fetch('assets/flaticon/manifest.json');
+      if(!response.ok)return;
+      const data=await response.json();
+      if(!data || data.schema!==1 || !Array.isArray(data.icons))return;
+      for(const icon of data.icons) {
+        if(!['climb','dog'].includes(icon.category) ||
+           !/^assets\/flaticon\/[a-z0-9-]+\.gif$/.test(icon.file))continue;
+        EASTER_ICONS[icon.category].push(icon.file);
+      }
+      if(EASTER_ICONS.climb.length||EASTER_ICONS.dog.length){
+        const footer=document.querySelector('.bobo-footer');
+        if(footer && !footer.querySelector('.bobo-flaticon-credit')){
+          const credit=document.createElement('a');
+          credit.className='bobo-flaticon-credit';
+          credit.href='https://www.flaticon.com/';
+          credit.target='_blank';
+          credit.rel='noopener noreferrer';
+          credit.textContent='Animated icons designed by Magnific from Flaticon';
+          footer.appendChild(credit);
+        }
+      }
+      addTinyScenes();
+    } catch(_) { /* Decorative images must never affect the rest of Bobo. */ }
+  }
   function pickEasterIcon(kind) {
     const list=EASTER_ICONS[kind] || [];
-    const unused=list.filter(name=>!chosenIcons.has(name));
-    const pool=unused.length?unused:list;
-    const choice=pool[Math.floor(Math.random()*pool.length)] || list[0];
+    if(!list.length)return null;
+    const available=list.filter(name=>!chosenIcons.has(name));
+    const pool=available.length?available:list;
+    const choice=pool[Math.floor(Math.random()*pool.length)];
     if(choice)chosenIcons.add(choice);
     return choice;
   }
   function addTinyScenes() {
-    const targets = [
+    const targets=[
       ['.bobo-feature','climb','hero'],
       ['.title-hero','dog','hero'],
       ['.bobo-feed-group:not(.bobo-feed-group-secondary)','dog','section'],
       ['.bobo-feed-group-secondary','climb','section'],
       ['.bobo-fav-heading','dog','favorites']
     ];
-    targets.forEach(function(entry) {
+    for(const entry of targets){
       const host=document.querySelector(entry[0]);
-      if(!host || host.querySelector('.bobo-mini-scene'))return;
-      const icon=pickEasterIcon(entry[1]);
-      if(!icon)return;
+      if(!host || host.querySelector('.bobo-mini-scene'))continue;
+      const file=pickEasterIcon(entry[1]);
+      if(!file)continue;
       const scene=document.createElement('span');
       scene.className='bobo-mini-scene bobo-mini-scene--'+entry[2];
       scene.setAttribute('aria-hidden','true');
       const img=document.createElement('img');
-      img.src='assets/easter/'+icon+'.svg';
+      img.src=file;
       img.alt='';
       img.loading='lazy';
       img.decoding='async';
       scene.appendChild(img);
       host.appendChild(scene);
-    });
+    }
   }
 
   let eggToastTimer;
@@ -296,6 +316,7 @@
     siteNavigation();
     footer();
     installSmallEasterEggs();
+    loadFlaticonIcons();
     if (storedAccess()) document.documentElement.classList.add('bobo-unlocked');
     else welcomeQuestion();
   }
