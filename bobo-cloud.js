@@ -71,11 +71,10 @@
   function clearPending(){
     try {localStorage.removeItem(pendingKey());}catch(_){}
   }
-  function read(){return state==='member'?items.slice():state==='guest'?Local.read():[];}
+  function read(){return state==='member'?items.slice():[];}
   function profile(){return state==='member'&&user?user.username:Local.profile();}
   function has(type,id){return read().some(x=>x.type===type&&String(x.tmdb_id)===String(id));}
   function save(next){
-    if(state==='guest')return Local.save(next);
     if(state!=='member')return false;
     const clean=unique(next);
     if(clean.length>MAX)return false;
@@ -86,8 +85,7 @@
     return queued;
   }
   function toggle(raw){
-    if(state==='guest')return Local.toggle(raw);
-    if(state!=='member')return {saved:false,error:'Account non raggiungibile: riprova tra poco'};
+    if(state!=='member')return {saved:false,error:state==='offline'?'Account non raggiungibile: riprova tra poco':'Per aggiungere preferiti crea un account o accedi'};
     const x=normalize(raw);
     if(!x)return {saved:false,error:'Titolo non valido'};
     const next=items.slice(),at=next.findIndex(t=>t.type===x.type&&t.tmdb_id===x.tmdb_id);
@@ -96,13 +94,11 @@
     return {saved:at<0,count:next.length};
   }
   function exportText(){
-    if(state==='guest')return Local.exportText();
-    if(state!=='member')throw Error('Attendi la verifica dell’account o riconnettiti');
+    if(state!=='member')throw Error('Accedi per esportare i preferiti');
     return JSON.stringify({format:'bobo-favorites',version:2,profile:profile(),items:read()},null,2);
   }
   function importText(text){
-    if(state==='guest')return Local.importText(text);
-    if(state!=='member')throw Error('Account non raggiungibile: importazione sospesa');
+    if(state!=='member')throw Error('Accedi per importare preferiti');
     const data=JSON.parse(text);
     if(!data||data.format!=='bobo-favorites'||![1,2].includes(data.version)||
        !Array.isArray(data.items)||data.items.length>MAX)throw Error('Backup Bobo non valido');
@@ -174,7 +170,7 @@
     emit();renderControls();
   }
   function status(){return {state,user:user?{...user}:null,pending:Boolean(user&&readPending())};}
-  function accountLink(){
+  function accountLink(mode='login'){
     const file=location.pathname.split('/').pop()||'index.html';
     const allowed=['index.html','favorites.html','watch.html'];
     const base=allowed.includes(file)?file:'index.html';
@@ -190,7 +186,7 @@
     }
     if(base==='index.html'&&['#tv','#movies'].includes(location.hash))suffix=location.hash;
     const target=location.origin+'/'+base+suffix;
-    return ORIGIN+'/account.html?return='+encodeURIComponent(target);
+    return ORIGIN+'/account.html?return='+encodeURIComponent(target)+'&view='+encodeURIComponent(mode);
   }
   function renderControls(){
     if(!document.body)return;
@@ -211,7 +207,7 @@
       const links=document.createElement('div');
       links.className='bobo-account-menu-links';
       const account=document.createElement('a');
-      account.href=accountLink();account.textContent='Gestisci account';
+      account.href=accountLink('settings');account.textContent='Impostazioni account e newsletter';
       links.appendChild(account);
       if(user.role==='admin'){
         const admin=document.createElement('a');admin.href=ORIGIN+'/admin.html';admin.textContent='Amministrazione';
@@ -235,13 +231,12 @@
     ...Local,read,save,toggle,has,profile,exportText,importText,
     profiles:()=>state==='member'?[user.username]:Local.profiles(),
     switchProfile:n=>{if(state==='member')throw Error('I profili personali sono gestiti dal tuo account');return Local.switchProfile(n);},
-    recoveryCode:()=>state==='member'?null:Local.recoveryCode(),
-    importRecoveryCode:t=>state==='member'?importText(JSON.stringify({
-      format:'bobo-favorites',version:2,items:[]})):Local.importRecoveryCode(t)
+    recoveryCode:()=>null,
+    importRecoveryCode:()=>{throw Error('Il vecchio recupero locale è disponibile solo nella funzione Importa precedenti');}
   });
   window.BoboLibrary=bridge;
   window.BoboCloud=Object.freeze({api,refresh,logout,status,importLocal,
-    localCount:()=>Local.read().length,accountLink});
+    localCount:()=>Local.read().length,accountLink,settingsLink:()=>accountLink('settings')});
   function start(){
     renderControls();
     refresh();
