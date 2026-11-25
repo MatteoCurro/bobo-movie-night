@@ -396,6 +396,32 @@
       if(playing)byId('watch-current-episode').textContent=episodeHeading();
     }catch(_){ /* An unfinished episode index must never interrupt playback. */ }
   }
+  function updateSeasonArrows() {
+    const rail=byId('watch-season-buttons');
+    const previous=byId('watch-season-prev'),next=byId('watch-season-next');
+    if(!rail||!previous||!next)return;
+    const max=Math.max(0,(rail.scrollWidth||0)-(rail.clientWidth||0));
+    const canScroll=max>3;
+    previous.hidden=!canScroll;
+    next.hidden=!canScroll;
+    previous.disabled=!canScroll || (rail.scrollLeft||0)<=2;
+    next.disabled=!canScroll || (rail.scrollLeft||0)>=max-2;
+  }
+  function scrollSeasons(direction) {
+    const rail=byId('watch-season-buttons');
+    if(!rail || typeof rail.scrollBy!=='function')return;
+    rail.scrollBy({left:direction*Math.max(200,rail.clientWidth*.72),behavior:'smooth'});
+  }
+  function bringCurrentSeasonIntoView() {
+    const rail=byId('watch-season-buttons');
+    if(!rail)return;
+    const chosen=typeof rail.querySelector==='function'
+      ?rail.querySelector('.season-button[aria-pressed="true"]'):null;
+    if(chosen && typeof chosen.scrollIntoView==='function' && rail.scrollWidth>rail.clientWidth) {
+      chosen.scrollIntoView({block:'nearest',inline:'nearest',behavior:'auto'});
+    }
+    updateSeasonArrows();
+  }
   function renderEpisodeNavigation() {
     if (!seasons.length) return;
     const seasonHost = byId('watch-season-buttons');
@@ -419,6 +445,9 @@
       });
       seasonHost.appendChild(button);
     });
+    // Re-rendering must not strand the selected season beyond the right edge.
+    if(typeof requestAnimationFrame==='function')requestAnimationFrame(bringCurrentSeasonIntoView);
+    else updateSeasonArrows();
 
     const current = seasons.find(function (s) { return s.n === selectedSeason; });
     const episodeHost = byId('watch-episode-list');
@@ -575,6 +604,10 @@
   function setup() {
     const diagnostics=byId('watch-player-diagnostics');
     if(diagnostics)diagnostics.hidden=params.get('debug')!=='player';
+    byId('watch-season-prev').addEventListener('click',function(){scrollSeasons(-1);});
+    byId('watch-season-next').addEventListener('click',function(){scrollSeasons(1);});
+    byId('watch-season-buttons').addEventListener('scroll',updateSeasonArrows,{passive:true});
+    window.addEventListener('resize',updateSeasonArrows);
     byId('watch-start').addEventListener('click',function () { resetSequence(); playNow(true); });
     byId('watch-hide-player').addEventListener('click',pausePlayer);
     byId('watch-theater-button').addEventListener('click',toggleTheater);
