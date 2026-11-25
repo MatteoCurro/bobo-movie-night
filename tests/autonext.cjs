@@ -82,8 +82,8 @@ event('ended'); // Valid ended can arrive without earlier play/timeupdate.
 const second=document.getElementById('watch-iframe');
 assert.notEqual(second,frame,'The old iframe must be replaced, not merely re-addressed');
 assert.notEqual(second.contentWindow,firstWindow);
-assert.match(second.attributes.sandbox,/allow-scripts/);
-assert.doesNotMatch(second.attributes.sandbox,/allow-popups|allow-top-navigation/);
+assert.equal(second.attributes.sandbox,undefined,'Vix forbids sandbox; do not break playback');
+assert.equal(second.attributes.allowfullscreen,'','Retain original Vix embed permissions');
 assert.match(second.src,/tv\/1234\/1\/2\?lang=it&autoplay=true$/);
 assert.match(loc.href,/s=1&e=2/);
 assert.equal(document.fullscreenElement,stage,'Bobo theater must stay fullscreen');
@@ -101,4 +101,4 @@ click('watch-next');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/2\/3\?lang=it$/);
 event('play');event('ended');
 assert.match(document.getElementById('watch-iframe').src,/tv\/1234\/3\/1\?lang=it&autoplay=true$/);
-console.log('OK: ended-only message, trusted Vix origin, sandbox popup protection, player swap, duplicate suppression, theater retained.');
+console.log('OK: ended-only message, trusted Vix origin, non-sandboxed Vix compatibility, player swap, duplicate suppression, theater retained.');
