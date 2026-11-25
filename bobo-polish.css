@@ -1,0 +1,88 @@
+/* BOBO / polish v2 — a few more dots, tiny mountain/dog/carabiner signatures,
+   usable filters, and a fullscreen stage that survives episode changes. */
+
+body {
+  background-image: radial-gradient(rgba(166,206,213,.15) .8px,transparent 1px),
+    linear-gradient(180deg,#0c1116 0%,#111a22 66%,#0c1116 100%) !important;
+  background-size: 22px 22px,100% 100% !important;
+  background-attachment: fixed !important;
+}
+body::before { opacity: .28; }
+#bobo-gate {
+  background-image: radial-gradient(rgba(168,211,213,.24) 1px,transparent 1.4px) !important;
+  background-size: 22px 22px !important;
+}
+.bobo-gate-card { box-shadow: 0 26px 90px rgba(0,0,0,.48); }
+
+/* Filter panel before the cinematic home and the results, not after the shelves. */
+.bobo-filter-dock { margin: 8px 0 25px; padding: 12px 16px 16px;
+  background: rgba(18,30,39,.91); border: 1px solid #34434b; border-radius: 6px; }
+.bobo-filter-dock-head { display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 12px; color: #a7c9ca; font: 500 10px/1.2 var(--bobo-font-mono);
+  text-transform: uppercase; letter-spacing: .14em; }
+.bobo-filter-dock-head span:last-child { opacity: .55; }
+.bobo-filter-dock .filter-bar { margin: 0 !important; gap: 9px !important; }
+.bobo-filter-dock .filter-group { min-width: 135px !important; }
+.bobo-filter-dock .filter-group select { width: 100%; }
+.bobo-filter-dock:focus-within { border-color: #6eaba5; }
+
+/* Tiny clickable easter-signatures; visible if you're looking for them. */
+.bobo-tiny-egg { display: inline-flex; align-items: center; justify-content: center;
+  width: 25px; height: 25px; margin-left: 9px; padding: 4px; vertical-align: middle;
+  background: #1b2c35; color: #a3c4c4; border: 1px solid #405a61; border-radius: 4px;
+  cursor: pointer; opacity: .8; transition: opacity .18s,border-color .18s; }
+.bobo-tiny-egg:hover { opacity: 1; color: #d6e8dd; border-color: #a0c9c2; }
+.bobo-tiny-egg svg { display: block; width: 16px; height: 16px;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.bobo-feature .bobo-tiny-egg, .hero-content .bobo-tiny-egg { background: rgba(18,33,42,.86); }
+.bobo-shelf-head h2 { display: flex; align-items: center; }
+.bobo-easter-toast { position: fixed; z-index: 910; right: 22px; bottom: 24px; max-width: min(340px,calc(100vw - 40px));
+  color: #d8ede9; font: 600 12px/1.6 var(--bobo-font-mono);
+  background: #1b2c34; border: 1px solid #587c80; border-radius: 5px;
+  box-shadow: 0 10px 45px #0007; padding: 13px 16px; }
+.bobo-easter-toast[hidden] { display: none !important; }
+
+/* Upper overlay stays in Bobo's document when the iframe itself is replaced. */
+#watch-player-stage { position: relative; isolation: isolate; overflow: hidden; }
+.bobo-player-watermark { position: absolute; z-index: 3; top: 14px; left: 17px;
+  display: flex; align-items: baseline; gap: 4px; opacity: .47;
+  color: #fff; font: 700 22px/1 var(--bobo-font-display); letter-spacing: -.12em;
+  text-shadow: 0 2px 12px #000, 0 0 4px #000;
+  pointer-events: none; user-select: none; }
+.bobo-player-watermark > span { color: #a4d9d4; }
+.bobo-player-watermark > small { letter-spacing: .11em; margin-left: 3px; font: 500 8px var(--bobo-font-mono); text-transform: uppercase; }
+.bobo-stage-tools { position: absolute; z-index: 4; top: 10px; right: 10px;
+  display: flex; align-items: center; gap: 8px; opacity: .8; transition: opacity .2s; }
+#watch-player-stage:hover .bobo-stage-tools,#watch-player-stage:focus-within .bobo-stage-tools { opacity: 1; }
+#watch-theater-button { background: rgba(17,27,34,.84); color: #e0f1ee; border: 1px solid #6a878a;
+  border-radius: 4px; font: 600 11px var(--bobo-font-mono); padding: 8px 10px;
+  cursor: pointer; }
+#watch-theater-button:hover { background: #273e47; }
+.bobo-stage-loading { color: #d4eeee; background: rgba(17,27,34,.85);
+  border-radius: 3px; font: 500 11px var(--bobo-font-mono); padding: 7px 9px; }
+#watch-player-stage:fullscreen, #watch-player-stage:-webkit-full-screen,
+#watch-player-stage.bobo-theater-fallback { background: #000 !important;
+  border: none !important; border-radius: 0 !important; width: 100vw !important;
+  max-width: none !important; height: 100dvh !important; max-height: none !important;
+  aspect-ratio: auto !important; margin: 0 !important; }
+#watch-player-stage:fullscreen iframe, #watch-player-stage:-webkit-full-screen iframe,
+#watch-player-stage.bobo-theater-fallback iframe {
+  width: 100% !important; height: 100% !important; object-fit: contain; }
+#watch-player-stage.bobo-theater-fallback { position: fixed !important; inset: 0 !important;
+  z-index: 9500 !important; }
+html.bobo-theater-open { overflow: hidden !important; }
+#watch-player-stage:fullscreen .bobo-player-watermark,
+#watch-player-stage.bobo-theater-fallback .bobo-player-watermark { top: 21px; left: 24px; }
+#watch-player-stage:fullscreen .bobo-stage-tools,
+#watch-player-stage.bobo-theater-fallback .bobo-stage-tools { top: 15px; right: 15px; }
+@media (max-width: 660px) {
+  .bobo-filter-dock { margin: 5px -4px 22px; padding: 12px; }
+  .bobo-filter-dock .filter-group { flex: 1 1 calc(50% - 10px); min-width: 0 !important; }
+  .bobo-filter-dock .filter-group label { font-size: 9px !important; }
+  .bobo-filter-dock .filter-group select { padding: 8px !important; font-size: 12px !important; }
+  #watch-theater-button { font-size: 10px; padding: 7px 9px; }
+  #watch-theater-button span { display: none; }
+  .bobo-player-watermark { top: 9px; left: 10px; font-size: 17px; opacity: .41; }
+  .bobo-stage-tools { top: 7px; right: 7px; }
+  .bobo-easter-toast { right: 14px; bottom: 16px; }
+}
