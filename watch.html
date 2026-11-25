@@ -79,7 +79,11 @@
     <section id="watch-episodes-section" class="section episodes-section" hidden aria-labelledby="watch-episodes-heading">
       <div class="section-heading"><h2 id="watch-episodes-heading">Stagioni ed episodi</h2><span id="watch-episode-progress"></span></div>
       <p class="section-subtitle">Seleziona una stagione e scegli direttamente l'episodio da riprodurre.</p>
-      <div id="watch-season-buttons" class="season-list" role="group" aria-label="Seleziona una stagione"></div>
+      <div class="bobo-season-frame">
+        <button id="watch-season-prev" class="bobo-season-arrow bobo-season-arrow--left" type="button" aria-label="Scorri le stagioni verso sinistra" aria-controls="watch-season-buttons" hidden>‹</button>
+        <div id="watch-season-buttons" class="season-list" role="group" aria-label="Seleziona una stagione"></div>
+        <button id="watch-season-next" class="bobo-season-arrow bobo-season-arrow--right" type="button" aria-label="Scorri le stagioni verso destra" aria-controls="watch-season-buttons" hidden>›</button>
+      </div>
       <div id="watch-episode-list" class="episode-list"></div>
     </section>
 
