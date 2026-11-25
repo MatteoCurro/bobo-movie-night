@@ -139,6 +139,43 @@
     }
   };
 
+  /* Flat decorative micro-animations. No image/video downloads and reduced-motion friendly. */
+  const SCENES = {
+    climb: '<svg viewBox="0 0 210 150" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">'+
+      '<path class="bobo-wall" d="M25 130 56 27 145 12 185 123" fill="none" opacity=".5"/>'+
+      '<g class="bobo-hold"><path d="M67 110q5-7 13-1l-1 6-12 1z"/><path d="M94 80q8-9 15 0l-2 7-13-1z"/><path d="M70 49q6-6 13 0l-2 7-11-1z"/><path d="M129 48q6-7 12 0l-2 7-11-1z"/><path d="M122 112q6-8 14-1l-2 7-12 1z"/></g>'+
+      '<g class="bobo-climber"><circle cx="102" cy="68" r="9" fill="#b1d9d5"/>'+
+      '<path class="bobo-stroke" d="m101 79-4 23-20 16m20-16 26 14M101 85 77 66l-4-17m28 36 25-12 9-21"/>'+
+      '<path d="m97 101-8 9" stroke="#f1ac8d" stroke-width="5" stroke-linecap="round"/>'+
+      '<path d="m111 80-7 16" stroke="#7897a4" stroke-width="2" stroke-dasharray="2 4"/></g>'+
+      '<circle class="bobo-spark" cx="145" cy="28" r="3" fill="#a4d9d4"/></svg>',
+    ridge: '<svg viewBox="0 0 220 145" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">'+
+      '<path class="bobo-ground" d="M4 119 38 96 63 110 95 59 120 75 161 24 216 101" stroke-opacity=".9"/>'+
+      '<path d="m151 40 10-16 9 14" fill="none" stroke="#d1e4de" stroke-width="1.5"/>'+
+      '<g class="bobo-dog"><path class="bobo-stroke" d="m42 86 17-13 24-2 14 10-3 16M58 76l-5 17m23-15 3 17M96 78l6-10"/>'+
+      '<path class="bobo-stroke" d="m94 76 10-8-8-8-9 5"/>'+
+      '<circle cx="98" cy="69" r="1.5" fill="#a4d9d4"/>'+
+      '<path class="bobo-tail bobo-stroke" d="M42 85 29 74"/>'+
+      '<path class="bobo-limb bobo-stroke" d="m73 90 8 7"/>'+
+      '<path d="m87 70 7 7" stroke="#eeae8a" stroke-width="3"/></g>'+
+      '<circle class="bobo-spark" cx="165" cy="14" r="3" fill="#a4d9d4"/></svg>'
+  };
+  function addTinyScenes() {
+    const targets = [
+      ['.bobo-feature','climb'],
+      ['.title-hero','ridge']
+    ];
+    targets.forEach(function(pair) {
+      const host = document.querySelector(pair[0]);
+      if (!host || host.querySelector('.bobo-mini-scene')) return;
+      const scene = document.createElement('div');
+      scene.className = 'bobo-mini-scene bobo-mini-scene--'+pair[1];
+      scene.setAttribute('aria-hidden','true');
+      scene.innerHTML = SCENES[pair[1]];
+      host.appendChild(scene);
+    });
+  }
+
   let eggToastTimer;
   function smallEasterEggs() {
     const positions = [
@@ -161,6 +198,7 @@
       el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">'+sign.svg+'</svg>';
       host.appendChild(el);
     });
+    addTinyScenes();
   }
   function showEasterMessage(message) {
     let toast = document.querySelector('.bobo-easter-toast');
