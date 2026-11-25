@@ -150,7 +150,7 @@
     migration.hidden=localCount===0;
     migration.textContent='Importa precedenti preferiti ('+localCount+')';
     updateGenres();
-    const chosen=filter(),saved=lib().read(),container=el('bobo-fav-collections');
+    const chosen=filter(),saved=lib().read();
     el('bobo-fav-summary').textContent=saved.length+
       (saved.length===1?' titolo salvato':' titoli salvati')+
       (chosen.length!==saved.length?' · '+chosen.length+' visualizzati':'')+
