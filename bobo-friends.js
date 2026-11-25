@@ -14,7 +14,7 @@
       const timestamp=Number(localStorage.getItem(KEY));
       if(Number.isFinite(timestamp) && timestamp>0 && Date.now()-timestamp>=0 && Date.now()-timestamp<MAX_AGE_MS)return true;
     }catch(_){ /* Cookie-based shared welcome may still work. */ }
-    const match=document.cookie.match(/(?:^|;\\s*)bobo_friends_welcome_v1=(\\d+)/);
+    const match=document.cookie.match(/(?:^|;\s*)bobo_friends_welcome_v1=(\d+)/);
     const seconds=match?Number(match[1]):0;
     return seconds>0 && Date.now()/1000-seconds>=0 && Date.now()/1000-seconds<MAX_AGE_MS/1000;
   }
