@@ -118,33 +118,7 @@ jobs:
           python3 scripts/vendor_flaticon.py
           python3 scripts/prepare_flaticon.py
           python3 scripts/build_catalog_ledger.py
-
-      - name: Commit only if changed
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/newsletter.json assets/flaticon/ .nojekyll
-          if git diff --cached --quiet; then
-            echo "Already up to date."
-            exit 0
-          fi
-          git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
-          # The catalog and Pages UI may be updated concurrently. Retry only
-          # ordinary fast-forward pushes, never force-push or overwrite history.
-          for attempt in 1 2 3 4; do
-            git fetch origin main
-            git rebase -X theirs origin/main
-            if git push origin HEAD:main; then
-              break
-            fi
-            if [ "$attempt" -eq 4 ]; then
-              echo "Could not fast-forward generated files after four attempts" >&2
-              exit 1
-            fi
-            sleep 2
-          done
+          python3 scripts/build_poster_index.py
 
       - name: Validate Bobo enhancements
         shell: bash
@@ -157,6 +131,7 @@ jobs:
           node --check bobo-cloud.js
           node --check bobo-favorites.js
           python3 -m py_compile scripts/build_catalog_ledger.py
+          python3 -m py_compile scripts/build_poster_index.py
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 -m py_compile scripts/prepare_flaticon.py
           python3 - <<'PY'
@@ -217,6 +192,10 @@ jobs:
               assert data.get('items'), f'Empty catalog: {name}'
               example = data['items'][0]
               assert 'tmdb_id' in example and 'overview' in example, f'Missing metadata: {name}'
+          posters=json.loads(Path('data/poster-index.json').read_text(encoding='utf-8'))
+          assert posters['schema']==1
+          assert all(isinstance(posters['items'][t],dict) for t in ('movie','tv'))
+          assert sum(len(x) for x in posters['items'].values())>100
           discovery = json.loads(Path('data/discovery.json').read_text(encoding='utf-8'))
           assert discovery['schema'] == 1 and discovery['region'] == 'IT'
           assert isinstance(discovery['platforms'], list)
@@ -224,12 +203,39 @@ jobs:
           assert digest['schema']==1 and digest['weekly'] or digest['platforms']
           PY
 
+      - name: Commit only if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/newsletter.json assets/flaticon/ .nojekyll
+          if git diff --cached --quiet; then
+            echo "Already up to date."
+            exit 0
+          fi
+          git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
+          # The catalog and Pages UI may be updated concurrently. Retry only
+          # ordinary fast-forward pushes, never force-push or overwrite history.
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase -X theirs origin/main
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" -eq 4 ]; then
+              echo "Could not fast-forward generated files after four attempts" >&2
+              exit 1
+            fi
+            sleep 2
+          done
+
       - name: Prepare static site for deployment
         shell: bash
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/newsletter.json _site/data/
+          cp data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/newsletter.json _site/data/
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
