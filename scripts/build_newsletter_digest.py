@@ -39,7 +39,7 @@ def main():
  byid={s.get("id"):s for s in sections if isinstance(s,dict)}
  feature=choose(byid.get("week",{}),3)
  extras=[]
- for key,title,cap in (("hidden","Gemme nascoste",2),("mini","La serie da recuperare",2),("cinephiles","Consigliati dai cinefili",2)):
+ for key,title,cap in (("hidden","Gemme nascoste",2),("mini","La serie da recuperare",2)):
   rows=choose(byid.get(key,{}),cap)
   if rows:extras.append({"id":key,"title":title,"items":rows})
  if len(feature)<2 or sum(len(s["items"]) for s in extras)<2:
