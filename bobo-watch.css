@@ -20,7 +20,7 @@
 /* Compact episode previews: actual still first, series poster as portrait fallback.
    Keep the episode number in the subtitle even when the numeric tile is hidden. */
 .bobo-episode-copy{min-width:0;flex:1}
-.bobo-episode-copy strong{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere;line-height:1.35}
+.episode-list{align-items:stretch;grid-auto-flow:row}.episode-card{height:100%;min-width:0}.bobo-episode-copy strong{display:block;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;word-break:normal;hyphens:auto;line-height:1.4}
 .episode-card--with-preview .episode-number{display:none}
 .bobo-episode-still{width:88px;height:54px;object-fit:cover;border-radius:6px;flex:0 0 88px;background:#17171d}
 .bobo-episode-still--poster{width:40px;height:60px;flex-basis:40px;object-fit:cover}
@@ -28,3 +28,6 @@
   .bobo-episode-still{width:62px;height:43px;flex-basis:62px}
   .bobo-episode-still--poster{width:32px;height:48px;flex-basis:32px}
 }
+
+/* One column on narrow phones keeps complete episode titles comfortably readable. */
+@media(max-width:520px){.episode-list{grid-template-columns:minmax(0,1fr)}}
