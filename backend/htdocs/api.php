@@ -65,6 +65,12 @@ function email_link(string $action, string $token): string {
     // Fragment token is not transmitted as an HTTP query or referrer.
     return $base . '/account.html#' . $action . '=' . rawurlencode($token);
 }
+/** No preference stored means default enabled for verified members; explicit null is opt-out. */
+function bobo_newsletter_subscribed(array $row): bool {
+    if (array_key_exists('newsletter_subscribed_at',$row))
+        return !empty($row['newsletter_subscribed_at']);
+    return !empty($row['email_verified_at']);
+}
 function bobo_mail_configured(): bool {
     global $config;
     return trim((string)($config['resend_api_key'] ?? '')) !== '' &&
@@ -251,7 +257,7 @@ if ($route==='jobs/newsletter' && $method==='POST') {
     for ($i=0;$i<2;$i++) {
         $claim=state(function (&$db) use($week) {
             foreach ($db['users'] as $name=>&$row) {
-                if (empty($row['newsletter_subscribed_at']) || empty($row['email_verified_at']) ||
+                if (!bobo_newsletter_subscribed($row) || empty($row['email_verified_at']) ||
                     !filter_var($row['email']??'',FILTER_VALIDATE_EMAIL) ||
                     ($row['newsletter_sent_week']??'')===$week)continue;
                 $lease=$row['newsletter_lease']??null;
@@ -360,6 +366,7 @@ if ($route==='verify-email' && $method==='POST') {
             $row['verification_hash']=null;
             $row['verification_expires']=null;
             $row['email_verified_at']=gmdate('c');
+            if (!array_key_exists('newsletter_subscribed_at',$row))$row['newsletter_subscribed_at']=gmdate('c');
             $row['recovery_hash']=hash('sha256',$recovery);
             return ['id'=>$row['id'],'username'=>$name,'recovery_code'=>$recovery,
                 'session_version'=>(int)($row['session_version']??1)];
@@ -492,7 +499,7 @@ if ($route==='me' && $method==='GET') send_json(200,[
     'favorites_count'=>count($user['favorites'] ?? []),
 ]);
 if ($route==='newsletter' && $method==='GET') send_json(200,[
-    'subscribed'=>!empty($user['newsletter_subscribed_at']),
+    'subscribed'=>bobo_newsletter_subscribed($user),
     'email'=>$user['email']??null,
     'frequency'=>'weekly',
 ]);
@@ -512,6 +519,26 @@ if ($route==='newsletter' && $method==='PUT') {
         if(!$requested)unset($row['newsletter_lease']);
     },true);
     send_json(200,['ok'=>true,'subscribed'=>$requested]);
+}
+// Single preview to the signed-in admin's verified address. Does not mark weekly delivery.
+if ($route==='admin/newsletter/test' && $method==='POST') {
+    request_json();
+    if (($user['role']??'')!=='admin')send_json(403,['error'=>'Solo gli amministratori possono inviare una prova']);
+    if (empty($user['email_verified_at']) || !filter_var($user['email']??'',FILTER_VALIDATE_EMAIL))
+        send_json(403,['error'=>'Verifica prima la tua email']);
+    if (!bobo_mail_configured())send_json(503,['error'=>'Invio email non configurato']);
+    if (strlen((string)($config['newsletter_secret']??''))<40)
+        send_json(503,['error'=>'Configura prima il segreto newsletter']);
+    rate_limit('newsletter-test:'.$user['id']);
+    $digest=bobo_newsletter_load_digest($config);
+    if ($digest===null)send_json(503,['error'=>'Feed newsletter non disponibile']);
+    $unsubscribe=bobo_newsletter_unsubscribe_link($config,$user['id']);
+    [$subject,$plain,$html]=bobo_newsletter_compose($digest,$user['username'],$unsubscribe);
+    $subject='[PROVA] '.$subject;
+    $plain="Questa è una prova inviata solo all'amministratore.\\n\\n".$plain;
+    $sent=bobo_send_email($config,$user['email'],$subject,$plain,$html);
+    if(!$sent)send_json(502,['error'=>'Resend non ha accettato il messaggio di prova']);
+    send_json(200,['ok'=>true,'message'=>'Newsletter di prova inviata alla tua email']);
 }
 if ($route==='favorites' && $method==='GET') send_json(200,['items'=>$user['favorites']??[]]);
 if ($route==='favorites' && $method==='PUT') {
@@ -533,7 +560,7 @@ if ($route==='admin/users' && $method==='GET') {
               'email_verified'=>(bool)($u['email_verified_at']??null),
               'role'=>$u['role']??'user',
               'created_at'=>$u['created_at']??'', 'favorites_count'=>count($u['favorites']??[]),
-              'newsletter_subscribed'=>!empty($u['newsletter_subscribed_at'])];
+              'newsletter_subscribed'=>bobo_newsletter_subscribed($u)];
         }
         usort($list,static fn($a,$b)=>strcmp($a['username'],$b['username']));
         return $list;
