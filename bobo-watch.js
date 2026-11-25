@@ -28,6 +28,8 @@
   let lastHandledEpisode = '';
   let awaitingNextPlayback = false;
   let lastPlayerSignalAt = 0;
+  let nearEndSince = 0;
+  let nearEndSamples = 0;
   let episodeNavigation = 0;
   let theaterFallback = false;
   let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
@@ -121,6 +123,8 @@
     observedPlayback = false;
     lastHandledEpisode = '';
     awaitingNextPlayback = false;
+    nearEndSince = 0;
+    nearEndSamples = 0;
     updateAutoStatus();
   }
   function isBoboFullscreen() {
@@ -177,7 +181,13 @@
     const label = byId('watch-stage-loading');
     if (label) label.hidden = false;
     nextFrame.addEventListener('load',function () {
-      if (sequence === episodeNavigation && label) label.hidden = true;
+      if (sequence !== episodeNavigation) return;
+      if (label) label.hidden = true;
+      // Some Vix builds do not send play/timeupdate immediately on autoplay.
+      // Unblock ended-only detection once the fresh iframe is initialized.
+      if (awaitingNextPlayback) setTimeout(function () {
+        if (sequence === episodeNavigation) awaitingNextPlayback = false;
+      },1800);
     },{ once:true });
     // Replacing the iframe (not only its src) discards the previous Vix player
     // and all of its media state, including an internal fullscreen session.
@@ -201,6 +211,8 @@
     observedPlayback = false;
     lastEventName = '';
     awaitingNextPlayback = Boolean(automatic);
+    nearEndSince = 0;
+    nearEndSamples = 0;
     // Every episode gets a fresh iframe; updating only the URL in the address
     // bar does not replace the old provider player or its native fullscreen UI.
     byId('watch-play-section').hidden = false;
@@ -229,55 +241,74 @@
     if (autoplay) playNow(true,Boolean(automatic));
     else if (playing) playNow(false);
   }
-  function onPlayerMessage(event) {
-    const frame = byId('watch-iframe');
-    if (!frame || !playing || provider !== 'vix') return;
-    // Vix may send events from its nested player context rather than from
-    // the top-level iframe. Requiring event.source === iframe.contentWindow
-    // dropped legitimate events on some browser/provider combinations.
-    // The exact HTTPS origin and payload type remain mandatory.
-    if (event.origin !== 'https://vixsrc.to') return;
-    let msg = event.data;
-    if (typeof msg === 'string') {
-      try { msg = JSON.parse(msg); } catch (_) { return; }
-    }
-    if (!msg || typeof msg !== 'object' || msg.type !== 'PLAYER_EVENT' ||
-        !msg.data || typeof msg.data !== 'object') return;
-    const kind = msg.data.event;
-    if (!['play','pause','seeked','ended','timeupdate'].includes(kind)) return;
-    lastEventName = kind;
-    lastPlayerSignalAt = Date.now();
-    const status = byId('watch-event-diagnostic');
-    if (status && type === 'tv') {
-      status.hidden = false;
-      status.textContent = 'Segnale player ricevuto: '+kind+
-        ' · '+episodeHeading() +
-        (kind === 'ended' ? ' · Passaggio in elaborazione' : '');
-    }
-    if (kind === 'play' || kind === 'timeupdate') {
-      observedPlayback = true;
-      awaitingNextPlayback = false;
-      return;
-    }
-    // Vix documents ended as an authoritative completion event. Requiring
-    // a prior play/timeupdate message prevented advancement on browsers that
-    // delivered only the final event to the parent page.
-    if (kind !== 'ended' || type !== 'tv' || !autoNextEnabled || awaitingNextPlayback) return;
-    const episodeKey = selectedSeason+':'+selectedEpisode;
-    if (lastHandledEpisode === episodeKey) return;
-    lastHandledEpisode = episodeKey;
+  function completeEpisode(reason) {
+    if (type !== 'tv' || !autoNextEnabled || !playing || provider !== 'vix' || awaitingNextPlayback) return;
+    const current=selectedSeason+':'+selectedEpisode;
+    if (lastHandledEpisode === current) return;
+    lastHandledEpisode = current;
     observedPlayback = false;
+    nearEndSince = 0;
+    nearEndSamples = 0;
     if (consecutiveEpisodes >= autoNextLimit) {
       updateAutoStatus('Limite raggiunto: '+autoNextLimit+' episodi consecutivi. Seleziona un episodio per ripartire.');
       return;
     }
-    const next = adjacent(1);
+    const next=adjacent(1);
     if (!next) {
       updateAutoStatus('Ultimo episodio disponibile: la riproduzione consecutiva è terminata.');
       return;
     }
-    consecutiveEpisodes += 1;
+    consecutiveEpisodes+=1;
+    if (params.get('debug') === 'player') {
+      console.info('[Bobo] Prossimo episodio ('+reason+'): S'+next.season+'E'+next.episode);
+    }
     selectEpisode(next.season,next.episode,true,true);
+  }
+  function nearEndProgress(data) {
+    if(type!=='tv' || !autoNextEnabled || awaitingNextPlayback)return;
+    const elapsed=Number(data.currentTime);
+    const total=Number(data.duration);
+    if(!Number.isFinite(elapsed) || !Number.isFinite(total) || total<60 || elapsed<0)return;
+    const remains=total-elapsed;
+    if (remains < -2 || remains > Math.min(3.5,Math.max(1.5,total*.003))) {
+      nearEndSince=0;nearEndSamples=0;return;
+    }
+    if(!nearEndSince)nearEndSince=Date.now();
+    nearEndSamples+=1;
+    // Some builds emit progress until the last moment but omit 'ended'.
+    // Two distinct near-end events prevent ordinary seeking or brief
+    // buffering from skipping episodes prematurely.
+    if(nearEndSamples>=2 && Date.now()-nearEndSince>=650) {
+      completeEpisode('progress');
+    }
+  }
+  function onPlayerMessage(event) {
+    const frame=byId('watch-iframe');
+    if(!frame || !playing || provider!=='vix')return;
+    if(event.origin!=='https://vixsrc.to')return;
+    let msg=event.data;
+    if(typeof msg==='string') {
+      try {msg=JSON.parse(msg);}catch(_){return;}
+    }
+    if(!msg || typeof msg!=='object' || msg.type!=='PLAYER_EVENT' ||
+      !msg.data || typeof msg.data!=='object')return;
+    const kind=msg.data.event;
+    if(!['play','pause','seeked','ended','timeupdate'].includes(kind))return;
+    lastEventName=kind;
+    lastPlayerSignalAt=Date.now();
+    if(params.get('debug')==='player'){
+      const status=byId('watch-event-diagnostic');
+      if(status)status.textContent='Evento Vix: '+kind+' · '+episodeHeading()+
+        (Number.isFinite(Number(msg.data.currentTime))?' · '+Math.floor(Number(msg.data.currentTime))+' s':'');
+    }
+    if(kind==='play' || kind==='timeupdate') {
+      observedPlayback=true;
+      awaitingNextPlayback=false;
+      if(kind==='timeupdate')nearEndProgress(msg.data);
+      return;
+    }
+    if(kind==='seeked'){nearEndSince=0;nearEndSamples=0;return;}
+    if(kind==='ended')completeEpisode('ended');
   }
   function renderEpisodeNavigation() {
     if (!seasons.length) return;
@@ -409,6 +440,8 @@
     } else byId('watch-settings-trigger').focus();
   }
   function setup() {
+    const diagnostics=byId('watch-player-diagnostics');
+    if(diagnostics)diagnostics.hidden=params.get('debug')!=='player';
     byId('watch-start').addEventListener('click',function () { resetSequence(); playNow(true); });
     byId('watch-hide-player').addEventListener('click',pausePlayer);
     byId('watch-theater-button').addEventListener('click',toggleTheater);
