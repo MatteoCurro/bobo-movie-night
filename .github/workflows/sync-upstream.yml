@@ -121,9 +121,20 @@ jobs:
             exit 0
           fi
           git commit -m "sync: refresh Bobo Movie Night from CasaFlix"
-          git fetch origin main
-          git rebase -X theirs origin/main
-          git push
+          # The catalog and Pages UI may be updated concurrently. Retry only
+          # ordinary fast-forward pushes, never force-push or overwrite history.
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase -X theirs origin/main
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" -eq 4 ]; then
+              echo "Could not fast-forward generated files after four attempts" >&2
+              exit 1
+            fi
+            sleep 2
+          done
 
       - name: Validate Bobo enhancements
         shell: bash
