@@ -168,11 +168,11 @@
     const nextFrame = oldFrame.cloneNode(false);
     nextFrame.removeAttribute('src');
     nextFrame.referrerPolicy = 'origin';
-    // Deliberately omit allow-popups and allow-top-navigation. The external
-    // player may play video, but cannot open advertising tabs or take over Bobo.
-    nextFrame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-pointer-lock');
-    nextFrame.removeAttribute('allowfullscreen');
-    nextFrame.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    // Vix explicitly rejects sandboxed embeds ("Please Disable Sandbox").
+    // Do not use sandbox for popup suppression: it breaks real playback.
+    nextFrame.removeAttribute('sandbox');
+    nextFrame.setAttribute('allowfullscreen','');
+    nextFrame.setAttribute('allow','autoplay; fullscreen; encrypted-media; picture-in-picture');
     const sequence = ++episodeNavigation;
     const label = byId('watch-stage-loading');
     if (label) label.hidden = false;
