@@ -141,6 +141,7 @@ public final class MainActivity extends Activity {
             if (!isAllowedTopLevel(uri)) return;
             menu.setVisibility(View.GONE);
             browser.setVisibility(View.VISIBLE);
+            browser.onResume();
             browser.loadUrl(url);
             browser.requestFocus();
         } catch (Exception ignored) {
