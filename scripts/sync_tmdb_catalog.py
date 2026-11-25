@@ -102,7 +102,7 @@ def episode_facts(payload: dict) -> dict:
         number=row.get("episode_number")
         if not isinstance(number,int) or number<1:continue
         image=safe_image(row.get("still_path"))
-        name=str(row.get("name") or "").strip()[:160]
+        name=str(row.get("name") or "").strip()
         # Episode names remain useful even when TMDB has no specific still.
         if not image and not name:continue
         data={"source":"tmdb","observed_at":DATE}
@@ -111,7 +111,57 @@ def episode_facts(payload: dict) -> dict:
         result[str(number)]=data
     return result
 
-def update(root:Path, fetch=api, limit:int=120) -> dict:
+def episode_file(root:Path, tid:int) -> Path:
+    """One small JSON file per series: the watch page never downloads every episode."""
+    return root/"data"/"episodes"/(str(tid)+".json")
+
+def season_numbers(raw:list) -> list[int]:
+    return sorted({int(x.get("n")) for x in raw
+                   if isinstance(x,dict) and isinstance(x.get("n"),int)
+                   and isinstance(x.get("episodes"),int) and x["episodes"]>0 and x["n"]>=0})
+
+def due_for_retry(value:str, after_days:int) -> bool:
+    try:
+        return (dt.date.today()-dt.date.fromisoformat(value)).days>=after_days
+    except (TypeError,ValueError):
+        return True
+
+def select_episode_series(root:Path, rows:list, facts:dict, touched:set[int], maximum:int) -> list[dict]:
+    """Breadth-first backlog plus a reserved portion for unfinished seasons."""
+    fresh=[]; partial=[]; stale=[]
+    for row in rows:
+        if not isinstance(row,dict):continue
+        try:tid=int(row.get("tmdb_id") or 0)
+        except (TypeError,ValueError):continue
+        if tid<1:continue
+        path=episode_file(root,tid)
+        if not path.exists():
+            fresh.append((tid not in touched,row))
+            continue
+        state=load_json(path)
+        old=state.get("episode_images") or {}
+        numbers=season_numbers(row.get("seasons") or [])
+        done=old.get("checked_seasons") or {}
+        images=old.get("seasons") or {}
+        if not numbers:
+            if due_for_retry(state.get("last_attempt"),21):partial.append((tid not in touched,row))
+        elif any(str(n) not in done and str(n) not in images for n in numbers):
+            partial.append((tid not in touched,row))
+        elif due_for_retry(old.get("observed_at"),90):
+            stale.append((tid not in touched,row))
+    fresh.sort(key=lambda x:x[0])
+    partial.sort(key=lambda x:x[0])
+    stale.sort(key=lambda x:x[0])
+    # At least a quarter of the batch completes previously started series.
+    continuation=max(1,maximum//4)
+    work=[row for _,row in fresh[:maximum-continuation]]
+    work.extend(row for _,row in partial[:continuation])
+    if len(work)<maximum:
+        remainder=fresh[maximum-continuation:]+partial[continuation:]+stale
+        work.extend(row for _,row in remainder[:maximum-len(work)])
+    return work[:maximum]
+
+def update(root:Path, fetch=api, limit:int=120, episode_limit:int=80, season_budget:int=140) -> dict:
     catalog={}; previous={}; counts={}
     for kind,name in (("movie","movies.json"),("tv","tv.json")):
         path=root/"data"/name
@@ -183,41 +233,94 @@ def update(root:Path, fetch=api, limit:int=120) -> dict:
         except (ValueError,urllib.error.URLError,TimeoutError):continue
         facts.setdefault(kind+":"+str(tid),{})["providers_it"]=provider_facts(res)
         providers_checked+=1
-    for kind,tid,extra in selected:
-        if kind!="tv" or episodes_checked>=8:continue
-        key="tv:"+str(tid);record=facts.setdefault(key,{})
-        old_images=record.get("episode_images") or {}
-        last_seen=old_images.get("observed_at", "")
-        images=dict(old_images.get("seasons") or {})
-        info=extra
-        if info is None:
-            try:info=fetch("/tv/"+str(tid),{"language":"it-IT"})
-            except (ValueError,urllib.error.URLError,TimeoutError):continue
-        numbers=sorted({s.get("season_number") for s in info.get("seasons",[])
-                        if isinstance(s,dict) and isinstance(s.get("season_number"),int)
-                        and s.get("episode_count",0)>0 and s["season_number"]>=0})
-        if not numbers:continue
-        # Fill unvisited seasons first, at most two per title/run.
-        # Previously first+last were repeatedly fetched and middle seasons never filled.
-        missing=[n for n in numbers if str(n) not in images]
-        if not missing and last_seen:
+    # Migrate old inline episode indexes once. Keep lightweight provider facts in
+    # enrichment.json; episode data lives in data/episodes/<tmdb-id>.json.
+    episodes_dir=root/"data"/"episodes"
+    episodes_dir.mkdir(parents=True,exist_ok=True)
+    for key,record in facts.items():
+        if not key.startswith("tv:") or not isinstance(record,dict):continue
+        legacy=record.get("episode_images")
+        if not isinstance(legacy,dict):continue
+        try:tid=int(key[3:])
+        except ValueError:continue
+        destination=episode_file(root,tid)
+        if not destination.exists():
+            save_json(destination,{"schema":1,"type":"tv","tmdb_id":tid,
+                                   "episode_images":legacy})
+        record.pop("episode_images",None)
+
+    touched_tv={tid for kind,tid,_ in touched if kind=="tv"}
+    candidates=select_episode_series(root,catalog["tv"]["items"],facts,touched_tv,episode_limit)
+    seasons_fetched=0;episodes_checked=0;failed_requests=0
+    for row in candidates:
+        if seasons_fetched>=season_budget:break
+        tid=int(row["tmdb_id"])
+        filepath=episode_file(root,tid)
+        state=load_json(filepath,{"schema":1,"type":"tv","tmdb_id":tid})
+        current=state.get("episode_images") or {}
+        season_items=row.get("seasons") or []
+        numbers=season_numbers(season_items)
+        if not numbers:
             try:
-                if (dt.date.today()-dt.date.fromisoformat(last_seen)).days < 14:continue
-            except ValueError:pass
-        chosen=missing[:2] if missing else sorted(set(numbers[:1]+numbers[-1:]))
+                detail=fetch("/tv/"+str(tid),{"language":"it-IT"})
+                season_items=[{"n":int(x["season_number"]),"episodes":int(x["episode_count"])}
+                              for x in detail.get("seasons",[]) if isinstance(x,dict)
+                              and isinstance(x.get("season_number"),int)
+                              and isinstance(x.get("episode_count"),int) and x["episode_count"]>0]
+                numbers=season_numbers(season_items)
+                if numbers:row["seasons"]=season_items
+            except (ValueError,KeyError,urllib.error.URLError,TimeoutError) as exc:
+                failed_requests+=1
+                continue
+        if not numbers:
+            state["last_attempt"]=DATE
+            save_json(filepath,state)
+            continue
+        images=dict(current.get("seasons") or {})
+        checked=dict(current.get("checked_seasons") or {})
+        missing=[n for n in numbers if str(n) not in checked and str(n) not in images]
+        if missing:
+            # First pass obtains a recent season as well as the first one.
+            if len(missing)>2 and not images:
+                chosen=[missing[0],missing[-1]]
+            else:
+                chosen=missing[:2]
+        elif due_for_retry(current.get("observed_at"),90):
+            chosen=sorted(set(numbers[:1]+numbers[-1:]))
+        else:
+            continue
+        attempted=False
         for season in chosen:
-            try:response=fetch(f"/tv/{tid}/season/{season}",{"language":"it-IT"})
-            except (ValueError,urllib.error.URLError,TimeoutError):continue
+            if seasons_fetched>=season_budget:break
+            seasons_fetched+=1
+            try:
+                response=fetch(f"/tv/{tid}/season/{season}",{"language":"it-IT"})
+                if not isinstance(response.get("episodes"),list):
+                    raise ValueError("TMDB season response has no episodes")
+            except (ValueError,urllib.error.URLError,TimeoutError) as exc:
+                failed_requests+=1
+                continue
             found=episode_facts(response)
             if found:images[str(season)]={**images.get(str(season),{}),**found}
-        if images:
-            record["episode_images"]={"source":"tmdb","observed_at":DATE,"seasons":images}
+            checked[str(season)]=DATE
+            attempted=True
+        if attempted:
+            state["episode_images"]={"source":"tmdb","observed_at":DATE,
+                                     "seasons":images,"checked_seasons":checked}
+            state["last_attempt"]=DATE
+            save_json(filepath,state)
             episodes_checked+=1
+        if failed_requests>=12:
+            print("::warning::Too many episode fetch failures; preserving queued series for retry")
+            break
+    indexed_series=sum(1 for p in episodes_dir.glob("*.json") if p.is_file())
     for kind,name in (("movie","movies.json"),("tv","tv.json")):
         save_json(root/"data"/name,catalog[kind])
     save_json(root/"data"/"enrichment.json",enrichment)
     status={"schema":1,"source":"TMDB","updated_at":dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
             "catalog":counts,"provider_titles_checked":providers_checked,"episode_titles_checked":episodes_checked,
+            "episode_series_indexed":indexed_series,"season_requests":seasons_fetched,
+            "episode_backfill_remaining":max(0,len(catalog["tv"]["items"])-indexed_series),
             "discovery_pages_ok":success}
     save_json(root/"data"/"catalog-status.json",status)
     print("Bobo catalog autonomous sync:",json.dumps(status,ensure_ascii=False))
