@@ -44,6 +44,28 @@ def main() -> None:
             for key,_ in expired[:len(old)-MAX_PER_KIND]:
                 old.pop(key,None)
         print(f"Catalog ledger {kind}: {len(old)} IDs, {count_new} first seen today")
+    # Historical platform observations are linked to the TMDB identifier.
+    # They are *not* assertions that a title remains available forever.
+    try:
+        stream = json.loads(Path("data/discovery.json").read_text(encoding="utf-8")).get("streaming",{})
+        platforms = stream.get("platforms",[]) if isinstance(stream,dict) else []
+    except (OSError,ValueError,TypeError):
+        platforms = []
+    for platform in platforms:
+        provider = str(platform.get("id",""))
+        if provider not in {"netflix","prime","disney","apple"}:
+            continue
+        for row in platform.get("items",[]):
+            kind = row.get("type")
+            ident = str(row.get("tmdb_id",""))
+            item = ledger["items"].get(kind,{}).get(ident)
+            if item is None:
+                continue
+            if len(item) < 3:
+                item.append({})
+            if not isinstance(item[2],dict):
+                item[2] = {}
+            item[2][provider] = TODAY
     serialized = json.dumps(ledger,ensure_ascii=False,separators=(",",":"),sort_keys=True)+"\n"
     if not TARGET.exists() or TARGET.read_text(encoding="utf-8") != serialized:
         TARGET.write_text(serialized,encoding="utf-8")
