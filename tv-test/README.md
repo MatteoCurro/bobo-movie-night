@@ -1,6 +1,6 @@
 # Bobo Movie Club TV — interfaccia esclusiva per Google TV
 
-Ramo separato `tv-native-ui`. Nessun file del sito web e nessun contenuto pubblicato
+Ramo separato `tv-playback-fix`. Nessun file del sito web e nessun contenuto pubblicato
 su `movie.curromatteo.it` viene modificato. Il catalogo e le immagini sono letti
 direttamente dagli JSON pubblici: `data/movies.json`, `data/tv.json` e
 `data/episodes/{id}.json`.
@@ -27,7 +27,7 @@ controllo ufficiale del player.
 
 ## Compilazione e installazione
 Workflow `Bobo TV · Leanback APK` -> artifact
-`Bobo-Movie-Club-TV-1.0-APK`. Estrai `app-debug.apk` e copialo in
+`Bobo-Movie-Club-TV-1.1-playback-fix-APK`. Estrai `app-debug.apk` e copialo in
 `~/Downloads` sul Mac già associato alla TV via ADB.
 
 Poiché le firme **debug** dei runner GitHub cambiano, per passare tra versioni
@@ -51,3 +51,14 @@ che è limitato all'origine e al frame principale.
 4. Avvio manuale Vix, play e audio.
 5. OK su video avviato e frecce +/- 10 s.
 6. Indietro da player, schede e home.
+
+## TV 1.1 — test da eseguire sul telecomando
+1. Aprire un film già verificato come riproducibile su Vix.
+2. Attendere l'avvio del video e la scomparsa delle sovraimpressioni iniziali.
+3. Premere OK: se il bridge HTML5 risponde, il video va direttamente in pausa; se
+   non è accessibile, il fallback ferma l'iframe e conserva il timestamp noto o
+   stimato. Premere nuovamente OK per ripartire.
+4. Premere destra/sinistra: saltare +10/-10 secondi. La sorgente viene ricaricata
+   con startAt soltanto se il controllo diretto non risponde.
+5. Se non funziona, i log sono filtrabili con
+   `~/Downloads/platform-tools/adb logcat -s BoboTV:D *:S`.
