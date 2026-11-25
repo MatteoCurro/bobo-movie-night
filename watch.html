@@ -48,7 +48,7 @@
         <button id="watch-hide-player" type="button" class="quiet-button">Chiudi player</button>
       </div>
       <div class="player-container" id="watch-player-stage">
-        <iframe id="watch-iframe" title="Riproduttore esterno" allow="autoplay; encrypted-media; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock" referrerpolicy="origin"></iframe>
+        <iframe id="watch-iframe" title="Riproduttore esterno" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture" referrerpolicy="origin"></iframe>
         <span class="bobo-player-watermark" aria-hidden="true">bobo<span>.</span><small>movie night</small></span>
         <div class="bobo-stage-tools">
           <span id="watch-stage-loading" class="bobo-stage-loading" aria-live="polite" hidden>Caricamento episodio…</span>
@@ -69,7 +69,7 @@
         <p id="watch-event-diagnostic" class="player-caption" aria-live="polite">Nessun segnale ricevuto dal player in questa sessione.</p>
       </details>
       <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. L'avanzamento automatico dipende dall'evento di fine video comunicato da Vix.</p>
-      <p class="player-caption">Usa <strong>Schermo intero Bobo</strong> per mantenere la modalità cinema tra gli episodi. Il fullscreen interno a Vix e i popup del player sono limitati tramite sandbox; su alcuni dispositivi questo può incidere sulla compatibilità. Se la riproduzione non parte, usa il collegamento esterno.</p>
+      <p class="player-caption">Usa <strong>Schermo intero Bobo</strong> per mantenere la modalità cinema quando passi all'episodio successivo. Per compatibilità il player Vix non è più isolato con sandbox: eventuali popup del servizio non possono essere bloccati in modo affidabile da questa pagina senza compromettere la riproduzione.</p>
     </section>
 
     <section id="watch-episodes-section" class="section episodes-section" hidden aria-labelledby="watch-episodes-heading">
