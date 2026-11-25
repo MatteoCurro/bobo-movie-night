@@ -10,6 +10,10 @@ on:
       - '.github/workflows/tv-test-apk.yml'
   workflow_dispatch:
 
+concurrency:
+  group: tv-test-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
