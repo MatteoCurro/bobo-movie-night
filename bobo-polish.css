@@ -239,3 +239,114 @@ body > header, .site-header {
   .bobo-mini-scene--ridge { width: 115px !important; }
   .bobo-feature-actions .bobo-shuffle { width: fit-content; }
 }
+
+
+/* V3: two CC0 solid silhouettes, deliberately without background tiles. */
+.bobo-mini-scene, .bobo-mini-scene--ridge {
+  background: transparent !important; border: 0 !important; box-shadow: none !important;
+  filter: none !important; opacity: .55 !important;
+  width: clamp(80px,9.6vw,145px) !important;
+  aspect-ratio: 1 !important;
+  right: clamp(12px,2vw,32px) !important;
+  bottom: clamp(14px,2vw,32px) !important;
+}
+.bobo-mini-scene img {
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 0 !important; background: transparent !important;
+  animation: bobo-quiet-drift 13s ease-in-out infinite;
+}
+.bobo-mini-scene--ridge img { animation: bobo-quiet-walk 16s ease-in-out infinite; }
+@keyframes bobo-quiet-drift {
+  0%,100% { transform:translate(0,2px) rotate(-1deg); }
+  50% { transform:translate(2px,-6px) rotate(1deg); }
+}
+@keyframes bobo-quiet-walk {
+  0%,100% { transform: translate(-6px,2px); }
+  50% { transform: translate(6px,-3px); }
+}
+@media(max-width:760px) {
+  .bobo-mini-scene, .bobo-mini-scene--ridge {
+    width: 86px !important; opacity:.43 !important; right:10px !important; bottom:12px !important;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .bobo-mini-scene img { animation:none !important; }
+}
+
+/* Movie / series: subtle color coding, consistent through carousels and search. */
+.bobo-tile-tag, .bobo-kind, .bobo-fav-kind {
+  border-radius: 3px !important; font-family:var(--bobo-font-mono) !important;
+  font-size: 9px !important; letter-spacing: .02em !important; font-weight: 600 !important;
+}
+[data-bobo-visual-type="movie"] .bobo-tile-tag,
+.bobo-kind[data-bobo-visual-type="movie"],.bobo-fav-kind[data-bobo-visual-type="movie"] {
+  color: #f3c9b1 !important; border-color:#795d54 !important; background: #32252a !important;
+}
+[data-bobo-visual-type="tv"] .bobo-tile-tag,
+.bobo-kind[data-bobo-visual-type="tv"],.bobo-fav-kind[data-bobo-visual-type="tv"] {
+  color: #b4dfd6 !important; border-color:#52766d !important; background: #1a3234 !important;
+}
+.bobo-kind { padding: 2px 6px; border:1px solid transparent; }
+#watch-kind[data-bobo-visual-type="movie"] { color:#f3c9b1 !important; }
+#watch-kind[data-bobo-visual-type="tv"] { color:#b4dfd6 !important; }
+.bobo-source-tags { display:flex; flex-wrap:wrap; align-items:center; gap:4px; padding:4px 0 0; }
+.bobo-platform {
+  display:inline-flex; align-items:center; border-left:2px solid var(--brand-line,#789ca6);
+  padding:3px 5px; background:var(--brand-bg,#202c34); color:var(--brand-text,#b9c9d1);
+  border-radius:2px; font:600 9px/1.2 var(--bobo-font-mono); white-space:nowrap; letter-spacing:-.01em;
+}
+.bobo-platform--netflix { --brand-line:#e50914; --brand-bg:#291c22; --brand-text:#f7c4c4; }
+.bobo-platform--prime { --brand-line:#20a9e7; --brand-bg:#172e3e; --brand-text:#bedeee; }
+.bobo-platform--disney { --brand-line:#688df5; --brand-bg:#222840; --brand-text:#c8d2fa; }
+.bobo-platform--apple { --brand-line:#c6c8cf; --brand-bg:#26292d; --brand-text:#ebedef; }
+.bobo-platform-more {font:500 9px var(--bobo-font-mono);color:#94abb5;}
+.bobo-feature-meta + .bobo-source-tags, .bobo-detail-meta + .bobo-source-tags,
+#watch-meta + .bobo-source-tags { margin:-3px 0 13px; }
+.bobo-tile .bobo-source-tags,.bobo-result .bobo-source-tags { margin:4px 0 0; }
+.bobo-result .bobo-source-tags { padding:2px 10px 5px; }
+.bobo-item-wrap { position:relative; min-width:0; }
+.bobo-rail > .bobo-item-wrap { flex:0 0 clamp(126px,13.8vw,185px); scroll-snap-align:start; }
+.bobo-item-wrap > .bobo-tile { display:block; width:100%; flex:initial !important; }
+.grid > .bobo-result-wrap {width:100%;min-width:0;}
+.bobo-item-wrap > .bobo-result {width:100%;height:100%;}
+.bobo-save {cursor:pointer; color:#cbdfe0; background:rgba(14,23,31,.86); border:1px solid #648185;
+  font:700 19px/1 var(--bobo-font-display); border-radius:5px; height:32px; min-width:32px; padding:4px 7px; }
+.bobo-save:hover,.bobo-save[aria-pressed="true"] { color:#d6eee8; border-color:#8baba7; background:#254047; }
+.bobo-save-corner { position:absolute; z-index:3; top:8px; right:8px; }
+.bobo-save-hero { font-size:16px; min-height:41px; padding:8px 13px; }
+.bobo-save-watch { align-self:stretch; min-width:46px; }
+.bobo-library-nav {display:inline-flex;align-items:center;gap:6px;color:#cfe3e1;text-decoration:none;
+  font:600 12px var(--bobo-font-mono);white-space:nowrap;padding:8px 9px;
+  border:1px solid #3a525b;border-radius:5px;background:#1a2932;margin-left:auto;}
+.bobo-library-nav b {font:600 10px var(--bobo-font-mono);color:#8ebcb7;}
+.bobo-library-nav:hover {background:#263b44;}
+/* Favorites occupy a single compact shelf above new arrivals. */
+.bobo-favorite-shelf {padding:18px 1px 15px;margin:0 0 18px;border-bottom:1px solid var(--bobo-outline);scroll-margin-top:95px;}
+.bobo-favorite-head {display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 15px;}
+.bobo-favorite-head > div > span {color:#8cbdb7;font:600 10px var(--bobo-font-mono);letter-spacing:.1em;}
+.bobo-favorite-head h2 {font:600 clamp(20px,2.5vw,26px) var(--bobo-font-display);letter-spacing:-.04em;margin:5px 0 0;}
+.bobo-favorite-head h2 small {font:500 12px var(--bobo-font-mono);color:#8cabaf;margin-left:7px;}
+.bobo-favorite-actions {display:flex;gap:7px;}
+.bobo-favorite-actions button {background:#172630;color:#b9d7d3;border:1px solid #3c5861;padding:8px 10px;border-radius:4px;font:600 11px var(--bobo-font-mono);cursor:pointer;}
+.bobo-favorite-shelf p {color:#a8bbc0;font:400 13px var(--bobo-font-body);line-height:1.6;}
+.bobo-favorite-rail {display:flex;gap:12px;overflow-x:auto;padding:4px 3px 12px;scrollbar-width:thin;}
+.bobo-favorite-item {position:relative;flex:0 0 clamp(125px,13vw,172px);min-width:0;}
+.bobo-fav-open {display:block;width:100%;height:100%;border:none;padding:0;text-align:left;background:transparent;color:#e4edef;cursor:pointer;}
+.bobo-fav-poster {position:relative;display:block;width:100%;aspect-ratio:2/3;border-radius:5px;overflow:hidden;background:#1a2a35;}
+.bobo-fav-poster img {width:100%;height:100%;object-fit:cover;display:block;}
+.bobo-fav-fallback {height:100%;display:grid;place-items:center;color:#7899a1;font:600 14px var(--bobo-font-mono);}
+.bobo-fav-kind {position:absolute;bottom:7px;left:7px;padding:4px 6px;border:1px solid #516670;}
+.bobo-fav-open strong {display:block;margin:7px 0 3px;font:600 13px/1.3 var(--bobo-font-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bobo-fav-open small {display:block;color:#809ba4;font:500 10px var(--bobo-font-mono);}
+.bobo-fav-inactive {opacity:.6;cursor:default;}
+.bobo-fav-remove {position:absolute;right:7px;top:7px;background:#16262df0;border:1px solid #58757c;border-radius:4px;color:#e3f3ef;font-size:18px;cursor:pointer;width:28px;height:28px;}
+#bobo-library-notice {position:fixed;right:22px;bottom:22px;z-index:1000;padding:12px 15px;background:#1b303a;border:1px solid #729894;border-radius:5px;color:#e7f2f0;font:500 12px var(--bobo-font-mono);box-shadow:0 8px 30px #0007;}
+#bobo-library-notice[hidden] {display:none !important;}
+@media(max-width:760px) {
+  .bobo-library-nav {font-size:11px;padding:7px 8px;margin-left:0;}
+  .bobo-library-nav span {display:none;}
+  .bobo-library-nav b {display:none;}
+  .bobo-favorite-head {flex-wrap:wrap;}
+  .bobo-save-corner {top:5px;right:5px;}
+  .bobo-platform {font-size:8px;padding:3px 4px;}
+}
