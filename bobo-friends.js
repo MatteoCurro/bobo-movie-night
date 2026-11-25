@@ -45,11 +45,58 @@
     }
   }
 
+  function siteNavigation() {
+    const header=document.querySelector('header');
+    if(!header)return;
+    const original=header.querySelector('nav');
+    if(original)original.remove();
+    const oldLink=header.querySelector('.bobo-library-nav');
+    if(oldLink)oldLink.remove();
+    let nav=header.querySelector('.bobo-site-nav');
+    if(!nav){
+      nav=document.createElement('nav');
+      nav.className='bobo-site-nav';
+      nav.setAttribute('aria-label','Navigazione principale');
+      const pages=[
+        {name:'Home',url:'index.html'},
+        {name:'Film',url:'index.html#movies'},
+        {name:'Serie TV',url:'index.html#tv'},
+        {name:'Preferiti',url:'favorites.html'}
+      ];
+      pages.forEach(p=>{
+        const a=document.createElement('a');
+        a.href=p.url;a.textContent=p.name;
+        nav.appendChild(a);
+      });
+      const search=header.querySelector('.search-wrap');
+      if(search)header.insertBefore(nav,search);
+      else {
+        const settings=header.querySelector('#watch-settings-trigger,.settings-trigger,#bobo-settings-open');
+        if(settings)header.insertBefore(nav,settings);
+        else header.appendChild(nav);
+      }
+    }
+    function markActive(){
+      const file=location.pathname.split('/').pop()||'index.html';
+      const home=file==='index.html';
+      nav.querySelectorAll('a').forEach(a=>{
+        const dest=a.getAttribute('href');
+        const current=(file==='favorites.html'&&dest==='favorites.html')||
+          (home&&dest==='index.html'&&!['#tv','#movies'].includes(location.hash))||
+          (home&&dest==='index.html#movies'&&location.hash==='#movies')||
+          (home&&dest==='index.html#tv'&&location.hash==='#tv');
+        if(current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+      });
+    }
+    markActive();
+    window.addEventListener('hashchange',markActive);
+  }
+
   function welcomeQuestion() {
     // Two deliberately simple inside jokes; this is not a secret or password check.
     const questions = [
-      { question: 'Come si chiama il cane di Bobo?', answer: 'faiva', hint: 'Un nome, cinque lettere.' },
-      { question: 'Cosa fa Bobo una volta a settimana?', answer: 'arrampica', hint: 'Una sola parola.' }
+      { question: 'Come si chiama il cane di Bobo?', answers: ['faiva'], hint: 'Un nome, cinque lettere.' },
+      { question: 'Cosa fa Bobo una volta a settimana?', answers: ['arrampica','arrampicata'], hint: 'Una sola parola.' }
     ];
     const chosen = questions[new Date().getDate() % questions.length];
     const gate = document.createElement('div');
@@ -70,7 +117,7 @@
     const input = document.getElementById('bobo-gate-input');
     document.getElementById('bobo-gate-form').addEventListener('submit',function(event) {
       event.preventDefault();
-      if (normalizeAnswer(input.value) === chosen.answer) { unlock(); return; }
+      if (chosen.answers.includes(normalizeAnswer(input.value))) { unlock(); return; }
       document.getElementById('bobo-gate-error').textContent =
         'Mmh, non proprio. '+chosen.hint;
       input.focus();
@@ -246,6 +293,7 @@
 
   function start() {
     wordmark();
+    siteNavigation();
     footer();
     installSmallEasterEggs();
     if (storedAccess()) document.documentElement.classList.add('bobo-unlocked');
