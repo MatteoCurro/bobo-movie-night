@@ -89,3 +89,13 @@
 .bobo-result-meta { font-size: 11px; padding: 0 10px; color: #c3c3c8; white-space: normal; line-height: 1.4; min-height: 30px; width: 100%; }
 .filter-bar .filter-group { flex: 1 1 150px; }
 @media (max-width:640px) { .bobo-tile-tag { font-size: 9px; padding: 3px 6px; } .bobo-result-meta { font-size: 10px; } }
+
+
+.bobo-auto-settings { border-top: 1px solid #46464c; margin-top: 22px; padding-top: 18px; }
+.bobo-auto-settings h3 { font-size: 16px; margin: 0 0 13px; }
+.bobo-auto-option { display: flex; gap: 11px; align-items: flex-start; font-size: 13px; line-height: 1.5; cursor: pointer; margin-bottom: 15px; }
+.bobo-auto-option input { accent-color: #e50914; width: 18px; height: 18px; flex: none; margin-top: 2px; }
+.bobo-auto-settings > label[for] { display: block; font-size: 12px; color: #e2e2e5; font-weight: 700; margin-bottom: 6px; }
+#bobo-settings-auto-limit { background: #29292f; border: 1px solid #56565c; border-radius: 7px; padding: 9px 11px; width: 100%; max-width: 220px; color: #fff; }
+#bobo-settings-auto-limit:disabled { opacity: .4; }
+.bobo-auto-settings > p { font-size: 12px; color: #b5b5bd; margin: 10px 0 0; line-height: 1.5; }
