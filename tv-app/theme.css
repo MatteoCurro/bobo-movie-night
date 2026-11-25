@@ -1,0 +1,10 @@
+/*
+ * Optional TV-only visual overrides.
+ * This file can be deployed on GitHub Pages independently of APK releases.
+ * The native APK bundles full fallback styles and works without this URL.
+ */
+:root {
+  --bg: #0c1219;
+  --bg2: #14232c;
+  --fg: #f5faf8;
+}
