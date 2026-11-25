@@ -24,7 +24,7 @@
   let playing = false;
   let consecutiveEpisodes = 1;
   let observedPlayback = false;
-  let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'false') === 'true';
+  let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
   let autoNextLimit = Math.max(2, Math.min(5, Number(readOption(STORAGE_AUTO_LIMIT, '5')) || 5));
   let provider = (function () {
     try {
