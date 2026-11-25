@@ -53,7 +53,8 @@
         <button id="watch-next" type="button" class="quiet-button" hidden>Episodio successivo →</button>
         <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
       </div>
-      <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. La pagina non può verificare se il video stia effettivamente riproducendo.</p>
+      <p id="watch-auto-next-status" class="player-caption" aria-live="polite" hidden></p>
+      <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. L'avanzamento automatico dipende dall'evento di fine video comunicato da Vix.</p>
     </section>
 
     <section id="watch-episodes-section" class="section episodes-section" hidden aria-labelledby="watch-episodes-heading">
@@ -78,6 +79,18 @@
       <p>Vix è il provider predefinito. La scelta rimane memorizzata in questo browser.</p>
       <label class="provider-option"><input type="radio" name="watch-provider" value="vix"> <span><strong>Vix</strong><small>Consigliato</small></span></label>
       <label class="provider-option"><input type="radio" name="watch-provider" value="vidsrc"> <span><strong>VidSrc</strong><small>Alternativa sperimentale: riproduzione non verificata e possibili reindirizzamenti</small></span></label>
+      <div class="autonext-settings">
+        <h3>Serie TV · riproduzione consecutiva</h3>
+        <label class="autonext-switch"><input id="watch-auto-next-enabled" type="checkbox"> <span>Passa automaticamente all'episodio successivo quando termina quello in corso</span></label>
+        <label for="watch-auto-next-limit" class="autonext-limit-label">Massimo episodi consecutivi (compreso il primo)</label>
+        <select id="watch-auto-next-limit">
+          <option value="2">2 episodi</option>
+          <option value="3">3 episodi</option>
+          <option value="4">4 episodi</option>
+          <option value="5" selected>5 episodi</option>
+        </select>
+        <p>Funziona con Vix tramite l'evento di fine riproduzione. Selezionare manualmente un episodio avvia una nuova sequenza.</p>
+      </div>
     </div>
   </div>
   <script src="bobo-watch.js" defer></script>
