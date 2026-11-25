@@ -134,8 +134,9 @@ jobs:
           for name in ('movies','tv'):
               data = json.loads(Path(f'data/{name}.json').read_text(encoding='utf-8'))
               assert data.get('items'), f'Empty catalog: {name}'
-              example = data['items'][0]
-              assert 'tmdb_id' in example and 'overview' in example, f'Missing metadata: {name}'
+              for example in data['items'][:30]:
+                  assert example.get('tmdb_id') and str(example.get('title') or '').strip(), f'Missing identity: {name}'
+                  assert 'overview' not in example or isinstance(example['overview'], str), f'Invalid synopsis: {name}'
           posters=json.loads(Path('data/poster-index.json').read_text(encoding='utf-8'))
           assert posters['schema']==1
           assert all(isinstance(posters['items'][t],dict) for t in ('movie','tv'))
