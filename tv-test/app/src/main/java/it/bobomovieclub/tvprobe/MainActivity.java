@@ -36,6 +36,7 @@ public final class MainActivity extends Activity {
     private static final String SITE = "https://movie.curromatteo.it/";
     private FrameLayout root;
     private WebView browser;
+    private TvUpdater updater;
     private View customView;
     private WebChromeClient.CustomViewCallback customCallback;
     private boolean inPlayer = false;
@@ -53,6 +54,7 @@ public final class MainActivity extends Activity {
         root = new FrameLayout(this);
         root.setBackgroundColor(Color.BLACK);
         browser = new WebView(this);
+        updater = new TvUpdater(this,browser);
         browser.setBackgroundColor(Color.rgb(16, 21, 27));
         browser.setFocusable(true);
         browser.setFocusableInTouchMode(true);
@@ -76,6 +78,10 @@ public final class MainActivity extends Activity {
         CookieManager.getInstance().setAcceptThirdPartyCookies(browser, true);
 
         browser.setWebViewClient(new WebViewClient() {
+            @Override public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view,url);
+                if (updater != null) updater.check(false);
+            }
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 if (!request.isForMainFrame()) return false;
                 // This application never navigates to a third-party web page.
@@ -110,7 +116,8 @@ public final class MainActivity extends Activity {
         String html = asset("tv.html")
             .replace("<!--TV_STYLES-->", "<style>" + asset("tv.css") + "</style>")
             .replace("<!--TV_SCRIPT-->", "<script>" + asset("tv.js") + "</script>")
-            .replace("<!--TV_ACCOUNT_SCRIPT-->", "<script>" + asset("tv-account.js") + "</script>");
+            .replace("<!--TV_ACCOUNT_SCRIPT-->", "<script>" + asset("tv-account.js") + "</script>")
+            .replace("<!--TV_UPDATES_SCRIPT-->", "<script>" + asset("tv-updates.js") + "</script>");
         browser.loadDataWithBaseURL(SITE, html, "text/html", "UTF-8", SITE);
         browser.requestFocus();
     }
@@ -150,6 +157,10 @@ public final class MainActivity extends Activity {
                                     playingStarted = started;
                                     Log.d(TAG, "Playback state player=" + player + " started=" + started);
                                 });
+                            } else if ("update-check".equals(kind)) {
+                                if (updater != null) updater.check(true);
+                            } else if ("update-install".equals(kind)) {
+                                if (updater != null) updater.installUpdate();
                             } else if ("keyboard-hide".equals(kind)) {
                                 runOnUiThread(() -> {
                                     InputMethodManager ime = (InputMethodManager)
@@ -333,15 +344,18 @@ public final class MainActivity extends Activity {
     @Override protected void onResume() {
         super.onResume();
         if (browser != null) browser.onResume();
+        if (updater != null) updater.onResume();
         immersive();
     }
 
     @Override protected void onPause() {
         if (browser != null) browser.onPause();
+        CookieManager.getInstance().flush();
         super.onPause();
     }
 
     @Override protected void onDestroy() {
+        if (updater != null) updater.destroy();
         if (customView != null) closeCustomView();
         if (browser != null) {
             browser.loadUrl("about:blank");
