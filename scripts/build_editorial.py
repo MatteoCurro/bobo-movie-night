@@ -100,7 +100,7 @@ def main():
    weight=shared*2+max(0,4-abs(int(other.get("year") or 0)-int(origin.get("year") or 0)))*.15+max(0,float(other.get("vote") or 0)-7)*.3
    if otherkey in selected:weight+=.5
    ranked.append((weight,otherkey))
-  relations[k]=[{"type":bykey[k2]["type"],"tmdb_id":int(bykey[k2]["tmdb_id"])} for _,k2 in sorted(ranked,reverse=True)[:8]]
+  relations[k]=[short(bykey[k2]) for _,k2 in sorted(ranked,reverse=True)[:8]]
  issue={"week":NOW.strftime("%G-W%V"),"ids":[key(x) for s in sections for x in s["items"]]}
  issues=[x for x in archive.get("issues",[]) if x.get("week")!=issue["week"]][-51:]+[issue]
  payload={"schema":1,"generated_at":NOW.replace(microsecond=0).isoformat(),"region":"IT","sections":sections,"related":relations,
