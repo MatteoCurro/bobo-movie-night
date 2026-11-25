@@ -174,3 +174,11 @@ body > header, .site-header {
   .bobo-mini-scene .bobo-tail,.bobo-mini-scene .bobo-limb,
   .bobo-mini-scene .bobo-spark { animation: none !important; }
 }
+
+
+/* Optional Vix diagnostics are tucked away until explicitly requested. */
+.bobo-player-diagnostics { max-width: 1180px; margin: 10px auto 0; border-top: 1px dashed #35505c; padding: 9px 1px 3px; }
+.bobo-player-diagnostics summary { width: fit-content; font: 500 11px var(--bobo-font-mono);
+  color: #849da8; cursor: pointer; }
+.bobo-player-diagnostics summary:hover { color: #c0dcda; }
+.bobo-player-diagnostics .player-caption { margin-top: 8px !important; }
