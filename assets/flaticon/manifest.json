@@ -1,0 +1,48 @@
+{
+  "icons": [
+    {
+      "author": "Magnific",
+      "category": "climb",
+      "file": "assets/flaticon/climber-1.gif",
+      "name": "climber-1",
+      "source": "https://www.flaticon.com/free-animated-icon/climber_16780820"
+    },
+    {
+      "author": "Magnific",
+      "category": "climb",
+      "file": "assets/flaticon/climber-2.gif",
+      "name": "climber-2",
+      "source": "https://www.flaticon.com/free-animated-icon/climber_16780819"
+    },
+    {
+      "author": "Magnific",
+      "category": "climb",
+      "file": "assets/flaticon/hiking.gif",
+      "name": "hiking",
+      "source": "https://www.flaticon.com/free-animated-icon/hiking_17513885"
+    },
+    {
+      "author": "Magnific",
+      "category": "climb",
+      "file": "assets/flaticon/summit.gif",
+      "name": "summit",
+      "source": "https://www.flaticon.com/free-animated-icon/summit_16780825"
+    },
+    {
+      "author": "Magnific",
+      "category": "dog",
+      "file": "assets/flaticon/dog-1.gif",
+      "name": "dog-1",
+      "source": "https://www.flaticon.com/free-animated-icon/dog_12280731"
+    },
+    {
+      "author": "Magnific",
+      "category": "dog",
+      "file": "assets/flaticon/dog-2.gif",
+      "name": "dog-2",
+      "source": "https://www.flaticon.com/free-animated-icon/dog_11684052"
+    }
+  ],
+  "license": "Flaticon free license: attribution required",
+  "schema": 1
+}
