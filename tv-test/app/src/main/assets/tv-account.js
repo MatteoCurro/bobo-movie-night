@@ -62,6 +62,8 @@ async function refresh(){
   ready=true;setAccount(profile?.username);updateDetail();
   if(window.BoboTV?.state().player)return;
   const view=window.BoboTV?.state().view;
+  // Do not replace the active login form while someone types with the remote.
+  if(view==='account'&&!profile&&document.activeElement?.closest('#tv-login'))return;
   if(view==='account'||view==='favorites')render(view);
  })();
  try{return await refreshPromise;}finally{refreshPromise=null;}
