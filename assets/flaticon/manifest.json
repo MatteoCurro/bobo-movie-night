@@ -41,6 +41,20 @@
       "file": "assets/flaticon/dog-2.gif",
       "name": "dog-2",
       "source": "https://www.flaticon.com/free-animated-icon/dog_11684052"
+    },
+    {
+      "author": "Magnific",
+      "category": "dog",
+      "file": "assets/flaticon/dog-3.gif",
+      "name": "dog-3",
+      "source": "https://www.flaticon.com/free-animated-icon/dog_14401925"
+    },
+    {
+      "author": "Magnific",
+      "category": "dog",
+      "file": "assets/flaticon/dog-4.gif",
+      "name": "dog-4",
+      "source": "https://www.flaticon.com/free-animated-icon/dog_14644765"
     }
   ],
   "license": "Flaticon free license: attribution required",
