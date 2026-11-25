@@ -90,6 +90,8 @@ jobs:
           # This is NOT authentication; the Gandi password gate is still required.
           content = content.replace("</head>", '  <meta name="robots" content="noindex,nofollow,noarchive">\n</head>', 1)
           content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-ui.css">\n</head>', 1)
+          content = content.replace("</head>", '  <link rel="stylesheet" href="bobo-retro.css">\n</head>', 1)
+          content = content.replace("</head>", '  <script defer src="bobo-friends.js"></script>\n</head>', 1)
           content = content.replace("</body>", '  <script defer src="bobo-ui.js"></script>\n</body>', 1)
           page.write_text(content, encoding="utf-8")
           PY
@@ -114,7 +116,14 @@ jobs:
         run: |
           node --check bobo-ui.js
           node --check bobo-watch.js
+          node --check bobo-friends.js
           grep -q 'bobo-ui.js' index.html
+          grep -q 'bobo-retro.css' index.html
+          grep -q 'bobo-friends.js' index.html
+          grep -q 'bobo-friends.js' watch.html
+          grep -q 'bobo-retro.css' watch.html
+          test -s bobo-retro.css
+          test -s bobo-friends.js
           grep -q 'bobo-ui.css' index.html
           grep -q 'referrerpolicy="origin"' index.html
           grep -q 'referrerpolicy="origin"' watch.html
@@ -138,7 +147,7 @@ jobs:
           mkdir -p _site/data
           cp index.html _site/index.html
           cp data/movies.json data/tv.json _site/data/
-          cp bobo-ui.css bobo-ui.js _site/
+          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-friends.js _site/
           cp watch.html bobo-watch.js bobo-watch.css _site/
           touch _site/.nojekyll
 
