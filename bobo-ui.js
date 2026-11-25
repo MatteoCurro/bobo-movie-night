@@ -101,6 +101,10 @@
   function safeImage(value) {
     return typeof value === 'string' && /^https:\/\/image\.tmdb\.org\//.test(value) ? value : '';
   }
+  function tmdbBackdropSize(value,size) {
+    const image=safeImage(value);
+    return image ? image.replace(/\/t\/p\/(?:w\d+|original)\//,'/t/p/'+size+'/') : '';
+  }
   function text(value) { return escH(String(value == null ? '' : value)); }
   function typeName(kind) { return kind === 'tv' ? 'Serie TV' : 'Film'; }
   function isHome() {
@@ -225,7 +229,9 @@
   function hero(item,isFeed) {
     if (!item) return '';
     const image = safeImage(item.backdrop);
-    const img = image ? '<img src="'+text(image)+'" alt="" fetchpriority="high" decoding="async">' : '';
+    const large = tmdbBackdropSize(image,'w1280');
+    const medium = tmdbBackdropSize(image,'w780');
+    const img = image ? '<img src="'+text(large)+'" srcset="'+text(medium)+' 780w, '+text(large)+' 1280w" sizes="(max-width:780px) 100vw, 1280px" alt="" fetchpriority="high" loading="eager" decoding="async">' : '';
     return '<section class="bobo-feature" aria-label="In primo piano">'+img+
       '<div class="bobo-feature-body"><div class="bobo-eyebrow">'+
       (isFeed ? 'Radar streaming / Novità in Italia' : 'Bobo Movie Night · In primo piano')+'</div>'+

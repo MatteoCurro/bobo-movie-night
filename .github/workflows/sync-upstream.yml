@@ -96,6 +96,7 @@ jobs:
           PY
           node tests/autonext.cjs
           node tests/episode-cards.cjs
+          node tests/hero-images.cjs
           node tests/library.cjs
           node tests/profiles.cjs
           python3 -m py_compile scripts/build_discovery.py

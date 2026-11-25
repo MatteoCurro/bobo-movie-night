@@ -440,25 +440,37 @@
       description.textContent = 'E'+e+' · '+(e === selectedEpisode ? 'Selezionato · Riproduci' : 'Riproduci episodio');
       content.append(heading,description);
       const still=episodeStills[String(selectedSeason)]?.[String(e)] || {};
-      const stillURL=thumbnailURL(still.image,'w185');
-      const posterURL=thumbnailURL(item && item.poster,'w154');
-      if(stillURL || posterURL) {
+      // Full-bleed episode still, with series backdrop/poster as resilient fallbacks.
+      // The original catalog JSON stays compact: only the TMDB size changes here.
+      const sources=[
+        {url:thumbnailURL(still.image,'w300'),kind:'still'},
+        {url:thumbnailURL(item && item.backdrop,'w780'),kind:'backdrop'},
+        {url:thumbnailURL(item && item.poster,'w500'),kind:'poster'}
+      ].filter(function(source){ return Boolean(source.url); });
+      if(sources.length) {
         const preview=document.createElement('img');
-        preview.className='bobo-episode-still'+(stillURL?'':' bobo-episode-still--poster');
-        preview.src=stillURL || posterURL;
         preview.alt='';
         preview.loading='lazy';
         preview.decoding='async';
+        let sourceIndex=0;
+        const applySource=function(){
+          const source=sources[sourceIndex];
+          preview.className='bobo-episode-still bobo-episode-still--'+source.kind;
+          preview.src=source.url;
+          button.classList.remove('episode-card--poster');
+          if(source.kind==='poster')button.classList.add('episode-card--poster');
+        };
         button.classList.add('episode-card--with-preview');
         preview.addEventListener('error',function () {
-          if(stillURL && posterURL && this.src!==posterURL) {
-            this.className='bobo-episode-still bobo-episode-still--poster';
-            this.src=posterURL;
-          } else {
+          sourceIndex++;
+          if(sourceIndex<sources.length)applySource();
+          else {
             this.remove();
             button.classList.remove('episode-card--with-preview');
+            button.classList.remove('episode-card--poster');
           }
         });
+        applySource();
         button.append(preview);
       }
       button.append(number,content);
@@ -495,12 +507,22 @@
     byId('watch-overview').textContent = overview;
     byId('watch-about-body').textContent = overview;
     byId('watch-info-section').hidden = false;
-    const picture = imageURL(info.backdrop) || imageURL(info.poster);
+    // TMDB backdrops are served at w1280 on large screens (w780 on mobile).
+    // Posters have their own size tiers, so never request w1280 for a poster.
+    const backdrop=thumbnailURL(info.backdrop,'w1280');
+    const poster=thumbnailURL(info.poster,'w780');
+    const picture=backdrop || poster;
     if (picture) {
       const image = document.createElement('img');
-      image.src = picture;
       image.alt = '';
       image.decoding = 'async';
+      image.loading = 'eager';
+      image.fetchPriority = 'high';
+      image.src = picture;
+      image.srcset = backdrop
+        ? thumbnailURL(info.backdrop,'w780')+' 780w, '+backdrop+' 1280w'
+        : thumbnailURL(info.poster,'w500')+' 500w, '+poster+' 780w';
+      image.sizes = '100vw';
       byId('watch-backdrop').replaceChildren(image);
     }
     if (type === 'tv') {

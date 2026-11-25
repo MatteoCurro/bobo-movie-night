@@ -60,15 +60,16 @@ api.render();
 let cards=nodes['watch-episode-list'].children;
 assert.equal(cards.length,3);
 assert.equal(cards[0].children[0].tagName,'IMG');
-assert.match(cards[0].children[0].src,/\/w154\/Poster123\.jpg$/,'Missing still uses compact poster');
+assert.match(cards[0].children[0].src,/\/w500\/Poster123\.jpg$/,'Missing still uses an adequately sharp poster background');
 assert.equal(cards[0].children[2].children[0].textContent,'Pilot senza fotogramma','Title-only episodes have their names');
 assert.match(cards[0].children[2].children[1].textContent,/^E1 /,'Keep episode number');
 assert.equal(api.heading(),'Stagione 1 · Episodio 1 · Pilot senza fotogramma');
-assert.match(cards[1].children[0].src,/\/w185\/Still123\.jpg$/,'Specific still takes precedence');
+assert.match(cards[1].children[0].src,/\/w300\/Still123\.jpg$/,'Higher-resolution still takes precedence');
 const still=cards[1].children[0];
 still.events.error.call(still);
-assert.match(still.src,/\/w154\/Poster123\.jpg$/,'Failed image falls back to poster');
+assert.match(still.src,/\/w500\/Poster123\.jpg$/,'Failed still falls back to series poster');
 assert.match(still.className,/--poster/);
+assert(cards[1].className.includes('episode-card--poster'));
 still.events.error.call(still);
 assert.equal(cards[1].children[0].tagName,'SPAN','Broken poster restores numeric tile');
 assert(!cards[1].className.includes('with-preview'));
@@ -88,12 +89,23 @@ assert.match(css,/\.episode-list\{align-items:stretch;/);
 assert.match(css,/\.episode-card\{height:100%;/);
 assert.match(css,/\.bobo-episode-copy strong\{display:block;white-space:normal;overflow:visible;/);
 assert(!css.includes('line-clamp:2'),'No line-clamp may hide the full episode name');
+assert.match(css,/\.episode-card::before\{content:"";position:absolute;/,'Dark overlay is attached to each episode card');
+assert.match(css,/\.episode-card \.bobo-episode-still\{position:absolute;inset:0;/,'Episode still fills the full card');
+assert.match(css,/\.episode-card\{height:100%;min-width:0;min-height:/,'Grid cards share row height');
 const longName='L’episodio con un titolo particolarmente lungo che deve restare completamente leggibile, anche quando contiene una spiegazione estesa della trama, dei personaggi e delle conseguenze degli avvenimenti precedenti senza essere troncato.';
 assert(longName.length>160);
 api.init(info,{'1':{'1':{name:longName}}});
 api.render();
 assert.equal(nodes['watch-episode-list'].children[0].children[2].children[0].textContent,longName);
 assert(api.heading().endsWith(longName),'Current episode must preserve the full name');
+// A known series backdrop must replace the portrait poster when a still is absent.
+api.init({...info,backdrop:'https://image.tmdb.org/t/p/w342/Backdrop123.jpg'},{});
+api.render();
+const backdropCard=nodes['watch-episode-list'].children[0];
+assert.match(backdropCard.children[0].src,/\/w780\/Backdrop123\.jpg$/,'Series backdrop should fill an episode card');
+backdropCard.children[0].events.error.call(backdropCard.children[0]);
+assert.match(backdropCard.children[0].src,/\/w500\/Poster123\.jpg$/,'Broken backdrop uses series poster');
+
 // Simulate loading a real per-title JSON index from the GitHub Pages data path.
 api.init(info,{});
 context.fetch=async url=>{
