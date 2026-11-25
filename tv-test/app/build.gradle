@@ -35,6 +35,12 @@ android {
         }
     }
 
+    lint {
+        // TV app is distributed by signed sideload, not Google Play.
+        // Keep targetSdk 32 for established Android TV / Fire OS behavior.
+        disable 'ExpiredTargetSdkVersion'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
