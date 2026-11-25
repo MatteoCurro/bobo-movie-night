@@ -19,6 +19,12 @@
 
   function currentItem(kind,id) {
     try {
+      const candidate=window.BoboCatalogAPI?.getItem(kind,id);
+      if(candidate)return candidate;
+      const current=window.BoboCurrentTitle;
+      if(current && current.type===kind && String(current.tmdb_id)===String(id))return current;
+    } catch (_) {}
+    try {
       if (typeof catalogs !== 'undefined' && catalogs && catalogs[kind]) {
         const result = catalogs[kind].find(x=>String(x.tmdb_id)===String(id));
         if(result)return result;
@@ -161,48 +167,10 @@
     if(k)k.dataset.boboVisualType=kind;
   }
 
-  function favoritesHTML() {
-    const saved=lib()?.read() || [];
-    return saved.map(item=>{
-      const actual=currentItem(item.type,item.tmdb_id) || item;
-      const available=Boolean((typeof catalogs!=='undefined') && catalogs && catalogs[item.type]?.some(x=>String(x.tmdb_id)===String(item.tmdb_id)));
-      const html='<span class="bobo-fav-poster">'+
-        (item.poster?'<img src="'+safe(item.poster)+'" alt="" loading="lazy" decoding="async">':'<span class="bobo-fav-fallback">BOBO</span>')+
-        '<span class="bobo-fav-kind" data-bobo-visual-type="'+item.type+'">'+(item.type==='tv'?'Serie':'Film')+'</span></span>'+
-        '<strong>'+safe(actual.title || item.title)+'</strong>'+
-        '<small>'+(item.year?safe(item.year):'')+(available?'':' · Archiviato')+'</small>';
-      return '<div class="bobo-favorite-item">'+
-        (available?'<button type="button" class="bobo-fav-open" data-bobo-id="'+safe(item.tmdb_id)+'" data-bobo-type="'+item.type+'">'+html+'</button>':
-          '<div class="bobo-fav-open bobo-fav-inactive" title="Il titolo non è nel catalogo corrente">'+html+'</div>')+
-        '<button type="button" class="bobo-fav-remove" data-bobo-save="'+safe(item.tmdb_id)+'" data-bobo-save-type="'+item.type+'" aria-label="Rimuovi '+safe(item.title)+' dai preferiti">×</button></div>';
-    }).join('');
-  }
-  let lastShelfSignature='';
+  // The complete library now lives at favorites.html, never in the home.
   function favoritesShelf() {
-    const host=byId('bobo-discover');
-    const feature=host?.querySelector('.bobo-feature');
-    if(!host || !feature)return;
-    let shelf=byId('bobo-favorites');
-    if(!shelf) {
-      shelf=document.createElement('section');
-      shelf.id='bobo-favorites';
-      shelf.className='bobo-favorite-shelf';
-      feature.insertAdjacentElement('afterend',shelf);
-      lastShelfSignature='';
-    }
-    const saved=lib()?.read() || [];
-    const catalogReady=typeof catalogs!=='undefined' && catalogs &&
-      String(catalogs.movie?.length || 0)+':'+String(catalogs.tv?.length || 0);
-    const signature=saved.map(x=>key(x.type,x.tmdb_id)+':'+x.title).join('|')+':'+catalogReady;
-    if(signature===lastShelfSignature)return;
-    lastShelfSignature=signature;
-    shelf.innerHTML='<div class="bobo-favorite-head"><div><span>IL TUO SPAZIO / 001</span>'+
-      '<h2>♡ I tuoi preferiti <small>'+saved.length+'</small></h2></div>'+
-      '<div class="bobo-favorite-actions"><button type="button" data-bobo-export title="Salva i preferiti in un file">Esporta</button>'+
-      '<button type="button" data-bobo-import title="Importa i preferiti da un file">Importa</button></div></div>'+
-      (saved.length?'<div class="bobo-favorite-rail">'+favoritesHTML()+'</div>':
-        '<p>La prossima serata inizia qui. Premi ♡ su un film o una serie per salvarli, anche per le prossime settimane.</p>')+
-      '<input id="bobo-favorites-file" type="file" accept="application/json,.json" hidden>';
+    const obsolete=byId('bobo-favorites');
+    if(obsolete) obsolete.remove();
   }
 
   function nav() {
@@ -210,8 +178,8 @@
     if(!header || header.querySelector('.bobo-library-nav'))return;
     const link=document.createElement('a');
     link.className='bobo-library-nav';
-    link.href=location.pathname.endsWith('/watch.html')?'index.html#bobo-favorites':'#bobo-favorites';
-    link.innerHTML='♡ <span>Preferiti</span> <b id="bobo-fav-count">0</b>';
+    link.href='favorites.html';
+    link.innerHTML='<span aria-hidden="true">♡</span> <span>Preferiti</span> <b id="bobo-fav-count">0</b>';
     const settings=header.querySelector('#bobo-settings-open,.settings-trigger');
     if(settings)header.insertBefore(link,settings);
     else header.appendChild(link);
@@ -234,10 +202,7 @@
     decorateWatch();
     favoritesShelf();
     updateButtons();
-    if(location.hash==='#bobo-favorites' && byId('bobo-favorites') && !sync.didScroll) {
-      sync.didScroll=true;
-      byId('bobo-favorites').scrollIntoView({behavior:'smooth',block:'start'});
-    }
+    // No favorites collection is injected into the home page.
   }
   function schedule() {
     if(syncScheduled)return;
@@ -298,7 +263,6 @@
         const changed=lib()?.toggle(Object.assign({},item,{type:kind,tmdb_id:id}));
         if(changed?.error)message(changed.error);
         else message(changed?.saved?'♥ Aggiunto ai preferiti':'Rimosso dai preferiti');
-        lastShelfSignature='';
         schedule();return;
       }
       if(event.target.closest?.('[data-bobo-export]')) {
@@ -322,12 +286,12 @@
         if(!file)return;
         if(file.size>500000)throw Error('Il file è troppo grande');
         const number=lib().importText(await file.text());
-        lastShelfSignature='';schedule();
+        schedule();
         message('Preferiti importati: '+number);
       }catch(err){message('Importazione non riuscita: '+err.message);}
       event.target.value='';
     });
-    window.addEventListener('bobo:favorites-change',()=>{lastShelfSignature='';schedule();});
+    window.addEventListener('bobo:favorites-change',schedule);
     window.addEventListener('hashchange',()=>{sync.didScroll=false;schedule();});
     const observer=new MutationObserver(schedule);
     observer.observe(document.body,{subtree:true,childList:true});
