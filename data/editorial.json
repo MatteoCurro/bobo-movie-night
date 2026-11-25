@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T19:18:45+00:00",
+  "generated_at": "2026-11-25T19:27:10+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -1078,22 +1078,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Commedia",
           "Thriller",
           "Dramma"
@@ -1170,6 +1154,22 @@
         "vote": 8.2,
         "vote_count": 8097,
         "year": 2019
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Dramma",
+          "Commedia"
+        ],
+        "overview": "Acerrimi nemici. Dojo in guerra. Volti nuovi. Daniel e Johnny riaccendono vecchie rivalità della West Valley.",
+        "poster": "https://image.tmdb.org/t/p/w342/6GDW4EsgsXlYrL1ASb5eCHQK4er.jpg",
+        "runtime": 0,
+        "title": "Cobra Kai",
+        "tmdb_id": 77169,
+        "type": "tv",
+        "vote": 8.2,
+        "vote_count": 7072,
+        "year": 2018
       }
     ],
     "movie:1339713": [
@@ -1902,22 +1902,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -1945,6 +1929,22 @@
         "vote": 8.5,
         "vote_count": 15079,
         "year": 1990
+      },
+      {
+        "genres": [
+          "Fantasy",
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "E' il racconto che Paul Edgecomb fa all'amica Elaine Connelly in una casa di riposo. Sono passati circa sessanta anni da quando lavorava come capo delle guardie del braccio della morte nel penitenziario di Could Mountain. Durante la grande depressione, nel carcere del sud degli U",
+        "poster": "https://image.tmdb.org/t/p/w342/kptqTcldosy8JPf75JT16oTYUMB.jpg",
+        "runtime": 188,
+        "title": "Il miglio verde",
+        "tmdb_id": 497,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 20194,
+        "year": 1999
       }
     ],
     "movie:240": [
@@ -2026,22 +2026,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -2069,6 +2053,22 @@
         "vote": 8.5,
         "vote_count": 15079,
         "year": 1990
+      },
+      {
+        "genres": [
+          "Fantasy",
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "E' il racconto che Paul Edgecomb fa all'amica Elaine Connelly in una casa di riposo. Sono passati circa sessanta anni da quando lavorava come capo delle guardie del braccio della morte nel penitenziario di Could Mountain. Durante la grande depressione, nel carcere del sud degli U",
+        "poster": "https://image.tmdb.org/t/p/w342/kptqTcldosy8JPf75JT16oTYUMB.jpg",
+        "runtime": 188,
+        "title": "Il miglio verde",
+        "tmdb_id": 497,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 20194,
+        "year": 1999
       }
     ],
     "movie:244786": [
@@ -2540,22 +2540,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -2583,6 +2567,22 @@
         "vote": 8.5,
         "vote_count": 15079,
         "year": 1990
+      },
+      {
+        "genres": [
+          "Fantasy",
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "E' il racconto che Paul Edgecomb fa all'amica Elaine Connelly in una casa di riposo. Sono passati circa sessanta anni da quando lavorava come capo delle guardie del braccio della morte nel penitenziario di Could Mountain. Durante la grande depressione, nel carcere del sud degli U",
+        "poster": "https://image.tmdb.org/t/p/w342/kptqTcldosy8JPf75JT16oTYUMB.jpg",
+        "runtime": 188,
+        "title": "Il miglio verde",
+        "tmdb_id": 497,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 20194,
+        "year": 1999
       }
     ],
     "movie:346698": [
@@ -3056,22 +3056,6 @@
       {
         "genres": [
           "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Crime",
           "Dramma"
         ],
         "overview": "Due famiglie criminali si affrontano in una guerra che minaccia di far crollare imperi e distruggere vite. Nel mezzo dello scontro c'è Harry Da Souza, un astuto uomo di strada che conosce fin troppo bene quanto la lealtà possa essere instabile quando le forze opposte si scontrano",
@@ -3165,6 +3149,22 @@
       {
         "genres": [
           "Crime",
+          "Dramma",
+          "Commedia"
+        ],
+        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
+        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
+        "runtime": 0,
+        "title": "Tulsa King",
+        "tmdb_id": 153312,
+        "type": "tv",
+        "vote": 8.3,
+        "vote_count": 2980,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Crime",
           "Dramma"
         ],
         "overview": "Una serie antologica su crimini o assassini di alto profilo che hanno catturato l'attenzione e la notorietà del pubblico come Jeffry Dahmer, i fatelli Menendez e Ed Gein.",
@@ -3209,22 +3209,6 @@
         "vote": 8.1,
         "vote_count": 28757,
         "year": 2019
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
       },
       {
         "genres": [
@@ -3303,6 +3287,22 @@
         "vote": 8.4,
         "vote_count": 33434,
         "year": 1999
+      },
+      {
+        "genres": [
+          "Crime",
+          "Thriller",
+          "Dramma"
+        ],
+        "overview": "Dal romanzo omonimo di Thomas Harris. Una giovane recluta dell'FBI è incaricata di far visita in carcere a Hannibal Lecter, psichiatra pluriomicida, per ottenere informazioni su un assassino psicopatico che ha ucciso e scuoiato cinque donne.",
+        "poster": "https://image.tmdb.org/t/p/w342/jCS4Iw1bGGhSEdzFeUq8CX8UoiC.jpg",
+        "runtime": 118,
+        "title": "Il silenzio degli innocenti",
+        "tmdb_id": 274,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 18914,
+        "year": 1991
       }
     ],
     "movie:497": [
@@ -3400,22 +3400,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -3428,6 +3412,144 @@
         "vote": 9.0,
         "vote_count": 19184,
         "year": 2008
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "Henry Hill, figlio di emigranti italo-irlandesi, fin da giovane entra a far parte della piccola mafia dei quartieri poveri di New York. Ma ben presto scopre la ferocia dei boss locali che usano chiamarsi fra di loro \"bravi ragazzi\"...",
+        "poster": "https://image.tmdb.org/t/p/w342/9qHwCCDt2WIkK4CPoAufjkguk4n.jpg",
+        "runtime": 145,
+        "title": "Quei bravi ragazzi",
+        "tmdb_id": 769,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 15079,
+        "year": 1990
+      }
+    ],
+    "movie:510": [
+      {
+        "genres": [
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "Il film tratta della giovinezza e dei primi passi nel mondo del crimine di Vito Corleone, e delle difficoltà cinquant'anni più tardi di suo figlio, Michael, a mantenere in piedi l'impero Corleone. Il tutto tra vicende di emigrazione, tradimenti familiari, inchieste governative e ",
+        "poster": "https://image.tmdb.org/t/p/w342/jftmAcdl5D94eANbhHugbUJDULI.jpg",
+        "runtime": 200,
+        "title": "Il padrino - Parte II",
+        "tmdb_id": 240,
+        "type": "movie",
+        "vote": 8.6,
+        "vote_count": 14663,
+        "year": 1974
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "Anni Quaranta. Come è consuetudine, durante il rinfresco per festeggiare le nozze della figlia Conny con Carlo, il \"padrino\" don Vito Corleone promette assistenza e protezione a familiari e amici. Invia il figliastro Tom Hagen in California per convincere in ogni modo il produtto",
+        "poster": "https://image.tmdb.org/t/p/w342/gemuM3FvVaWSEBrfk6nVFIOBhBY.jpg",
+        "runtime": 175,
+        "title": "Il padrino",
+        "tmdb_id": 238,
+        "type": "movie",
+        "vote": 8.7,
+        "vote_count": 24048,
+        "year": 1972
+      },
+      {
+        "genres": [
+          "Sci-Fi & Fantasy",
+          "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "La serie prequel vede la dinastia Targaryen all'apice assoluto del suo potere, con più di 15 draghi sotto il loro giogo. La maggior parte degli imperi, che siano reali o immaginari, crollano quando raggiungono tali poteri e tali altezze. Nel caso dei Targaryen, la loro lenta cadu",
+        "poster": "https://image.tmdb.org/t/p/w342/paD01zRRCY3lXo038pvs2Avu0Q7.jpg",
+        "runtime": 0,
+        "title": "House of the Dragon",
+        "tmdb_id": 94997,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 7350,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Dramma"
+        ],
+        "overview": "Chernobyl è una miniserie televisiva statunitense e britannica, creata e scritta da Craig Mazin e diretta da Johan Renck. Le cinque puntate drammatizzano la vera storia di una delle peggiori catastrofi create dall'uomo a oltre 30 anni dall'accaduto e segue gli uomini e le donne c",
+        "poster": "https://image.tmdb.org/t/p/w342/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+        "runtime": 0,
+        "title": "Chernobyl",
+        "tmdb_id": 87108,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 8584,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Sci-Fi & Fantasy",
+          "Dramma"
+        ],
+        "overview": "Dopo tanto tempo, un gruppo di fratelli e sorelle con poteri straordinari si ritrova per la morte del padre, scoprendo scioccanti segreti e una minaccia per l'umanità.",
+        "poster": "https://image.tmdb.org/t/p/w342/qhcwrnnCnN8NE1N6XXKHFmveJR9.jpg",
+        "runtime": 0,
+        "title": "The Umbrella Academy",
+        "tmdb_id": 75006,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 10228,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Dramma"
+        ],
+        "overview": "Le vicende di Shaun Murphy, un giovane chirurgo autistico con la Sindrome del savant, proveniente da una cittadina nel Wyoming, Casper, dove ha vissuto un'infanzia travagliata.",
+        "poster": "https://image.tmdb.org/t/p/w342/luhKkdD80qe62fwop6sdrXK9jUT.jpg",
+        "runtime": 0,
+        "title": "The Good Doctor",
+        "tmdb_id": 71712,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 12993,
+        "year": 2017
+      },
+      {
+        "genres": [
+          "Crime",
+          "Dramma",
+          "Mistero"
+        ],
+        "overview": "Un nuovo anno scolastico ha inizio e la città di Riverdale - dove nulla è come sembra e niente è più lo stesso - cerca di riprendersi dalla recente, tragica morte del liceale Jason Blossom. Sebbene resti il tipico giovanotto americano, gli ultimi eventi incoraggiano Archie a rinu",
+        "poster": "https://image.tmdb.org/t/p/w342/d8mmn9thQ5dBk2qbv6BCqGUXWK3.jpg",
+        "runtime": 0,
+        "title": "Riverdale",
+        "tmdb_id": 69050,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 13834,
+        "year": 2017
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Crime"
+        ],
+        "overview": "La storia di una famiglia criminale nella Birmingham del 1919, Inghilterra, centrata sulle vicende di una gang che nasconde delle lame di rasoio nelle visiere dei propri cappelli e del loro capo Tommy Shelby, che aspira a trovare il suo posto nel mondo.",
+        "poster": "https://image.tmdb.org/t/p/w342/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
+        "runtime": 0,
+        "title": "Peaky Blinders",
+        "tmdb_id": 60574,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 11565,
+        "year": 2013
       }
     ],
     "movie:550": [
@@ -3934,22 +4056,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Commedia",
           "Thriller",
           "Dramma"
@@ -4027,6 +4133,22 @@
         "vote": 8.2,
         "vote_count": 7072,
         "year": 2018
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Sci-Fi & Fantasy",
+          "Commedia"
+        ],
+        "overview": "Nella sua ricerca di una sposa per rompere la sua maledizione immortale, un guardiano di anime di 939 anni incontra un triste mietitore e un'arzilla studentessa con un tragico passato.",
+        "poster": "https://image.tmdb.org/t/p/w342/qZMEiTsNlCQV27hHQE27ZtlPWyv.jpg",
+        "runtime": 0,
+        "title": "Goblin",
+        "tmdb_id": 67915,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3152,
+        "year": 2016
       }
     ],
     "movie:664280": [
@@ -4094,22 +4216,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Documentario",
           "Musica"
         ],
@@ -4151,6 +4257,21 @@
         "type": "tv",
         "vote": 8.4,
         "vote_count": 5934,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Mistero",
+          "Dramma"
+        ],
+        "overview": "Un fatidico weekend fuori casa che si conclude in tragedia accende la passione di Alma e spinge questa donna sposata a dubitare di chi le sta accanto.",
+        "poster": "https://image.tmdb.org/t/p/w342/6zeyla3S5RKYdXIn0tFkQof2d6I.jpg",
+        "runtime": 0,
+        "title": "Oscuro desiderio",
+        "tmdb_id": 105214,
+        "type": "tv",
+        "vote": 7.3,
+        "vote_count": 4287,
         "year": 2020
       }
     ],
@@ -4202,22 +4323,6 @@
         "vote": 8.3,
         "vote_count": 18914,
         "year": 1991
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
       },
       {
         "genres": [
@@ -4282,6 +4387,22 @@
         "vote": 8.5,
         "vote_count": 21786,
         "year": 2019
+      },
+      {
+        "genres": [
+          "Azione",
+          "Thriller",
+          "Crime"
+        ],
+        "overview": "Il crimine organizzato a Gotham City ha le ore contate. Batman, il tenente Gordon, il nuovo Procuratore Distrettuale e alcuni improbabili epigoni dell'Uomo Pipistrello in imbottiture da hockey hanno dichiarato guerra ai criminali. La loro fortuna e i loro dollari, accumulati in u",
+        "poster": "https://image.tmdb.org/t/p/w342/qIhsgno1mjbzUbs4H6DaRjhskAR.jpg",
+        "runtime": 146,
+        "title": "Il cavaliere oscuro",
+        "tmdb_id": 155,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 37476,
+        "year": 2008
       }
     ],
     "movie:687163": [
@@ -4626,22 +4747,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -4670,6 +4775,22 @@
         "vote": 8.5,
         "vote_count": 20194,
         "year": 1999
+      },
+      {
+        "genres": [
+          "Crime",
+          "Storia",
+          "Dramma"
+        ],
+        "overview": "All’inizio del XX secolo, la scoperta del petrolio trasformò l’esistenza degli Osage che diventarono da un giorno all’altro immensamente ricchi. L’improvviso benessere di questi nativi americani attirò l’interesse dei bianchi che iniziarono a manipolare, estorcere e sottrarre con",
+        "poster": "https://image.tmdb.org/t/p/w342/l7CXClIApqEWrUaaSNFBMvFtKQ2.jpg",
+        "runtime": 206,
+        "title": "Killers of the Flower Moon",
+        "tmdb_id": 466420,
+        "type": "movie",
+        "vote": 7.4,
+        "vote_count": 4504,
+        "year": 2023
       }
     ],
     "movie:807": [
@@ -5352,22 +5473,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Guerra",
           "Azione",
           "Dramma"
@@ -5442,6 +5547,22 @@
         "type": "tv",
         "vote": 7.6,
         "vote_count": 1687,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Sci-Fi & Fantasy",
+          "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "Sopravvissuta all'attacco di Godzilla a San Francisco, Cate è ancora una volta scossa da un segreto sconvolgente. Tra terrificanti minacce intraprende un'avventura in giro per il mondo che le farà conoscere la verità sulla sua famiglia e sulla misteriosa organizzazione nota come ",
+        "poster": "https://image.tmdb.org/t/p/w342/jxreNunNZ1HJLFO24hQ5t4O942w.jpg",
+        "runtime": 0,
+        "title": "Monarch: Legacy of Monsters",
+        "tmdb_id": 202411,
+        "type": "tv",
+        "vote": 7.7,
+        "vote_count": 1441,
         "year": 2023
       }
     ],
@@ -5661,22 +5782,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -5705,6 +5810,22 @@
         "vote": 8.5,
         "vote_count": 20194,
         "year": 1999
+      },
+      {
+        "genres": [
+          "Crime",
+          "Storia",
+          "Dramma"
+        ],
+        "overview": "All’inizio del XX secolo, la scoperta del petrolio trasformò l’esistenza degli Osage che diventarono da un giorno all’altro immensamente ricchi. L’improvviso benessere di questi nativi americani attirò l’interesse dei bianchi che iniziarono a manipolare, estorcere e sottrarre con",
+        "poster": "https://image.tmdb.org/t/p/w342/l7CXClIApqEWrUaaSNFBMvFtKQ2.jpg",
+        "runtime": 206,
+        "title": "Killers of the Flower Moon",
+        "tmdb_id": 466420,
+        "type": "movie",
+        "vote": 7.4,
+        "vote_count": 4504,
+        "year": 2023
       }
     ],
     "tv:1399": [
@@ -5836,133 +5957,6 @@
         "type": "tv",
         "vote": 7.8,
         "vote_count": 2815,
-        "year": 2022
-      }
-    ],
-    "tv:153312": [
-      {
-        "genres": [
-          "Commedia",
-          "Dramma",
-          "Crime"
-        ],
-        "overview": "Quando l'aristocratico Eddie eredita le proprietà di famiglia, trova anche un enorme impero della marijuana... i cui proprietari non hanno nessuna intenzione di andarsene.",
-        "poster": "https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
-        "runtime": 0,
-        "title": "The Gentlemen",
-        "tmdb_id": 236235,
-        "type": "tv",
-        "vote": 7.9,
-        "vote_count": 1089,
-        "year": 2024
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Basato su una storia vera, The Wolf of Wall Street segue l’impressionante ascesa e la caduta di Jordan Belfort (interpretato dal tre volte candidato all’Academy Award® Leonardo DiCaprio), il broker di New York che conquista una fortuna incredibile truffando milioni di investitori",
-        "poster": "https://image.tmdb.org/t/p/w342/hwg3pXw2m4HfRGbyRMIP8laf5Lf.jpg",
-        "runtime": 180,
-        "title": "The Wolf of Wall Street",
-        "tmdb_id": 106646,
-        "type": "movie",
-        "vote": 8.0,
-        "vote_count": 27010,
-        "year": 2013
-      },
-      {
-        "genres": [
-          "Crime",
-          "Storia",
-          "Dramma"
-        ],
-        "overview": "All’inizio del XX secolo, la scoperta del petrolio trasformò l’esistenza degli Osage che diventarono da un giorno all’altro immensamente ricchi. L’improvviso benessere di questi nativi americani attirò l’interesse dei bianchi che iniziarono a manipolare, estorcere e sottrarre con",
-        "poster": "https://image.tmdb.org/t/p/w342/l7CXClIApqEWrUaaSNFBMvFtKQ2.jpg",
-        "runtime": 206,
-        "title": "Killers of the Flower Moon",
-        "tmdb_id": 466420,
-        "type": "movie",
-        "vote": 7.4,
-        "vote_count": 4504,
-        "year": 2023
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Mistero"
-        ],
-        "overview": "Questa arguta spy story segue le vicende di una disfunzionale squadra di agenti dell'MI5 e del loro odioso capo, il famigerato Jackson Lamb, mentre navigano tra le luci e le ombre del mondo dello spionaggio per difendere l'Inghilterra da forze sinistre.",
-        "poster": "https://image.tmdb.org/t/p/w342/9VCkgs1zefGI2qjJzr1gSwAmzmf.jpg",
-        "runtime": 0,
-        "title": "Slow Horses",
-        "tmdb_id": 95480,
-        "type": "tv",
-        "vote": 8.1,
-        "vote_count": 1155,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Crime"
-        ],
-        "overview": "Jimmy Keene sta per scontare una condanna a 10 anni, ma riceve un'offerta incredibile, che potrebbe ridargli la libertà: deve riuscire a far confessare Larry Hall, un presunto killer. Compiere la missione si rivela una sfida senza precedenti.",
-        "poster": "https://image.tmdb.org/t/p/w342/qu312pwM61NPTr7nexvovCClDNP.jpg",
-        "runtime": 0,
-        "title": "Black Bird",
-        "tmdb_id": 155537,
-        "type": "tv",
-        "vote": 8.1,
-        "vote_count": 1135,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Carmy, un giovane chef di cucina raffinata, torna a casa a Chicago per gestire il negozio di sandwich di famiglia. Mentre lotta per trasformare il negozio e sé stesso, lavora insieme a un team di cucina sopra le righe che alla fine si rivela essere la sua famiglia scelta.",
-        "poster": "https://image.tmdb.org/t/p/w342/eKfVzzEazSIjJMrw9ADa2x8ksLz.jpg",
-        "runtime": 0,
-        "title": "The Bear",
-        "tmdb_id": 136315,
-        "type": "tv",
-        "vote": 8.2,
-        "vote_count": 2063,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma"
-        ],
-        "overview": "Una serie antologica su crimini o assassini di alto profilo che hanno catturato l'attenzione e la notorietà del pubblico come Jeffry Dahmer, i fatelli Menendez e Ed Gein.",
-        "poster": "https://image.tmdb.org/t/p/w342/eybs7GZjX4AUS4Auhvx8MJN4K42.jpg",
-        "runtime": 0,
-        "title": "DAHMER - Mostro: la storia di Jeffrey Dahmer",
-        "tmdb_id": 113988,
-        "type": "tv",
-        "vote": 8.0,
-        "vote_count": 2988,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Commedia",
-          "Crime",
-          "Mistero"
-        ],
-        "overview": "L'egocentrico multimilardiario Miles Bron, proprietario della Alpha Industries, invita i suoi amici a una fuga sulla sua isola greca privata. Quando qualcuno viene trovato morto, l'investigatore Benoit Blanc si occupa del caso.",
-        "poster": "https://image.tmdb.org/t/p/w342/yhCxL5ebwiBwkmYrjL8gqJBZKNS.jpg",
-        "runtime": 139,
-        "title": "Glass Onion - Knives Out",
-        "tmdb_id": 661374,
-        "type": "movie",
-        "vote": 7.0,
-        "vote_count": 7429,
         "year": 2022
       }
     ],
@@ -6164,22 +6158,6 @@
       },
       {
         "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2980,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Commedia",
           "Dramma",
           "Crime"
@@ -6224,144 +6202,21 @@
         "vote": 8.4,
         "vote_count": 13834,
         "year": 2017
-      }
-    ],
-    "tv:37854": [
+      },
       {
         "genres": [
-          "Animazione",
-          "Commedia",
-          "Sci-Fi & Fantasy",
-          "Action & Adventure"
+          "Dramma",
+          "Crime"
         ],
-        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
-        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "overview": "La storia di una famiglia criminale nella Birmingham del 1919, Inghilterra, centrata sulle vicende di una gang che nasconde delle lame di rasoio nelle visiere dei propri cappelli e del loro capo Tommy Shelby, che aspira a trovare il suo posto nel mondo.",
+        "poster": "https://image.tmdb.org/t/p/w342/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
         "runtime": 0,
-        "title": "Rick and Morty",
-        "tmdb_id": 60625,
+        "title": "Peaky Blinders",
+        "tmdb_id": 60574,
         "type": "tv",
-        "vote": 8.7,
-        "vote_count": 11628,
+        "vote": 8.5,
+        "vote_count": 11565,
         "year": 2013
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Commedia",
-          "Sci-Fi & Fantasy",
-          "Famiglia"
-        ],
-        "overview": "Luz, un'adolescente umana sicura di sé, si imbatte accidentalmente in un portale verso un nuovo mondo magico dove fa amicizia con una strega ribelle, Eda, e un adorabile piccolo guerriero, King. Pur non avendo abilità magiche, Luz realizza il suo sogno di diventare una strega svo",
-        "poster": "https://image.tmdb.org/t/p/w342/qjTcI7gO8z4yOKmbHX4qe98kYCA.jpg",
-        "runtime": 0,
-        "title": "The Owl House - Aspirante strega",
-        "tmdb_id": 92685,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 1863,
-        "year": 2020
-      },
-      {
-        "genres": [
-          "Action & Adventure",
-          "Animazione",
-          "Commedia",
-          "Famiglia",
-          "Mistero",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
-        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
-        "runtime": 0,
-        "title": "Gravity Falls",
-        "tmdb_id": 40075,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 3669,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Commedia",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Mordecai la ghiandaia azzurra, e Rigby il procione sono amici per la pelle e lavorano – o meglio, fanno finta di lavorare – per Benson, un distributore di gomme da masticare che amministra un grande parco. Gli altri personaggi che popolano lo spazio verde sono Skips, uno yeti ing",
-        "poster": "https://image.tmdb.org/t/p/w342/mS5SLxMYcKfUxA0utBSR5MOAWWr.jpg",
-        "runtime": 0,
-        "title": "Regular Show",
-        "tmdb_id": 31132,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 2352,
-        "year": 2010
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Commedia",
-          "Sci-Fi & Fantasy",
-          "Famiglia"
-        ],
-        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
-        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
-        "runtime": 0,
-        "title": "Anfibia",
-        "tmdb_id": 85349,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 376,
-        "year": 2019
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Commedia",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Fry, giovane fattorino senza stimoli, consegna una pizza a un laboratorio scientifico e qui rimane intrappolato in una camera criogenica la quale si riapre solo mille anni più tardi. Dopo lo stupore e l’entusiasmo iniziali per essere finito nella New York del 3000, Fry scopre di ",
-        "poster": "https://image.tmdb.org/t/p/w342/xsw6c2dXj2Htf45yQCSWV6z3377.jpg",
-        "runtime": 0,
-        "title": "Futurama",
-        "tmdb_id": 615,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 4004,
-        "year": 1999
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Commedia"
-        ],
-        "overview": "Nella fittizia cittadina di Quahog, nel Rhode Island, la dissacrante famiglia guidata da Peter Griffin e dalla moglie Lois vive assurde vicissitudini quotidiane. Tra i grotteschi problemi dei figli Meg e Chris, i piani di conquista del mondo del neonato Stewie e le ciniche rifles",
-        "poster": "https://image.tmdb.org/t/p/w342/6IwwpmNmOta9UDz5gfvSokPFELL.jpg",
-        "runtime": 0,
-        "title": "I Griffin",
-        "tmdb_id": 1434,
-        "type": "tv",
-        "vote": 7.4,
-        "vote_count": 5232,
-        "year": 1999
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
-        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
-        "runtime": 0,
-        "title": "Arcane",
-        "tmdb_id": 94605,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 6346,
-        "year": 2021
       }
     ],
     "tv:60059": [
@@ -6746,19 +6601,20 @@
       },
       {
         "genres": [
-          "Action & Adventure",
-          "Commedia",
-          "Animazione"
+          "Animazione",
+          "Dramma",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
         ],
-        "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
-        "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+        "overview": "Quando Mark Grayson eredita i superpoteri a 17 anni, si unisce a suo padre come uno dei più grandi supereroi della Terra. Tutti i suoi sogni sembrano essersi avverati, finché un evento scioccante non cambia tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
         "runtime": 0,
-        "title": "One Piece",
-        "tmdb_id": 37854,
+        "title": "INVINCIBLE",
+        "tmdb_id": 95557,
         "type": "tv",
-        "vote": 8.8,
-        "vote_count": 5671,
-        "year": 1999
+        "vote": 8.6,
+        "vote_count": 6180,
+        "year": 2021
       }
     ],
     "tv:63174": [
@@ -8624,22 +8480,6 @@
         },
         {
           "genres": [
-            "Action & Adventure",
-            "Commedia",
-            "Animazione"
-          ],
-          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
-          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
-          "runtime": 0,
-          "title": "One Piece",
-          "tmdb_id": 37854,
-          "type": "tv",
-          "vote": 8.8,
-          "vote_count": 5671,
-          "year": 1999
-        },
-        {
-          "genres": [
             "Dramma",
             "Crime"
           ],
@@ -8748,14 +8588,7 @@
           "vote": 8.5,
           "vote_count": 20194,
           "year": 1999
-        }
-      ],
-      "subtitle": "Titoli con molti voti e giudizi positivi",
-      "title": "I più amati dal pubblico"
-    },
-    {
-      "id": "classics",
-      "items": [
+        },
         {
           "genres": [
             "Commedia",
@@ -8771,7 +8604,14 @@
           "vote": 8.5,
           "vote_count": 30966,
           "year": 1994
-        },
+        }
+      ],
+      "subtitle": "Titoli con molti voti e giudizi positivi",
+      "title": "I più amati dal pubblico"
+    },
+    {
+      "id": "classics",
+      "items": [
         {
           "genres": [
             "Avventura",
@@ -8944,6 +8784,20 @@
           "vote": 8.3,
           "vote_count": 18914,
           "year": 1991
+        },
+        {
+          "genres": [
+            "Dramma"
+          ],
+          "overview": "Candle McMurphy, arrestato per piccoli reati, viene portato in una clinica psichiatrica: tenta di fingersi pazzo per sfuggire al carcere. Qui viene a contatto con gli altri pazienti dei quali diventa ben presto il beniamino: si prende gioco delle sedute di psicoanalisi, si improv",
+          "poster": "https://image.tmdb.org/t/p/w342/hpg2j8FhnnmbiRpoOU09M0sffJu.jpg",
+          "runtime": 133,
+          "title": "Qualcuno volò sul nido del cuculo",
+          "tmdb_id": 510,
+          "type": "movie",
+          "vote": 8.4,
+          "vote_count": 12001,
+          "year": 1975
         }
       ],
       "subtitle": "Film memorabili che superano la prova del tempo",
@@ -8967,22 +8821,6 @@
           "vote": 8.0,
           "vote_count": 5476,
           "year": 2026
-        },
-        {
-          "genres": [
-            "Crime",
-            "Dramma",
-            "Commedia"
-          ],
-          "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-          "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-          "runtime": 0,
-          "title": "Tulsa King",
-          "tmdb_id": 153312,
-          "type": "tv",
-          "vote": 8.3,
-          "vote_count": 2980,
-          "year": 2022
         },
         {
           "genres": [

@@ -36,7 +36,6 @@
         "movie:278",
         "movie:238",
         "movie:155",
-        "tv:37854",
         "movie:240",
         "movie:424",
         "movie:157336",
@@ -56,8 +55,8 @@
         "movie:244786",
         "movie:105",
         "movie:274",
+        "movie:510",
         "movie:1368337",
-        "tv:153312",
         "tv:247718",
         "movie:603692",
         "movie:718930",
@@ -242,7 +241,8 @@
     },
     "movie:13": {
       "categories": [
-        "classics"
+        "classics",
+        "cinephiles"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
@@ -575,6 +575,17 @@
       "categories": [
         "classics",
         "cinephiles"
+      ],
+      "first_seen": "2026-11-25",
+      "last_seen": "2026-11-25",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:510": {
+      "categories": [
+        "classics"
       ],
       "first_seen": "2026-11-25",
       "last_seen": "2026-11-25",
