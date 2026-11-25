@@ -199,9 +199,6 @@ function tv_remember(array $user): void {
     state(static function (&$db) use ($id,$secret,$expires,$userId,$version) {
         $db['tv_devices']=array_filter($db['tv_devices']??[],
             static fn($row)=>is_array($row) && (int)($row['expires']??0)>time());
-        foreach($db['tv_devices'] as $key=>$row)
-            if(($row['user_id']??'')===$userId && ($row['issued_at']??0)<time()-365*86400)
-                unset($db['tv_devices'][$key]);
         $owned=[];
         foreach($db['tv_devices'] as $key=>$row)if(($row['user_id']??'')===$userId)
             $owned[$key]=(int)($row['issued_at']??0);
