@@ -64,7 +64,11 @@
     return el;
   }
   function renderPlatform(element,kind,id,where) {
-    const previous=element.querySelector('.bobo-source-tags');
+    const state=labels(kind,id).join(',');
+    if(element.dataset.boboPlatformState===state)return;
+    element.dataset.boboPlatformState=state;
+    const previous=where==='after' && element.nextElementSibling?.classList.contains('bobo-source-tags')
+      ? element.nextElementSibling : element.querySelector('.bobo-source-tags');
     if(previous)previous.remove();
     const label=badgeNode(kind,id);
     if(!label)return;
@@ -87,13 +91,17 @@
   function updateButtons() {
     document.querySelectorAll('[data-bobo-save]').forEach(button=>{
       const active=Boolean(lib()?.has(button.dataset.boboSaveType,button.dataset.boboSave));
-      button.textContent=active?'♥':'♡';
-      button.setAttribute('aria-pressed',String(active));
+      const wanted=active?'♥':'♡';
+      if(button.textContent!==wanted)button.textContent=wanted;
+      if(button.getAttribute('aria-pressed')!==String(active))button.setAttribute('aria-pressed',String(active));
       button.title=active?'Rimuovi dai preferiti':'Salva nei preferiti';
       button.setAttribute('aria-label',button.title);
     });
     const badge=byId('bobo-fav-count');
-    if(badge)badge.textContent=String(lib()?.read().length || 0);
+    if(badge) {
+      const value=String(lib()?.read().length || 0);
+      if(badge.textContent!==value)badge.textContent=value;
+    }
   }
 
   function decorateCards() {
@@ -102,10 +110,7 @@
       const kind=button.dataset.boboType,id=button.dataset.boboId;
       if(!kind||!id)return;
       button.dataset.boboVisualType=kind;
-      const old=button.querySelector('.bobo-source-tags');
-      if(old)old.remove();
-      const tags=badgeNode(kind,id);
-      if(tags)button.appendChild(tags);
+      renderPlatform(button,kind,id,'append');
       if(button.parentElement?.classList.contains('bobo-item-wrap'))return;
       const parent=button.parentElement;
       if(!parent)return;
@@ -186,7 +191,9 @@
       lastShelfSignature='';
     }
     const saved=lib()?.read() || [];
-    const signature=saved.map(x=>key(x.type,x.tmdb_id)+':'+x.title).join('|');
+    const catalogReady=typeof catalogs!=='undefined' && catalogs &&
+      (catalogs.movie?.length || catalogs.tv?.length);
+    const signature=saved.map(x=>key(x.type,x.tmdb_id)+':'+x.title).join('|')+':'+catalogReady;
     if(signature===lastShelfSignature)return;
     lastShelfSignature=signature;
     shelf.innerHTML='<div class="bobo-favorite-head"><div><span>IL TUO SPAZIO / 001</span>'+
@@ -203,7 +210,7 @@
     if(!header || header.querySelector('.bobo-library-nav'))return;
     const link=document.createElement('a');
     link.className='bobo-library-nav';
-    link.href=location.pathname.endsWith('/watch.html')?'index.html#favorites':'#favorites';
+    link.href=location.pathname.endsWith('/watch.html')?'index.html#bobo-favorites':'#bobo-favorites';
     link.innerHTML='♡ <span>Preferiti</span> <b id="bobo-fav-count">0</b>';
     const settings=header.querySelector('#bobo-settings-open,.settings-trigger');
     if(settings)header.insertBefore(link,settings);
@@ -227,7 +234,7 @@
     decorateWatch();
     favoritesShelf();
     updateButtons();
-    if(location.hash==='#favorites' && byId('bobo-favorites') && !sync.didScroll) {
+    if(location.hash==='#bobo-favorites' && byId('bobo-favorites') && !sync.didScroll) {
       sync.didScroll=true;
       byId('bobo-favorites').scrollIntoView({behavior:'smooth',block:'start'});
     }
@@ -297,6 +304,7 @@
       event.target.value='';
     });
     window.addEventListener('bobo:favorites-change',()=>{lastShelfSignature='';schedule();});
+    window.addEventListener('hashchange',()=>{sync.didScroll=false;schedule();});
     const observer=new MutationObserver(schedule);
     observer.observe(document.body,{subtree:true,childList:true});
     sourceFeed();
