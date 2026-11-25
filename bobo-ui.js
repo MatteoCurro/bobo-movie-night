@@ -9,6 +9,7 @@
   let renderedKey = '';
   let previousFocus = null;
   let discovery = null;
+  let featuredFromFeed = null;
   async function loadDiscovery() {
     try {
       const response = await fetch('data/discovery.json',{cache:'no-store'});
@@ -158,16 +159,54 @@
       '<button class="bobo-arrow" type="button" data-bobo-scroll="'+text(id)+'" data-direction="1" aria-label="Scorri a destra">›</button></div></div>'+
       '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(posterTile).join('')+'</div></section>';
   }
-  function hero(item) {
+  function chooseFeedFeature() {
+    if (!discovery || !discovery.streaming) return null;
+    const stream = discovery.streaming;
+    const candidates = resolveDiscovery(stream.items || []);
+    (stream.platforms || []).forEach(function(platform) {
+      candidates.push.apply(candidates,resolveDiscovery(platform.items || []));
+    });
+    const unique = new Map();
+    candidates.forEach(function(item) {
+      if (item && item.backdrop && item.overview && Number(item.vote || 0) >= 5) {
+        unique.set(item.type+':'+item.tmdb_id,item);
+      }
+    });
+    const options = Array.from(unique.values());
+    if (!options.length) return null;
+    if (featuredFromFeed && options.some(function(item) {
+      return item.type === featuredFromFeed.type &&
+        String(item.tmdb_id) === String(featuredFromFeed.tmdb_id);
+    })) return featuredFromFeed;
+    let last = '';
+    try { last = localStorage.getItem('bobo_last_feed_hero') || ''; } catch (_) {}
+    const pool = options.length > 1 ? options.filter(function(item) {
+      return item.type+':'+item.tmdb_id !== last;
+    }) : options;
+    const selection = pool[Math.floor(Math.random()*pool.length)] || options[0];
+    featuredFromFeed = selection;
+    try { localStorage.setItem('bobo_last_feed_hero',selection.type+':'+selection.tmdb_id); } catch (_) {}
+    return selection;
+  }
+  function shuffleFeedFeature() {
+    if (!discovery || !discovery.streaming) return;
+    featuredFromFeed = null;
+    renderedKey = '';
+    renderHome();
+  }
+  function hero(item,isFeed) {
     if (!item) return '';
     const image = safeImage(item.backdrop);
     const img = image ? '<img src="'+text(image)+'" alt="" fetchpriority="high" decoding="async">' : '';
     return '<section class="bobo-feature" aria-label="In primo piano">'+img+
-      '<div class="bobo-feature-body"><div class="bobo-eyebrow">Bobo Movie Night · In primo piano</div>'+
+      '<div class="bobo-feature-body"><div class="bobo-eyebrow">'+
+      (isFeed ? 'Radar streaming / Novità in Italia' : 'Bobo Movie Night · In primo piano')+'</div>'+
       '<h1>'+text(item.title)+'</h1><div class="bobo-feature-meta">'+meta(item)+'</div>'+
       '<p class="bobo-feature-description">'+text(item.overview||'Scopri il titolo e tutti i dettagli.')+'</p>'+
       '<div class="bobo-feature-actions"><button type="button" class="bobo-btn bobo-btn-primary" data-bobo-play="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">▶ Apri scheda</button>'+
-      '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">ⓘ Dettagli</button></div></div></section>';
+      '<button type="button" class="bobo-btn bobo-btn-secondary" data-bobo-id="'+text(item.tmdb_id)+'" data-bobo-type="'+text(item.type)+'">ⓘ Dettagli</button>'+
+      (isFeed ? '<button type="button" class="bobo-btn bobo-btn-secondary bobo-shuffle" data-bobo-hero-shuffle aria-label="Mostra un altro titolo dalle novità streaming">↻ Un\u0027altra idea</button>' : '')+
+      '</div></div></section>';
   }
   function renderHome() {
     const all = allItems();
@@ -181,12 +220,34 @@
     const promoted = validItems(all).filter(function(x) { return x.overview && x.year >= currentYear-3; })
       .sort(function(a,b) { return ((b.vote||0)*1.4+(b.year||0)*.6)-((a.vote||0)*1.4+(a.year||0)*.6); });
     const rails = [];
-    if (discovery && discovery.streaming && Array.isArray(discovery.streaming.items)) {
-      rails.push(shelf('it-weekly','Nuovi sulle piattaforme in Italia',
-        resolveDiscovery(discovery.streaming.items),
-        'Arrivi degli ultimi 7 giorni · Streamingfilter'));
+    const stream = discovery && discovery.streaming;
+    if (stream) {
+      const weekly = resolveDiscovery(stream.items || []);
+      const monthly = (stream.platforms || []).filter(function(platform) {
+        return platform && platform.id && platform.label &&
+          resolveDiscovery(platform.items || []).length >= 4;
+      });
+      if (weekly.length >= 4 || monthly.length) {
+        rails.push('<div class="bobo-feed-group"><span>01 / Streaming radar</span>'+
+          '<h2>Appena arrivati, pronti da scoprire.</h2>'+
+          '<p>Nuove disponibilità sui servizi italiani, incrociate con i titoli presenti nel nostro catalogo.</p></div>');
+      }
+      rails.push(shelf('it-weekly','Novità della settimana',
+        weekly,'Streaming in Italia · Ultimi 7 giorni'));
+      monthly.forEach(function(platform) {
+        rails.push(shelf('new-on-'+platform.id,
+          'Novità del mese · '+platform.label,
+          resolveDiscovery(platform.items),
+          'Catalogo italiano · Streamingfilter'));
+      });
+      const weeklyMovies = weekly.filter(function(item) { return item.type === 'movie'; });
+      const weeklySeries = weekly.filter(function(item) { return item.type === 'tv'; });
+      rails.push(shelf('weekly-movies','Film appena segnalati',weeklyMovies,
+        'Novità sulle piattaforme italiane'));
+      rails.push(shelf('weekly-series','Serie appena segnalate',weeklySeries,
+        'Novità sulle piattaforme italiane'));
     }
-    if (discovery && discovery.source === 'TMDB+JustWatch') {
+    if (discovery && discovery.source === 'TMDB+JustWatch' && !(stream && stream.platforms && stream.platforms.length)) {
       rails.push(shelf('weekly-trending','Di tendenza questa settimana',
         resolveDiscovery(discovery.trending),'Classifica TMDB · ultimi 7 giorni'));
       (discovery.platforms || []).forEach(function(platform) {
@@ -197,6 +258,8 @@
           'Disponibilità in Italia · TMDB / JustWatch'));
       });
     }
+    rails.push('<div class="bobo-feed-group bobo-feed-group-secondary">'+
+      '<span>02 / Dal catalogo</span><h2>Qualcosa per stasera.</h2></div>');
     rails.push(
       shelf('highlights','In evidenza',promoted),
       shelf('new','Le uscite recenti',fresh),
@@ -228,7 +291,8 @@
       const picks = good.filter(function(x) { return genresMatch(x,row[2]); });
       rails.push(shelf(row[0],row[1],picks));
     });
-    host.innerHTML = hero(featured(all)) + rails.join('') +
+    const feedHero = chooseFeedFeature();
+    host.innerHTML = hero(feedHero || featured(all),Boolean(feedHero)) + rails.join('') +
       (discovery && discovery.streaming && discovery.streaming.items && discovery.streaming.items.length ?
         '<p class="bobo-source-note">Novità streaming Italia: selezione basata sulle aggiunte segnalate da '+
         '<a href="https://streamingfilter.com/it/novita" target="_blank" rel="noopener noreferrer">Streamingfilter</a>, '+
@@ -451,6 +515,7 @@
         if (rail) rail.scrollBy({left: (Number(scrolling.dataset.direction)||1)*rail.clientWidth*.85,behavior:'smooth'});
         return;
       }
+      if (target.closest('[data-bobo-hero-shuffle]')) { shuffleFeedFeature(); return; }
       const playing = target.closest('[data-bobo-play]');
       if (playing) { play(playing.dataset.boboPlay,playing.dataset.boboType); return; }
       const opening = target.closest('[data-bobo-id]');
