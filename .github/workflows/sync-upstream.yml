@@ -197,7 +197,7 @@ jobs:
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
-          cp watch.html bobo-watch.js bobo-watch.css _site/
+          cp watch.html bobo-watch.js bobo-watch.css bobo-related.js _site/
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
           # The TV installation page is a separate directory; it must be part
           # of the deployed _site artifact, not merely present in GitHub.
