@@ -71,7 +71,7 @@ window.addEventListener('message',function(ev){
  try{
   if(msg.action==='status'){ack();return;}
   if(msg.action==='seek'){
-   const delta=Math.max(-600,Math.min(600,Number(msg.delta)||0));
+   const delta=Math.max(-7200,Math.min(7200,Number(msg.delta)||0));
    v.currentTime=Math.max(0,Math.min(Number.isFinite(v.duration)?Math.max(0,v.duration-.2):Infinity,v.currentTime+delta));
    ack();return;
   }
