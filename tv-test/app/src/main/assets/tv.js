@@ -525,7 +525,7 @@ window.BoboTV={
  rail:rail,
  toast:notify,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.3-TV'
+ version:'1.3.1-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
@@ -535,7 +535,7 @@ document.addEventListener('focusin',e=>{
   if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;
   const el=e.target&&e.target.closest('.poster');
   const item=el&&status.index.get(el.dataset.title);
-  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'TV EDITION';
+  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.3.1';
 },true);
 boot();
 }());
