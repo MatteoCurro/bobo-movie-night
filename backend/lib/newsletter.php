@@ -84,7 +84,7 @@ function bobo_newsletter_compose(array $feed,string $username,string $unsubscrib
         implode('',$blocks).
         '<p style="color:#92aab0;font-size:11px;line-height:1.6;margin-top:25px">Le disponibilità sono segnalazioni editoriali e possono cambiare; non indicano il provider del player incorporato.</p>'.
         '<hr style="border:0;border-top:1px solid #34525a;margin:20px 0">'.
-        '<p style="color:#91a6aa;font-size:11px;line-height:1.6">Ricevi questo messaggio perché hai attivato la newsletter nel tuo account. '.
+        '<p style="color:#91a6aa;font-size:11px;line-height:1.6">Ricevi questo riepilogo come membro del piccolo club Bobo; puoi disiscriverti in qualsiasi momento. '.
         '<a href="'.$safe($unsubscribe).'" style="color:#b8e5dd">Annulla iscrizione</a> · '.
         '<a href="https://movieaccount.curromatteo.it/account.html?view=settings" style="color:#b8e5dd">Gestisci preferenze</a></p>'.
         '</div></body></html>';

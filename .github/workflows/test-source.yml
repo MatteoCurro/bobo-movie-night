@@ -1,0 +1,36 @@
+name: Bobo · Test sorgenti
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test catalog update and source overlays
+        run: |
+          python3 -m py_compile scripts/sync_tmdb_catalog.py scripts/build_discovery.py scripts/build_poster_index.py
+          python3 tests/sync_tmdb_catalog.py
+          python3 tests/incremental_catalog.py
+      - name: Validate site scripts
+        run: |
+          node --check bobo-watch.js
+          node --check bobo-cloud.js
+          node --check bobo-library.js
+          node --check bobo-favorites.js
+          node --check bobo-friends.js
+          node tests/autonext.cjs
+          node tests/library.cjs
+      - name: Validate backend PHP
+        run: |
+          for f in backend/htdocs/*.php backend/lib/*.php backend/bin/*.php; do php -l "$f"; done
+      - name: Check no external upstream dependency
+        run: |
+          ! grep -Eq 'git clone.+CasaFlix' .github/workflows/sync-upstream.yml
+          test -s data/movies.json && test -s data/tv.json
+          test -s data/enrichment.json && test -s data/catalog-status.json

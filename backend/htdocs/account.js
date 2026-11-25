@@ -57,6 +57,7 @@
    $('profile').textContent=me.username;
    $('account-email').textContent=me.email ? 'Email: '+me.email : 'Email non configurata';
    $('admin-link').hidden=me.role!=='admin';
+   $('newsletter-test-panel').hidden=me.role!=='admin';
    try{
      const current=await api('newsletter');
      $('newsletter-opt-in').checked=Boolean(current.subscribed);
@@ -109,6 +110,15 @@
   finally{button.disabled=false;}
  });
 
+ $('newsletter-test-send').addEventListener('click',async()=>{
+  const button=$('newsletter-test-send');button.disabled=true;
+  $('newsletter-test-status').textContent='Invio in corso…';
+  try{
+   const result=await api('admin/newsletter/test',{});
+   $('newsletter-test-status').textContent=result.message||'Email di prova inviata.';
+  }catch(err){$('newsletter-test-status').textContent=err.message;}
+  finally{button.disabled=false;}
+ });
  $('logout').addEventListener('click',async()=>{try{await api('logout',{});}catch(_){}$('recovery-panel').hidden=true;notice('Sessione terminata');await refresh();});
  $('import').addEventListener('click',()=>$('file').click());
  $('file').addEventListener('change',async e=>{
