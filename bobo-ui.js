@@ -238,7 +238,7 @@
         rails.push(shelf('new-on-'+platform.id,
           'Novità del mese · '+platform.label,
           resolveDiscovery(platform.items),
-          'Catalogo italiano · Streamingfilter'));
+          'Disponibilità in Italia · aggiornamento mensile'));
       });
       const weeklyMovies = weekly.filter(function(item) { return item.type === 'movie'; });
       const weeklySeries = weekly.filter(function(item) { return item.type === 'tv'; });
@@ -294,9 +294,7 @@
     const feedHero = chooseFeedFeature();
     host.innerHTML = hero(feedHero || featured(all),Boolean(feedHero)) + rails.join('') +
       (discovery && discovery.streaming && discovery.streaming.items && discovery.streaming.items.length ?
-        '<p class="bobo-source-note">Novità streaming Italia: selezione basata sulle aggiunte segnalate da '+
-        '<a href="https://streamingfilter.com/it/novita" target="_blank" rel="noopener noreferrer">Streamingfilter</a>, '+
-        'incrociate con il catalogo Bobo. Non rappresentano disponibilità garantita presso un singolo servizio.</p>' : '')+
+        '<p class="bobo-source-note">Le piattaforme indicate rappresentano disponibilità segnalate nei cataloghi italiani; non sono i provider di riproduzione del video.</p>' : '')+
       (discovery && discovery.platforms && discovery.platforms.length ?
         '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
   }
