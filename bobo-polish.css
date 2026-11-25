@@ -623,3 +623,18 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
     background:linear-gradient(0deg,rgba(12,17,22,.53),rgba(12,17,22,.08))!important;
   }
 }
+
+/* Shared navigation: five entries must remain reachable on compact detail pages. */
+@media(max-width:860px) {
+  .site-header {flex-wrap:wrap!important;}
+  .site-header .brand {order:1;}
+  .site-header .bobo-account-control {order:2;margin-left:auto;}
+  .site-header .settings-trigger {order:3;margin-left:0!important;}
+  .site-header .bobo-site-nav {
+    order:5!important;width:100%!important;min-width:0;
+    margin:4px 0 0!important;
+    justify-content:flex-start;overflow-x:auto;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+}
