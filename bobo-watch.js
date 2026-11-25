@@ -95,9 +95,19 @@
     }
     history.replaceState(null,'',url.toString());
   }
+  function episodeTitle(s,e) {
+    const name=episodeStills[String(s)]?.[String(e)]?.name;
+    return typeof name==='string' ? name.trim().slice(0,160) : '';
+  }
   function episodeHeading() {
-    return selectedSeason === 0 ? 'Speciali · Episodio '+selectedEpisode :
+    const location=selectedSeason === 0 ? 'Speciali · Episodio '+selectedEpisode :
       'Stagione '+selectedSeason+' · Episodio '+selectedEpisode;
+    const name=episodeTitle(selectedSeason,selectedEpisode);
+    return name && name.toLocaleLowerCase('it')!=='episodio '+selectedEpisode ? location+' · '+name : location;
+  }
+  function thumbnailURL(url, size) {
+    const safe=imageURL(url);
+    return safe ? safe.replace(/\/t\/p\/(?:w\d+|original)\//, '/t/p/'+size+'/') : '';
   }
   function playerURL(automatic) {
     if (!item) return '';
@@ -368,6 +378,7 @@
       if(type==='tv' && record.episode_images && record.episode_images.seasons) {
         episodeStills=record.episode_images.seasons;
         renderEpisodeNavigation();
+        if(playing)byId('watch-current-episode').textContent=episodeHeading();
       }
     }catch(_){ /* Optional indexes never block the player. */ }
   }
@@ -408,18 +419,33 @@
       number.className = 'episode-number';
       number.textContent = String(e);
       const content = document.createElement('span');
+      content.className='bobo-episode-copy';
       const heading = document.createElement('strong');
-      heading.textContent = 'Episodio '+e;
+      heading.textContent = episodeTitle(selectedSeason,e) || 'Episodio '+e;
       const description = document.createElement('small');
-      description.textContent = e === selectedEpisode ? 'Selezionato · Riproduci' : 'Riproduci episodio';
+      description.textContent = 'E'+e+' · '+(e === selectedEpisode ? 'Selezionato · Riproduci' : 'Riproduci episodio');
       content.append(heading,description);
-      const still=episodeStills[String(selectedSeason)]?.[String(e)];
-      if(still && imageURL(still.image)) {
+      const still=episodeStills[String(selectedSeason)]?.[String(e)] || {};
+      const stillURL=thumbnailURL(still.image,'w185');
+      const posterURL=thumbnailURL(item && item.poster,'w154');
+      if(stillURL || posterURL) {
         const preview=document.createElement('img');
-        preview.className='bobo-episode-still';
-        preview.src=still.image;preview.alt='';preview.loading='lazy';preview.decoding='async';
+        preview.className='bobo-episode-still'+(stillURL?'':' bobo-episode-still--poster');
+        preview.src=stillURL || posterURL;
+        preview.alt='';
+        preview.loading='lazy';
+        preview.decoding='async';
+        button.classList.add('episode-card--with-preview');
+        preview.addEventListener('error',function () {
+          if(stillURL && posterURL && this.src!==posterURL) {
+            this.className='bobo-episode-still bobo-episode-still--poster';
+            this.src=posterURL;
+          } else {
+            this.remove();
+            button.classList.remove('episode-card--with-preview');
+          }
+        });
         button.append(preview);
-        if(still.name)heading.textContent=still.name;
       }
       button.append(number,content);
       button.addEventListener('click',function () { selectEpisode(selectedSeason,e,true); });
