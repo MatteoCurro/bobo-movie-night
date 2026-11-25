@@ -38,4 +38,6 @@ const dataset=JSON.parse(read('data/editorial.json'));
 assert.equal(dataset.schema,1);
 assert.ok(dataset.sections.length>=3,'Discover should have at least three populated sections');
 assert.ok(dataset.sections.some(s=>(s.items||[]).length>=4));
+assert.ok(dataset.sections.every(s=>(s.items||[]).every(x=>x.vote_count>=200)),
+  'No low-sample 10/10 picks may appear in editorial sections');
 console.log('Discover integration: navigation, visual identity, accounts, cards and feed OK');
