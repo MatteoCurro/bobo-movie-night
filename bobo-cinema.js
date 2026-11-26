@@ -73,7 +73,9 @@
     const host = byId('watch-awards-list');
     if (!section || !host || !entry) return;
     const awards = Array.isArray(entry.awards) ? entry.awards : [];
-    for (const award of awards.slice(0, 30)) {
+    const indexed={won:new Set(),nominated:new Set()};
+    let visibleAwards=0,remaining=0;
+    for (const award of awards.slice(0, 100)) {
       if (!award || !['Oscar', 'Cannes'].includes(award.event) ||
           !['won', 'nominated'].includes(award.outcome)) continue;
       const card = node('div', 'bobo-award');
@@ -132,6 +134,11 @@
       if (award.recipient) card.append(node('small', '', award.recipient));
       if (award.year) card.append(node('small', '', ' · ' + award.year));
       const category = names[award.category] || award.category || '';
+      const signature = [award.event,category,award.year||'',award.outcome].join('|');
+      if(indexed[award.outcome].has(signature))continue;
+      indexed[award.outcome].add(signature);
+      if(visibleAwards>=8){card.hidden=true;remaining++;}
+      else visibleAwards++;
       if (category) {
         const awardsLink = node('a', 'bobo-award-source', 'Esplora i film premiati →');
         awardsLink.href = 'awards.html?event=' + encodeURIComponent(award.event) +
@@ -141,6 +148,25 @@
       host.append(card);
     }
     section.hidden = !host.children.length;
+    const summary = byId('watch-awards-summary');
+    if(summary&&!section.hidden){
+      const won=indexed.won.size, nominated=indexed.nominated.size;
+      summary.textContent='';
+      const intro=node('span','bobo-awards-digest-label','NEL NOSTRO ARCHIVIO');
+      const contents=node('div','bobo-awards-digest-counts');
+      if(won)contents.append(node('strong','',won+' '+(won===1?'vittoria indicizzata':'vittorie indicizzate')));
+      if(nominated)contents.append(node('span','',nominated+' '+(nominated===1?'candidatura':'candidature')));
+      summary.append(intro,contents);summary.hidden=false;
+    }
+    const expand=byId('watch-awards-expand');
+    if(expand&&remaining){
+      expand.hidden=false;
+      expand.textContent='Mostra altri '+remaining+' riconoscimenti';
+      expand.onclick=()=>{
+        host.querySelectorAll('.bobo-award[hidden]').forEach(x=>x.hidden=false);
+        expand.hidden=true;
+      };
+    }
   }
   async function watch() {
     if (!byId('watch-cast-section') || !['movie', 'tv'].includes(filmType) || !validId(filmId)) return;
@@ -217,6 +243,57 @@
         byId('person-directory-week').textContent = 'Selezione ' + data.week;
     } catch (_) { /* Leave useful fallback links on failure. */ }
   }
+  function renderCareer(person, stats) {
+    const section=byId('person-highlights');
+    const host=byId('person-highlights-grid');
+    if(!section||!host)return;
+    const first=directorMode?(stats.first_directed||stats.first_indexed):stats.first_indexed;
+    const highest=directorMode?(stats.best_directed||stats.most_appreciated):stats.most_appreciated;
+    const items=[
+      {data:first, label:directorMode?'Prima regia indicizzata':'Prima opera indicizzata',
+       context:'Il primo titolo che risulta nel catalogo Bobo'},
+      {data:highest, label:'Il più apprezzato nel catalogo',
+       context:'Tra le opere con una valutazione disponibile'}
+    ];
+    const seen=new Set();
+    for(const item of items){
+      const film=item.data;
+      if(!film||!['movie','tv'].includes(film.type)||!validId(String(film.id||film.tmdb_id)))continue;
+      const id=Number(film.id||film.tmdb_id),key=film.type+':'+id;
+      if(seen.has(key))continue;seen.add(key);
+      const a=node('a','bobo-person-landmark');
+      a.href='watch.html?type='+encodeURIComponent(film.type)+'&id='+encodeURIComponent(id);
+      const poster=image(film.poster);
+      if(poster){const img=node('img');img.src=poster;img.alt='';img.loading='lazy';a.append(img);}
+      const text=node('span','bobo-person-landmark-content');
+      text.append(node('small','bobo-person-landmark-tag',item.label),
+        node('strong','',film.title||'Titolo'),
+        node('span','',String(film.year||'')));
+      if(item.label.includes('apprezzato')&&Number(film.vote)>0)
+        text.append(node('small','bobo-person-landmark-rating','★ '+Number(film.vote).toFixed(1)+'/10'));
+      text.append(node('span','bobo-person-landmark-caption',item.context));
+      a.append(text);host.append(a);
+    }
+    section.hidden=!host.children.length;
+    const dnaSection=byId('person-dna-section');
+    const dnaHost=byId('person-dna-bars');
+    if(!dnaSection||!dnaHost||!directorMode)return;
+    const genres=Array.isArray(stats.genres)?stats.genres:[];
+    for(const row of genres.slice(0,4)){
+      const pct=Number(row.percent);
+      if(!row||typeof row.name!=='string'||row.name.length>60||
+        !Number.isFinite(pct)||pct<=0||pct>100)continue;
+      const wrap=node('div','bobo-person-genre');
+      const label=node('div','bobo-person-genre-label');
+      label.append(node('strong','',row.name),node('span','',Math.round(pct)+'%'));
+      const track=node('span','bobo-person-genre-track');
+      const fill=node('span','bobo-person-genre-fill');
+      fill.style.width=Math.round(pct)+'%';
+      track.append(fill);
+      wrap.append(label,track);dnaHost.append(wrap);
+    }
+    dnaSection.hidden=!dnaHost.children.length;
+  }
   function renderPerson(person) {
     byId('person-loading').hidden = true;
     byId('person-content').hidden = false;
@@ -240,6 +317,7 @@
     if (age !== null) addFact(facts, person.deathday ? 'Età alla scomparsa' : 'Età', age + ' anni');
     if (Number(person.height_cm) >= 120 && Number(person.height_cm) <= 230)
       addFact(facts, 'Altezza', Math.round(Number(person.height_cm)) + ' cm');
+    renderCareer(person, stats);
     const statHost = byId('person-stats');
     const full = Array.isArray(person.filmography) && person.filmography.length ?
       person.filmography : (person.known_for || []);

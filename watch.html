@@ -96,10 +96,13 @@
       <div class="section-heading"><h2 id="watch-cast-heading">Cast e troupe</h2></div>
       <div id="watch-crew" class="bobo-crew"></div>
       <div id="watch-cast-grid" class="bobo-actor-grid"></div>
+      <aside id="watch-cinema-fact" class="bobo-cinema-fact" hidden aria-label="Curiosità sul film"></aside>
     </section>
     <section id="watch-awards-section" class="section bobo-cinema-section" hidden aria-labelledby="watch-awards-heading">
       <div class="section-heading"><h2 id="watch-awards-heading">Premi e riconoscimenti</h2></div>
+      <div id="watch-awards-summary" class="bobo-awards-digest" hidden></div>
       <div id="watch-awards-list" class="bobo-award-grid"></div>
+      <button type="button" class="bobo-awards-expand" id="watch-awards-expand" hidden>Mostra tutti i riconoscimenti</button>
       <p class="section-subtitle">Premi e candidature già indicizzati. Scopri gli altri vincitori e le categorie nell'<a href="awards.html">archivio dei premi</a>. La copertura si amplia progressivamente; per gli Oscar l'archivio storico principale arriva al 2023.</p>
     </section>
     <section id="watch-critic-section" class="section bobo-critic-section" aria-labelledby="watch-critic-heading" hidden>
@@ -114,7 +117,12 @@
       <p class="section-subtitle">Brevi estratti di recensioni della community, con autore e collegamento alla recensione originale. Non sono recensioni della redazione Bobo.</p>
       <div id="watch-reviews-list" class="bobo-review-grid"></div>
     </section>
-    <section id="watch-related-section" class="section" hidden><div class="section-heading"><h2>Potrebbe piacerti anche</h2></div><div id="watch-related-items" class="watch-related-rail"></div></section>
+    <section id="watch-related-section" class="section" hidden aria-labelledby="watch-related-heading">
+      <div class="section-heading"><h2 id="watch-related-heading">Continua da qui</h2></div>
+      <div id="watch-together" class="bobo-together" hidden></div>
+      <p id="watch-related-note" class="section-subtitle">Altre storie collegate a questo titolo.</p>
+      <div id="watch-related-items" class="watch-related-rail"></div>
+    </section>
   </main>
 
   <div id="watch-settings" class="dialog-shade" hidden>

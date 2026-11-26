@@ -680,3 +680,24 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
 /* Source acknowledgements have a single unobtrusive home. */
 .bobo-footer-info{font:500 10px var(--bobo-font-mono,monospace);color:#95abb1;text-decoration:none;margin-left:auto;white-space:nowrap;align-self:center}
 .bobo-footer-info:hover{color:#d9eee9;text-decoration:underline}
+
+/* Home is a magazine, not a wall of repeating horizontal carousels. */
+.bobo-home-crossroads{display:grid;grid-template-columns:1.13fr 1fr;gap:15px;margin:38px 0 42px}
+.bobo-home-crossroads>div{position:relative;min-width:0;min-height:245px;border:1px solid #35545b;border-radius:8px;padding:clamp(21px,3.2vw,40px);display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;isolation:isolate}
+.bobo-home-random{background:radial-gradient(ellipse at 87% 10%,rgba(155,207,187,.17),transparent 52%),linear-gradient(140deg,#203a40,#101e28)}
+.bobo-home-random:after{content:'✳';position:absolute;right:22px;bottom:-49px;font-size:170px;line-height:1;color:rgba(167,218,210,.09);z-index:-1;pointer-events:none}
+.bobo-home-explore{background:radial-gradient(ellipse at 85% 0%,rgba(229,193,138,.13),transparent 57%),linear-gradient(145deg,#302c32,#16222a);border-color:#575259!important}
+.bobo-home-micro{font:650 10px var(--bobo-font-mono,monospace);letter-spacing:.13em;color:#a6d8d3}
+.bobo-home-explore .bobo-home-micro{color:#e6c69e}
+.bobo-home-crossroads h2{margin:15px 0 8px;font:650 clamp(23px,3vw,35px)/1.14 var(--bobo-font-display,inherit);letter-spacing:-.05em;max-width:500px}
+.bobo-home-crossroads p{margin:0 0 20px;color:#aebfc7;font:400 13px/1.65 var(--bobo-font-body,inherit);max-width:450px}
+.bobo-home-random button{margin-top:auto;cursor:pointer;padding:10px 20px;background:#b2e3d9;color:#142a2d;border:1px solid #b2e3d9;border-radius:4px;font:700 12px var(--bobo-font-body,inherit)}
+.bobo-home-random button:hover,.bobo-home-random button:focus-visible{background:#e2f6ee}
+.bobo-home-crosslinks{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto}
+.bobo-home-crosslinks a{display:inline-flex;align-items:center;text-decoration:none;color:#f3dfbd;background:rgba(222,184,129,.08);border:1px solid #735f49;border-radius:5px;padding:9px 12px;font:600 12px var(--bobo-font-body,inherit)}
+.bobo-home-crosslinks a:hover,.bobo-home-crosslinks a:focus-visible{border-color:#e3c494;color:#fff0d8}
+@media(max-width:650px){
+ .bobo-home-crossroads{grid-template-columns:minmax(0,1fr);gap:10px;margin:27px 0}
+ .bobo-home-crossroads>div{min-height:205px;padding:22px}
+ .bobo-home-crossroads h2{font-size:27px}
+}

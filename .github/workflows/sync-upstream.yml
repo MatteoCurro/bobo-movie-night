@@ -58,6 +58,7 @@ jobs:
           python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
           python3 scripts/build_cinema_explore.py
+          python3 scripts/build_story_connections.py
           python3 scripts/enrich_person_facts.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
@@ -69,6 +70,7 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node --check bobo-cinema.js
+          node --check bobo-related.js
           node --check bobo-discover.js
           node --check bobo-awards.js
           node tests/player-manager.cjs
@@ -76,6 +78,7 @@ jobs:
           node tests/platform-labels.cjs
           node tests/verified-audio.cjs
           node tests/index-inline.cjs
+          node tests/home-curation.cjs
           node --check bobo-friends.js
           node --check bobo-library.js
           node --check bobo-enhance.js
@@ -93,6 +96,8 @@ jobs:
           python3 tests/person-search.py
           python3 -m py_compile scripts/build_cinema_explore.py scripts/enrich_person_facts.py
           python3 tests/cinema-explore.py
+          python3 -m py_compile scripts/build_story_connections.py
+          python3 tests/story-connections.py
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
@@ -101,6 +106,7 @@ jobs:
           python3 tests/multi-ratings.py
           test -s data/cinema/person-search.json
           test -s data/cinema/explore.json
+          test -s data/cinema/connections-status.json
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
@@ -241,6 +247,7 @@ jobs:
           cp -R data/related _site/data/
           cp -R data/cinema _site/data/
           test -s _site/data/cinema/person-search.json
+          test -s _site/data/cinema/connections-status.json
           test -d _site/data/cinema/credits && test -d _site/data/cinema/people
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
