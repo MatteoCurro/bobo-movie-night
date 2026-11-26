@@ -28,6 +28,7 @@ function suite(elements,initial){
   el.closest=(selector)=>{
    if(selector==='[hidden]')return null;
    if(selector==='.rail,.season-list')return el.rail||null;
+   if(selector==='.rail,.season-list,.browse-chip-row')return el.rail||el.filterRow||null;
    if(selector==='.results')return el.grid||null;
    if(selector==='.browse-chip-row')return el.filterRow||null;
    if(selector==='#topbar')return el.nav||null;
