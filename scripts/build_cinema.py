@@ -193,32 +193,45 @@ def stub_person(person, known):
 def hydrate_person(person_id, base, titles, response):
     credits = response.get("combined_credits") or {}
     works, seen = [], set()
-    for row in credits.get("cast") or []:
+
+    def add_credit(row, role=""):
         kind = row.get("media_type")
         if kind not in ("movie", "tv"):
-            continue
+            return
         try:
             key = media_key(kind, row["id"])
         except (ValueError, TypeError, KeyError):
-            continue
+            return
         if key in seen or key not in titles:
-            continue
+            return
         seen.add(key)
         item = titles[key]
         works.append({"type": kind, "tmdb_id": item["tmdb_id"], "title": item["title"],
                       "year": item.get("year"), "poster": item.get("poster", ""),
-                      "character": str(row.get("character") or "")[:120]})
+                      "character": str(row.get("character") or "")[:120],
+                      "role": role})
+
+    # Combined credits are actual TMDB participation records, not recommendations.
+    for row in credits.get("cast") or []:
+        add_credit(row)
+    crew_roles = {"Director": "Regia", "Creator": "Ideazione",
+                  "Writer": "Sceneggiatura", "Screenplay": "Sceneggiatura"}
+    for row in credits.get("crew") or []:
+        role = crew_roles.get(row.get("job"))
+        if role:
+            add_credit(row, role)
     works.sort(key=lambda x: (-(int(x.get("year") or 0)), x["title"]))
     output = dict(base)
+    bio = str(response.get("biography") or "")[:6000]
     output.update({"name": str(response.get("name") or base["name"])[:140],
                    "photo": portrait(response.get("profile_path")) or base.get("photo", ""),
                    "birthday": str(response.get("birthday") or "")[:10],
                    "deathday": str(response.get("deathday") or "")[:10],
                    "place_of_birth": str(response.get("place_of_birth") or "")[:220],
-                   "biography": str(response.get("biography") or "")[:6000],
+                   "biography": bio, "biography_language": "it" if bio else "",
+                   "biography_source": "tmdb",
                    "filmography": works[:60], "checked_at": TODAY, "source": "tmdb"})
     return output
-
 
 def award_entries(bindings, ids):
     found = {str(x): [] for x in ids}
