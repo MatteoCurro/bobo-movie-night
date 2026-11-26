@@ -103,8 +103,19 @@
         <h2 id="watch-settings-title">Impostazioni riproduzione</h2>
         <button type="button" id="watch-settings-close" aria-label="Chiudi impostazioni">×</button>
       </div>
-      <p>La sorgente rimane memorizzata su questo dispositivo. Solo VixSrc documenta una preferenza per l'audio italiano.</p>
+      <p>VixSrc e VidCore richiedono l'audio italiano dove disponibile. Non tutte le sorgenti possiedono il doppiaggio.</p>
       <div id="watch-provider-options" role="radiogroup" aria-label="Servizi di riproduzione"></div>
+      <div class="autonext-settings" id="watch-audio-check">
+        <h3>Lingua effettivamente ascoltata</h3>
+        <p>Per questo film o episodio puoi annotare che cosa hai sentito. È un riscontro personale salvato soltanto sul dispositivo, non una garanzia sugli altri titoli.</p>
+        <label for="watch-audio-result" class="autonext-limit-label">Verifica sulla sorgente selezionata</label>
+        <select id="watch-audio-result">
+          <option value="">Non verificata</option>
+          <option value="ita">Audio doppiato in italiano</option>
+          <option value="sub-ita">Audio originale con sottotitoli italiani</option>
+          <option value="original">Solo audio originale / altro</option>
+        </select>
+      </div>
       <div class="autonext-settings">
         <h3>Serie TV · riproduzione consecutiva</h3>
         <label class="autonext-switch"><input id="watch-auto-next-enabled" type="checkbox"> <span>Passa automaticamente all'episodio successivo quando termina quello in corso</span></label>
