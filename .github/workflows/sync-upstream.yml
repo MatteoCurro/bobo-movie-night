@@ -70,6 +70,7 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node --check bobo-cinema.js
+          node tests/watch-dossier.cjs
           node --check bobo-related.js
           node --check bobo-discover.js
           node --check bobo-awards.js
@@ -106,6 +107,7 @@ jobs:
           python3 tests/multi-ratings.py
           test -s data/cinema/person-search.json
           test -s data/cinema/explore.json
+          test -s data/cinema/film-quotes.json
           test -s data/cinema/connections-status.json
           test -s data/enrichment.json
           test -d data/episodes
@@ -247,6 +249,7 @@ jobs:
           cp -R data/related _site/data/
           cp -R data/cinema _site/data/
           test -s _site/data/cinema/person-search.json
+          test -s _site/data/cinema/film-quotes.json
           test -s _site/data/cinema/connections-status.json
           test -d _site/data/cinema/credits && test -d _site/data/cinema/people
           test -d _site/data/episodes
