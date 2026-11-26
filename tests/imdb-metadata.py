@@ -52,5 +52,5 @@ with tempfile.TemporaryDirectory() as tmp:
     assert mod.build(root,directory=csv_dir,today=dt.date(2026,11,26))==0
     assert mod.build(root,directory=None,downloader=lambda year: (_ for _ in ()).throw(
         AssertionError("Fresh year must not be downloaded")),today=dt.date(2026,11,26))==0
-    assert mod.should_scan(2025,0,{"checked_at":"2026-11-26"},dt.date(2026,11,26)) is False
+    assert mod.should_scan(2025,0,{"2025":{"checked_at":"2026-11-26"}},dt.date(2026,11,26)) is False
 print("IMDb: automated CSV snapshot, catalog ID match, existing awards and TTL preserved")
