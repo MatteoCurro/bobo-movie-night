@@ -186,6 +186,27 @@ def build(root=Path("."), today=None):
 
         years = sorted({int(titles[key].get("year") or 0) for key in works
                         if 1880 <= int(titles[key].get("year") or 0) <= today.year})
+        # Editorial career landmarks are relative to the indexed catalogue.
+        # Never call an earliest indexed title someone's absolute screen debut.
+        dated = [key for key in works if 1880 <= int(titles[key].get("year") or 0) <= today.year]
+        earliest = min(dated, key=lambda key: (int(titles[key]["year"]), key)) if dated else None
+        rated = [key for key in dated if titles[key].get("poster") and
+                 float(titles[key].get("vote") or 0) >= 5.0]
+        stable = [key for key in rated if int(titles[key].get("vote_count") or 0) >= 100]
+        pool = stable or rated
+        best = max(pool, key=lambda key: (
+            float(titles[key].get("vote") or 0),
+            int(titles[key].get("vote_count") or 0),
+            key)) if pool else None
+        genres = defaultdict(int)
+        for work_key in directing[pid]:
+            for genre in titles[work_key].get("genres") or []:
+                if isinstance(genre, str) and genre.strip():
+                    genres[genre.strip()] += 1
+        genre_count = sum(genres.values())
+        dna = [{"name": name, "percent": round(count * 100 / genre_count)}
+               for name, count in sorted(genres.items(),
+                                         key=lambda row: (-row[1], row[0]))[:4]] if genre_count else []
         stats = {
             "works": len(works),
             "acting": len(acting[pid]),
@@ -194,6 +215,9 @@ def build(root=Path("."), today=None):
             "first_year": years[0] if years else None,
             "last_year": years[-1] if years else None,
             "scope": "catalogue",
+            "first_indexed": movie_card(titles[earliest]) | {"type": titles[earliest]["type"]} if earliest else None,
+            "most_appreciated": movie_card(titles[best]) | {"type": titles[best]["type"]} if best else None,
+            "genres": dna,
         }
         if p.get("stats") != stats:
             updated = dict(p, stats=stats)
