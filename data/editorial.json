@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:07:34+00:00",
+  "generated_at": "2026-11-26T18:32:03+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -36,7 +36,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -90,7 +90,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       },
       {
@@ -107,7 +107,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6890,
+        "vote_count": 6893,
         "year": 2024
       },
       {
@@ -140,7 +140,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11703,
+        "vote_count": 11705,
         "year": 2004
       }
     ],
@@ -204,7 +204,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17464,
+        "vote_count": 17467,
         "year": 2014
       },
       {
@@ -330,7 +330,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24294,
+        "vote_count": 24297,
         "year": 1995
       },
       {
@@ -429,7 +429,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7118,
+        "vote_count": 7128,
         "year": 2026
       },
       {
@@ -444,7 +444,7 @@
         "tmdb_id": 687163,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 9029,
+        "vote_count": 9035,
         "year": 2026
       },
       {
@@ -461,7 +461,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -477,7 +477,7 @@
         "tmdb_id": 346698,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 11861,
+        "vote_count": 11866,
         "year": 2023
       },
       {
@@ -493,7 +493,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19178,
+        "vote_count": 19180,
         "year": 1980
       },
       {
@@ -528,7 +528,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -562,7 +562,7 @@
         "tmdb_id": 1022789,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 7195,
+        "vote_count": 7197,
         "year": 2024
       },
       {
@@ -580,7 +580,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -615,7 +615,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       },
       {
@@ -699,7 +699,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5494,
+        "vote_count": 5507,
         "year": 2026
       },
       {
@@ -766,7 +766,7 @@
         "tmdb_id": 639933,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5425,
+        "vote_count": 5427,
         "year": 2022
       },
       {
@@ -848,7 +848,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5494,
+        "vote_count": 5507,
         "year": 2026
       },
       {
@@ -899,7 +899,7 @@
         "tmdb_id": 639933,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5425,
+        "vote_count": 5427,
         "year": 2022
       },
       {
@@ -981,7 +981,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5494,
+        "vote_count": 5507,
         "year": 2026
       },
       {
@@ -1032,7 +1032,7 @@
         "tmdb_id": 639933,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5425,
+        "vote_count": 5427,
         "year": 2022
       },
       {
@@ -1066,7 +1066,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11703,
+        "vote_count": 11705,
         "year": 2004
       },
       {
@@ -1171,7 +1171,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -1189,7 +1189,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       }
     ],
@@ -1262,7 +1262,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -1280,7 +1280,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       },
       {
@@ -1313,7 +1313,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11703,
+        "vote_count": 11705,
         "year": 2004
       },
       {
@@ -1394,7 +1394,7 @@
         "tmdb_id": 597,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 28141,
+        "vote_count": 28145,
         "year": 1997
       },
       {
@@ -1456,7 +1456,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       }
     ],
@@ -1552,7 +1552,7 @@
         "tmdb_id": 597,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 28141,
+        "vote_count": 28145,
         "year": 1997
       },
       {
@@ -1604,7 +1604,7 @@
         "tmdb_id": 1218925,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 1322,
+        "vote_count": 1323,
         "year": 2025
       },
       {
@@ -1655,7 +1655,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5494,
+        "vote_count": 5507,
         "year": 2026
       },
       {
@@ -1689,7 +1689,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -1705,7 +1705,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11703,
+        "vote_count": 11705,
         "year": 2004
       },
       {
@@ -1756,7 +1756,7 @@
         "tmdb_id": 1233413,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 5620,
+        "vote_count": 5624,
         "year": 2025
       },
       {
@@ -1801,7 +1801,7 @@
         "tmdb_id": 756999,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 6239,
+        "vote_count": 6240,
         "year": 2022
       },
       {
@@ -1949,7 +1949,7 @@
         "tmdb_id": 639933,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5425,
+        "vote_count": 5427,
         "year": 2022
       },
       {
@@ -1981,7 +1981,7 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11188,
+        "vote_count": 11190,
         "year": 2022
       }
     ],
@@ -2015,7 +2015,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -2047,7 +2047,7 @@
         "tmdb_id": 385687,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 6651,
+        "vote_count": 6652,
         "year": 2023
       },
       {
@@ -2080,7 +2080,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -2113,7 +2113,7 @@
         "tmdb_id": 27205,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 40831,
+        "vote_count": 40835,
         "year": 2010
       }
     ],
@@ -2147,7 +2147,7 @@
         "tmdb_id": 118340,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 30718,
+        "vote_count": 30721,
         "year": 2014
       },
       {
@@ -2263,7 +2263,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7118,
+        "vote_count": 7128,
         "year": 2026
       },
       {
@@ -2280,7 +2280,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -2344,7 +2344,7 @@
         "tmdb_id": 786892,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 5419,
+        "vote_count": 5421,
         "year": 2024
       },
       {
@@ -2360,7 +2360,7 @@
         "tmdb_id": 76600,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 14934,
+        "vote_count": 14937,
         "year": 2022
       },
       {
@@ -2393,7 +2393,7 @@
         "tmdb_id": 240,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 14664,
+        "vote_count": 14667,
         "year": 1974
       },
       {
@@ -2454,7 +2454,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -2517,7 +2517,7 @@
         "tmdb_id": 238,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 24051,
+        "vote_count": 24057,
         "year": 1972
       },
       {
@@ -2578,7 +2578,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -2721,7 +2721,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -2803,7 +2803,7 @@
         "tmdb_id": 19995,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 35091,
+        "vote_count": 35093,
         "year": 2009
       },
       {
@@ -2835,7 +2835,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7118,
+        "vote_count": 7128,
         "year": 2026
       },
       {
@@ -2867,7 +2867,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -2884,7 +2884,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       }
     ],
@@ -2902,7 +2902,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28761,
+        "vote_count": 28765,
         "year": 2019
       },
       {
@@ -2919,7 +2919,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -2999,7 +2999,7 @@
         "tmdb_id": 278,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 31937,
+        "vote_count": 31942,
         "year": 1994
       },
       {
@@ -3033,7 +3033,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -3094,7 +3094,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -3160,7 +3160,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -3194,7 +3194,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       },
       {
@@ -3244,7 +3244,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5494,
+        "vote_count": 5507,
         "year": 2026
       },
       {
@@ -3461,6 +3461,23 @@
       {
         "genres": [
           "Animazione",
+          "Commedia",
+          "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "Ippo Makunouchi è un liceale dal carattere timido e gentile. Orfano di padre, infatti, è costretto ad aiutare sua madre nella gestione dell'azienda ittica di famiglia. A scuola, poi, è vittima di un terzetto di bulli, i quali lo tormentano, picchiandolo e insultandolo per il suo ",
+        "poster": "https://image.tmdb.org/t/p/w342/umMYjHm7FjsyllUnC8lWDy9rrZQ.jpg",
+        "runtime": 0,
+        "title": "Hajime no Ippo",
+        "tmdb_id": 42705,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1252,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
           "Mistero",
           "Dramma"
         ],
@@ -3473,23 +3490,6 @@
         "vote": 8.7,
         "vote_count": 720,
         "year": 2023
-      },
-      {
-        "genres": [
-          "Action & Adventure",
-          "Animazione",
-          "Dramma",
-          "Mistero"
-        ],
-        "overview": "Bruce Wayne, alias Batman, è impegnato nella crociata contro il crimine che invade le strade della sua città: Gotham City. Nonostante salvi numerosi civili e aiuti spesso la polizia tutti quanti dubitano di lui e hanno paura di incontrarlo. Ad aiutare Batman ci saranno però il su",
-        "poster": "https://image.tmdb.org/t/p/w342/159cvXOaHeZ7FFlk6t4hgjFkx4x.jpg",
-        "runtime": 0,
-        "title": "Batman: The Animated Series",
-        "tmdb_id": 2098,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1947,
-        "year": 1992
       }
     ],
     "movie:378064": [
@@ -3596,6 +3596,23 @@
       {
         "genres": [
           "Animazione",
+          "Commedia",
+          "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "Ippo Makunouchi è un liceale dal carattere timido e gentile. Orfano di padre, infatti, è costretto ad aiutare sua madre nella gestione dell'azienda ittica di famiglia. A scuola, poi, è vittima di un terzetto di bulli, i quali lo tormentano, picchiandolo e insultandolo per il suo ",
+        "poster": "https://image.tmdb.org/t/p/w342/umMYjHm7FjsyllUnC8lWDy9rrZQ.jpg",
+        "runtime": 0,
+        "title": "Hajime no Ippo",
+        "tmdb_id": 42705,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1252,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
           "Mistero",
           "Dramma"
         ],
@@ -3608,23 +3625,6 @@
         "vote": 8.7,
         "vote_count": 720,
         "year": 2023
-      },
-      {
-        "genres": [
-          "Action & Adventure",
-          "Animazione",
-          "Dramma",
-          "Mistero"
-        ],
-        "overview": "Bruce Wayne, alias Batman, è impegnato nella crociata contro il crimine che invade le strade della sua città: Gotham City. Nonostante salvi numerosi civili e aiuti spesso la polizia tutti quanti dubitano di lui e hanno paura di incontrarlo. Ad aiutare Batman ci saranno però il su",
-        "poster": "https://image.tmdb.org/t/p/w342/159cvXOaHeZ7FFlk6t4hgjFkx4x.jpg",
-        "runtime": 0,
-        "title": "Batman: The Animated Series",
-        "tmdb_id": 2098,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1947,
-        "year": 1992
       }
     ],
     "movie:396194": [
@@ -3687,7 +3687,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12978,
+        "vote_count": 12981,
         "year": 2023
       },
       {
@@ -3718,7 +3718,7 @@
         "tmdb_id": 424,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 18236,
+        "vote_count": 18239,
         "year": 1993
       },
       {
@@ -3734,7 +3734,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17464,
+        "vote_count": 17467,
         "year": 2014
       },
       {
@@ -3766,7 +3766,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12978,
+        "vote_count": 12981,
         "year": 2023
       },
       {
@@ -3845,7 +3845,7 @@
         "tmdb_id": 423,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 10673,
+        "vote_count": 10675,
         "year": 2002
       },
       {
@@ -3894,7 +3894,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -3910,7 +3910,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12978,
+        "vote_count": 12981,
         "year": 2023
       },
       {
@@ -3926,7 +3926,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1157,
+        "vote_count": 1159,
         "year": 2022
       },
       {
@@ -4126,7 +4126,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11352,
+        "vote_count": 11355,
         "year": 2023
       },
       {
@@ -4144,7 +4144,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       }
     ],
@@ -4177,7 +4177,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28761,
+        "vote_count": 28765,
         "year": 2019
       },
       {
@@ -4271,7 +4271,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       }
     ],
@@ -4365,7 +4365,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -4412,7 +4412,7 @@
         "tmdb_id": 240,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 14664,
+        "vote_count": 14667,
         "year": 1974
       },
       {
@@ -4427,7 +4427,7 @@
         "tmdb_id": 238,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 24051,
+        "vote_count": 24057,
         "year": 1972
       },
       {
@@ -4552,7 +4552,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -4568,7 +4568,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17464,
+        "vote_count": 17467,
         "year": 2014
       },
       {
@@ -4600,7 +4600,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28761,
+        "vote_count": 28765,
         "year": 2019
       },
       {
@@ -4685,7 +4685,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6890,
+        "vote_count": 6893,
         "year": 2024
       },
       {
@@ -4717,7 +4717,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9171,
+        "vote_count": 9173,
         "year": 2023
       },
       {
@@ -4733,7 +4733,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7118,
+        "vote_count": 7128,
         "year": 2026
       },
       {
@@ -4765,7 +4765,7 @@
         "tmdb_id": 786892,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 5419,
+        "vote_count": 5421,
         "year": 2024
       },
       {
@@ -4781,7 +4781,7 @@
         "tmdb_id": 76600,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 14934,
+        "vote_count": 14937,
         "year": 2022
       }
     ],
@@ -4891,7 +4891,7 @@
         "tmdb_id": 385687,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 6651,
+        "vote_count": 6652,
         "year": 2023
       },
       {
@@ -4924,7 +4924,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -5046,6 +5046,23 @@
           "Animazione",
           "Commedia",
           "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "Ippo Makunouchi è un liceale dal carattere timido e gentile. Orfano di padre, infatti, è costretto ad aiutare sua madre nella gestione dell'azienda ittica di famiglia. A scuola, poi, è vittima di un terzetto di bulli, i quali lo tormentano, picchiandolo e insultandolo per il suo ",
+        "poster": "https://image.tmdb.org/t/p/w342/umMYjHm7FjsyllUnC8lWDy9rrZQ.jpg",
+        "runtime": 0,
+        "title": "Hajime no Ippo",
+        "tmdb_id": 42705,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1252,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Dramma",
           "Sci-Fi & Fantasy"
         ],
         "overview": "In questa serie animata musicale per adulti Charlie, la principessa dell’Inferno, persegue l’arduo scopo di riabilitare i demoni per ridurre in maniera pacifica la questione del sovrappopolamento nel suo regno. Per mettere fine allo sterminio annuale imposto dal Paradiso, apre un",
@@ -5104,22 +5121,6 @@
         "vote": 8.2,
         "vote_count": 7072,
         "year": 2018
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Sci-Fi & Fantasy",
-          "Commedia"
-        ],
-        "overview": "Nella sua ricerca di una sposa per rompere la sua maledizione immortale, un guardiano di anime di 939 anni incontra un triste mietitore e un'arzilla studentessa con un tragico passato.",
-        "poster": "https://image.tmdb.org/t/p/w342/qZMEiTsNlCQV27hHQE27ZtlPWyv.jpg",
-        "runtime": 0,
-        "title": "Goblin",
-        "tmdb_id": 67915,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 3152,
-        "year": 2016
       }
     ],
     "movie:664280": [
@@ -5243,7 +5244,7 @@
         "tmdb_id": 87739,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 5938,
+        "vote_count": 5939,
         "year": 2020
       }
     ],
@@ -5277,7 +5278,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24294,
+        "vote_count": 24297,
         "year": 1995
       },
       {
@@ -5293,7 +5294,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -5341,7 +5342,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -5391,7 +5392,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7118,
+        "vote_count": 7128,
         "year": 2026
       },
       {
@@ -5408,7 +5409,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6890,
+        "vote_count": 6893,
         "year": 2024
       },
       {
@@ -5425,7 +5426,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -5457,7 +5458,7 @@
         "tmdb_id": 1061474,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 5802,
+        "vote_count": 5805,
         "year": 2025
       },
       {
@@ -5473,7 +5474,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19178,
+        "vote_count": 19180,
         "year": 1980
       },
       {
@@ -5523,7 +5524,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -5572,7 +5573,7 @@
         "tmdb_id": 675353,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 6101,
+        "vote_count": 6102,
         "year": 2022
       },
       {
@@ -5619,7 +5620,7 @@
         "tmdb_id": 575264,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 5547,
+        "vote_count": 5548,
         "year": 2023
       },
       {
@@ -5635,7 +5636,7 @@
         "tmdb_id": 385687,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 6651,
+        "vote_count": 6652,
         "year": 2023
       }
     ],
@@ -5744,7 +5745,7 @@
         "tmdb_id": 508947,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 6145,
+        "vote_count": 6146,
         "year": 2022
       },
       {
@@ -5762,7 +5763,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9415,
+        "vote_count": 9418,
         "year": 2022
       },
       {
@@ -5797,7 +5798,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -5858,7 +5859,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -5923,7 +5924,7 @@
         "tmdb_id": 414906,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 12957,
+        "vote_count": 12959,
         "year": 2022
       },
       {
@@ -6004,7 +6005,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -6020,7 +6021,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18920,
+        "vote_count": 18923,
         "year": 1991
       },
       {
@@ -6054,7 +6055,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -6070,7 +6071,7 @@
         "tmdb_id": 385687,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 6651,
+        "vote_count": 6652,
         "year": 2023
       },
       {
@@ -6087,7 +6088,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -6201,7 +6202,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12978,
+        "vote_count": 12981,
         "year": 2023
       },
       {
@@ -6218,7 +6219,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -6234,7 +6235,7 @@
         "tmdb_id": 424,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 18236,
+        "vote_count": 18239,
         "year": 1993
       },
       {
@@ -6264,7 +6265,7 @@
         "tmdb_id": 361743,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 11968,
+        "vote_count": 11970,
         "year": 2022
       },
       {
@@ -6315,7 +6316,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8571,
+        "vote_count": 8572,
         "year": 2023
       },
       {
@@ -6362,7 +6363,7 @@
         "tmdb_id": 385687,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 6651,
+        "vote_count": 6652,
         "year": 2023
       },
       {
@@ -6377,7 +6378,7 @@
         "tmdb_id": 1339713,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 6746,
+        "vote_count": 6752,
         "year": 2026
       },
       {
@@ -6392,7 +6393,7 @@
         "tmdb_id": 756999,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 6239,
+        "vote_count": 6240,
         "year": 2022
       },
       {
@@ -6408,7 +6409,7 @@
         "tmdb_id": 414906,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 12957,
+        "vote_count": 12959,
         "year": 2022
       },
       {
@@ -6442,7 +6443,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17464,
+        "vote_count": 17467,
         "year": 2014
       },
       {
@@ -6457,7 +6458,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -6519,7 +6520,7 @@
         "tmdb_id": 276161,
         "type": "tv",
         "vote": 9.3,
-        "vote_count": 1031,
+        "vote_count": 1030,
         "year": 2026
       },
       {
@@ -6568,7 +6569,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9597,
+        "vote_count": 9600,
         "year": 2023
       },
       {
@@ -6584,7 +6585,7 @@
         "tmdb_id": 1061474,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 5802,
+        "vote_count": 5805,
         "year": 2025
       },
       {
@@ -6600,7 +6601,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19178,
+        "vote_count": 19180,
         "year": 1980
       },
       {
@@ -6632,7 +6633,7 @@
         "tmdb_id": 786892,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 5419,
+        "vote_count": 5421,
         "year": 2024
       },
       {
@@ -6680,7 +6681,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9171,
+        "vote_count": 9173,
         "year": 2023
       }
     ],
@@ -6761,7 +6762,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -7011,7 +7012,7 @@
         "tmdb_id": 83659,
         "type": "tv",
         "vote": 7.4,
-        "vote_count": 1106,
+        "vote_count": 1107,
         "year": 2022
       },
       {
@@ -7176,7 +7177,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6206,
+        "vote_count": 6207,
         "year": 2002
       },
       {
@@ -7287,7 +7288,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       },
       {
@@ -7483,7 +7484,7 @@
         "tmdb_id": 225171,
         "type": "tv",
         "vote": 7.9,
-        "vote_count": 1226,
+        "vote_count": 1227,
         "year": 2025
       },
       {
@@ -7645,7 +7646,7 @@
         "title": "Daredevil: Rinascita",
         "tmdb_id": 202555,
         "type": "tv",
-        "vote": 8.2,
+        "vote": 8.1,
         "vote_count": 1187,
         "year": 2025
       },
@@ -7663,7 +7664,7 @@
         "tmdb_id": 1419406,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 1639,
+        "vote_count": 1638,
         "year": 2025
       },
       {
@@ -7827,7 +7828,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6206,
+        "vote_count": 6207,
         "year": 2002
       },
       {
@@ -7877,7 +7878,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6206,
+        "vote_count": 6207,
         "year": 2002
       },
       {
@@ -8000,6 +8001,23 @@
         "genres": [
           "Animazione",
           "Commedia",
+          "Dramma",
+          "Action & Adventure"
+        ],
+        "overview": "Ippo Makunouchi è un liceale dal carattere timido e gentile. Orfano di padre, infatti, è costretto ad aiutare sua madre nella gestione dell'azienda ittica di famiglia. A scuola, poi, è vittima di un terzetto di bulli, i quali lo tormentano, picchiandolo e insultandolo per il suo ",
+        "poster": "https://image.tmdb.org/t/p/w342/umMYjHm7FjsyllUnC8lWDy9rrZQ.jpg",
+        "runtime": 0,
+        "title": "Hajime no Ippo",
+        "tmdb_id": 42705,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1252,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
           "Sci-Fi & Fantasy",
           "Action & Adventure"
         ],
@@ -8117,22 +8135,6 @@
         "vote": 8.6,
         "vote_count": 2120,
         "year": 2000
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Commedia",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Fry, giovane fattorino senza stimoli, consegna una pizza a un laboratorio scientifico e qui rimane intrappolato in una camera criogenica la quale si riapre solo mille anni più tardi. Dopo lo stupore e l’entusiasmo iniziali per essere finito nella New York del 3000, Fry scopre di ",
-        "poster": "https://image.tmdb.org/t/p/w342/xsw6c2dXj2Htf45yQCSWV6z3377.jpg",
-        "runtime": 0,
-        "title": "Futurama",
-        "tmdb_id": 615,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 4004,
-        "year": 1999
       }
     ],
     "tv:45790": [
@@ -8250,7 +8252,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6206,
+        "vote_count": 6207,
         "year": 2002
       },
       {
@@ -8534,7 +8536,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6206,
+        "vote_count": 6207,
         "year": 2002
       }
     ],
@@ -8721,7 +8723,7 @@
         "tmdb_id": 62560,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 5733,
+        "vote_count": 5734,
         "year": 2015
       },
       {
@@ -8737,7 +8739,7 @@
         "tmdb_id": 61889,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 5527,
+        "vote_count": 5528,
         "year": 2015
       },
       {
@@ -8801,7 +8803,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       }
     ],
@@ -8930,7 +8932,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1315,
+        "vote_count": 1317,
         "year": 2025
       }
     ],
@@ -9405,7 +9407,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1157,
+        "vote_count": 1159,
         "year": 2022
       },
       {
@@ -9808,7 +9810,7 @@
         "tmdb_id": 71912,
         "type": "tv",
         "vote": 7.9,
-        "vote_count": 7043,
+        "vote_count": 7045,
         "year": 2019
       },
       {
@@ -10528,6 +10530,21 @@
         {
           "genres": [
             "Fantascienza",
+            "Avventura"
+          ],
+          "overview": "L’insegnante di scienze Ryland Grace si sveglia su un’astronave lontano anni luce da casa senza alcun ricordo di chi sia o di come sia arrivato lì. Con il riaffiorare della sua memoria, torna alla luce lo scopo della sua missione: risolvere l’enigma della misteriosa sostanza che ",
+          "poster": "https://image.tmdb.org/t/p/w342/gPC1X3mwqwX50Ye3qwwPt7iW3Ma.jpg",
+          "runtime": 156,
+          "title": "L'ultima missione: Project Hail Mary",
+          "tmdb_id": 687163,
+          "type": "movie",
+          "vote": 8.6,
+          "vote_count": 9035,
+          "year": 2026
+        },
+        {
+          "genres": [
+            "Fantascienza",
             "Azione",
             "Avventura"
           ],
@@ -10538,22 +10555,7 @@
           "tmdb_id": 969681,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 7118,
-          "year": 2026
-        },
-        {
-          "genres": [
-            "Fantascienza",
-            "Avventura"
-          ],
-          "overview": "L’insegnante di scienze Ryland Grace si sveglia su un’astronave lontano anni luce da casa senza alcun ricordo di chi sia o di come sia arrivato lì. Con il riaffiorare della sua memoria, torna alla luce lo scopo della sua missione: risolvere l’enigma della misteriosa sostanza che ",
-          "poster": "https://image.tmdb.org/t/p/w342/gPC1X3mwqwX50Ye3qwwPt7iW3Ma.jpg",
-          "runtime": 156,
-          "title": "L'ultima missione: Project Hail Mary",
-          "tmdb_id": 687163,
-          "type": "movie",
-          "vote": 8.6,
-          "vote_count": 9029,
+          "vote_count": 7128,
           "year": 2026
         },
         {
@@ -10589,6 +10591,23 @@
         },
         {
           "genres": [
+            "Animazione",
+            "Azione",
+            "Avventura",
+            "Fantascienza"
+          ],
+          "overview": "Dopo essersi riunito con Gwen Stacy, l'amichevole Spider-Man di Brooklyn Miles Morales viene catapultato nelle pieghe del multiverso, dove incontra la squadra di Spider-Eroi incaricata di proteggerne l'esistenza. Ma quando i protettori del multiverso si dimostrano intransigenti s",
+          "poster": "https://image.tmdb.org/t/p/w342/7pgJHduD3OVwF3EGFnGBq0nOUYv.jpg",
+          "runtime": 140,
+          "title": "Spider-Man: Across the Spider-Verse",
+          "tmdb_id": 569094,
+          "type": "movie",
+          "vote": 8.3,
+          "vote_count": 9600,
+          "year": 2023
+        },
+        {
+          "genres": [
             "Dramma"
           ],
           "overview": "Vent'anni dopo la distruzione della civiltà moderna, Joel, uno scaltro sopravvissuto, viene incaricato di far uscire la quattordicenne Ellie da una zona di quarantena sotto stretta sorveglianza. Quello che inizia come un lavoro relativamente facile si trasforma presto in un viagg",
@@ -10620,23 +10639,6 @@
         },
         {
           "genres": [
-            "Animazione",
-            "Azione",
-            "Avventura",
-            "Fantascienza"
-          ],
-          "overview": "Dopo essersi riunito con Gwen Stacy, l'amichevole Spider-Man di Brooklyn Miles Morales viene catapultato nelle pieghe del multiverso, dove incontra la squadra di Spider-Eroi incaricata di proteggerne l'esistenza. Ma quando i protettori del multiverso si dimostrano intransigenti s",
-          "poster": "https://image.tmdb.org/t/p/w342/7pgJHduD3OVwF3EGFnGBq0nOUYv.jpg",
-          "runtime": 140,
-          "title": "Spider-Man: Across the Spider-Verse",
-          "tmdb_id": 569094,
-          "type": "movie",
-          "vote": 8.3,
-          "vote_count": 9597,
-          "year": 2023
-        },
-        {
-          "genres": [
             "Horror",
             "Thriller"
           ],
@@ -10647,7 +10649,7 @@
           "tmdb_id": 1339713,
           "type": "movie",
           "vote": 8.2,
-          "vote_count": 6746,
+          "vote_count": 6752,
           "year": 2026
         },
         {
@@ -10680,7 +10682,7 @@
           "tmdb_id": 1184918,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 6890,
+          "vote_count": 6893,
           "year": 2024
         }
       ],
@@ -11137,7 +11139,7 @@
           "tmdb_id": 4935,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 11703,
+          "vote_count": 11705,
           "year": 2004
         },
         {
@@ -11201,7 +11203,7 @@
           "tmdb_id": 46260,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 6206,
+          "vote_count": 6207,
           "year": 2002
         },
         {
@@ -11319,7 +11321,7 @@
           "tmdb_id": 278,
           "type": "movie",
           "vote": 8.7,
-          "vote_count": 31937,
+          "vote_count": 31942,
           "year": 1994
         },
         {
@@ -11334,7 +11336,7 @@
           "tmdb_id": 238,
           "type": "movie",
           "vote": 8.7,
-          "vote_count": 24051,
+          "vote_count": 24057,
           "year": 1972
         },
         {
@@ -11350,7 +11352,7 @@
           "tmdb_id": 424,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 18236,
+          "vote_count": 18239,
           "year": 1993
         },
         {
@@ -11397,7 +11399,7 @@
           "tmdb_id": 240,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 14664,
+          "vote_count": 14667,
           "year": 1974
         },
         {
@@ -11562,7 +11564,7 @@
           "tmdb_id": 27205,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 40831,
+          "vote_count": 40835,
           "year": 2010
         },
         {
@@ -11593,7 +11595,7 @@
           "tmdb_id": 807,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 24294,
+          "vote_count": 24297,
           "year": 1995
         },
         {
@@ -11609,7 +11611,7 @@
           "tmdb_id": 1891,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 19178,
+          "vote_count": 19180,
           "year": 1980
         },
         {
@@ -11625,7 +11627,7 @@
           "tmdb_id": 244786,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 17464,
+          "vote_count": 17467,
           "year": 2014
         },
         {
@@ -11657,7 +11659,7 @@
           "tmdb_id": 274,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 18920,
+          "vote_count": 18923,
           "year": 1991
         },
         {
@@ -11671,7 +11673,7 @@
           "tmdb_id": 510,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 12001,
+          "vote_count": 12004,
           "year": 1975
         }
       ],
@@ -11694,7 +11696,7 @@
           "tmdb_id": 1368337,
           "type": "movie",
           "vote": 8.0,
-          "vote_count": 5494,
+          "vote_count": 5507,
           "year": 2026
         },
         {
@@ -11725,7 +11727,7 @@
           "tmdb_id": 247718,
           "type": "tv",
           "vote": 8.7,
-          "vote_count": 1315,
+          "vote_count": 1317,
           "year": 2025
         },
         {
@@ -11741,7 +11743,7 @@
           "tmdb_id": 603692,
           "type": "movie",
           "vote": 7.7,
-          "vote_count": 8571,
+          "vote_count": 8572,
           "year": 2023
         },
         {
@@ -11788,7 +11790,7 @@
           "tmdb_id": 346698,
           "type": "movie",
           "vote": 6.9,
-          "vote_count": 11861,
+          "vote_count": 11866,
           "year": 2023
         },
         {
