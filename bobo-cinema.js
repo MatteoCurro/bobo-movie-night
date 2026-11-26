@@ -46,22 +46,49 @@
       {job:'Creator', label:'Ideazione'},
       {job:'Writer', label:'Sceneggiatura'}
     ];
-    let hasDirector=false,renderedCrew=0;
+    const directorPortraits=[];
+    let hasDirector=false;
     for(const group of roles){
       const seen=new Set();
       const matches=crew.filter(person=>person&&validId(String(person.id))&&person.job===group.job&&
         !seen.has(person.id)&&seen.add(person.id)).slice(0,3);
       if(!matches.length)continue;
       if(group.job==='Director')hasDirector=true;
-      const card=node('div','bobo-creative-role');
+      const card=node('div','bobo-creative-role'+(group.job==='Director'?' bobo-creative-role--director':''));
       card.append(node('span','bobo-creative-job',group.label));
       const names=node('div','bobo-creative-names');
       matches.forEach(person=>{
         const link=profileLink(person,group.job==='Director');
-        link.textContent=person.name||'Professionista';
+        if(group.job==='Director'){
+          link.classList.add('bobo-director-link');
+          const frame=node('span','bobo-director-photo');
+          const portrait=image(person.photo);
+          if(portrait){
+            const img=node('img');img.src=portrait;img.alt='';
+            img.loading='lazy';img.decoding='async';frame.append(img);
+          }else{
+            frame.append(node('span','bobo-director-placeholder','◉'));
+            directorPortraits.push({id:person.id,frame});
+          }
+          link.append(frame,node('span','bobo-director-name',person.name||'Regista'));
+        }else{
+          link.textContent=person.name||'Professionista';
+        }
         names.append(link);
       });
-      card.append(names);crewHost.append(card);renderedCrew++;
+      card.append(names);crewHost.append(card);
+    }
+    // Older credit shards predate crew portraits. Reuse already indexed person
+    // photos rather than requiring an extra TMDB request from the browser.
+    for(const target of directorPortraits.slice(0,3)){
+      void shard('people',target.id).then(rows=>{
+        const source=rows&&rows[String(target.id)];
+        const photo=image(source&&source.photo);
+        if(!photo)return;
+        const img=node('img');img.src=photo;img.alt='';
+        img.loading='lazy';img.decoding='async';
+        target.frame.replaceChildren(img);
+      }).catch(()=>{});
     }
     if(!hasDirector){
       const missing=node('div','bobo-creative-role');
