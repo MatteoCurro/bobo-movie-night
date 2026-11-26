@@ -13,12 +13,14 @@ movie = {"credits": {"cast": [
     {"id": 42, "name": "Persona Uno", "character": "Protagonista",
      "profile_path": "/abcdefgh.jpg"},
     {"id": 12, "name": "Persona Due", "character": "Amica", "profile_path": None}],
-    "crew": [{"id": 7, "name": "Regista", "job": "Director"}]},
+    "crew": [{"id": 7, "name": "Regista", "job": "Director",
+              "profile_path": "/director123.jpg"}]},
     "tagline": "Sottotitolo breve"}
 result = mod.extract_credits("movie", 1, movie)
 assert len(result["cast"]) == 2 and result["cast"][0]["id"] == 42
 assert result["cast"][0]["photo"].startswith("https://image.tmdb.org/")
 assert len(result["crew"]) == 1 and result["crew"][0]["job"] == "Director"
+assert result["crew"][0]["photo"].endswith("/director123.jpg")
 assert result["tagline"] == "Sottotitolo breve"
 assert mod.portrait("javascript:alert(1)") == ""
 assert mod.bucket(128) == "00" and mod.bucket(129) == "01"

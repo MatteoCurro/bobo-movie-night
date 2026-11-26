@@ -17,7 +17,15 @@ const parent=watch.indexOf('id="watch-opinions-section"');
 const critic=watch.indexOf('id="watch-critic-section"');
 const crowd=watch.indexOf('id="watch-reviews-section"');
 const related=watch.indexOf('id="watch-related-section"');
+const quote=watch.indexOf('id="watch-film-quote"');
+const awards=watch.indexOf('id="watch-awards-section"');
+const fact=watch.indexOf('id="watch-cinema-fact"');
+assert(quote<awards&&awards<parent&&parent<related,'Quotes and awards before reviews; discovery last');
 assert(parent<critic&&critic<crowd&&crowd<related,'Reviews must be grouped after awards');
+assert(fact>related,'Trivia belongs in discovery, never between cast and reviews');
+assert(watch.includes('Guarda il film'),'Hero must offer a prominent viewing action');
+assert(watch.indexOf('id="watch-crew"')<watch.indexOf('id="watch-cast-grid"'),
+  'Director before cast');
 for(const id of ['watch-crew','watch-fact-year','watch-fact-runtime','watch-fact-genres',
   'watch-cast-grid','watch-cast-more','watch-film-quote','watch-film-quote-text',
   'watch-film-quote-context','watch-film-quote-source','watch-cinema-fact']){
@@ -79,13 +87,20 @@ vm.runInNewContext(filmScript.replace(anchor,
 const helpers=context.__testing;
 assert(helpers);
 ready=true;
-const entry={crew:[{id:8,name:'Regista Test',job:'Director'},
+const entry={crew:[{id:8,name:'Regista Test',job:'Director',
+  photo:'https://image.tmdb.org/t/p/w342/director.jpg'},
   {id:9,name:'Sceneggiatore Test',job:'Writer'}],
 cast:Array.from({length:13},(_,i)=>({id:i+1,name:'Attore '+(i+1),character:'Parte '+(i+1),
   photo:'https://image.tmdb.org/t/p/w342/abc.jpg'}))};
 helpers.renderCredits(entry);
 assert.equal(nodes['watch-crew'].children.length,2,'Regia and writing groups');
 assert.equal(nodes['watch-crew'].children[0].children[0].textContent,'Regia');
+const directorCard=nodes['watch-crew'].children[0].children[1].children[0];
+assert(directorCard.href.includes('director.html?id=8'));
+assert.equal(directorCard.children[0].children[0].src,
+  'https://image.tmdb.org/t/p/w342/director.jpg','Director portrait is visible');
+assert(directorCard.children[1].textContent.includes('Regista'));
+
 assert.equal(nodes['watch-cast-grid'].children.length,13);
 assert(nodes['watch-cast-grid'].children.slice(8).every(x=>x.hidden));
 const more=nodes['watch-cast-more'];

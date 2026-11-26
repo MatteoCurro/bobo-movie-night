@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 
 SHARDS=64
-LIMIT=140
+LIMIT=520
 IMG=re.compile(r"^https://image\.tmdb\.org/t/p/(?:w\d+|original)/([a-zA-Z0-9_-]{4,200}\.(?:jpg|jpeg|png|webp))$")
 def read(path,default=None):
     try:return json.loads(path.read_text(encoding="utf-8"))

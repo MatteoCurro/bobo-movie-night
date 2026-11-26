@@ -42,7 +42,7 @@
         <div class="genres" id="watch-genres"></div>
         <p class="synopsis" id="watch-overview"></p>
         <div class="hero-actions">
-          <button class="action action-primary" type="button" id="watch-start">▶ Riproduci</button>
+          <button class="action action-primary bobo-watch-cta" type="button" id="watch-start">▶ Guarda il film</button>
           <button class="action action-secondary" type="button" id="watch-copy">⧉ Copia link alla scheda</button>
         </div>
       </div>
@@ -94,52 +94,46 @@
 
     <section id="watch-cast-section" class="section bobo-cinema-section bobo-film-dossier" hidden aria-labelledby="watch-cast-heading">
       <div class="bobo-dossier-heading">
-        <div>
-          <span class="bobo-section-kicker">01 / IL FILM, DA VICINO</span>
-          <h2 id="watch-cast-heading">Dentro la storia</h2>
-          <p>Le persone che l'hanno realizzata, i volti che la rendono riconoscibile.</p>
+        <div><span class="bobo-section-kicker">IL FILM / LE PERSONE</span>
+          <h2 id="watch-cast-heading">Chi c'è dietro la storia</h2>
         </div>
-        <span class="bobo-dossier-number" aria-hidden="true">01</span>
       </div>
       <div class="bobo-film-identity">
+        <div class="bobo-film-identity-creators">
+          <h3>Regia e autori</h3>
+          <div id="watch-crew" class="bobo-crew"></div>
+        </div>
         <div class="bobo-film-identity-details">
-          <h3>Il titolo in breve</h3>
+          <h3>In breve</h3>
           <dl id="watch-film-facts">
             <div><dt id="watch-fact-year-label">Anno</dt><dd id="watch-fact-year">—</dd></div>
             <div id="watch-fact-runtime-row" hidden><dt>Durata</dt><dd id="watch-fact-runtime"></dd></div>
             <div id="watch-fact-genres-row" hidden><dt>Generi</dt><dd id="watch-fact-genres"></dd></div>
           </dl>
         </div>
-        <div class="bobo-film-identity-creators">
-          <h3>Dietro la macchina da presa</h3>
-          <div id="watch-crew" class="bobo-crew"></div>
-        </div>
       </div>
       <div id="watch-cast-subheading" class="bobo-cast-heading" hidden>
-        <div><h3>I protagonisti</h3><p>Seleziona un volto per scoprirne biografia e filmografia.</p></div>
+        <div><h3>Interpreti e personaggi</h3><p>Scopri i volti, i ruoli e le loro filmografie.</p></div>
         <button id="watch-cast-more" type="button" class="bobo-cast-more" aria-expanded="false" hidden>Mostra tutto il cast</button>
       </div>
       <div id="watch-cast-grid" class="bobo-actor-grid"></div>
-      <div class="bobo-dossier-insights">
-        <figure id="watch-film-quote" class="bobo-film-quote" hidden aria-label="Citazione dal film">
-          <div class="bobo-insight-eyebrow">UNA BATTUTA DA RICORDARE</div>
-          <blockquote id="watch-film-quote-text"></blockquote>
-          <figcaption><span id="watch-film-quote-speaker"></span><span aria-hidden="true"> · </span><span id="watch-film-quote-title"></span></figcaption>
-          <p id="watch-film-quote-context" class="bobo-film-quote-comment"></p>
-          <a id="watch-film-quote-source" href="#" target="_blank" rel="noopener noreferrer">Leggi la fonte della citazione ↗</a>
-        </figure>
-        <aside id="watch-cinema-fact" class="bobo-cinema-fact" hidden aria-label="Curiosità sul film"></aside>
-      </div>
+      <figure id="watch-film-quote" class="bobo-film-quote bobo-film-quote--featured" hidden aria-label="Citazione dal film">
+        <div class="bobo-insight-eyebrow">UNA FRASE CHE RESTA</div>
+        <blockquote id="watch-film-quote-text"></blockquote>
+        <figcaption><span id="watch-film-quote-speaker"></span><span aria-hidden="true"> · </span><span id="watch-film-quote-title"></span></figcaption>
+        <p id="watch-film-quote-context" class="bobo-film-quote-comment"></p>
+        <a id="watch-film-quote-source" href="#" target="_blank" rel="noopener noreferrer">Fonte della citazione ↗</a>
+      </figure>
     </section>
     <section id="watch-awards-section" class="section bobo-cinema-section" hidden aria-labelledby="watch-awards-heading">
-      <div class="bobo-dossier-subheading"><span class="bobo-section-kicker">02 / I RICONOSCIMENTI</span><h2 id="watch-awards-heading">Premi e riconoscimenti</h2></div>
+      <div class="bobo-dossier-subheading"><span class="bobo-section-kicker">RICONOSCIMENTI</span><h2 id="watch-awards-heading">I premi di questo film</h2></div>
       <div id="watch-awards-summary" class="bobo-awards-digest" hidden></div>
       <div id="watch-awards-list" class="bobo-award-grid"></div>
       <button type="button" class="bobo-awards-expand" id="watch-awards-expand" hidden>Mostra tutti i riconoscimenti</button>
       <p class="section-subtitle">Premi e candidature già indicizzati. Scopri gli altri vincitori e le categorie nell'<a href="awards.html">archivio dei premi</a>. La copertura si amplia progressivamente; per gli Oscar l'archivio storico principale arriva al 2023.</p>
     </section>
     <section id="watch-opinions-section" class="section bobo-opinions-chapter" hidden aria-labelledby="watch-opinions-heading">
-      <div class="bobo-opinions-heading"><span class="bobo-section-kicker">03 / COSA NE PENSANO</span>
+      <div class="bobo-opinions-heading"><span class="bobo-section-kicker">CRITICA E PUBBLICO</span>
         <h2 id="watch-opinions-heading">Voci sul film</h2>
         <p>Valutazioni indipendenti, critica e impressioni degli spettatori, riunite in un unico posto.</p>
       </div>
@@ -158,6 +152,11 @@
     <section id="watch-related-section" class="section" hidden aria-labelledby="watch-related-heading">
       <div class="bobo-dossier-subheading"><span class="bobo-section-kicker">04 / UN'ALTRA STORIA</span><h2 id="watch-related-heading">Continua da qui</h2></div>
       <div id="watch-together" class="bobo-together" hidden></div>
+      <aside id="watch-cinema-fact" class="bobo-cinema-fact" hidden aria-label="Curiosità sul film"></aside>
+      <div id="watch-quote-resources" class="bobo-quote-resources" hidden>
+        <span>Altre battute di questo film</span>
+        <a id="watch-quote-source-link" href="#" target="_blank" rel="noopener noreferrer">Esplora le citazioni ↗</a>
+      </div>
       <p id="watch-related-note" class="section-subtitle">Altre storie collegate a questo titolo.</p>
       <div id="watch-related-items" class="watch-related-rail"></div>
     </section>

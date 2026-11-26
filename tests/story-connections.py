@@ -39,6 +39,12 @@ with tempfile.TemporaryDirectory() as tmp:
     credits.put(15,"movie:15",{
         "cast":cast(1,9),"crew":crew(23),"awards":[]})
     credits.flush()
+    write(root/"data/cinema/quote-sources.json", {
+        "schema":1,"items":{"movie:10":{
+            "source":"wikiquote-it","url":"https://it.wikiquote.org/wiki/Film_10",
+            "title":"Film 10"
+        }},"checked":["movie:10"]
+    })
     result=graph.build(root)
     assert result["titles"]==6 and result["with_cast_reunions"]>=2,result
     one=load(root/"data/cinema/connections/0a.json")["items"]["movie:10"]
@@ -49,6 +55,7 @@ with tempfile.TemporaryDirectory() as tmp:
     assert 12 in links and "regia" in links[12]["reason"]
     assert 13 in links and "Premiato" in links[13]["reason"]
     assert one["fact"]=="Attore 1 compare in 5 titoli già collegati nel catalogo Bobo."
+    assert one["quote_source"] == "https://it.wikiquote.org/wiki/Film_10"
     assert all(x["tmdb_id"] != 10 for x in one["connections"])
     assert all(x["poster"].startswith("https://image.tmdb.org/") for x in one["connections"])
     # No credits / no fabricated related movies.
