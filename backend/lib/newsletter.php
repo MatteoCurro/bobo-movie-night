@@ -48,7 +48,7 @@ function bobo_newsletter_valid_item(mixed $raw): ?array {
  * Spotlight + a maximum of six compact recommendations, with readable posters.
  */
 function bobo_newsletter_compose(array $feed,string $username,string $unsubscribe): array {
-    if(($feed['schema']??1)===2)return bobo_newsletter_compose_magazine($feed,$username,$unsubscribe);
+    if(($feed['magazine_schema']??0)===2)return bobo_newsletter_compose_magazine($feed,$username,$unsubscribe);
     $safe=static fn(string $value):string=>htmlspecialchars($value,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');
     $short=static function(string $value,int $limit=155):string {
         $value=trim(preg_replace('/\s+/u',' ',$value)??$value);
