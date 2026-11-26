@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T09:22:50+00:00",
+  "generated_at": "2026-11-26T09:41:54+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -204,7 +204,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17462,
+        "vote_count": 17464,
         "year": 2014
       },
       {
@@ -364,7 +364,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19174,
+        "vote_count": 19178,
         "year": 1980
       },
       {
@@ -1540,7 +1540,7 @@
         "tmdb_id": 27205,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 40826,
+        "vote_count": 40831,
         "year": 2010
       },
       {
@@ -1556,7 +1556,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24290,
+        "vote_count": 24294,
         "year": 1995
       }
     ],
@@ -2164,7 +2164,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -2474,7 +2474,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -2905,7 +2905,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17462,
+        "vote_count": 17464,
         "year": 2014
       },
       {
@@ -3016,7 +3016,7 @@
         "tmdb_id": 423,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 10670,
+        "vote_count": 10673,
         "year": 2002
       },
       {
@@ -3128,7 +3128,7 @@
         "tmdb_id": 194764,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 1609,
+        "vote_count": 1611,
         "year": 2024
       },
       {
@@ -3301,7 +3301,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       }
     ],
@@ -3582,7 +3582,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -3598,7 +3598,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17462,
+        "vote_count": 17464,
         "year": 2014
       },
       {
@@ -4306,7 +4306,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24290,
+        "vote_count": 24294,
         "year": 1995
       },
       {
@@ -4322,7 +4322,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -4502,7 +4502,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19174,
+        "vote_count": 19178,
         "year": 1980
       },
       {
@@ -4682,7 +4682,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -4905,7 +4905,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18914,
+        "vote_count": 18920,
         "year": 1991
       },
       {
@@ -5179,7 +5179,7 @@
         "tmdb_id": 423,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 10670,
+        "vote_count": 10673,
         "year": 2002
       }
     ],
@@ -5197,7 +5197,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17462,
+        "vote_count": 17464,
         "year": 2014
       },
       {
@@ -5355,7 +5355,7 @@
         "tmdb_id": 1891,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 19174,
+        "vote_count": 19178,
         "year": 1980
       },
       {
@@ -5563,7 +5563,7 @@
         "tmdb_id": 205715,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 1687,
+        "vote_count": 1688,
         "year": 2023
       }
     ],
@@ -5666,7 +5666,7 @@
         "tmdb_id": 90669,
         "type": "tv",
         "vote": 7.4,
-        "vote_count": 1639,
+        "vote_count": 1640,
         "year": 2022
       },
       {
@@ -5733,7 +5733,7 @@
         "tmdb_id": 90669,
         "type": "tv",
         "vote": 7.4,
-        "vote_count": 1639,
+        "vote_count": 1640,
         "year": 2022
       },
       {
@@ -5798,7 +5798,7 @@
         "tmdb_id": 108545,
         "type": "tv",
         "vote": 7.5,
-        "vote_count": 1771,
+        "vote_count": 1772,
         "year": 2024
       },
       {
@@ -6204,7 +6204,7 @@
         "tmdb_id": 108545,
         "type": "tv",
         "vote": 7.5,
-        "vote_count": 1771,
+        "vote_count": 1772,
         "year": 2024
       },
       {
@@ -6253,7 +6253,7 @@
         "tmdb_id": 249042,
         "type": "tv",
         "vote": 7.8,
-        "vote_count": 1901,
+        "vote_count": 1902,
         "year": 2025
       },
       {
@@ -6317,7 +6317,7 @@
         "tmdb_id": 194764,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 1609,
+        "vote_count": 1611,
         "year": 2024
       },
       {
@@ -8039,7 +8039,7 @@
         "tmdb_id": 205715,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 1687,
+        "vote_count": 1688,
         "year": 2023
       },
       {
@@ -8055,7 +8055,7 @@
         "tmdb_id": 202411,
         "type": "tv",
         "vote": 7.7,
-        "vote_count": 1441,
+        "vote_count": 1442,
         "year": 2023
       }
     ]
@@ -8820,7 +8820,7 @@
           "tmdb_id": 27205,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 40826,
+          "vote_count": 40831,
           "year": 2010
         },
         {
@@ -8851,7 +8851,7 @@
           "tmdb_id": 807,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 24290,
+          "vote_count": 24294,
           "year": 1995
         },
         {
@@ -8867,7 +8867,7 @@
           "tmdb_id": 1891,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 19174,
+          "vote_count": 19178,
           "year": 1980
         },
         {
@@ -8883,7 +8883,7 @@
           "tmdb_id": 244786,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 17462,
+          "vote_count": 17464,
           "year": 2014
         },
         {
@@ -8915,7 +8915,7 @@
           "tmdb_id": 274,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 18914,
+          "vote_count": 18920,
           "year": 1991
         },
         {
