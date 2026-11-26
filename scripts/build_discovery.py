@@ -28,6 +28,9 @@ PROVIDERS = [
     {"id": "prime", "label": "Prime Video", "names": ("amazon prime video", "prime video"), "fallback": 119},
     {"id": "disney", "label": "Disney+", "names": ("disney plus", "disney+"), "fallback": 337},
     {"id": "apple", "label": "Apple TV+", "names": ("apple tv plus", "apple tv+"), "fallback": 350},
+    {"id": "paramount", "label": "Paramount+", "names": ("paramount plus", "paramount+"), "fallback": 531},
+    {"id": "skygo", "label": "Sky Go", "names": ("sky go",), "fallback": 29},
+    {"id": "now", "label": "NOW", "names": ("now tv", "now"), "fallback": 39},
 ]
 TOKEN = os.environ.get("TMDB_ACCESS_TOKEN", "").strip()
 TODAY = dt.date.today()
@@ -115,6 +118,7 @@ def build() -> dict:
         "updated_at": None,
         "platforms": [],
         "trending": [],
+        "anime": [],
         "note": "Provider availability is not a platform addition date.",
     }
     if not TOKEN:
@@ -135,6 +139,32 @@ def build() -> dict:
                         payload["trending"].append(descriptor)
     except (urllib.error.URLError, ValueError, KeyError, TimeoutError) as exc:
         print(f"Weekly trending unavailable: {type(exc).__name__}")
+
+    # Japanese animation sourced from TMDB genre 16 and original language ja:
+    # this identifies titles, NOT whether Italian dubbing or subtitles exist.
+    seen_anime = set()
+    for kind in ("tv", "movie"):
+        for page in range(1, 5):
+            try:
+                data = get_api("/discover/" + kind, {
+                    "language": "it-IT", "include_adult": "false",
+                    "with_genres": "16", "with_original_language": "ja",
+                    "sort_by": "popularity.desc", "page": str(page),
+                    "vote_count.gte": "30",
+                })
+            except (urllib.error.URLError, ValueError, KeyError, TimeoutError):
+                break
+            for row in data.get("results", []):
+                tid = row.get("id")
+                if isinstance(tid, int) and tid in existing[kind] and (kind, tid) not in seen_anime:
+                    seen_anime.add((kind, tid))
+                    payload["anime"].append({"type": kind, "tmdb_id": tid})
+                if len(payload["anime"]) >= 36:
+                    break
+            if len(payload["anime"]) >= 36:
+                break
+        if len(payload["anime"]) >= 36:
+            break
 
     for provider in PROVIDERS:
         found: list[dict] = []
