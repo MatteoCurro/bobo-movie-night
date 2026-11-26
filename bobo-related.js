@@ -20,9 +20,9 @@
   const href=x=>'watch.html?type='+encodeURIComponent(x.type)+'&id='+encodeURIComponent(x.tmdb_id);
   function normalize(row){
     if(Array.isArray(row)){
-      const [type,tmdb_id,title,year,file]=row;
+      const [type,tmdb_id,title,year,file,reason]=row;
       if(!/^[a-zA-Z0-9_-]{4,200}\.(?:jpg|jpeg|png|webp)$/.test(file||''))return null;
-      return {type,tmdb_id,title,year,poster:'https://image.tmdb.org/t/p/w342/'+file};
+      return {type,tmdb_id,title,year,poster:'https://image.tmdb.org/t/p/w342/'+file,reason};
     }
     return row;
   }

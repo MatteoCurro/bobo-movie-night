@@ -51,7 +51,7 @@ STATIC_FILES = {
     "bobo-multi-ratings.js", "bobo-cinema.js", "bobo-cinema.css",
     "bobo-favorites.js", "bobo-favorites.css",
     "data/movies.json", "data/tv.json", "data/editorial.json",
-    "data/discovery.json", "data/catalog-ledger.json",
+    "data/discovery.json", "data/seasonal.json", "data/catalog-ledger.json",
     "data/poster-index.json", "data/enrichment.json",
     "data/newsletter.json", "data/player-sources.json", "data/verified-audio.json",
     "data/reviews.json", "data/critic-reviews.json", "data/multi-ratings.json",

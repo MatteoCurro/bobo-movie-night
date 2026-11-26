@@ -149,8 +149,9 @@
   }
   Promise.allSettled([
     fetch('data/editorial.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('feed');return r.json();}),
-    fetch('data/cinema/explore.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('explore');return r.json();})
-  ]).then(([feedResult,exploreResult])=>{
+    fetch('data/cinema/explore.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('explore');return r.json();}),
+    fetch('data/seasonal.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('seasonal');return r.json();})
+  ]).then(([feedResult,exploreResult,seasonalResult])=>{
     if(exploreResult.status==='fulfilled'&&exploreResult.value.schema===1){
       peopleSelections(exploreResult.value);
       awardsSelections(exploreResult.value);
@@ -161,7 +162,11 @@
       return;
     }
     spotlight(feedResult.value);
-    const sections=feedResult.value.sections.filter(s=>s.items?.length).slice(0,6);
+    const seasonal=seasonalResult.status==='fulfilled'&&seasonalResult.value.schema===1 ?
+      seasonalResult.value : null;
+    const holiday=seasonal&&Array.isArray(seasonal.seasons) ?
+      seasonal.seasons.find(s=>s.id===seasonal.active&&Array.isArray(s.items)&&s.items.length>=4) : null;
+    const sections=[...(holiday?[holiday]:[]),...feedResult.value.sections.filter(s=>s.items?.length).slice(0,holiday?5:6)];
     const output=sections.map(shelf).filter(Boolean).join('');
     host.innerHTML=output||'<p class="bobo-discover-empty">Le selezioni sono in aggiornamento. <a href="index.html">Esplora il catalogo</a>.</p>';
     host.querySelectorAll('.bobo-discover-rail').forEach(rail=>{

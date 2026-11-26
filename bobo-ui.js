@@ -9,6 +9,7 @@
   let renderedKey = '';
   let previousFocus = null;
   let discovery = null;
+  let seasonal = null;
   let featuredFromFeed = null;
   let heroSlides = [];
   let heroIndex = 0;
@@ -91,6 +92,17 @@
       renderedKey = '';
       if (ready() && isHome()) renderHome();
     } catch (_) { /* Optional feed: normal category browsing remains available. */ }
+  }
+  async function loadSeasonal() {
+    try {
+      const response = await fetch('data/seasonal.json',{cache:'no-store'});
+      if (!response.ok) return;
+      const payload = await response.json();
+      if (!payload || payload.schema !== 1 || !Array.isArray(payload.seasons)) return;
+      seasonal = payload;
+      renderedKey = '';
+      if (ready() && isHome()) renderHome();
+    } catch (_) { /* Seasonal rails must never block the catalog. */ }
   }
   function resolveDiscovery(entries) {
     if (!Array.isArray(entries)) return [];
@@ -372,7 +384,8 @@
     const host=document.getElementById('bobo-discover');
     if(!host||!all.length)return;
     const key='editorial:' + catalogs.movie.length + ':' + catalogs.tv.length +
-      ':' + (discovery&&discovery.generated_at||'');
+      ':' + (discovery&&discovery.generated_at||'') + ':' +
+      (seasonal&&seasonal.generated_at||'') + ':' + (seasonal&&seasonal.active||'');
     if(renderedKey===key)return;
     renderedKey=key;
     const good=quality(all);
@@ -399,6 +412,10 @@
       if(html)rails.push(html);
       return !!html;
     }
+    const seasonalShelf=seasonal&&seasonal.seasons&&seasonal.seasons.find(s=>s.id===seasonal.active);
+    if(seasonalShelf&&Array.isArray(seasonalShelf.items))
+      addRail('season-'+seasonalShelf.id,seasonalShelf.title,
+        resolveDiscovery(seasonalShelf.items),seasonalShelf.subtitle);
     const stream=discovery&&discovery.streaming;
     let radar=false;
     if(stream){
@@ -727,6 +744,7 @@
     });
     document.getElementById('search-input').placeholder = 'Cerca un film, una serie o un attore…';
     loadDiscovery();
+    loadSeasonal();
     Promise.all([ensureLoaded('movie'), ensureLoaded('tv')]).then(function() {
       filterOptions();
       renderUnified();

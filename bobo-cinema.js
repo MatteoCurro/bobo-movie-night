@@ -144,7 +144,7 @@
     host.append(row);
   }
   function renderExtraFacts(entry) {
-    if (filmType !== 'movie' || !entry) return;
+    if (!['movie','tv'].includes(filmType) || !entry) return;
     const facts = entry.facts || {};
     const imdb = entry.imdb_metadata || {};
     const shortFacts = byId('watch-film-facts');
@@ -174,9 +174,10 @@
       ['Colonna sonora', 'composers'], ['Fotografia', 'cinematographers'],
       ['Montaggio', 'editors'], ['Scenografia', 'production_designers'],
       ['Costumi', 'costume_designers'], ['Luoghi delle riprese', 'filming_locations'],
-      ['Temi', 'interests'], ['Parole chiave', 'keywords']
+      ['Temi', 'interests']
     ];
     groups.forEach(([label, key]) => addMetadataRow(more, label, imdb[key]));
+    addMetadataRow(more, 'Parole chiave', Array.isArray(imdb.keywords) && imdb.keywords.length ? imdb.keywords : entry.tmdb_keywords);
     if (Number(imdb.rating) > 0) {
       const votes = Number(imdb.votes) > 0 ?
         ' · ' + new Intl.NumberFormat('it-IT').format(Number(imdb.votes)) + ' voti' : '';

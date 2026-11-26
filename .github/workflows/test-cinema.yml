@@ -31,6 +31,10 @@ on:
       - 'discover.html'
       - 'scripts/build_cinema_explore.py'
       - 'scripts/build_story_connections.py'
+      - 'scripts/build_thematic_index.py'
+      - 'data/seasonal.json'
+      - 'tests/thematic-index.py'
+      - 'scripts/audit_distribution.py'
       - 'tests/story-connections.py'
       - 'bobo-related.js'
       - 'scripts/enrich_person_facts.py'
@@ -73,6 +77,9 @@ jobs:
           python3 tests/cinema-explore.py
           python3 -m py_compile scripts/build_story_connections.py
           python3 tests/story-connections.py
+          python3 -m py_compile scripts/build_thematic_index.py scripts/build_related_index.py
+          python3 tests/related-index.py
+          python3 tests/thematic-index.py
           node --check bobo-related.js
           node --check bobo-awards.js
           node --check bobo-discover.js
