@@ -14,6 +14,73 @@
   let heroIndex = 0;
   let heroTimer = null;
   let heroPauseUntil = 0;
+  let peopleSearchIndex; // undefined until first relevant search; null when unavailable
+  let peopleSearchPromise = null;
+  let peopleMatches = [];
+  const normalizeName = value => String(value || '').normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').trim();
+  function matchingPeople(query) {
+    if (!Array.isArray(peopleSearchIndex) || query.length < 2) return [];
+    const needle = normalizeName(query);
+    if (needle.length < 2) return [];
+    const matches = peopleSearchIndex.filter(function(person) {
+      return Array.isArray(person) && Number(person[0]) > 0 &&
+        normalizeName(person[1]).includes(needle);
+    });
+    matches.sort(function(a,b) {
+      function rank(person) {
+        const name = normalizeName(person[1]);
+        return (name === needle ? 0 : name.startsWith(needle) ? 1 :
+          name.includes(' ' + needle) ? 2 : 3);
+      }
+      return rank(a) - rank(b) ||
+        (Array.isArray(b[3]) ? b[3].length : 0) - (Array.isArray(a[3]) ? a[3].length : 0) ||
+        String(a[1]).localeCompare(String(b[1]), 'it');
+    });
+    return matches.slice(0, 6);
+  }
+  async function loadPeopleForSearch() {
+    if (peopleSearchIndex !== undefined || peopleSearchPromise) return peopleSearchPromise;
+    peopleSearchPromise = (async function() {
+      try {
+        const response = await fetch('data/cinema/person-search.json', {cache:'no-cache'});
+        if (!response.ok) throw new Error('People index unavailable');
+        const payload = await response.json();
+        peopleSearchIndex = payload && payload.schema === 1 && Array.isArray(payload.people) ?
+          payload.people : null;
+      } catch (_) { peopleSearchIndex = null; }
+      if (ready() && unifiedFilters.q.length >= 2) renderUnified();
+    })();
+    return peopleSearchPromise;
+  }
+  function renderPeopleMatches() {
+    const host = document.getElementById('bobo-people-matches');
+    if (!host) return;
+    if (!unifiedFilters.q || unifiedFilters.q.length < 2) {
+      host.hidden = true; host.innerHTML = ''; return;
+    }
+    if (peopleSearchIndex === undefined) {
+      host.hidden = false;
+      host.innerHTML = '<p class="bobo-people-loading" role="status">Ricerca interpreti…</p>';
+      return;
+    }
+    if (!peopleMatches.length) {
+      host.hidden = true; host.innerHTML = ''; return;
+    }
+    host.hidden = false;
+    host.innerHTML = '<div class="bobo-people-heading"><h2>Attori e autori</h2>'+
+      '<span>Profili collegati al catalogo</span></div>'+
+      '<div class="bobo-people-rail">'+peopleMatches.map(function(person) {
+        const photo = safeImage(person[2]);
+        const face = photo ? '<img src="'+text(photo)+'" alt="" loading="lazy" decoding="async">' :
+          '<span aria-hidden="true">◉</span>';
+        const count = Array.isArray(person[3]) ? person[3].length : 0;
+        return '<a class="bobo-person-search-card" href="person.html?id='+encodeURIComponent(person[0])+'">'+
+          '<span class="bobo-person-search-photo">'+face+'</span><span class="bobo-person-search-details">'+
+          '<strong>'+text(person[1])+'</strong><small>'+count+' '+(count === 1 ? 'opera collegata' : 'opere collegate')+
+          '</small><span class="bobo-person-search-open">Apri la scheda ↗</span></span></a>';
+      }).join('')+'</div>';
+  }
   async function loadDiscovery() {
     try {
       const response = await fetch('data/discovery.json',{cache:'no-store'});
@@ -59,12 +126,23 @@
   function typeTag(item) { return isAnime(item) ? 'Anime' : (item.type === 'tv' ? 'Serie TV' : 'Film'); }
   function applyUnifiedFilters(items) {
     const f = unifiedFilters;
-    const query = f.q.toLocaleLowerCase('it');
+    const query = normalizeName(f.q);
+    peopleMatches = matchingPeople(f.q);
+    const participating = new Set();
+    peopleMatches.forEach(function(person) {
+      (person[3] || []).forEach(function(key) { participating.add(String(key)); });
+    });
     let out = items.filter(function(item) {
       if (f.type === 'anime' ? !isAnime(item) : (f.type !== 'all' && item.type !== f.type)) return false;
       if (f.genre && !(item.genres || []).includes(f.genre)) return false;
-      if (f.year && Number(item.year) !== Number(f.year)) return false;
-      if (query && !(String(item.title || '').toLocaleLowerCase('it').includes(query))) return false;
+      if (f.year) {
+        const year = Number(item.year);
+        if (String(f.year).startsWith('decade:')) {
+          if (!Number.isInteger(year) || Math.floor(year / 10) * 10 !== Number(String(f.year).slice(7))) return false;
+        } else if (year !== Number(f.year)) return false;
+      }
+      if (query && !normalizeName(item.title).includes(query) &&
+        !participating.has(item.type + ':' + item.tmdb_id)) return false;
       return true;
     });
     const sorters = {
@@ -87,18 +165,51 @@
       genre.map(function(value) { return '<option value="'+text(value)+'">'+text(value)+'</option>'; }).join('');
     genreSelect.value = genre.includes(unifiedFilters.genre) ? unifiedFilters.genre : '';
     const yearSelect = document.getElementById('filter-year');
-    yearSelect.innerHTML = '<option value="">Tutti gli anni</option>' +
-      years.map(function(value) { return '<option value="'+text(value)+'">'+text(value)+'</option>'; }).join('');
-    yearSelect.value = years.includes(Number(unifiedFilters.year)) ? unifiedFilters.year : '';
+    const decades = [...new Set(list.filter(x => x.type === 'movie')
+      .map(x => Number(x.year)).filter(y => y >= 1900 && y <= currentYear)
+      .map(y => Math.floor(y / 10) * 10))].sort((a,b) => b-a);
+    yearSelect.innerHTML = '<option value="">Tutti i periodi</option>' +
+      '<optgroup label="Decenni">' +
+      decades.map(y => '<option value="decade:'+y+'">Anni '+(y % 100 === 0 ? y : String(y).slice(2))+
+        ' ('+y+'–'+(y+9)+')</option>').join('') + '</optgroup>'+
+      '<optgroup label="Anni">' +
+      years.map(function(value) { return '<option value="'+text(value)+'">'+text(value)+'</option>'; }).join('')+
+      '</optgroup>';
+    const selectedYear = String(unifiedFilters.year || '');
+    yearSelect.value = selectedYear.startsWith('decade:') ?
+      (decades.includes(Number(selectedYear.slice(7))) ? selectedYear : '') :
+      (years.includes(Number(selectedYear)) ? selectedYear : '');
+    if (selectedYear && !yearSelect.value) unifiedFilters.year = '';
+    renderDecadeShortcuts(decades);
     document.getElementById('filter-sort').value = unifiedFilters.sort;
     document.getElementById('bobo-type-filter').value = unifiedFilters.type;
     document.getElementById('filter-bar').classList.remove('disabled');
+  }
+  function renderDecadeShortcuts(decades) {
+    const host = document.getElementById('bobo-decade-shortcuts');
+    if (!host) return;
+    const visible = decades.filter(y => y >= 1950).slice(0, 9);
+    const active = String(unifiedFilters.year || '');
+    host.innerHTML = '<span class="bobo-decade-label">Viaggia nel tempo</span>'+
+      '<div class="bobo-decade-buttons" role="group" aria-label="Esplora i film per decennio">'+
+      '<button type="button" data-bobo-decade="" aria-pressed="'+(!active.startsWith('decade:'))+'">Tutti</button>'+
+      visible.map(y => '<button type="button" data-bobo-decade="'+y+'" aria-pressed="'+
+        (active === 'decade:'+y)+'">'+y+'s</button>').join('')+
+      '</div>';
+  }
+  function updateDecadeShortcutState() {
+    document.querySelectorAll('[data-bobo-decade]').forEach(function(button) {
+      button.setAttribute('aria-pressed', String(unifiedFilters.year) ===
+        (button.dataset.boboDecade ? 'decade:'+button.dataset.boboDecade : ''));
+    });
   }
   function renderUnified() {
     update();
     if (!ready()) return;
     if (isHome()) return;
     lastResults = applyUnifiedFilters(allItems());
+    renderPeopleMatches();
+    updateDecadeShortcutState();
     shown = PAGE_SIZE;
     document.getElementById('section-title').textContent = unifiedFilters.q
       ? 'Risultati per "'+unifiedFilters.q+'"' : 'Esplora il catalogo';
@@ -382,7 +493,9 @@
     }
     const grid = document.getElementById('grid');
     const rows = lastResults.slice(0,shown);
-    if (!rows.length) grid.innerHTML = '<div class="state-box"><p>Nessun titolo trovato.</p></div>';
+    if (!rows.length) grid.innerHTML = '<div class="state-box"><p>'+
+      (peopleMatches.length ? 'Nessun titolo associato tra quelli indicizzati.' : 'Nessun titolo trovato.')+
+      '</p></div>';
     else grid.innerHTML = rows.map(function(item) {
       const image = safeImage(item.poster);
       const poster = image ? '<img src="'+text(image)+'" loading="lazy" decoding="async" alt="">' : '';
@@ -591,12 +704,21 @@
     const tabs = document.querySelector('.tabs');
     if (tabs) tabs.hidden = true;
     const filtersBar = document.getElementById('filter-bar');
+    const peopleHost = document.createElement('section');
+    peopleHost.id = 'bobo-people-matches';
+    peopleHost.className = 'bobo-people-matches';
+    peopleHost.hidden = true;
+    main.insertBefore(peopleHost, document.querySelector('.section-header'));
     const dock = document.createElement('section');
     dock.className = 'bobo-filter-dock';
     dock.setAttribute('aria-label','Filtra il catalogo');
     dock.innerHTML = '<div class="bobo-filter-dock-head"><span>Esplora / tutti i titoli</span><span>SELECT · 001</span></div>';
     main.insertBefore(dock,document.getElementById('bobo-discover'));
     dock.appendChild(filtersBar);
+    const shortcuts = document.createElement('div');
+    shortcuts.id = 'bobo-decade-shortcuts';
+    shortcuts.className = 'bobo-decade-shortcuts';
+    dock.appendChild(shortcuts);
     const typeField = document.createElement('div');
     typeField.className = 'filter-group';
     typeField.innerHTML = '<label for="bobo-type-filter">Tipologia</label>'+
@@ -619,7 +741,7 @@
         renderUnified();
       }
     });
-    document.getElementById('search-input').placeholder = 'Cerca film e serie TV…';
+    document.getElementById('search-input').placeholder = 'Cerca un film, una serie o un attore…';
     loadDiscovery();
     Promise.all([ensureLoaded('movie'), ensureLoaded('tv')]).then(function() {
       filterOptions();
@@ -632,6 +754,19 @@
     document.addEventListener('click', function(evt) {
       const target = evt.target;
       if (!target || typeof target.closest !== 'function') return;
+      const decadeButton = target.closest('[data-bobo-decade]');
+      if (decadeButton) {
+        const decade = decadeButton.dataset.boboDecade;
+        unifiedFilters.year = decade ? 'decade:' + decade : '';
+        unifiedFilters.type = decade ? 'movie' : 'all';
+        unifiedFilters.q = '';
+        unifiedFilters.genre = '';
+        unifiedFilters.sort = decade ? 'vote_desc' : 'year_desc';
+        document.getElementById('search-input').value = '';
+        filterOptions();
+        renderUnified();
+        return;
+      }
       const closed = target.closest('[data-bobo-close]');
       if (closed || (target.id === 'bobo-details')) { closeDetail(); return; }
       const scrolling = target.closest('[data-bobo-scroll]');
@@ -671,11 +806,13 @@
   window.onFilterChange = function() {
     unifiedFilters.genre = document.getElementById('filter-genre').value;
     unifiedFilters.year = document.getElementById('filter-year').value;
+    updateDecadeShortcutState();
     unifiedFilters.sort = document.getElementById('filter-sort').value;
     renderUnified();
   };
   window.onSearch = function(evt) {
     unifiedFilters.q = evt.target.value.trim();
+    if (unifiedFilters.q.length >= 2) void loadPeopleForSearch();
     renderUnified();
   };
   window.onCardClick = function(id,kind) { detail(getItem(id,kind)); };
