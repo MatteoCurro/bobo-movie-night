@@ -12,6 +12,7 @@ on:
       - 'scripts/build_person_search.py'
       - 'tests/person-search.py'
       - 'bobo-ui.js'
+      - 'tests/home-curation.cjs'
       - 'bobo-awards.js'
       - 'bobo-awards.css'
       - 'awards.html'
@@ -59,6 +60,7 @@ jobs:
           node --check bobo-awards.js
           node --check bobo-discover.js
           node --check bobo-ui.js
+          node tests/home-curation.cjs
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
