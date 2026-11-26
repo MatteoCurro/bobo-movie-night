@@ -16,6 +16,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/sync_tmdb_catalog.py scripts/build_discovery.py scripts/build_poster_index.py
           python3 tests/sync_tmdb_catalog.py
+          python3 tests/platform-anime.py
           python3 tests/incremental_catalog.py
       - name: Validate site scripts
         run: |
