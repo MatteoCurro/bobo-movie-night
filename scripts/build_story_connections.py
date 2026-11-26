@@ -33,6 +33,7 @@ def card(item):
 
 def build(root=Path(".")):
     titles = catalog(root)
+    quote_sources = load(root / "data/cinema/quote-sources.json", {}).get("items", {})
     credits = {}
     casts = {}
     directors = {}
@@ -155,7 +156,12 @@ def build(root=Path(".")):
                     pairs[0]["work"]["title"] + ".")
 
         bucket = f'{int(key.split(":", 1)[1]) % 128:02x}'
-        buckets[bucket][key] = {"together": pairs, "connections": links, "fact": fact}
+        story = {"together": pairs, "connections": links, "fact": fact}
+        quote = quote_sources.get(key, {})
+        url = quote.get("url", "") if isinstance(quote, dict) else ""
+        if url.startswith("https://it.wikiquote.org/wiki/") and len(url) < 310:
+            story["quote_source"] = url
+        buckets[bucket][key] = story
         if pairs or links or fact:
             interesting += 1
 
