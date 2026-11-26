@@ -51,9 +51,9 @@
         "tv:1396",
         "movie:278",
         "movie:238",
-        "movie:155",
         "movie:424",
         "movie:157336",
+        "movie:155",
         "movie:240",
         "movie:122",
         "movie:680",
@@ -61,8 +61,8 @@
         "movie:496243",
         "movie:13",
         "movie:120",
-        "movie:550",
         "movie:121",
+        "movie:550",
         "movie:769",
         "movie:27205",
         "movie:637",
@@ -80,7 +80,8 @@
         "tv:84773",
         "movie:346698",
         "tv:157239",
-        "movie:929590"
+        "movie:929590",
+        "movie:934433"
       ],
       "week": "2026-W48"
     }
@@ -870,6 +871,18 @@
         "new"
       ],
       "first_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:934433": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-26",
       "last_seen": "2026-11-26",
       "sources": [
         "streaming-observation",

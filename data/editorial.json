@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T16:36:42+00:00",
+  "generated_at": "2026-11-26T17:01:07+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -18,7 +18,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       },
       {
@@ -173,7 +173,7 @@
         "tmdb_id": 664280,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 482,
+        "vote_count": 483,
         "year": 2020
       },
       {
@@ -282,7 +282,7 @@
         "tmdb_id": 550,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 33440,
+        "vote_count": 33445,
         "year": 1999
       },
       {
@@ -347,7 +347,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       },
       {
@@ -509,7 +509,7 @@
         "tmdb_id": 157336,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 42028,
+        "vote_count": 42032,
         "year": 2014
       }
     ],
@@ -597,7 +597,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       },
       {
@@ -649,7 +649,7 @@
         "tmdb_id": 862,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 20881,
+        "vote_count": 20883,
         "year": 1995
       }
     ],
@@ -667,7 +667,7 @@
         "tmdb_id": 121,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 25061,
+        "vote_count": 25064,
         "year": 2002
       },
       {
@@ -683,7 +683,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27908,
+        "vote_count": 27910,
         "year": 2003
       },
       {
@@ -782,7 +782,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20391,
+        "vote_count": 20392,
         "year": 2012
       }
     ],
@@ -800,7 +800,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27908,
+        "vote_count": 27910,
         "year": 2003
       },
       {
@@ -816,7 +816,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28963,
+        "vote_count": 28966,
         "year": 2001
       },
       {
@@ -915,7 +915,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20391,
+        "vote_count": 20392,
         "year": 2012
       }
     ],
@@ -933,7 +933,7 @@
         "tmdb_id": 121,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 25061,
+        "vote_count": 25064,
         "year": 2002
       },
       {
@@ -949,7 +949,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28963,
+        "vote_count": 28966,
         "year": 2001
       },
       {
@@ -1048,7 +1048,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20391,
+        "vote_count": 20392,
         "year": 2012
       }
     ],
@@ -1083,7 +1083,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       },
       {
@@ -1297,7 +1297,7 @@
         "tmdb_id": 585,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 20569,
+        "vote_count": 20572,
         "year": 2001
       },
       {
@@ -1363,7 +1363,7 @@
         "tmdb_id": 372058,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 13231,
+        "vote_count": 13233,
         "year": 2016
       },
       {
@@ -1379,7 +1379,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30970,
+        "vote_count": 30973,
         "year": 1994
       },
       {
@@ -1489,7 +1489,7 @@
         "tmdb_id": 637,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 14436,
+        "vote_count": 14437,
         "year": 1997
       },
       {
@@ -1505,7 +1505,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -1537,7 +1537,7 @@
         "tmdb_id": 372058,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 13231,
+        "vote_count": 13233,
         "year": 2016
       },
       {
@@ -1722,11 +1722,27 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       }
     ],
     "movie:1339713": [
+      {
+        "genres": [
+          "Horror",
+          "Thriller",
+          "Crime"
+        ],
+        "overview": "I quattro sopravvissuti agli omicidi compiuti da Ghostface, le sorelle Sam e Tara Carpenter, insieme ai gemelli Chad e Mindy Meeks, si lasciano alle spalle quanto accaduto a Woodsboro per iniziare un nuovo capitolo della loro vita trasferendosi a New York. Ma anche nella grande m",
+        "poster": "https://image.tmdb.org/t/p/w342/iz0rgk4HReWQvSdRkYdchmrHmm5.jpg",
+        "runtime": 123,
+        "title": "Scream 6",
+        "tmdb_id": 934433,
+        "type": "movie",
+        "vote": 6.9,
+        "vote_count": 3426,
+        "year": 2023
+      },
       {
         "genres": [
           "Horror",
@@ -1801,7 +1817,7 @@
         "tmdb_id": 539,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11485,
+        "vote_count": 11486,
         "year": 1960
       },
       {
@@ -1833,22 +1849,6 @@
         "type": "movie",
         "vote": 7.3,
         "vote_count": 18860,
-        "year": 2017
-      },
-      {
-        "genres": [
-          "Horror",
-          "Thriller",
-          "Dramma"
-        ],
-        "overview": "Ottobre 1988, nella cittadina di Derry. Il piccolo Georgie esce di casa nella pioggia per far navigare la barchetta di carta preparatagli dal fratello maggiore Billy, costretto a casa dall'influenza. La barchetta scorre per i rivoli lungo i marciapiedi, ma finisce in uno scolo ch",
-        "poster": "https://image.tmdb.org/t/p/w342/ru0gDnxKzBjzrPxfRyZIuse9hfu.jpg",
-        "runtime": 135,
-        "title": "It - Capitolo uno",
-        "tmdb_id": 346364,
-        "type": "movie",
-        "vote": 7.2,
-        "vote_count": 20923,
         "year": 2017
       }
     ],
@@ -1883,7 +1883,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27908,
+        "vote_count": 27910,
         "year": 2003
       },
       {
@@ -1899,7 +1899,7 @@
         "tmdb_id": 121,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 25061,
+        "vote_count": 25064,
         "year": 2002
       },
       {
@@ -1915,7 +1915,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28963,
+        "vote_count": 28966,
         "year": 2001
       },
       {
@@ -1965,7 +1965,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20391,
+        "vote_count": 20392,
         "year": 2012
       },
       {
@@ -2085,6 +2085,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Azione",
           "Fantascienza",
           "Crime"
@@ -2098,22 +2115,6 @@
         "vote": 8.4,
         "vote_count": 40831,
         "year": 2010
-      },
-      {
-        "genres": [
-          "Crime",
-          "Mistero",
-          "Thriller"
-        ],
-        "overview": "Un killer astuto e spietato sta uccidendo a raffica, nei modi più raccapriccianti, personaggi scelti con cura. Sulle sue tracce ci sono il giovane e ambizioso Mills, alla prima missione, e l'esperto Somerset, ormai prossimo alla pensione; personalità opposte che mal si tollerano ",
-        "poster": "https://image.tmdb.org/t/p/w342/1XHq0Z7BkjeQ9J5CLmWD0xX0DuB.jpg",
-        "runtime": 128,
-        "title": "Seven",
-        "tmdb_id": 807,
-        "type": "movie",
-        "vote": 8.4,
-        "vote_count": 24294,
-        "year": 1995
       }
     ],
     "movie:157336": [
@@ -2162,7 +2163,7 @@
         "tmdb_id": 100402,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 20781,
+        "vote_count": 20783,
         "year": 2014
       },
       {
@@ -2226,7 +2227,7 @@
         "tmdb_id": 281957,
         "type": "movie",
         "vote": 7.5,
-        "vote_count": 19983,
+        "vote_count": 19984,
         "year": 2015
       },
       {
@@ -2468,7 +2469,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19186,
+        "vote_count": 19187,
         "year": 2008
       },
       {
@@ -2483,7 +2484,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       },
       {
@@ -2499,7 +2500,7 @@
         "tmdb_id": 497,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 20198,
+        "vote_count": 20201,
         "year": 1999
       }
     ],
@@ -2592,7 +2593,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19186,
+        "vote_count": 19187,
         "year": 2008
       },
       {
@@ -2607,7 +2608,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       },
       {
@@ -2623,7 +2624,7 @@
         "tmdb_id": 497,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 20198,
+        "vote_count": 20201,
         "year": 1999
       }
     ],
@@ -2641,7 +2642,7 @@
         "tmdb_id": 210577,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 20741,
+        "vote_count": 20744,
         "year": 2014
       },
       {
@@ -2688,7 +2689,7 @@
         "tmdb_id": 550,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 33440,
+        "vote_count": 33445,
         "year": 1999
       },
       {
@@ -2704,7 +2705,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -2736,7 +2737,7 @@
         "tmdb_id": 346364,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 20923,
+        "vote_count": 20924,
         "year": 2017
       },
       {
@@ -2770,7 +2771,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37481,
+        "vote_count": 37486,
         "year": 2008
       },
       {
@@ -2940,6 +2941,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Dramma",
           "Crime"
         ],
@@ -2950,7 +2968,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       },
       {
@@ -2966,7 +2984,7 @@
         "tmdb_id": 680,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 31407,
+        "vote_count": 31410,
         "year": 1994
       },
       {
@@ -2999,21 +3017,6 @@
         "vote": 8.4,
         "vote_count": 13835,
         "year": 2017
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Crime"
-        ],
-        "overview": "La storia di una famiglia criminale nella Birmingham del 1919, Inghilterra, centrata sulle vicende di una gang che nasconde delle lame di rasoio nelle visiere dei propri cappelli e del loro capo Tommy Shelby, che aspira a trovare il suo posto nel mondo.",
-        "poster": "https://image.tmdb.org/t/p/w342/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
-        "runtime": 0,
-        "title": "Peaky Blinders",
-        "tmdb_id": 60574,
-        "type": "tv",
-        "vote": 8.5,
-        "vote_count": 11567,
-        "year": 2013
       }
     ],
     "movie:278": [
@@ -3106,7 +3109,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19186,
+        "vote_count": 19187,
         "year": 2008
       },
       {
@@ -3121,7 +3124,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       },
       {
@@ -3137,7 +3140,7 @@
         "tmdb_id": 497,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 20198,
+        "vote_count": 20201,
         "year": 1999
       }
     ],
@@ -3291,7 +3294,7 @@
         "tmdb_id": 664280,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 482,
+        "vote_count": 483,
         "year": 2020
       },
       {
@@ -3418,7 +3421,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30970,
+        "vote_count": 30973,
         "year": 1994
       },
       {
@@ -3503,7 +3506,7 @@
         "tmdb_id": 372058,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 13231,
+        "vote_count": 13233,
         "year": 2016
       },
       {
@@ -3553,7 +3556,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30970,
+        "vote_count": 30973,
         "year": 1994
       },
       {
@@ -3668,7 +3671,7 @@
         "tmdb_id": 664280,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 482,
+        "vote_count": 483,
         "year": 2020
       },
       {
@@ -4019,7 +4022,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19288,
+        "vote_count": 19291,
         "year": 2001
       },
       {
@@ -4222,7 +4225,7 @@
         "tmdb_id": 680,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 31407,
+        "vote_count": 31410,
         "year": 1994
       },
       {
@@ -4237,7 +4240,7 @@
         "tmdb_id": 637,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 14436,
+        "vote_count": 14437,
         "year": 1997
       },
       {
@@ -4252,7 +4255,7 @@
         "tmdb_id": 550,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 33440,
+        "vote_count": 33445,
         "year": 1999
       },
       {
@@ -4377,7 +4380,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19186,
+        "vote_count": 19187,
         "year": 2008
       },
       {
@@ -4392,7 +4395,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       }
     ],
@@ -4533,7 +4536,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -4613,7 +4616,7 @@
         "tmdb_id": 346364,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 20923,
+        "vote_count": 20924,
         "year": 2017
       },
       {
@@ -4629,7 +4632,7 @@
         "tmdb_id": 210577,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 20741,
+        "vote_count": 20744,
         "year": 2014
       },
       {
@@ -4665,7 +4668,7 @@
         "tmdb_id": 324857,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 18311,
+        "vote_count": 18314,
         "year": 2018
       },
       {
@@ -4795,7 +4798,7 @@
         "tmdb_id": 664280,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 482,
+        "vote_count": 483,
         "year": 2020
       },
       {
@@ -4904,7 +4907,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37481,
+        "vote_count": 37486,
         "year": 2008
       },
       {
@@ -4942,6 +4945,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Azione",
           "Crime",
           "Thriller"
@@ -4958,34 +4978,18 @@
       },
       {
         "genres": [
-          "Azione",
-          "Commedia",
-          "Thriller"
+          "Horror",
+          "Thriller",
+          "Crime"
         ],
-        "overview": "Bullet Train è basato sul romanzo giapponese scritto da Kōtarō Isaka - I sette killer dello Shinkansen (Maria Bītoru) - ed è ambientato su un treno proiettile giapponese che viaggia ad alta velocità da Tokyo a Morioka con pochissime fermate lungo il percorso. A bordo del veicolo ",
-        "poster": "https://image.tmdb.org/t/p/w342/zTyMbs3zTEpDhyrel35vgpJdzFS.jpg",
-        "runtime": 126,
-        "title": "Bullet Train",
-        "tmdb_id": 718930,
+        "overview": "I quattro sopravvissuti agli omicidi compiuti da Ghostface, le sorelle Sam e Tara Carpenter, insieme ai gemelli Chad e Mindy Meeks, si lasciano alle spalle quanto accaduto a Woodsboro per iniziare un nuovo capitolo della loro vita trasferendosi a New York. Ma anche nella grande m",
+        "poster": "https://image.tmdb.org/t/p/w342/iz0rgk4HReWQvSdRkYdchmrHmm5.jpg",
+        "runtime": 123,
+        "title": "Scream 6",
+        "tmdb_id": 934433,
         "type": "movie",
-        "vote": 7.4,
-        "vote_count": 8201,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Azione",
-          "Avventura",
-          "Thriller"
-        ],
-        "overview": "Ethan Hunt e la sua squadra dell'IMF si trovano di fronte alla sfida più pericolosa che abbiano mai affrontato: trovare e disinnescare una nuova terrificante arma che minaccia l’intera umanità. Con il destino del mondo e il controllo del futuro appesi a un filo, la squadra inizia",
-        "poster": "https://image.tmdb.org/t/p/w342/vbOTF7nKtEkgCHxlWJ5YDKiK5BU.jpg",
-        "runtime": 163,
-        "title": "Mission: Impossible - Dead Reckoning Parte uno",
-        "tmdb_id": 575264,
-        "type": "movie",
-        "vote": 7.5,
-        "vote_count": 5547,
+        "vote": 6.9,
+        "vote_count": 3426,
         "year": 2023
       }
     ],
@@ -5003,7 +5007,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30970,
+        "vote_count": 30973,
         "year": 1994
       },
       {
@@ -5018,7 +5022,7 @@
         "tmdb_id": 37165,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 21298,
+        "vote_count": 21300,
         "year": 1998
       },
       {
@@ -5034,7 +5038,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -5162,7 +5166,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -5353,7 +5357,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -5369,7 +5373,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37481,
+        "vote_count": 37486,
         "year": 2008
       }
     ],
@@ -5485,7 +5489,7 @@
         "tmdb_id": 157336,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 42028,
+        "vote_count": 42032,
         "year": 2014
       },
       {
@@ -5599,7 +5603,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -5725,7 +5729,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19186,
+        "vote_count": 19187,
         "year": 2008
       },
       {
@@ -5741,7 +5745,7 @@
         "tmdb_id": 497,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 20198,
+        "vote_count": 20201,
         "year": 1999
       },
       {
@@ -5808,7 +5812,7 @@
         "tmdb_id": 680,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 31407,
+        "vote_count": 31410,
         "year": 1994
       },
       {
@@ -5888,7 +5892,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37481,
+        "vote_count": 37486,
         "year": 2008
       }
     ],
@@ -5955,7 +5959,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37481,
+        "vote_count": 37486,
         "year": 2008
       },
       {
@@ -5976,6 +5980,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Azione",
           "Crime",
           "Thriller"
@@ -5992,34 +6013,18 @@
       },
       {
         "genres": [
-          "Azione",
-          "Commedia",
-          "Thriller"
+          "Horror",
+          "Thriller",
+          "Crime"
         ],
-        "overview": "Bullet Train è basato sul romanzo giapponese scritto da Kōtarō Isaka - I sette killer dello Shinkansen (Maria Bītoru) - ed è ambientato su un treno proiettile giapponese che viaggia ad alta velocità da Tokyo a Morioka con pochissime fermate lungo il percorso. A bordo del veicolo ",
-        "poster": "https://image.tmdb.org/t/p/w342/zTyMbs3zTEpDhyrel35vgpJdzFS.jpg",
-        "runtime": 126,
-        "title": "Bullet Train",
-        "tmdb_id": 718930,
+        "overview": "I quattro sopravvissuti agli omicidi compiuti da Ghostface, le sorelle Sam e Tara Carpenter, insieme ai gemelli Chad e Mindy Meeks, si lasciano alle spalle quanto accaduto a Woodsboro per iniziare un nuovo capitolo della loro vita trasferendosi a New York. Ma anche nella grande m",
+        "poster": "https://image.tmdb.org/t/p/w342/iz0rgk4HReWQvSdRkYdchmrHmm5.jpg",
+        "runtime": 123,
+        "title": "Scream 6",
+        "tmdb_id": 934433,
         "type": "movie",
-        "vote": 7.4,
-        "vote_count": 8201,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Azione",
-          "Avventura",
-          "Thriller"
-        ],
-        "overview": "Ethan Hunt e la sua squadra dell'IMF si trovano di fronte alla sfida più pericolosa che abbiano mai affrontato: trovare e disinnescare una nuova terrificante arma che minaccia l’intera umanità. Con il destino del mondo e il controllo del futuro appesi a un filo, la squadra inizia",
-        "poster": "https://image.tmdb.org/t/p/w342/vbOTF7nKtEkgCHxlWJ5YDKiK5BU.jpg",
-        "runtime": 163,
-        "title": "Mission: Impossible - Dead Reckoning Parte uno",
-        "tmdb_id": 575264,
-        "type": "movie",
-        "vote": 7.5,
-        "vote_count": 5547,
+        "vote": 6.9,
+        "vote_count": 3426,
         "year": 2023
       }
     ],
@@ -6120,6 +6125,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Azione",
           "Dramma",
           "Avventura"
@@ -6133,21 +6155,133 @@
         "vote": 8.2,
         "vote_count": 21942,
         "year": 2000
+      }
+    ],
+    "movie:934433": [
+      {
+        "genres": [
+          "Azione",
+          "Thriller",
+          "Crime"
+        ],
+        "overview": "John Wick trova una via per sconfiggere la Gran Tavola. Ma prima di guadagnare la libertà, Wick deve affrontare un nuovo nemico che ha potenti alleanze in tutto il mondo e ha mezzi tali da tramutare vecchi amici in nuovi nemici.",
+        "poster": "https://image.tmdb.org/t/p/w342/uD6w5fB04cgYye6G8qJ7gPtDZFb.jpg",
+        "runtime": 169,
+        "title": "John Wick 4",
+        "tmdb_id": 603692,
+        "type": "movie",
+        "vote": 7.7,
+        "vote_count": 8571,
+        "year": 2023
       },
       {
         "genres": [
-          "Dramma",
-          "Guerra"
+          "Azione",
+          "Crime",
+          "Thriller"
         ],
-        "overview": "È la storia di Wladyslaw Szpilman, pianista ebreo polacco, attraverso la Seconda Guerra Mondiale, dall’occupazione di Varsavia all’arrivo dell’Armata Rossa. Il film è diviso in due parti: la prima è incentrata sulla famiglia Szpilman, dall’iniziale mix di stupore e indignazione p",
-        "poster": "https://image.tmdb.org/t/p/w342/zK3KyPLAQl0IRIToIaQsMxm0aR3.jpg",
-        "runtime": 150,
-        "title": "Il pianista",
-        "tmdb_id": 423,
+        "overview": "La brutale campagna di vendetta di un uomo assume una portata nazionale dopo che si scopre che è un ex agente di una potente organizzazione clandestina nota come \"Apicoltori\".",
+        "poster": "https://image.tmdb.org/t/p/w342/ctJLZO2E4gWkSwXG06y9bE2jfTN.jpg",
+        "runtime": 106,
+        "title": "The Beekeeper",
+        "tmdb_id": 866398,
         "type": "movie",
-        "vote": 8.4,
-        "vote_count": 10673,
-        "year": 2002
+        "vote": 7.3,
+        "vote_count": 4746,
+        "year": 2024
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Una guardia giurata problematica inizia a lavorare da Freddy Fazbear's Pizza. Mentre trascorre la sua prima notte di lavoro, si rende conto che il turno di notte da Freddy non sarà così facile da superare.",
+        "poster": "https://image.tmdb.org/t/p/w342/mmxEjGy1wHy4Frf8Uk1k7mdbW6A.jpg",
+        "runtime": 110,
+        "title": "Five Nights at Freddy's",
+        "tmdb_id": 507089,
+        "type": "movie",
+        "vote": 7.2,
+        "vote_count": 5300,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Azione",
+          "Crime",
+          "Thriller"
+        ],
+        "overview": "Nel corso di molte sfide, Dom Toretto e la sua famiglia hanno superato in astuzia, coraggio e abilità tutti i nemici che hanno incontrato sul loro cammino. Ora si trovano di fronte all'avversario più letale che abbiano mai affrontato: una minaccia terribile che emerge dalle ombre",
+        "poster": "https://image.tmdb.org/t/p/w342/hC6mLdlgpFU63FOduX80xaGevGj.jpg",
+        "runtime": 141,
+        "title": "Fast X",
+        "tmdb_id": 385687,
+        "type": "movie",
+        "vote": 7.0,
+        "vote_count": 6651,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Dopo aver spezzato il misterioso bastoncino del desiderio per conquistare il cuore della ragazza che ama un romantico senza speranza ottiene esattamente ciò che ha chiesto ma presto scopre che alcuni desideri hanno un prezzo sinistro e pericoloso.",
+        "poster": "https://image.tmdb.org/t/p/w342/kwprCwsIV4LvAqJC1dmiTAdZDJ1.jpg",
+        "runtime": 110,
+        "title": "Obsession",
+        "tmdb_id": 1339713,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 6746,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Finney Shaw, un timido ma intelligente ragazzo di 13 anni, viene rapito da un sadico assassino che lo rinchiude in un seminterrato insonorizzato dove le urla servono a poco. Quando un telefono disconnesso inizia a squillare sul muro, Finney scopre di poter sentire le voci delle p",
+        "poster": "https://image.tmdb.org/t/p/w342/jj7zRPozCiKgresivgdE2OtyIAh.jpg",
+        "runtime": 102,
+        "title": "Black Phone",
+        "tmdb_id": 756999,
+        "type": "movie",
+        "vote": 7.5,
+        "vote_count": 6239,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Crime",
+          "Mistero",
+          "Thriller"
+        ],
+        "overview": "Quando un killer prende di mira l’élite di Gotham con una serie di malvagi stratagemmi, una scia di indizi criptici spinge il più grande detective del mondo a indagare nei bassifondi, incontrando personaggi come Selina Kyle alias Catwoman, Oswald Cobblepot alias il Pinguino, Carm",
+        "poster": "https://image.tmdb.org/t/p/w342/kfrNjwHRw0ORsPx8Scr3JJQuy1I.jpg",
+        "runtime": 176,
+        "title": "The Batman",
+        "tmdb_id": 414906,
+        "type": "movie",
+        "vote": 7.7,
+        "vote_count": 12957,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Horror",
+          "Fantascienza",
+          "Thriller"
+        ],
+        "overview": "OJ e Emerald Haywood, fratello e sorella, hanno ereditato un ranch ad Agua Dolce, non lontano da Hollywood, dopo la morte del padre Otis sr., avvenuta in circostanze difficili da spiegare scientificamente. L'attività di famiglia riguarda l'addestramento di cavalli selvaggi per l'",
+        "poster": "https://image.tmdb.org/t/p/w342/7RvC5hzFu13weFUv5Oecbjdap5.jpg",
+        "runtime": 131,
+        "title": "Nope",
+        "tmdb_id": 762504,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 5351,
+        "year": 2022
       }
     ],
     "movie:936075": [
@@ -7024,7 +7158,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15083,
+        "vote_count": 15085,
         "year": 1990
       },
       {
@@ -7040,7 +7174,7 @@
         "tmdb_id": 497,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 20198,
+        "vote_count": 20201,
         "year": 1999
       },
       {
@@ -7421,6 +7555,23 @@
       },
       {
         "genres": [
+          "Thriller",
+          "Dramma",
+          "Azione",
+          "Crime"
+        ],
+        "overview": "Dopo il rapimento del figlio, un candidato a sindaco di Los Angeles e la moglie tentano di racimolare il riscatto affrontando scelte che rischiano di distruggere la loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/2bSbPh4m29yW4vj3zLWFGou9E9K.jpg",
+        "runtime": 109,
+        "title": "Animals",
+        "tmdb_id": 1236045,
+        "type": "movie",
+        "vote": 6.8,
+        "vote_count": 785,
+        "year": 2026
+      },
+      {
+        "genres": [
           "Crime",
           "Dramma",
           "Mistero"
@@ -7434,21 +7585,6 @@
         "vote": 8.4,
         "vote_count": 13835,
         "year": 2017
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Crime"
-        ],
-        "overview": "La storia di una famiglia criminale nella Birmingham del 1919, Inghilterra, centrata sulle vicende di una gang che nasconde delle lame di rasoio nelle visiere dei propri cappelli e del loro capo Tommy Shelby, che aspira a trovare il suo posto nel mondo.",
-        "poster": "https://image.tmdb.org/t/p/w342/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
-        "runtime": 0,
-        "title": "Peaky Blinders",
-        "tmdb_id": 60574,
-        "type": "tv",
-        "vote": 8.5,
-        "vote_count": 11567,
-        "year": 2013
       }
     ],
     "tv:31910": [
@@ -9239,7 +9375,7 @@
         "tmdb_id": 372058,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 13231,
+        "vote_count": 13233,
         "year": 2016
       },
       {
@@ -9300,7 +9436,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -9740,7 +9876,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21789,
+        "vote_count": 21791,
         "year": 2019
       },
       {
@@ -9755,7 +9891,7 @@
         "tmdb_id": 664280,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 482,
+        "vote_count": 483,
         "year": 2020
       },
       {
@@ -10500,7 +10636,7 @@
           "tmdb_id": 664280,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 482,
+          "vote_count": 483,
           "year": 2020
         },
         {
@@ -10791,7 +10927,7 @@
           "tmdb_id": 129,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 19288,
+          "vote_count": 19291,
           "year": 2001
         },
         {
@@ -10807,7 +10943,7 @@
           "tmdb_id": 372058,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 13231,
+          "vote_count": 13233,
           "year": 2016
         },
         {
@@ -11006,7 +11142,7 @@
           "tmdb_id": 1396,
           "type": "tv",
           "vote": 9.0,
-          "vote_count": 19186,
+          "vote_count": 19187,
           "year": 2008
         },
         {
@@ -11041,22 +11177,6 @@
         },
         {
           "genres": [
-            "Azione",
-            "Thriller",
-            "Crime"
-          ],
-          "overview": "Il crimine organizzato a Gotham City ha le ore contate. Batman, il tenente Gordon, il nuovo Procuratore Distrettuale e alcuni improbabili epigoni dell'Uomo Pipistrello in imbottiture da hockey hanno dichiarato guerra ai criminali. La loro fortuna e i loro dollari, accumulati in u",
-          "poster": "https://image.tmdb.org/t/p/w342/qIhsgno1mjbzUbs4H6DaRjhskAR.jpg",
-          "runtime": 146,
-          "title": "Il cavaliere oscuro",
-          "tmdb_id": 155,
-          "type": "movie",
-          "vote": 8.5,
-          "vote_count": 37481,
-          "year": 2008
-        },
-        {
-          "genres": [
             "Dramma",
             "Storia",
             "Guerra"
@@ -11084,8 +11204,24 @@
           "tmdb_id": 157336,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 42028,
+          "vote_count": 42032,
           "year": 2014
+        },
+        {
+          "genres": [
+            "Azione",
+            "Thriller",
+            "Crime"
+          ],
+          "overview": "Il crimine organizzato a Gotham City ha le ore contate. Batman, il tenente Gordon, il nuovo Procuratore Distrettuale e alcuni improbabili epigoni dell'Uomo Pipistrello in imbottiture da hockey hanno dichiarato guerra ai criminali. La loro fortuna e i loro dollari, accumulati in u",
+          "poster": "https://image.tmdb.org/t/p/w342/qIhsgno1mjbzUbs4H6DaRjhskAR.jpg",
+          "runtime": 146,
+          "title": "Il cavaliere oscuro",
+          "tmdb_id": 155,
+          "type": "movie",
+          "vote": 8.5,
+          "vote_count": 37486,
+          "year": 2008
         },
         {
           "genres": [
@@ -11115,7 +11251,7 @@
           "tmdb_id": 122,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 27908,
+          "vote_count": 27910,
           "year": 2003
         },
         {
@@ -11131,7 +11267,7 @@
           "tmdb_id": 680,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 31407,
+          "vote_count": 31410,
           "year": 1994
         },
         {
@@ -11147,7 +11283,7 @@
           "tmdb_id": 497,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 20198,
+          "vote_count": 20201,
           "year": 1999
         },
         {
@@ -11163,7 +11299,7 @@
           "tmdb_id": 496243,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 21789,
+          "vote_count": 21791,
           "year": 2019
         },
         {
@@ -11179,7 +11315,7 @@
           "tmdb_id": 13,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 30970,
+          "vote_count": 30973,
           "year": 1994
         }
       ],
@@ -11202,23 +11338,8 @@
           "tmdb_id": 120,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 28963,
+          "vote_count": 28966,
           "year": 2001
-        },
-        {
-          "genres": [
-            "Dramma",
-            "Thriller"
-          ],
-          "overview": "Un uomo di trent'anni è insofferente su tutto e la notte non riesce più a dormire. In cerca di qualche luogo dove scaricare la propria ansia si mette a frequentare quei corsi dove gruppi di malati gravi si riuniscono e confessano agli altri le rispettive situazioni. Mentre si las",
-          "poster": "https://image.tmdb.org/t/p/w342/rtNLQ8HbPElzEfrHjrzSr07prKT.jpg",
-          "runtime": 139,
-          "title": "Fight Club",
-          "tmdb_id": 550,
-          "type": "movie",
-          "vote": 8.4,
-          "vote_count": 33440,
-          "year": 1999
         },
         {
           "genres": [
@@ -11233,8 +11354,23 @@
           "tmdb_id": 121,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 25061,
+          "vote_count": 25064,
           "year": 2002
+        },
+        {
+          "genres": [
+            "Dramma",
+            "Thriller"
+          ],
+          "overview": "Un uomo di trent'anni è insofferente su tutto e la notte non riesce più a dormire. In cerca di qualche luogo dove scaricare la propria ansia si mette a frequentare quei corsi dove gruppi di malati gravi si riuniscono e confessano agli altri le rispettive situazioni. Mentre si las",
+          "poster": "https://image.tmdb.org/t/p/w342/rtNLQ8HbPElzEfrHjrzSr07prKT.jpg",
+          "runtime": 139,
+          "title": "Fight Club",
+          "tmdb_id": 550,
+          "type": "movie",
+          "vote": 8.4,
+          "vote_count": 33445,
+          "year": 1999
         },
         {
           "genres": [
@@ -11248,7 +11384,7 @@
           "tmdb_id": 769,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 15083,
+          "vote_count": 15085,
           "year": 1990
         },
         {
@@ -11279,7 +11415,7 @@
           "tmdb_id": 637,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 14436,
+          "vote_count": 14437,
           "year": 1997
         },
         {
@@ -11523,6 +11659,22 @@
           "vote": 6.8,
           "vote_count": 4756,
           "year": 2024
+        },
+        {
+          "genres": [
+            "Horror",
+            "Thriller",
+            "Crime"
+          ],
+          "overview": "I quattro sopravvissuti agli omicidi compiuti da Ghostface, le sorelle Sam e Tara Carpenter, insieme ai gemelli Chad e Mindy Meeks, si lasciano alle spalle quanto accaduto a Woodsboro per iniziare un nuovo capitolo della loro vita trasferendosi a New York. Ma anche nella grande m",
+          "poster": "https://image.tmdb.org/t/p/w342/iz0rgk4HReWQvSdRkYdchmrHmm5.jpg",
+          "runtime": 123,
+          "title": "Scream 6",
+          "tmdb_id": 934433,
+          "type": "movie",
+          "vote": 6.9,
+          "vote_count": 3426,
+          "year": 2023
         }
       ],
       "subtitle": "Nuove uscite selezionate per consenso e rilevanza",
