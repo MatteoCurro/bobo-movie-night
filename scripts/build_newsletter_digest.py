@@ -115,7 +115,7 @@ def build(today=None):
         if not item.get("title") or not poster(item.get("poster")) or not item.get("overview"):
             continue
         year = int(item.get("year") or 0)
-        if year < 1920 or year > today.year:
+        if year < 1920 or year > today.year or (item.get("type") == "tv" and year < 2010):
             continue
         # Do not promote a film that is explicitly dated after this edition.
         release = str(item.get("release_date") or item.get("first_air_date") or "")
@@ -307,8 +307,7 @@ def build(today=None):
         "lead": headline_card(candidates[lead_key], "La scelta del club"),
         "sections": groups, "curiosity": curiosity, "quote": quote,
         # Retain the v1-compatible information for read-only consumers.
-        "weekly": [headline_card(candidates[lead_key])] + [headline_card(candidates[k]) for k in pick(
-            list(candidates), 2, selected, "legacy-fallback")],
+        "weekly": [headline_card(candidates[lead_key])],
         "platforms": [],
         "disclaimer": "Selezione editoriale, non un elenco di nuovi arrivi sulle piattaforme.",
     }
