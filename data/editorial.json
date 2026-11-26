@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T10:35:20+00:00",
+  "generated_at": "2026-11-26T10:54:04+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -5223,7 +5223,7 @@
         "tmdb_id": 87739,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 5935,
+        "vote_count": 5938,
         "year": 2020
       }
     ],
@@ -6882,7 +6882,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6205,
+        "vote_count": 6206,
         "year": 2002
       },
       {
@@ -7531,7 +7531,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6205,
+        "vote_count": 6206,
         "year": 2002
       },
       {
@@ -7581,7 +7581,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6205,
+        "vote_count": 6206,
         "year": 2002
       },
       {
@@ -7954,7 +7954,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6205,
+        "vote_count": 6206,
         "year": 2002
       },
       {
@@ -8238,7 +8238,7 @@
         "tmdb_id": 46260,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 6205,
+        "vote_count": 6206,
         "year": 2002
       }
     ],
@@ -8425,7 +8425,7 @@
         "tmdb_id": 62560,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 5732,
+        "vote_count": 5733,
         "year": 2015
       },
       {
@@ -8441,7 +8441,7 @@
         "tmdb_id": 61889,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 5525,
+        "vote_count": 5527,
         "year": 2015
       },
       {
@@ -8603,7 +8603,7 @@
         "tmdb_id": 1412,
         "type": "tv",
         "vote": 6.8,
-        "vote_count": 6575,
+        "vote_count": 6576,
         "year": 2012
       },
       {
@@ -9173,7 +9173,7 @@
         "tmdb_id": 19885,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 6900,
+        "vote_count": 6902,
         "year": 2010
       }
     ],
@@ -9512,7 +9512,7 @@
         "tmdb_id": 71912,
         "type": "tv",
         "vote": 7.9,
-        "vote_count": 7042,
+        "vote_count": 7043,
         "year": 2019
       },
       {
@@ -10887,7 +10887,7 @@
           "tmdb_id": 46260,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 6205,
+          "vote_count": 6206,
           "year": 2002
         },
         {
