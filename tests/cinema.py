@@ -64,4 +64,14 @@ with tempfile.TemporaryDirectory() as folder:
     assert saved["schema"] == 1 and "movie:1" in saved["items"]
     assert mod.Shards(root, "credits").get(1, "movie:1")["source"] == "tmdb"
 
+# Regression: the shared stylesheet hides the entire body until bobo-friends.js
+# adds html.bobo-unlocked. Without the script, person pages look blank.
+person_page = Path("person.html").read_text(encoding="utf-8")
+shared_styles = Path("bobo-retro.css").read_text(encoding="utf-8")
+shared_gate = Path("bobo-friends.js").read_text(encoding="utf-8")
+assert 'bobo-retro.css' in person_page
+assert 'html:not(.bobo-unlocked) body { visibility: hidden; }' in shared_styles
+assert 'src="bobo-friends.js"' in person_page
+assert "classList.add('bobo-unlocked')" in shared_gate
+
 print("Cinema: credits, TV roles, identity, awards, provenance, shards OK")
