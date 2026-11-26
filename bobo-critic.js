@@ -24,7 +24,7 @@
         }catch(_){return;}
         if(rec.source==='comingsoon'&&!/^\/film\/[^/]+\/\d+\/recensione\/?$/.test(url.pathname))return;
         if(rec.source==='cinematografo'&&!/^\/recensioni\/[^/]+$/.test(url.pathname))return;
-        if(rec.source==='movieplayer'&&!/^\/articoli\/[^/]+$/.test(url.pathname))return;
+        if(rec.source==='movieplayer'&&!/^\/articoli\/[^/]+\/?$/.test(url.pathname))return;
         seen.add(rec.url);
         const card=document.createElement('a');
         card.className='bobo-critic-card';
