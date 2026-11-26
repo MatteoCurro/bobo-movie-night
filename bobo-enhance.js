@@ -56,9 +56,7 @@
   }
   function badgeNode(kind,id,preferred) {
     const ids=labels(kind,id);
-    // A platform-labelled shelf is itself verified by the corresponding
-    // discovery entry. Never erase that label while the async ledger loads.
-    const providers=preferred && PROVIDERS[preferred] ?
+    const providers=preferred && ids.includes(preferred) ?
       [preferred,...ids.filter(id=>id!==preferred)] : ids;
     if(!providers.length)return null;
     const el=document.createElement('span');
