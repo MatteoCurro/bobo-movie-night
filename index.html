@@ -514,10 +514,6 @@
     </svg>
     <input type="text" id="search-input" placeholder="Cerca film o serie…" autocomplete="off">
   </div>
-  <div class="provider-toggle" id="provider-toggle" title="Provider primario">
-    <button class="prov-btn active" data-prov="vix" type="button">Vix</button>
-    <button class="prov-btn"        data-prov="vidsrc" type="button">VidSrc</button>
-  </div>
 </header>
 
 <div class="tabs">
@@ -595,13 +591,12 @@
     </div>
     <div class="player-actions">
       <span class="player-prov-label">Provider: <strong id="player-prov-name">Vix</strong></span>
-      <button class="btn btn-ghost" onclick="swapProvider()" type="button">↻ Cambia provider</button>
-      <button class="btn btn-ghost" id="player-prefer-ita" onclick="preferItalianAudio()" type="button" hidden>↩ Prova audio ITA (VixSrc)</button>
+      <button class="btn btn-ghost" onclick="openProviderSettings()" type="button" aria-haspopup="dialog" aria-controls="bobo-settings">⚙ Cambia sorgente</button>
       <button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>
       <button class="btn btn-ghost" onclick="copyPlayerLink()" type="button">⧉ Copia link</button>
     </div>
     <p class="player-help" id="player-language-help" aria-live="polite">VixSrc preferisce l’audio italiano quando disponibile. Gli altri servizi possono offrire soltanto audio originale e sottotitoli.</p>
-    <p class="player-help">Se il player mostra un errore, usa <b>Cambia provider</b>; il caricamento dell’iframe non dimostra che il video funzioni.</p>
+    <p class="player-help">Se il player mostra un errore, usa <b>Cambia sorgente</b>; il caricamento dell’iframe non dimostra che il video funzioni.</p>
   </div>
 </div>
 
@@ -636,19 +631,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (e.target === e.currentTarget) closeEpModal();
   });
   document.getElementById('ep-season').addEventListener('change', populateEpisodes);
-  document.getElementById('provider-toggle').addEventListener('click', e => {
-    const btn = e.target.closest('button[data-prov]');
-    if (btn) setProvider(btn.dataset.prov);
-  });
   document.getElementById('player-modal').addEventListener('click', e => {
     if (e.target === e.currentTarget) closePlayer();
   });
-  renderProviderButtons();
   window.BoboPlayers.onUpdate(() => {
-    if (!window.BoboPlayers.get(provider)) provider = window.BoboPlayers.selected();
-    renderProviderButtons();
+    if (!window.BoboPlayers.get(provider)) {
+      provider = window.BoboPlayers.selected();
+      if (playerState) loadProvider(provider);
+    }
+    updateLanguageHelp(playerState ? playerState.currentProv : provider);
   });
-  window.BoboPlayers.init().then(renderProviderButtons);
+  window.BoboPlayers.init();
   setProvider(provider);
   await ensureLoaded('movie');
 });
@@ -918,38 +911,15 @@ function confirmEpisode() {
 // ─────────────────────────────────────────────────────────
 // PROVIDER / PLAYER
 // ─────────────────────────────────────────────────────────
-function renderProviderButtons() {
-  const node = document.getElementById('provider-toggle');
-  node.replaceChildren();
-  for (const p of window.BoboPlayers.list()) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'prov-btn' + (p.id === provider ? ' active' : '');
-    button.dataset.prov = p.id;
-    button.textContent = p.name;
-    button.title = p.audio === 'it-preferred' ? 'Audio italiano preferito' :
-      'Audio italiano non verificato';
-    node.appendChild(button);
-  }
-}
 function updateLanguageHelp(p) {
   const note = document.getElementById('player-language-help');
-  const returnButton = document.getElementById('player-prefer-ita');
-  const italianAvailable = !!window.BoboPlayers.get('vix');
-  if (returnButton) returnButton.hidden = p === 'vix' || !italianAvailable;
   if (note) note.textContent = p === 'vix' ?
     'VixSrc preferisce l’audio italiano, se disponibile per il titolo.' :
-    'Audio in inglese? Nelle impostazioni interne del video cerca Audio → Italiano. Se non compare, non puoi forzarlo da Bobo: prova VixSrc. ds_lang=it su VidSrc seleziona soltanto i sottotitoli.';
-}
-function preferItalianAudio() {
-  if (!playerState || !window.BoboPlayers.get('vix')) return;
-  setProvider('vix');
-  loadProvider('vix');
+    'Se il video è in inglese, nelle impostazioni del player cerca Audio → Italiano. In alternativa, apri «Cambia sorgente» e seleziona VixSrc. I sottotitoli ITA non cambiano la lingua audio.';
 }
 function setProvider(p) {
   if (!window.BoboPlayers.get(p)) return;
   provider = window.BoboPlayers.select(p);
-  renderProviderButtons();
   updateLanguageHelp(playerState ? playerState.currentProv : provider);
 }
 function playerURL(prov, st) {
@@ -1014,13 +984,9 @@ function onProviderTimeout(prov) {
     '<p>Prova «Cambia provider» senza perdere il titolo selezionato.</p>';
 }
 
-function swapProvider() {
-  if (!playerState) return;
-  const next = window.BoboPlayers.next(playerState.currentProv);
-  if (next === playerState.currentProv) return;
-  setProvider(next);
-  playerState.tried = new Set();
-  loadProvider(next);
+function openProviderSettings() {
+  const trigger = document.getElementById('bobo-settings-open');
+  if (trigger) trigger.click();
 }
 
 async function copyPlayerLink() {

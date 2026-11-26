@@ -66,10 +66,7 @@
         <span id="watch-current-episode" class="current-episode"></span>
         <button id="watch-previous" type="button" class="quiet-button" hidden>← Episodio precedente</button>
         <button id="watch-next" type="button" class="quiet-button" hidden>Episodio successivo →</button>
-        <label for="watch-source-select" class="bobo-source-label">Sorgente</label>
-        <select id="watch-source-select" class="bobo-source-select" aria-label="Scegli il servizio di riproduzione"></select>
-        <button id="watch-source-next" type="button" class="quiet-button">↻ Cambia sorgente</button>
-        <button id="watch-prefer-ita" type="button" class="quiet-button" hidden>↩ Prova audio italiano (VixSrc)</button>
+        <button id="watch-source-settings" type="button" class="quiet-button" aria-haspopup="dialog" aria-controls="watch-settings">⚙ Cambia sorgente</button>
         <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
       </div>
       <p id="watch-source-note" class="player-caption" aria-live="polite">Per l’audio italiano VixSrc resta la prima scelta; altri servizi potrebbero offrire soltanto audio originale e sottotitoli.</p>
@@ -124,11 +121,9 @@
   </div>
   <style>.watch-related-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(125px,175px);gap:13px;overflow-x:auto;padding:10px 4px 18px}.watch-related-tile{color:inherit;text-decoration:none;display:block}.watch-related-tile img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;display:block}.watch-related-tile strong{font-size:14px;display:block;margin-top:8px}.watch-related-tile small{font-size:12px;color:#aaa;display:block;margin-top:4px}</style>
   <style>
-    .bobo-source-select{background:#18191e;color:inherit;border:1px solid #62636b;border-radius:9px;padding:9px 12px;min-width:155px;max-width:100%}
-    .bobo-source-select:focus-visible,#watch-source-next:focus-visible{outline:2px solid #b9ff8b;outline-offset:2px}
-    .bobo-source-label{font-size:13px;font-weight:650}
+    #watch-source-settings:focus-visible{outline:2px solid #b9ff8b;outline-offset:2px}
     #watch-provider-options .provider-option{display:flex}
-    @media(max-width:640px){.player-controls{flex-wrap:wrap}.bobo-source-select{min-width:130px}}
+    @media(max-width:640px){.player-controls{flex-wrap:wrap}}
   </style>
   <script src="bobo-players.js" defer></script>
   <script src="bobo-related.js" defer></script>

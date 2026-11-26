@@ -586,28 +586,25 @@
       showError('Errore durante il caricamento del catalogo. Riprova aggiornando la pagina.');
     }
   }
+  let settingsReturnFocus = null;
   function settings(isOpen) {
     const modal = byId('watch-settings');
-    modal.hidden = !isOpen;
     if (isOpen) {
+      settingsReturnFocus = document.activeElement;
+      renderPlayerSources();
+      modal.hidden = false;
       const selected = document.querySelector('input[name="watch-provider"][value="'+provider+'"]');
       if (selected) { selected.checked = true; selected.focus(); }
-    } else byId('watch-settings-trigger').focus();
+    } else {
+      modal.hidden = true;
+      const target = settingsReturnFocus || byId('watch-settings-trigger');
+      settingsReturnFocus = null;
+      if (target && typeof target.focus === 'function') target.focus();
+    }
   }
   function renderPlayerSources() {
     if (!window.BoboPlayers) return;
     const sources = window.BoboPlayers.list();
-    const select = byId('watch-source-select');
-    if (select) {
-      select.replaceChildren();
-      sources.forEach(p => {
-        const option = document.createElement('option');
-        option.value = p.id;
-        option.textContent = p.name + (p.audio === 'it-preferred' ? ' · audio ITA preferito' : ' · ITA non verificato');
-        select.appendChild(option);
-      });
-      select.value = provider;
-    }
     const opts = byId('watch-provider-options');
     if (opts) {
       opts.replaceChildren();
@@ -617,7 +614,9 @@
         const radio = document.createElement('input');
         radio.type = 'radio'; radio.name = 'watch-provider'; radio.value = p.id;
         radio.checked = p.id === provider;
-        radio.addEventListener('change', function () { if (this.checked) chooseSource(p.id); });
+        radio.addEventListener('change', function () {
+          if (this.checked) { chooseSource(p.id); settings(false); }
+        });
         const span = document.createElement('span');
         const strong = document.createElement('strong');
         strong.textContent = p.name;
@@ -634,8 +633,7 @@
     if (note) note.textContent = provider === 'vix' ?
       'VixSrc richiede l’audio italiano, se disponibile per questo titolo. Non è una garanzia per ogni video.' :
       'Se senti l’inglese, apri le impostazioni del video e cerca Audio → Italiano. Se non compare, quella sorgente non offre una traccia italiana selezionabile. I sottotitoli ITA non modificano l’audio.';
-    const preferItalian = byId('watch-prefer-ita');
-    if (preferItalian) preferItalian.hidden = provider === 'vix' || !window.BoboPlayers.get('vix');
+
   }
   function chooseSource(id) {
     if (!window.BoboPlayers || !window.BoboPlayers.get(id)) return;
@@ -694,11 +692,7 @@
       saveOption(STORAGE_AUTO_LIMIT,autoNextLimit);
       resetSequence();
     });
-    byId('watch-source-select').addEventListener('change',function () { chooseSource(this.value); });
-    byId('watch-source-next').addEventListener('click',function () {
-      if (window.BoboPlayers) chooseSource(window.BoboPlayers.next(provider));
-    });
-    byId('watch-prefer-ita').addEventListener('click',function () { chooseSource('vix'); });
+    byId('watch-source-settings').addEventListener('click',function () { settings(true); });
     if (window.BoboPlayers) {
       renderPlayerSources();
       window.BoboPlayers.onUpdate(function () {
