@@ -22,7 +22,8 @@ KINDS = ("movie", "tv")
 MIN_ITEMS = 100
 IMG = re.compile(r"^/[a-zA-Z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$")
 PROVIDERS = {8:"netflix", 119:"prime", 337:"disney", 350:"apple",
-             531:"paramount", 29:"skygo", 39:"now"}
+             531:"paramount", 29:"skygo", 39:"now",1899:"hbo",
+             222:"rai",359:"mediaset",283:"crunchyroll"}
 
 def api(path: str, params: dict | None = None) -> dict:
     query = dict(params or {})
