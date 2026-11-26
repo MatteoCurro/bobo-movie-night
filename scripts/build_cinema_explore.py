@@ -198,6 +198,15 @@ def build(root=Path("."), today=None):
             float(titles[key].get("vote") or 0),
             int(titles[key].get("vote_count") or 0),
             key)) if pool else None
+        directed_dated = [key for key in directing[pid] if
+                          1880 <= int(titles[key].get("year") or 0) <= today.year]
+        first_directed = min(directed_dated,
+                             key=lambda key: (int(titles[key]["year"]), key)) if directed_dated else None
+        voted_directed = [key for key in directed_dated if
+                          float(titles[key].get("vote") or 0) >= 5.0]
+        best_directed = max(voted_directed, key=lambda key: (
+            float(titles[key].get("vote") or 0),
+            int(titles[key].get("vote_count") or 0), key)) if voted_directed else None
         genres = defaultdict(int)
         for work_key in directing[pid]:
             for genre in titles[work_key].get("genres") or []:
@@ -218,6 +227,8 @@ def build(root=Path("."), today=None):
             "first_indexed": movie_card(titles[earliest]) | {"type": titles[earliest]["type"]} if earliest else None,
             "most_appreciated": movie_card(titles[best]) | {"type": titles[best]["type"]} if best else None,
             "genres": dna,
+            "first_directed": movie_card(titles[first_directed]) | {"type": titles[first_directed]["type"]} if first_directed else None,
+            "best_directed": movie_card(titles[best_directed]) | {"type": titles[best_directed]["type"]} if best_directed else None,
         }
         if p.get("stats") != stats:
             updated = dict(p, stats=stats)
