@@ -269,12 +269,9 @@ jobs:
           done
           test -s _site/data/cinema/person-search.json
           test -s _site/data/cinema/film-quotes.json
-          test -s _site/data/cinema/quote-sources.json
-          test -s _site/data/cinema/connections-status.json
-          test -d _site/data/cinema/credits && test -d _site/data/cinema/people
+          test -d _site/data/cinema/credits && test -d _site/data/cinema/people && test -d _site/data/cinema/connections
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
-          test -s _site/data/catalog-status.json
           cp discover.html bobo-discover.css bobo-discover.js awards.html bobo-awards.css bobo-awards.js informazioni.html _site/
           test -s _site/awards.html && test -s _site/bobo-awards.js && test -s _site/informazioni.html
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
