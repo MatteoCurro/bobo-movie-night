@@ -368,104 +368,108 @@
       '</section>';
   }
   function renderHome() {
-    const all = allItems();
-    const host = document.getElementById('bobo-discover');
-    if (!host || !all.length) return;
-    const key = 'all:' + catalogs.movie.length + ':' + catalogs.tv.length;
-    if (renderedKey === key) return;
-    renderedKey = key;
-    const good = quality(all);
-    const fresh = recent(all);
-    const promoted = validItems(all).filter(function(x) { return x.overview && x.year >= currentYear-3; })
-      .sort(function(a,b) { return ((b.vote||0)*1.4+(b.year||0)*.6)-((a.vote||0)*1.4+(a.year||0)*.6); });
-    const rails = [];
-    const stream = discovery && discovery.streaming;
-    if (stream) {
-      const weekly = resolveDiscovery(stream.items || []);
-      const monthly = (stream.platforms || []).filter(function(platform) {
-        return platform && platform.id && platform.label &&
-          resolveDiscovery(platform.items || []).length >= 4;
-      });
-      if (weekly.length >= 4 || monthly.length) {
-        rails.push('<div class="bobo-feed-group"><span>01 / Streaming radar</span>'+
-          '<h2>Appena arrivati, pronti da scoprire.</h2>'+
-          '<p>Nuove disponibilità sui servizi italiani, incrociate con i titoli presenti nel nostro catalogo.</p></div>');
+    const all=allItems();
+    const host=document.getElementById('bobo-discover');
+    if(!host||!all.length)return;
+    const key='editorial:' + catalogs.movie.length + ':' + catalogs.tv.length +
+      ':' + (discovery&&discovery.generated_at||'');
+    if(renderedKey===key)return;
+    renderedKey=key;
+    const good=quality(all);
+    const fresh=recent(all);
+    const rails=[],already=new Set();
+    const feature=chooseFeedFeature()||featured(all);
+    if(feature)already.add(feature.type+':'+feature.tmdb_id);
+    const pickUnique=items=>{
+      const result=[],local=new Set();
+      for(const item of items||[]){
+        if(!item||!item.tmdb_id||!item.poster)continue;
+        const id=item.type+':'+item.tmdb_id;
+        if(already.has(id)||local.has(id))continue;
+        local.add(id);result.push(item);
+        if(result.length>=12)break;
       }
-      rails.push(shelf('it-weekly','Novità della settimana',
-        weekly,'Streaming in Italia · Ultimi 7 giorni'));
-      monthly.forEach(function(platform) {
-        rails.push(shelf('new-on-'+platform.id,
-          'Novità del mese · '+platform.label,
-          resolveDiscovery(platform.items),
-          'Disponibilità in Italia · aggiornamento mensile'));
-      });
-      const weeklyMovies = weekly.filter(function(item) { return item.type === 'movie'; });
-      const weeklySeries = weekly.filter(function(item) { return item.type === 'tv'; });
-      rails.push(shelf('weekly-movies','Film appena segnalati',weeklyMovies,
-        'Novità sulle piattaforme italiane'));
-      rails.push(shelf('weekly-series','Serie appena segnalate',weeklySeries,
-        'Novità sulle piattaforme italiane'));
+      if(result.length<4)return [];
+      result.forEach(item=>already.add(item.type+':'+item.tmdb_id));
+      return result;
+    };
+    function addRail(id,title,items,subtitle){
+      const unique=pickUnique(items);
+      const html=shelf(id,title,unique,subtitle);
+      if(html)rails.push(html);
+      return !!html;
     }
-    if (discovery && discovery.source === 'TMDB+JustWatch' && !(stream && stream.platforms && stream.platforms.length)) {
-      rails.push(shelf('weekly-trending','Di tendenza questa settimana',
-        resolveDiscovery(discovery.trending),'I titoli più seguiti · ultimi 7 giorni'));
-      (discovery.platforms || []).forEach(function(platform) {
-        if (!platform || !platform.id || !platform.label) return;
-        rails.push(shelf('it-'+platform.id,
-          'Titoli recenti su '+platform.label,
-          resolveDiscovery(platform.items),
-          'Disponibilità segnalata in Italia'));
-      });
+    const stream=discovery&&discovery.streaming;
+    let radar=false;
+    if(stream){
+      const weekly=resolveDiscovery(stream.items||[]);
+      const monthly=(stream.platforms||[]).filter(platform=>
+        platform&&platform.id&&platform.label&&resolveDiscovery(platform.items||[]).length>=4);
+      if(weekly.length>=4||monthly.length)radar=true;
+      if(radar)rails.push('<div class="bobo-feed-group"><span>01 / Radar</span>'+
+        '<h2>Le novità che contano.</h2>'+
+        '<p>Una selezione delle nuove disponibilità italiane, senza ripetere gli stessi titoli in ogni riga.</p></div>');
+      addRail('it-weekly','Novità della settimana',weekly,'Le nuove disponibilità in Italia');
+      // Compact platform overview: no separate near-identical weekly film/series rails.
+      monthly.slice(0,3).forEach(platform=>
+        addRail('new-on-'+platform.id,platform.label+' · Da recuperare',
+          resolveDiscovery(platform.items),'Selezione mensile'));
     }
-    const animeCatalog = validItems(all).filter(isAnime).sort(function(a,b){
-      return (Number(b.vote)||0)-(Number(a.vote)||0) || (b.year||0)-(a.year||0);
-    });
-    rails.push(shelf('anime-it','Anime da scoprire',
-      animeCatalog,'Animazione giapponese · audio ITA / SUB ITA da verificare nel player'));
-    rails.push(shelf('anime-new','Anime più recenti',
-      animeCatalog.filter(x=>Number(x.year)>=currentYear-4).sort((a,b)=>(b.year||0)-(a.year||0)),
-      'Film e serie anime dal catalogo Bobo'));
+    if(!radar&&discovery&&Array.isArray(discovery.trending)){
+      addRail('weekly-trending','Di tendenza',resolveDiscovery(discovery.trending),
+        'Quello che il pubblico sta seguendo');
+    }
+    // A magazine-like break between streaming rails and catalogue content.
+    rails.push('<section class="bobo-home-crossroads" aria-label="Scopri una storia diversa">'+
+      '<div class="bobo-home-random"><span class="bobo-home-micro">BOBO / SERATA A SORPRESA</span>'+
+      '<h2>E se la scelta fosse una sorpresa?</h2>'+
+      '<p>Un film con un buon voto, una storia ancora da scoprire. Nessun quiz, un solo click.</p>'+
+      '<button type="button" data-bobo-surprise>✳ Sorprendimi</button></div>'+
+      '<div class="bobo-home-explore"><span class="bobo-home-micro">BOBO / ALTRI PERCORSI</span>'+
+      '<h2>Non soltanto locandine.</h2>'+
+      '<p>Segui le persone dietro ai film e attraversa i grandi premi del cinema.</p>'+
+      '<div class="bobo-home-crosslinks"><a href="discover.html">Scopri Discover ↗</a>'+
+      '<a href="awards.html">Film premiati ↗</a></div></div></section>');
     rails.push('<div class="bobo-feed-group bobo-feed-group-secondary">'+
-      '<span>02 / Dal catalogo</span><h2>Qualcosa per stasera.</h2></div>');
-    rails.push(
-      shelf('highlights','In evidenza',promoted),
-      shelf('new','Le uscite recenti',fresh),
-      shelf('rated','I più apprezzati',good),
-      shelf('movies','Film da scoprire',promoted.filter(function(item) { return item.type === 'movie'; })),
-      shelf('series','Serie TV da scoprire',promoted.filter(function(item) { return item.type === 'tv'; })),
-      shelf('short','Un film prima di dormire',good.filter(function(item) {
-        return item.type === 'movie' && Number(item.runtime) >= 65 && Number(item.runtime) <= 105;
-      })),
-      shelf('classics','Voglia di anni 2000?',good.filter(function(item) {
-        return Number(item.year) >= 1998 && Number(item.year) <= 2009;
-      }))
-    );
-    const genreRows = [
+      '<span>02 / Dal catalogo</span><h2>Una buona storia è sempre una scoperta.</h2></div>');
+    const goodMovies=good.filter(item=>item.type==='movie');
+    const goodSeries=good.filter(item=>item.type==='tv');
+    addRail('films-loved','Film da non perdere',goodMovies,'Le valutazioni migliori nel nostro catalogo');
+    addRail('series-loved','Serie da scoprire',goodSeries,'Le storie più apprezzate');
+    addRail('recently-added','Uscite recenti',fresh,
+      'Film e serie selezionati tra le novità');
+    const anime=validItems(all).filter(isAnime)
+      .sort((a,b)=>(Number(b.vote)||0)-(Number(a.vote)||0)||(b.year||0)-(a.year||0));
+    addRail('anime-it','Anime da conoscere',anime,
+      'Animazione giapponese · Verifica la lingua nel player');
+    const genres=[
       ['action','Azione e avventura',['azione','avventura']],
       ['thriller','Thriller e mistero',['thriller','mistero','giallo']],
       ['crime','Storie crime',['crime','poliziesco','criminale']],
-      ['comedy','Commedie',['commedia']],
-      ['scifi','Fantascienza',['fantascienza','science fiction']],
-      ['fantasy','Mondi fantastici',['fantasy']],
-      ['drama','Storie drammatiche',['dramma']],
-      ['animation','Animazione',['animazione']],
-      ['horror','Per una serata horror',['horror','orrore']],
+      ['comedy','Un po’ di leggerezza',['commedia']],
+      ['scifi','Altri mondi',['fantascienza','science fiction']],
+      ['fantasy','Fantasia senza limiti',['fantasy']],
+      ['drama','Grandi emozioni',['dramma']],
+      ['animation','Il cinema animato',['animazione']],
+      ['horror','Brividi sul divano',['horror','orrore']],
       ['romance','Storie d’amore',['romance','romantico','sentimentale']],
-      ['docu','Documentari',['documentario']],
+      ['docu','Storie vere',['documentario']],
       ['family','Da guardare insieme',['famiglia','family']]
     ];
-    genreRows.forEach(function(row) {
-      const picks = good.filter(function(x) { return genresMatch(x,row[2]); });
-      rails.push(shelf(row[0],row[1],picks));
+    const week=Math.floor(Date.now()/604800000);
+    const selection=[0,4,8].map((offset,i)=>genres[(week+i*3+offset)%genres.length]);
+    const chosen=new Set();
+    selection.forEach(row=>{
+      if(chosen.has(row[0]))return;
+      chosen.add(row[0]);
+      addRail('genre-'+row[0],row[1],
+        good.filter(item=>genresMatch(item,row[2])));
     });
-    const feedHero = chooseFeedFeature();
-    host.innerHTML = hero(feedHero || featured(all),Boolean(feedHero)) + rails.join('') +
-      (discovery && discovery.streaming && discovery.streaming.items && discovery.streaming.items.length ?
-        '<p class="bobo-source-note">Le piattaforme indicate rappresentano disponibilità segnalate nei cataloghi italiani; non sono i provider di riproduzione del video.</p>' : '')+
-      (discovery && discovery.platforms && discovery.platforms.length ?
-        '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata dai cataloghi, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
+    host.innerHTML=hero(feature,Boolean(feature&&discovery&&discovery.streaming))+
+      rails.filter(Boolean).join('')+
+      '<p class="bobo-source-note">Le piattaforme segnalano una disponibilità italiana, non garantiscono la lingua del player. <a href="discover.html">Altre idee su Discover</a>.</p>';
     startHeroRotation();
-    requestAnimationFrame(function(){ document.querySelectorAll('.bobo-rail').forEach(updateRailButtons); });
+    requestAnimationFrame(()=>document.querySelectorAll('.bobo-rail').forEach(updateRailButtons));
   }
   function renderResults() {
     const more = document.getElementById('bobo-more');
@@ -734,6 +738,21 @@
     document.addEventListener('click', function(evt) {
       const target = evt.target;
       if (!target || typeof target.closest !== 'function') return;
+      if(target.closest('[data-bobo-surprise]')){
+        const pool=quality(catalogs.movie||[]).filter(item=>
+          item.type==='movie'&&item.overview&&Number(item.vote)>=6.8&&
+          Number(item.year)>=1970&&Number(item.year)<=currentYear&&item.poster);
+        if(pool.length){
+          let previous='';
+          try{previous=sessionStorage.getItem('bobo_last_surprise')||'';}catch(_){}
+          const choices=pool.filter(item=>String(item.tmdb_id)!==previous);
+          const selected=(choices.length?choices:pool)[Math.floor(Math.random()*
+            (choices.length||pool.length))];
+          try{sessionStorage.setItem('bobo_last_surprise',String(selected.tmdb_id));}catch(_){}
+          detail(selected);
+        }
+        return;
+      }
       const closed = target.closest('[data-bobo-close]');
       if (closed || (target.id === 'bobo-details')) { closeDetail(); return; }
       const scrolling = target.closest('[data-bobo-scroll]');
