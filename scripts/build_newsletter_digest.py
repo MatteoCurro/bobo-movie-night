@@ -96,7 +96,7 @@ def build(today=None):
     today = today or dt.date.today()
     week = f"{today.isocalendar().year}-W{today.isocalendar().week:02d}"
     prior = get("data/newsletter.json")
-    if prior.get("schema") == 2 and prior.get("edition", {}).get("id") == week:
+    if prior.get("magazine_schema") == 2 and prior.get("edition", {}).get("id") == week:
         print("Newsletter magazine: this week's edition is already frozen", week)
         return prior
     titles = catalog(ROOT)
@@ -261,7 +261,8 @@ def build(today=None):
                  "item": headline_card(verified[k])}
 
     issue = {
-        "schema": 2,
+        # Keep schema=1 so a server not yet upgraded can still send the classic digest.
+        "schema": 1, "magazine_schema": 2,
         "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
         "edition": {"id": week, "theme": tag[0], "eyebrow": f"IL CLUB / SETTIMANA {today.isocalendar().week:02d}",
                     "title": tag[1], "subtitle": tag[2],
@@ -270,7 +271,8 @@ def build(today=None):
         "lead": headline_card(candidates[lead_key], "La scelta del club"),
         "sections": groups, "curiosity": curiosity, "quote": quote,
         # Retain the v1-compatible information for read-only consumers.
-        "weekly": [headline_card(candidates[lead_key])],
+        "weekly": [headline_card(candidates[lead_key])] + [headline_card(candidates[k]) for k in pick(
+            list(candidates), 2, selected, "legacy-fallback")],
         "platforms": [],
         "disclaimer": "Selezione editoriale, non un elenco di nuovi arrivi sulle piattaforme.",
     }
