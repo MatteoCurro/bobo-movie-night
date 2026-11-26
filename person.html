@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Persona · Bobo Movie Night</title>
+  <meta name="description" content="Interpreti, biografie e filmografie di Bobo Movie Night.">
+  <link rel="stylesheet" href="bobo-watch.css">
+  <link rel="stylesheet" href="bobo-retro.css">
+  <link rel="stylesheet" href="bobo-polish.css">
+  <link rel="stylesheet" href="bobo-cinema.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Bobo Movie Night — Home">🎬 <span>Bobo Movie Night</span></a>
+    <nav aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#tv">Serie TV</a>
+      <a href="discover.html">Discover</a>
+    </nav>
+  </header>
+  <main id="person-main">
+    <p id="person-loading" class="status" role="status">Caricamento scheda…</p>
+    <div id="person-content" hidden>
+      <div class="bobo-person-intro">
+        <div id="person-photo"></div>
+        <div>
+          <p class="eyebrow">Persone · Cinema e TV</p>
+          <h1 id="person-title"></h1>
+          <p id="person-facts"></p>
+          <p id="person-pending" class="bobo-person-note" hidden>La biografia è in fase di arricchimento automatico. Le opere già indicizzate sono consultabili qui sotto.</p>
+        </div>
+      </div>
+      <section id="person-bio-section" class="bobo-person-section" hidden aria-labelledby="person-bio-heading">
+        <h2 id="person-bio-heading">Biografia</h2>
+        <p id="person-language-note" class="bobo-person-note" hidden>Biografia disponibile per ora nella lingua originale della fonte.</p>
+        <p id="person-biography"></p>
+      </section>
+      <section id="person-works-section" class="bobo-person-section" hidden aria-labelledby="person-works-heading">
+        <h2 id="person-works-heading">Film e serie nel catalogo Bobo</h2>
+        <div id="person-works" class="bobo-work-grid"></div>
+      </section>
+      <p class="bobo-person-note">Dati e immagini: TMDB. Le filmografie mostrano le opere presenti nel catalogo Bobo; l'archivio si aggiorna progressivamente.</p>
+    </div>
+  </main>
+  <script src="bobo-cinema.js" defer></script>
+</body>
+</html>
