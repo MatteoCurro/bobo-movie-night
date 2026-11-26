@@ -246,18 +246,69 @@ function drawEpisodes(){
     '<strong>Episodio '+n+'</strong><span>'+esc(name||'Premi OK per riprodurre')+'</span></button>';
  }).join('');
 }
+async function loadDetail(item,serial){
+ const key=item.type+':'+item.tmdb_id,bucket=(Number(item.tmdb_id)%64).toString(16).padStart(2,'0');
+ if(!detailPromises.has(bucket)){
+  detailPromises.set(bucket,fetch(BASE+'data/tv-detail/'+bucket+'.json')
+   .then(r=>{if(!r.ok)throw Error('Scheda non disponibile');return r.json();})
+   .catch(e=>{detailPromises.delete(bucket);throw e;}));
+  if(detailPromises.size>8)detailPromises.delete(detailPromises.keys().next().value);
+ }
+ try{
+  const data=await detailPromises.get(bucket),more=data.items?.[key];
+  if(!more||serial!==detailSerial||!status.chosen||status.chosen.type+':'+status.chosen.tmdb_id!==key)return;
+  Object.assign(status.chosen,more);status.index.set(key,status.chosen);
+  const heroImg=$('.detail-backdrop .hero-art');
+  const backdrop=image(more.backdrop,'w780')||image(more.poster,'w500');
+  if(heroImg&&backdrop)heroImg.style.backgroundImage='url("'+backdrop+'")';
+  const summary=$('.detail-backdrop .synopsis');if(summary)summary.textContent=more.overview||'Descrizione non disponibile.';
+  const metadata=$('.detail-backdrop .meta');
+  if(metadata)metadata.textContent=meta(more)+(more.genres?.length?' · '+more.genres.slice(0,3).join(' · '):'')+
+   (more.runtime?' · '+more.runtime+' min':'');
+  status.seasons=getSeasons(more);
+  const slot=$('#tv-seasons-slot');if(slot)slot.innerHTML=seasonControls();
+  const play=$('#hero-play');if(play&&more.type==='tv')play.textContent='▶ Riproduci S'+status.season+' E'+status.episode;
+  drawEpisodes();episodeNames(more);
+  window.BoboTVExtras?.updateDetail(more);
+ }catch(e){}
+}
+async function loadRelated(item,serial){
+ const key=item.type+':'+item.tmdb_id,bucket=(Number(item.tmdb_id)%64).toString(16).padStart(2,'0');
+ if(!relatedPromises.has(bucket)){
+  relatedPromises.set(bucket,fetch(BASE+'data/related/'+bucket+'.json')
+   .then(r=>{if(!r.ok)throw Error('Correlati non disponibili');return r.json();})
+   .catch(e=>{relatedPromises.delete(bucket);throw e;}));
+  if(relatedPromises.size>7)relatedPromises.delete(relatedPromises.keys().next().value);
+ }
+ try{
+  const raw=(await relatedPromises.get(bucket)).items?.[key]||[];
+  if(serial!==detailSerial||!status.chosen||status.chosen.type+':'+status.chosen.tmdb_id!==key)return;
+  const matches=raw.slice(0,8).map(x=>({
+   type:x[0],tmdb_id:x[1],title:x[2],year:x[3],vote:0,poster:x[4]?'/'+x[4]:''
+  })).filter(valid);
+  matches.forEach(x=>{const k=x.type+':'+x.tmdb_id;if(!status.index.has(k))status.index.set(k,x);});
+  const host=$('#tv-related-slot');if(host&&matches.length)host.innerHTML=rail('Ti potrebbero piacere',matches,'Dai temi del catalogo');
+ }catch(e){}
+}
 function detail(item){
+ const focus=document.activeElement;
+ const shelf=focus?.closest?.('.rail,.season-list');
+ const shelves=Array.from(document.querySelectorAll('.rail,.season-list'));
+ status.returnTo={view:status.view,key:focus?.dataset?.title||null,scroll:window.scrollY,
+  shelfIndex:shelf?shelves.indexOf(shelf):-1,shelfLeft:shelf?.scrollLeft||0};
  status.chosen=item;
  status.seasons=getSeasons(item);
  status.season=(status.seasons.find(s=>s.n>0)||status.seasons[0]||{n:1}).n;
  status.episode=1;
  status.view='detail';
- app.innerHTML=hero(item,true)+seasonControls();
+ app.innerHTML=hero(item,true)+'<div id="tv-seasons-slot">'+seasonControls()+'</div>'+
+  '<div id="tv-related-slot"></div>';
  $('#hero-play').textContent=item.type==='tv'?'▶ Riproduci S'+status.season+' E1':'▶ Riproduci';
- drawEpisodes();episodeNames(item);
+ drawEpisodes();if(item.seasons?.length)episodeNames(item);
  window.BoboTVExtras?.updateDetail(item);
- navActive();window.scrollTo(0,0);
- focusFirst('#hero-play');
+ navActive();window.scrollTo(0,0);focusFirst('#hero-play');
+ const serial=++detailSerial;
+ loadDetail(item,serial);loadRelated(item,serial);
 }
 function navActive(){
  els('.tab').forEach(b=>b.classList.toggle('active',b.dataset.view===status.view));
@@ -497,11 +548,21 @@ function exitPlayer(restoreFocus=true){
  if(restoreFocus)focusFirst('#hero-play');
 }
 function previousPage(){
- if(status.view==='search'&&document.activeElement?.id==='q'){
-  closeSearchKeyboard();return;
- }
+ if(status.view==='search'&&document.activeElement?.id==='q'){closeSearchKeyboard();return;}
  if(status.player){exitPlayer();return;}
- if(status.view==='detail'){render('home');return;}
+ if(status.view==='detail'){
+  ++detailSerial;
+  const where=status.returnTo;status.returnTo=null;
+  render(where?.view||'home');
+  if(where)requestAnimationFrame(()=>{
+   const shelves=Array.from(document.querySelectorAll('.rail,.season-list'));
+   if(where.shelfIndex>=0&&shelves[where.shelfIndex])shelves[where.shelfIndex].scrollLeft=where.shelfLeft;
+   window.scrollTo({top:where.scroll||0,behavior:'auto'});
+   const target=where.key?Array.from(document.querySelectorAll('[data-title]')).find(el=>el.dataset.title===where.key):null;
+   if(target)target.focus({preventScroll:true});
+  });
+  return;
+ }
  if(status.view!=='home'){render('home');return;}
  tellNative({event:'exit'});
 }
