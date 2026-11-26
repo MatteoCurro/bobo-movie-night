@@ -38,6 +38,7 @@ function setAccount(username){
  const favButton=$('[data-view="favorites"]');
  if(userButton)userButton.textContent=username?'◉ '+username:'Account';
  if(favButton)favButton.textContent='♥ Preferiti'+(username?' ('+favorites.length+')':'');
+ window.BoboTV?.updateHomeFavorites?.();
 }
 async function refresh(){
  // Opening the app and loading the catalog can both request refresh;
@@ -214,6 +215,6 @@ root.addEventListener('submit',e=>{
  if(e.target.id!=='tv-login')return;
  e.preventDefault();signIn(e.target);
 });
-window.BoboTVExtras={render,onClick,updateDetail,refresh,catalogReady:()=>refresh()};
+window.BoboTVExtras={render,onClick,updateDetail,refresh,catalogReady:()=>refresh(),getFavorites:()=>favorites,isLoggedIn:()=>!!profile};
 refresh();
 }());
