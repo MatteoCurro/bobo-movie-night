@@ -200,21 +200,103 @@ function updateHomeFavorites(){
  const items=extra?.isLoggedIn?.()?extra?.getFavorites?.()||[]:[];
  host.innerHTML=items.length?rail('♥ I tuoi preferiti',items.slice(0,14),'La tua raccolta'):'';
 }
+function browseGenreOptions(type){
+ const list=type==='tv'?status.series:status.movies,available=new Set();
+ for(const item of list){
+  for(const id of item.genreIds||[])available.add(genreDictionary[id]);
+  for(const name of item.genres||[])available.add(name);
+ }
+ return GENRE_FILTERS.filter(x=>x.key==='all'||[x.key,...(x.aliases||[])].some(g=>available.has(g)));
+}
+function browseResultList(type){
+ const state=status.browseFilters[type]||status.browseFilters.movie;
+ const cacheKey=[type,state.genre,state.era,state.sort].join('|');
+ if(browseCache.has(cacheKey))return browseCache.get(cacheKey);
+ const genre=GENRE_FILTERS.find(x=>x.key===state.genre);
+ const names=new Set(genre?[genre.key,...(genre.aliases||[])]:[]);
+ const codes=new Set(genreDictionary.map((name,i)=>names.has(name)?i:-1).filter(i=>i>=0));
+ const correctEra=year=>{
+  if(state.era==='all')return true;
+  if(!Number.isFinite(year)||year<1880)return false;
+  if(state.era==='2020')return year>=2020;
+  if(state.era==='classic')return year<1980;
+  const start=Number(state.era);
+  return year>=start&&year<start+10;
+ };
+ const source=type==='tv'?status.series:status.movies;
+ const list=source.filter(item=>{
+  if(!item.poster||!correctEra(Number(item.year)))return false;
+  if(state.genre==='all')return true;
+  return (item.genreIds||[]).some(id=>codes.has(id))||
+    (item.genres||[]).some(g=>names.has(g));
+ });
+ const quality=item=>(Number(item.vote)||0)*Math.log10(16+Math.max(0,Number(item.votes)||0));
+ if(state.sort==='rating')list.sort((a,b)=>Number(b.vote)-Number(a.vote)||Number(b.votes||0)-Number(a.votes||0));
+ else if(state.sort==='recent')list.sort((a,b)=>Number(b.year)-Number(a.year)||quality(b)-quality(a));
+ else if(state.sort==='title')list.sort((a,b)=>a.title.localeCompare(b.title,'it'));
+ else list.sort((a,b)=>quality(b)-quality(a)||Number(b.year)-Number(a.year));
+ if(browseCache.size>9)browseCache.clear();
+ browseCache.set(cacheKey,list);
+ return list;
+}
+function browseChips(group,title,options,selected){
+ return '<div class="browse-filter-line"><span class="browse-filter-caption">'+esc(title)+'</span>'+
+   '<div class="browse-chip-row" data-filter-group="'+group+'">'+
+   options.map(o=>'<button type="button" class="browse-chip tv-focus'+(selected===o.key?' selected':'')+
+     '" aria-pressed="'+(selected===o.key?'true':'false')+'" data-filter="'+group+
+     '" data-filter-value="'+esc(o.key)+'">'+esc(o.label)+'</button>').join('')+
+   '</div></div>';
+}
+function curatedBrowse(type,selected){
+ if(selected||!homeFeed?.sections?.length)return '';
+ const priorities=type==='tv'?['mini','week','trending']:['week','hidden','classics'];
+ let count=0,html='';
+ for(const id of priorities){
+  const group=homeFeed.sections.find(x=>x.id===id);if(!group)continue;
+  const items=(group.items||[]).filter(x=>x.type===type);
+  if(items.length<3)continue;
+  html+=rail(count===0?(type==='tv'?'Serie consigliate':'Film consigliati'):group.title,
+    items,count===0?'Non sai cosa scegliere? Inizia da qui':group.note);
+  if(++count===2)break;
+ }
+ return html;
+}
 function browse(type){
  if(!status.indexReady)return '<div class="loading"><span class="spinner"></span><p>Preparazione catalogo…</p></div>';
- const list=(type==='tv'?status.series:status.movies).filter(i=>i.poster);
- const visible=status.browseLimit[type]||48;
- return '<div class="section-header"><h1>'+(type==='tv'?'Serie TV':'Film')+'</h1><span class="section-desc">'+
-  list.length.toLocaleString('it-IT')+' titoli</span></div>'+
-  '<div class="results">'+list.slice(0,visible).map(poster).join('')+'</div>'+
-  (list.length>visible?'<button type="button" class="action secondary tv-focus tv-more" data-more="'+type+'">Mostra altri titoli ↓</button>':'');
+ const state=status.browseFilters[type]||status.browseFilters.movie;
+ const narrowed=state.genre!=='all'||state.era!=='all',list=browseResultList(type);
+ const visible=status.browseLimit[type]||36;
+ return '<div class="section-header browse-title"><h1>'+(type==='tv'?'Serie TV':'Film')+'</h1>'+
+   '<span class="section-desc">Esplora per genere, periodo e valutazione</span></div>'+
+   '<div class="browse-controls" aria-label="Filtri per esplorare il catalogo">'+
+   browseChips('genre','Genere',browseGenreOptions(type),state.genre)+
+   browseChips('era','Periodo',ERA_FILTERS,state.era)+
+   browseChips('sort','Ordina',SORT_FILTERS,state.sort)+'</div>'+
+   curatedBrowse(type,narrowed)+
+   '<div class="browse-results-title"><h2>'+(narrowed?'La tua selezione':'Tutti i titoli')+'</h2>'+
+   '<span>'+list.length.toLocaleString('it-IT')+' risultati</span></div>'+
+   '<div class="results" id="browse-results">'+list.slice(0,visible).map(poster).join('')+'</div>'+
+   (!list.length?'<p class="message">Nessun titolo corrisponde ai filtri. Prova un altro genere o periodo.</p>':'')+
+   (list.length>visible?'<button type="button" class="action secondary tv-focus tv-more" data-more="'+type+'">Mostra altri titoli ↓</button>':'');
+}
+function updateBrowseFilter(group,value){
+ const type=status.view;
+ if(type!=='movie'&&type!=='tv')return;
+ const filters=status.browseFilters[type];
+ if(!Object.prototype.hasOwnProperty.call(filters,group))return;
+ filters[group]=value;
+ status.browseLimit[type]=36;
+ app.innerHTML=browse(type);
+ const row=Array.from(document.querySelectorAll('.browse-chip-row')).find(el=>el.dataset.filterGroup===group);
+ const chip=Array.from(row?.querySelectorAll('.browse-chip')||[]).find(el=>el.dataset.filterValue===value);
+ if(chip){chip.focus({preventScroll:true});ensure(chip,'vertical');}
 }
 function moreBrowse(type){
- const list=(type==='tv'?status.series:status.movies).filter(i=>i.poster);
- const start=status.browseLimit[type]||48;
- const end=Math.min(list.length,start+48);
+ const list=browseResultList(type);
+ const start=status.browseLimit[type]||36;
+ const end=Math.min(list.length,start+36);
  status.browseLimit[type]=end;
- const grid=$('.results');if(!grid)return;
+ const grid=$('#browse-results');if(!grid)return;
  grid.insertAdjacentHTML('beforeend',list.slice(start,end).map(poster).join(''));
  const more=$('.tv-more');if(more&&end>=list.length)more.remove();
  const next=grid.querySelectorAll('.poster')[start];
