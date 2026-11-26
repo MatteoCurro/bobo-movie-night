@@ -102,8 +102,8 @@ assert(nodes['watch-film-quote-source'].href.startsWith('https://it.wikiquote.or
 nodes['watch-film-quote'].hidden=true;
 helpers.renderQuote({...quotes.quotes['movie:238'],source_url:'javascript:alert(1)'});
 assert(nodes['watch-film-quote'].hidden,'Untrusted quote URLs must be rejected');
-nodes['watch-critic-section'].hidden=true;
-nodes['watch-reviews-section'].hidden=true;
+doc.getElementById('watch-critic-section').hidden=true;
+doc.getElementById('watch-reviews-section').hidden=true;
 helpers.observeOpinions();
 assert(nodes['watch-opinions-section'].hidden);
 nodes['watch-critic-section'].hidden=false;
