@@ -142,7 +142,7 @@
     }).join('');
     host.innerHTML='<div class="bobo-discover-award-head"><div><span class="eyebrow">PREMI / ARCHIVIO</span>'+
       '<h2>Il cinema premiato.</h2>'+
-      '<p>Oscar, Cannes, categorie e vincitori: raccolte consultabili, non un elenco di link.</p></div>'+
+      '<p>Film vincitori e categorie Oscar già indicizzati; Cannes sarà aggiunto con dati verificati.</p></div>'+
       '<a href="awards.html">Archivio dei premi ↗</a></div>'+
       '<div class="bobo-discover-award-grid">'+cards+'</div>';
     host.hidden=false;
