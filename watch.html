@@ -66,15 +66,19 @@
         <span id="watch-current-episode" class="current-episode"></span>
         <button id="watch-previous" type="button" class="quiet-button" hidden>← Episodio precedente</button>
         <button id="watch-next" type="button" class="quiet-button" hidden>Episodio successivo →</button>
+        <label for="watch-source-select" class="bobo-source-label">Sorgente</label>
+        <select id="watch-source-select" class="bobo-source-select" aria-label="Scegli il servizio di riproduzione"></select>
+        <button id="watch-source-next" type="button" class="quiet-button">↻ Cambia sorgente</button>
         <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
       </div>
+      <p id="watch-source-note" class="player-caption" aria-live="polite">Audio italiano preferito su VixSrc; nelle altre sorgenti il doppiaggio non è garantito. Se un video non parte, cambia sorgente.</p>
       <p id="watch-auto-next-status" class="player-caption" aria-live="polite" hidden></p>
       <details id="watch-player-diagnostics" class="bobo-player-diagnostics" hidden>
         <summary>Diagnostica avanzamento episodi</summary>
         <p id="watch-event-diagnostic" class="player-caption" aria-live="polite">Nessun segnale ricevuto dal player in questa sessione.</p>
       </details>
-      <p class="player-caption">Il player è fornito da un sito esterno. Se viene mostrato un errore, puoi aprirlo in una scheda separata. L'avanzamento automatico dipende dall'evento di fine video comunicato da Vix.</p>
-      <p class="player-caption">Usa <strong>Schermo intero Bobo</strong> per mantenere la modalità cinema quando passi all'episodio successivo. Per compatibilità il player Vix non è più isolato con sandbox: eventuali popup del servizio non possono essere bloccati in modo affidabile da questa pagina senza compromettere la riproduzione.</p>
+      <p class="player-caption">Il player è esterno. Se non parte, usa <strong>Cambia sorgente</strong>. Il cambio non modifica film o episodio; l'avanzamento automatico è supportato solo dai provider compatibili.</p>
+      <p class="player-caption">Usa <strong>Schermo intero Bobo</strong> per mantenere la modalità cinema quando passi all'episodio successivo. Per compatibilità alcuni player non possono essere isolati con sandbox: eventuali popup del servizio non possono essere bloccati in modo affidabile da questa pagina senza compromettere la riproduzione.</p>
     </section>
 
     <section id="watch-episodes-section" class="section episodes-section" hidden aria-labelledby="watch-episodes-heading">
@@ -101,9 +105,8 @@
         <h2 id="watch-settings-title">Impostazioni riproduzione</h2>
         <button type="button" id="watch-settings-close" aria-label="Chiudi impostazioni">×</button>
       </div>
-      <p>Vix è il provider predefinito. La scelta rimane memorizzata in questo browser.</p>
-      <label class="provider-option"><input type="radio" name="watch-provider" value="vix"> <span><strong>Vix</strong><small>Consigliato</small></span></label>
-      <label class="provider-option"><input type="radio" name="watch-provider" value="vidsrc"> <span><strong>VidSrc</strong><small>Alternativa sperimentale: riproduzione non verificata e possibili reindirizzamenti</small></span></label>
+      <p>La sorgente rimane memorizzata su questo dispositivo. Solo VixSrc documenta una preferenza per l'audio italiano.</p>
+      <div id="watch-provider-options" role="radiogroup" aria-label="Servizi di riproduzione"></div>
       <div class="autonext-settings">
         <h3>Serie TV · riproduzione consecutiva</h3>
         <label class="autonext-switch"><input id="watch-auto-next-enabled" type="checkbox"> <span>Passa automaticamente all'episodio successivo quando termina quello in corso</span></label>
@@ -119,6 +122,14 @@
     </div>
   </div>
   <style>.watch-related-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(125px,175px);gap:13px;overflow-x:auto;padding:10px 4px 18px}.watch-related-tile{color:inherit;text-decoration:none;display:block}.watch-related-tile img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;display:block}.watch-related-tile strong{font-size:14px;display:block;margin-top:8px}.watch-related-tile small{font-size:12px;color:#aaa;display:block;margin-top:4px}</style>
+  <style>
+    .bobo-source-select{background:#18191e;color:inherit;border:1px solid #62636b;border-radius:9px;padding:9px 12px;min-width:155px;max-width:100%}
+    .bobo-source-select:focus-visible,#watch-source-next:focus-visible{outline:2px solid #b9ff8b;outline-offset:2px}
+    .bobo-source-label{font-size:13px;font-weight:650}
+    #watch-provider-options .provider-option{display:flex}
+    @media(max-width:640px){.player-controls{flex-wrap:wrap}.bobo-source-select{min-width:130px}}
+  </style>
+  <script src="bobo-players.js" defer></script>
   <script src="bobo-related.js" defer></script>
   <script src="bobo-watch.js" defer></script>
 </body>

@@ -58,6 +58,8 @@ const ctx={
 const stage=document.getElementById('watch-player-stage');
 stage.requestFullscreen=function(){document.fullscreenElement=stage;return Promise.resolve();};
 document.getElementById('watch-iframe');
+ctx.window.localStorage=ctx.localStorage;
+vm.runInNewContext(fs.readFileSync('bobo-players.js','utf8'),ctx,{filename:'bobo-players.js'});
 vm.runInNewContext(fs.readFileSync('bobo-watch.js','utf8'),ctx,{filename:'bobo-watch.js'});
 assert.equal((signals['document:DOMContentLoaded']||[]).length,1);
 signals['document:DOMContentLoaded'][0]();
@@ -73,6 +75,16 @@ function event(kind,src,origin='https://vixsrc.to',progress=null) {
 click('watch-start');
 let frame=document.getElementById('watch-iframe');
 assert.match(frame.src,/tv\/1234\/1\/1\?lang=it$/);
+const initialPlayer=frame;
+document.getElementById('watch-source-select').value='vidlink';
+document.getElementById('watch-source-select').dispatch('change');
+frame=document.getElementById('watch-iframe');
+assert.match(frame.src,/vidlink\.pro\/tv\/1234\/1\/1/);
+assert.notEqual(frame,initialPlayer,'Switch provider must rebuild iframe');
+document.getElementById('watch-source-select').value='vix';
+document.getElementById('watch-source-select').dispatch('change');
+frame=document.getElementById('watch-iframe');
+assert.match(frame.src,/vixsrc\.to\/tv\/1234\/1\/1\?lang=it/);
 const firstWindow=frame.contentWindow;
 click('watch-theater-button');
 assert.equal(document.fullscreenElement,stage);

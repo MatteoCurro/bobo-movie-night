@@ -38,12 +38,7 @@
   let theaterFallback = false;
   let autoNextEnabled = readOption(STORAGE_AUTO_NEXT, 'true') === 'true';
   let autoNextLimit = Math.max(2, Math.min(5, Number(readOption(STORAGE_AUTO_LIMIT, '5')) || 5));
-  let provider = (function () {
-    try {
-      const value = localStorage.getItem(STORAGE_PROVIDER);
-      return value === 'vidsrc' ? 'vidsrc' : 'vix';
-    } catch (_) { return 'vix'; }
-  }());
+  let provider = window.BoboPlayers ? window.BoboPlayers.selected() : 'vix';
 
   const byId = function (name) { return document.getElementById(name); };
   function label(kind) { return kind === 'tv' ? 'Serie TV' : 'Film'; }
@@ -111,16 +106,14 @@
   }
   function playerURL(automatic) {
     if (!item) return '';
-    const tid = encodeURIComponent(String(item.tmdb_id));
-    if (provider === 'vidsrc') {
-      return type === 'movie'
-        ? 'https://vidsrc-embed.ru/embed/movie?tmdb='+tid+'&ds_lang=it'
-        : 'https://vidsrc-embed.ru/embed/tv?tmdb='+tid+'&season='+selectedSeason+'&episode='+selectedEpisode+'&ds_lang=it';
-    }
-    return type === 'movie'
-      ? 'https://vixsrc.to/movie/'+tid+'?lang=it'
-      : 'https://vixsrc.to/tv/'+tid+'/'+selectedSeason+'/'+selectedEpisode+'?lang=it'+
-          (automatic ? '&autoplay=true' : '');
+    if (window.BoboPlayers) return window.BoboPlayers.url(provider, {
+      type, tmdbId: item.tmdb_id, season: selectedSeason, episode: selectedEpisode
+    }, Boolean(automatic));
+    // Emergency offline fallback if the shared registry script is unavailable.
+    const id = encodeURIComponent(String(item.tmdb_id));
+    return type === 'movie' ? 'https://vixsrc.to/movie/'+id+'?lang=it' :
+      'https://vixsrc.to/tv/'+id+'/'+selectedSeason+'/'+selectedEpisode+'?lang=it'+
+      (automatic ? '&autoplay=true' : '');
   }
   function updateAutoStatus(note) {
     const node = byId('watch-auto-next-status');
@@ -313,7 +306,7 @@
   }
   function onPlayerMessage(event) {
     const frame=byId('watch-iframe');
-    if(!frame || !playing || provider!=='vix')return;
+    if(!frame || !playing || provider!=='vix' || event.source !== frame.contentWindow)return;
     let msg=event.data;
     // Debug mode records *only* the signal type and sender's origin; never
     // dump unrelated messages or sensitive player internals.
@@ -601,6 +594,56 @@
       if (selected) { selected.checked = true; selected.focus(); }
     } else byId('watch-settings-trigger').focus();
   }
+  function renderPlayerSources() {
+    if (!window.BoboPlayers) return;
+    const sources = window.BoboPlayers.list();
+    const select = byId('watch-source-select');
+    if (select) {
+      select.replaceChildren();
+      sources.forEach(p => {
+        const option = document.createElement('option');
+        option.value = p.id;
+        option.textContent = p.name + (p.audio === 'it-preferred' ? ' · audio ITA preferito' : ' · ITA non verificato');
+        select.appendChild(option);
+      });
+      select.value = provider;
+    }
+    const opts = byId('watch-provider-options');
+    if (opts) {
+      opts.replaceChildren();
+      sources.forEach(p => {
+        const label = document.createElement('label');
+        label.className = 'provider-option';
+        const radio = document.createElement('input');
+        radio.type = 'radio'; radio.name = 'watch-provider'; radio.value = p.id;
+        radio.checked = p.id === provider;
+        radio.addEventListener('change', function () { if (this.checked) chooseSource(p.id); });
+        const span = document.createElement('span');
+        const strong = document.createElement('strong');
+        strong.textContent = p.name;
+        const small = document.createElement('small');
+        small.textContent = p.audio === 'it-preferred' ? 'Preferenza audio italiano documentata' :
+          p.subtitle ? 'Audio ITA non verificato · sottotitoli ITA se disponibili' :
+            'Audio italiano non verificato';
+        span.appendChild(strong); span.appendChild(small);
+        label.appendChild(radio); label.appendChild(span);
+        opts.appendChild(label);
+      });
+    }
+    const note = byId('watch-source-note');
+    if (note) note.textContent = provider === 'vix' ?
+      'VixSrc preferisce l’audio italiano se disponibile. Se il player non parte, prova Cambia sorgente.' :
+      'Audio italiano non verificato per questa sorgente. Il contenuto potrebbe essere solo in lingua originale o sottotitolato.';
+  }
+  function chooseSource(id) {
+    if (!window.BoboPlayers || !window.BoboPlayers.get(id)) return;
+    const next = window.BoboPlayers.select(id);
+    if (next === provider) return;
+    provider = next;
+    resetSequence();
+    renderPlayerSources();
+    if (playing) playNow(false);
+  }
   function setup() {
     const diagnostics=byId('watch-player-diagnostics');
     if(diagnostics)diagnostics.hidden=params.get('debug')!=='player';
@@ -649,20 +692,26 @@
       saveOption(STORAGE_AUTO_LIMIT,autoNextLimit);
       resetSequence();
     });
+    byId('watch-source-select').addEventListener('change',function () { chooseSource(this.value); });
+    byId('watch-source-next').addEventListener('click',function () {
+      if (window.BoboPlayers) chooseSource(window.BoboPlayers.next(provider));
+    });
+    if (window.BoboPlayers) {
+      renderPlayerSources();
+      window.BoboPlayers.onUpdate(function () {
+        if (!window.BoboPlayers.get(provider)) {
+          provider = window.BoboPlayers.selected();
+          if (playing) playNow(false);
+        }
+        renderPlayerSources();
+      });
+      window.BoboPlayers.init().then(renderPlayerSources);
+    }
     window.addEventListener('message',onPlayerMessage);
     byId('watch-settings-trigger').addEventListener('click',function () { settings(true); });
     byId('watch-settings-close').addEventListener('click',function () { settings(false); });
     byId('watch-settings').addEventListener('click',function (event) {
       if (event.target === this) settings(false);
-    });
-    document.querySelectorAll('input[name="watch-provider"]').forEach(function (radio) {
-      radio.addEventListener('change',function () {
-        provider = this.value === 'vidsrc' ? 'vidsrc' : 'vix';
-        try { localStorage.setItem(STORAGE_PROVIDER,provider); } catch (_) {}
-        resetSequence();
-        if (playing) playNow(false);
-        settings(false);
-      });
     });
     document.addEventListener('keydown',function (event) {
       if (event.key === 'Escape' && theaterFallback) exitTheater();

@@ -19,7 +19,10 @@ jobs:
           python3 tests/incremental_catalog.py
       - name: Validate site scripts
         run: |
+          node --check bobo-players.js
           node --check bobo-watch.js
+          node tests/player-manager.cjs
+          node tests/index-inline.cjs
           node --check bobo-cloud.js
           node --check bobo-library.js
           node --check bobo-favorites.js
