@@ -9,7 +9,14 @@
     netflix:{name:'Netflix',label:'NETFLIX'},
     prime:{name:'Prime Video',label:'prime'},
     disney:{name:'Disney+',label:'Disney+'},
-    apple:{name:'Apple TV+',label:'Apple TV+'}
+    apple:{name:'Apple TV+',label:'Apple TV+'},
+    paramount:{name:'Paramount+',label:'Paramount+'},
+    skygo:{name:'Sky Go',label:'Sky Go'},
+    now:{name:'NOW',label:'NOW'},
+    hbo:{name:'HBO Max',label:'HBO Max'},
+    rai:{name:'RaiPlay',label:'RaiPlay'},
+    mediaset:{name:'Mediaset Infinity',label:'Infinity'},
+    crunchyroll:{name:'Crunchyroll',label:'Crunchyroll'}
   };
   let syncScheduled = false;
   const byId = name => document.getElementById(name);
@@ -236,15 +243,35 @@
       if(!res.ok)return;
       const data=await res.json();
       const map=new Map();
-      (data.streaming?.platforms || []).forEach(platform=>{
-        if(!PROVIDERS[platform.id])return;
-        (platform.items || []).forEach(item=>{
-          if(!item || !['movie','tv'].includes(item.type))return;
-          const k=key(item.type,item.tmdb_id);
-          if(!map.has(k))map.set(k,[]);
-          if(!map.get(k).includes(platform.id))map.get(k).push(platform.id);
-        });
-      });
+      // StreamRadar monthly observations and TMDB's current provider shelves
+      // both contribute; neither should imply that Bobo hosts the actual video.
+      const add=(kind,id,provider)=>{
+        if(!PROVIDERS[provider] || !['movie','tv'].includes(kind) || !/^\d+$/.test(String(id)))return;
+        const k=key(kind,id);
+        if(!map.has(k))map.set(k,[]);
+        if(!map.get(k).includes(provider))map.get(k).push(provider);
+      };
+      for(const group of [data.streaming?.platforms || [],data.platforms || []]) {
+        for(const platform of group) {
+          if(!PROVIDERS[platform.id])continue;
+          for(const item of platform.items || [])if(item)add(item.type,item.tmdb_id,platform.id);
+        }
+      }
+      try {
+        const response=await fetch('data/enrichment.json',{cache:'no-store'});
+        if(response.ok){
+          const enrichment=await response.json();
+          const cutoff=Date.now()-90*86400000;
+          for(const [title,entry] of Object.entries(enrichment.items || {})){
+            const record=entry?.providers_it;
+            if(!record || record.region!=='IT')continue;
+            const when=Date.parse((record.observed_at||'')+'T00:00:00Z');
+            if(!Number.isFinite(when) || when<cutoff)continue;
+            const [kind,id]=title.split(':');
+            for(const platform of record.flatrate || [])add(kind,id,platform);
+          }
+        }
+      }catch(_) { /* Enrichment is optional; ledger and discovery still work. */ }
       // If the current public feed omits a provider, retain a recent,
       // date-stamped observation for at most 35 days. Never invent a match.
       try {
@@ -261,9 +288,7 @@
                 if(!PROVIDERS[provider])continue;
                 const when=Date.parse(date+'T00:00:00Z');
                 if(!Number.isFinite(when) || when<boundary)continue;
-                const k=key(kind,id);
-                if(!map.has(k))map.set(k,[]);
-                if(!map.get(k).includes(provider))map.get(k).push(provider);
+                add(kind,id,provider);
               }
             }
           }
