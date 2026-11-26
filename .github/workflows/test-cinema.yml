@@ -20,6 +20,9 @@ on:
       - 'bobo-discover.css'
       - 'discover.html'
       - 'scripts/build_cinema_explore.py'
+      - 'scripts/build_story_connections.py'
+      - 'tests/story-connections.py'
+      - 'bobo-related.js'
       - 'scripts/enrich_person_facts.py'
       - 'tests/cinema-explore.py'
       - 'informazioni.html'
@@ -50,6 +53,9 @@ jobs:
           python3 tests/person-search.py
           python3 -m py_compile scripts/build_cinema_explore.py scripts/enrich_person_facts.py
           python3 tests/cinema-explore.py
+          python3 -m py_compile scripts/build_story_connections.py
+          python3 tests/story-connections.py
+          node --check bobo-related.js
           node --check bobo-awards.js
           node --check bobo-discover.js
           node --check bobo-ui.js
