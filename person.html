@@ -24,39 +24,38 @@
       <a href="discover.html">Discover</a>
     </nav>
   </header>
-  <main id="person-main">
+  <main id="person-main" data-person-mode="actor">
+    <nav class="bobo-person-breadcrumb" aria-label="Percorso"><a href="discover.html">Discover</a><span>/</span><a href="person.html">Persone</a><span>/</span><span id="person-breadcrumb-current">Profilo</span></nav>
     <section id="person-directory" class="bobo-person-directory" hidden aria-labelledby="person-directory-heading">
-      <p class="eyebrow">Persone · Cinema e TV</p>
-      <h1 id="person-directory-heading">Attori e interpreti</h1>
-      <p>Scopri i protagonisti dei film e delle serie di Bobo Movie Night. Le schede personali sono collegate ai titoli del catalogo e si arricchiscono progressivamente.</p>
-      <div class="bobo-person-examples">
-        <a href="person.html?id=40451"><strong>Akio Ōtsuka</strong><small>Biografia e filmografia</small></a>
-        <a href="person.html?id=40325"><strong>Megumi Hayashibara</strong><small>Biografia e filmografia</small></a>
-        <a href="person.html?id=82055"><strong>Junko Takeuchi</strong><small>Biografia e filmografia</small></a>
+      <div class="bobo-person-directory-hero"><p class="eyebrow">BOBO / VOLTI DEL CINEMA</p><h1 id="person-directory-heading">Le persone dietro <em>le storie.</em></h1>
+        <p>Interpreti da riscoprire, filmografie da percorrere. Ogni settimana nuove storie da esplorare.</p>
+        <div class="bobo-person-directory-switch"><a href="person.html" aria-current="page">Interpreti</a><a href="director.html">Registi</a><a href="discover.html">Discover</a></div>
       </div>
-      <p class="bobo-person-note">Questi sono alcuni esempi già presenti in archivio. Per scoprire altri interpreti, apri la scheda di un film e seleziona una persona dalla sezione Cast e troupe.</p>
+      <div class="bobo-person-directory-head"><h2>Da conoscere questa settimana</h2><span id="person-directory-week"></span></div>
+      <div id="person-directory-cards" class="bobo-person-directory-cards"><a href="person.html?id=6384">Keanu Reeves</a><a href="person.html?id=30614">Ryan Gosling</a><a href="person.html?id=31">Tom Hanks</a></div>
     </section>
     <p id="person-loading" class="status" role="status">Caricamento scheda…</p>
     <div id="person-content" hidden>
-      <div class="bobo-person-intro">
-        <div id="person-photo"></div>
-        <div>
-          <p class="eyebrow">Persone · Cinema e TV</p>
-          <h1 id="person-title"></h1>
-          <p id="person-facts"></p>
-          <p id="person-pending" class="bobo-person-note" hidden>La biografia in italiano è in preparazione. Nel frattempo puoi consultare i titoli accreditati qui sotto.</p>
+      <section class="bobo-person-hero" aria-labelledby="person-title">
+        <div id="person-photo" class="bobo-person-image-frame"></div>
+        <div class="bobo-person-hero-copy">
+          <p class="eyebrow" id="person-role">VOLTI / CINEMA E SERIE</p><h1 id="person-title"></h1>
+          <div id="person-facts" class="bobo-person-facts"></div><div id="person-stats" class="bobo-person-stats"></div>
+          <p id="person-pending" class="bobo-person-note" hidden>La biografia italiana è in preparazione. Puoi già esplorare i titoli collegati.</p>
+          <div class="bobo-person-hero-actions"><a href="#person-works-section" class="bobo-person-action">Esplora la filmografia ↓</a><a href="discover.html" class="bobo-person-action bobo-person-action--quiet">Torna a Discover</a></div>
         </div>
+      </section>
+      <div class="bobo-person-body">
+        <section id="person-bio-section" class="bobo-person-section bobo-person-biography" hidden aria-labelledby="person-bio-heading">
+          <div class="bobo-person-section-head"><span class="bobo-person-index">01</span><h2 id="person-bio-heading">La storia</h2></div>
+          <p id="person-biography"></p><p id="person-language-note" class="bobo-person-note" hidden>Biografia tradotta automaticamente. Alcuni dettagli potrebbero richiedere una verifica.</p>
+        </section>
+        <section id="person-works-section" class="bobo-person-section bobo-person-filmography" hidden aria-labelledby="person-works-heading">
+          <div class="bobo-person-section-head"><span class="bobo-person-index">02</span><div><h2 id="person-works-heading">Sul grande e piccolo schermo</h2><p id="person-works-caption">Opere collegate al catalogo Bobo</p></div></div>
+          <div id="person-works" class="bobo-work-grid"></div><button type="button" id="person-works-more" class="bobo-person-more" hidden>Mostra altre opere</button>
+        </section>
       </div>
-      <section id="person-bio-section" class="bobo-person-section" hidden aria-labelledby="person-bio-heading">
-        <h2 id="person-bio-heading">Biografia</h2>
-        <p id="person-language-note" class="bobo-person-note" hidden>Traduzione automatica da una biografia TMDB in inglese; potrebbero esserci imprecisioni.</p>
-        <p id="person-biography"></p>
-      </section>
-      <section id="person-works-section" class="bobo-person-section" hidden aria-labelledby="person-works-heading">
-        <h2 id="person-works-heading">Film e serie con una partecipazione accreditata</h2>
-        <div id="person-works" class="bobo-work-grid"></div>
-      </section>
-      <p class="bobo-person-note">Dati e immagini: TMDB. I titoli provengono dai crediti TMDB (recitazione, regia, sceneggiatura) e sono limitati alle opere del catalogo Bobo: l'elenco non è necessariamente completo. L'archivio si aggiorna progressivamente.</p>
+      <p class="bobo-person-scope-note">La selezione comprende i titoli accreditati presenti nel nostro catalogo. La filmografia non è necessariamente completa.</p>
     </div>
   </main>
   <script src="bobo-cinema.js" defer></script>
