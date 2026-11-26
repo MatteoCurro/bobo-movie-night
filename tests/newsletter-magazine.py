@@ -65,7 +65,7 @@ with tempfile.TemporaryDirectory() as tmp:
     }})
     module.ROOT = root
     first = module.build(dt.date(2026, 12, 3))
-    assert first["schema"] == 2
+    assert first["schema"] == 1 and first["magazine_schema"] == 2
     assert first["edition"]["theme"] == "special-christmas"
     assert len(first["sections"]) >= 2
     assert first["quote"]["text"] == "Una breve frase verificata."
