@@ -401,3 +401,49 @@ body {background:#090e14}
 #tv-related-slot {margin-top:16px}
 #home-favorites:empty,#tv-related-slot:empty,#tv-seasons-slot:empty{display:none}
 @media(max-width:1300px) {.hero{min-height:315px}.hero-content{padding:24px 30px}.poster{flex-basis:155px;width:155px}}
+
+
+/* Bobo TV 1.5 — compact, remote-first browse filters. */
+.browse-title {margin-bottom:20px}
+.browse-title .section-desc {font-size:16px}
+.browse-controls {
+ display:flex;flex-direction:column;gap:10px;
+ background:#11202a;border:1px solid #2d444b;
+ border-radius:14px;padding:17px 19px;margin:0 0 27px
+}
+.browse-filter-line{display:flex;align-items:center;gap:14px;min-height:51px;min-width:0}
+.browse-filter-caption{
+ flex:0 0 92px;color:#abc5c6;font-size:15px;font-weight:700
+}
+.browse-chip-row{
+ display:flex;flex:1;min-width:0;gap:9px;
+ overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+ scroll-behavior:auto!important;padding:5px 5px 7px;
+}
+.browse-chip-row::-webkit-scrollbar{display:none}
+.browse-chip {
+ display:inline-flex;align-items:center;justify-content:center;
+ flex:0 0 auto;white-space:nowrap;
+ min-height:43px;min-width:75px;padding:9px 16px;
+ border-radius:8px;border:1px solid #3b535d;
+ background:#1c303b;color:#d7e7e8;
+ font-size:15px;font-weight:700;line-height:1.1;box-shadow:none;
+ transition:none!important
+}
+.browse-chip.selected{border-color:#7dba97;background:#29483f;color:#f1ffe5}
+.browse-chip:focus,.browse-chip:focus-visible{
+ outline:3px solid #b9ff8b;outline-offset:2px;
+ color:#12231c;background:#b9ff8b;box-shadow:none
+}
+.browse-results-title{
+ display:flex;align-items:baseline;gap:24px;
+ padding:4px 0 12px;margin-top:8px
+}
+.browse-results-title h2{margin:0;font-size:25px}
+.browse-results-title span{color:#afc8cc;font-size:15px}
+.browse-controls + .browse-results-title{margin-top:5px}
+@media(max-width:1300px){
+ .browse-filter-caption{flex-basis:80px;font-size:14px}
+ .browse-controls{padding:13px}
+ .browse-chip{min-height:41px;font-size:14px;padding:8px 12px}
+}
