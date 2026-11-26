@@ -33,6 +33,7 @@ with tempfile.TemporaryDirectory() as d:
     dump(root, "movies.json", {"items": movies})
     dump(root, "tv.json", {"items": series})
     dump(root, "catalog-status.json", {"updated_at": "2026-11-26"})
+    dump(root, "editorial-evidence.json", {"titles": {"movie:1": {"vote_count": 2100}}})
     dump(root, "editorial.json", {"sections": [
         {"id": "week", "title": "Settimana", "items": [
             {"type": "movie", "tmdb_id": x["tmdb_id"]} for x in movies]}
@@ -47,6 +48,7 @@ with tempfile.TemporaryDirectory() as d:
     assert len(lite["items"][0]) == 8
     assert "Dramma" in lite["genres"]
     assert any(len(x[6]) for x in lite["items"])
+    assert any(x[0] == "movie" and x[1] == 1 and x[7] == 2100 for x in lite["items"])
     assert lite["items"][0][5].startswith("/")
     home = json.loads((root / "data/tv-home.json").read_text())
     assert home["featured"]["overview"] == "Trama di prova"
