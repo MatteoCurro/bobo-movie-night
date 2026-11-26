@@ -261,11 +261,15 @@ function curatedBrowse(type,selected){
  }
  return html;
 }
+function moreBrowseCaption(total,visible){
+ const remaining=Math.max(0,total-visible);
+ return 'Mostra altri '+Math.min(36,remaining)+' titoli ↓';
+}
 function browse(type){
  if(!status.indexReady)return '<div class="loading"><span class="spinner"></span><p>Preparazione catalogo…</p></div>';
  const state=status.browseFilters[type]||status.browseFilters.movie;
  const narrowed=state.genre!=='all'||state.era!=='all',list=browseResultList(type);
- const visible=status.browseLimit[type]||36;
+ const visible=Math.min(status.browseLimit[type]||36,list.length);
  return '<div class="section-header browse-title"><h1>'+(type==='tv'?'Serie TV':'Film')+'</h1>'+
    '<span class="section-desc">Esplora per genere, periodo e valutazione</span></div>'+
    '<div class="browse-controls" aria-label="Filtri per esplorare il catalogo">'+
@@ -274,10 +278,10 @@ function browse(type){
    browseChips('sort','Ordina',SORT_FILTERS,state.sort)+'</div>'+
    curatedBrowse(type,narrowed)+
    '<div class="browse-results-title"><h2>'+(narrowed?'La tua selezione':'Tutti i titoli')+'</h2>'+
-   '<span>'+list.length.toLocaleString('it-IT')+' risultati</span></div>'+
+   '<span id="browse-count" aria-live="polite">Visualizzati '+visible.toLocaleString('it-IT')+' di '+list.length.toLocaleString('it-IT')+' titoli</span></div>'+
    '<div class="results" id="browse-results">'+list.slice(0,visible).map(poster).join('')+'</div>'+
    (!list.length?'<p class="message">Nessun titolo corrisponde ai filtri. Prova un altro genere o periodo.</p>':'')+
-   (list.length>visible?'<button type="button" class="action secondary tv-focus tv-more" data-more="'+type+'">Mostra altri titoli ↓</button>':'');
+   (list.length>visible?'<button type="button" class="action secondary tv-focus tv-more" data-more="'+type+'">'+moreBrowseCaption(list.length,visible)+'</button>':'');
 }
 function updateBrowseFilter(group,value){
  const type=status.view;
@@ -298,7 +302,8 @@ function moreBrowse(type){
  status.browseLimit[type]=end;
  const grid=$('#browse-results');if(!grid)return;
  grid.insertAdjacentHTML('beforeend',list.slice(start,end).map(poster).join(''));
- const more=$('.tv-more');if(more&&end>=list.length)more.remove();
+ const counter=$('#browse-count');if(counter)counter.textContent='Visualizzati '+end.toLocaleString('it-IT')+' di '+list.length.toLocaleString('it-IT')+' titoli';
+ const more=$('.tv-more');if(more){if(end>=list.length)more.remove();else more.textContent=moreBrowseCaption(list.length,end);}
  const next=grid.querySelectorAll('.poster')[start];
  if(next){next.focus({preventScroll:true});ensure(next,'vertical');}
 }
@@ -959,7 +964,7 @@ window.BoboTV={
  toast:notify,
  updateHomeFavorites:updateHomeFavorites,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.5.0-TV'
+ version:'1.5.1-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
