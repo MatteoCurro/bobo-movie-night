@@ -2265,7 +2265,7 @@
       }
     ],
     "source": "Streamingfilter",
-    "updated_at": "2026-11-26T12:07:47+00:00",
+    "updated_at": "2026-11-26T12:25:29+00:00",
     "url": "https://streamingfilter.com/it/novita"
   },
   "trending": [
@@ -2350,15 +2350,23 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 279246,
-      "type": "tv"
-    },
-    {
       "tmdb_id": 1551025,
       "type": "movie"
     },
     {
+      "tmdb_id": 279246,
+      "type": "tv"
+    },
+    {
       "tmdb_id": 1423191,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 310209,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1496696,
       "type": "movie"
     },
     {
@@ -2367,10 +2375,6 @@
     },
     {
       "tmdb_id": 103540,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 310209,
       "type": "tv"
     },
     {
@@ -2386,12 +2390,28 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 1496696,
+      "tmdb_id": 1263337,
       "type": "movie"
     },
     {
-      "tmdb_id": 1263337,
+      "tmdb_id": 2190,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1457866,
       "type": "movie"
+    },
+    {
+      "tmdb_id": 338938,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 338930,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 203483,
+      "type": "tv"
     },
     {
       "tmdb_id": 292741,
@@ -2402,29 +2422,9 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 117488,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 254630,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1084409,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 290826,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1457866,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1185344,
+      "tmdb_id": 1567605,
       "type": "movie"
     }
   ],
-  "updated_at": "2026-11-26T12:07:40+00:00"
+  "updated_at": "2026-11-26T12:25:23+00:00"
 }
