@@ -10,8 +10,9 @@
     { id: 'vix', name: 'VixSrc', base: 'https://vixsrc.to', family: 'vix', audio: 'it-preferred', subtitle: false, enabled: true, priority: 0 },
     { id: 'vidlink', name: 'VidLink', base: 'https://vidlink.pro', family: 'vidlink', audio: 'unverified', subtitle: false, enabled: true, priority: 1 },
     { id: 'vidsrc', name: 'VidSrc', base: 'https://vidsrc.sh', family: 'vidsrc', audio: 'unverified', subtitle: true, enabled: true, priority: 2 },
-    { id: 'vidrift', name: 'VidRift', base: 'https://embed.vidrift.net', family: 'vidrift', audio: 'unverified', subtitle: true, enabled: false, priority: 3 },
-    { id: 'vidrock', name: 'VidRock', base: 'https://vidrock.net', family: 'vidrock', audio: 'unverified', subtitle: false, enabled: false, priority: 4 }
+    { id: 'vidcore', name: 'VidCore · ITA test', base: 'https://vidcore.org', family: 'vidcore', audio: 'it-requested', subtitle: true, enabled: true, priority: 3 },
+    { id: 'vidrift', name: 'VidRift', base: 'https://embed.vidrift.net', family: 'vidrift', audio: 'unverified', subtitle: true, enabled: false, priority: 4 },
+    { id: 'vidrock', name: 'VidRock', base: 'https://vidrock.net', family: 'vidrock', audio: 'unverified', subtitle: false, enabled: false, priority: 5 }
   ];
   let records = DEFAULTS.map(p => ({ ...p }));
   let readyPromise = null;
@@ -89,6 +90,8 @@
       case 'vix': return rootUrl + path + '?lang=it' + (autoplay ? '&autoplay=true' : '');
       case 'vidlink': return rootUrl + path + (autoplay ? '?autoplay=true' : '');
       case 'vidsrc': return rootUrl + '/embed' + path + '?ds_lang=it';
+      // 'lang' is an audio-track preference, not evidence of an Italian dub.
+      case 'vidcore': return rootUrl + '/embed' + path + '?lang=it' + (autoplay ? '&autoplay=true' : '');
       case 'vidrift': return rootUrl + '/embed' + path + '?sub=it';
       case 'vidrock': return rootUrl + path;
       default: return '';
