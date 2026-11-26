@@ -474,8 +474,8 @@ function ensure(item,axis){
   return;
  }
  const rail=item.closest('.rail,.season-list,.browse-chip-row');
- if(axis==='horizontal'){
-  // Horizontal navigation may scroll ONLY the associated carousel.
+ if(axis==='horizontal'||rail?.classList?.contains('browse-chip-row')){
+  // Ensure horizontal visibility for both sideways travel and vertical filter-row changes.
   // Calling scrollIntoView() here also scrolled the document vertically,
   // making left/right feel like up/down on Android TV.
   if(rail){
@@ -486,7 +486,7 @@ function ensure(item,axis){
    else if(itemBox.right>box.right-pad)distance=itemBox.right-box.right+pad;
    if(Math.abs(distance)>1)rail.scrollBy({left:distance,behavior:'auto'});
   }
-  return;
+  if(axis==='horizontal')return;
  }
  // Keep the selected target outside the sticky header, with a safe TV margin.
  const bounds=item.getBoundingClientRect();
@@ -581,12 +581,18 @@ function move(key){
     const lastRail=rails.length?rails[rails.length-1]:null;
     const filters=Array.from(document.querySelectorAll?.('.browse-chip-row')||[]);
     const lastFilter=filters.length?filters[filters.length-1]:null;
-    const target=lastRail?.querySelector('.poster')||lastFilter?.querySelector('.browse-chip')||
-     document.querySelector?.('#search-done')||document.querySelector?.('.tab.active');
-    if(target){target.focus({preventScroll:true});ensure(target,'vertical');}
-    return;
+    const candidates=lastRail?Array.from(lastRail.querySelectorAll('.poster')):
+      lastFilter?Array.from(lastFilter.querySelectorAll('.browse-chip')):[];
+    const rect=active.getBoundingClientRect(),cx=(rect.left+rect.right)/2;
+    let target=null,bestDistance=Infinity;
+    for(const candidate of candidates){
+     const r=candidate.getBoundingClientRect(),dist=Math.abs((r.left+r.right)/2-cx);
+     if(dist<bestDistance){bestDistance=dist;target=candidate;}
+    }
+    target=target||document.querySelector?.('#search-done')||document.querySelector?.('.tab.active');
+    if(target){target.focus({preventScroll:true});ensure(target,'vertical');return;}
    }
-   if(direction>0){
+      if(direction>0){
     const more=document.querySelector?.('.tv-more');
     if(more){more.focus({preventScroll:true});ensure(more,'vertical');}
     return;
