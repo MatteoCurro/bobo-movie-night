@@ -34,39 +34,78 @@
     return data && data.schema === 1 && data.items && typeof data.items === 'object' ? data.items : null;
   }
   function renderCredits(entry) {
-    const section = byId('watch-cast-section');
-    const castHost = byId('watch-cast-grid');
-    const crewHost = byId('watch-crew');
-    if (!section || !castHost || !entry) return;
-    const actors = Array.isArray(entry.cast) ? entry.cast : [];
-    const crew = Array.isArray(entry.crew) ? entry.crew : [];
-    for (const person of crew.filter(x => x && validId(String(x.id))).slice(0, 8)) {
-      const link = profileLink(person, person.job === 'Director');
-      link.textContent = person.name || 'Persona';
-      const label = person.job === 'Director' ? 'Regia' :
-        person.job === 'Creator' ? 'Ideazione' : 'Sceneggiatura';
-      const group = node('span', 'bobo-crew-item');
-      group.append(node('strong', '', label + ': '), link);
-      crewHost.append(group);
+    const section=byId('watch-cast-section');
+    const castHost=byId('watch-cast-grid');
+    const crewHost=byId('watch-crew');
+    if(!section||!castHost||!crewHost)return;
+    const actors=Array.isArray(entry&&entry.cast)?entry.cast:[];
+    const crew=Array.isArray(entry&&entry.crew)?entry.crew:[];
+    crewHost.textContent='';
+    const roles=[
+      {job:'Director', label:'Regia'},
+      {job:'Creator', label:'Ideazione'},
+      {job:'Writer', label:'Sceneggiatura'}
+    ];
+    let hasDirector=false,renderedCrew=0;
+    for(const group of roles){
+      const seen=new Set();
+      const matches=crew.filter(person=>person&&validId(String(person.id))&&person.job===group.job&&
+        !seen.has(person.id)&&seen.add(person.id)).slice(0,3);
+      if(!matches.length)continue;
+      if(group.job==='Director')hasDirector=true;
+      const card=node('div','bobo-creative-role');
+      card.append(node('span','bobo-creative-job',group.label));
+      const names=node('div','bobo-creative-names');
+      matches.forEach(person=>{
+        const link=profileLink(person,group.job==='Director');
+        link.textContent=person.name||'Professionista';
+        names.append(link);
+      });
+      card.append(names);crewHost.append(card);renderedCrew++;
     }
-    for (const person of actors.filter(x => x && validId(String(x.id))).slice(0, 16)) {
-      const link = profileLink(person);
+    if(!hasDirector){
+      const missing=node('div','bobo-creative-role');
+      missing.append(node('span','bobo-creative-job','Regia'));
+      missing.append(node('span','bobo-creative-pending','Informazione in aggiornamento'));
+      crewHost.prepend(missing);
+    }
+    castHost.textContent='';
+    let seenCast=new Set(),visible=0,hiddenCount=0;
+    for(const person of actors){
+      if(!person||!validId(String(person.id))||seenCast.has(person.id))continue;
+      seenCast.add(person.id);
+      const link=profileLink(person);
       link.classList.add('bobo-actor');
-      const portrait = image(person.photo);
-      const frame = node('span', 'bobo-actor-photo');
-      if (portrait) {
-        const img = node('img');
-        img.src = portrait;
-        img.alt = '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        frame.append(img);
-      } else frame.append(node('span', 'bobo-actor-placeholder', '◉'));
-      link.append(frame, node('strong', '', person.name || 'Interprete'));
-      if (person.character) link.append(node('small', '', person.character));
+      const portrait=image(person.photo);
+      const frame=node('span','bobo-actor-photo');
+      if(portrait){
+        const img=node('img');img.src=portrait;img.alt='';img.loading='lazy';
+        img.decoding='async';frame.append(img);
+      }else frame.append(node('span','bobo-actor-placeholder','◉'));
+      link.append(frame,node('strong','',person.name||'Interprete'));
+      if(person.character)link.append(node('small','',person.character));
+      if(visible>=8){link.hidden=true;hiddenCount++;}
+      else visible++;
       castHost.append(link);
+      if(seenCast.size>=24)break;
     }
-    section.hidden = !castHost.children.length && !crewHost.children.length;
+    const heading=byId('watch-cast-subheading');
+    if(heading)heading.hidden=!castHost.children.length;
+    const more=byId('watch-cast-more');
+    if(more){
+      more.hidden=hiddenCount===0;
+      if(hiddenCount){
+        more.setAttribute('aria-expanded','false');
+        more.textContent='Mostra altri '+hiddenCount+' interpreti';
+        more.onclick=()=>{
+          const expanded=more.getAttribute('aria-expanded')==='true';
+          Array.from(castHost.children).forEach((item,i)=>{item.hidden=expanded&&i>=8;});
+          more.setAttribute('aria-expanded',String(!expanded));
+          more.textContent=expanded?'Mostra altri '+hiddenCount+' interpreti':'Mostra meno';
+        };
+      }
+    }
+    section.hidden=false;
   }
   function renderAwards(entry) {
     const section = byId('watch-awards-section');
@@ -168,14 +207,62 @@
       };
     }
   }
+  function renderQuote(record) {
+    const figure=byId('watch-film-quote');
+    if(!figure||!record||record.reviewed!==true)return;
+    const validText=typeof record.text==='string'&&record.text.trim().length>=12&&
+      record.text.trim().length<=140;
+    const validSource=typeof record.source_url==='string'&&
+      /^https:\/\/it\.wikiquote\.org\/wiki\/[^\s?#]{3,180}$/.test(record.source_url);
+    const validContext=typeof record.context==='string'&&record.context.length>=35&&
+      record.context.length<=360;
+    const validSpeaker=typeof record.speaker==='string'&&record.speaker.length>1&&
+      record.speaker.length<=90;
+    if(!validText||!validSource||!validContext||!validSpeaker)return;
+    byId('watch-film-quote-text').textContent='“'+record.text.trim()+'”';
+    byId('watch-film-quote-speaker').textContent=record.speaker;
+    byId('watch-film-quote-title').textContent=String(record.title||'').slice(0,110);
+    byId('watch-film-quote-context').textContent=record.context;
+    byId('watch-film-quote-source').href=record.source_url;
+    figure.hidden=false;
+    const dossier=byId('watch-cast-section');
+    if(dossier)dossier.hidden=false;
+  }
+  async function loadFilmQuote() {
+    if(filmType!=='movie')return;
+    try{
+      const response=await fetch('data/cinema/film-quotes.json',{cache:'force-cache'});
+      if(!response.ok)return;
+      const payload=await response.json();
+      if(payload&&payload.schema===1&&payload.quotes&&
+         typeof payload.quotes==='object'){
+        renderQuote(payload.quotes[filmType+':'+filmId]);
+      }
+    }catch(_){/* Quotations are optional and never block the dossier. */}
+  }
+  function observeOpinions() {
+    const chapter=byId('watch-opinions-section');
+    if(!chapter||typeof MutationObserver==='undefined')return;
+    const parts=[byId('watch-critic-section'),byId('watch-reviews-section')].filter(Boolean);
+    const update=()=>{chapter.hidden=!parts.some(item=>!item.hidden);};
+    const observer=new MutationObserver(update);
+    parts.forEach(item=>observer.observe(item,{attributes:true,attributeFilter:['hidden']}));
+    update();
+  }
   async function watch() {
-    if (!byId('watch-cast-section') || !['movie', 'tv'].includes(filmType) || !validId(filmId)) return;
-    try {
-      const records = await shard('credits', filmId);
-      const entry = records && records[filmType + ':' + filmId];
+    if(!byId('watch-cast-section')||!['movie','tv'].includes(filmType)||!validId(filmId))return;
+    observeOpinions();
+    void loadFilmQuote();
+    try{
+      const records=await shard('credits',filmId);
+      const entry=records&&records[filmType+':'+filmId];
       renderCredits(entry);
       renderAwards(entry);
-    } catch (e) { console.warn('Bobo: archivio cinema temporaneamente non disponibile', e); }
+    }catch(e){
+      // Cast metadata is optional; title, synopsis and player still work.
+      renderCredits(null);
+      console.warn('Bobo: archivio cinema temporaneamente non disponibile',e);
+    }
   }
   function workCard(work) {
     if (!work || !['movie', 'tv'].includes(work.type) || !validId(String(work.tmdb_id))) return null;
