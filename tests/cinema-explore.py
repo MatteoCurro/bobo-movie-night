@@ -89,4 +89,8 @@ assert "data-person-mode=\"director\"" in Path("director.html").read_text()
 discover=Path("bobo-discover.js").read_text()
 assert "peopleSelections" in discover and "awardsSelections" in discover
 assert "data/cinema/explore.json" in discover
+assert explore.category_name("Oscar", "Oscar al miglior film") == "Miglior film"
+assert explore.category_name("Oscar", "Best Sound Mixing") == "Miglior sonoro"
+assert explore.category_name("Oscar", "Best Original Musical/Secondary Score Category") == "Miglior colonna sonora"
+assert "vincitori di Cannes sono in fase di verifica" in Path("bobo-awards.js").read_text()
 print("Cinema exploration: people, directors, winning awards, height and integrated pages OK")
