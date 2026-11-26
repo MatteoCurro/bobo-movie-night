@@ -57,6 +57,7 @@ STATIC_FILES = {
     "data/reviews.json", "data/critic-reviews.json", "data/multi-ratings.json",
     "data/cinema/person-search.json", "data/cinema/explore.json",
     "data/cinema/film-quotes.json", "data/cinema/OSCAR-LICENSE.txt",
+    "data/cinema/OSCAR-CURRENT-LICENSE.txt",
 }
 ALLOWED_PATTERNS = [
     re.compile(r"data/episodes/[1-9]\d{0,9}\.json"),
