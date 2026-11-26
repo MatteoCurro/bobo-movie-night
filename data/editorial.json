@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T18:32:03+00:00",
+  "generated_at": "2026-11-26T23:02:13+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -378,7 +378,7 @@
         "tmdb_id": 2190,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 5297,
+        "vote_count": 5298,
         "year": 1997
       }
     ],
@@ -2424,7 +2424,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -2548,7 +2548,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -3064,7 +3064,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -4335,7 +4335,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -4443,7 +4443,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -4518,7 +4518,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       }
     ],
@@ -5183,7 +5183,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -5199,7 +5199,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4474,
+        "vote_count": 4475,
         "year": 2022
       },
       {
@@ -5656,7 +5656,7 @@
         "tmdb_id": 61617,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 1868,
+        "vote_count": 1869,
         "year": 2014
       },
       {
@@ -5829,7 +5829,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -6715,7 +6715,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -6731,7 +6731,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4474,
+        "vote_count": 4475,
         "year": 2022
       },
       {
@@ -6829,7 +6829,7 @@
         "tmdb_id": 61617,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 1868,
+        "vote_count": 1869,
         "year": 2014
       },
       {
@@ -6864,7 +6864,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4474,
+        "vote_count": 4475,
         "year": 2022
       },
       {
@@ -6880,7 +6880,7 @@
         "tmdb_id": 95396,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 3158,
+        "vote_count": 3159,
         "year": 2022
       },
       {
@@ -6945,7 +6945,7 @@
         "tmdb_id": 110492,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 3644,
+        "vote_count": 3645,
         "year": 2022
       }
     ],
@@ -6963,7 +6963,7 @@
         "tmdb_id": 95396,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 3158,
+        "vote_count": 3159,
         "year": 2022
       },
       {
@@ -7112,7 +7112,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -7258,7 +7258,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -7353,7 +7353,7 @@
         "tmdb_id": 1402,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 18405,
+        "vote_count": 18406,
         "year": 2010
       },
       {
@@ -7369,7 +7369,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -7500,7 +7500,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -7516,7 +7516,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4474,
+        "vote_count": 4475,
         "year": 2022
       },
       {
@@ -7598,7 +7598,7 @@
         "tmdb_id": 106379,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 3283,
+        "vote_count": 3284,
         "year": 2024
       }
     ],
@@ -7746,7 +7746,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -7894,7 +7894,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -8203,7 +8203,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -8302,7 +8302,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -8487,7 +8487,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -8659,7 +8659,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -8708,7 +8708,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11567,
+        "vote_count": 11568,
         "year": 2013
       },
       {
@@ -9073,7 +9073,7 @@
         "tmdb_id": 61617,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 1868,
+        "vote_count": 1869,
         "year": 2014
       }
     ],
@@ -9158,7 +9158,7 @@
         "tmdb_id": 66732,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 22191,
+        "vote_count": 22193,
         "year": 2016
       },
       {
@@ -9274,7 +9274,7 @@
         "tmdb_id": 76479,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 13710,
+        "vote_count": 13712,
         "year": 2019
       },
       {
@@ -9615,7 +9615,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -9631,7 +9631,7 @@
         "tmdb_id": 1399,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 28242,
+        "vote_count": 28244,
         "year": 2011
       },
       {
@@ -9696,7 +9696,7 @@
         "tmdb_id": 83867,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2349,
+        "vote_count": 2350,
         "year": 2022
       },
       {
@@ -9764,7 +9764,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -9844,7 +9844,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -9859,7 +9859,7 @@
         "tmdb_id": 84773,
         "type": "tv",
         "vote": 7.2,
-        "vote_count": 4147,
+        "vote_count": 4153,
         "year": 2022
       }
     ],
@@ -9877,7 +9877,7 @@
         "tmdb_id": 94997,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 7352,
+        "vote_count": 7353,
         "year": 2022
       },
       {
@@ -9909,7 +9909,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -9973,7 +9973,7 @@
         "tmdb_id": 83867,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2349,
+        "vote_count": 2350,
         "year": 2022
       },
       {
@@ -10081,7 +10081,7 @@
         "tmdb_id": 85552,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 11177,
+        "vote_count": 11178,
         "year": 2019
       },
       {
@@ -10130,7 +10130,7 @@
         "tmdb_id": 95479,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 4759,
+        "vote_count": 4760,
         "year": 2020
       },
       {
@@ -10298,7 +10298,7 @@
         "tmdb_id": 83867,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2349,
+        "vote_count": 2350,
         "year": 2022
       },
       {
@@ -10617,7 +10617,7 @@
           "tmdb_id": 100088,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 7540,
+          "vote_count": 7542,
           "year": 2023
         },
         {
@@ -10665,7 +10665,7 @@
           "tmdb_id": 94997,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 7352,
+          "vote_count": 7353,
           "year": 2022
         },
         {
@@ -10888,6 +10888,22 @@
         },
         {
           "genres": [
+            "Action & Adventure",
+            "Mistero",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
+          "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+          "runtime": 0,
+          "title": "Stranger Things",
+          "tmdb_id": 66732,
+          "type": "tv",
+          "vote": 8.5,
+          "vote_count": 22193,
+          "year": 2016
+        },
+        {
+          "genres": [
             "Dramma"
           ],
           "overview": "Chernobyl è una miniserie televisiva statunitense e britannica, creata e scritta da Craig Mazin e diretta da Johan Renck. Le cinque puntate drammatizzano la vera storia di una delle peggiori catastrofi create dall'uomo a oltre 30 anni dall'accaduto e segue gli uomini e le donne c",
@@ -10902,22 +10918,6 @@
         },
         {
           "genres": [
-            "Action & Adventure",
-            "Mistero",
-            "Sci-Fi & Fantasy"
-          ],
-          "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
-          "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
-          "runtime": 0,
-          "title": "Stranger Things",
-          "tmdb_id": 66732,
-          "type": "tv",
-          "vote": 8.5,
-          "vote_count": 22191,
-          "year": 2016
-        },
-        {
-          "genres": [
             "Sci-Fi & Fantasy",
             "Dramma",
             "Action & Adventure"
@@ -10929,7 +10929,7 @@
           "tmdb_id": 1399,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 28242,
+          "vote_count": 28244,
           "year": 2011
         },
         {
@@ -10975,7 +10975,7 @@
           "tmdb_id": 60574,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 11567,
+          "vote_count": 11568,
           "year": 2013
         },
         {
@@ -11019,7 +11019,7 @@
           "tmdb_id": 76479,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 13710,
+          "vote_count": 13712,
           "year": 2019
         },
         {
@@ -11063,22 +11063,6 @@
       "items": [
         {
           "genres": [
-            "Action & Adventure",
-            "Commedia",
-            "Animazione"
-          ],
-          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
-          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
-          "runtime": 0,
-          "title": "One Piece",
-          "tmdb_id": 37854,
-          "type": "tv",
-          "vote": 8.8,
-          "vote_count": 5673,
-          "year": 1999
-        },
-        {
-          "genres": [
             "Animazione",
             "Famiglia",
             "Fantasy",
@@ -11109,6 +11093,22 @@
           "vote": 8.5,
           "vote_count": 13233,
           "year": 2016
+        },
+        {
+          "genres": [
+            "Action & Adventure",
+            "Commedia",
+            "Animazione"
+          ],
+          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
+          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+          "runtime": 0,
+          "title": "One Piece",
+          "tmdb_id": 37854,
+          "type": "tv",
+          "vote": 8.8,
+          "vote_count": 5673,
+          "year": 1999
         },
         {
           "genres": [
@@ -11171,7 +11171,7 @@
           "tmdb_id": 95479,
           "type": "tv",
           "vote": 8.6,
-          "vote_count": 4759,
+          "vote_count": 4760,
           "year": 2020
         },
         {
@@ -11712,7 +11712,7 @@
           "tmdb_id": 124364,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 4474,
+          "vote_count": 4475,
           "year": 2022
         },
         {
@@ -11774,7 +11774,7 @@
           "tmdb_id": 84773,
           "type": "tv",
           "vote": 7.2,
-          "vote_count": 4147,
+          "vote_count": 4153,
           "year": 2022
         },
         {
