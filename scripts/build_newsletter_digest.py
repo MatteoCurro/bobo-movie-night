@@ -170,7 +170,14 @@ def build(today=None):
     if category:
         section = next((s for s in seasonal if s.get("id") == category), {})
         focus = [ident(x) for x in section.get("items") or []]
-        focus = [k for k in focus if k in candidates]
+        from build_thematic_index import evidence, normalize
+        # Avoid seasonal false positives caused by a passing mention in a plot.
+        focus = [
+            k for k in focus if k in candidates and evidence(
+                category, [normalize(candidates[k].get("title"))] +
+                [str(v) for v in (themed.get(k) or {}).get("topics", []) +
+                 (themed.get(k) or {}).get("keywords", [])])
+        ]
         if len(focus) >= 3:
             tag = ("special-" + category, *SEASON_NAMES[category])
     if not tag:
@@ -240,6 +247,18 @@ def build(today=None):
         if fact and len(fact) <= 250:
             curiosities.append((key, fact))
     curiosity = None
+    if not curiosities:
+        # An additional proven connection can be featured independently.
+        # Avoid invented behind-the-scenes trivia when no cast data is present.
+        for key in sorted(candidates, key=lambda k: score(k, "curiosity"), reverse=True)[:80]:
+            if key in selected:
+                continue
+            rawid = int(key.split(":")[1])
+            entry = get(f"data/cinema/connections/{rawid % 128:02x}.json").get("items", {}).get(key) or {}
+            fact = str(entry.get("fact") or "").strip()
+            if fact and len(fact) <= 250:
+                curiosities.append((key, fact))
+                break
     if curiosities:
         k, fact = curiosities[0]
         curiosity = {"title": "Dietro le quinte", "text": fact,
