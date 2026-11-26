@@ -73,7 +73,9 @@
     const host = byId('watch-awards-list');
     if (!section || !host || !entry) return;
     const awards = Array.isArray(entry.awards) ? entry.awards : [];
-    for (const award of awards.slice(0, 30)) {
+    const indexed={won:new Set(),nominated:new Set()};
+    let visibleAwards=0,remaining=0;
+    for (const award of awards.slice(0, 100)) {
       if (!award || !['Oscar', 'Cannes'].includes(award.event) ||
           !['won', 'nominated'].includes(award.outcome)) continue;
       const card = node('div', 'bobo-award');
@@ -132,6 +134,11 @@
       if (award.recipient) card.append(node('small', '', award.recipient));
       if (award.year) card.append(node('small', '', ' · ' + award.year));
       const category = names[award.category] || award.category || '';
+      const signature = [award.event,category,award.year||'',award.outcome].join('|');
+      if(indexed[award.outcome].has(signature))continue;
+      indexed[award.outcome].add(signature);
+      if(visibleAwards>=8){card.hidden=true;remaining++;}
+      else visibleAwards++;
       if (category) {
         const awardsLink = node('a', 'bobo-award-source', 'Esplora i film premiati →');
         awardsLink.href = 'awards.html?event=' + encodeURIComponent(award.event) +
@@ -141,6 +148,25 @@
       host.append(card);
     }
     section.hidden = !host.children.length;
+    const summary = byId('watch-awards-summary');
+    if(summary&&!section.hidden){
+      const won=indexed.won.size, nominated=indexed.nominated.size;
+      summary.textContent='';
+      const intro=node('span','bobo-awards-digest-label','NEL NOSTRO ARCHIVIO');
+      const contents=node('div','bobo-awards-digest-counts');
+      if(won)contents.append(node('strong','',won+' '+(won===1?'vittoria indicizzata':'vittorie indicizzate')));
+      if(nominated)contents.append(node('span','',nominated+' '+(nominated===1?'candidatura':'candidature')));
+      summary.append(intro,contents);summary.hidden=false;
+    }
+    const expand=byId('watch-awards-expand');
+    if(expand&&remaining){
+      expand.hidden=false;
+      expand.textContent='Mostra altri '+remaining+' riconoscimenti';
+      expand.onclick=()=>{
+        host.querySelectorAll('.bobo-award[hidden]').forEach(x=>x.hidden=false);
+        expand.hidden=true;
+      };
+    }
   }
   async function watch() {
     if (!byId('watch-cast-section') || !['movie', 'tv'].includes(filmType) || !validId(filmId)) return;
