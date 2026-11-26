@@ -66,6 +66,11 @@ with tempfile.TemporaryDirectory() as folder:
     assert "Palma d'oro" == explore.category_name("Cannes","Palme d'Or")
     stats = Shards(root,"people").get(101,101)["stats"]
     assert stats["works"]==3 and stats["first_year"]==1995
+    assert stats["first_indexed"]["id"]==2
+    assert stats["most_appreciated"]["id"]==3
+    director_stats=Shards(root,"people").get(102,102)["stats"]
+    assert director_stats["first_directed"]["id"]==1
+    assert director_stats["best_directed"]["id"]==1
     assert Shards(root,"people").get(102,102)["stats"]["directing"]==1
     assert explore.build(root,today=dt.date(2026,11,26))["week"]==index["week"]
     good = facts.parse_heights([
