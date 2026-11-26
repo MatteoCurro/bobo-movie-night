@@ -78,6 +78,7 @@ jobs:
           node tests/platform-labels.cjs
           node tests/verified-audio.cjs
           node tests/index-inline.cjs
+          node tests/home-curation.cjs
           node --check bobo-friends.js
           node --check bobo-library.js
           node --check bobo-enhance.js
