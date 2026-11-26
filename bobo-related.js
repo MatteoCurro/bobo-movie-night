@@ -71,6 +71,7 @@
     text.textContent=value.slice(0,240);
     factHost.append(label,text);
     factHost.hidden=false;
+    section.hidden=false;
   }
   function render(verified,generic,paired){
     const used=new Set([kind+':'+id,...(paired||[])]),rows=[];
@@ -85,7 +86,11 @@
       if(rows.length===8)break;
     }
     const html=rows.map(card).filter(Boolean).join('');
-    if(!html)return;
+    if(!html){
+      const note=document.getElementById('watch-related-note');
+      if(note)note.hidden=true;
+      return;
+    }
     host.innerHTML=html;
     section.hidden=false;
     const note=document.getElementById('watch-related-note');
