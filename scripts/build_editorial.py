@@ -50,6 +50,51 @@ def fetch(kind, params):
         raise ValueError("Unexpected TMDB discovery payload")
     return result["results"]
 
+
+def add_seasonal_evidence(metrics, catalog, limit=14):
+    """Gradually verify holiday titles instead of trusting a tiny rating sample."""
+    if not TOKEN:
+        return
+    seasonal=read(ROOT/"seasonal.json",{}).get("seasons") or []
+    month=TODAY.month
+    priority={"christmas":0 if month in (11,12,1) else 2,
+              "halloween":0 if month in (9,10) else 2,
+              "easter":1}
+    pending=[]
+    for shelf in sorted(seasonal,key=lambda row:priority.get(row.get("id"),3)):
+        for row in shelf.get("items") or []:
+            key=str(row.get("type"))+":"+str(row.get("tmdb_id"))
+            if key not in catalog or key in pending:
+                continue
+            previous=metrics.get(key) or {}
+            try:
+                age=(TODAY-dt.date.fromisoformat(previous.get("observed_at",""))).days
+            except (ValueError,TypeError):
+                age=1000
+            if previous.get("vote_count") and age < 45:
+                continue
+            pending.append(key)
+    for key in pending[:limit]:
+        kind,mid=key.split(":",1)
+        query={"language":"it-IT"}
+        headers={"Accept":"application/json","User-Agent":"BoboMovieNight/3.1 (editorial evidence)"}
+        if TOKEN.startswith("eyJ") or TOKEN.startswith("Bearer "):
+            headers["Authorization"]="Bearer "+TOKEN.removeprefix("Bearer ").strip()
+        else:
+            query["api_key"]=TOKEN
+        uri=API+"/"+kind+"/"+mid+"?"+urllib.parse.urlencode(query)
+        try:
+            with urllib.request.urlopen(urllib.request.Request(uri,headers=headers),timeout=9) as response:
+                row=json.load(response)
+            votes=int(row.get("vote_count") or 0)
+            rating=float(row.get("vote_average") or 0)
+            if votes>0 and 0<=rating<=10:
+                metrics[key]={"vote_count":votes,"vote_average":round(rating,3),
+                              "popularity":float(row.get("popularity") or 0),
+                              "observed_at":TODAY.isoformat(),"source":"TMDB"}
+        except (OSError,ValueError,TypeError,KeyError,TimeoutError,urllib.error.URLError):
+            continue
+
 def collect_metrics(catalog):
     evidence=read(EVIDENCE,{"schema":1,"titles":{}})
     metrics=evidence.get("titles",{})
@@ -86,6 +131,7 @@ def collect_metrics(catalog):
                         break
     elif not metrics:
         print("TMDB token unavailable; no unverified titles will be promoted.")
+    add_seasonal_evidence(metrics,catalog)
     if metrics:write(EVIDENCE,{"schema":1,"titles":metrics})
     return metrics
 
