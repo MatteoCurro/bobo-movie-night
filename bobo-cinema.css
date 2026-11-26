@@ -271,3 +271,69 @@
  .bobo-dossier-insights{margin-top:20px}
  .bobo-film-quote{padding:20px}
 }
+
+/* BOBO / WATCH UX 3 — ONE CONTINUOUS STORY, NOT STACKED MODULES.
+   Hero synopsis + watch > film identity > cast > quote > awards > reviews > discovery. */
+#watch-hero .hero-content{padding-bottom:clamp(46px,5vw,75px)}
+#watch-hero .synopsis{max-width:710px;font-size:clamp(15px,1.5vw,17px);line-height:1.75;color:#ebf0f0;margin:20px 0 27px}
+#watch-hero #watch-meta{color:#bdd6d5;letter-spacing:.02em}
+#watch-hero .hero-actions{gap:14px;align-items:center}
+#watch-hero #watch-start{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 29px;background:#a4d9d4;color:#10282d;border:1px solid #a4d9d4;border-radius:6px;font-weight:800;font-size:15px;box-shadow:0 8px 28px rgba(5,13,15,.32);transition:transform .2s ease,background .2s ease}
+#watch-hero #watch-start:hover,#watch-hero #watch-start:focus-visible{background:#d8f6ed;border-color:#d8f6ed;transform:translateY(-2px)}
+#watch-hero #watch-copy{background:transparent;border:1px solid rgba(186,217,219,.36);border-radius:6px;padding:13px 16px;color:#d7e4e6;font-weight:600;font-size:12px}
+#watch-hero #watch-copy:hover,#watch-hero #watch-copy:focus-visible{background:rgba(194,227,224,.1);border-color:#a4d9d4}
+#watch-main .bobo-film-dossier{margin-top:clamp(26px,4.5vw,54px)}
+#watch-main .bobo-dossier-heading{padding-bottom:13px;margin-bottom:19px;align-items:end}
+#watch-main .bobo-dossier-heading h2{font-size:clamp(23px,3vw,33px);margin:8px 0 0}
+#watch-main .bobo-film-identity{grid-template-columns:minmax(0,1.35fr) minmax(250px,.9fr);align-items:stretch;gap:15px;margin-bottom:30px}
+#watch-main .bobo-film-identity>div{padding:clamp(18px,2.6vw,27px);background:linear-gradient(135deg,rgba(30,48,57,.96),rgba(19,31,40,.95));border-color:rgba(150,204,203,.18);border-radius:8px}
+#watch-main .bobo-film-identity-creators{position:relative;overflow:hidden}
+#watch-main .bobo-film-identity-creators:after{content:'';position:absolute;pointer-events:none;right:-75px;bottom:-150px;width:310px;height:310px;border:1px solid rgba(159,212,210,.04);border-radius:50%}
+#watch-main .bobo-film-identity h3{font:700 13px var(--bobo-font-display,inherit);color:#cce8e4;letter-spacing:.025em;margin:0 0 19px}
+#watch-main #watch-crew.bobo-crew{display:flex;flex-direction:column;align-items:stretch;gap:18px}
+#watch-main .bobo-creative-role{gap:8px}
+#watch-main .bobo-creative-role--director{padding:0 0 17px;border-bottom:1px solid rgba(156,209,211,.15)}
+#watch-main .bobo-creative-role--director .bobo-creative-names{display:flex;flex-direction:row;flex-wrap:wrap;gap:11px}
+#watch-main .bobo-director-link{display:flex;gap:14px;align-items:center;flex:1 1 190px;max-width:340px;min-width:0;padding:6px;border:1px solid rgba(161,216,209,.16);border-radius:6px;background:rgba(8,20,26,.26);text-decoration:none;color:#eaf8f4}
+#watch-main .bobo-director-link:hover,#watch-main .bobo-director-link:focus-visible{background:#26464b;border-color:#a4d9d4}
+#watch-main .bobo-director-photo{flex:0 0 76px;display:flex;align-items:center;justify-content:center;width:76px;height:96px;border-radius:4px;background:#2b444c;overflow:hidden;color:#b4d7d4}
+#watch-main .bobo-director-photo img{height:100%;width:100%;display:block;object-fit:cover}
+#watch-main .bobo-director-placeholder{font:400 32px var(--bobo-font-display,inherit);opacity:.8}
+#watch-main .bobo-director-link .bobo-director-name{font:700 17px/1.3 var(--bobo-font-display,inherit);letter-spacing:-.02em;overflow-wrap:anywhere}
+#watch-main .bobo-creative-role:not(.bobo-creative-role--director) .bobo-creative-names{display:flex;gap:7px 15px;flex-direction:row;flex-wrap:wrap}
+#watch-main .bobo-creative-role:not(.bobo-creative-role--director) .bobo-person-link{font:600 13px/1.5 var(--bobo-font-body,inherit);color:#d6e8e6}
+#watch-main #watch-film-facts{grid-template-columns:1fr 1fr;gap:19px}
+#watch-main #watch-film-facts>div:last-child{grid-column:1/-1}
+#watch-main #watch-film-facts dt{color:#a4c2c4;margin-bottom:8px}
+#watch-main #watch-film-facts dd{font-size:15px;color:#f2f7f6;font-weight:600}
+#watch-main .bobo-cast-heading{border-top:1px solid rgba(149,207,208,.19);padding-top:22px}
+#watch-main .bobo-cast-heading h3{font-size:20px}
+#watch-main #watch-cast-grid{margin-bottom:25px}
+#watch-main .bobo-film-quote--featured{display:block;width:100%;margin:25px 0 10px;padding:clamp(24px,4vw,42px);background:radial-gradient(ellipse at 100% 0%,rgba(231,190,125,.08),transparent 50%),linear-gradient(135deg,#302d30,#1b2830);border:1px solid rgba(228,191,144,.27);border-left:3px solid #dfba91}
+#watch-main .bobo-film-quote--featured[hidden]{display:none!important}
+#watch-main .bobo-film-quote--featured blockquote{font-size:clamp(19px,2.9vw,31px);max-width:830px}
+#watch-main .bobo-film-quote--featured .bobo-film-quote-comment{margin-top:16px;max-width:750px}
+#watch-main #watch-awards-section{margin-top:clamp(28px,4vw,50px)}
+#watch-main .bobo-dossier-subheading{padding-top:6px;margin-bottom:19px}
+#watch-main .bobo-dossier-subheading h2{font-size:clamp(23px,3vw,31px)}
+#watch-main #watch-awards-section .bobo-award-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+#watch-main #watch-opinions-section{margin-top:clamp(35px,4vw,50px);padding-top:27px}
+#watch-main #watch-related-section{margin-top:clamp(48px,6vw,76px);padding-top:28px;border-top:1px solid rgba(171,217,217,.22)}
+#watch-main #watch-related-section .bobo-dossier-subheading h2{font-size:clamp(26px,3.3vw,37px)}
+#watch-main #watch-related-section .bobo-cinema-fact{margin:0 0 24px;background:rgba(141,198,190,.065);border:1px solid rgba(150,207,197,.17);border-left:3px solid #a4d9d4;border-radius:5px;padding:16px 21px}
+#watch-main #watch-related-section .bobo-cinema-fact p{font-size:13px;line-height:1.6}
+#watch-main #watch-related-section .bobo-together{margin-bottom:16px}
+@media(max-width:810px){
+ #watch-main .bobo-film-identity{grid-template-columns:1fr}
+ #watch-main .bobo-film-identity>div{padding:19px}
+ #watch-main .bobo-director-link{max-width:none}
+}
+@media(max-width:530px){
+ #watch-hero #watch-start{width:100%;min-height:53px}
+ #watch-hero #watch-copy{width:100%;min-height:44px}
+ #watch-main .bobo-film-identity{gap:9px}
+ #watch-main .bobo-director-photo{flex-basis:66px;width:66px;height:85px}
+ #watch-main .bobo-director-link .bobo-director-name{font-size:15px}
+ #watch-main .bobo-film-quote--featured{padding:25px 20px}
+ #watch-main #watch-related-section .bobo-cinema-fact{display:block}
+}
