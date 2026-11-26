@@ -80,10 +80,32 @@
       top.append(node('strong', '', award.event));
       top.append(node('span', 'bobo-award-status ' +
         (award.outcome === 'won' ? 'is-winner' : ''), award.outcome === 'won' ? 'Vinto' : 'Candidatura'));
-      card.append(top, node('p', '', award.category || 'Riconoscimento'));
-      if (award.year) card.append(node('small', '', award.year));
-      if (/^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/.test(award.source_url || '')) {
-        const link = node('a', 'bobo-award-source', 'Fonte: Wikidata');
+      const names = {
+        'Best Picture': 'Miglior film',
+        'Best Director': 'Miglior regia',
+        'Best Actor': 'Miglior attore protagonista',
+        'Best Actress': 'Miglior attrice protagonista',
+        'Best Supporting Actor': 'Miglior attore non protagonista',
+        'Best Supporting Actress': 'Miglior attrice non protagonista',
+        'Best Animated Feature': 'Miglior film d’animazione',
+        'Best International Feature Film': 'Miglior film internazionale',
+        'Best Foreign Language Film': 'Miglior film straniero',
+        'Best Original Screenplay': 'Miglior sceneggiatura originale',
+        'Best Adapted Screenplay': 'Miglior sceneggiatura non originale',
+        'Best Cinematography': 'Miglior fotografia',
+        'Best Film Editing': 'Miglior montaggio',
+        'Best Visual Effects': 'Migliori effetti visivi',
+        'Best Original Score': 'Miglior colonna sonora originale',
+        'Best Original Song': 'Miglior canzone originale'
+      };
+      card.append(top, node('p', '', names[award.category] || award.category || 'Riconoscimento'));
+      if (award.recipient) card.append(node('small', '', award.recipient));
+      if (award.year) card.append(node('small', '', ' · ' + award.year));
+      const source = award.source_url || '';
+      if (/^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/.test(source) ||
+          source === 'https://github.com/delventhalz/json-nominations') {
+        const link = node('a', 'bobo-award-source',
+          award.source === 'json-nominations' ? 'Fonte: archivio Oscar indipendente' : 'Fonte: Wikidata');
         link.href = award.source_url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';

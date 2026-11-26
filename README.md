@@ -102,3 +102,9 @@ Player: servizi esterni; disponibilità e condizioni di accesso dipendono dai ri
 - Le trame lunghe non vengono generate artificialmente: quando esisteranno fonti editoriali con diritti di riproduzione, saranno inserite separatamente dalla sinossi breve, con fonte e versione.
 
 Per controllare le funzioni offline: `python3 tests/cinema.py` e `node --check bobo-cinema.js`. Le pagine cast/premi diventano popolate man mano che i job producono i file JSON dopo il merge sulla branch di pubblicazione.
+
+### Oscar storici: secondo archivio indipendente
+
+Oltre ai collegamenti Wikidata, Bobo conserva un indice compatto delle **10.568 candidature Oscar (incluse le vittorie) fino al 2023**, collegate a **5.131 ID TMDB**, tratto dal progetto MIT [delventhalz/json-nominations](https://github.com/delventhalz/json-nominations). Il file `data/cinema/oscar-index.json` occupa circa 680 KB e non viene caricato dal browser: `scripts/build_oscar_backfill.py` lo applica ai singoli titoli Bobo con un limite di 240 film per aggiornamento e registra fonte, categoria, eventuale destinatario, anno e risultato nelle cache per titolo. La licenza originale è in `data/cinema/OSCAR-LICENSE.txt`. Non equivale al registro ufficiale dell'Academy: quest'ultimo è [awardsdatabase.oscars.org](https://awardsdatabase.oscars.org/). Premi successivi al 2023 non vengono inventati né dichiarati assenti.
+
+Wikidata resta una sorgente complementare per Cannes e riconoscimenti successivi; in caso di timeout, le evidenze Oscar acquisite in precedenza rimangono intatte e il sistema limita le richieste ripetute. La pagina mostra la provenienza di ogni riconoscimento.
