@@ -152,21 +152,29 @@
     const more = byId('watch-extra-facts-grid');
     if (!shortFacts || !details || !more) return;
     // The synopsis, awards and reviews have their own dedicated chapters.
-    addMetadataRow(shortFacts, 'Titolo originale', facts.original_title);
-    addMetadataRow(shortFacts, 'Paesi di produzione', facts.countries);
-    addMetadataRow(shortFacts, 'Lingue originali', facts.languages);
+    addMetadataRow(shortFacts, 'Titolo originale', facts.original_title || imdb.original_title);
+    addMetadataRow(shortFacts, 'Paesi di produzione', facts.countries || imdb.countries_of_origin);
+    addMetadataRow(shortFacts, 'Lingue originali', facts.languages || imdb.languages);
     more.textContent = '';
-    addMetadataRow(more, 'Case di produzione', facts.companies);
+    addMetadataRow(more, 'Case di produzione', facts.companies || imdb.production_companies);
+    addMetadataRow(more, 'Certificazione', imdb.certificate);
+    addMetadataRow(more, 'Prima data di uscita registrata', imdb.first_release_date);
+    addMetadataRow(more, 'Stato della produzione', imdb.production_status);
     const usd = value => Number.isFinite(Number(value)) && Number(value) > 0 ?
       new Intl.NumberFormat('it-IT', {style:'currency', currency:'USD',
         maximumFractionDigits:0}).format(Number(value)) : '';
-    addMetadataRow(more, 'Budget dichiarato', usd(facts.budget_usd));
-    addMetadataRow(more, 'Incassi mondiali', usd(facts.revenue_usd));
+    const money = value => value && Number(value.amount) > 0 &&
+      /^[A-Z]{3}$/.test(value.currency || '') ?
+      new Intl.NumberFormat('it-IT', {style:'currency', currency:value.currency,
+        maximumFractionDigits:0}).format(Number(value.amount)) : '';
+    addMetadataRow(more, 'Budget dichiarato', usd(facts.budget_usd) || money(imdb.budget));
+    addMetadataRow(more, 'Incassi mondiali', usd(facts.revenue_usd) || money(imdb.gross_worldwide));
+    addMetadataRow(more, 'Incassi USA/Canada', money(imdb.gross_us_canada));
     const groups = [
       ['Colonna sonora', 'composers'], ['Fotografia', 'cinematographers'],
       ['Montaggio', 'editors'], ['Scenografia', 'production_designers'],
       ['Costumi', 'costume_designers'], ['Luoghi delle riprese', 'filming_locations'],
-      ['Temi', 'interests']
+      ['Temi', 'interests'], ['Parole chiave', 'keywords']
     ];
     groups.forEach(([label, key]) => addMetadataRow(more, label, imdb[key]));
     if (Number(imdb.rating) > 0) {
@@ -176,6 +184,19 @@
     }
     if (Number.isFinite(Number(imdb.metascore)) && imdb.metascore !== undefined)
       addMetadataRow(more, 'Metascore', Number(imdb.metascore) + '/100');
+    if (Number(imdb.rank) > 0)
+      addMetadataRow(more, 'IMDb Top 250', 'Posizione ' + Number(imdb.rank));
+    if (Number(imdb.cast_total) > 0)
+      addMetadataRow(more, 'Interpreti accreditati', new Intl.NumberFormat('it-IT').format(imdb.cast_total));
+    const guide = imdb.parental_guide && typeof imdb.parental_guide === 'object' ?
+      imdb.parental_guide : {};
+    const levels = {none:'assente',mild:'lieve',moderate:'moderato',severe:'elevato'};
+    const parental = [['violence_gore','Violenza'],['frightening_intense_scenes','Scene intense'],
+      ['profanity','Linguaggio'],['sex_nudity','Nudità'],
+      ['alcohol_drugs_smoking','Alcol, fumo e sostanze']]
+      .filter(item => Object.prototype.hasOwnProperty.call(levels,guide[item[0]]))
+      .map(item => item[1] + ': ' + levels[guide[item[0]]]);
+    addMetadataRow(more, 'Guida genitori IMDb', parental);
     if (Number(imdb.user_reviews) > 0)
       addMetadataRow(more, 'Recensioni utenti su IMDb', new Intl.NumberFormat('it-IT').format(imdb.user_reviews));
     if (Number(imdb.critic_reviews) > 0)
@@ -186,8 +207,8 @@
         Number(imdb.award_nominations || 0) + ' candidature non vinte');
     }
     if (more.children.length) {
-      if (imdb.source === 'imdb-licensed' && /^tt\d{7,10}$/.test(entry.imdb_id || '')) {
-        const source = node('a', 'bobo-metadata-source', 'Fonte: IMDb · dati importati su licenza ↗');
+      if (imdb.source === 'imdb-scraping-repository' && /^tt\d{7,10}$/.test(entry.imdb_id || '')) {
+        const source = node('a', 'bobo-metadata-source', 'Fonte: IMDb · dati d’archivio ↗');
         source.href = 'https://www.imdb.com/title/' + entry.imdb_id + '/';
         source.target = '_blank';
         source.rel = 'noopener noreferrer';
