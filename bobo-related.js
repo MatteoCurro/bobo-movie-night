@@ -59,6 +59,7 @@
           '<b>'+esc(work.title||'Titolo')+'</b><small>Scopri il film ↗</small></span></a>';
       }).join('')+'</div>';
     togetherHost.hidden=false;
+    section.hidden=false;
   }
   function fact(value){
     if(!factHost||typeof value!=='string'||!value.trim())return;
@@ -71,8 +72,8 @@
     factHost.append(label,text);
     factHost.hidden=false;
   }
-  function render(verified,generic){
-    const used=new Set([kind+':'+id]),rows=[];
+  function render(verified,generic,paired){
+    const used=new Set([kind+':'+id,...(paired||[])]),rows=[];
     for(const source of [verified,generic]){
       for(const raw of Array.isArray(source)?source:[]){
         const x=normalize(raw);
@@ -109,7 +110,9 @@
       const editorial=await read('data/editorial.json');
       generic=editorial&&editorial.related&&editorial.related[kind+':'+id];
     }
-    render(context&&context.connections,generic);
+    const paired=context&&Array.isArray(context.together)?
+      context.together.filter(item=>valid(item&&item.work)).map(item=>mediaKey(item.work)):[];
+    render(context&&context.connections,generic,paired);
   }
   void run();
 })();
