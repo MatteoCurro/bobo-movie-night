@@ -44,7 +44,7 @@ def candidates(root):
                          "poster":image.group(1),"year":year,"vote":vote,"genres":genres,
                          "original_language":raw.get("original_language") or ""})
     return rows
-def compute(rows,limit):
+def compute(rows,targets):
     # genre index avoids comparing each of the ~20k titles to every other title.
     by_genre=defaultdict(set)
     for i,row in enumerate(rows):
@@ -57,6 +57,7 @@ def compute(rows,limit):
         same_type=0.45 if origin["type"]==other["type"] else 0
         return common*4 + max(0,5-years)*.28 + min(other["vote"],9)*.21 + lang + same_type
     for origin in rows:
+        if key(origin) not in targets:continue
         pool=set()
         for genre in origin["genres"]:pool.update(by_genre.get(genre,()))
         scored=[]
@@ -96,8 +97,7 @@ def build(root:Path,limit:int=LIMIT):
     targets=set(key(r) for r in due[:limit])
     touched=set()
     added=0
-    for k,bucket,picks in compute(rows,limit):
-        if k not in targets:continue
+    for k,bucket,picks in compute(rows,targets):
         loaded.setdefault(bucket,{})[k]=picks
         touched.add(bucket)
         added+=1
