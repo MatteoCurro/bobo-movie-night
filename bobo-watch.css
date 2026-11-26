@@ -92,3 +92,9 @@
 .bobo-critic-source{font:600 11px/1.4 var(--bobo-font-mono,monospace);text-transform:uppercase;letter-spacing:.07em;color:#a4d9d4}
 .bobo-critic-card>span{font:600 13px/1.5 var(--bobo-font-display,inherit)}
 .bobo-critic-card>small{font:11px var(--bobo-font-mono,monospace);color:#91adb0;margin-top:auto}
+
+.bobo-multi-ratings-grid{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.bobo-multi-rating{display:flex;align-items:baseline;gap:8px;border:1px solid rgba(184,220,214,.2);border-radius:6px;background:#192b31;padding:12px 14px;min-width:125px}
+.bobo-multi-rating strong{font:600 11px var(--bobo-font-mono,monospace);color:#b8d6d5}
+.bobo-multi-rating span{font:700 19px var(--bobo-font-display,inherit);color:#ebf3f0}
+.bobo-multi-rating small{font-size:10px;color:#a1b8bc}
