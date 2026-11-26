@@ -135,3 +135,49 @@
  #person-main .bobo-person-hero h1{font-size:27px}
  .bobo-person-directory-hero{padding:23px}
 }
+
+/* Verifiable micro-insight: lives in the existing cast section. */
+.bobo-cinema-fact{display:flex;align-items:baseline;gap:17px;margin:22px 0 0;padding:15px 19px;border-left:2px solid #9dcfc9;background:rgba(137,194,187,.06);border-radius:0 6px 6px 0}
+.bobo-cinema-fact[hidden],.bobo-together[hidden]{display:none!important}
+.bobo-cinema-fact-label{flex:none;font:700 10px var(--bobo-font-mono,monospace);letter-spacing:.1em;color:#a9dad3}
+.bobo-cinema-fact p{margin:0;color:#d7e6e4;font:500 13px/1.6 var(--bobo-font-body,inherit)}
+/* One contextual hub, integrated into existing Related, never a duplicate rail. */
+.bobo-together{padding:17px 19px 20px;background:linear-gradient(125deg,#1b3139,#141f29);border:1px solid #35545e;border-radius:7px;margin:0 0 22px}
+.bobo-together-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:15px}
+.bobo-together-heading strong{font:650 16px var(--bobo-font-display,inherit);color:#e5f3ef}
+.bobo-together-heading span{font:500 10px var(--bobo-font-mono,monospace);color:#8eafb5}
+.bobo-together-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bobo-together-card{display:grid;grid-template-columns:72px minmax(0,1fr);align-items:center;gap:13px;padding:9px;min-width:0;border:1px solid rgba(181,215,216,.16);background:rgba(8,22,30,.2);border-radius:6px;text-decoration:none;color:#e9f5f2}
+.bobo-together-card:hover,.bobo-together-card:focus-visible{border-color:#b0d9d4;background:#224049}
+.bobo-together-card>img{display:block;width:72px;aspect-ratio:2/3;object-fit:cover;border-radius:3px}
+.bobo-together-card>span{display:flex;flex-direction:column;gap:7px;min-width:0}
+.bobo-together-card strong{font:650 12px/1.4 var(--bobo-font-body,inherit)}
+.bobo-together-card b{font:650 15px/1.3 var(--bobo-font-display,inherit)}
+.bobo-together-card small{color:#9bcecb;font:500 10px/1.35 var(--bobo-font-body,inherit)}
+.bobo-connection-reason{display:block;max-width:100%;padding:5px 7px;margin-top:7px;font:600 10px/1.3 var(--bobo-font-body,inherit);border-radius:4px;background:rgba(137,203,188,.12);border:1px solid rgba(170,225,207,.2);color:#b8dfd8;overflow-wrap:anywhere}
+#watch-related-note{color:#9db7bf;margin:0 0 17px;font-size:12px}
+.bobo-person-landmarks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.bobo-person-landmark{display:grid;grid-template-columns:minmax(75px,125px) 1fr;gap:15px;min-width:0;padding:12px;background:linear-gradient(125deg,#1d3039,#13242e);border:1px solid #36535b;border-radius:7px;overflow:hidden;color:#eef7f4;text-decoration:none}
+.bobo-person-landmark:hover,.bobo-person-landmark:focus-visible{border-color:#a3d4c8;background:#254048}
+.bobo-person-landmark img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:3px}
+.bobo-person-landmark-content{min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px}
+.bobo-person-landmark-tag{font:700 10px var(--bobo-font-mono,monospace);color:#b3dacf;letter-spacing:.02em}
+.bobo-person-landmark-content>strong{font:650 clamp(17px,2vw,23px)/1.23 var(--bobo-font-display,inherit);letter-spacing:-.02em;overflow-wrap:anywhere}
+.bobo-person-landmark-content>span{color:#b9c8c9;font:500 12px var(--bobo-font-body,inherit)}
+.bobo-person-landmark-rating{font:700 12px var(--bobo-font-body,inherit);color:#ebcb93}
+.bobo-person-landmark-caption{font:500 10px/1.4 var(--bobo-font-body,inherit)!important;color:#95aeb6!important}
+.bobo-person-dna-bars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 32px}
+.bobo-person-genre{display:flex;flex-direction:column;gap:9px}
+.bobo-person-genre-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 13px var(--bobo-font-body,inherit)}
+.bobo-person-genre-label span{font:600 11px var(--bobo-font-mono,monospace);color:#dbb39d}
+.bobo-person-genre-track{height:7px;display:block;border-radius:6px;background:#29414a;overflow:hidden}
+.bobo-person-genre-fill{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#9fcfc7,#e4b9a7)}
+@media(max-width:740px){
+ .bobo-together-grid,.bobo-person-landmarks,.bobo-person-dna-bars{grid-template-columns:1fr}
+ .bobo-together{padding:15px}
+ .bobo-together-heading{display:block}
+ .bobo-together-heading span{display:block;margin-top:7px}
+ .bobo-cinema-fact{display:block;padding:13px}
+ .bobo-cinema-fact p{margin-top:7px}
+ .bobo-person-landmark{grid-template-columns:95px 1fr}
+}
