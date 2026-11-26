@@ -21,7 +21,8 @@ DATE = dt.date.today().isoformat()
 KINDS = ("movie", "tv")
 MIN_ITEMS = 100
 IMG = re.compile(r"^/[a-zA-Z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$")
-PROVIDERS = {8:"netflix", 119:"prime", 337:"disney", 350:"apple"}
+PROVIDERS = {8:"netflix", 119:"prime", 337:"disney", 350:"apple",
+             531:"paramount", 29:"skygo", 39:"now"}
 
 def api(path: str, params: dict | None = None) -> dict:
     query = dict(params or {})
@@ -66,6 +67,8 @@ def candidate(kind: str, source: dict, genres: dict[int,str], extra: dict | None
     date=str(source.get("release_date") if kind=="movie" else source.get("first_air_date") or "")
     year=int(date[:4]) if re.match(r"^(19|20)\d{2}-",date) else None
     row={"tmdb_id":tid,"title":title}
+    if isinstance(source.get("original_language"),str):
+        row["original_language"]=source["original_language"][:8]
     if year:row["year"]=year
     for key,tmdb_key in (("poster","poster_path"),("backdrop","backdrop_path")):
         image=safe_image(source.get(tmdb_key))
@@ -187,6 +190,25 @@ def update(root:Path, fetch=api, limit:int=120, episode_limit:int=80, season_bud
             print("::warning::Genre lookup unavailable:",kind,type(exc).__name__)
             genres[kind]={}
     entries=[];seen=set();success=0
+    # Prioritize a small, rotating batch of Japanese anime so Bobo's existing
+    # catalog grows organically without importing thousands of irrelevant titles.
+    anime_page = 1 + (int(DATE[-2:]) % 12)
+    for kind in ("tv","movie"):
+        for page in (1,anime_page):
+            try:
+                data=fetch("/discover/"+kind,{
+                    "language":"it-IT","page":page,"with_genres":"16",
+                    "with_original_language":"ja","sort_by":"popularity.desc",
+                    "include_adult":"false","vote_count.gte":"35"})
+                if not isinstance(data.get("results"),list):continue
+            except (ValueError,urllib.error.URLError,TimeoutError):
+                continue
+            for value in data["results"]:
+                if not isinstance(value,dict):continue
+                ident=value.get("id")
+                if not isinstance(ident,int) or ident<1 or (kind,ident) in seen:continue
+                seen.add((kind,ident));entries.append((kind,ident,value))
+                if len([x for x in entries if x[0]==kind])>=28:break
     for kind,path in (("movie","/trending/movie/week"),("tv","/trending/tv/week"),
                       ("movie","/movie/now_playing"),("tv","/tv/on_the_air")):
         for page in (1,2):
