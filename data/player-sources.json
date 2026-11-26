@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "updated_at": "2026-11-26",
-  "notes": "VixSrc and VidCore request Italian audio where available; no embed can guarantee a dubbed track title-by-title. VidCore is an experimental backup awaiting real Italian audio playback verification.",
+  "notes": "VidCore disabilitato dopo prove audio negative in inglese. Un parametro lang=it non dimostra presenza di audio italiano; i tre player precedenti restano disponibili.",
   "providers": {
     "vix": {
       "enabled": true,
@@ -29,7 +29,7 @@
       "base": "https://vidrock.net"
     },
     "vidcore": {
-      "enabled": true,
+      "enabled": false,
       "priority": 3,
       "base": "https://vidcore.org"
     }
