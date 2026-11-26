@@ -915,7 +915,9 @@ function updateLanguageHelp(p) {
   const note = document.getElementById('player-language-help');
   if (note) note.textContent = p === 'vix' ?
     'VixSrc preferisce l’audio italiano, se disponibile per il titolo.' :
-    'Se il video è in inglese, nelle impostazioni del player cerca Audio → Italiano. In alternativa, apri «Cambia sorgente» e seleziona VixSrc. I sottotitoli ITA non cambiano la lingua audio.';
+    p === 'vidcore' ?
+    'VidCore richiede la traccia italiana (lang=it), se disponibile. Il doppiaggio effettivo è ancora da verificare per questo titolo.' :
+    'Se il video è in inglese, nelle impostazioni del player cerca Audio → Italiano. In alternativa, apri «Cambia sorgente» e seleziona VixSrc o VidCore. I sottotitoli ITA non cambiano la lingua audio.';
 }
 function setProvider(p) {
   if (!window.BoboPlayers.get(p)) return;
