@@ -50,7 +50,7 @@ STATIC_FILES = {
     "bobo-official-audio.js", "bobo-reviews.js", "bobo-critic.js",
     "bobo-multi-ratings.js", "bobo-cinema.js", "bobo-cinema.css",
     "bobo-favorites.js", "bobo-favorites.css",
-    "data/movies.json", "data/tv.json", "data/editorial.json",
+    "data/movies.json", "data/tv.json", "data/tv-home.json", "data/tv-lite.json", "data/editorial.json",
     "data/discovery.json", "data/seasonal.json", "data/catalog-ledger.json",
     "data/poster-index.json", "data/enrichment.json",
     "data/newsletter.json", "data/player-sources.json", "data/verified-audio.json",
@@ -61,6 +61,7 @@ STATIC_FILES = {
 }
 ALLOWED_PATTERNS = [
     re.compile(r"data/episodes/[1-9]\d{0,9}\.json"),
+    re.compile(r"data/tv-detail/[0-3][0-9a-f]\.json"),
     re.compile(r"data/related/[0-3][0-9a-f]\.json"),
     re.compile(r"data/cinema/(?:credits|people|connections)/[0-7][0-9a-f]\.json"),
     re.compile(r"assets/flaticon/(?:mono/)?[a-z0-9-]+\.gif"),
