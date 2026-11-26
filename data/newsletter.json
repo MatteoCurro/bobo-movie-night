@@ -37,32 +37,32 @@
           "year": 2013
         },
         {
-          "overview": "Chernobyl è una miniserie televisiva statunitense e britannica, creata e scritta da Craig Mazin e diretta da Johan Renck. Le cinque puntate drammatizzano la vera storia di una delle peggiori catastrofi create dall'uomo a",
-          "poster": "https://image.tmdb.org/t/p/w342/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
-          "title": "Chernobyl",
-          "tmdb_id": 87108,
+          "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
+          "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+          "title": "Stranger Things",
+          "tmdb_id": 66732,
           "type": "tv",
-          "year": 2019
+          "year": 2016
         }
       ],
       "title": "La serie da recuperare"
     }
   ],
-  "updated_at": "2026-11-26T01:46:07+00:00",
+  "updated_at": "2026-11-26T09:22:52+00:00",
   "weekly": [
-    {
-      "overview": "L’insegnante di scienze Ryland Grace si sveglia su un’astronave lontano anni luce da casa senza alcun ricordo di chi sia o di come sia arrivato lì. Con il riaffiorare della sua memoria, torna alla luce lo scopo della sua",
-      "poster": "https://image.tmdb.org/t/p/w342/gPC1X3mwqwX50Ye3qwwPt7iW3Ma.jpg",
-      "title": "L'ultima missione: Project Hail Mary",
-      "tmdb_id": 687163,
-      "type": "movie",
-      "year": 2026
-    },
     {
       "overview": "Sono trascorsi quattro anni dagli eventi di No Way Home e Peter è ormai un adulto che vive completamente da solo, essendosi volontariamente cancellato dalla vita e dai ricordi di coloro che ama. Combattendo il crimine in",
       "poster": "https://image.tmdb.org/t/p/w342/1GI1iyqqsaykl7LNKVwHLiorDhE.jpg",
       "title": "Spider-Man: Brand New Day",
       "tmdb_id": 969681,
+      "type": "movie",
+      "year": 2026
+    },
+    {
+      "overview": "L’insegnante di scienze Ryland Grace si sveglia su un’astronave lontano anni luce da casa senza alcun ricordo di chi sia o di come sia arrivato lì. Con il riaffiorare della sua memoria, torna alla luce lo scopo della sua",
+      "poster": "https://image.tmdb.org/t/p/w342/gPC1X3mwqwX50Ye3qwwPt7iW3Ma.jpg",
+      "title": "L'ultima missione: Project Hail Mary",
+      "tmdb_id": 687163,
       "type": "movie",
       "year": 2026
     },

@@ -119,15 +119,15 @@
           "type": "movie"
         },
         {
-          "tmdb_id": 1596275,
-          "type": "movie"
-        },
-        {
           "tmdb_id": 1131943,
           "type": "movie"
         },
         {
           "tmdb_id": 687163,
+          "type": "movie"
+        },
+        {
+          "tmdb_id": 1596275,
           "type": "movie"
         },
         {
@@ -197,11 +197,11 @@
           "type": "movie"
         },
         {
-          "tmdb_id": 986056,
+          "tmdb_id": 617126,
           "type": "movie"
         },
         {
-          "tmdb_id": 617126,
+          "tmdb_id": 986056,
           "type": "movie"
         },
         {
@@ -343,7 +343,7 @@
           "type": "movie"
         },
         {
-          "tmdb_id": 1236470,
+          "tmdb_id": 1059064,
           "type": "movie"
         },
         {
@@ -420,10 +420,6 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 1131943,
-        "type": "movie"
-      },
-      {
         "tmdb_id": 300523,
         "type": "tv"
       },
@@ -432,11 +428,23 @@
         "type": "tv"
       },
       {
+        "tmdb_id": 1131943,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 1280115,
+        "type": "movie"
+      },
+      {
         "tmdb_id": 298852,
         "type": "tv"
       },
       {
         "tmdb_id": 308007,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 58937,
         "type": "tv"
       },
       {
@@ -448,22 +456,6 @@
         "type": "tv"
       },
       {
-        "tmdb_id": 58937,
-        "type": "tv"
-      },
-      {
-        "tmdb_id": 346698,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 313369,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 1307474,
-        "type": "movie"
-      },
-      {
         "tmdb_id": 466272,
         "type": "movie"
       },
@@ -472,11 +464,15 @@
         "type": "tv"
       },
       {
+        "tmdb_id": 313369,
+        "type": "movie"
+      },
+      {
         "tmdb_id": 603692,
         "type": "movie"
       },
       {
-        "tmdb_id": 718930,
+        "tmdb_id": 1307474,
         "type": "movie"
       },
       {
@@ -488,39 +484,7 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 1410,
-        "type": "tv"
-      },
-      {
-        "tmdb_id": 318420,
-        "type": "tv"
-      },
-      {
-        "tmdb_id": 91314,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 146,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 75612,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 458156,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 1368,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 288120,
-        "type": "tv"
-      },
-      {
-        "tmdb_id": 934433,
+        "tmdb_id": 718930,
         "type": "movie"
       },
       {
@@ -528,15 +492,35 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 32515,
-        "type": "tv"
-      },
-      {
         "tmdb_id": 95,
         "type": "movie"
       },
       {
-        "tmdb_id": 45243,
+        "tmdb_id": 1410,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 75612,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 91314,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 1368,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 146,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 458156,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 934433,
         "type": "movie"
       },
       {
@@ -544,15 +528,31 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 300671,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 615656,
-        "type": "movie"
-      },
-      {
         "tmdb_id": 38575,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 318420,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 114655,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 32515,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 45243,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 288120,
+        "type": "tv"
+      },
+      {
+        "tmdb_id": 17654,
         "type": "movie"
       },
       {
@@ -560,23 +560,19 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 17654,
+        "tmdb_id": 10830,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 293863,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 615656,
         "type": "movie"
       },
       {
         "tmdb_id": 855,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 257445,
-        "type": "movie"
-      },
-      {
-        "tmdb_id": 114655,
-        "type": "tv"
-      },
-      {
-        "tmdb_id": 198184,
         "type": "movie"
       },
       {
@@ -588,7 +584,15 @@
         "type": "movie"
       },
       {
-        "tmdb_id": 929590,
+        "tmdb_id": 257445,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 256961,
+        "type": "movie"
+      },
+      {
+        "tmdb_id": 300671,
         "type": "movie"
       }
     ],
@@ -625,6 +629,10 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 278,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 1543469,
             "type": "movie"
           },
@@ -633,7 +641,31 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 299939,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 332839,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 340280,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 360920,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 289423,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 338562,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 296206,
             "type": "tv"
           },
           {
@@ -641,15 +673,19 @@
             "type": "movie"
           },
           {
-            "tmdb_id": 296206,
-            "type": "tv"
-          },
-          {
             "tmdb_id": 124394,
             "type": "tv"
           },
           {
+            "tmdb_id": 1307474,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 291496,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 285322,
             "type": "tv"
           },
           {
@@ -657,23 +693,19 @@
             "type": "movie"
           },
           {
-            "tmdb_id": 285322,
-            "type": "tv"
-          },
-          {
-            "tmdb_id": 335981,
-            "type": "tv"
+            "tmdb_id": 5255,
+            "type": "movie"
           },
           {
             "tmdb_id": 541671,
             "type": "movie"
           },
           {
-            "tmdb_id": 1559980,
-            "type": "movie"
+            "tmdb_id": 335981,
+            "type": "tv"
           },
           {
-            "tmdb_id": 112745,
+            "tmdb_id": 87093,
             "type": "tv"
           },
           {
@@ -681,16 +713,48 @@
             "type": "movie"
           },
           {
-            "tmdb_id": 299952,
+            "tmdb_id": 91314,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 112745,
             "type": "tv"
+          },
+          {
+            "tmdb_id": 1418709,
+            "type": "movie"
           },
           {
             "tmdb_id": 882598,
             "type": "movie"
           },
           {
+            "tmdb_id": 299952,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 1559980,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 318420,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 254528,
             "type": "tv"
+          },
+          {
+            "tmdb_id": 275102,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 132141,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 335988,
+            "type": "movie"
           }
         ],
         "label": "Netflix",
@@ -700,6 +764,14 @@
       {
         "id": "prime",
         "items": [
+          {
+            "tmdb_id": 695721,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 1611767,
+            "type": "movie"
+          },
           {
             "tmdb_id": 1131943,
             "type": "movie"
@@ -721,6 +793,14 @@
             "type": "movie"
           },
           {
+            "tmdb_id": 466272,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 123591,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 255661,
             "type": "tv"
           },
@@ -729,11 +809,23 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 283297,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 5255,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 718930,
             "type": "movie"
           },
           {
-            "tmdb_id": 1380291,
+            "tmdb_id": 241372,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 345940,
             "type": "movie"
           },
           {
@@ -741,11 +833,71 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 1368,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 254420,
             "type": "tv"
           },
           {
+            "tmdb_id": 1380291,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 591,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 254071,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 241882,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 1084187,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 13448,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 615656,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 1369,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 929590,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 1948,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 76163,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 528085,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 280948,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 260592,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 1613798,
             "type": "movie"
           },
           {
@@ -754,10 +906,6 @@
           },
           {
             "tmdb_id": 1317672,
-            "type": "movie"
-          },
-          {
-            "tmdb_id": 1948,
             "type": "movie"
           }
         ],
@@ -777,11 +925,11 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 278573,
+            "tmdb_id": 198178,
             "type": "tv"
           },
           {
-            "tmdb_id": 298505,
+            "tmdb_id": 278573,
             "type": "tv"
           },
           {
@@ -789,15 +937,7 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 5255,
-            "type": "movie"
-          },
-          {
             "tmdb_id": 287238,
-            "type": "tv"
-          },
-          {
-            "tmdb_id": 198178,
             "type": "tv"
           },
           {
@@ -805,15 +945,23 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 287527,
+            "tmdb_id": 289219,
             "type": "tv"
+          },
+          {
+            "tmdb_id": 298505,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 5255,
+            "type": "movie"
           },
           {
             "tmdb_id": 279471,
             "type": "tv"
           },
           {
-            "tmdb_id": 289219,
+            "tmdb_id": 287527,
             "type": "tv"
           },
           {
@@ -821,7 +969,7 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 288120,
+            "tmdb_id": 247168,
             "type": "tv"
           },
           {
@@ -829,15 +977,11 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 247168,
-            "type": "tv"
-          },
-          {
             "tmdb_id": 298168,
             "type": "tv"
           },
           {
-            "tmdb_id": 246473,
+            "tmdb_id": 239385,
             "type": "tv"
           },
           {
@@ -849,7 +993,11 @@
             "type": "movie"
           },
           {
-            "tmdb_id": 239385,
+            "tmdb_id": 246473,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 288120,
             "type": "tv"
           },
           {
@@ -857,15 +1005,7 @@
             "type": "movie"
           },
           {
-            "tmdb_id": 533533,
-            "type": "movie"
-          },
-          {
             "tmdb_id": 271855,
-            "type": "tv"
-          },
-          {
-            "tmdb_id": 223326,
             "type": "tv"
           },
           {
@@ -873,8 +1013,12 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 1115544,
+            "tmdb_id": 533533,
             "type": "movie"
+          },
+          {
+            "tmdb_id": 223326,
+            "type": "tv"
           },
           {
             "tmdb_id": 275722,
@@ -885,11 +1029,11 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 280217,
+            "tmdb_id": 1115544,
             "type": "movie"
           },
           {
-            "tmdb_id": 1032892,
+            "tmdb_id": 280217,
             "type": "movie"
           },
           {
@@ -898,6 +1042,10 @@
           },
           {
             "tmdb_id": 37834,
+            "type": "movie"
+          },
+          {
+            "tmdb_id": 1032892,
             "type": "movie"
           },
           {
@@ -917,16 +1065,20 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 1280115,
+            "type": "movie"
+          },
+          {
             "tmdb_id": 198102,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 312693,
             "type": "tv"
           },
           {
             "tmdb_id": 1050981,
             "type": "movie"
-          },
-          {
-            "tmdb_id": 312693,
-            "type": "tv"
           },
           {
             "tmdb_id": 285404,
@@ -941,7 +1093,7 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 216412,
+            "tmdb_id": 237890,
             "type": "tv"
           },
           {
@@ -953,11 +1105,11 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 197124,
+            "tmdb_id": 216412,
             "type": "tv"
           },
           {
-            "tmdb_id": 292130,
+            "tmdb_id": 197124,
             "type": "tv"
           },
           {
@@ -965,7 +1117,15 @@
             "type": "tv"
           },
           {
-            "tmdb_id": 230935,
+            "tmdb_id": 292130,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 248287,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 195305,
             "type": "tv"
           },
           {
@@ -973,11 +1133,19 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 221490,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 213337,
             "type": "tv"
           },
           {
-            "tmdb_id": 107593,
+            "tmdb_id": 230935,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 205164,
             "type": "tv"
           },
           {
@@ -985,7 +1153,43 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 205258,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 208251,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 205441,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 282727,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 314916,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 107593,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 256693,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 153307,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 216343,
+            "type": "tv"
+          },
+          {
+            "tmdb_id": 207639,
             "type": "tv"
           },
           {
@@ -993,11 +1197,15 @@
             "type": "tv"
           },
           {
+            "tmdb_id": 262594,
+            "type": "tv"
+          },
+          {
             "tmdb_id": 251604,
             "type": "tv"
           },
           {
-            "tmdb_id": 228096,
+            "tmdb_id": 216681,
             "type": "tv"
           }
         ],
@@ -1007,16 +1215,20 @@
       }
     ],
     "source": "Streamingfilter",
-    "updated_at": "2026-11-26T01:46:02+00:00",
+    "updated_at": "2026-11-26T09:22:47+00:00",
     "url": "https://streamingfilter.com/it/novita"
   },
   "trending": [
     {
-      "tmdb_id": 1003596,
-      "type": "movie"
+      "tmdb_id": 171802,
+      "type": "tv"
     },
     {
       "tmdb_id": 1300968,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1003596,
       "type": "movie"
     },
     {
@@ -1024,12 +1236,16 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 171802,
+      "tmdb_id": 84773,
       "type": "tv"
     },
     {
-      "tmdb_id": 84773,
-      "type": "tv"
+      "tmdb_id": 969681,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1458300,
+      "type": "movie"
     },
     {
       "tmdb_id": 1595124,
@@ -1040,11 +1256,15 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 1423191,
+      "tmdb_id": 1281331,
       "type": "movie"
     },
     {
-      "tmdb_id": 969681,
+      "tmdb_id": 1195803,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1280115,
       "type": "movie"
     },
     {
@@ -1056,23 +1276,7 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 1131943,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1281331,
-      "type": "movie"
-    },
-    {
       "tmdb_id": 247718,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1551025,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 213375,
       "type": "tv"
     },
     {
@@ -1080,31 +1284,7 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 1286656,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1458300,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1195803,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1568060,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1185344,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 117488,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1280115,
+      "tmdb_id": 1611767,
       "type": "movie"
     },
     {
@@ -1112,19 +1292,19 @@
       "type": "movie"
     },
     {
+      "tmdb_id": 1551025,
+      "type": "movie"
+    },
+    {
       "tmdb_id": 279246,
       "type": "tv"
     },
     {
-      "tmdb_id": 103540,
+      "tmdb_id": 291507,
       "type": "tv"
     },
     {
-      "tmdb_id": 791523,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1263337,
+      "tmdb_id": 1568060,
       "type": "movie"
     },
     {
@@ -1132,7 +1312,15 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 303745,
+      "tmdb_id": 103540,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1423191,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 213375,
       "type": "tv"
     },
     {
@@ -1140,25 +1328,53 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 85077,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1153576,
+      "tmdb_id": 1185344,
       "type": "movie"
     },
     {
-      "tmdb_id": 96677,
+      "tmdb_id": 290826,
       "type": "tv"
     },
     {
-      "tmdb_id": 1400837,
-      "type": "movie"
+      "tmdb_id": 254630,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 310209,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 117488,
+      "type": "tv"
     },
     {
       "tmdb_id": 1561834,
       "type": "movie"
+    },
+    {
+      "tmdb_id": 1496696,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 292741,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1263337,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1084409,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1286656,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1400837,
+      "type": "movie"
     }
   ],
-  "updated_at": "2026-11-26T01:45:58+00:00"
+  "updated_at": "2026-11-26T09:22:42+00:00"
 }
