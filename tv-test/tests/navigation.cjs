@@ -13,7 +13,8 @@ function suite(elements,initial){
  const header={hidden:false,getBoundingClientRect:()=>({height:92})};
  const document={
   activeElement:initial,getElementById:()=>header,
-  querySelector:s=>s==='.tab.active'||s==='.tab'?elements.find(x=>x.nav)||null:null,
+  querySelector:s=>s==='.tv-more'?elements.find(x=>x.more)||null:
+   s==='.tab.active'||s==='.tab'?elements.find(x=>x.nav)||null:null,
   querySelectorAll:s=>s==='.browse-chip-row'?Array.from(new Set(elements.map(x=>x.filterRow).filter(Boolean))):[]
  };
  const window={
@@ -113,4 +114,17 @@ function el(x,y,w,h,extra={}){
  assert.equal(test.document.activeElement,home,'Up from the first filter returns to navbar');
 }
 
-console.log('TV directional navigation passed: rails, grid boundaries, filter rows and navbar.');
+{
+ // Regression: Down from LAST visible grid poster MUST focus the load-more button.
+ const grid={},more=el(80,1180,280,60,{more:true});
+ const card=el(80,800,140,200,{grid});
+ grid.querySelectorAll=()=>[card];
+ const test=suite([card,more],card);
+ test.move('ArrowDown');
+ assert.equal(test.document.activeElement,more,'Down on last poster reaches visible pagination button');
+ assert.equal(test.actions.pageScroll.length,1,'pagination button scrolls into view');
+ test.move('ArrowUp');
+ assert.equal(test.document.activeElement,card,'Up from pagination returns to the last poster');
+}
+
+console.log('TV directional navigation passed: rails, grid boundaries, filter rows, navbar and pagination.');
