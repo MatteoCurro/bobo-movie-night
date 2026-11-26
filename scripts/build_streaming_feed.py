@@ -22,6 +22,9 @@ PLATFORM_FEEDS = (
     ("prime", "Prime Video", "https://streamingfilter.com/it/novita-prime-video"),
     ("disney", "Disney+", "https://streamingfilter.com/it/novita-disney-plus"),
     ("apple", "Apple TV+", "https://streamingfilter.com/it/novita-apple-tv"),
+    ("paramount", "Paramount+", "https://streamingfilter.com/it/novita-paramount-plus"),
+    ("skygo", "Sky Go", "https://streamingfilter.com/it/novita-sky-go"),
+    ("now", "NOW", "https://streamingfilter.com/it/novita-now"),
 )
 DISCOVERY = Path("data/discovery.json")
 YEARS = re.compile(r"^(.+?)\s+((?:19|20)\d{2})(?:\s|$)")
