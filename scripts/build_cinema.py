@@ -345,7 +345,7 @@ def sync(root=Path(".")):
         kind, midstr = key.split(":")
         mid = int(midstr)
         existing = credits.get(mid, key)
-        if existing and existing.get("facts") and existing.get("imdb_id") and not expires(existing.get("checked_at"), 365):
+        if existing and not expires(existing.get("checked_at"), 365) and (kind == "tv" or existing.get("facts")):
             continue
         try:
             payload = tmdb(f"/{kind}/{mid}", {"language": "it-IT",
