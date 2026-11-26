@@ -54,8 +54,10 @@
   function labels(kind,id) {
     return sourceMap.get(key(kind,id)) || [];
   }
-  function badgeNode(kind,id) {
-    const providers=labels(kind,id);
+  function badgeNode(kind,id,preferred) {
+    const ids=labels(kind,id);
+    const providers=preferred && ids.includes(preferred) ?
+      [preferred,...ids.filter(id=>id!==preferred)] : ids;
     if(!providers.length)return null;
     const el=document.createElement('span');
     el.className='bobo-source-tags';
@@ -77,13 +79,16 @@
     return el;
   }
   function renderPlatform(element,kind,id,where) {
-    const state=labels(kind,id).join(',');
+    // A Paramount+/NOW/Sky shelf should put its own provider label first,
+    // even when the same title appears on several other services.
+    const preferred=element.closest?.('[data-bobo-platform]')?.dataset.boboPlatform || '';
+    const state=preferred+':'+labels(kind,id).join(',');
     if(element.dataset.boboPlatformState===state)return;
     element.dataset.boboPlatformState=state;
     const previous=where==='after' && element.nextElementSibling?.classList.contains('bobo-source-tags')
       ? element.nextElementSibling : element.querySelector('.bobo-source-tags');
     if(previous)previous.remove();
-    const label=badgeNode(kind,id);
+    const label=badgeNode(kind,id,preferred);
     if(!label)return;
     if(where==='after')element.insertAdjacentElement('afterend',label);
     else element.appendChild(label);
