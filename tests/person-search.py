@@ -51,7 +51,7 @@ assert "'data/cinema/person-search.json'" in home
 assert "participating.has(item.type + ':' + item.tmdb_id)" in home
 assert "person.html?id=" in home
 assert "decade:" in home and "Math.floor(year / 10) * 10" in home
-assert "renderDecadeShortcuts" in home
+assert "renderDecadeShortcuts" not in home
 assert 'Cerca un film, una serie o un attore' in home
 assert 'for="filter-year">Periodo</label>' in Path("index.html").read_text(encoding="utf-8")
 
