@@ -44,7 +44,9 @@ with tempfile.TemporaryDirectory() as d:
     assert stats["titles"] == 14
     lite = json.loads((root / "data/tv-lite.json").read_text())
     assert len(lite["items"]) == 14
-    assert len(lite["items"][0]) == 6
+    assert len(lite["items"][0]) == 8
+    assert "Dramma" in lite["genres"]
+    assert any(len(x[6]) for x in lite["items"])
     assert lite["items"][0][5].startswith("/")
     home = json.loads((root / "data/tv-home.json").read_text())
     assert home["featured"]["overview"] == "Trama di prova"
