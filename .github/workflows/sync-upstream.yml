@@ -74,6 +74,7 @@ jobs:
           python3 scripts/enrich_person_facts.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
+          python3 scripts/build_tv_payload.py
 
       - name: Validate Bobo enhancements
         shell: bash
@@ -150,6 +151,9 @@ jobs:
           python3 -m py_compile scripts/build_editorial.py
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 tests/newsletter-magazine.py
+          python3 -m py_compile scripts/build_tv_payload.py
+          python3 tests/tv-payload.py
+          test -s data/tv-home.json && test -s data/tv-lite.json
           python3 -m py_compile scripts/prepare_flaticon.py
           python3 - <<'PY'
           from pathlib import Path
@@ -244,7 +248,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json data/newsletter-history.json assets/flaticon/ .nojekyll
+          git add index.html data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/tv-home.json data/tv-lite.json data/tv-detail/ data/newsletter.json data/newsletter-history.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -274,6 +278,8 @@ jobs:
           # Never copy repository roots, backend, build scripts or runtime state.
           cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/seasonal.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/critic-reviews.json data/multi-ratings.json _site/data/
           cp -R data/episodes _site/data/
+          cp data/tv-home.json data/tv-lite.json _site/data/
+          cp -R data/tv-detail _site/data/
           mkdir -p _site/data/related
           find data/related -maxdepth 1 -type f -name '[0-3][0-9a-f].json' -exec cp {} _site/data/related/ \;
           mkdir -p _site/data/cinema/credits _site/data/cinema/people _site/data/cinema/connections
