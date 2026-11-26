@@ -68,6 +68,7 @@ def detail(raw: dict, kind: str) -> dict:
         "backdrop": poster(raw.get("backdrop")),
         "genres": [str(x)[:45] for x in (raw.get("genres") or []) if isinstance(x, str)][:5],
         "runtime": safe_int(raw.get("runtime")),
+        "vote_count": safe_int(raw.get("vote_count")),
         "seasons": [
             {"n": safe_int(x.get("n")), "episodes": safe_int(x.get("episodes"))}
             for x in (raw.get("seasons") or []) if isinstance(x, dict)
@@ -98,13 +99,26 @@ def build(root: Path = Path(".")) -> dict:
 
     catalog_status = read(root / "data/catalog-status.json")
     updated = str(catalog_status.get("updated_at") or "")[:40]
+    # Integer genre codes keep discovery filters available without making
+    # the TV download the full metadata catalog. Existing six-column readers
+    # continue working because only optional columns are appended.
+    genres = sorted({genre for item in all_rows.values()
+                     for genre in item["genres"]}, key=str.casefold)
+    genre_code = {name: pos for pos, name in enumerate(genres)}
     packed = sorted(shorts.values(), key=lambda i: (
         -i["year"], -i["vote"], i["title"].casefold(), i["type"], i["tmdb_id"]))
     slim = {
         "schema": 1,
         "updated_at": updated,
         "total": len(packed),
-        "items": [[x["type"], x["tmdb_id"], x["title"], x["year"], x["vote"], x["poster"]] for x in packed],
+        "genres": genres,
+        "items": [
+            [x["type"], x["tmdb_id"], x["title"], x["year"], x["vote"], x["poster"],
+             [genre_code[g] for g in all_rows[x["type"] + ":" + str(x["tmdb_id"])]["genres"]
+              if g in genre_code],
+             safe_int(all_rows[x["type"] + ":" + str(x["tmdb_id"])].get("vote_count"))]
+            for x in packed
+        ],
     }
     write(root / "data/tv-lite.json", slim)
 
@@ -132,7 +146,7 @@ def build(root: Path = Path(".")) -> dict:
             if not item or not item["poster"] or key in seen:
                 continue
             seen.add(key)
-            entry = dict(item)
+            entry = {field: item[field] for field in ("type", "tmdb_id", "title", "year", "vote", "poster")}
             if provider:
                 entry["provider"] = provider
             chosen.append(entry)
