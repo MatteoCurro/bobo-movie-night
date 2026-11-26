@@ -42,6 +42,8 @@ jobs:
           assert 'watch-overview' in watch and 'watch-cast-grid' in watch and 'watch-awards-list' in watch
           assert 'src="bobo-cinema.js"' in watch
           assert 'id="person-main"' in Path('person.html').read_text()
+          assert 'id="person-directory"' in Path('person.html').read_text()
+          assert "!params.has('id')" in Path('bobo-cinema.js').read_text()
           assert Path('bobo-cinema.css').is_file()
           print('Watch and person integration OK')
           PY
