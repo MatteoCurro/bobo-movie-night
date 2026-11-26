@@ -50,7 +50,7 @@ jobs:
           python3 scripts/build_catalog_ledger.py
           python3 scripts/build_reviews.py
           python3 scripts/build_related_index.py
-          python3 scripts/build_catalog_metrics.py scripts/build_related_index.py
+          python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
 
       - name: Validate Bobo enhancements
@@ -69,7 +69,7 @@ jobs:
           node --check bobo-enhance.js
           node --check bobo-cloud.js
           node --check bobo-favorites.js
-          python3 -m py_compile scripts/build_catalog_ledger.py scripts/build_reviews.py scripts/build_catalog_metrics.py
+          python3 -m py_compile scripts/build_catalog_ledger.py scripts/build_reviews.py scripts/build_catalog_metrics.py scripts/build_related_index.py
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
