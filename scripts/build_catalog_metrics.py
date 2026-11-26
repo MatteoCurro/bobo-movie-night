@@ -57,6 +57,7 @@ def build(root: Path) -> dict:
     movies=int(status["catalog"]["movie"]["total"])
     tv=int(status["catalog"]["tv"]["total"])
     reviews_data=reviews.get("items") or {}
+    related=read(root/"data/related/status.json")
     now=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     snapshot={
         "updated_at":now,
@@ -74,6 +75,9 @@ def build(root: Path) -> dict:
         "titles_with_platform_check":checked,
         "titles_with_platform":with_platform,
         "platform_archive_counts":providers,
+        "related_titles":int(related.get("indexed") or 0),
+        "related_remaining":int(related.get("remaining") or 0),
+        "related_added_last_run":int(related.get("added") or 0),
         "reviewed_titles":sum(1 for x in reviews_data.values() if x.get("reviews")),
         "review_refs":sum(len(x.get("reviews",[])) for x in reviews_data.values()),
         "reviews_checked":sum(1 for x in reviews_data.values() if x.get("checked_at"))
