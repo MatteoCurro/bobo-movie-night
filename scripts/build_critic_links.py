@@ -46,7 +46,7 @@ def safe_url(value,source):
         if parsed.hostname!=SOURCE_HOSTS[source]:return ""
         if source=="comingsoon" and not re.fullmatch(r"/film/[^/?#]+/[0-9]+/recensione/?",parsed.path):return ""
         if source=="cinematografo" and not re.fullmatch(r"/recensioni/[^/?#]+",parsed.path):return ""
-        if source=="movieplayer" and not re.fullmatch(r"/articoli/[^/?#]+",parsed.path):return ""
+        if source=="movieplayer" and not re.fullmatch(r"/articoli/[^/?#]+/?",parsed.path):return ""
         return parsed.scheme+"://"+parsed.netloc+parsed.path
     except (ValueError,TypeError,KeyError):return ""
 
