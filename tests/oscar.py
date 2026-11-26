@@ -27,13 +27,26 @@ with tempfile.TemporaryDirectory() as folder:
     assert record["oscar_index"] == "2023"
     assert oscar.backfill(root, maximum=1) == 0
     record = {**record, "cast":[{"id":10,"name":"Actor"}],
-              "awards":[{"event":"Cannes","category":"Palme d'or","outcome":"won",
-                         "source":"wikidata"}] + record["awards"]}
+              "awards":[
+                  {"event":"Cannes","category":"Palme d'or","outcome":"won",
+                   "source":"wikidata"},
+                  {"event":"Oscar","category":"Oscar al miglior film d'animazione",
+                   "outcome":"won","year":2003,"source":"wikidata"},
+                  {"event":"Oscar","category":"Oscar al miglior film d'animazione",
+                   "outcome":"nominated","year":2003,"source":"wikidata"},
+                  {"event":"Oscar","category":"Nuova categoria",
+                   "outcome":"won","year":2025,"source":"wikidata"}
+              ] + record["awards"]}
     from build_cinema import Shards
     store = Shards(root, "credits")
     store.put(129, "movie:129", record)
     store.flush()
-    assert oscar.backfill(root, maximum=1) == 0
+    assert oscar.backfill(root, maximum=1) == 1
     preserved = Shards(root, "credits").get(129, "movie:129")
-    assert len(preserved["awards"])>=2
+    assert len(preserved["awards"])>=3
+    assert len([x for x in preserved["awards"] if x["event"]=="Oscar" and
+                x.get("source")=="wikidata" and x.get("year")==2003])==0
+    assert len([x for x in preserved["awards"] if x["event"]=="Oscar" and
+                x.get("source")=="wikidata" and x.get("year")==2025])==1
+    assert oscar.backfill(root, maximum=1)==0
 print("Oscar: MIT dataset, TMDB identity, won/nominated, incremental idempotence, coexistence OK")
