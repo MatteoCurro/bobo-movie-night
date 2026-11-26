@@ -9,6 +9,8 @@ on:
       - 'watch.html'
       - 'bobo-watch.js'
       - 'scripts/build_cinema.py'
+      - 'scripts/localize_cinema_people.py'
+      - 'tests/person-localization.py'
       - 'scripts/build_oscar_backfill.py'
       - 'data/cinema/oscar-index.json'
       - 'tests/oscar.py'
@@ -29,6 +31,8 @@ jobs:
           set -euo pipefail
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
+          python3 -m py_compile scripts/localize_cinema_people.py
+          python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
           node --check bobo-cinema.js
