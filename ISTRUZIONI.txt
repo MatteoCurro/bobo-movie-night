@@ -1,0 +1,26 @@
+BOBO MOVIE CLUB — Aggiornamento area amministrazione
+26/11/2026
+
+Questo pacchetto contiene SOLO i 4 file modificati dell'area amministrativa
+PHP del servizio account. NON è il pacchetto del sito statico.
+
+1. Effettua una copia di sicurezza dei 4 file già presenti sul server.
+2. Apri il file manager o il client FTP/SFTP del servizio account Gandi.
+3. Individua la DOCUMENT ROOT del sottodominio movieaccount.curromatteo.it
+   (la cartella che contiene già api.php, admin.html, admin.js e gate.js).
+4. Carica e sovrascrivi i seguenti file:
+   - api.php
+   - admin.html
+   - admin.js
+   - admin.css (nuovo)
+5. NON caricare il file ISTRUZIONI.txt sul server (opzionale, solo guida).
+6. NON cancellare né sovrascrivere: config.local.php, private/, state.json,
+   gate.js, lib/, bin/ o altri file di account esistenti.
+7. Apri https://movieaccount.curromatteo.it/admin.html, accedi come
+   amministratore e aggiorna la pagina senza cache.
+
+Le statistiche del catalogo sono create dal workflow GitHub del sito statico.
+Se il report non compare subito, controlla il completamento della sincronizzazione
+e del deploy del sito statico su movie.curromatteo.it.
+Il tracciamento comincia solo dal deploy della versione aggiornata del sito
+statico, non ricostruisce visite precedenti.
