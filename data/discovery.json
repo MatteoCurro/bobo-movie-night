@@ -2265,13 +2265,17 @@
       }
     ],
     "source": "Streamingfilter",
-    "updated_at": "2026-11-26T14:19:51+00:00",
+    "updated_at": "2026-11-26T14:35:24+00:00",
     "url": "https://streamingfilter.com/it/novita"
   },
   "trending": [
     {
       "tmdb_id": 1003596,
       "type": "movie"
+    },
+    {
+      "tmdb_id": 171802,
+      "type": "tv"
     },
     {
       "tmdb_id": 1300968,
@@ -2282,10 +2286,6 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 171802,
-      "type": "tv"
-    },
-    {
       "tmdb_id": 84773,
       "type": "tv"
     },
@@ -2294,8 +2294,16 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 300523,
-      "type": "tv"
+      "tmdb_id": 1458300,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1765072,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 969681,
+      "type": "movie"
     },
     {
       "tmdb_id": 1595124,
@@ -2306,23 +2314,7 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 969681,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1765072,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1458300,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 247718,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 103540,
+      "tmdb_id": 244447,
       "type": "tv"
     },
     {
@@ -2330,19 +2322,11 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 1131943,
-      "type": "movie"
+      "tmdb_id": 326247,
+      "type": "tv"
     },
     {
-      "tmdb_id": 1551025,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 1170608,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 291507,
+      "tmdb_id": 247718,
       "type": "tv"
     },
     {
@@ -2350,7 +2334,27 @@
       "type": "movie"
     },
     {
+      "tmdb_id": 1170608,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1400336,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 300523,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1611767,
+      "type": "movie"
+    },
+    {
       "tmdb_id": 1423191,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1131943,
       "type": "movie"
     },
     {
@@ -2362,10 +2366,6 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 244447,
-      "type": "tv"
-    },
-    {
       "tmdb_id": 1381071,
       "type": "movie"
     },
@@ -2374,11 +2374,11 @@
       "type": "tv"
     },
     {
-      "tmdb_id": 326247,
+      "tmdb_id": 117488,
       "type": "tv"
     },
     {
-      "tmdb_id": 117488,
+      "tmdb_id": 103540,
       "type": "tv"
     },
     {
@@ -2422,5 +2422,5 @@
       "type": "movie"
     }
   ],
-  "updated_at": "2026-11-26T14:19:45+00:00"
+  "updated_at": "2026-11-26T14:35:18+00:00"
 }
