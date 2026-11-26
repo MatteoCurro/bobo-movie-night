@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'bobo-cinema.js'
+      - 'data/cinema/film-quotes.json'
+      - 'tests/watch-dossier.cjs'
       - 'bobo-cinema.css'
       - 'person.html'
       - 'watch.html'
@@ -66,6 +68,7 @@ jobs:
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
           node --check bobo-cinema.js
+          node tests/watch-dossier.cjs
           node --check bobo-watch.js
           python3 - <<'PY'
           from pathlib import Path
