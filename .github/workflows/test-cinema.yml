@@ -16,6 +16,7 @@ on:
       - 'tests/portrait-backfill.py'
       - 'tests/quote-sources.py'
       - 'scripts/build_reviews.py'
+      - 'tests/review-catalog-backfill.py'
       - 'scripts/build_related_index.py'
       - 'scripts/build_person_search.py'
       - 'tests/person-search.py'
@@ -58,6 +59,7 @@ jobs:
           set -euo pipefail
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
+          python3 tests/review-catalog-backfill.py
           python3 -m py_compile scripts/backfill_cinema_portraits.py scripts/discover_quote_sources.py
           python3 tests/portrait-backfill.py
           python3 tests/quote-sources.py
