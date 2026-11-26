@@ -73,3 +73,14 @@
 .bobo-season-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
 .bobo-season-arrow[hidden]{display:none!important}
 @media(max-width:640px){.bobo-season-arrow{width:30px;height:39px;font-size:24px}}
+
+/* Source-linked community reviews use Bobo's existing editorial palette. */
+.bobo-review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin-top:14px}
+.bobo-review-card{background:var(--bg2,#19242a);border:1px solid rgba(184,220,214,.16);border-radius:8px;padding:17px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bobo-review-head{display:flex;justify-content:space-between;align-items:center;gap:9px}
+.bobo-review-head strong{font:600 13px var(--bobo-font-display,inherit);color:#e2edea;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bobo-review-rating{font:600 12px var(--bobo-font-mono,monospace);color:#ddc787;white-space:nowrap}
+.bobo-review-card p{margin:0;color:#c2d1d0;font-size:13px;line-height:1.65;flex:1}
+.bobo-review-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;font:11px var(--bobo-font-mono,monospace);color:#9eb7b6}
+.bobo-review-foot a{color:var(--bobo-mint,#a3d9cb);text-decoration:underline;text-underline-offset:3px}
+.bobo-review-foot a:hover{color:#fff}

@@ -174,7 +174,9 @@
   function shelf(id, title, items, subtitle) {
     const list = items.slice(0, 16);
     if (list.length < 4) return '';
-    return '<section class="bobo-shelf" aria-label="'+text(title)+'">'+
+    const platform=id.startsWith('new-on-') ? id.slice('new-on-'.length) : '';
+    return '<section class="bobo-shelf" aria-label="'+text(title)+'"'+
+      (platform ? ' data-bobo-platform="'+text(platform)+'"' : '')+'>'+
       '<div class="bobo-shelf-head"><h2>'+text(title)+'</h2>'+
       (subtitle ? '<small class="bobo-shelf-source">'+text(subtitle)+'</small>' : '')+
       '</div><div class="bobo-rail-frame">'+

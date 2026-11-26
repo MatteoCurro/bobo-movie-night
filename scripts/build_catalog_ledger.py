@@ -13,6 +13,8 @@ TARGET = Path("data/catalog-ledger.json")
 TODAY = dt.date.today().isoformat()
 KINDS = {"movie":"data/movies.json", "tv":"data/tv.json"}
 MAX_PER_KIND = 90000
+KNOWN_PROVIDERS = {"netflix","prime","disney","apple","paramount","skygo","now",
+                   "hbo","rai","mediaset","crunchyroll"}
 
 
 def main() -> None:
@@ -44,28 +46,54 @@ def main() -> None:
             for key,_ in expired[:len(old)-MAX_PER_KIND]:
                 old.pop(key,None)
         print(f"Catalog ledger {kind}: {len(old)} IDs, {count_new} first seen today")
-    # Historical platform observations are linked to the TMDB identifier.
-    # They are *not* assertions that a title remains available forever.
+    # Keep historical, date-stamped provider observations indefinitely.
+    # Frontend hides stale facts after 90 days to avoid misleading availability.
+    def record(kind: str, ident: object, provider: str, observed: str = TODAY) -> None:
+        if kind not in KINDS or provider not in KNOWN_PROVIDERS:
+            return
+        try:
+            observed_date = dt.date.fromisoformat(observed)
+            if observed_date > dt.date.today():
+                return
+        except (ValueError,TypeError):
+            return
+        title = ledger["items"].get(kind,{}).get(str(ident))
+        if title is None:
+            return
+        if len(title) < 3:
+            title.append({})
+        if not isinstance(title[2],dict):
+            title[2] = {}
+        if title[2].get(provider,"") < observed:
+            title[2][provider] = observed
+
     try:
-        stream = json.loads(Path("data/discovery.json").read_text(encoding="utf-8")).get("streaming",{})
-        platforms = stream.get("platforms",[]) if isinstance(stream,dict) else []
-    except (OSError,ValueError,TypeError):
-        platforms = []
-    for platform in platforms:
-        provider = str(platform.get("id",""))
-        if provider not in {"netflix","prime","disney","apple"}:
-            continue
-        for row in platform.get("items",[]):
-            kind = row.get("type")
-            ident = str(row.get("tmdb_id",""))
-            item = ledger["items"].get(kind,{}).get(ident)
-            if item is None:
+        feed = json.loads(Path("data/discovery.json").read_text(encoding="utf-8"))
+        monthly = (feed.get("streaming") or {}).get("platforms",[])
+        availability = feed.get("platforms",[])
+        for platform in monthly + availability:
+            name = str(platform.get("id",""))
+            if name not in KNOWN_PROVIDERS:
                 continue
-            if len(item) < 3:
-                item.append({})
-            if not isinstance(item[2],dict):
-                item[2] = {}
-            item[2][provider] = TODAY
+            for title in platform.get("items",[]):
+                record(title.get("type"),title.get("tmdb_id"),name)
+    except (OSError,ValueError,TypeError,AttributeError):
+        pass
+
+    # A TMDB watch-provider observation is explicitly associated with its
+    # title even when absent from current monthly platform highlights.
+    try:
+        enrichment = json.loads(Path("data/enrichment.json").read_text(encoding="utf-8"))
+        for key,details in enrichment.get("items",{}).items():
+            kind, _, ident = key.partition(":")
+            prov = details.get("providers_it") if isinstance(details,dict) else None
+            if not isinstance(prov,dict) or prov.get("region") != "IT":
+                continue
+            observed = prov.get("observed_at")
+            for name in prov.get("flatrate",[]):
+                record(kind,ident,name,observed)
+    except (OSError,ValueError,TypeError,AttributeError):
+        pass
     serialized = json.dumps(ledger,ensure_ascii=False,separators=(",",":"),sort_keys=True)+"\n"
     if not TARGET.exists() or TARGET.read_text(encoding="utf-8") != serialized:
         TARGET.write_text(serialized,encoding="utf-8")

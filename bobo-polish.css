@@ -299,6 +299,13 @@ body > header, .site-header {
 .bobo-platform--prime { --brand-line:#20a9e7; --brand-bg:#172e3e; --brand-text:#bedeee; }
 .bobo-platform--disney { --brand-line:#688df5; --brand-bg:#222840; --brand-text:#c8d2fa; }
 .bobo-platform--apple { --brand-line:#c6c8cf; --brand-bg:#26292d; --brand-text:#ebedef; }
+.bobo-platform--paramount { --brand-line:#0064ff; --brand-bg:#122747; --brand-text:#b6d2ff; }
+.bobo-platform--skygo { --brand-line:#de23c6; --brand-bg:#361b38; --brand-text:#f1baeb; }
+.bobo-platform--now { --brand-line:#b3ff33; --brand-bg:#26331a; --brand-text:#d6ffab; }
+.bobo-platform--hbo { --brand-line:#8764e9; --brand-bg:#292040; --brand-text:#d8c7ff; }
+.bobo-platform--rai { --brand-line:#0076ca; --brand-bg:#192f43; --brand-text:#b2dfff; }
+.bobo-platform--mediaset { --brand-line:#ad54e6; --brand-bg:#2f2041; --brand-text:#e9c0ff; }
+.bobo-platform--crunchyroll { --brand-line:#f47521; --brand-bg:#36271c; --brand-text:#ffddb5; }
 .bobo-platform-more {font:500 9px var(--bobo-font-mono);color:#94abb5;}
 .bobo-feature-meta + .bobo-source-tags, .bobo-detail-meta + .bobo-source-tags,
 #watch-meta + .bobo-source-tags { margin:-3px 0 13px; }
