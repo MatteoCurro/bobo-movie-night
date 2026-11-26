@@ -40,6 +40,10 @@ on:
       - 'scripts/localize_cinema_people.py'
       - 'tests/person-localization.py'
       - 'scripts/build_oscar_backfill.py'
+      - 'scripts/build_oscar_current.py'
+      - 'scripts/import_imdb_metadata.py'
+      - 'tests/oscar-current.py'
+      - 'tests/imdb-metadata.py'
       - 'data/cinema/oscar-index.json'
       - 'tests/oscar.py'
       - 'tests/cinema.py'
@@ -78,6 +82,9 @@ jobs:
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
+          python3 -m py_compile scripts/build_oscar_current.py scripts/import_imdb_metadata.py
+          python3 tests/oscar-current.py
+          python3 tests/imdb-metadata.py
           node --check bobo-cinema.js
           node tests/watch-dossier.cjs
           node --check bobo-watch.js
