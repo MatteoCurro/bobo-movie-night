@@ -97,6 +97,15 @@ def build(root: Path = Path(".")) -> dict:
     if not all_rows:
         raise ValueError("Catalogo TV vuoto")
 
+    # A small audited subset carries real audience sample sizes. The main
+    # catalog only stores vote averages; never invent missing vote counts.
+    trusted_votes = read(root / "data/editorial-evidence.json").get("titles") or {}
+    for key, metrics in trusted_votes.items():
+        if key in all_rows and isinstance(metrics, dict):
+            count = safe_int(metrics.get("vote_count"))
+            if count > 0:
+                all_rows[key]["vote_count"] = count
+
     catalog_status = read(root / "data/catalog-status.json")
     updated = str(catalog_status.get("updated_at") or "")[:40]
     # Integer genre codes keep discovery filters available without making
