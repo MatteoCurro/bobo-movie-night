@@ -533,7 +533,7 @@
     document.body.insertAdjacentHTML('beforeend',
       '<div id="bobo-settings" hidden><div class="bobo-settings-box" role="dialog" aria-modal="true" aria-label="Impostazioni riproduzione">'+
       '<div class="bobo-settings-head"><h2>Impostazioni riproduzione</h2><button type="button" data-close-settings aria-label="Chiudi impostazioni">×</button></div>'+
-      '<p>Seleziona la sorgente. La preferenza vale anche nelle schede dei film e rimane memorizzata su questo dispositivo. VixSrc e VidCore possono richiedere l'audio italiano, ma la traccia va verificata per ciascun titolo.</p>'+
+      '<p>Seleziona la sorgente. La preferenza vale anche nelle schede dei film e rimane memorizzata su questo dispositivo. VixSrc e VidCore possono richiedere audio italiano, ma la traccia va verificata per ciascun titolo.</p>'+
       '<div id="bobo-settings-providers" role="radiogroup" aria-label="Sorgenti di riproduzione"></div>'+
       '<div class="bobo-auto-settings"><h3>Serie TV · riproduzione consecutiva</h3>'+
       '<label class="bobo-auto-option"><input id="bobo-settings-auto-next" type="checkbox"><span>Passa al prossimo episodio quando VixSrc segnala la fine del video</span></label>'+
