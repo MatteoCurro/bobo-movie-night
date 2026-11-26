@@ -346,3 +346,17 @@
 #watch-quote-source-link{flex:none;color:#bce8df;text-decoration:none;font:650 12px/1.4 var(--bobo-font-body,inherit)}
 #watch-quote-source-link:hover{text-decoration:underline;color:#e3fff7}
 @media(max-width:580px){#watch-quote-resources{align-items:flex-start;flex-direction:column}}
+
+/* Metadata is optional and collapsed: the film synopsis and primary CTA stay first. */
+#watch-main .bobo-extra-facts{margin:10px 0 25px;border:1px solid rgba(171,217,217,.18);border-radius:7px;background:rgba(8,25,32,.27);overflow:hidden}
+#watch-main .bobo-extra-facts[hidden]{display:none!important}
+#watch-main .bobo-extra-facts summary{display:flex;align-items:center;justify-content:space-between;gap:18px;cursor:pointer;padding:16px 19px;color:#d9eeeb;font:650 13px/1.4 var(--bobo-font-body,inherit)}
+#watch-main .bobo-extra-facts summary:hover{background:rgba(161,212,209,.07)}
+#watch-main .bobo-extra-facts[open] summary{border-bottom:1px solid rgba(171,217,217,.15)}
+#watch-main .bobo-extra-facts[open] summary span{transform:rotate(180deg)}
+#watch-main .bobo-extra-facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px 25px;margin:0;padding:20px}
+#watch-main .bobo-metadata-row{min-width:0}
+#watch-main .bobo-metadata-row dt{font-size:11px;color:#a1bdc0;margin-bottom:5px}
+#watch-main .bobo-metadata-row dd{font-size:13px;line-height:1.6;color:#ecf5f3;margin:0;overflow-wrap:anywhere}
+#watch-main .bobo-metadata-source{font-size:11px;color:#b4dfd8;align-self:end}
+@media(max-width:560px){#watch-main .bobo-extra-facts-grid{grid-template-columns:1fr;gap:15px}}
