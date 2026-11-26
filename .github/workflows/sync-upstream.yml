@@ -54,6 +54,7 @@ jobs:
           python3 scripts/build_multi_ratings.py
           python3 scripts/build_related_index.py
           python3 scripts/build_cinema.py
+          python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
@@ -83,6 +84,8 @@ jobs:
           python3 tests/related-index.py
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
+          python3 -m py_compile scripts/localize_cinema_people.py
+          python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
           python3 tests/critic-links.py
