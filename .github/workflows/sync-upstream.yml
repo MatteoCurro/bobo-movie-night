@@ -51,7 +51,6 @@ jobs:
           python3 scripts/build_discovery.py
           python3 scripts/build_streaming_feed.py
           python3 scripts/build_editorial.py
-          python3 scripts/build_newsletter_digest.py
           python3 -m pip install --disable-pip-version-check 'Pillow>=11.0,<13.0'
           python3 scripts/vendor_flaticon.py
           python3 scripts/prepare_flaticon.py
@@ -71,6 +70,7 @@ jobs:
           python3 scripts/build_related_index.py
           python3 scripts/build_cinema_explore.py
           python3 scripts/build_story_connections.py
+          python3 scripts/build_newsletter_digest.py
           python3 scripts/enrich_person_facts.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
@@ -149,6 +149,7 @@ jobs:
           python3 -m py_compile scripts/build_poster_index.py
           python3 -m py_compile scripts/build_editorial.py
           python3 -m py_compile scripts/build_newsletter_digest.py
+          python3 tests/newsletter-magazine.py
           python3 -m py_compile scripts/prepare_flaticon.py
           python3 - <<'PY'
           from pathlib import Path
@@ -243,7 +244,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
+          git add index.html data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json data/newsletter-history.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__.'/newsletter-magazine.php';
 /** Weekly Bobo editorial digest: safe public catalog metadata, private recipients. */
 function bobo_newsletter_load_digest(array $config): ?array {
     $url='https://movie.curromatteo.it/data/newsletter.json';
@@ -19,7 +20,7 @@ function bobo_newsletter_load_digest(array $config): ?array {
     }
     if(!is_string($result)||strlen($result)>300000||$status!==200)return null;
     $data=json_decode($result,true);
-    if(!is_array($data)||($data['schema']??0)!==1 || !isset($data['platforms'])||!is_array($data['platforms']))return null;
+    if(!is_array($data)||!in_array(($data['schema']??0),[1,2],true) || !isset($data['platforms'])||!is_array($data['platforms']))return null;
     // Only catalog entities: no embedded HTML or untrusted outgoing links.
     return $data;
 }
@@ -47,6 +48,7 @@ function bobo_newsletter_valid_item(mixed $raw): ?array {
  * Spotlight + a maximum of six compact recommendations, with readable posters.
  */
 function bobo_newsletter_compose(array $feed,string $username,string $unsubscribe): array {
+    if(($feed['magazine_schema']??0)===2)return bobo_newsletter_compose_magazine($feed,$username,$unsubscribe);
     $safe=static fn(string $value):string=>htmlspecialchars($value,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');
     $short=static function(string $value,int $limit=155):string {
         $value=trim(preg_replace('/\s+/u',' ',$value)??$value);
