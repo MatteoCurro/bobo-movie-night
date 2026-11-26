@@ -56,18 +56,31 @@ def get_api(path: str, params: dict | None = None) -> dict:
     return data
 
 
+_providers_cache: dict[str,list[dict] | None] = {}
+
 def lookup_provider_id(kind: str, provider: dict) -> int:
     names = provider["names"]
-    try:
-        data = get_api("/watch/providers/" + kind, {"watch_region": "IT", "language": "it-IT"})
-        results = data.get("results", [])
-        for wanted in names:
-            for row in results:
-                if str(row.get("provider_name", "")).strip().lower() == wanted:
-                    return int(row["provider_id"])
-    except (urllib.error.URLError, ValueError, KeyError, TimeoutError) as exc:
-        print(f"Provider lookup unavailable for {provider['id']}/{kind}: {type(exc).__name__}")
-    return provider["fallback"]
+    if kind not in _providers_cache:
+        try:
+            data = get_api("/watch/providers/" + kind, {"watch_region": "IT", "language": "it-IT"})
+            rows = data.get("results")
+            if not isinstance(rows, list):
+                raise ValueError("Missing provider list")
+            _providers_cache[kind] = rows
+        except (urllib.error.URLError, ValueError, KeyError, TimeoutError) as exc:
+            print(f"Provider directory unavailable for {kind}: {type(exc).__name__}")
+            _providers_cache[kind] = None
+    rows = _providers_cache[kind]
+    if rows is None:
+        # Use the last-known TMDB ID only on a complete directory outage.
+        return int(provider["fallback"])
+    for wanted in names:
+        for row in rows:
+            if str(row.get("provider_name", "")).strip().casefold() == wanted:
+                return int(row["provider_id"])
+    # Never silently assign a different platform when the live directory
+    # doesn't contain this name (renames/region removals are possible).
+    return 0
 
 
 def recent_enough(d: str | None, years: int) -> bool:
@@ -80,6 +93,7 @@ def recent_enough(d: str | None, years: int) -> bool:
 def search_provider(kind: str, provider_id: int, catalog: set[int]) -> list[dict]:
     results: list[dict] = []
     seen = set()
+    if not provider_id: return results
     params = {
         "watch_region": "IT",
         "with_watch_providers": str(provider_id),
@@ -91,7 +105,7 @@ def search_provider(kind: str, provider_id: int, catalog: set[int]) -> list[dict
     }
     # These are relatively recent *original* release dates, NOT dates added to a service.
     limit_years = 4 if kind == "tv" else 3
-    for page in range(1, 5):
+    for page in range(1, 3):
         params["page"] = str(page)
         batch = get_api("/discover/" + kind, params).get("results", [])
         for item in batch:
