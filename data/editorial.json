@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:01:07+00:00",
+  "generated_at": "2026-11-26T17:07:34+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -188,7 +188,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4781,
+        "vote_count": 4782,
         "year": 2026
       },
       {
@@ -249,7 +249,7 @@
         "tmdb_id": 354912,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 21933,
+        "vote_count": 21937,
         "year": 2017
       }
     ],
@@ -396,7 +396,7 @@
         "tmdb_id": 696806,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5291,
+        "vote_count": 5292,
         "year": 2022
       },
       {
@@ -413,7 +413,7 @@
         "tmdb_id": 284053,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 22816,
+        "vote_count": 22818,
         "year": 2017
       },
       {
@@ -715,7 +715,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23150,
+        "vote_count": 23152,
         "year": 2003
       },
       {
@@ -832,7 +832,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23150,
+        "vote_count": 23152,
         "year": 2003
       },
       {
@@ -965,7 +965,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23150,
+        "vote_count": 23152,
         "year": 2003
       },
       {
@@ -1441,7 +1441,7 @@
         "tmdb_id": 929590,
         "type": "movie",
         "vote": 6.8,
-        "vote_count": 4756,
+        "vote_count": 4757,
         "year": 2024
       },
       {
@@ -1779,6 +1779,21 @@
           "Horror",
           "Thriller"
         ],
+        "overview": "Micheal, a soli 6 anni ammazza la sorella e viene internato ma dopo 15 anni fugge per recarsi al suo paese. E' il 31 Ottobre, e secondo l'antica tradizione americana è la notte in cui si esorcizzano le streghe, grazie a questa concomitanza Micheal può mietere altre vittime.",
+        "poster": "https://image.tmdb.org/t/p/w342/uxLqrN38fSQEUVpM4S1suhnW3X.jpg",
+        "runtime": 91,
+        "title": "Halloween - La notte delle streghe",
+        "tmdb_id": 948,
+        "type": "movie",
+        "vote": 7.6,
+        "vote_count": 6554,
+        "year": 1978
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
         "overview": "Finney Shaw, un timido ma intelligente ragazzo di 13 anni, viene rapito da un sadico assassino che lo rinchiude in un seminterrato insonorizzato dove le urla servono a poco. Quando un telefono disconnesso inizia a squillare sul muro, Finney scopre di poter sentire le voci delle p",
         "poster": "https://image.tmdb.org/t/p/w342/jj7zRPozCiKgresivgdE2OtyIAh.jpg",
         "runtime": 102,
@@ -1834,21 +1849,6 @@
         "type": "movie",
         "vote": 7.6,
         "vote_count": 19701,
-        "year": 2017
-      },
-      {
-        "genres": [
-          "Horror",
-          "Thriller"
-        ],
-        "overview": "Anche se Kevin ha mostrato ben 23 personalità alla sua psichiatra di fiducia, la dottoressa Fletcher, ne rimane ancora una nascosta, in attesa di materializzarsi e dominare tutte le altre. Dopo aver rapito tre ragazze adolescenti guidate da Casey, ragazza molto attenta ed ostinat",
-        "poster": "https://image.tmdb.org/t/p/w342/kwu1IppY5qsWtLqs0M0vnETK72H.jpg",
-        "runtime": 117,
-        "title": "Split",
-        "tmdb_id": 381288,
-        "type": "movie",
-        "vote": 7.3,
-        "vote_count": 18860,
         "year": 2017
       }
     ],
@@ -2131,7 +2131,7 @@
         "tmdb_id": 286217,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 22186,
+        "vote_count": 22187,
         "year": 2015
       },
       {
@@ -2296,7 +2296,7 @@
         "tmdb_id": 11,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 23226,
+        "vote_count": 23229,
         "year": 1977
       },
       {
@@ -2674,7 +2674,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4781,
+        "vote_count": 4782,
         "year": 2026
       },
       {
@@ -2787,7 +2787,7 @@
         "tmdb_id": 10138,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 23283,
+        "vote_count": 23286,
         "year": 2010
       },
       {
@@ -2819,7 +2819,7 @@
         "tmdb_id": 1771,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 23563,
+        "vote_count": 23566,
         "year": 2011
       },
       {
@@ -3176,7 +3176,7 @@
         "tmdb_id": 493529,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 5101,
+        "vote_count": 5104,
         "year": 2023
       },
       {
@@ -3228,7 +3228,7 @@
         "tmdb_id": 787699,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 4659,
+        "vote_count": 4661,
         "year": 2023
       },
       {
@@ -3277,7 +3277,7 @@
         "tmdb_id": 696806,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5291,
+        "vote_count": 5292,
         "year": 2022
       }
     ],
@@ -3656,7 +3656,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       },
       {
@@ -3702,7 +3702,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4781,
+        "vote_count": 4782,
         "year": 2026
       },
       {
@@ -3799,7 +3799,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       },
       {
@@ -3815,7 +3815,7 @@
         "tmdb_id": 929590,
         "type": "movie",
         "vote": 6.8,
-        "vote_count": 4756,
+        "vote_count": 4757,
         "year": 2024
       },
       {
@@ -3830,7 +3830,7 @@
         "tmdb_id": 49046,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 5102,
+        "vote_count": 5104,
         "year": 2022
       },
       {
@@ -5261,7 +5261,7 @@
         "tmdb_id": 1054867,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 4579,
+        "vote_count": 4581,
         "year": 2025
       },
       {
@@ -5441,7 +5441,7 @@
         "tmdb_id": 83533,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 4737,
+        "vote_count": 4741,
         "year": 2025
       },
       {
@@ -5639,6 +5639,150 @@
         "year": 2023
       }
     ],
+    "movie:721656": [
+      {
+        "genres": [
+          "Mistero",
+          "Sci-Fi & Fantasy",
+          "Animazione",
+          "Famiglia",
+          "Commedia"
+        ],
+        "overview": "I due fratellastri Wirt e Greg si ritrovano improvvisamente smarriti alla deriva del tempo all'interno dell'Ignoto, una foresta tetra e misteriosa. Sperando di ritrovare la strada verso casa, i giovani iniziano un lungo viaggio guidati da un saggio taglialegna e da Beatrice, un b",
+        "poster": "https://image.tmdb.org/t/p/w342/8uHxhk6ey9EgFqWavj9jAa1JKIH.jpg",
+        "runtime": 0,
+        "title": "Over the Garden Wall - Avventura nella foresta dei misteri",
+        "tmdb_id": 61617,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1868,
+        "year": 2014
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3670,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Luz, un'adolescente umana sicura di sé, si imbatte accidentalmente in un portale verso un nuovo mondo magico dove fa amicizia con una strega ribelle, Eda, e un adorabile piccolo guerriero, King. Pur non avendo abilità magiche, Luz realizza il suo sogno di diventare una strega svo",
+        "poster": "https://image.tmdb.org/t/p/w342/qjTcI7gO8z4yOKmbHX4qe98kYCA.jpg",
+        "runtime": 0,
+        "title": "The Owl House - Aspirante strega",
+        "tmdb_id": 92685,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1864,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
+        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
+        "runtime": 0,
+        "title": "Anfibia",
+        "tmdb_id": 85349,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 376,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Kids"
+        ],
+        "overview": "Bluey è un'inesauribile cane Blue Heeler di sei anni, che ama giocare e trasforma la vita familiare di tutti i giorni in avventure straordinarie, sviluppando la sua immaginazione e la sua capacità di recupero mentale, fisica ed emotiva.",
+        "poster": "https://image.tmdb.org/t/p/w342/9p4pNoGcuyCfHcGWKNrTopqMWtq.jpg",
+        "runtime": 0,
+        "title": "Bluey",
+        "tmdb_id": 82728,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 764,
+        "year": 2018
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Commedia",
+          "Fantasy"
+        ],
+        "overview": "Mei Lee è una tredicenne che si trasforma improvvisamente in un gigantesco panda rosso quando è in preda di forti emozioni (ovvero sempre). La madre di Mei Lee, Ming, è iperprotettiva, se non autoritaria e asfissiante, e non si allontana mai da sua figlia. Un problema imbarazzant",
+        "poster": "https://image.tmdb.org/t/p/w342/5BSeqCEKYrdIo7TQf8iQgLRHVZd.jpg",
+        "runtime": 100,
+        "title": "Red",
+        "tmdb_id": 508947,
+        "type": "movie",
+        "vote": 7.3,
+        "vote_count": 6145,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Commedia",
+          "Famiglia"
+        ],
+        "overview": "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a caro prezzo: ben otto delle sue nove vite sono andate bruciate.  Dovrà così intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, che gli permetterà di recuperare le s",
+        "poster": "https://image.tmdb.org/t/p/w342/v8xkTiSL2q680uCFuhc50mSea7q.jpg",
+        "runtime": 100,
+        "title": "Il gatto con gli stivali 2 - L'ultimo desiderio",
+        "tmdb_id": 315162,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 9415,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "Al di sopra della città di Chissarà, dentro una grotta profonda e confortevole, vive il Grinch col suo cane Max. Verde, peloso e solitario, il Grinch odia il Natale, ne odia le assemblee di persone, lo spirito allegro e cordiale e soprattutto i canti. Per cinquantatré lunghi anni",
+        "poster": "https://image.tmdb.org/t/p/w342/h0UVVMiSMbHS10kghelPYpQFKGj.jpg",
+        "runtime": 86,
+        "title": "Il Grinch",
+        "tmdb_id": 360920,
+        "type": "movie",
+        "vote": 6.9,
+        "vote_count": 4596,
+        "year": 2018
+      }
+    ],
     "movie:769": [
       {
         "genres": [
@@ -5761,7 +5905,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       }
     ],
@@ -6041,7 +6185,7 @@
         "tmdb_id": 911430,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 5061,
+        "vote_count": 5062,
         "year": 2025
       },
       {
@@ -6105,7 +6249,7 @@
         "tmdb_id": 49046,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 5102,
+        "vote_count": 5104,
         "year": 2022
       },
       {
@@ -6153,7 +6297,7 @@
         "tmdb_id": 98,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 21942,
+        "vote_count": 21946,
         "year": 2000
       }
     ],
@@ -6280,7 +6424,7 @@
         "tmdb_id": 762504,
         "type": "movie",
         "vote": 6.8,
-        "vote_count": 5351,
+        "vote_count": 5354,
         "year": 2022
       }
     ],
@@ -6344,7 +6488,7 @@
         "tmdb_id": 929590,
         "type": "movie",
         "vote": 6.8,
-        "vote_count": 4756,
+        "vote_count": 4757,
         "year": 2024
       },
       {
@@ -6554,7 +6698,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       },
       {
@@ -6602,7 +6746,7 @@
         "tmdb_id": 929590,
         "type": "movie",
         "vote": 6.8,
-        "vote_count": 4756,
+        "vote_count": 4757,
         "year": 2024
       },
       {
@@ -7190,7 +7334,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       }
     ],
@@ -7471,7 +7615,7 @@
         "tmdb_id": 466420,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 4506,
+        "vote_count": 4508,
         "year": 2023
       },
       {
@@ -10424,7 +10568,7 @@
           "tmdb_id": 936075,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 4781,
+          "vote_count": 4782,
           "year": 2026
         },
         {
@@ -10590,7 +10734,7 @@
           "tmdb_id": 466420,
           "type": "movie",
           "vote": 7.4,
-          "vote_count": 4506,
+          "vote_count": 4508,
           "year": 2023
         },
         {
@@ -10697,6 +10841,24 @@
           "vote": 8.4,
           "vote_count": 240,
           "year": 2024
+        },
+        {
+          "genres": [
+            "Famiglia",
+            "Animazione",
+            "Mistero",
+            "Commedia",
+            "Horror"
+          ],
+          "overview": "Scooby-Doo e Shaggy sono prontissimi a festeggiare la festa di Halloween, la ricorrenza preferita: d'altronde per loro, cacciatore di mostri e misteri, la concomitanza con l'evento è sempre gravida di sorprese. E quando una contaminazione tossica di un campo di zucche genera un o",
+          "poster": "https://image.tmdb.org/t/p/w342/rhVkjfYNd7XKnYQdb3agbKlZ98E.jpg",
+          "runtime": 77,
+          "title": "Happy Halloween Scooby-Doo!",
+          "tmdb_id": 721656,
+          "type": "movie",
+          "vote": 7.7,
+          "vote_count": 268,
+          "year": 2020
         }
       ],
       "subtitle": "Film molto apprezzati, meno presenti nelle classifiche",
@@ -11657,7 +11819,7 @@
           "tmdb_id": 929590,
           "type": "movie",
           "vote": 6.8,
-          "vote_count": 4756,
+          "vote_count": 4757,
           "year": 2024
         },
         {
