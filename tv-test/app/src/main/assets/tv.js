@@ -401,6 +401,23 @@ function move(key){
   if(target){target.focus({preventScroll:true});ensure(target,'horizontal');}
   return;
  }
+ if(!horizontal&&rail?.classList?.contains('rail')&&
+    (status.view==='home'||status.view==='favorites')&&document.querySelectorAll){
+  const rails=Array.from(document.querySelectorAll('.rail'));
+  const nextRail=rails[rails.indexOf(rail)+direction];
+  if(nextRail?.querySelectorAll){
+   const items=Array.from(nextRail.querySelectorAll('.poster'));
+   const current=active.getBoundingClientRect();
+   const cx=(current.left+current.right)/2;
+   let best=null,distance=Infinity;
+   for(const item of items){
+    const rect=item.getBoundingClientRect();
+    const delta=Math.abs((rect.left+rect.right)/2-cx);
+    if(delta<distance){best=item;distance=delta;}
+   }
+   if(best){best.focus({preventScroll:true});ensure(best,'vertical');return;}
+  }
+ }
  const grid=active?.closest?.('.results');
  if(grid?.querySelectorAll){
   const items=Array.from(grid.querySelectorAll('.poster'));
@@ -580,7 +597,8 @@ function previousPage(){
    const shelves=Array.from(document.querySelectorAll('.rail,.season-list'));
    if(where.shelfIndex>=0&&shelves[where.shelfIndex])shelves[where.shelfIndex].scrollLeft=where.shelfLeft;
    window.scrollTo({top:where.scroll||0,behavior:'auto'});
-   const target=where.key?Array.from(document.querySelectorAll('[data-title]')).find(el=>el.dataset.title===where.key):null;
+   const source=where.shelfIndex>=0?shelves[where.shelfIndex]:null;
+   const target=where.key?Array.from((source||document).querySelectorAll('[data-title]')).find(el=>el.dataset.title===where.key):null;
    if(target)target.focus({preventScroll:true});
   });
   return;
