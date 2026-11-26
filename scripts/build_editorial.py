@@ -158,6 +158,10 @@ def main():
     add("mini","Serie da divorare","Serie apprezzate da un pubblico significativo",
         [x for x in eligible if x["type"]=="tv" and int(x.get("year") or 0)>=2010 and votes(x)>=350
          and rating(x)>=7.1],12)
+    add("anime","Anime da scoprire","Animazione giapponese dal catalogo Bobo; lingua del player da verificare",
+        [x for x in eligible if x.get("original_language")=="ja"
+         and any("animaz" in str(g).lower() or "animation" in str(g).lower()
+                 for g in x.get("genres",[]))],14)
     add("cinephiles","I più amati dal pubblico","Titoli con molti voti e giudizi positivi",
         [x for x in eligible if votes(x)>=2000 and rating(x)>=7.6],12)
     add("classics","Grandi film da recuperare","Film memorabili che superano la prova del tempo",
