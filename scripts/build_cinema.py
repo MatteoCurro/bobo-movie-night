@@ -208,7 +208,19 @@ def extract_credits(kind, mid, payload):
                       for item in payload.get(source) or [] if isinstance(item, dict)]
             if any(values):
                 facts[output] = [v for v in dict.fromkeys(values) if v][:8]
-    entry = {"source": "tmdb", "checked_at": TODAY, "cast": cast, "crew": crew,
+    # Keywords arrive in the same TMDB detail request as credits, for films
+    # AND series. Keep them on each title even before IMDb coverage arrives.
+    keyword_payload = payload.get("keywords") or {}
+    raw_keywords = (keyword_payload.get("results") or keyword_payload.get("keywords") or [])
+    tmdb_keywords = []
+    for item in raw_keywords:
+        label = str(item.get("name") or "").strip()[:100] if isinstance(item, dict) else ""
+        if label and label not in tmdb_keywords:
+            tmdb_keywords.append(label)
+        if len(tmdb_keywords) >= 24:
+            break
+    entry = {"tmdb_keywords": tmdb_keywords, "keywords_checked_at": TODAY,
+             "source": "tmdb", "checked_at": TODAY, "cast": cast, "crew": crew,
              "tagline": str(payload.get("tagline") or "")[:250]}
     if facts:
         entry["facts"] = facts
@@ -345,11 +357,12 @@ def sync(root=Path(".")):
         kind, midstr = key.split(":")
         mid = int(midstr)
         existing = credits.get(mid, key)
-        if existing and not expires(existing.get("checked_at"), 365) and (kind == "tv" or existing.get("facts")):
+        if (existing and not expires(existing.get("checked_at"), 365) and
+                existing.get("keywords_checked_at") and (kind == "tv" or existing.get("facts"))):
             continue
         try:
             payload = tmdb(f"/{kind}/{mid}", {"language": "it-IT",
-                           "append_to_response": "aggregate_credits" if kind == "tv" else "credits"})
+                           "append_to_response": "aggregate_credits,keywords" if kind == "tv" else "credits,keywords"})
             entry = extract_credits(kind, mid, payload)
         except (urllib.error.URLError, TimeoutError, ValueError, KeyError) as exc:
             failed += 1
@@ -357,7 +370,8 @@ def sync(root=Path(".")):
             continue
         if existing:
             for key_to_keep in ("awards", "awards_checked_at", "oscar_index",
-                                "oscar_current", "imdb_metadata", "imdb_id", "facts"):
+                                "oscar_current", "imdb_metadata", "imdb_id", "facts",
+                                "tmdb_keywords", "keywords_checked_at"):
                 if key_to_keep in existing and (key_to_keep not in entry or key_to_keep in
                                                 ("awards", "awards_checked_at", "oscar_index",
                                                  "oscar_current", "imdb_metadata")):
