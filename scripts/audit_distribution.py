@@ -49,10 +49,10 @@ STATIC_FILES = {
     "bobo-watch.js", "bobo-watch.css", "bobo-players.js", "bobo-related.js",
     "bobo-official-audio.js", "bobo-reviews.js", "bobo-critic.js",
     "bobo-multi-ratings.js", "bobo-cinema.js", "bobo-cinema.css",
-    "bobo-favorites.js", "bobo-favorites.css",
+    "bobo-favorites.js", "bobo-favorites.css", "bobo-analytics.js",
     "data/movies.json", "data/tv.json", "data/tv-home.json", "data/tv-lite.json", "data/editorial.json",
     "data/discovery.json", "data/seasonal.json", "data/catalog-ledger.json",
-    "data/poster-index.json", "data/enrichment.json",
+    "data/poster-index.json", "data/enrichment.json", "data/admin-analytics.json",
     "data/newsletter.json", "data/player-sources.json", "data/verified-audio.json",
     "data/reviews.json", "data/critic-reviews.json", "data/multi-ratings.json",
     "data/cinema/person-search.json", "data/cinema/explore.json",
@@ -69,7 +69,7 @@ ALLOWED_PATTERNS = [
 ]
 REQUIRED_RUNTIME = {
     "index.html", "watch.html", "discover.html", "person.html",
-    "data/movies.json", "data/tv.json", "data/cinema/person-search.json",
+    "data/movies.json", "data/tv.json", "data/admin-analytics.json", "data/cinema/person-search.json",
     "data/cinema/film-quotes.json", "data/cinema/OSCAR-LICENSE.txt",
 }
 

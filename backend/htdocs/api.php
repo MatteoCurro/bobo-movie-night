@@ -239,6 +239,73 @@ session_name('BOBOSESSID');
 session_set_cookie_params(['lifetime'=>0,'path'=>'/','secure'=>$secure,'httponly'=>true,'samesite'=>'Lax']);
 session_start();
 $route = (string)($_GET['route'] ?? 'health');
+// Aggregate-only, privacy-conscious site telemetry: no raw IP, user ID, query text,
+// URL query string, cookie identifier or individual browsing history is persisted.
+if ($route==='track' && $method==='POST') {
+    if ($origin==='' || !in_array($origin,$allowedOrigins,true))
+        send_json(403,['error'=>'Origine non autorizzata']);
+    $input=request_json();
+    $event=(string)($input['event']??'');
+    $page=(string)($input['page']??'');
+    $allowedEvents=['page_view','title_view','play_start','search_used','favorites_action'];
+    $allowedPages=['home','discover','watch','favorites','person','director','awards','info'];
+    if (!in_array($event,$allowedEvents,true) || !in_array($page,$allowedPages,true))
+        send_json(422,['error'=>'Evento non valido']);
+    $title=(string)($input['title']??'');
+    if (in_array($event,['title_view','play_start'],true)) {
+        if (!preg_match('/^(movie|tv):[1-9][0-9]{0,11}$/D',$title))
+            send_json(422,['error'=>'Titolo non valido']);
+    } else $title='';
+    $now=time();
+    $guard=$_SESSION['bobo_traffic_guard']??[];
+    if (!is_array($guard) || $now-(int)($guard['start']??0)>600)
+        $guard=['start'=>$now,'count'=>0];
+    if (++$guard['count']>90) send_json(429,['error'=>'Limite di eventi raggiunto']);
+    $_SESSION['bobo_traffic_guard']=$guard;
+    // A dedicated file avoids rewriting all user accounts for every page view.
+    $filename=storage_dir().'/analytics-traffic.json';
+    $handle=@fopen($filename,'c+');
+    if (!$handle) send_json(503,['error'=>'Statistiche non disponibili']);
+    @chmod($filename,0600);
+    if (!flock($handle,LOCK_EX)) {fclose($handle);send_json(503,['error'=>'Statistiche occupate']);}
+    $raw=stream_get_contents($handle);
+    $data=json_decode($raw?:'{}',true);
+    if (!is_array($data)) $data=[];
+    $data['schema']=1;
+    $date=gmdate('Y-m-d',$now);
+    $days=is_array($data['days']??null)?$data['days']:[];
+    foreach ($days as $day=>$value)
+        if (!is_string($day) || $day<gmdate('Y-m-d',$now-120*86400) || $day>$date)
+            unset($days[$day]);
+    $entry=$days[$date]??['pages'=>[],'events'=>[],'titles'=>[]];
+    if (!is_array($entry)) $entry=['pages'=>[],'events'=>[],'titles'=>[]];
+    foreach (['pages','events','titles'] as $key)
+        if (!is_array($entry[$key]??null)) $entry[$key]=[];
+    if ($event==='page_view')$entry['pages'][$page]=(int)($entry['pages'][$page]??0)+1;
+    $entry['events'][$event]=(int)($entry['events'][$event]??0)+1;
+    if ($title!=='') {
+        // Bound per-day cardinality, without discarding existing aggregate counts.
+        if (isset($entry['titles'][$title]) || count($entry['titles'])<2000) {
+            $counts=$entry['titles'][$title]??['views'=>0,'plays'=>0];
+            if ($event==='title_view')$counts['views']++;
+            if ($event==='play_start')$counts['plays']++;
+            $entry['titles'][$title]=$counts;
+        }
+    }
+    $days[$date]=$entry;
+    ksort($days);
+    $encoded=json_encode(['schema'=>1,'days'=>$days],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+    if ($encoded===false || strlen($encoded)>4000000) {
+        flock($handle,LOCK_UN);fclose($handle);
+        send_json(503,['error'=>'Archivio statistiche completo']);
+    }
+    rewind($handle);ftruncate($handle,0);
+    $written=fwrite($handle,$encoded);
+    fflush($handle);flock($handle,LOCK_UN);fclose($handle);
+    if ($written!==strlen($encoded))send_json(503,['error'=>'Salvataggio incompleto']);
+    send_json(202,['ok'=>true]);
+}
+
 // GitHub Actions schedule calls this endpoint with a server-only shared secret.
 // Neither the secret nor the Resend API key is exposed in the site's JavaScript.
 if ($route==='jobs/newsletter' && $method==='POST') {
@@ -550,6 +617,134 @@ if ($route==='favorites' && $method==='PUT') {
         return null;
     },true);
     send_json(200,['ok'=>true,'count'=>count($items)]);
+}
+// Authenticated admin-only report: public catalog aggregates + private aggregated
+// site telemetry and collective favorites. Never returns visit-level records.
+if ($route==='admin/overview' && $method==='GET') {
+    if (($user['role']??'')!=='admin')send_json(403,['error'=>'Accesso admin richiesto']);
+    $private=storage_dir();
+    $trafficFile=$private.'/analytics-traffic.json';
+    $traffic=['days'=>[]];
+    if (is_file($trafficFile)) {
+        $fh=@fopen($trafficFile,'r');
+        if ($fh) {
+            if (flock($fh,LOCK_SH)) {
+                $decoded=json_decode(stream_get_contents($fh)?:'{}',true);
+                if (is_array($decoded) && is_array($decoded['days']??null))$traffic=$decoded;
+                flock($fh,LOCK_UN);
+            }
+            fclose($fh);
+        }
+    }
+    $events=[];$pages=[];$titles=[];$trafficDaily=[];
+    foreach ($traffic['days'] as $date=>$day) {
+        if (!preg_match('/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/D',(string)$date) || !is_array($day))continue;
+        $count=0;
+        foreach (($day['events']??[]) as $key=>$value) {
+            if (!is_string($key))continue;
+            $number=max(0,(int)$value);
+            $events[$key]=($events[$key]??0)+$number;
+            $count+=$number;
+        }
+        foreach (($day['pages']??[]) as $key=>$value)
+            if(is_string($key))$pages[$key]=($pages[$key]??0)+max(0,(int)$value);
+        foreach (($day['titles']??[]) as $key=>$value) {
+            if (!preg_match('/^(movie|tv):[1-9][0-9]{0,11}$/D',(string)$key) || !is_array($value))continue;
+            if (!isset($titles[$key]))$titles[$key]=['key'=>$key,'views'=>0,'plays'=>0];
+            $titles[$key]['views']+=max(0,(int)($value['views']??0));
+            $titles[$key]['plays']+=max(0,(int)($value['plays']??0));
+        }
+        $trafficDaily[]=['date'=>$date,'events'=>$count,'page_views'=>max(0,(int)($day['events']['page_view']??0)),
+                         'plays'=>max(0,(int)($day['events']['play_start']??0))];
+    }
+    usort($trafficDaily,static fn($a,$b)=>strcmp($a['date'],$b['date']));
+    $topViews=array_values($titles);$topPlays=$topViews;
+    usort($topViews,static fn($a,$b)=>$b['views']<=>$a['views']);
+    usort($topPlays,static fn($a,$b)=>$b['plays']<=>$a['plays']);
+    $summary=state(function ($db) {
+        $favorites=[];$genres=[];$registration=[];$saves=[];$users=0;$subscribed=0;$verified=0;$total=0;
+        foreach (($db['users']??[]) as $name=>$row) {
+            if (!is_array($row))continue;
+            $users++;
+            if (!empty($row['email_verified_at']))$verified++;
+            if (bobo_newsletter_subscribed($row))$subscribed++;
+            $registered=substr((string)($row['created_at']??''),0,10);
+            if (preg_match('/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/D',$registered))
+                $registration[$registered]=($registration[$registered]??0)+1;
+            $seen=[];
+            foreach (($row['favorites']??[]) as $fav) {
+                if (!is_array($fav))continue;
+                $kind=(string)($fav['type']??'');$mid=(string)($fav['tmdb_id']??'');
+                if (!in_array($kind,['movie','tv'],true) || !preg_match('/^[1-9][0-9]{0,11}$/D',$mid))continue;
+                $key=$kind.':'.$mid;
+                if (isset($seen[$key]))continue;
+                $seen[$key]=true;$total++;
+                if (!isset($favorites[$key]))$favorites[$key]=[
+                    'key'=>$key,'type'=>$kind,'tmdb_id'=>(int)$mid,
+                    'title'=>cropped((string)($fav['title']??''),160),'count'=>0
+                ];
+                $favorites[$key]['count']++;
+                foreach (($fav['genres']??[]) as $genre)
+                    if (is_string($genre) && strlen($genre)<60)
+                        $genres[$genre]=($genres[$genre]??0)+1;
+                $saved=substr((string)($fav['saved_at']??''),0,10);
+                if (preg_match('/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/D',$saved))
+                    $saves[$saved]=($saves[$saved]??0)+1;
+            }
+        }
+        $ranking=array_values($favorites);
+        usort($ranking,static fn($a,$b)=>($b['count']<=>$a['count'])?:strcmp($a['title'],$b['title']));
+        arsort($genres);
+        ksort($registration);ksort($saves);
+        return ['users'=>$users,'verified'=>$verified,'newsletter'=>$subscribed,
+                'favorites_total'=>$total,'unique_favorites'=>count($favorites),
+                'favorites_movies'=>array_sum(array_map(static fn($x)=>$x['type']==='movie'?$x['count']:0,$ranking)),
+                'favorites_tv'=>array_sum(array_map(static fn($x)=>$x['type']==='tv'?$x['count']:0,$ranking)),
+                'top_favorites'=>array_slice($ranking,0,25),
+                'favorite_genres'=>array_slice($genres,0,20,true),
+                'registrations_daily'=>$registration,'favorites_added_daily'=>$saves];
+    });
+    // Public report is small and carries no private accounts or activity data.
+    $cacheFile=$private.'/admin-catalog-cache.json';
+    $cached=is_file($cacheFile)?@file_get_contents($cacheFile):false;
+    $catalog=is_string($cached)?json_decode($cached,true):null;
+    if (!is_array($catalog) || ($catalog['schema']??0)!==1)$catalog=null;
+    if ($catalog===null || time()-(int)@filemtime($cacheFile)>14400) {
+        $url='https://movie.curromatteo.it/data/admin-analytics.json';
+        $new=false;
+        if (function_exists('curl_init')) {
+            $ch=curl_init($url);
+            curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>3,
+                CURLOPT_TIMEOUT=>8,CURLOPT_MAXFILESIZE=>1000000,
+                CURLOPT_SSL_VERIFYPEER=>true,CURLOPT_SSL_VERIFYHOST=>2,CURLOPT_FOLLOWLOCATION=>false]);
+            $new=curl_exec($ch);$code=(int)curl_getinfo($ch,CURLINFO_HTTP_CODE);curl_close($ch);
+            if ($code!==200)$new=false;
+        } else {
+            $context=stream_context_create(['http'=>['timeout'=>8,'follow_location'=>0],
+                'ssl'=>['verify_peer'=>true,'verify_peer_name'=>true]]);
+            $new=@file_get_contents($url,false,$context,0,1000001);
+        }
+        if (is_string($new) && strlen($new)<=1000000) {
+            $decoded=json_decode($new,true);
+            if (is_array($decoded) && ($decoded['schema']??0)===1 &&
+                is_array($decoded['catalog']??null) && is_array($decoded['growth']??null)) {
+                $catalog=$decoded;
+                $tmp=$cacheFile.'.'.bin2hex(random_bytes(4)).'.tmp';
+                if (@file_put_contents($tmp,$new,LOCK_EX)!==false) {
+                    @chmod($tmp,0600);@rename($tmp,$cacheFile);
+                } else @unlink($tmp);
+            }
+        }
+    }
+    send_json(200,[
+        'catalog'=>$catalog,'catalog_available'=>$catalog!==null,
+        'community'=>$summary,
+        'traffic'=>['days'=>count($trafficDaily),'events'=>$events,'pages'=>$pages,
+                    'daily'=>array_slice($trafficDaily,-120),
+                    'top_views'=>array_slice($topViews,0,20),
+                    'top_plays'=>array_slice($topPlays,0,20),
+                    'tracking_since'=>$trafficDaily[0]['date']??null]
+    ]);
 }
 if ($route==='admin/users' && $method==='GET') {
     if (($user['role']??'')!=='admin')send_json(403,['error'=>'Accesso admin richiesto']);

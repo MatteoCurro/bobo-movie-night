@@ -232,6 +232,8 @@
     byId('watch-next').hidden = type !== 'tv';
     byId('watch-stage-next').hidden = type !== 'tv' || !adjacent(1);
     loadNewPlayer(playerURL(Boolean(automatic)));
+    // An invocation is a player start, not proof that an external stream played.
+    if (window.BoboAnalytics) window.BoboAnalytics.track('play_start',{title:type+':'+id});
     updateEpisodeNavigation();
     updateAutoStatus();
     if (scroll && !isBoboFullscreen()) byId('watch-play-section').scrollIntoView({ behavior:'smooth',block:'start' });

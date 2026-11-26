@@ -1,24 +1,85 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bobo · Amministrazione</title><meta name="robots" content="noindex,nofollow,noarchive">
-<style>
-:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c1116;color:#e9f2f2}*{box-sizing:border-box}
-body{margin:0;padding:28px 18px}.wrap{max-width:1080px;margin:auto}h1{font-size:27px;letter-spacing:-.06em}h1 em{color:#a4d9d4;font-style:normal}p{color:#aabcc4;line-height:1.5}
-.card{border:1px solid #334c55;background:#17242e;padding:22px;border-radius:7px;margin:22px 0}
-label{display:block;font:600 11px monospace;letter-spacing:.06em;color:#b5d4cf;margin:12px 0 7px}
-input{width:100%;background:#0f1d27;color:#fff;border:1px solid #57717a;border-radius:5px;padding:12px;font-size:15px}
-button{border:0;background:#a4d9d4;color:#103036;font:700 13px system-ui;padding:11px 16px;margin:15px 7px 0 0;border-radius:5px;cursor:pointer}
-button.secondary{background:#30434f;color:#d9e9e7}table{border-collapse:collapse;width:100%;font-size:13px} .card{overflow-x:auto}
-th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #324751}th{color:#98c5c2;font:600 11px monospace}
-#status{min-height:18px;font-size:13px;color:#a4d9d4}a{color:#a4d9d4}
-</style><script defer src="gate.js"></script></head><body><div class="wrap"><h1>bobo<em>.</em> / admin</h1>
-<p>Utenti e raccolte personali · Servizio PHP autonomo. Nessuna password viene mostrata.</p>
-<section id="login" class="card"><h2>Accesso amministratore</h2><form id="login-form">
-<label for="username">USERNAME</label><input id="username" autocomplete="username" required>
-<label for="password">PASSWORD</label><input type="password" id="password" autocomplete="current-password" required>
-<button type="submit">Accedi</button></form></section>
-<section id="dashboard" class="card" hidden><h2>Utenti <span id="count"></span></h2>
-<table><thead><tr><th>Username</th><th>Email</th><th>Verificata</th><th>Ruolo</th><th>Registrato</th><th>Preferiti</th><th>Newsletter</th><th>Raccolta</th></tr></thead><tbody id="rows"></tbody></table>
-<button id="refresh" class="secondary">Aggiorna</button><button id="newsletter-test" type="button">✉ Invia prova newsletter a me</button><button id="logout" class="secondary">Esci</button><p style="font-size:12px;margin:12px 0 0;color:#9db6bd">La prova viene inviata soltanto alla tua email amministratore verificata. Non avvia l’invio settimanale e non modifica lo stato degli iscritti.</p></section>
-<p id="status" role="status"></p>
-</div><script src="admin.js" defer></script></body></html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Bobo · Analytics e amministrazione</title>
+<link rel="stylesheet" href="admin.css">
+<script defer src="gate.js"></script>
+<script defer src="admin.js"></script>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+ <div><a class="brand" href="admin.html">bobo<span>.</span> <small>/ CONTROL ROOM</small></a><p class="sub">Statistiche catalogo, community, aggiornamenti e utilizzo</p></div>
+ <div class="toplinks"><a href="https://movie.curromatteo.it/">Apri il sito ↗</a><button id="refresh" class="ghost" hidden>Aggiorna dati</button><button id="logout" class="ghost" hidden>Esci</button></div>
+</header>
+<section id="login" class="panel login-panel">
+ <h1>Accesso amministratore</h1><p>Accedi con l'account amministratore Bobo. I dati degli utenti non sono pubblici.</p>
+ <form id="login-form"><label for="username">USERNAME</label><input id="username" autocomplete="username" required>
+ <label for="password">PASSWORD</label><input type="password" id="password" autocomplete="current-password" required>
+ <button type="submit">Accedi alla dashboard</button></form>
+</section>
+<main id="dashboard" hidden>
+ <nav class="section-nav" aria-label="Sezioni analytics"><a href="#overview">Panoramica</a><a href="#catalogo">Catalogo</a><a href="#arricchimento">Arricchimento</a><a href="#cinema">Cinema</a><a href="#community">Community</a><a href="#utilizzo">Utilizzo</a><a href="#utenti">Utenti</a></nav>
+ <div id="overview" class="section-title"><div><p class="eyebrow">01 / PANORAMICA</p><h1>Il club, in numeri.</h1></div><span id="updated-at" class="updated"></span></div>
+ <div id="kpis" class="kpis" aria-live="polite"></div>
+ <div class="twocol">
+  <section class="panel"><header class="panel-head"><div><h2>Evoluzione dell'archivio</h2><p>Totale titoli per giornata registrata</p></div></header><div id="chart-growth" class="chart"></div></section>
+  <section class="panel"><header class="panel-head"><div><h2>Incrementi per sincronizzazione</h2><p>Nuovi film e serie a ogni esecuzione</p></div></header><div id="chart-imports" class="chart"></div></section>
+ </div>
+ <section class="panel"><header class="panel-head"><div><h3>Registro degli aggiornamenti</h3><p>Incrementi e modifiche per ciascuna sincronizzazione conservata</p></div></header>
+ <div class="table-scroll"><table><thead><tr><th>Sincronizzazione</th><th>Film aggiunti</th><th>Serie aggiunte</th><th>Film aggiornati</th><th>Serie aggiornate</th><th>Catalogo totale</th></tr></thead><tbody id="sync-runs"></tbody></table></div>
+ </section>
+ <div id="catalogo" class="section-title"><div><p class="eyebrow">02 / CATALOGO</p><h2>Distribuzione e qualità</h2></div></div>
+ <div class="twocol">
+  <section class="panel"><h3>Generi più rappresentati</h3><div id="genres"></div></section>
+  <section class="panel"><h3>Decenni di uscita</h3><div id="decades"></div></section>
+  <section class="panel"><h3>Distribuzione dei voti TMDB</h3><div id="ratings"></div></section>
+  <section class="panel"><h3>Lingue originali</h3><div id="languages"></div></section>
+  <section class="panel"><h3>Durata dei film</h3><div id="runtime"></div></section>
+  <section class="panel"><h3>Copertura dei metadati</h3><p class="hint">Quote sul totale del catalogo, salvo le metriche riferite ai soli film o alle sole serie.</p><div id="coverage"></div></section>
+ </div>
+ <div id="arricchimento" class="section-title"><div><p class="eyebrow">03 / ARRICCHIMENTO</p><h2>Avanzamento delle informazioni</h2></div></div>
+ <section class="panel"><div class="panel-head"><div><h3>Completamento delle schede</h3><p>Copertura effettiva, arretrati e variazione dall'ultima sincronizzazione</p></div><span id="enrichment-updated" class="updated"></span></div><div id="enrichment-kpis" class="mini-kpis"></div><div id="enrichment-progress" class="enrichment-grid"></div></section>
+ <div class="twocol">
+  <section class="panel"><h3>Evoluzione dell'arricchimento</h3><p class="hint">Titoli con crediti, IMDb e correlati indicizzati nelle rilevazioni disponibili</p><div id="enrichment-chart" class="chart"></div></section>
+  <section class="panel"><h3>Ultimi incrementi delle informazioni</h3><div id="enrichment-deltas"></div><p class="hint">Differenze rispetto alla precedente esecuzione completata. Il primo rilevamento non ricostruisce i dati storici.</p></section>
+  <section class="panel"><h3>Copertura delle persone</h3><div id="enrichment-people"></div></section>
+  <section class="panel"><h3>Stato delle fonti</h3><div id="enrichment-sources"></div></section>
+ </div>
+ <div id="cinema" class="section-title"><div><p class="eyebrow">03 / CINEMA</p><h2>Film, talenti e incassi</h2></div></div>
+ <section class="panel"><h3>Indicatori cinematografici</h3><div id="movie-stats" class="mini-kpis"></div><p class="hint">Le cifre economiche riflettono solo i titoli con dati finanziari registrati; non rappresentano gli incassi dell'intero catalogo. Importi in USD, non corretti per inflazione.</p></section>
+ <div class="twocol">
+  <section class="panel"><h3>Film con maggiori incassi noti</h3><div id="revenue-ranking"></div></section>
+  <section class="panel"><h3>Rapporto incassi / budget</h3><p class="hint">Solo budget noti di almeno 1 milione di USD, senza deduzione dei costi di distribuzione.</p><div id="roi-ranking"></div></section>
+  <section class="panel"><h3>Attori con più titoli in archivio</h3><div id="actors-ranking"></div></section>
+  <section class="panel"><h3>Registi con più titoli in archivio</h3><div id="directors-ranking"></div></section>
+  <section class="panel"><h3>Titoli meglio valutati</h3><p class="hint">Voto medio TMDB; è una classifica indicativa senza soglia minima di votanti.</p><div id="rated-ranking"></div></section>
+  <section class="panel"><h3>Riconoscimenti indicizzati</h3><div id="award-ranking"></div></section>
+ </div>
+ <div id="community" class="section-title"><div><p class="eyebrow">05 / COMMUNITY</p><h2>Preferiti e iscrizioni</h2></div></div>
+ <div class="mini-kpis" id="community-kpis"></div>
+ <div class="twocol">
+  <section class="panel"><h3>I titoli più amati</h3><p class="hint">Conteggio degli utenti che hanno salvato ogni titolo, non una valutazione.</p><div id="favorite-ranking"></div></section>
+  <section class="panel"><h3>Generi nei preferiti</h3><div id="favorite-genres"></div></section>
+  <section class="panel"><h3>Nuove registrazioni</h3><div id="registrations-chart"></div></section>
+  <section class="panel"><h3>Preferiti aggiunti nel tempo</h3><p class="hint">Ricostruiti dalle date di salvataggio attuali; i preferiti eliminati non sono conteggiati.</p><div id="favorites-chart"></div></section>
+ </div>
+ <div id="utilizzo" class="section-title"><div><p class="eyebrow">06 / UTILIZZO</p><h2>Tracciamento interno</h2></div></div>
+ <section class="panel"><div class="panel-head"><div><h3>Eventi aggregati</h3><p id="tracking-start" class="hint"></p></div><div id="traffic-kpis" class="mini-kpis"></div></div><p class="hint">Contatori per giorno, pagina e titolo. Non vengono conservati IP, ricerche testuali, identificativi dei visitatori o cronologie individuali. Visualizzazioni e riproduzioni sono eventi registrati, non utenti unici.</p></section>
+ <div class="twocol">
+  <section class="panel"><h3>Visualizzazioni per giorno</h3><div id="traffic-chart"></div></section>
+  <section class="panel"><h3>Pagine più consultate</h3><div id="pages-ranking"></div></section>
+  <section class="panel"><h3>Schede più aperte</h3><div id="views-ranking"></div></section>
+  <section class="panel"><h3>Riproduzioni avviate</h3><div id="plays-ranking"></div></section>
+  <section class="panel"><h3>Altre interazioni</h3><div id="actions-ranking"></div></section>
+  <section class="panel"><h3>Come leggere questi dati</h3><p class="hint">La raccolta parte dall'attivazione del nuovo tracker. Per rispettare la privacy, i conteggi sono aggregati e conservati per circa 120 giorni; non ricostruiamo visite precedenti e non misuriamo persone uniche.</p></section>
+ </div>
+ <div id="utenti" class="section-title"><div><p class="eyebrow">07 / UTENTI</p><h2>Gestione account <span id="count"></span></h2></div></div>
+ <section class="panel users-panel"><div class="table-scroll"><table><thead><tr><th>Username</th><th>Email</th><th>Verificata</th><th>Ruolo</th><th>Registrato</th><th>Preferiti</th><th>Newsletter</th><th>Raccolta</th></tr></thead><tbody id="rows"></tbody></table></div>
+ <div class="actionrow"><button id="newsletter-test" type="button">Invia prova newsletter a me</button><p class="hint">Solo al tuo indirizzo amministratore verificato; non avvia l'invio settimanale.</p></div></section>
+</main>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<footer>BOBO MOVIE CLUB <span>ANALYTICS / PRIVATE ADMIN</span></footer>
+</div></body></html>

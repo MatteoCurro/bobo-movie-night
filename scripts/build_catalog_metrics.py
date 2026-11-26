@@ -92,11 +92,13 @@ def build(root: Path) -> dict:
     destination=root/"data/catalog-metrics.json"
     prior=read(destination)
     history=prior.get("history",[])
+    runs=prior.get("runs",[])
     day=now[:10]
     history=[x for x in history if str(x.get("updated_at",""))[:10]!=day]
     history.append(snapshot)
+    runs.append(snapshot)
     return {"schema":1,"source":"Bobo-owned-catalog","updated_at":now,
-            "current":snapshot,"history":history[-45:]}
+            "current":snapshot,"history":history[-365:],"runs":runs[-270:]}
 
 def main() -> None:
     target=Path("data/catalog-metrics.json")

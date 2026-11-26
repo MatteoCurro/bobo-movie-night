@@ -73,6 +73,7 @@ jobs:
           python3 scripts/build_newsletter_digest.py
           python3 scripts/enrich_person_facts.py
           python3 scripts/build_catalog_metrics.py
+          python3 scripts/build_admin_analytics.py
           python3 scripts/build_poster_index.py
           python3 scripts/build_tv_payload.py
 
@@ -82,6 +83,7 @@ jobs:
           node --check bobo-ui.js
           node --check bobo-players.js
           node --check bobo-watch.js
+          node --check bobo-analytics.js
           node --check bobo-cinema.js
           node tests/watch-dossier.cjs
           node --check bobo-related.js
@@ -103,6 +105,7 @@ jobs:
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
           python3 tests/archive-metrics.py
+          python3 tests/admin-analytics.py
           python3 tests/review-catalog-backfill.py
           python3 tests/related-index.py
           python3 -m py_compile scripts/build_thematic_index.py
@@ -248,7 +251,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/tv-home.json data/tv-lite.json data/tv-detail/ data/newsletter.json data/newsletter-history.json assets/flaticon/ .nojekyll
+          git add index.html data/admin-analytics.json data/cinema/ data/seasonal.json data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/tv-home.json data/tv-lite.json data/tv-detail/ data/newsletter.json data/newsletter-history.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -276,7 +279,7 @@ jobs:
           cp index.html _site/index.html
           # Only browser dependencies + the public newsletter digest.
           # Never copy repository roots, backend, build scripts or runtime state.
-          cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/seasonal.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/critic-reviews.json data/multi-ratings.json _site/data/
+          cp data/admin-analytics.json data/movies.json data/tv.json data/editorial.json data/discovery.json data/seasonal.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/critic-reviews.json data/multi-ratings.json _site/data/
           cp -R data/episodes _site/data/
           cp data/tv-home.json data/tv-lite.json _site/data/
           cp -R data/tv-detail _site/data/
@@ -292,10 +295,12 @@ jobs:
           test -d _site/data/cinema/credits && test -d _site/data/cinema/people && test -d _site/data/cinema/connections
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
+          test -s _site/data/admin-analytics.json
+          test -s _site/bobo-analytics.js
           test -s _site/data/seasonal.json
           cp discover.html bobo-discover.css bobo-discover.js awards.html bobo-awards.css bobo-awards.js informazioni.html _site/
           test -s _site/awards.html && test -s _site/bobo-awards.js && test -s _site/informazioni.html
-          cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
+          cp bobo-analytics.js bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js bobo-critic.js bobo-multi-ratings.js _site/
