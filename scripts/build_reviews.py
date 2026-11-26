@@ -69,13 +69,34 @@ def candidate_ids(root:Path)->list[tuple[str,int]]:
         for section in group:
             sources.extend(section.get("items",[])[:5])
     results=[];seen=set()
+    # Editorial and streaming discoveries have priority, but they cover only
+    # a few hundred titles. Without a catalog-wide fallback the importer
+    # stalls permanently once those IDs are checked.
     for item in sources:
+        if not isinstance(item,dict):continue
         kind=item.get("type");raw=item.get("tmdb_id")
         try:tid=int(raw)
         except (ValueError,TypeError):continue
         k=(kind,tid)
         if kind not in ("tv","movie") or tid<=0 or k in seen:continue
         seen.add(k);results.append(k)
+    candidates=[]
+    for kind,file in (("movie","movies.json"),("tv","tv.json")):
+        for film in read(root/"data"/file,{"items":[]}).get("items",[]):
+            if not isinstance(film,dict):continue
+            try:
+                tid=int(film.get("tmdb_id") or 0)
+                vote=float(film.get("vote") or 0)
+                votes=int(film.get("vote_count") or 0)
+                year=int(film.get("year") or 0)
+            except (TypeError,ValueError):continue
+            if tid<=0 or (kind,tid) in seen or vote<5.5 or votes<100:
+                continue
+            candidates.append((votes,vote,year,kind,tid))
+    candidates.sort(reverse=True)
+    for _,_,_,kind,tid in candidates:
+        seen.add((kind,tid))
+        results.append((kind,tid))
     return results
 
 def build(root:Path,fetch=api,limit:int=MAX_PER_RUN):
