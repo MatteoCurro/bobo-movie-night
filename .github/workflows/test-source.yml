@@ -22,7 +22,7 @@ jobs:
           python3 tests/multi-ratings.py
           python3 tests/archive-metrics.py
           python3 tests/incremental_catalog.py
-      - name: Validate TV 1.4 incremental architecture
+      - name: Validate TV incremental architecture and browse filters
         run: |
           set -euo pipefail
           python3 -m py_compile scripts/build_tv_payload.py
@@ -44,6 +44,7 @@ jobs:
           node --check tv-test/app/src/main/assets/tv-account.js
           node --check tv-test/app/src/main/assets/tv-updates.js
           node tv-test/tests/navigation.cjs
+          node tv-test/tests/browse.cjs
       - name: Validate site scripts
         run: |
           node --check bobo-players.js
