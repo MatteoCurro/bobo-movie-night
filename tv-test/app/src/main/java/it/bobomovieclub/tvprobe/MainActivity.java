@@ -154,6 +154,8 @@ public final class MainActivity extends Activity {
                                 runOnUiThread(() -> {
                                     inPlayer = player;
                                     playingStarted = started;
+                                    if (player && started) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                                    else getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                     Log.d(TAG, "Playback state player=" + player + " started=" + started);
                                 });
                             } else if ("update-check".equals(kind)) {
