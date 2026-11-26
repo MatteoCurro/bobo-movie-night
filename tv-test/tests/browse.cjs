@@ -63,4 +63,33 @@ ctx.status.browseFilters.movie.sort='title';
 assert.equal(ctx.browseResultList('movie')[0].title,'Animazione 1982');
 ctx.status.browseFilters.tv.genre='Dramma';
 assert.equal(ctx.browseResultList('tv').length,1);
-console.log('TV filters passed: genre, decade, combined narrowing, ranking, TV and empty state.');
+// Pagination integration: clear visibility, incremental update and correct final removal.
+ctx.status.browseFilters.movie={genre:'all',era:'all',sort:'suggested'};
+ctx.status.browseLimit.movie=36;
+ctx.status.movies=Array.from({length:80},(_,i)=>item(i+100,'Titolo '+i,2022,7.2,[0],300));
+vm.runInContext('browseCache.clear()',ctx);
+const initialPage=ctx.browse('movie');
+assert.match(initialPage,/Visualizzati 36 di 80 titoli/);
+assert.match(initialPage,/Mostra altri 36 titoli/);
+const appended=[];
+const posterEls=Array.from({length:80},()=>({focus(){this.focused=true;}}));
+const grid={
+ insertAdjacentHTML(where,markup){appended.push([where,markup]);},
+ querySelectorAll(){return posterEls;}
+};
+const counter={textContent:''};
+const more={textContent:'',removed:false,remove(){this.removed=true;}};
+ctx.$=selector=>({'#browse-results':grid,'#browse-count':counter,'.tv-more':more}[selector]||null);
+ctx.moreBrowse('movie');
+assert.equal(ctx.status.browseLimit.movie,72);
+assert.match(counter.textContent,/Visualizzati 72 di 80/);
+assert.match(more.textContent,/Mostra altri 8 titoli/);
+assert.equal(posterEls[36].focused,true,'first newly loaded poster receives focus');
+assert.equal(appended.length,1);
+ctx.moreBrowse('movie');
+assert.equal(ctx.status.browseLimit.movie,80);
+assert.match(counter.textContent,/Visualizzati 80 di 80/);
+assert.equal(more.removed,true,'load-more button removed when results are exhausted');
+assert.equal(appended.length,2);
+
+console.log('TV filters and pagination passed: genre, decades, sorting, 36-at-a-time loading and progress.');
