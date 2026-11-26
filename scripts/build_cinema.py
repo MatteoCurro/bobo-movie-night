@@ -19,9 +19,9 @@ from pathlib import Path
 TODAY = dt.date.today().isoformat()
 TOKEN = (os.environ.get("TMDB_ACCESS_TOKEN") or "").strip()
 BASE = "https://api.themoviedb.org/3"
-CREDITS_LIMIT = max(1, min(80, int(os.environ.get("BOBO_CREDITS_BATCH", "32"))))
-PEOPLE_LIMIT = max(1, min(35, int(os.environ.get("BOBO_PEOPLE_BATCH", "12"))))
-AWARDS_LIMIT = max(1, min(50, int(os.environ.get("BOBO_AWARDS_BATCH", "24"))))
+CREDITS_LIMIT = max(1, min(240, int(os.environ.get("BOBO_CREDITS_BATCH", "120"))))
+PEOPLE_LIMIT = max(1, min(80, int(os.environ.get("BOBO_PEOPLE_BATCH", "32"))))
+AWARDS_LIMIT = max(1, min(100, int(os.environ.get("BOBO_AWARDS_BATCH", "40"))))
 IMAGE_RE = re.compile(r"^/[A-Za-z0-9_-]{5,180}\.(?:jpg|jpeg|png|webp)$")
 AWARD_RE = re.compile(r"oscar|academy award|accademia.*cinematograf|palme d.or|palma d.oro|festival de cannes|festival di cannes|cannes film festival", re.I)
 
@@ -178,7 +178,8 @@ def extract_credits(kind, mid, payload):
         job = next((j for j in jobs if j in ("Director", "Creator", "Writer", "Screenplay")), "")
         if any(x["id"] == person_id and x["job"] == job for x in crew):
             continue
-        crew.append({"id": person_id, "name": str(row["name"])[:140], "job": job})
+        crew.append({"id": person_id, "name": str(row["name"])[:140], "job": job,
+                     "photo": portrait(row.get("profile_path"))})
         if len(crew) >= 8:
             break
     return {"source": "tmdb", "checked_at": TODAY, "cast": cast, "crew": crew,
@@ -351,7 +352,28 @@ def sync(root=Path(".")):
         if b not in people.memory:
             people.memory[b] = load(path, {"items": {}}).get("items", {})
             all_people.extend(people.memory[b].values())
-    all_people.sort(key=lambda row: (bool(row.get("checked_at")), -len(row.get("known_for") or []), row.get("id", 0)))
+    # Directors are the main entry point of the film dossier: prioritize
+    # their complete biographies/portraits, while leaving cast hydration active.
+    director_ids = set()
+    for path in sorted(credits.root.glob("*.json")):
+        if len(path.stem) != 2:
+            continue
+        rows = credits.memory.get(path.stem)
+        if rows is None:
+            rows = load(path, {"items": {}}).get("items", {})
+        for item in rows.values():
+            for member in item.get("crew", []) or []:
+                if member.get("job") == "Director":
+                    try:
+                        director_ids.add(int(member["id"]))
+                    except (KeyError, TypeError, ValueError):
+                        pass
+    all_people.sort(key=lambda row: (
+        bool(row.get("checked_at")),
+        0 if int(row.get("id") or 0) in director_ids else 1,
+        -len(row.get("known_for") or []),
+        row.get("id", 0)
+    ))
     for base in all_people:
         if full_people >= PEOPLE_LIMIT or failed >= 8:
             break
