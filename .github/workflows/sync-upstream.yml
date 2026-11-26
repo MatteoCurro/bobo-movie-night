@@ -63,6 +63,7 @@ jobs:
           python3 scripts/build_person_search.py
           python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
+          python3 scripts/build_oscar_current.py
           python3 scripts/build_cinema_explore.py
           python3 scripts/build_story_connections.py
           python3 scripts/enrich_person_facts.py
@@ -113,6 +114,9 @@ jobs:
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
+          python3 -m py_compile scripts/build_oscar_current.py scripts/import_imdb_metadata.py
+          python3 tests/oscar-current.py
+          python3 tests/imdb-metadata.py
           python3 tests/critic-links.py
           python3 tests/multi-ratings.py
           test -s data/cinema/person-search.json
@@ -263,7 +267,7 @@ jobs:
           mkdir -p _site/data/related
           find data/related -maxdepth 1 -type f -name '[0-3][0-9a-f].json' -exec cp {} _site/data/related/ \;
           mkdir -p _site/data/cinema/credits _site/data/cinema/people _site/data/cinema/connections
-          cp data/cinema/person-search.json data/cinema/explore.json data/cinema/film-quotes.json data/cinema/OSCAR-LICENSE.txt _site/data/cinema/
+          cp data/cinema/person-search.json data/cinema/explore.json data/cinema/film-quotes.json data/cinema/OSCAR-LICENSE.txt data/cinema/OSCAR-CURRENT-LICENSE.txt _site/data/cinema/
           for kind in credits people connections; do
             find "data/cinema/$kind" -maxdepth 1 -type f -name '*.json' -exec cp {} "_site/data/cinema/$kind/" \;
           done
