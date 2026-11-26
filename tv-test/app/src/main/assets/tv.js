@@ -9,10 +9,41 @@ const guide=document.getElementById('player-start-guide');
 const toastNode=document.getElementById('toast');
 const status={view:'home',items:[],movies:[],series:[],index:new Map(),chosen:null,season:1,episode:1,
   focus:null,player:false,started:false,paused:false,bridge:false,time:0,duration:0,playerUrl:'',
-  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true,mediaSeen:false,indexReady:false,browseLimit:{movie:48,tv:48},returnTo:null};
+  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true,mediaSeen:false,indexReady:false,browseLimit:{movie:36,tv:36},browseFilters:{movie:{genre:'all',era:'all',sort:'suggested'},tv:{genre:'all',era:'all',sort:'suggested'}},returnTo:null};
 let hudTimer=0,toastTimer=0,topTimer=0,loadCount=0,requestVersion=0,commandSerial=0,pendingCommand=null,mediaWall=0,playerLoadedAt=0;
 let homeFeed=null,searchTimer=0,detailSerial=0;
-const detailPromises=new Map(),relatedPromises=new Map();
+const detailPromises=new Map(),relatedPromises=new Map(),browseCache=new Map();
+let genreDictionary=[];
+const GENRE_FILTERS=[
+ {key:'all',label:'Tutti'},
+ {key:'Azione',label:'Azione',aliases:['Action & Adventure']},
+ {key:'Commedia',label:'Commedia'},
+ {key:'Thriller',label:'Thriller'},
+ {key:'Dramma',label:'Dramma'},
+ {key:'Fantascienza',label:'Fantascienza',aliases:['Sci-Fi & Fantasy']},
+ {key:'Horror',label:'Horror'},
+ {key:'Animazione',label:'Animazione'},
+ {key:'Avventura',label:'Avventura'},
+ {key:'Documentario',label:'Documentari'},
+ {key:'Romance',label:'Romantici'},
+ {key:'Crime',label:'Crime'},
+ {key:'Fantasy',label:'Fantasy',aliases:['Sci-Fi & Fantasy']}
+];
+const ERA_FILTERS=[
+ {key:'all',label:'Tutti gli anni'},
+ {key:'2020',label:'Dal 2020'},
+ {key:'2010',label:'Anni 2010'},
+ {key:'2000',label:'Anni 2000'},
+ {key:'1990',label:'Anni 90'},
+ {key:'1980',label:'Anni 80'},
+ {key:'classic',label:'Prima del 1980'}
+];
+const SORT_FILTERS=[
+ {key:'suggested',label:'Consigliati'},
+ {key:'recent',label:'Più recenti'},
+ {key:'rating',label:'Voto'},
+ {key:'title',label:'A–Z'}
+];
 const $=s=>document.querySelector(s);
 const els=s=>Array.from(document.querySelectorAll(s));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -44,7 +75,7 @@ function mapItems(collection,type){
  return (collection.items||[]).filter(valid).map(x=>Object.assign({type},x));
 }
 function unpack(row){
- return Array.isArray(row)?{type:row[0],tmdb_id:row[1],title:row[2],year:row[3],vote:row[4],poster:row[5]}:row;
+ return Array.isArray(row)?{type:row[0],tmdb_id:row[1],title:row[2],year:row[3],vote:row[4],poster:row[5],genreIds:Array.isArray(row[6])?row[6]:[],votes:Number(row[7])||0}:row;
 }
 function seedHome(home){
  for(const group of home.sections||[]){
@@ -91,6 +122,8 @@ async function boot(){
   .then(async r=>{if(!r.ok)throw Error('Indice non disponibile');return r.json();})
   .then(data=>{
    if(data?.schema!==1||!Array.isArray(data.items)||!data.items.length)throw Error('Indice vuoto');
+   genreDictionary=Array.isArray(data.genres)?data.genres:[];
+   browseCache.clear();
    status.items=data.items.map(unpack).filter(valid);
    status.movies=status.items.filter(i=>i.type==='movie');
    status.series=status.items.filter(i=>i.type==='tv');
@@ -335,7 +368,7 @@ function render(view){
  }else if(window.BoboTVExtras?.render(view)){external=true;}
 
  window.scrollTo(0,0);
- if(!external)focusFirst(view==='search'?'#q':view==='home'?'#hero-play':'.results .poster');
+ if(!external)focusFirst(view==='search'?'#q':view==='home'?'#hero-play':(view==='movie'||view==='tv'?'.browse-chip':'.results .poster'));
 }
 function closeSearchKeyboard(){
  const field=$('#q');if(!field)return;
@@ -358,7 +391,7 @@ function ensure(item,axis){
   window.scrollTo({top:0,behavior:'auto'});
   return;
  }
- const rail=item.closest('.rail,.season-list');
+ const rail=item.closest('.rail,.season-list,.browse-chip-row');
  if(axis==='horizontal'){
   // Horizontal navigation may scroll ONLY the associated carousel.
   // Calling scrollIntoView() here also scrolled the document vertically,
@@ -499,6 +532,8 @@ function move(key){
 }
 function onClick(e){
  if(window.BoboTVExtras?.onClick(e))return;
+ const filter=e.target.closest('[data-filter][data-filter-value]');
+ if(filter){updateBrowseFilter(filter.dataset.filter,filter.dataset.filterValue);return;}
  const more=e.target.closest('[data-more]');if(more){moreBrowse(more.dataset.more);return;}
  if(e.target.closest('#search-done')){closeSearchKeyboard();return;}
  const targetView=e.target.closest('[data-view]');
@@ -791,7 +826,7 @@ window.BoboTV={
  toast:notify,
  updateHomeFavorites:updateHomeFavorites,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.4.0-TV'
+ version:'1.5.0-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
