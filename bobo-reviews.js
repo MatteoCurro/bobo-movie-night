@@ -25,7 +25,7 @@
         const heading=document.createElement('div');
         heading.className='bobo-review-head';
         const author=document.createElement('strong');
-        author.textContent=String(review.author||'Utente TMDB').slice(0,64);
+        author.textContent=String(review.author||'Utente').slice(0,64);
         heading.appendChild(author);
         if(Number.isFinite(review.rating) && review.rating>=0 && review.rating<=10){
           const score=document.createElement('span');
@@ -45,7 +45,7 @@
         const link=document.createElement('a');
         link.href=review.url;
         link.rel='noopener noreferrer';link.target='_blank';
-        link.textContent='Leggi su TMDB';
+        link.textContent='Leggi la recensione originale';
         footer.append(date,link);
         card.append(heading,quote,footer);
         block.appendChild(card);

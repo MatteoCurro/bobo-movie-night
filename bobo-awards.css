@@ -1,0 +1,41 @@
+/* Award explorer / Bobo design. */
+.bobo-awards-page{max-width:1340px;margin:auto;padding:32px clamp(17px,4vw,52px) 90px}
+.bobo-awards-page .bobo-person-breadcrumb{display:flex;gap:11px;margin:0 0 25px;font:500 11px var(--bobo-font-mono,monospace);color:#99b0b8}
+.bobo-awards-page .bobo-person-breadcrumb a{color:#a4d9d4}
+.bobo-awards-hero{display:flex;align-items:center;justify-content:space-between;gap:35px;padding:clamp(27px,5vw,58px);border-radius:10px;background:radial-gradient(circle at 80% 20%,rgba(216,173,115,.13),transparent 40%),linear-gradient(130deg,#263039,#171e28);border:1px solid #40505b;overflow:hidden}
+.bobo-awards-hero .eyebrow{font:600 11px var(--bobo-font-mono,monospace);letter-spacing:.16em;color:#f1d4a0}
+.bobo-awards-hero h1{font:650 clamp(37px,6vw,75px)/1.05 var(--bobo-font-display,inherit);letter-spacing:-.065em;max-width:800px;margin:15px 0 20px}
+.bobo-awards-hero h1 em{font-style:normal;color:#eed19a}
+.bobo-awards-hero p:not(.eyebrow){font-size:14px;line-height:1.8;color:#b9cbd2;max-width:560px}
+.bobo-awards-glyph{color:rgba(234,203,150,.43);font-size:clamp(95px,17vw,230px);line-height:.8;flex:none}
+.bobo-awards-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:15px;margin:27px 0;padding:14px 0;border-bottom:1px solid rgba(182,215,217,.2)}
+.bobo-awards-events{display:flex;gap:8px}
+.bobo-awards-events button{border:1px solid #49646b;background:#182a34;color:#ceddde;padding:11px 25px;border-radius:5px;font:650 13px var(--bobo-font-body,inherit);cursor:pointer}
+.bobo-awards-events button[aria-pressed="true"]{background:#a4d9d4;color:#122329;border-color:#a4d9d4}
+.bobo-awards-select{display:flex;align-items:center;gap:12px;color:#aac2c3;font:11px var(--bobo-font-mono,monospace)}
+.bobo-awards-select select{max-width:290px;padding:11px 12px;border-radius:5px;color:#e9f1f2;background:#1b2c35;border:1px solid #49666e;font:500 13px var(--bobo-font-body,inherit)}
+.bobo-awards-featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:0 0 40px}
+.bobo-awards-featured[hidden]{display:none!important}
+.bobo-awards-featured button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:10px;border:1px solid #314e57;background:#17272f;border-radius:6px;padding:18px;color:#eaf1ef;cursor:pointer}
+.bobo-awards-featured button:hover,.bobo-awards-featured button[aria-pressed="true"]{background:#243f47;border-color:#9ecac8}
+.bobo-awards-featured button span{font:600 13px var(--bobo-font-display,inherit)}
+.bobo-awards-featured button strong{font:650 32px var(--bobo-font-display,inherit);color:#e8c99c}
+.bobo-awards-featured button small{font:11px var(--bobo-font-mono,monospace);color:#9dafb7}
+.bobo-awards-results-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:0 0 22px}
+.bobo-awards-results-head .eyebrow{color:#a4d9d4;font:600 10px var(--bobo-font-mono,monospace)}
+.bobo-awards-results-head h2{font:650 clamp(23px,3.2vw,38px) var(--bobo-font-display,inherit);margin:6px 0 0;letter-spacing:-.05em}
+#bobo-awards-count{font:500 11px var(--bobo-font-mono,monospace);color:#a3bec0}
+.bobo-awards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(137px,1fr));gap:24px 15px}
+.bobo-awards-tile{display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#f1f4f3}
+.bobo-awards-poster{display:block;width:100%;aspect-ratio:2/3;border:1px solid #314550;border-radius:6px;overflow:hidden;background:#24333a}
+.bobo-awards-poster img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .22s ease}
+.bobo-awards-tile:hover img{transform:scale(1.035)}
+.bobo-awards-tile strong{font:600 13px/1.3 var(--bobo-font-display,inherit)}
+.bobo-awards-tile small{color:#9eb4b8;font:11px var(--bobo-font-body,inherit)}
+.bobo-awards-poster-placeholder{display:flex;height:100%;align-items:center;justify-content:center;font-size:55px;color:#789099}
+.bobo-awards-note{margin-top:60px;border-top:1px solid #304951;padding-top:21px;color:#96abb3;font:11px/1.7 var(--bobo-font-mono,monospace)}
+@media(max-width:650px){.bobo-awards-glyph{display:none}.bobo-awards-hero{padding:25px}.bobo-awards-toolbar{align-items:stretch}.bobo-awards-select{flex-direction:column;align-items:flex-start}.bobo-awards-select select{max-width:none;width:100%}.bobo-awards-grid{grid-template-columns:repeat(auto-fill,minmax(109px,1fr));gap:17px 10px}}
+
+#bobo-awards-more{display:block;margin:28px auto 0;padding:11px 21px;border:1px solid #52787b;background:#1e343b;color:#ddf3ee;border-radius:5px;cursor:pointer;font:600 12px var(--bobo-font-body,inherit)}
+#bobo-awards-more[hidden]{display:none!important}
+#bobo-awards-more:hover{background:#284750;border-color:#9bcfc8}

@@ -54,3 +54,84 @@
 .bobo-person-examples>a:hover,.bobo-person-examples>a:focus-visible{border-color:#e69b9e;background:rgba(255,255,255,.085)}
 .bobo-person-examples strong{font-size:16px}
 .bobo-person-examples small{font-size:12px;color:#bbb7c4}
+
+/* Bobo editorial dossiers — consistent design language, own silhouette. */
+#person-main{max-width:1380px;padding:clamp(20px,3vw,38px) clamp(16px,4vw,52px) 90px}
+.bobo-person-breadcrumb{display:flex;align-items:center;gap:11px;margin:0 0 32px;color:#879fa8;font:500 11px/1.4 var(--bobo-font-mono,monospace)}
+.bobo-person-breadcrumb a{color:#b9d7d5;text-decoration:none}
+.bobo-person-breadcrumb a:hover{color:#f6fafa}
+.bobo-person-hero{position:relative;display:grid;grid-template-columns:minmax(180px,305px) minmax(0,1fr);gap:clamp(22px,5vw,70px);align-items:center;padding:clamp(16px,3vw,32px);border:1px solid rgba(162,209,209,.17);border-radius:12px;background:radial-gradient(ellipse at 82% 15%,rgba(104,171,173,.115),transparent 53%),linear-gradient(128deg,#15252d,#111b24 72%);overflow:hidden;isolation:isolate}
+.bobo-person-hero:before{content:'BOBO / PROFILE';position:absolute;right:22px;top:15px;color:rgba(169,218,216,.13);font:600 11px var(--bobo-font-mono,monospace);letter-spacing:.14em;pointer-events:none}
+.bobo-person-hero:after{content:'';position:absolute;right:-100px;bottom:-185px;width:430px;height:430px;border-radius:50%;border:1px solid rgba(172,214,213,.065);box-shadow:0 0 0 70px rgba(172,214,213,.025),0 0 0 140px rgba(172,214,213,.025);z-index:-1;pointer-events:none}
+.bobo-person-image-frame{width:100%;aspect-ratio:3/4;min-width:0;display:flex;align-items:center;justify-content:center;background:#253740;border-radius:7px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.32);border:1px solid rgba(188,226,225,.2)}
+.bobo-person-image-frame img{width:100%;height:100%;object-fit:cover}
+.bobo-person-hero-copy{min-width:0;padding:12px 0 18px}
+.bobo-person-hero .eyebrow{color:#a4d9d4;font:600 11px/1.5 var(--bobo-font-mono,monospace);letter-spacing:.16em;margin:0 0 16px}
+#person-main .bobo-person-hero h1{font:650 clamp(35px,5.6vw,76px)/1.02 var(--bobo-font-display,'Space Grotesk',sans-serif);letter-spacing:-.055em;margin:0 0 23px;max-width:820px;text-wrap:balance}
+.bobo-person-facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.bobo-person-fact{display:inline-flex;gap:5px;align-items:baseline;padding:7px 10px;border:1px solid rgba(185,218,221,.17);border-radius:4px;background:rgba(8,16,22,.22);color:#c0d0d4;font:500 12px/1.4 var(--bobo-font-body,inherit)}
+.bobo-person-fact strong{font-weight:600;color:#eef4f3}
+.bobo-person-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;max-width:660px}
+.bobo-person-stat{border-top:1px solid rgba(175,222,221,.26);padding-top:11px;min-width:0}
+.bobo-person-stat strong{display:block;font:600 clamp(20px,2.6vw,30px)/1.1 var(--bobo-font-display,inherit);color:#ecf6f3;overflow-wrap:anywhere}
+.bobo-person-stat span{display:block;margin-top:7px;font:500 10px/1.5 var(--bobo-font-mono,monospace);color:#a2b5b9}
+.bobo-person-hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:29px}
+.bobo-person-action{padding:11px 15px;color:#10242a;background:#a4d9d4;border:1px solid #a4d9d4;border-radius:5px;text-decoration:none;font:700 12px var(--bobo-font-body,inherit)}
+.bobo-person-action:hover{background:#d2f4ed;color:#10242a}
+.bobo-person-action--quiet{background:transparent;color:#c8e0df;border-color:#477177}
+.bobo-person-action--quiet:hover{background:#1c3b42;color:#f4f8f8}
+.bobo-person-body{max-width:1210px;margin:0 auto}
+.bobo-person-section{margin-top:clamp(38px,5.8vw,78px)}
+.bobo-person-section-head{display:flex;gap:17px;align-items:flex-start;padding-bottom:18px;margin-bottom:24px;border-bottom:1px solid rgba(179,216,217,.16)}
+.bobo-person-index{padding-top:5px;font:700 11px var(--bobo-font-mono,monospace);color:#86c0bd}
+.bobo-person-section-head h2{margin:0;font:600 clamp(22px,3vw,33px)/1.15 var(--bobo-font-display,inherit);letter-spacing:-.035em}
+.bobo-person-section-head p{margin:7px 0 0;font-size:12px;color:#a1b6be}
+#person-biography{font-size:clamp(15px,1.5vw,17px);line-height:1.82;max-width:80ch;color:#d3dde0;white-space:pre-line}
+.bobo-person-scope-note{border-top:1px solid rgba(181,213,213,.16);padding-top:20px;margin-top:55px;color:#8ea7b0;font:11px/1.7 var(--bobo-font-mono,monospace)}
+.bobo-work-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:25px 15px}
+.bobo-work img,.bobo-work-placeholder{border-radius:5px;transition:transform .18s ease,box-shadow .18s ease}
+.bobo-work:hover img{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.32)}
+.bobo-work strong{font:600 13px/1.35 var(--bobo-font-display,inherit)}
+.bobo-work small{font:11px/1.5 var(--bobo-font-body,inherit);color:#94abb3}
+.bobo-person-more{display:block;margin:29px auto 0;padding:11px 22px;border:1px solid #4b767c;background:#1b3139;border-radius:5px;color:#d8efea;font:600 12px var(--bobo-font-body,inherit);cursor:pointer}
+.bobo-person-more[hidden]{display:none!important}
+.bobo-person-more:hover{background:#274b51;border-color:#9ccdc9}
+.bobo-person-directory{max-width:none;margin:0}
+.bobo-person-directory-hero{padding:clamp(30px,6vw,72px);border:1px solid #2d4850;background:radial-gradient(circle at 85% 16%,rgba(130,188,179,.15),transparent 49%),linear-gradient(130deg,#1a2f37,#0f1821);border-radius:9px}
+#person-main .bobo-person-directory h1{font:650 clamp(36px,6vw,76px)/1.05 var(--bobo-font-display,inherit);max-width:850px;letter-spacing:-.058em;margin:12px 0 22px}
+.bobo-person-directory h1 em{color:#a4d9d4;font-style:normal}
+.bobo-person-directory-hero>p:not(.eyebrow){max-width:580px;color:#bbced2;line-height:1.7}
+.bobo-person-directory-switch{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.bobo-person-directory-switch a{padding:9px 15px;border:1px solid #456871;border-radius:5px;color:#d3e7e4;text-decoration:none;font-size:12px}
+.bobo-person-directory-switch a[aria-current="page"]{background:#a4d9d4;color:#0f242b;border-color:#a4d9d4}
+.bobo-person-directory-head{display:flex;justify-content:space-between;align-items:baseline;gap:15px;margin:38px 0 16px}
+.bobo-person-directory-head h2{font:600 24px var(--bobo-font-display,inherit);margin:0}
+.bobo-person-directory-head span{font:11px var(--bobo-font-mono,monospace);color:#91adb2}
+.bobo-person-directory-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.bobo-person-directory-card{display:block;padding:0 0 14px;border:1px solid #344d54;border-radius:6px;background:#15242e;overflow:hidden;text-decoration:none;color:#ecf6f4}
+.bobo-person-directory-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.bobo-person-directory-card strong{display:block;font-size:15px;padding:12px 12px 3px}
+.bobo-person-directory-card span{display:block;font:11px var(--bobo-font-body,inherit);padding:0 12px;color:#97b1b6}
+[data-person-mode="director"] .bobo-person-hero{background:radial-gradient(ellipse at 86% 10%,rgba(213,151,123,.12),transparent 50%),linear-gradient(128deg,#2b2629,#171d25 76%)}
+[data-person-mode="director"] .bobo-person-hero .eyebrow,[data-person-mode="director"] .bobo-person-index{color:#f0b69b}
+[data-person-mode="director"] .bobo-person-action{background:#e7b39a;color:#291e21;border-color:#e7b39a}
+@media(max-width:760px){
+ #person-main{padding:19px 15px 65px}
+ .bobo-person-hero{grid-template-columns:112px minmax(0,1fr);gap:17px;padding:15px;align-items:start}
+ .bobo-person-hero:before{display:none}
+ .bobo-person-hero-copy{padding:2px 0 0}
+ #person-main .bobo-person-hero h1{font-size:clamp(26px,5vw,38px);margin-bottom:15px}
+ .bobo-person-facts{gap:5px;margin-bottom:12px}
+ .bobo-person-fact{padding:4px 7px;font-size:10px}
+ .bobo-person-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .bobo-person-stat strong{font-size:20px}
+ .bobo-person-stat span{font-size:9px}
+ .bobo-person-hero-actions{margin-top:16px}
+ .bobo-person-action{font-size:10px;padding:9px}
+ .bobo-work-grid{grid-template-columns:repeat(auto-fill,minmax(109px,1fr));gap:18px 10px}
+}
+@media(max-width:460px){
+ .bobo-person-hero{grid-template-columns:95px minmax(0,1fr)}
+ #person-main .bobo-person-hero h1{font-size:27px}
+ .bobo-person-directory-hero{padding:23px}
+}
