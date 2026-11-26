@@ -511,6 +511,35 @@ function move(key){
  const rail=active?.closest?.('.rail,.season-list');
  const horizontal=key==='ArrowLeft'||key==='ArrowRight';
  const direction=(key==='ArrowRight'||key==='ArrowDown')?1:-1;
+ const chipRow=active?.closest?.('.browse-chip-row');
+ if(chipRow){
+  const buttons=Array.from(chipRow.querySelectorAll('.browse-chip'));
+  if(horizontal){
+   const next=buttons[buttons.indexOf(active)+direction];
+   if(next){next.focus({preventScroll:true});ensure(next,'horizontal');}
+   return;
+  }
+  const rows=Array.from(document.querySelectorAll('.browse-chip-row'));
+  const nextRow=rows[rows.indexOf(chipRow)+direction];
+  if(nextRow){
+   const candidates=Array.from(nextRow.querySelectorAll('.browse-chip'));
+   const origin=active.getBoundingClientRect(),x=(origin.left+origin.right)/2;
+   let best=null,distance=Infinity;
+   for(const candidate of candidates){
+    const rect=candidate.getBoundingClientRect();
+    const delta=Math.abs((rect.left+rect.right)/2-x);
+    if(delta<distance){best=candidate;distance=delta;}
+   }
+   if(best){best.focus({preventScroll:true});ensure(best,'vertical');}
+   return;
+  }
+  const target=direction<0?
+    (document.querySelector('.tab.active')||document.querySelector('.tab')):
+    (document.querySelector('.shelf .poster')||document.querySelector('#browse-results .poster')||
+     document.querySelector('.tv-more'));
+  if(target){target.focus({preventScroll:true});ensure(target,'vertical');}
+  return;
+ }
  if(horizontal&&rail?.querySelectorAll){
   const items=Array.from(rail.querySelectorAll('.poster,.season'));
   const target=items[items.indexOf(active)+direction];
@@ -544,8 +573,24 @@ function move(key){
    const sameRow=!horizontal||Math.floor(i/cols)===Math.floor(next/cols);
    if(next>=0&&next<items.length&&sameRow){
     items[next].focus({preventScroll:true});ensure(items[next],horizontal?'horizontal':'vertical');
+    return;
    }
-   return;
+   if(horizontal)return;
+   if(direction<0){
+    const rails=Array.from(document.querySelectorAll?.('.shelf .rail')||[]);
+    const lastRail=rails.length?rails[rails.length-1]:null;
+    const filters=Array.from(document.querySelectorAll?.('.browse-chip-row')||[]);
+    const lastFilter=filters.length?filters[filters.length-1]:null;
+    const target=lastRail?.querySelector('.poster')||lastFilter?.querySelector('.browse-chip')||
+     document.querySelector?.('#search-done')||document.querySelector?.('.tab.active');
+    if(target){target.focus({preventScroll:true});ensure(target,'vertical');}
+    return;
+   }
+   if(direction>0){
+    const more=document.querySelector?.('.tv-more');
+    if(more){more.focus({preventScroll:true});ensure(more,'vertical');}
+    return;
+   }
   }
  }
  const choices=focusChoices();
