@@ -152,7 +152,7 @@
       '<div class="bobo-footer-copy"><i class="bobo-footer-signal" aria-hidden="true"></i>'+
       '<span>BOBO / MOVIE NIGHT</span><span>·</span><span>FRIENDS EDITION</span></div>'+
       '<div class="bobo-easter"><span class="bobo-easter-note" id="bobo-easter-note" aria-live="polite"></span>'+
-      buttons+'</div>';
+      buttons+'</div><a class="bobo-footer-info" href="informazioni.html">Informazioni</a>';
     document.body.appendChild(footer);
     let noteTimeout;
     footer.addEventListener('click',function(event) {
