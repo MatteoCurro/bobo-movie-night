@@ -66,6 +66,7 @@ jobs:
           python3 -m py_compile scripts/build_catalog_ledger.py
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
+          python3 tests/platform-anime.py
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
