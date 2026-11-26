@@ -82,9 +82,10 @@ async function boot(){
   .then(async r=>{if(!r.ok)throw Error('Home non disponibile');return r.json();})
   .then(home=>{
    if(home?.schema!==1||!Array.isArray(home.sections)||!home.featured)throw Error('Home non valida');
-   const fresh=!homeFeed;homeFeed=home;seedHome(home);
+   const fresh=!homeFeed,changed=homeFeed?.updated_at!==home.updated_at;
+   homeFeed=home;seedHome(home);
    try{localStorage.setItem('bobo-tv-home-v1',JSON.stringify(home));}catch(e){}
-   if(fresh&&status.view==='home')render('home');
+   if((fresh||(changed&&window.scrollY<40&&document.activeElement?.id==='hero-play'))&&status.view==='home')render('home');
   });
  const index=fetch(BASE+'data/tv-lite.json')
   .then(async r=>{if(!r.ok)throw Error('Indice non disponibile');return r.json();})
@@ -204,8 +205,8 @@ function searchNow(){
   const name=item.searchKey||(item.searchKey=normalize(item.title));
   if(!name.includes(q))continue;
   count++;
-  if(starts.length+inside.length>=60)continue;
-  if(name.startsWith(q))starts.push(item);else inside.push(item);
+  if(name.startsWith(q)){if(starts.length<60)starts.push(item);}
+  else if(inside.length<60)inside.push(item);
  }
  results.innerHTML=starts.concat(inside).slice(0,60).map(poster).join('');
  msg.textContent=count>60?'Mostrati i primi 60 risultati su '+count+'.':'Trovati '+count+' titoli.';
@@ -507,7 +508,11 @@ function onClick(e){
  const title=e.target.closest('[data-title]');
  if(title){const i=status.index.get(title.dataset.title);if(i)detail(i);return;}
  const play=e.target.closest('[data-play]');
- if(play){const i=status.index.get(play.dataset.play);if(i){status.chosen=i;status.seasons=getSeasons(i);status.season=(status.seasons.find(s=>s.n>0)||{n:1}).n;status.episode=1;startPlayer();}return;}
+ if(play){const i=status.index.get(play.dataset.play);if(i){
+  const switched=!status.chosen||status.chosen.type!==i.type||status.chosen.tmdb_id!==i.tmdb_id;
+  status.chosen=i;
+  if(switched){status.seasons=getSeasons(i);status.season=(status.seasons.find(s=>s.n>0)||{n:1}).n;status.episode=1;}
+  startPlayer();}return;}
  const season=e.target.closest('[data-season]');
  if(season){status.season=Number(season.dataset.season);status.episode=1;
   els('.season').forEach(el=>el.classList.toggle('active',Number(el.dataset.season)===status.season));
