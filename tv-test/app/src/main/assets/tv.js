@@ -148,25 +148,43 @@ function hero(item,detail){
   '</div></div></section>';
 }
 function featuredHome(){
- const first=feature();
- const movies=recent(status.movies);
- const series=recent(status.series);
- const all=recent(status.items);
- return '<div class="home-kicker"><span class="eyebrow">BOBO TV · NUOVA ESPERIENZA</span>'+
-  '<span class="home-kicker-count">'+status.items.length.toLocaleString('it-IT')+' titoli da scoprire</span></div>'+
-  (first?hero(first,false):'')+
-  rail('Da scoprire adesso',all,'Film e serie')+
-  rail('Film recenti',movies)+rail('Serie TV',series)+
-  rail('I più apprezzati',rated(status.items))+
-  rail('Un film per stasera',rated(status.movies).filter(i=>Number(i.runtime)>=75&&Number(i.runtime)<=145));
+ if(homeFeed){
+  return '<div class="home-kicker"><span class="eyebrow">BOBO TV · SELEZIONI</span>'+
+   '<span class="home-kicker-count">'+Number(homeFeed.total||status.items.length).toLocaleString('it-IT')+' titoli</span></div>'+
+   (homeFeed.featured?hero(homeFeed.featured,false):'')+'<div id="home-favorites"></div>'+
+   (homeFeed.sections||[]).map(s=>rail(s.title,s.items||[],s.note)).join('');
+ }
+ const first=feature(),all=recent(status.items);
+ return '<div class="home-kicker"><span class="eyebrow">BOBO TV</span></div>'+
+  (first?hero(first,false):'')+'<div id="home-favorites"></div>'+
+  rail('Da scoprire',all)+rail('Film recenti',recent(status.movies))+
+  rail('Serie TV',recent(status.series));
+}
+function updateHomeFavorites(){
+ const host=$('#home-favorites');if(!host)return;
+ const extra=window.BoboTVExtras;
+ const items=extra?.isLoggedIn?.()?extra?.getFavorites?.()||[]:[];
+ host.innerHTML=items.length?rail('♥ I tuoi preferiti',items.slice(0,14),'La tua raccolta'):'';
 }
 function browse(type){
- const list=(type==='tv'?status.series:status.movies).filter(i=>i.poster)
-  .sort((a,b)=>Number(b.year)-Number(a.year)||Number(b.vote)-Number(a.vote));
+ if(!status.indexReady)return '<div class="loading"><span class="spinner"></span><p>Preparazione catalogo…</p></div>';
+ const list=(type==='tv'?status.series:status.movies).filter(i=>i.poster);
+ const visible=status.browseLimit[type]||48;
  return '<div class="section-header"><h1>'+(type==='tv'?'Serie TV':'Film')+'</h1><span class="section-desc">'+
   list.length.toLocaleString('it-IT')+' titoli</span></div>'+
-  '<div class="results">'+list.slice(0,108).map(poster).join('')+'</div>'+
-  (list.length>108?'<p class="message">Utilizza Cerca per trovare tutti gli altri titoli del catalogo.</p>':'');
+  '<div class="results">'+list.slice(0,visible).map(poster).join('')+'</div>'+
+  (list.length>visible?'<button type="button" class="action secondary tv-focus tv-more" data-more="'+type+'">Mostra altri titoli ↓</button>':'');
+}
+function moreBrowse(type){
+ const list=(type==='tv'?status.series:status.movies).filter(i=>i.poster);
+ const start=status.browseLimit[type]||48;
+ const end=Math.min(list.length,start+48);
+ status.browseLimit[type]=end;
+ const grid=$('.results');if(!grid)return;
+ grid.insertAdjacentHTML('beforeend',list.slice(start,end).map(poster).join(''));
+ const more=$('.tv-more');if(more&&end>=list.length)more.remove();
+ const next=grid.querySelectorAll('.poster')[start];
+ if(next){next.focus({preventScroll:true});ensure(next,'vertical');}
 }
 function searchScreen(){
  return '<div class="section-header"><h1>Cerca</h1><span class="section-desc">Film e serie TV</span></div>'+
@@ -180,11 +198,17 @@ function searchNow(){
  const q=normalize(status.search.trim()),results=$('#search-results'),msg=$('#search-message');
  if(!results)return;
  if(q.length<2){results.innerHTML='';msg.textContent='Scrivi almeno due caratteri per cercare un titolo.';return;}
- const list=status.items.filter(i=>normalize(i.title).includes(q))
-  .sort((a,b)=>Number(normalize(a.title).startsWith(q))-Number(normalize(b.title).startsWith(q))||
-    Number(a.vote)-Number(b.vote)||Number(a.year)-Number(b.year)).reverse();
- results.innerHTML=list.slice(0,60).map(poster).join('');
- msg.textContent=list.length>60?'Mostrati i primi 60 risultati su '+list.length+'.':'Trovati '+list.length+' titoli.';
+ if(!status.indexReady){msg.textContent='Preparazione ricerca…';return;}
+ const starts=[],inside=[];let count=0;
+ for(const item of status.items){
+  const name=item.searchKey||(item.searchKey=normalize(item.title));
+  if(!name.includes(q))continue;
+  count++;
+  if(starts.length+inside.length>=60)continue;
+  if(name.startsWith(q))starts.push(item);else inside.push(item);
+ }
+ results.innerHTML=starts.concat(inside).slice(0,60).map(poster).join('');
+ msg.textContent=count>60?'Mostrati i primi 60 risultati su '+count+'.':'Trovati '+count+' titoli.';
 }
 function getSeasons(item){
  if(item.type!=='tv')return [];
@@ -243,12 +267,12 @@ function render(view){
  let external=false;
  status.view=view;
  navActive();
- if(view==='home')app.innerHTML=featuredHome();
+ if(view==='home'){app.innerHTML=featuredHome();updateHomeFavorites();}
  else if(view==='movie'||view==='tv')app.innerHTML=browse(view);
  else if(view==='search'){
   app.innerHTML=searchScreen();searchNow();
   const field=$('#q');
-  field.addEventListener('input',()=>{status.search=field.value;searchNow();});
+  field.addEventListener('input',()=>{status.search=field.value;clearTimeout(searchTimer);searchTimer=setTimeout(searchNow,170);});
   field.addEventListener('focus',()=>document.body.classList.add('tv-search-editing'));
   field.addEventListener('blur',()=>document.body.classList.remove('tv-search-editing'));
   field.addEventListener('keydown',e=>{
@@ -384,6 +408,7 @@ function move(key){
 }
 function onClick(e){
  if(window.BoboTVExtras?.onClick(e))return;
+ const more=e.target.closest('[data-more]');if(more){moreBrowse(more.dataset.more);return;}
  if(e.target.closest('#search-done')){closeSearchKeyboard();return;}
  const targetView=e.target.closest('[data-view]');
  if(targetView){render(targetView.dataset.view);return;}
@@ -658,8 +683,9 @@ window.BoboTV={
  getIndex:()=>status.index,
  rail:rail,
  toast:notify,
+ updateHomeFavorites:updateHomeFavorites,
  state:()=>({view:status.view,player:status.player,started:status.started,paused:status.paused,bridge:status.bridge}),
- version:'1.3.2-TV'
+ version:'1.4.0-TV'
 };
 document.getElementById('tabs').addEventListener('click',onClick);
 app.addEventListener('click',onClick);
@@ -669,7 +695,7 @@ document.addEventListener('focusin',e=>{
   if(e.target&&e.target.closest('#main,#tabs'))status.focus=e.target;
   const el=e.target&&e.target.closest('.poster');
   const item=el&&status.index.get(el.dataset.title);
-  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.3.2';
+  document.getElementById('clock').textContent=item?(item.title+(item.year?' · '+item.year:'')):'BOBO TV · 1.4.0';
 },true);
 boot();
 }());
