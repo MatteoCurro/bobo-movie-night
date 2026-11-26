@@ -5,6 +5,7 @@ on:
       - "backend/lib/newsletter.php"
       - "backend/lib/newsletter-magazine.php"
       - "scripts/build_newsletter_digest.py"
+      - "scripts/build_editorial.py"
       - "tests/newsletter-magazine.py"
       - "backend/htdocs/admin.html"
       - "backend/htdocs/admin.js"
@@ -24,7 +25,7 @@ jobs:
         run: |
           php -l backend/lib/newsletter.php
           php -l backend/lib/newsletter-magazine.php
-          python3 -m py_compile scripts/build_newsletter_digest.py
+          python3 -m py_compile scripts/build_newsletter_digest.py scripts/build_editorial.py
           python3 tests/newsletter-magazine.py
           python3 scripts/build_newsletter_digest.py
           node --check backend/htdocs/admin.js
