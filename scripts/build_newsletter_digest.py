@@ -302,7 +302,7 @@ def build(today=None):
         "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
         "edition": {"id": week, "theme": tag[0], "eyebrow": f"IL CLUB / SETTIMANA {today.isocalendar().week:02d}",
                     "title": tag[1], "subtitle": tag[2],
-                    "subject": "BOBO / " + tag[1],
+                    "subject": "BOBO / " + tag[1] + " · " + str(candidates[lead_key]["title"])[:60],
                     "preheader": tag[2] + ". Film, serie e una curiosità da raccontare."},
         "lead": headline_card(candidates[lead_key], "La scelta del club"),
         "sections": groups, "curiosity": curiosity, "quote": quote,
