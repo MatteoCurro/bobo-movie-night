@@ -602,6 +602,9 @@
       if (target && typeof target.focus === 'function') target.focus();
     }
   }
+  function languageRequest() {
+    return { type: type, tmdbId: id, season: selectedSeason, episode: selectedEpisode };
+  }
   function renderPlayerSources() {
     if (!window.BoboPlayers) return;
     const sources = window.BoboPlayers.list();
@@ -636,6 +639,12 @@
       provider === 'vidcore' ?
       'VidCore prova a selezionare audio italiano con lang=it. È un’alternativa sperimentale: se senti inglese, il doppiaggio non è verificato per questo titolo.' :
       'Se senti l’inglese, cerca Audio → Italiano nelle impostazioni interne del video. I sottotitoli ITA non cambiano la lingua parlata.';
+    const languageSelect = byId('watch-audio-result');
+    const status = window.BoboPlayers.audioStatus(provider, languageRequest());
+    if (languageSelect) languageSelect.value = status;
+    if (note && status === 'ita') note.textContent += ' ✓ Audio ITA confermato da te per questo contenuto.';
+    if (note && status === 'sub-ita') note.textContent += ' ✓ Hai verificato sottotitoli italiani (non doppiaggio).';
+    if (note && status === 'original') note.textContent += ' Hai segnalato audio originale su questa sorgente.';
 
   }
   function chooseSource(id) {
@@ -696,6 +705,11 @@
       resetSequence();
     });
     byId('watch-source-settings').addEventListener('click',function () { settings(true); });
+    byId('watch-audio-result').addEventListener('change', function () {
+      if (!window.BoboPlayers) return;
+      window.BoboPlayers.reportAudio(provider, languageRequest(), this.value);
+      renderPlayerSources();
+    });
     if (window.BoboPlayers) {
       renderPlayerSources();
       window.BoboPlayers.onUpdate(function () {
