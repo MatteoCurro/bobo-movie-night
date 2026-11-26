@@ -65,6 +65,8 @@ related=Path("bobo-related.js").read_text(encoding="utf-8")
 assert "data/cinema/connections/" in related
 assert "data/related/" in related
 assert "watch-together" in related and "watch-cinema-fact" in related
+assert "new Set([kind+':'+id,...(paired||[])])" in related
+assert "render(context&&context.connections,generic,paired)" in related
 assert "Stessa regia" in Path("scripts/build_story_connections.py").read_text(encoding="utf-8")
 assert "watch-related-section" in Path("watch.html").read_text(encoding="utf-8")
 person=Path("bobo-cinema.js").read_text(encoding="utf-8")
