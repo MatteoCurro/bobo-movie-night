@@ -26,6 +26,7 @@ jobs:
           php -l backend/lib/newsletter-magazine.php
           python3 -m py_compile scripts/build_newsletter_digest.py
           python3 tests/newsletter-magazine.py
+          python3 scripts/build_newsletter_digest.py
           node --check backend/htdocs/admin.js
           php tests/newsletter-smoke.php
       - name: Export newsletter preview (without sending emails)
