@@ -25,7 +25,7 @@ with tempfile.TemporaryDirectory() as d:
             assert key!=str(12) and len(entries)<=8
             assert all(len(e)==5 and e[4].endswith(".jpg") for e in entries)
             assert all(e[1]!=int(key.split(':')[1]) or e[0]!=key.split(':')[0] for e in entries)
-    assert (root/"data/related/"+rel.shard(12)+".json").is_file(),"Prioritize editorial titles"
+    assert (root/"data/related"/(rel.shard(12)+".json")).is_file(),"Prioritize editorial titles"
     second=rel.build(root,limit=5)
     assert second["indexed"]==10 and second["added"]==5 and second["remaining"]==33,second
     new_keys=set()
