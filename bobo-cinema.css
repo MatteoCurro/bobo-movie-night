@@ -46,3 +46,11 @@
   .bobo-actor-grid{grid-auto-columns:minmax(104px,130px)}
   .bobo-work-grid{grid-template-columns:repeat(auto-fill,minmax(105px,1fr))}
 }
+/* Graceful landing when person.html has no ?id= parameter. */
+.bobo-person-directory{max-width:920px;margin:24px auto 0}
+.bobo-person-directory>p:not(.eyebrow){color:#c4c0ca;line-height:1.75;max-width:72ch}
+.bobo-person-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px;margin:30px 0}
+.bobo-person-examples>a{display:flex;flex-direction:column;gap:8px;padding:22px 18px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:rgba(255,255,255,.045);text-decoration:none;color:#f5f4f7}
+.bobo-person-examples>a:hover,.bobo-person-examples>a:focus-visible{border-color:#e69b9e;background:rgba(255,255,255,.085)}
+.bobo-person-examples strong{font-size:16px}
+.bobo-person-examples small{font-size:12px;color:#bbb7c4}

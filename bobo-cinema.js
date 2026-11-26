@@ -185,6 +185,13 @@
   }
   async function person() {
     if (!byId('person-main')) return;
+    if (!params.has('id')) {
+      // A plain person.html URL is an entry point, not a broken profile.
+      byId('person-loading').hidden = true;
+      byId('person-directory').hidden = false;
+      document.title = 'Attori e interpreti · Bobo Movie Night';
+      return;
+    }
     if (!validId(personId)) {
       byId('person-loading').textContent = 'Identificativo persona non valido.';
       return;
