@@ -158,8 +158,7 @@
     if (item.type === 'tv') bits.push('<span>'+text(seasonSummary(item))+'</span>');
     return bits.join('<span aria-hidden="true">•</span>');
   }
-  const PLATFORM_LABELS = Object.freeze({netflix:'NETFLIX',prime:'prime',disney:'Disney+',apple:'Apple TV+',paramount:'Paramount+',skygo:'Sky Go',now:'NOW',hbo:'HBO Max',rai:'RaiPlay',mediaset:'Infinity',crunchyroll:'Crunchyroll'});
-  function posterTile(item,platform) {
+  function posterTile(item) {
     const image = safeImage(item.poster);
     const art = image ? '<img src="'+text(image)+'" loading="lazy" alt="" decoding="async">' :
       '<span class="bobo-fallback">'+text(item.title)+'</span>';
@@ -170,8 +169,7 @@
       '<span class="bobo-poster-hover-hint">ⓘ Dettagli</span></span></span>'+
       '<span class="bobo-tile-title">'+text(item.title)+'</span>'+
       '<span class="bobo-tile-meta">'+text(item.type === 'tv' ? seasonSummary(item) : (item.year||''))+
-      (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span>'+ 
-      (PLATFORM_LABELS[platform] ? '<span class="bobo-source-tags" aria-label="Disponibilità italiana su '+text(PLATFORM_LABELS[platform])+'"><span class="bobo-platform bobo-platform--'+text(platform)+'">'+text(PLATFORM_LABELS[platform])+'</span></span>' : '')+'</button>';
+      (item.vote ? ' · ★ '+text(Number(item.vote).toFixed(1)) : '')+'</span></button>';
   }
   function shelf(id, title, items, subtitle) {
     const list = items.slice(0, 16);
@@ -183,7 +181,7 @@
       (subtitle ? '<small class="bobo-shelf-source">'+text(subtitle)+'</small>' : '')+
       '</div><div class="bobo-rail-frame">'+
       '<button class="bobo-arrow bobo-arrow--left" type="button" data-bobo-scroll="'+text(id)+'" data-direction="-1" aria-label="Scorri '+text(title)+' verso sinistra">‹</button>'+
-      '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(item=>posterTile(item,platform)).join('')+'</div>'+
+      '<div class="bobo-rail" id="bobo-rail-'+text(id)+'">'+list.map(posterTile).join('')+'</div>'+
       '<button class="bobo-arrow bobo-arrow--right" type="button" data-bobo-scroll="'+text(id)+'" data-direction="1" aria-label="Scorri '+text(title)+' verso destra">›</button></div></section>';
   }
   function chooseFeedFeature() {
