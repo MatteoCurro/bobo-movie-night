@@ -603,6 +603,7 @@
   </div>
 </div>
 
+<script src="bobo-players.js"></script>
 <script>
 // ─────────────────────────────────────────────────────────
 // STATE
@@ -613,23 +614,9 @@ let loading    = { movie: false, tv: false };
 let activeTab  = 'movie';
 let selectedShow = null;
 let filters    = { movie: defaultFilters(), tv: defaultFilters() };
-let provider   = ['vix','vidsrc'].includes(localStorage.getItem('bobo_provider_v3'))
-  ? localStorage.getItem('bobo_provider_v3') : 'vix';
+let provider   = window.BoboPlayers.selected();
 let playerState = null;
-
-const PROVIDERS = {
-  vix: {
-    name: 'Vix',
-    movie: id        => `https://vixsrc.to/movie/${id}?lang=it`,
-    tv:    (id,s,e)  => `https://vixsrc.to/tv/${id}/${s}/${e}?lang=it`,
-  },
-  vidsrc: {
-    name: 'VidSrc',
-    movie: id        => `https://vidsrc-embed.ru/embed/movie?tmdb=${id}&ds_lang=it`,
-    tv:    (id,s,e)  => `https://vidsrc-embed.ru/embed/tv?tmdb=${id}&season=${s}&episode=${e}&ds_lang=it`,
-  },
-};
-const PLAYER_TIMEOUT_MS = 8000;
+const PLAYER_TIMEOUT_MS = 12000;
 
 function defaultFilters() {
   return { genre: '', year: '', sort: 'year_desc', q: '' };
@@ -647,14 +634,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (e.target === e.currentTarget) closeEpModal();
   });
   document.getElementById('ep-season').addEventListener('change', populateEpisodes);
-  document.querySelectorAll('.prov-btn').forEach(b => {
-    b.addEventListener('click', () => setProvider(b.dataset.prov));
+  document.getElementById('provider-toggle').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-prov]');
+    if (btn) setProvider(btn.dataset.prov);
   });
   document.getElementById('player-modal').addEventListener('click', e => {
     if (e.target === e.currentTarget) closePlayer();
   });
-  document.getElementById('player-iframe').addEventListener('load', onIframeLoad);
-  setProvider(provider);  // sync UI to saved/default value
+  renderProviderButtons();
+  window.BoboPlayers.onUpdate(() => {
+    if (!window.BoboPlayers.get(provider)) provider = window.BoboPlayers.selected();
+    renderProviderButtons();
+  });
+  window.BoboPlayers.init().then(renderProviderButtons);
+  setProvider(provider);
   await ensureLoaded('movie');
 });
 
@@ -923,19 +916,27 @@ function confirmEpisode() {
 // ─────────────────────────────────────────────────────────
 // PROVIDER / PLAYER
 // ─────────────────────────────────────────────────────────
-function setProvider(p) {
-  if (!PROVIDERS[p]) return;
-  provider = p;
-  localStorage.setItem('bobo_provider_v3', p);
-  document.querySelectorAll('.prov-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.prov === p);
-  });
+function renderProviderButtons() {
+  const node = document.getElementById('provider-toggle');
+  node.replaceChildren();
+  for (const p of window.BoboPlayers.list()) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'prov-btn' + (p.id === provider ? ' active' : '');
+    button.dataset.prov = p.id;
+    button.textContent = p.name;
+    button.title = p.audio === 'it-preferred' ? 'Audio italiano preferito' :
+      'Audio italiano non verificato';
+    node.appendChild(button);
+  }
 }
-
+function setProvider(p) {
+  if (!window.BoboPlayers.get(p)) return;
+  provider = window.BoboPlayers.select(p);
+  renderProviderButtons();
+}
 function playerURL(prov, st) {
-  return st.kind === 'movie'
-    ? PROVIDERS[prov].movie(st.tmdbId)
-    : PROVIDERS[prov].tv(st.tmdbId, st.season, st.episode);
+  return window.BoboPlayers.url(prov, st);
 }
 
 function openPlayer(req) {
@@ -949,60 +950,59 @@ function openPlayer(req) {
 }
 
 function loadProvider(prov) {
-  if (!playerState) return;
+  if (!playerState || !window.BoboPlayers.get(prov)) return;
   playerState.currentProv = prov;
   playerState.tried.add(prov);
-  document.getElementById('player-prov-name').textContent = PROVIDERS[prov].name;
-  document.getElementById('player-current-prov').textContent = PROVIDERS[prov].name;
+  const current = window.BoboPlayers.get(prov);
+  document.getElementById('player-prov-name').textContent = current.name;
+  document.getElementById('player-current-prov').textContent = current.name;
   const state = document.getElementById('player-state');
   state.classList.remove('hidden', 'error');
-  state.innerHTML = `<div class="spinner"></div><p>Caricamento da <strong>${PROVIDERS[prov].name}</strong>…</p>`;
-
+  state.innerHTML = '<div class="spinner"></div><p>Caricamento da <strong>' +
+    escH(current.name) + '</strong>…</p>';
   if (playerState.timeoutId) clearTimeout(playerState.timeoutId);
-  playerState.timeoutId = setTimeout(() => onProviderTimeout(prov), PLAYER_TIMEOUT_MS);
-
-  const iframe = document.getElementById('player-iframe');
-  iframe.src = 'about:blank';
-  // Use setTimeout to ensure the about:blank assignment doesn't immediately trigger our onload.
-  setTimeout(() => { iframe.src = playerURL(prov, playerState); }, 30);
-}
-
-function onIframeLoad() {
-  if (!playerState) return;
-  const iframe = document.getElementById('player-iframe');
-  if (iframe.src === 'about:blank' || iframe.src === '') return;
-  if (playerState.timeoutId) {
-    clearTimeout(playerState.timeoutId);
+  const requestId = (playerState.requestId || 0) + 1;
+  playerState.requestId = requestId;
+  const oldFrame = document.getElementById('player-iframe');
+  const nextFrame = oldFrame.cloneNode(false);
+  nextFrame.removeAttribute('src');
+  nextFrame.setAttribute('allowfullscreen','');
+  nextFrame.setAttribute('allow','autoplay; fullscreen; encrypted-media; picture-in-picture');
+  nextFrame.referrerPolicy = 'origin';
+  nextFrame.addEventListener('load', function() {
+    if (!playerState || playerState.requestId !== requestId) return;
+    if (playerState.timeoutId) clearTimeout(playerState.timeoutId);
     playerState.timeoutId = null;
-  }
-  // Best-effort load detection: onload fired with non-blank URL.
-  // Cross-origin prevents us from confirming actual content, but the
-  // iframe is now visible — hide the overlay so the user can see it.
-  document.getElementById('player-state').classList.add('hidden');
+    // iframe loaded HTML, not necessarily a playable video.
+    state.classList.add('hidden');
+  }, {once:true});
+  nextFrame.addEventListener('error', function() {
+    if (playerState && playerState.requestId === requestId) onProviderTimeout(prov);
+  }, {once:true});
+  oldFrame.replaceWith(nextFrame);
+  playerState.timeoutId = setTimeout(() => {
+    if (playerState && playerState.requestId === requestId) onProviderTimeout(prov);
+  }, PLAYER_TIMEOUT_MS);
+  nextFrame.src = playerURL(prov, playerState);
 }
-
 function onProviderTimeout(prov) {
   if (!playerState || playerState.currentProv !== prov) return;
-  const other = prov === 'vix' ? 'vidsrc' : 'vix';
-  if (!playerState.tried.has(other)) {
-    console.warn(`[player] ${prov} timed out, trying ${other}`);
-    loadProvider(other);
-  } else {
-    const state = document.getElementById('player-state');
-    state.classList.remove('hidden');
-    state.classList.add('error');
-    state.innerHTML =
-      '<p style="font-size:32px">⚠️</p>' +
-      '<p>Nessun provider risponde. Prova "Apri in nuova scheda".</p>';
-  }
+  if (playerState.timeoutId) clearTimeout(playerState.timeoutId);
+  playerState.timeoutId = null;
+  const state = document.getElementById('player-state');
+  state.classList.remove('hidden');
+  state.classList.add('error');
+  state.innerHTML = '<p>Caricamento lento o sorgente non disponibile.</p>' +
+    '<p>Prova «Cambia provider» senza perdere il titolo selezionato.</p>';
 }
 
 function swapProvider() {
   if (!playerState) return;
-  const other = playerState.currentProv === 'vix' ? 'vidsrc' : 'vix';
-  // Manual swap: clear "tried" so we re-attempt freely.
+  const next = window.BoboPlayers.next(playerState.currentProv);
+  if (next === playerState.currentProv) return;
+  setProvider(next);
   playerState.tried = new Set();
-  loadProvider(other);
+  loadProvider(next);
 }
 
 async function copyPlayerLink() {
