@@ -9,13 +9,18 @@ const guide=document.getElementById('player-start-guide');
 const toastNode=document.getElementById('toast');
 const status={view:'home',items:[],movies:[],series:[],index:new Map(),chosen:null,season:1,episode:1,
   focus:null,player:false,started:false,paused:false,bridge:false,time:0,duration:0,playerUrl:'',
-  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true,mediaSeen:false};
+  seasons:[],episodeNames:{},search:'',recent:[],autoNext:true,mediaSeen:false,indexReady:false,browseLimit:{movie:48,tv:48},returnTo:null};
 let hudTimer=0,toastTimer=0,topTimer=0,loadCount=0,requestVersion=0,commandSerial=0,pendingCommand=null,mediaWall=0,playerLoadedAt=0;
+let homeFeed=null,searchTimer=0,detailSerial=0;
+const detailPromises=new Map(),relatedPromises=new Map();
 const $=s=>document.querySelector(s);
 const els=s=>Array.from(document.querySelectorAll(s));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function image(src,size){
- if(typeof src!=='string'||!/^https:\/\/image\.tmdb\.org\//.test(src))return '';
+ if(typeof src!=='string')return '';
+ if(/^\/[A-Za-z0-9_-]{5,200}\.(?:jpg|jpeg|png|webp)$/i.test(src))
+  return 'https://image.tmdb.org/t/p/'+size+src;
+ if(!/^https:\/\/image\.tmdb\.org\/t\/p\//.test(src))return '';
  return src.replace(/\/t\/p\/(?:w\d+|original)\//,'/t/p/'+size+'/');
 }
 function label(item){return item.type==='tv'?'Serie TV':'Film';}
@@ -38,28 +43,80 @@ function valid(item){return item&&item.tmdb_id&&item.title;}
 function mapItems(collection,type){
  return (collection.items||[]).filter(valid).map(x=>Object.assign({type},x));
 }
-async function boot(){
- loading();
- try{
-  const [movies,series]=await Promise.all([
-   fetch(BASE+'data/movies.json').then(r=>{if(!r.ok)throw Error('Catalogo film non disponibile');return r.json();}),
-   fetch(BASE+'data/tv.json').then(r=>{if(!r.ok)throw Error('Catalogo serie non disponibile');return r.json();})
-  ]);
-  status.movies=mapItems(movies,'movie');
-  status.series=mapItems(series,'tv');
-  status.items=status.movies.concat(status.series);
-  status.items.forEach(i=>status.index.set(i.type+':'+i.tmdb_id,i));
-  render('home');
-  window.BoboTVExtras?.catalogReady();
- }catch(error){
-  app.innerHTML='<div class="message"><h1>Impossibile caricare il catalogo</h1><p>Controlla la connessione della TV.</p><button class="action" id="retry">Riprova</button></div>';
+function unpack(row){
+ return Array.isArray(row)?{type:row[0],tmdb_id:row[1],title:row[2],year:row[3],vote:row[4],poster:row[5]}:row;
+}
+function seedHome(home){
+ for(const group of home.sections||[]){
+  for(const item of group.items||[]){
+   if(valid(item))status.index.set(item.type+':'+item.tmdb_id,item);
+  }
+ }
+ if(valid(home.featured))status.index.set(home.featured.type+':'+home.featured.tmdb_id,home.featured);
+}
+async function legacyCatalog(){
+ const [movies,series]=await Promise.all([
+  fetch(BASE+'data/movies.json').then(r=>{if(!r.ok)throw Error('Film offline');return r.json();}),
+  fetch(BASE+'data/tv.json').then(r=>{if(!r.ok)throw Error('Serie offline');return r.json();})
+ ]);
+ status.movies=mapItems(movies,'movie');status.series=mapItems(series,'tv');
+ status.items=status.movies.concat(status.series);
+ status.items.forEach(i=>status.index.set(i.type+':'+i.tmdb_id,Object.assign(i,status.index.get(i.type+':'+i.tmdb_id)||{})));
+ status.indexReady=true;
+}
+function networkFailure(){
+ if(status.view==='home'&&!homeFeed&&!status.items.length){
+  app.innerHTML='<div class="message"><h1>Impossibile caricare il catalogo</h1><p>Controlla la connessione della TV.</p><button class="action tv-focus" id="retry">Riprova</button></div>';
   $('#retry').addEventListener('click',boot);$('#retry').focus();
  }
 }
+async function boot(){
+ if(!homeFeed)loading();
+ try{
+  const cached=localStorage.getItem('bobo-tv-home-v1');
+  if(cached){const value=JSON.parse(cached);if(value?.schema===1&&value?.featured&&Array.isArray(value.sections)){
+   homeFeed=value;seedHome(value);render('home');
+  }}
+ }catch(e){}
+ const homepage=fetch(BASE+'data/tv-home.json')
+  .then(async r=>{if(!r.ok)throw Error('Home non disponibile');return r.json();})
+  .then(home=>{
+   if(home?.schema!==1||!Array.isArray(home.sections)||!home.featured)throw Error('Home non valida');
+   const fresh=!homeFeed;homeFeed=home;seedHome(home);
+   try{localStorage.setItem('bobo-tv-home-v1',JSON.stringify(home));}catch(e){}
+   if(fresh&&status.view==='home')render('home');
+  });
+ const index=fetch(BASE+'data/tv-lite.json')
+  .then(async r=>{if(!r.ok)throw Error('Indice non disponibile');return r.json();})
+  .then(data=>{
+   if(data?.schema!==1||!Array.isArray(data.items)||!data.items.length)throw Error('Indice vuoto');
+   status.items=data.items.map(unpack).filter(valid);
+   status.movies=status.items.filter(i=>i.type==='movie');
+   status.series=status.items.filter(i=>i.type==='tv');
+   status.items.forEach(item=>{
+    const key=item.type+':'+item.tmdb_id;
+    status.index.set(key,Object.assign(item,status.index.get(key)||{}));
+   });
+   status.indexReady=true;
+   if(status.view==='movie'||status.view==='tv')render(status.view);
+   if(status.view==='search')searchNow();
+   window.BoboTVExtras?.catalogReady();
+  });
+ const results=await Promise.allSettled([homepage,index]);
+ if(results[1].status==='rejected'){
+  try{await legacyCatalog();if(status.view==='movie'||status.view==='tv'||status.view==='search')render(status.view);}
+  catch(e){networkFailure();}
+  window.BoboTVExtras?.catalogReady();
+ }
+ if(results[0].status==='rejected'&&!homeFeed){
+  if(status.indexReady&&status.view==='home')render('home');
+  else networkFailure();
+ }
+}
 function poster(item){
- const url=image(item.poster,'w500');
+ const url=image(item.poster,'w342');
  return '<button type="button" class="poster tv-focus" data-title="'+esc(item.type+':'+item.tmdb_id)+'" aria-label="'+esc(item.title)+'">'+
-  '<span class="poster-art" data-focus-title="'+esc(item.title)+'" data-focus-meta="'+esc(meta(item))+'"><span class="poster-type">'+(item.type==='tv'?'SERIE TV':'FILM')+'</span>'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
+  '<span class="poster-art" data-focus-title="'+esc(item.title)+'" data-focus-meta="'+esc(meta(item))+'"><span class="poster-type">'+(item.provider?esc(item.provider):(item.type==='tv'?'SERIE TV':'FILM'))+'</span>'+(url?'<img loading="lazy" decoding="async" src="'+esc(url)+'" alt="">':
    '<span class="poster-placeholder">'+esc(item.title)+'</span>')+'</span>'+
   '<span class="poster-title">'+esc(item.title)+'</span>'+
   '<span class="poster-sub">'+esc([item.year||'',item.vote?'★ '+Number(item.vote).toFixed(1):''].filter(Boolean).join(' · '))+'</span></button>';
