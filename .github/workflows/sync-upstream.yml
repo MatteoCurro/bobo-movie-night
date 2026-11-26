@@ -222,6 +222,8 @@ jobs:
           cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/catalog-metrics.json _site/data/
           cp -R data/episodes _site/data/
           cp -R data/related _site/data/
+          cp -R data/cinema _site/data/
+          test -d _site/data/cinema/credits && test -d _site/data/cinema/people
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
           test -s _site/data/catalog-status.json
@@ -230,6 +232,8 @@ jobs:
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js bobo-critic.js bobo-multi-ratings.js _site/
+          cp person.html bobo-cinema.js bobo-cinema.css _site/
+          test -s _site/person.html && test -s _site/bobo-cinema.js && test -s _site/bobo-cinema.css
           test -s _site/bobo-players.js && test -s _site/data/player-sources.json
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
           # The TV installation page is a separate directory; it must be part
