@@ -95,6 +95,11 @@
       <h2 id="watch-about">Informazioni</h2>
       <p id="watch-about-body"></p>
     </section>
+    <section id="watch-reviews-section" class="section bobo-reviews" aria-labelledby="watch-reviews-title" hidden>
+      <div class="section-heading"><h2 id="watch-reviews-title">Le recensioni degli spettatori</h2></div>
+      <p class="section-subtitle">Brevi estratti di recensioni in italiano pubblicate dagli utenti su TMDB, con autore e collegamento alla fonte. Non sono recensioni della redazione Bobo.</p>
+      <div id="watch-reviews-list" class="bobo-review-grid"></div>
+    </section>
     <section id="watch-related-section" class="section" hidden><div class="section-heading"><h2>Potrebbe piacerti anche</h2></div><div id="watch-related-items" class="watch-related-rail"></div></section>
   </main>
 
@@ -104,7 +109,7 @@
         <h2 id="watch-settings-title">Impostazioni riproduzione</h2>
         <button type="button" id="watch-settings-close" aria-label="Chiudi impostazioni">×</button>
       </div>
-      <p>VixSrc e VidCore richiedono l'audio italiano dove disponibile. Non tutte le sorgenti possiedono il doppiaggio.</p>
+      <p>La richiesta dell'audio italiano non garantisce un doppiaggio disponibile. Le sorgenti prive di riscontri positivi vengono disattivate.</p>
       <div id="watch-provider-options" role="radiogroup" aria-label="Servizi di riproduzione"></div>
       <div class="autonext-settings" id="watch-audio-check">
         <h3>Lingua effettivamente ascoltata</h3>
@@ -141,5 +146,6 @@
   <script src="bobo-related.js" defer></script>
   <script src="bobo-watch.js" defer></script>
   <script src="bobo-official-audio.js" defer></script>
+  <script src="bobo-reviews.js" defer></script>
 </body>
 </html>
