@@ -245,6 +245,13 @@ def award_entries(bindings, ids):
         found[tmdb_id].append({"event": event, "category": name[:180],
                                "outcome": result, "year": year, "source": "wikidata",
                                "source_url": "https://www.wikidata.org/wiki/" + qid})
+    # Wikidata may record a win as both nominated (P1411) and received
+    # (P166). Keep the win rather than displaying contradictory badges.
+    for tmdb_id, records in found.items():
+        wins = {(a["source_url"], a["year"]) for a in records if a["outcome"] == "won"}
+        found[tmdb_id] = [a for a in records
+                          if a["outcome"] == "won" or
+                          (a["source_url"], a["year"]) not in wins]
     return found
 
 
@@ -378,7 +385,12 @@ def sync(root=Path(".")):
                 # Wikidata result. Both providers can coexist with provenance.
                 external = [a for a in prior.get("awards", [])
                             if a.get("source") != "wikidata"]
-                updated["awards"] = external + entries.get(str(mid), [])
+                incoming = entries.get(str(mid), [])
+                if prior.get("oscar_index") == "2023":
+                    # Oscar entries through the historical dataset are sourced
+                    # consistently from the same index, not duplicated.
+                    incoming = [a for a in incoming if a.get("event") != "Oscar"]
+                updated["awards"] = external + incoming
                 updated["awards_checked_at"] = TODAY
                 credits.put(mid, key, updated)
                 award_checked += 1
