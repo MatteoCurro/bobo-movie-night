@@ -151,7 +151,7 @@ def build(root: Path, limit: int = LIMIT):
                               row["year"] >= dt.date.today().year-4,
                               row["vote"], row["year"], key(row)), reverse=True)
     # Reserve capacity for re-scoring existing entries as new topics arrive.
-    new_budget = min(len(new), limit if not indexed else max(1, (limit*3)//4))
+    new_budget = min(len(new), limit if len(indexed) < limit*2 else max(1, (limit*3)//4))
     targets = {key(row) for row in new[:new_budget]}
     refresh_capacity = max(0, limit-len(targets))
     old = sorted(eligible & indexed)
