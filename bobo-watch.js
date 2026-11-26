@@ -632,8 +632,10 @@
     }
     const note = byId('watch-source-note');
     if (note) note.textContent = provider === 'vix' ?
-      'VixSrc preferisce l’audio italiano se disponibile. Se il player non parte, prova Cambia sorgente.' :
-      'Audio italiano non verificato per questa sorgente. Il contenuto potrebbe essere solo in lingua originale o sottotitolato.';
+      'VixSrc richiede l’audio italiano, se disponibile per questo titolo. Non è una garanzia per ogni video.' :
+      'Se senti l’inglese, apri le impostazioni del video e cerca Audio → Italiano. Se non compare, quella sorgente non offre una traccia italiana selezionabile. I sottotitoli ITA non modificano l’audio.';
+    const preferItalian = byId('watch-prefer-ita');
+    if (preferItalian) preferItalian.hidden = provider === 'vix' || !window.BoboPlayers.get('vix');
   }
   function chooseSource(id) {
     if (!window.BoboPlayers || !window.BoboPlayers.get(id)) return;
@@ -696,6 +698,7 @@
     byId('watch-source-next').addEventListener('click',function () {
       if (window.BoboPlayers) chooseSource(window.BoboPlayers.next(provider));
     });
+    byId('watch-prefer-ita').addEventListener('click',function () { chooseSource('vix'); });
     if (window.BoboPlayers) {
       renderPlayerSources();
       window.BoboPlayers.onUpdate(function () {

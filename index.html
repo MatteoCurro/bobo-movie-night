@@ -596,10 +596,12 @@
     <div class="player-actions">
       <span class="player-prov-label">Provider: <strong id="player-prov-name">Vix</strong></span>
       <button class="btn btn-ghost" onclick="swapProvider()" type="button">↻ Cambia provider</button>
+      <button class="btn btn-ghost" id="player-prefer-ita" onclick="preferItalianAudio()" type="button" hidden>↩ Prova audio ITA (VixSrc)</button>
       <button class="btn btn-primary" onclick="openInNewTab()" type="button">↗ Apri in nuova scheda</button>
       <button class="btn btn-ghost" onclick="copyPlayerLink()" type="button">⧉ Copia link</button>
     </div>
-    <p class="player-help">Se il player mostra un blocco di sicurezza o non parte, usa <b>Cambia provider</b> oppure <b>Apri in nuova scheda</b>. Il browser non può verificare automaticamente gli errori mostrati dentro un iframe esterno.</p>
+    <p class="player-help" id="player-language-help" aria-live="polite">VixSrc preferisce l’audio italiano quando disponibile. Gli altri servizi possono offrire soltanto audio originale e sottotitoli.</p>
+    <p class="player-help">Se il player mostra un errore, usa <b>Cambia provider</b>; il caricamento dell’iframe non dimostra che il video funzioni.</p>
   </div>
 </div>
 
@@ -930,10 +932,25 @@ function renderProviderButtons() {
     node.appendChild(button);
   }
 }
+function updateLanguageHelp(p) {
+  const note = document.getElementById('player-language-help');
+  const returnButton = document.getElementById('player-prefer-ita');
+  const italianAvailable = !!window.BoboPlayers.get('vix');
+  if (returnButton) returnButton.hidden = p === 'vix' || !italianAvailable;
+  if (note) note.textContent = p === 'vix' ?
+    'VixSrc preferisce l’audio italiano, se disponibile per il titolo.' :
+    'Audio in inglese? Nelle impostazioni interne del video cerca Audio → Italiano. Se non compare, non puoi forzarlo da Bobo: prova VixSrc. ds_lang=it su VidSrc seleziona soltanto i sottotitoli.';
+}
+function preferItalianAudio() {
+  if (!playerState || !window.BoboPlayers.get('vix')) return;
+  setProvider('vix');
+  loadProvider('vix');
+}
 function setProvider(p) {
   if (!window.BoboPlayers.get(p)) return;
   provider = window.BoboPlayers.select(p);
   renderProviderButtons();
+  updateLanguageHelp(playerState ? playerState.currentProv : provider);
 }
 function playerURL(prov, st) {
   return window.BoboPlayers.url(prov, st);
@@ -953,6 +970,7 @@ function loadProvider(prov) {
   if (!playerState || !window.BoboPlayers.get(prov)) return;
   playerState.currentProv = prov;
   playerState.tried.add(prov);
+  updateLanguageHelp(prov);
   const current = window.BoboPlayers.get(prov);
   document.getElementById('player-prov-name').textContent = current.name;
   document.getElementById('player-current-prov').textContent = current.name;
