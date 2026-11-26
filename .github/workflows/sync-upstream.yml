@@ -59,6 +59,8 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node tests/player-manager.cjs
+          node --check bobo-reviews.js
+          node tests/platform-labels.cjs
           node tests/verified-audio.cjs
           node tests/index-inline.cjs
           node --check bobo-friends.js
@@ -70,6 +72,7 @@ jobs:
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
+          python3 tests/archive-metrics.py
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
