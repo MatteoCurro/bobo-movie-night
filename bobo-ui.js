@@ -180,28 +180,9 @@
       (decades.includes(Number(selectedYear.slice(7))) ? selectedYear : '') :
       (years.includes(Number(selectedYear)) ? selectedYear : '');
     if (selectedYear && !yearSelect.value) unifiedFilters.year = '';
-    renderDecadeShortcuts(decades);
     document.getElementById('filter-sort').value = unifiedFilters.sort;
     document.getElementById('bobo-type-filter').value = unifiedFilters.type;
     document.getElementById('filter-bar').classList.remove('disabled');
-  }
-  function renderDecadeShortcuts(decades) {
-    const host = document.getElementById('bobo-decade-shortcuts');
-    if (!host) return;
-    const visible = decades.filter(y => y >= 1950).slice(0, 9);
-    const active = String(unifiedFilters.year || '');
-    host.innerHTML = '<span class="bobo-decade-label">Viaggia nel tempo</span>'+
-      '<div class="bobo-decade-buttons" role="group" aria-label="Esplora i film per decennio">'+
-      '<button type="button" data-bobo-decade="" aria-pressed="'+(!active.startsWith('decade:'))+'">Tutti</button>'+
-      visible.map(y => '<button type="button" data-bobo-decade="'+y+'" aria-pressed="'+
-        (active === 'decade:'+y)+'">'+y+'s</button>').join('')+
-      '</div>';
-  }
-  function updateDecadeShortcutState() {
-    document.querySelectorAll('[data-bobo-decade]').forEach(function(button) {
-      button.setAttribute('aria-pressed', String(unifiedFilters.year) ===
-        (button.dataset.boboDecade ? 'decade:'+button.dataset.boboDecade : ''));
-    });
   }
   function renderUnified() {
     update();
@@ -209,12 +190,10 @@
     if (isHome()) {
       peopleMatches = [];
       renderPeopleMatches();
-      updateDecadeShortcutState();
       return;
     }
     lastResults = applyUnifiedFilters(allItems());
     renderPeopleMatches();
-    updateDecadeShortcutState();
     shown = PAGE_SIZE;
     document.getElementById('section-title').textContent = unifiedFilters.q
       ? 'Risultati per "'+unifiedFilters.q+'"' : 'Esplora il catalogo';
@@ -429,13 +408,13 @@
     }
     if (discovery && discovery.source === 'TMDB+JustWatch' && !(stream && stream.platforms && stream.platforms.length)) {
       rails.push(shelf('weekly-trending','Di tendenza questa settimana',
-        resolveDiscovery(discovery.trending),'Classifica TMDB · ultimi 7 giorni'));
+        resolveDiscovery(discovery.trending),'I titoli più seguiti · ultimi 7 giorni'));
       (discovery.platforms || []).forEach(function(platform) {
         if (!platform || !platform.id || !platform.label) return;
         rails.push(shelf('it-'+platform.id,
           'Titoli recenti su '+platform.label,
           resolveDiscovery(platform.items),
-          'Disponibilità in Italia · TMDB / JustWatch'));
+          'Disponibilità segnalata in Italia'));
       });
     }
     const animeCatalog = validItems(all).filter(isAnime).sort(function(a,b){
@@ -484,7 +463,7 @@
       (discovery && discovery.streaming && discovery.streaming.items && discovery.streaming.items.length ?
         '<p class="bobo-source-note">Le piattaforme indicate rappresentano disponibilità segnalate nei cataloghi italiani; non sono i provider di riproduzione del video.</p>' : '')+
       (discovery && discovery.platforms && discovery.platforms.length ?
-        '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata da TMDB/JustWatch, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
+        '<p class="bobo-source-note">Selezioni delle piattaforme: disponibilità italiana segnalata dai cataloghi, non data di ingresso nel servizio. Il player esterno è indipendente dalle piattaforme indicate.</p>' : '');
     startHeroRotation();
     requestAnimationFrame(function(){ document.querySelectorAll('.bobo-rail').forEach(updateRailButtons); });
   }
@@ -720,10 +699,6 @@
     dock.innerHTML = '<div class="bobo-filter-dock-head"><span>Esplora / tutti i titoli</span><span>SELECT · 001</span></div>';
     main.insertBefore(dock,document.getElementById('bobo-discover'));
     dock.appendChild(filtersBar);
-    const shortcuts = document.createElement('div');
-    shortcuts.id = 'bobo-decade-shortcuts';
-    shortcuts.className = 'bobo-decade-shortcuts';
-    dock.appendChild(shortcuts);
     const typeField = document.createElement('div');
     typeField.className = 'filter-group';
     typeField.innerHTML = '<label for="bobo-type-filter">Tipologia</label>'+
@@ -759,19 +734,6 @@
     document.addEventListener('click', function(evt) {
       const target = evt.target;
       if (!target || typeof target.closest !== 'function') return;
-      const decadeButton = target.closest('[data-bobo-decade]');
-      if (decadeButton) {
-        const decade = decadeButton.dataset.boboDecade;
-        unifiedFilters.year = decade ? 'decade:' + decade : '';
-        unifiedFilters.type = decade ? 'movie' : 'all';
-        unifiedFilters.q = '';
-        unifiedFilters.genre = '';
-        unifiedFilters.sort = decade ? 'vote_desc' : 'year_desc';
-        document.getElementById('search-input').value = '';
-        filterOptions();
-        renderUnified();
-        return;
-      }
       const closed = target.closest('[data-bobo-close]');
       if (closed || (target.id === 'bobo-details')) { closeDetail(); return; }
       const scrolling = target.closest('[data-bobo-scroll]');
