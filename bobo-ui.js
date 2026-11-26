@@ -49,12 +49,19 @@
     return seasons.length + (seasons.length === 1 ? ' stagione' : ' stagioni') +
       (episodes ? ' · ' + episodes + (episodes === 1 ? ' episodio' : ' episodi') : '');
   }
-  function typeTag(item) { return item.type === 'tv' ? 'Serie TV' : 'Film'; }
+  function isAnime(item) {
+    if (!item) return false;
+    if (item.original_language === 'ja' &&
+        (item.genres || []).some(g => /animazione|animation/i.test(g))) return true;
+    return !!(discovery && Array.isArray(discovery.anime) &&
+      discovery.anime.some(row => row.type === item.type && String(row.tmdb_id) === String(item.tmdb_id)));
+  }
+  function typeTag(item) { return isAnime(item) ? 'Anime' : (item.type === 'tv' ? 'Serie TV' : 'Film'); }
   function applyUnifiedFilters(items) {
     const f = unifiedFilters;
     const query = f.q.toLocaleLowerCase('it');
     let out = items.filter(function(item) {
-      if (f.type !== 'all' && item.type !== f.type) return false;
+      if (f.type === 'anime' ? !isAnime(item) : (f.type !== 'all' && item.type !== f.type)) return false;
       if (f.genre && !(item.genres || []).includes(f.genre)) return false;
       if (f.year && Number(item.year) !== Number(f.year)) return false;
       if (query && !(String(item.title || '').toLocaleLowerCase('it').includes(query))) return false;
@@ -313,6 +320,14 @@
           'Disponibilità in Italia · TMDB / JustWatch'));
       });
     }
+    const animeCatalog = validItems(all).filter(isAnime).sort(function(a,b){
+      return (Number(b.vote)||0)-(Number(a.vote)||0) || (b.year||0)-(a.year||0);
+    });
+    rails.push(shelf('anime-it','Anime da scoprire',
+      animeCatalog,'Animazione giapponese · audio ITA / SUB ITA da verificare nel player'));
+    rails.push(shelf('anime-new','Anime più recenti',
+      animeCatalog.filter(x=>Number(x.year)>=currentYear-4).sort((a,b)=>(b.year||0)-(a.year||0)),
+      'Film e serie anime dal catalogo Bobo'));
     rails.push('<div class="bobo-feed-group bobo-feed-group-secondary">'+
       '<span>02 / Dal catalogo</span><h2>Qualcosa per stasera.</h2></div>');
     rails.push(
@@ -584,7 +599,8 @@
     typeField.className = 'filter-group';
     typeField.innerHTML = '<label for="bobo-type-filter">Tipologia</label>'+
       '<select id="bobo-type-filter"><option value="all">Film e serie</option>'+
-      '<option value="movie">Solo film</option><option value="tv">Solo serie TV</option></select>';
+      '<option value="movie">Solo film</option><option value="tv">Solo serie TV</option>'+
+      '<option value="anime">Anime</option></select>';
     filtersBar.insertBefore(typeField,filtersBar.firstChild);
     document.getElementById('bobo-type-filter').addEventListener('change',function() {
       unifiedFilters.type = this.value;
