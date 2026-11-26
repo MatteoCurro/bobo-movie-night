@@ -525,6 +525,23 @@
     if (type === 'tv') meta.push(seasons.length+' stagioni');
     byId('watch-meta').textContent = meta.join('  ·  ');
     byId('watch-genres').textContent = (info.genres||[]).join(' · ');
+    // The dossier is a compact factual overview even before cast is indexed.
+    const dossier=byId('watch-cast-section');
+    if(dossier)dossier.hidden=false;
+    const release=byId('watch-fact-year');
+    if(release)release.textContent=info.year?String(info.year):'In aggiornamento';
+    const yearLabel=byId('watch-fact-year-label');
+    if(yearLabel)yearLabel.textContent=type==='tv'?'Prima uscita':'Anno';
+    const durationRow=byId('watch-fact-runtime-row');
+    if(durationRow&&type==='movie'&&Number(info.runtime)>0){
+      byId('watch-fact-runtime').textContent=Number(info.runtime)+' minuti';
+      durationRow.hidden=false;
+    }
+    const genreRow=byId('watch-fact-genres-row');
+    if(genreRow&&Array.isArray(info.genres)&&info.genres.length){
+      byId('watch-fact-genres').textContent=info.genres.slice(0,3).join(' · ');
+      genreRow.hidden=false;
+    }
     // The synopsis belongs to the hero; never repeat it in a lower section.
     byId('watch-overview').textContent = info.overview || 'Trama non disponibile nel catalogo.';
     // TMDB backdrops are served at w1280 on large screens (w780 on mobile).

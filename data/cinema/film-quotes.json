@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "policy": "Una battuta breve per film, selezionata e verificata manualmente, con fonte e commento originale. Nessuna importazione massiva dei dialoghi.",
+  "quotes": {
+    "movie:238": {
+      "title": "Il padrino",
+      "text": "Gli farò un'offerta che non potrà rifiutare.",
+      "speaker": "Don Vito Corleone",
+      "context": "Dietro l'apparenza di un'offerta cortese c'è la logica intimidatoria del potere dei Corleone.",
+      "source_url": "https://it.wikiquote.org/wiki/Il_padrino",
+      "reviewed": true
+    },
+    "movie:603": {
+      "title": "Matrix",
+      "text": "Che il cucchiaio non esiste.",
+      "speaker": "Bambino",
+      "context": "Il dialogo invita Neo a interrogarsi sulla realtà percepita: una delle idee centrali del film.",
+      "source_url": "https://it.wikiquote.org/wiki/Matrix",
+      "reviewed": true
+    },
+    "movie:129": {
+      "title": "La città incantata",
+      "text": "Non dimenticherei il mio nome, è lei che l'ha rubato.",
+      "speaker": "Chihiro",
+      "context": "Il nome diventa un simbolo dell'identità che la protagonista cerca di proteggere.",
+      "source_url": "https://it.wikiquote.org/wiki/La_citt%C3%A0_incantata",
+      "reviewed": true
+    },
+    "movie:11": {
+      "title": "Guerre stellari",
+      "text": "Che la Forza sia con te.",
+      "speaker": "Ian Solo",
+      "context": "Il saluto racconta anche la fiducia che si costruisce fra i protagonisti.",
+      "source_url": "https://it.wikiquote.org/wiki/Guerre_stellari_(film_1977)",
+      "reviewed": true
+    }
+  }
+}
