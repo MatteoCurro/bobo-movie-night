@@ -30,7 +30,7 @@ SOURCE_HOSTS={
     "movieplayer":"movieplayer.it",
 }
 MAX_ARTICLES=100
-MAX_ARTICLES_PER_TITLE=4
+MAX_ARTICLES_PER_TITLE=20
 
 def read(path,default):
     try:return json.loads(path.read_text(encoding="utf-8"))
@@ -137,9 +137,9 @@ def build(root:Path,reader=fetch,force=False):
                 if not target:continue
                 existing=data["items"].setdefault(target,[])
                 if any(e.get("url")==record["url"] for e in existing):continue
+                if len(existing)>=MAX_ARTICLES_PER_TITLE:continue
                 existing.append({"source":key,"title":record["title"],
                                  "url":record["url"],"observed_at":TODAY[:10]})
-                existing[:]=existing[-MAX_ARTICLES_PER_TITLE:]
                 added+=1
             data["sources"][key]={"name":name,"checked_at":TODAY,"articles_seen":len(rows)}
             checked+=1
