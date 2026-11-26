@@ -6,6 +6,7 @@
   const filmType = params.get('type');
   const filmId = params.get('id');
   const personId = params.get('id');
+  const directorMode = !!document.querySelector('[data-person-mode="director"]');
   const validId = value => /^[0-9]{1,10}$/.test(value || '') && Number(value) > 0;
   const byId = id => document.getElementById(id);
   const image = value => typeof value === 'string' && /^https:\/\/image\.tmdb\.org\/t\/p\//.test(value) ? value : '';
@@ -20,9 +21,9 @@
     if (text !== undefined) el.textContent = String(text);
     return el;
   }
-  function profileLink(person) {
+  function profileLink(person, director = false) {
     const a = node('a', 'bobo-person-link');
-    a.href = 'person.html?id=' + encodeURIComponent(person.id);
+    a.href = (director ? 'director.html?id=' : 'person.html?id=') + encodeURIComponent(person.id);
     return a;
   }
   async function shard(group, number) {
@@ -40,7 +41,7 @@
     const actors = Array.isArray(entry.cast) ? entry.cast : [];
     const crew = Array.isArray(entry.crew) ? entry.crew : [];
     for (const person of crew.filter(x => x && validId(String(x.id))).slice(0, 8)) {
-      const link = profileLink(person);
+      const link = profileLink(person, person.job === 'Director');
       link.textContent = person.name || 'Persona';
       const label = person.job === 'Director' ? 'Regia' :
         person.job === 'Creator' ? 'Ideazione' : 'Sceneggiatura';
@@ -101,15 +102,12 @@
       card.append(top, node('p', '', names[award.category] || award.category || 'Riconoscimento'));
       if (award.recipient) card.append(node('small', '', award.recipient));
       if (award.year) card.append(node('small', '', ' · ' + award.year));
-      const source = award.source_url || '';
-      if (/^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/.test(source) ||
-          source === 'https://github.com/delventhalz/json-nominations') {
-        const link = node('a', 'bobo-award-source',
-          award.source === 'json-nominations' ? 'Fonte: archivio Oscar indipendente' : 'Fonte: Wikidata');
-        link.href = award.source_url;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        card.append(link);
+      const category = names[award.category] || award.category || '';
+      if (category) {
+        const awardsLink = node('a', 'bobo-award-source', 'Esplora i film premiati →');
+        awardsLink.href = 'awards.html?event=' + encodeURIComponent(award.event) +
+          '&category=' + encodeURIComponent(category);
+        card.append(awardsLink);
       }
       host.append(card);
     }
@@ -142,57 +140,135 @@
     a.append(node('small', '', description));
     return a;
   }
+  function addFact(host, title, value) {
+    if (value === null || value === undefined || value === '') return;
+    const span = node('span', 'bobo-person-fact');
+    span.append(node('strong', '', title + ': '), document.createTextNode(String(value)));
+    host.append(span);
+  }
+  function ageAt(birth, end) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(birth || '')) return null;
+    const b = new Date(birth + 'T12:00:00Z');
+    const e = end && /^\d{4}-\d{2}-\d{2}$/.test(end) ? new Date(end+'T12:00:00Z') : new Date();
+    if (Number.isNaN(b.getTime()) || Number.isNaN(e.getTime()) || e < b) return null;
+    let years = e.getUTCFullYear() - b.getUTCFullYear();
+    if (e.getUTCMonth() < b.getUTCMonth() ||
+      (e.getUTCMonth() === b.getUTCMonth() && e.getUTCDate() < b.getUTCDate())) years--;
+    return years >= 0 && years < 125 ? years : null;
+  }
+  function stat(host, value, caption) {
+    if (value == null || value === '') return;
+    const el = node('div', 'bobo-person-stat');
+    el.append(node('strong', '', String(value)), node('span', '', caption));
+    host.append(el);
+  }
+  async function renderDirectory() {
+    try {
+      const response = await fetch('data/cinema/explore.json', {cache:'no-cache'});
+      if (!response.ok) return;
+      const data = await response.json();
+      if (data.schema !== 1 || !data.featured) return;
+      const rows = directorMode ? data.featured.directors : data.featured.actors;
+      if (!Array.isArray(rows) || !rows.length) return;
+      const host = byId('person-directory-cards');
+      host.textContent = '';
+      for (const item of rows) {
+        if (!validId(String(item.id))) continue;
+        const link = node('a', 'bobo-person-directory-card');
+        link.href = (directorMode ? 'director' : 'person') + '.html?id=' + encodeURIComponent(item.id);
+        if (image(item.photo)) {
+          const img = node('img'); img.src = image(item.photo);
+          img.alt = ''; img.loading = 'lazy'; link.append(img);
+        }
+        link.append(node('strong', '', item.name), node('span', '',
+          item.works + (item.works === 1 ? ' opera nel catalogo' : ' opere nel catalogo')));
+        host.append(link);
+      }
+      if (data.week && byId('person-directory-week'))
+        byId('person-directory-week').textContent = 'Selezione ' + data.week;
+    } catch (_) { /* Leave useful fallback links on failure. */ }
+  }
   function renderPerson(person) {
     byId('person-loading').hidden = true;
     byId('person-content').hidden = false;
-    byId('person-title').textContent = person.name || 'Persona';
-    document.title = (person.name || 'Persona') + ' · Bobo Movie Night';
+    const name = person.name || 'Persona';
+    byId('person-title').textContent = name;
+    document.title = name + ' · Bobo Movie Night';
+    if (byId('person-breadcrumb-current')) byId('person-breadcrumb-current').textContent = name;
+    const stats = person.stats || {};
+    byId('person-role').textContent = directorMode ? 'BOBO / REGIA E AUTORI' :
+      (stats.acting ? 'BOBO / CAST E INTERPRETI' : 'BOBO / PERSONE DEL CINEMA');
+    const face = byId('person-photo');
     const photo = image(person.photo);
     if (photo) {
-      const img = node('img');
-      img.src = photo;
-      img.alt = person.name || 'Ritratto';
-      byId('person-photo').append(img);
-    } else byId('person-photo').append(node('span', 'bobo-person-placeholder', '◉'));
-    const bioFacts = [];
-    const birth = safeDate(person.birthday);
-    const death = safeDate(person.deathday);
-    if (birth) bioFacts.push('Nascita: ' + birth);
-    if (person.place_of_birth) bioFacts.push('Luogo di nascita: ' + person.place_of_birth);
-    if (death) bioFacts.push('Morte: ' + death);
-    byId('person-facts').textContent = bioFacts.join(' · ');
+      const img = node('img'); img.src = photo; img.alt = name; face.append(img);
+    } else face.append(node('span','bobo-person-placeholder','◉'));
+    const facts = byId('person-facts');
+    addFact(facts, 'Nato/a', safeDate(person.birthday));
+    addFact(facts, 'Luogo', person.place_of_birth);
+    if (person.deathday) addFact(facts, 'Scomparsa', safeDate(person.deathday));
+    const age = ageAt(person.birthday,person.deathday);
+    if (age !== null) addFact(facts, person.deathday ? 'Età alla scomparsa' : 'Età', age + ' anni');
+    if (Number(person.height_cm) >= 120 && Number(person.height_cm) <= 230)
+      addFact(facts, 'Altezza', Math.round(Number(person.height_cm)) + ' cm');
+    const statHost = byId('person-stats');
+    const full = Array.isArray(person.filmography) && person.filmography.length ?
+      person.filmography : (person.known_for || []);
+    const works = full.filter(w => w && ['movie','tv'].includes(w.type) && validId(String(w.tmdb_id)));
+    const display = directorMode && works.some(w => w.role === 'Regia') ?
+      works.filter(w => ['Regia','Ideazione','Sceneggiatura'].includes(w.role)) : works;
+    const count = Number(stats.works) || works.length;
+    stat(statHost, count || '—', count === 1 ? 'Opera collegata' : 'Opere collegate');
+    const first = Number(stats.first_year);
+    const last = Number(stats.last_year);
+    if (first >= 1880 && last >= first)
+      stat(statHost, first === last ? String(first) : first + '–' + last, 'Arco temporale nel catalogo');
+    const directed = Number(stats.directing || 0);
+    const acted = Number(stats.acting || 0);
+    if (directorMode && directed) stat(statHost, directed, 'Titoli diretti indicizzati');
+    else if (acted) stat(statHost, acted, 'Titoli come interprete');
+    else if (Number(stats.writing) > 0) stat(statHost, stats.writing, 'Titoli come autore');
     const bio = (person.biography || '').trim();
-    // Never show untranslated English text in the Italian interface.
-    const hasItalianBio = !!bio && person.biography_language !== 'en';
-    if (hasItalianBio) {
+    if (bio && person.biography_language !== 'en') {
       byId('person-biography').textContent = bio;
       byId('person-bio-section').hidden = false;
       if (person.biography_translation === 'automatic')
         byId('person-language-note').hidden = false;
-    } else {
-      byId('person-pending').hidden = false;
-    }
+    } else byId('person-pending').hidden = false;
+    const seen = new Set();
+    const cards = display.filter(w => {
+      const key = w.type + ':' + w.tmdb_id;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    }).map(workCard).filter(Boolean);
     const listing = byId('person-works');
-    const works = Array.isArray(person.filmography) && person.filmography.length ?
-      person.filmography : (person.known_for || []);
-    const found = new Set();
-    for (const work of works) {
-      const key = work.type + ':' + work.tmdb_id;
-      if (found.has(key)) continue;
-      found.add(key);
-      const card = workCard(work);
-      if (card) listing.append(card);
-      if (listing.children.length >= 42) break;
+    const more = byId('person-works-more');
+    let rendered = 0;
+    function next() {
+      for(const card of cards.slice(rendered, rendered + 20)) listing.append(card);
+      rendered = Math.min(cards.length, rendered + 20);
+      more.hidden = rendered >= cards.length;
+      if (!more.hidden) more.textContent = 'Mostra altre opere (' + (cards.length - rendered) + ')';
     }
-    byId('person-works-section').hidden = !listing.children.length;
+    more.onclick = next;
+    next();
+    byId('person-works-section').hidden = !cards.length;
+    if (directorMode) {
+      byId('person-works-heading').textContent = 'Dietro la macchina da presa';
+      byId('person-works-caption').textContent =
+        'Regie, ideazioni e altre partecipazioni documentate nel catalogo';
+    }
   }
   async function person() {
     if (!byId('person-main')) return;
     if (!params.has('id')) {
-      // A plain person.html URL is an entry point, not a broken profile.
       byId('person-loading').hidden = true;
       byId('person-directory').hidden = false;
-      document.title = 'Attori e interpreti · Bobo Movie Night';
+      if (directorMode) {
+        document.title = 'Registi · Bobo Movie Night';
+        byId('person-breadcrumb-current').textContent = 'Registi';
+      } else document.title = 'Attori e interpreti · Bobo Movie Night';
+      void renderDirectory();
       return;
     }
     if (!validId(personId)) {
@@ -203,7 +279,7 @@
       const records = await shard('people', personId);
       const data = records && records[personId];
       if (!data) {
-        byId('person-loading').textContent = 'Scheda ancora in preparazione. Torna al catalogo e riprova dopo il prossimo aggiornamento.';
+        byId('person-loading').textContent = 'Scheda ancora in preparazione. Scopri altri interpreti in Discover.';
         return;
       }
       renderPerson(data);
