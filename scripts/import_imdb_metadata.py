@@ -187,15 +187,19 @@ def import_rows(rows, targets, store, maximum=BATCH):
     return updated
 
 
-def should_scan(year, missing, status, today):
-    if missing:
-        # Newly identified films should not wait for the refresh TTL.
-        return True
-    date = status.get(str(year), {}).get("checked_at", "")
+def should_scan(year, missing, status, today, total=None):
+    info = status.get(str(year), {})
+    date = info.get("checked_at", "")
     try:
         age = (today - dt.date.fromisoformat(date)).days
     except (ValueError, TypeError):
         return True
+    if missing:
+        # Refresh immediately only after new IDs appeared. Movies not included
+        # in IMDb's top-1000 archive must not cause three downloads every day.
+        if total is not None and total > int(info.get("known_titles") or 0):
+            return True
+        return age >= 21
     return age >= (30 if year >= today.year - 2 else 180)
 
 
@@ -218,7 +222,7 @@ def build(root=Path("."), directory=None, maximum=BATCH, downloader=download_yea
     choices = []
     for year, ids in by_year.items():
         missing = len(ids - already)
-        if should_scan(year, missing, year_status, today):
+        if should_scan(year, missing, year_status, today, len(ids)):
             # Import missing matches first, then revisit current titles.
             choices.append((missing, year, len(ids)))
     choices.sort(key=lambda item: (-item[0], -int(item[1] >= today.year - 2),
