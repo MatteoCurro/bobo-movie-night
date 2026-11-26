@@ -622,6 +622,7 @@
         strong.textContent = p.name;
         const small = document.createElement('small');
         small.textContent = p.audio === 'it-preferred' ? 'Preferenza audio italiano documentata' :
+          p.audio === 'it-requested' ? 'Richiede ITA se presente · doppiaggio da verificare' :
           p.subtitle ? 'Audio ITA non verificato · sottotitoli ITA se disponibili' :
             'Audio italiano non verificato';
         span.appendChild(strong); span.appendChild(small);
@@ -631,8 +632,10 @@
     }
     const note = byId('watch-source-note');
     if (note) note.textContent = provider === 'vix' ?
-      'VixSrc richiede l’audio italiano, se disponibile per questo titolo. Non è una garanzia per ogni video.' :
-      'Se senti l’inglese, apri le impostazioni del video e cerca Audio → Italiano. Se non compare, quella sorgente non offre una traccia italiana selezionabile. I sottotitoli ITA non modificano l’audio.';
+      'VixSrc preferisce l’audio italiano, quando presente sul titolo.' :
+      provider === 'vidcore' ?
+      'VidCore prova a selezionare audio italiano con lang=it. È un’alternativa sperimentale: se senti inglese, il doppiaggio non è verificato per questo titolo.' :
+      'Se senti l’inglese, cerca Audio → Italiano nelle impostazioni interne del video. I sottotitoli ITA non cambiano la lingua parlata.';
 
   }
   function chooseSource(id) {
