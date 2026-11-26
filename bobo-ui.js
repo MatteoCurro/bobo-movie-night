@@ -450,12 +450,38 @@
     closeDetail();
     goToPage(item);
   }
+  let settingsReturnFocus = null;
+  function renderSettingsProviders() {
+    const container = document.getElementById('bobo-settings-providers');
+    if (!container || !window.BoboPlayers) return;
+    container.replaceChildren();
+    for (const source of window.BoboPlayers.list()) {
+      const label = document.createElement('label');
+      label.className = 'bobo-provider-choice';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'bobo-settings-provider';
+      input.value = source.id;
+      input.checked = source.id === window.BoboPlayers.selected();
+      const info = document.createElement('span');
+      const title = document.createElement('strong');
+      title.textContent = source.name;
+      const note = document.createElement('small');
+      note.textContent = source.audio === 'it-preferred'
+        ? 'Preferenza audio italiano, quando disponibile'
+        : source.subtitle
+          ? 'Audio italiano non verificato · sottotitoli ITA se presenti'
+          : 'Audio italiano non verificato';
+      info.append(title, note);
+      label.append(input, info);
+      container.appendChild(label);
+    }
+  }
   function openSettings() {
     const modal = document.getElementById('bobo-settings');
     if (!modal) return;
-    const value = localStorage.getItem('bobo_provider_v3') === 'vidsrc' ? 'vidsrc' : 'vix';
-    const selected = modal.querySelector('input[value="'+value+'"]');
-    if (selected) selected.checked = true;
+    settingsReturnFocus = document.activeElement;
+    renderSettingsProviders();
     const autoToggle = modal.querySelector('#bobo-settings-auto-next');
     const autoLimit = modal.querySelector('#bobo-settings-auto-limit');
     try {
@@ -465,13 +491,15 @@
     } catch (_) { autoToggle.checked = true; autoLimit.value = '5'; }
     autoLimit.disabled = !autoToggle.checked;
     modal.hidden = false;
+    const selected = modal.querySelector('input[name="bobo-settings-provider"]:checked');
     if (selected) selected.focus();
   }
   function closeSettings() {
     const modal = document.getElementById('bobo-settings');
     if (modal) modal.hidden = true;
-    const button = document.getElementById('bobo-settings-open');
-    if (button) button.focus();
+    const button = settingsReturnFocus || document.getElementById('bobo-settings-open');
+    settingsReturnFocus = null;
+    if (button && typeof button.focus === 'function') button.focus();
   }
   function initSettings() {
     const toggle = document.querySelector('.provider-toggle');
@@ -488,27 +516,34 @@
     document.body.insertAdjacentHTML('beforeend',
       '<div id="bobo-settings" hidden><div class="bobo-settings-box" role="dialog" aria-modal="true" aria-label="Impostazioni riproduzione">'+
       '<div class="bobo-settings-head"><h2>Impostazioni riproduzione</h2><button type="button" data-close-settings aria-label="Chiudi impostazioni">×</button></div>'+
-      '<p>Vix è il provider predefinito. Seleziona un altro player soltanto se desideri provare un\u0027alternativa.</p>'+
-      '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vix"><span><strong>Vix</strong><small>Provider consigliato</small></span></label>'+
-      '<label class="bobo-provider-choice"><input type="radio" name="bobo-settings-provider" value="vidsrc"><span><strong>VidSrc</strong><small>Sperimentale; potrebbero esserci reindirizzamenti</small></span></label>'+
+      '<p>Seleziona la sorgente. La preferenza vale anche nelle schede dei film e rimane memorizzata su questo dispositivo. Solo VixSrc preferisce l’audio italiano quando disponibile.</p>'+
+      '<div id="bobo-settings-providers" role="radiogroup" aria-label="Sorgenti di riproduzione"></div>'+
       '<div class="bobo-auto-settings"><h3>Serie TV · riproduzione consecutiva</h3>'+
-      '<label class="bobo-auto-option"><input id="bobo-settings-auto-next" type="checkbox"><span>Passa al prossimo episodio quando Vix segnala la fine del video</span></label>'+
+      '<label class="bobo-auto-option"><input id="bobo-settings-auto-next" type="checkbox"><span>Passa al prossimo episodio quando VixSrc segnala la fine del video</span></label>'+
       '<label for="bobo-settings-auto-limit">Numero massimo di episodi consecutivi, compreso il primo</label>'+
       '<select id="bobo-settings-auto-limit"><option value="2">2 episodi</option><option value="3">3 episodi</option><option value="4">4 episodi</option><option value="5">5 episodi</option></select>'+
-      '<p>Funziona nel player incorporato Vix. Attivo per impostazione predefinita.</p></div>'+
+      '<p>La riproduzione consecutiva automatica funziona con VixSrc; gli altri player possono richiedere il passaggio manuale.</p></div>'+
       '</div></div>');
-    button.addEventListener('click',openSettings);
+    button.addEventListener('click', openSettings);
     const modal = document.getElementById('bobo-settings');
     modal.addEventListener('click',function(event) {
       if (event.target === modal || event.target.closest('[data-close-settings]')) closeSettings();
     });
-    modal.querySelectorAll('input[name="bobo-settings-provider"]').forEach(function(radio) {
-      radio.addEventListener('change',function() {
-        if (typeof setProvider === 'function') setProvider(radio.value);
-        else localStorage.setItem('bobo_provider_v3',radio.value);
-        closeSettings();
-      });
+    modal.querySelector('#bobo-settings-providers').addEventListener('change',function(event) {
+      const radio = event.target;
+      if (!radio || radio.name !== 'bobo-settings-provider' || !radio.checked) return;
+      if (!window.BoboPlayers || !window.BoboPlayers.get(radio.value)) return;
+      const previous = window.BoboPlayers.selected();
+      const id = window.BoboPlayers.select(radio.value);
+      if (typeof setProvider === 'function') setProvider(id);
+      if (id !== previous && typeof playerState !== 'undefined' &&
+          playerState && typeof loadProvider === 'function') loadProvider(id);
+      closeSettings();
     });
+    if (window.BoboPlayers) {
+      renderSettingsProviders();
+      window.BoboPlayers.onUpdate(renderSettingsProviders);
+    }
     const autoToggle = modal.querySelector('#bobo-settings-auto-next');
     const autoLimit = modal.querySelector('#bobo-settings-auto-limit');
     autoToggle.addEventListener('change',function() {
@@ -520,7 +555,10 @@
       try { localStorage.setItem('bobo_auto_next_limit',value); } catch (_) {}
     });
     document.addEventListener('keydown',function(event) {
-      if (event.key === 'Escape' && !modal.hidden) closeSettings();
+      if (event.key === 'Escape' && !modal.hidden) {
+        event.stopPropagation();
+        closeSettings();
+      }
     });
   }
 
