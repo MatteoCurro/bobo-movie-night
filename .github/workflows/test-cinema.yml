@@ -12,6 +12,17 @@ on:
       - 'scripts/build_person_search.py'
       - 'tests/person-search.py'
       - 'bobo-ui.js'
+      - 'bobo-awards.js'
+      - 'bobo-awards.css'
+      - 'awards.html'
+      - 'director.html'
+      - 'bobo-discover.js'
+      - 'bobo-discover.css'
+      - 'discover.html'
+      - 'scripts/build_cinema_explore.py'
+      - 'scripts/enrich_person_facts.py'
+      - 'tests/cinema-explore.py'
+      - 'informazioni.html'
       - 'bobo-polish.css'
       - 'scripts/localize_cinema_people.py'
       - 'tests/person-localization.py'
@@ -37,6 +48,10 @@ jobs:
           python3 tests/cinema.py
           python3 -m py_compile scripts/build_person_search.py
           python3 tests/person-search.py
+          python3 -m py_compile scripts/build_cinema_explore.py scripts/enrich_person_facts.py
+          python3 tests/cinema-explore.py
+          node --check bobo-awards.js
+          node --check bobo-discover.js
           node --check bobo-ui.js
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
@@ -54,6 +69,9 @@ jobs:
           assert 'src="bobo-cinema.js"' in watch
           assert 'id="person-main"' in Path('person.html').read_text()
           assert 'id="person-directory"' in Path('person.html').read_text()
+          assert 'src="bobo-friends.js"' in Path('director.html').read_text()
+          assert 'src="bobo-friends.js"' in Path('awards.html').read_text()
+          assert 'awards.html' in Path('watch.html').read_text()
           assert "!params.has('id')" in Path('bobo-cinema.js').read_text()
           assert Path('bobo-cinema.css').is_file()
           print('Watch and person integration OK')
