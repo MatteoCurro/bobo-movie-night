@@ -22,6 +22,28 @@ jobs:
           python3 tests/multi-ratings.py
           python3 tests/archive-metrics.py
           python3 tests/incremental_catalog.py
+      - name: Validate TV 1.4 incremental architecture
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/build_tv_payload.py
+          python3 tests/tv-payload.py
+          python3 scripts/build_tv_payload.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          home=json.loads(Path('data/tv-home.json').read_text())
+          lite=json.loads(Path('data/tv-lite.json').read_text())
+          assert home['schema']==1 and len(home['sections'])>=4
+          assert len(lite['items'])>=10000
+          assert Path('data/tv-home.json').stat().st_size < 150000
+          assert Path('data/tv-lite.json').stat().st_size < 3500000
+          assert len(list(Path('data/tv-detail').glob('*.json')))==64
+          print('TV payload sizes:',Path('data/tv-home.json').stat().st_size,Path('data/tv-lite.json').stat().st_size)
+          PY
+          node --check tv-test/app/src/main/assets/tv.js
+          node --check tv-test/app/src/main/assets/tv-account.js
+          node --check tv-test/app/src/main/assets/tv-updates.js
+          node tv-test/tests/navigation.cjs
       - name: Validate site scripts
         run: |
           node --check bobo-players.js
