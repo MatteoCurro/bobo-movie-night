@@ -354,7 +354,7 @@ function ensure(item,axis){
  // The sticky header stays visible while the document is far down the catalog.
  // Once focus returns to the menu, put the page genuinely back at the top.
  if(item.closest('#topbar')){
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'auto'});
   return;
  }
  const rail=item.closest('.rail,.season-list');
@@ -368,7 +368,7 @@ function ensure(item,axis){
    let distance=0;
    if(itemBox.left<box.left+pad)distance=itemBox.left-box.left-pad;
    else if(itemBox.right>box.right-pad)distance=itemBox.right-box.right+pad;
-   if(Math.abs(distance)>1)rail.scrollBy({left:distance,behavior:'smooth'});
+   if(Math.abs(distance)>1)rail.scrollBy({left:distance,behavior:'auto'});
   }
   return;
  }
@@ -378,9 +378,9 @@ function ensure(item,axis){
  const safeTop=(header&&!header.hidden?header.getBoundingClientRect().height:0)+24;
  const safeBottom=window.innerHeight-42;
  if(bounds.top<safeTop){
-  window.scrollBy({top:bounds.top-safeTop,behavior:'smooth'});
+  window.scrollBy({top:bounds.top-safeTop,behavior:'auto'});
  }else if(bounds.bottom>safeBottom){
-  window.scrollBy({top:bounds.bottom-safeBottom,behavior:'smooth'});
+  window.scrollBy({top:bounds.bottom-safeBottom,behavior:'auto'});
  }
 }
 function focusChoices(){
@@ -391,6 +391,30 @@ function focusChoices(){
  });
 }
 function move(key){
+ const active=document.activeElement;
+ const rail=active?.closest?.('.rail,.season-list');
+ const horizontal=key==='ArrowLeft'||key==='ArrowRight';
+ const direction=(key==='ArrowRight'||key==='ArrowDown')?1:-1;
+ if(horizontal&&rail?.querySelectorAll){
+  const items=Array.from(rail.querySelectorAll('.poster,.season'));
+  const target=items[items.indexOf(active)+direction];
+  if(target){target.focus({preventScroll:true});ensure(target,'horizontal');}
+  return;
+ }
+ const grid=active?.closest?.('.results');
+ if(grid?.querySelectorAll){
+  const items=Array.from(grid.querySelectorAll('.poster'));
+  const i=items.indexOf(active);
+  if(i>=0){
+   const cols=Math.max(1,String(getComputedStyle(grid).gridTemplateColumns||'').trim().split(/\s+/).length);
+   const next=horizontal?i+direction:i+direction*cols;
+   const sameRow=!horizontal||Math.floor(i/cols)===Math.floor(next/cols);
+   if(next>=0&&next<items.length&&sameRow){
+    items[next].focus({preventScroll:true});ensure(items[next],horizontal?'horizontal':'vertical');
+   }
+   return;
+  }
+ }
  const choices=focusChoices();
  if(!choices.length)return;
  let current=document.activeElement;
@@ -399,9 +423,7 @@ function move(key){
  }
  const from=current.getBoundingClientRect();
  const fx=from.left+from.width/2,fy=from.top+from.height/2;
- const horizontal=key==='ArrowLeft'||key==='ArrowRight';
  const forward=key==='ArrowRight'||key==='ArrowDown';
- const direction=forward?1:-1;
  if(horizontal){
   const rail=current.closest('.rail,.season-list');
   if(rail){
