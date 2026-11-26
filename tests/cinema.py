@@ -45,6 +45,9 @@ rows = [{"tmdb": {"value": "1"}, "awardLabel": {"value": "Premio Oscar al miglio
         {"tmdb": {"value": "1"}, "awardLabel": {"value": "Premio Oscar al miglior film"},
          "award": {"value": "http://www.wikidata.org/entity/Q555"},
          "result": {"value": "won"}, "date": {"value": "2024-01-01T00:00:00Z"}},
+        {"tmdb": {"value": "1"}, "awardLabel": {"value": "Premio Oscar al miglior film"},
+         "award": {"value": "http://www.wikidata.org/entity/Q555"},
+         "result": {"value": "nominated"}, "date": {"value": "2024-01-01T00:00:00Z"}},
         {"tmdb": {"value": "1"}, "awardLabel": {"value": "Un premio non pertinente"},
          "award": {"value": "http://www.wikidata.org/entity/Q444"},
          "result": {"value": "won"}}]
