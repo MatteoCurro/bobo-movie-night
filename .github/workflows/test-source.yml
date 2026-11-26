@@ -43,6 +43,9 @@ jobs:
           node tests/catalog-hover.cjs
           node tests/hero-images.cjs
           node tests/library.cjs
+      - name: Audit repository and static allowlist
+        run: |
+          python3 tests/audit-distribution.py
       - name: Validate backend PHP
         run: |
           for f in backend/htdocs/*.php backend/lib/*.php backend/bin/*.php; do php -l "$f"; done
