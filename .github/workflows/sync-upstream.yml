@@ -37,6 +37,7 @@ jobs:
       - name: Refresh streaming discovery (Italy)
         env:
           TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN || secrets.TMDB_API_KEY }}
+          AMODB_KEY: ${{ secrets.AMODB_KEY }}
         shell: bash
         run: |
           set -euo pipefail
@@ -49,6 +50,8 @@ jobs:
           python3 scripts/prepare_flaticon.py
           python3 scripts/build_catalog_ledger.py
           python3 scripts/build_reviews.py
+          python3 scripts/build_critic_links.py
+          python3 scripts/build_multi_ratings.py
           python3 scripts/build_related_index.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
@@ -69,11 +72,14 @@ jobs:
           node --check bobo-enhance.js
           node --check bobo-cloud.js
           node --check bobo-favorites.js
-          python3 -m py_compile scripts/build_catalog_ledger.py scripts/build_reviews.py scripts/build_catalog_metrics.py scripts/build_related_index.py
+          python3 -m py_compile scripts/build_catalog_ledger.py scripts/build_reviews.py scripts/build_catalog_metrics.py scripts/build_related_index.py scripts/build_critic_links.py scripts/build_multi_ratings.py
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
           python3 tests/archive-metrics.py
+          python3 tests/related-index.py
+          python3 tests/critic-links.py
+          python3 tests/multi-ratings.py
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
@@ -183,7 +189,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/related/ data/catalog-metrics.json data/reviews.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
+          git add index.html data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -209,7 +215,7 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/catalog-metrics.json _site/data/
+          cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/catalog-metrics.json _site/data/
           cp -R data/episodes _site/data/
           cp -R data/related _site/data/
           test -d _site/data/episodes
@@ -219,7 +225,7 @@ jobs:
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
-          cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js _site/
+          cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js bobo-critic.js bobo-multi-ratings.js _site/
           test -s _site/bobo-players.js && test -s _site/data/player-sources.json
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
           # The TV installation page is a separate directory; it must be part
