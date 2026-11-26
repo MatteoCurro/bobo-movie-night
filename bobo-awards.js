@@ -54,7 +54,7 @@
    const grid=$('bobo-awards-grid');
    $('bobo-awards-status').hidden=true;
    grid.innerHTML=results.length?results.slice(0,visible).map(tile).join(''):
-     '<p class="bobo-discover-empty">Nessun vincitore indicizzato per questa selezione. <a href="discover.html">Altre idee su Discover</a>.</p>';
+     '<p class="bobo-discover-empty">'+(event==='Cannes' ? 'I vincitori di Cannes sono in fase di verifica: non sono ancora presenti dati affidabili in questa raccolta.' : 'Nessun vincitore indicizzato per questa selezione.')+' <a href="discover.html">Altre idee su Discover</a>.</p>';
    const more=$('bobo-awards-more');
    more.hidden=visible>=results.length;
    more.textContent='Mostra altri '+Math.min(30,results.length-visible)+' film';
