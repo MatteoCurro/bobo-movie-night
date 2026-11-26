@@ -2265,7 +2265,7 @@
       }
     ],
     "source": "Streamingfilter",
-    "updated_at": "2026-11-26T13:29:32+00:00",
+    "updated_at": "2026-11-26T13:47:13+00:00",
     "url": "https://streamingfilter.com/it/novita"
   },
   "trending": [
@@ -2350,23 +2350,7 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 1611767,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 279246,
-      "type": "tv"
-    },
-    {
       "tmdb_id": 1423191,
-      "type": "movie"
-    },
-    {
-      "tmdb_id": 310209,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1496696,
       "type": "movie"
     },
     {
@@ -2374,7 +2358,55 @@
       "type": "movie"
     },
     {
+      "tmdb_id": 279246,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 244447,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1381071,
+      "type": "movie"
+    },
+    {
       "tmdb_id": 213375,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 326247,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 117488,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 1496696,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 1185344,
+      "type": "movie"
+    },
+    {
+      "tmdb_id": 259909,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 254630,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 303745,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 310209,
+      "type": "tv"
+    },
+    {
+      "tmdb_id": 37854,
       "type": "tv"
     },
     {
@@ -2382,37 +2414,13 @@
       "type": "movie"
     },
     {
-      "tmdb_id": 2190,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1457866,
+      "tmdb_id": 1543469,
       "type": "movie"
     },
     {
-      "tmdb_id": 338938,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 338930,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 203483,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 292741,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 259909,
-      "type": "tv"
-    },
-    {
-      "tmdb_id": 1567605,
+      "tmdb_id": 1286656,
       "type": "movie"
     }
   ],
-  "updated_at": "2026-11-26T13:29:25+00:00"
+  "updated_at": "2026-11-26T13:47:05+00:00"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T13:29:38+00:00",
+  "generated_at": "2026-11-26T13:47:20+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -10747,6 +10747,22 @@
       "items": [
         {
           "genres": [
+            "Action & Adventure",
+            "Commedia",
+            "Animazione"
+          ],
+          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
+          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+          "runtime": 0,
+          "title": "One Piece",
+          "tmdb_id": 37854,
+          "type": "tv",
+          "vote": 8.8,
+          "vote_count": 5673,
+          "year": 1999
+        },
+        {
+          "genres": [
             "Animazione",
             "Famiglia",
             "Fantasy",
@@ -10777,22 +10793,6 @@
           "vote": 8.5,
           "vote_count": 13231,
           "year": 2016
-        },
-        {
-          "genres": [
-            "Action & Adventure",
-            "Commedia",
-            "Animazione"
-          ],
-          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
-          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
-          "runtime": 0,
-          "title": "One Piece",
-          "tmdb_id": 37854,
-          "type": "tv",
-          "vote": 8.8,
-          "vote_count": 5673,
-          "year": 1999
         },
         {
           "genres": [
