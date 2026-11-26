@@ -54,6 +54,7 @@ jobs:
           python3 scripts/build_multi_ratings.py
           python3 scripts/build_related_index.py
           python3 scripts/build_cinema.py
+          python3 scripts/build_person_search.py
           python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
           python3 scripts/build_catalog_metrics.py
@@ -84,12 +85,15 @@ jobs:
           python3 tests/related-index.py
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
+          python3 -m py_compile scripts/build_person_search.py
+          python3 tests/person-search.py
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
           python3 tests/oscar.py
           python3 tests/critic-links.py
           python3 tests/multi-ratings.py
+          test -s data/cinema/person-search.json
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
@@ -229,6 +233,7 @@ jobs:
           cp -R data/episodes _site/data/
           cp -R data/related _site/data/
           cp -R data/cinema _site/data/
+          test -s _site/data/cinema/person-search.json
           test -d _site/data/cinema/credits && test -d _site/data/cinema/people
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
