@@ -57,6 +57,11 @@ def build(root: Path) -> dict:
     movies=int(status["catalog"]["movie"]["total"])
     tv=int(status["catalog"]["tv"]["total"])
     reviews_data=reviews.get("items") or {}
+    critics=read(root/"data/critic-reviews.json")
+    critics_items=critics.get("items") or {}
+    ratings=read(root/"data/multi-ratings.json")
+    ratings_items=ratings.get("items") or {}
+    related=read(root/"data/related/status.json")
     now=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     snapshot={
         "updated_at":now,
@@ -74,8 +79,14 @@ def build(root: Path) -> dict:
         "titles_with_platform_check":checked,
         "titles_with_platform":with_platform,
         "platform_archive_counts":providers,
+        "related_titles":int(related.get("indexed") or 0),
+        "related_remaining":int(related.get("remaining") or 0),
+        "related_added_last_run":int(related.get("added") or 0),
         "reviewed_titles":sum(1 for x in reviews_data.values() if x.get("reviews")),
         "review_refs":sum(len(x.get("reviews",[])) for x in reviews_data.values()),
+        "independent_critic_titles":sum(bool(x) for x in critics_items.values()),
+        "independent_critic_links":sum(len(x) for x in critics_items.values()),
+        "independent_rating_titles":sum(bool(x.get("scores")) for x in ratings_items.values()),
         "reviews_checked":sum(1 for x in reviews_data.values() if x.get("checked_at"))
     }
     destination=root/"data/catalog-metrics.json"
