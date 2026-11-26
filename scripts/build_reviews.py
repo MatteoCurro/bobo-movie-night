@@ -16,7 +16,7 @@ import urllib.request
 TOKEN=os.environ.get("TMDB_ACCESS_TOKEN","").strip()
 TODAY=dt.date.today()
 TARGET=Path("data/reviews.json")
-MAX_PER_RUN=26
+MAX_PER_RUN=60
 RECHECK_DAYS=60
 
 def read(path:Path, default=None):
