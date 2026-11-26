@@ -337,3 +337,12 @@
  #watch-main .bobo-film-quote--featured{padding:25px 20px}
  #watch-main #watch-related-section .bobo-cinema-fact{display:block}
 }
+
+/* An optional external quote collection belongs after critical discussion,
+   never confused with Bobo's individually curated, attributed film quotations. */
+#watch-quote-resources{display:flex;align-items:center;justify-content:space-between;gap:13px;margin:0 0 20px;padding:14px 17px;border-radius:6px;background:rgba(131,185,180,.06);border:1px solid rgba(160,212,207,.16)}
+#watch-quote-resources[hidden]{display:none!important}
+#watch-quote-resources>span{color:#a7bdc1;font:600 12px/1.4 var(--bobo-font-body,inherit)}
+#watch-quote-source-link{flex:none;color:#bce8df;text-decoration:none;font:650 12px/1.4 var(--bobo-font-body,inherit)}
+#watch-quote-source-link:hover{text-decoration:underline;color:#e3fff7}
+@media(max-width:580px){#watch-quote-resources{align-items:flex-start;flex-direction:column}}
