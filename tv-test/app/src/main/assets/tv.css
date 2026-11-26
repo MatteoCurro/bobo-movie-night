@@ -372,3 +372,32 @@ main { padding: 32px 60px 90px; min-height: calc(100vh - 92px); }
  box-shadow:0 6px 15px #0008;
 }
 .poster:focus .poster-type,.poster:focus-visible .poster-type{display:block;}
+
+
+/* TV 1.4: constrained paint and memory budget for entry-level Android TV / Fire TV. */
+html,body {scroll-behavior:auto!important}
+body {background:#090e14}
+.topbar {backdrop-filter:none!important;box-shadow:none}
+.hero {min-height:355px;margin-bottom:26px;box-shadow:0 12px 28px #0005}
+.hero-art {filter:none!important;transform:none!important}
+.hero:after {box-shadow:none!important}
+.hero-content {padding:26px 40px}
+.hero h1 {font-size:clamp(38px,3.6vw,66px);margin:15px 0 12px}
+.hero .synopsis {font-size:18px;line-height:1.42}
+.hero .meta {margin-bottom:13px}
+.rail,.season-list {scroll-behavior:auto!important;scroll-snap-type:none}
+.poster-art,.poster-art img {transition:none!important}
+.poster-art img {filter:none!important}
+.poster:focus .poster-art,.poster:focus-visible .poster-art {
+ transform:translateY(-2px);box-shadow:0 12px 24px #0009}
+.poster:focus .poster-art img,.poster:focus-visible .poster-art img {filter:none!important}
+.shelf {margin-bottom:31px}
+.shelf-head {margin-bottom:12px}
+.shelf-head h2 {font-size:25px}
+.poster {flex-basis:clamp(150px,13vw,215px);width:clamp(150px,13vw,215px)}
+.results {gap:20px 16px}
+.tv-more {margin:15px 0 35px;min-width:240px}
+.detail-backdrop {min-height:360px}
+#tv-related-slot {margin-top:16px}
+#home-favorites:empty,#tv-related-slot:empty,#tv-seasons-slot:empty{display:none}
+@media(max-width:1300px) {.hero{min-height:315px}.hero-content{padding:24px 30px}.poster{flex-basis:155px;width:155px}}
