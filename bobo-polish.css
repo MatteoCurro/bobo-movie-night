@@ -676,3 +676,7 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
  .bobo-people-heading{align-items:flex-start;flex-direction:column;gap:4px}
  .bobo-person-search-card{flex-basis:min(238px,78vw)}
 }
+
+/* Source acknowledgements have a single unobtrusive home. */
+.bobo-footer-info{font:500 10px var(--bobo-font-mono,monospace);color:#95abb1;text-decoration:none;margin-left:auto;white-space:nowrap;align-self:center}
+.bobo-footer-info:hover{color:#d9eee9;text-decoration:underline}
