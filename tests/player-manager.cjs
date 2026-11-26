@@ -27,6 +27,15 @@ assert.equal(P.url('vidsrc',{type:'tv',tmdbId:1396,season:1,episode:1}), 'https:
 assert.equal(P.url('vidcore',{type:'movie',tmdbId:550}), 'https://vidcore.org/embed/movie/550?lang=it');
 assert.equal(P.url('vidcore',{type:'tv',tmdbId:1396,season:1,episode:1},true), 'https://vidcore.org/embed/tv/1396/1/1?lang=it&autoplay=true');
 assert.equal(P.get('vidcore').audio,'it-requested','Audio preference is not a dubbing guarantee');
+assert.equal(P.audioStatus('vidcore',{type:'movie',tmdbId:550}),'','Never infer Italian dubbing from lang=it');
+assert.equal(P.reportAudio('vidcore',{type:'movie',tmdbId:550},'ita'),true);
+assert.equal(P.audioStatus('vidcore',{type:'movie',tmdbId:550}),'ita','Remember only listener-confirmed dubbing');
+assert.equal(P.audioStatus('vix',{type:'movie',tmdbId:550}),'','Do not copy verification between independent providers');
+assert.equal(P.reportAudio('vidcore',{type:'tv',tmdbId:1396,season:1,episode:1},'sub-ita'),true);
+assert.equal(P.audioStatus('vidcore',{type:'tv',tmdbId:1396,season:1,episode:1}),'sub-ita');
+assert.equal(P.audioStatus('vidcore',{type:'tv',tmdbId:1396,season:1,episode:2}),'','Verification must be episode-specific');
+assert.equal(P.reportAudio('vidcore',{type:'tv',tmdbId:1396,season:1,episode:1},''),true);
+assert.equal(P.audioStatus('vidcore',{type:'tv',tmdbId:1396,season:1,episode:1}),'');
 assert.equal(P.url('vix',{type:'movie',tmdbId:'<script>'}), '');
 assert.equal(P.url('vidlink',{type:'tv',tmdbId:1396,season:1,episode:0}), '');
 P.select('vidlink');
