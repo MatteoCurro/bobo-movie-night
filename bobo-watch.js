@@ -519,12 +519,14 @@
     document.title = (info.title || 'Dettagli') + ' · Bobo Movie Night';
     byId('watch-kind').textContent = label(type);
     const meta = [];
-    if (info.year) meta.push(String(info.year));
+    // The hero is for the story and primary viewing action; factual metadata
+    // lives in the dossier below. Keep only an orientation score here.
     if (Number(info.vote)>0) meta.push('★ '+Number(info.vote).toFixed(1)+'/10');
-    if (type === 'movie' && info.runtime) meta.push(info.runtime+' min');
     if (type === 'tv') meta.push(seasons.length+' stagioni');
     byId('watch-meta').textContent = meta.join('  ·  ');
-    byId('watch-genres').textContent = (info.genres||[]).join(' · ');
+    byId('watch-genres').textContent = '';
+    byId('watch-genres').hidden = true;
+    if (type === 'movie') byId('watch-start').textContent = '▶ Guarda il film';
     // The dossier is a compact factual overview even before cast is indexed.
     const dossier=byId('watch-cast-section');
     if(dossier)dossier.hidden=false;
