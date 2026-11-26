@@ -69,7 +69,7 @@
       "popularity": 28.9899,
       "source": "TMDB",
       "vote_average": 8.332,
-      "vote_count": 22835
+      "vote_count": 22838
     },
     "movie:1054867": {
       "observed_at": "2026-11-26",
@@ -90,7 +90,7 @@
       "popularity": 27.0887,
       "source": "TMDB",
       "vote_average": 8.027,
-      "vote_count": 27014
+      "vote_count": 27017
     },
     "movie:10681": {
       "observed_at": "2026-11-26",
@@ -98,6 +98,13 @@
       "source": "TMDB",
       "vote_average": 8.129,
       "vote_count": 21245
+    },
+    "movie:1097870": {
+      "observed_at": "2026-11-26",
+      "popularity": 5.1787,
+      "source": "TMDB",
+      "vote_average": 6.1,
+      "vote_count": 550
     },
     "movie:11": {
       "observed_at": "2026-11-26",
@@ -118,7 +125,7 @@
       "popularity": 23.5687,
       "source": "TMDB",
       "vote_average": 8.195,
-      "vote_count": 26889
+      "vote_count": 26892
     },
     "movie:118340": {
       "observed_at": "2026-11-26",
@@ -314,7 +321,7 @@
       "popularity": 26.1372,
       "source": "TMDB",
       "vote_average": 7.906,
-      "vote_count": 24217
+      "vote_count": 24219
     },
     "movie:155": {
       "observed_at": "2026-11-26",
@@ -323,6 +330,13 @@
       "vote_average": 8.54,
       "vote_count": 37481
     },
+    "movie:1551025": {
+      "observed_at": "2026-11-26",
+      "popularity": 155.7847,
+      "source": "TMDB",
+      "vote_average": 6.8,
+      "vote_count": 137
+    },
     "movie:1560520": {
       "observed_at": "2026-11-26",
       "popularity": 26.2359,
@@ -330,12 +344,26 @@
       "vote_average": 9.086,
       "vote_count": 515
     },
+    "movie:1570488": {
+      "observed_at": "2026-11-26",
+      "popularity": 39.3396,
+      "source": "TMDB",
+      "vote_average": 7.121,
+      "vote_count": 87
+    },
     "movie:157336": {
       "observed_at": "2026-11-26",
       "popularity": 61.3826,
       "source": "TMDB",
       "vote_average": 8.494,
       "vote_count": 42028
+    },
+    "movie:1611767": {
+      "observed_at": "2026-11-26",
+      "popularity": 69.1697,
+      "source": "TMDB",
+      "vote_average": 6.7,
+      "vote_count": 58
     },
     "movie:1621552": {
       "observed_at": "2026-11-26",
@@ -356,7 +384,7 @@
       "popularity": 21.4591,
       "source": "TMDB",
       "vote_average": 8.217,
-      "vote_count": 25228
+      "vote_count": 25230
     },
     "movie:1726": {
       "observed_at": "2026-11-26",
@@ -364,6 +392,13 @@
       "source": "TMDB",
       "vote_average": 7.7,
       "vote_count": 29287
+    },
+    "movie:1757174": {
+      "observed_at": "2026-11-26",
+      "popularity": 17.0944,
+      "source": "TMDB",
+      "vote_average": 6.469,
+      "vote_count": 80
     },
     "movie:1771": {
       "observed_at": "2026-11-26",
@@ -426,7 +461,7 @@
       "popularity": 21.0732,
       "source": "TMDB",
       "vote_average": 8.293,
-      "vote_count": 13231
+      "vote_count": 13232
     },
     "movie:210577": {
       "observed_at": "2026-11-26",
@@ -510,7 +545,7 @@
       "popularity": 27.5014,
       "source": "TMDB",
       "vote_average": 7.455,
-      "vote_count": 24919
+      "vote_count": 24921
     },
     "movie:272": {
       "observed_at": "2026-11-26",
@@ -552,14 +587,14 @@
       "popularity": 19.7553,
       "source": "TMDB",
       "vote_average": 7.607,
-      "vote_count": 23806
+      "vote_count": 23808
     },
     "movie:284052": {
       "observed_at": "2026-11-26",
       "popularity": 17.7673,
       "source": "TMDB",
       "vote_average": 7.425,
-      "vote_count": 24259
+      "vote_count": 24261
     },
     "movie:284053": {
       "observed_at": "2026-11-26",
@@ -573,7 +608,7 @@
       "popularity": 20.0573,
       "source": "TMDB",
       "vote_average": 7.358,
-      "vote_count": 24295
+      "vote_count": 24297
     },
     "movie:286217": {
       "observed_at": "2026-11-26",
@@ -629,7 +664,7 @@
       "popularity": 27.8393,
       "source": "TMDB",
       "vote_average": 7.332,
-      "vote_count": 24301
+      "vote_count": 24304
     },
     "movie:324857": {
       "observed_at": "2026-11-26",
@@ -693,6 +728,13 @@
       "source": "TMDB",
       "vote_average": 8.406,
       "vote_count": 319
+    },
+    "movie:360920": {
+      "observed_at": "2026-11-26",
+      "popularity": 28.1522,
+      "source": "TMDB",
+      "vote_average": 6.867,
+      "vote_count": 4596
     },
     "movie:361743": {
       "observed_at": "2026-11-26",
@@ -839,7 +881,7 @@
       "popularity": 21.0471,
       "source": "TMDB",
       "vote_average": 7.802,
-      "vote_count": 25382
+      "vote_count": 25385
     },
     "movie:49046": {
       "observed_at": "2026-11-26",
@@ -918,6 +960,13 @@
       "vote_average": 8.401,
       "vote_count": 12001
     },
+    "movie:5255": {
+      "observed_at": "2026-11-26",
+      "popularity": 16.9191,
+      "source": "TMDB",
+      "vote_average": 6.726,
+      "vote_count": 7168
+    },
     "movie:533535": {
       "observed_at": "2026-11-26",
       "popularity": 45.867,
@@ -965,7 +1014,7 @@
       "popularity": 19.1343,
       "source": "TMDB",
       "vote_average": 8.331,
-      "vote_count": 7525
+      "vote_count": 7526
     },
     "movie:569094": {
       "observed_at": "2026-11-26",
@@ -1091,14 +1140,14 @@
       "popularity": 32.6154,
       "source": "TMDB",
       "vote_average": 7.709,
-      "vote_count": 24462
+      "vote_count": 24464
     },
     "movie:673": {
       "observed_at": "2026-11-26",
       "popularity": 31.6198,
       "source": "TMDB",
       "vote_average": 8.015,
-      "vote_count": 24043
+      "vote_count": 24045
     },
     "movie:674": {
       "observed_at": "2026-11-26",
@@ -1147,7 +1196,7 @@
       "popularity": 22.1579,
       "source": "TMDB",
       "vote_average": 6.932,
-      "vote_count": 24210
+      "vote_count": 24212
     },
     "movie:693134": {
       "observed_at": "2026-11-26",
@@ -1175,7 +1224,7 @@
       "popularity": 91.4408,
       "source": "TMDB",
       "vote_average": 7.227,
-      "vote_count": 24123
+      "vote_count": 24127
     },
     "movie:718930": {
       "observed_at": "2026-11-26",
@@ -1196,7 +1245,7 @@
       "popularity": 12.6068,
       "source": "TMDB",
       "vote_average": 8.324,
-      "vote_count": 13174
+      "vote_count": 13176
     },
     "movie:756999": {
       "observed_at": "2026-11-26",
@@ -1217,7 +1266,7 @@
       "popularity": 23.1165,
       "source": "TMDB",
       "vote_average": 7.642,
-      "vote_count": 25005
+      "vote_count": 25007
     },
     "movie:76600": {
       "observed_at": "2026-11-26",
@@ -1373,6 +1422,13 @@
       "vote_average": 8.6,
       "vote_count": 4781
     },
+    "movie:941109": {
+      "observed_at": "2026-11-26",
+      "popularity": 7.8572,
+      "source": "TMDB",
+      "vote_average": 6.551,
+      "vote_count": 756
+    },
     "movie:945961": {
       "observed_at": "2026-11-26",
       "popularity": 14.5903,
@@ -1427,7 +1483,7 @@
       "popularity": 35.4385,
       "source": "TMDB",
       "vote_average": 7.277,
-      "vote_count": 25407
+      "vote_count": 25409
     },
     "tv:100088": {
       "observed_at": "2026-11-26",
@@ -1519,6 +1575,13 @@
       "source": "TMDB",
       "vote_average": 7.374,
       "vote_count": 1373
+    },
+    "tv:114649": {
+      "observed_at": "2026-11-26",
+      "popularity": 1.898,
+      "source": "TMDB",
+      "vote_average": 8.4,
+      "vote_count": 18
     },
     "tv:116135": {
       "observed_at": "2026-11-26",
@@ -1636,15 +1699,15 @@
       "observed_at": "2026-11-26",
       "popularity": 194.1977,
       "source": "TMDB",
-      "vote_average": 8.5,
-      "vote_count": 28241
+      "vote_average": 8.476,
+      "vote_count": 28242
     },
     "tv:1402": {
       "observed_at": "2026-11-26",
       "popularity": 126.411,
       "source": "TMDB",
       "vote_average": 8.077,
-      "vote_count": 18404
+      "vote_count": 18405
     },
     "tv:1403": {
       "observed_at": "2026-11-26",
@@ -1693,7 +1756,7 @@
       "popularity": 70.9042,
       "source": "TMDB",
       "vote_average": 7.928,
-      "vote_count": 13005
+      "vote_count": 13006
     },
     "tv:1430": {
       "observed_at": "2026-11-26",
@@ -1744,6 +1807,13 @@
       "vote_average": 8.066,
       "vote_count": 1136
     },
+    "tv:155631": {
+      "observed_at": "2026-11-26",
+      "popularity": 11.2715,
+      "source": "TMDB",
+      "vote_average": 7.1,
+      "vote_count": 180
+    },
     "tv:157239": {
       "observed_at": "2026-11-26",
       "popularity": 21.8203,
@@ -1762,8 +1832,8 @@
       "observed_at": "2026-11-26",
       "popularity": 1284.058,
       "source": "TMDB",
-      "vote_average": 8.4,
-      "vote_count": 9630
+      "vote_average": 8.403,
+      "vote_count": 9634
     },
     "tv:18165": {
       "observed_at": "2026-11-26",
@@ -1849,6 +1919,20 @@
       "vote_average": 8.593,
       "vote_count": 1947
     },
+    "tv:210532": {
+      "observed_at": "2026-11-26",
+      "popularity": 5.0849,
+      "source": "TMDB",
+      "vote_average": 6.75,
+      "vote_count": 60
+    },
+    "tv:212921": {
+      "observed_at": "2026-11-26",
+      "popularity": 4.7233,
+      "source": "TMDB",
+      "vote_average": 6.613,
+      "vote_count": 75
+    },
     "tv:214999": {
       "observed_at": "2026-11-26",
       "popularity": 10.5222,
@@ -1931,7 +2015,7 @@
       "popularity": 1180.4132,
       "source": "TMDB",
       "vote_average": 8.581,
-      "vote_count": 5762
+      "vote_count": 5764
     },
     "tv:236235": {
       "observed_at": "2026-11-26",
@@ -2007,7 +2091,7 @@
       "observed_at": "2026-11-26",
       "popularity": 1389.5977,
       "source": "TMDB",
-      "vote_average": 7.963,
+      "vote_average": 8.0,
       "vote_count": 4428
     },
     "tv:276161": {
@@ -2079,6 +2163,13 @@
       "source": "TMDB",
       "vote_average": 8.5,
       "vote_count": 8870
+    },
+    "tv:321777": {
+      "observed_at": "2026-11-26",
+      "popularity": 2.4949,
+      "source": "TMDB",
+      "vote_average": 7.3,
+      "vote_count": 10
     },
     "tv:322430": {
       "observed_at": "2026-11-26",
@@ -2162,7 +2253,7 @@
       "popularity": 95.0878,
       "source": "TMDB",
       "vote_average": 8.103,
-      "vote_count": 8047
+      "vote_count": 8048
     },
     "tv:456": {
       "observed_at": "2026-11-26",
@@ -2225,7 +2316,7 @@
       "popularity": 62.2675,
       "source": "TMDB",
       "vote_average": 8.295,
-      "vote_count": 4518
+      "vote_count": 4519
     },
     "tv:46896": {
       "observed_at": "2026-11-26",
@@ -2246,7 +2337,7 @@
       "popularity": 91.249,
       "source": "TMDB",
       "vote_average": 8.205,
-      "vote_count": 4264
+      "vote_count": 4265
     },
     "tv:52814": {
       "observed_at": "2026-11-26",
@@ -2281,7 +2372,7 @@
       "popularity": 71.835,
       "source": "TMDB",
       "vote_average": 8.522,
-      "vote_count": 11566
+      "vote_count": 11567
     },
     "tv:60625": {
       "observed_at": "2026-11-26",
@@ -2295,14 +2386,14 @@
       "popularity": 99.9157,
       "source": "TMDB",
       "vote_average": 7.595,
-      "vote_count": 3858
+      "vote_count": 3859
     },
     "tv:60735": {
       "observed_at": "2026-11-26",
       "popularity": 1283.1384,
       "source": "TMDB",
       "vote_average": 7.737,
-      "vote_count": 11888
+      "vote_count": 11889
     },
     "tv:60797": {
       "observed_at": "2026-11-26",
@@ -2378,8 +2469,8 @@
       "observed_at": "2026-11-26",
       "popularity": 110.2989,
       "source": "TMDB",
-      "vote_average": 8.54,
-      "vote_count": 22190
+      "vote_average": 8.5,
+      "vote_count": 22191
     },
     "tv:66788": {
       "observed_at": "2026-11-26",
@@ -2407,7 +2498,7 @@
       "popularity": 43.9145,
       "source": "TMDB",
       "vote_average": 8.4,
-      "vote_count": 8020
+      "vote_count": 8021
     },
     "tv:70785": {
       "observed_at": "2026-11-26",
@@ -2420,7 +2511,7 @@
       "observed_at": "2026-11-26",
       "popularity": 35.2699,
       "source": "TMDB",
-      "vote_average": 8.229,
+      "vote_average": 8.2,
       "vote_count": 19823
     },
     "tv:71712": {
@@ -2498,7 +2589,7 @@
       "popularity": 47.9219,
       "source": "TMDB",
       "vote_average": 8.396,
-      "vote_count": 11423
+      "vote_count": 11424
     },
     "tv:82883": {
       "observed_at": "2026-11-26",
@@ -2546,7 +2637,7 @@
       "observed_at": "2026-11-26",
       "popularity": 41.8118,
       "source": "TMDB",
-      "vote_average": 8.178,
+      "vote_average": 8.2,
       "vote_count": 13076
     },
     "tv:85349": {
@@ -2709,6 +2800,13 @@
       "source": "TMDB",
       "vote_average": 8.623,
       "vote_count": 6181
+    },
+    "tv:95612": {
+      "observed_at": "2026-11-26",
+      "popularity": 7.0106,
+      "source": "TMDB",
+      "vote_average": 7.4,
+      "vote_count": 277
     },
     "tv:99966": {
       "observed_at": "2026-11-26",

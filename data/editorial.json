@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T15:23:46+00:00",
+  "generated_at": "2026-11-26T16:09:58+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -2017,7 +2017,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25382,
+        "vote_count": 25385,
         "year": 2012
       },
       {
@@ -2164,7 +2164,7 @@
         "tmdb_id": 99861,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 25407,
+        "vote_count": 25409,
         "year": 2015
       },
       {
@@ -2180,7 +2180,7 @@
         "tmdb_id": 76341,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 25005,
+        "vote_count": 25007,
         "year": 2015
       },
       {
@@ -2196,7 +2196,7 @@
         "tmdb_id": 68721,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 24210,
+        "vote_count": 24212,
         "year": 2013
       },
       {
@@ -2230,7 +2230,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24217,
+        "vote_count": 24219,
         "year": 2015
       }
     ],
@@ -2297,7 +2297,7 @@
         "tmdb_id": 99861,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 25407,
+        "vote_count": 25409,
         "year": 2015
       },
       {
@@ -2361,7 +2361,7 @@
         "tmdb_id": 76341,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 25005,
+        "vote_count": 25007,
         "year": 2015
       }
     ],
@@ -2409,7 +2409,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -2533,7 +2533,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -2738,7 +2738,7 @@
         "tmdb_id": 567,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 7525,
+        "vote_count": 7526,
         "year": 1954
       }
     ],
@@ -2998,7 +2998,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       }
     ],
@@ -3047,7 +3047,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -3388,7 +3388,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24217,
+        "vote_count": 24219,
         "year": 2015
       },
       {
@@ -3523,7 +3523,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24217,
+        "vote_count": 24219,
         "year": 2015
       },
       {
@@ -3844,7 +3844,7 @@
         "tmdb_id": 16869,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 25228,
+        "vote_count": 25230,
         "year": 2009
       },
       {
@@ -4316,7 +4316,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -4499,7 +4499,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       }
     ],
@@ -4565,7 +4565,7 @@
         "tmdb_id": 567,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 7525,
+        "vote_count": 7526,
         "year": 1954
       },
       {
@@ -4937,7 +4937,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25382,
+        "vote_count": 25385,
         "year": 2012
       },
       {
@@ -5485,7 +5485,7 @@
         "tmdb_id": 105,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 22835,
+        "vote_count": 22838,
         "year": 1985
       }
     ],
@@ -5664,7 +5664,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -5971,7 +5971,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25382,
+        "vote_count": 25385,
         "year": 2012
       },
       {
@@ -6766,7 +6766,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8020,
+        "vote_count": 8021,
         "year": 2017
       },
       {
@@ -6963,7 +6963,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -7058,7 +7058,7 @@
         "tmdb_id": 1402,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 18404,
+        "vote_count": 18405,
         "year": 2010
       },
       {
@@ -7431,7 +7431,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       }
     ],
@@ -8410,7 +8410,7 @@
         "tmdb_id": 60574,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 11566,
+        "vote_count": 11567,
         "year": 2013
       },
       {
@@ -8473,7 +8473,7 @@
         "tmdb_id": 60708,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3858,
+        "vote_count": 3859,
         "year": 2014
       },
       {
@@ -8538,7 +8538,7 @@
         "tmdb_id": 106646,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 27014,
+        "vote_count": 27017,
         "year": 2013
       },
       {
@@ -8570,7 +8570,7 @@
         "tmdb_id": 60708,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3858,
+        "vote_count": 3859,
         "year": 2014
       },
       {
@@ -8794,7 +8794,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8020,
+        "vote_count": 8021,
         "year": 2017
       },
       {
@@ -8810,7 +8810,7 @@
         "tmdb_id": 60708,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3858,
+        "vote_count": 3859,
         "year": 2014
       },
       {
@@ -8860,7 +8860,7 @@
         "tmdb_id": 66732,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 22190,
+        "vote_count": 22191,
         "year": 2016
       },
       {
@@ -9026,7 +9026,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8020,
+        "vote_count": 8021,
         "year": 2017
       },
       {
@@ -9061,7 +9061,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8020,
+        "vote_count": 8021,
         "year": 2017
       },
       {
@@ -9333,7 +9333,7 @@
         "tmdb_id": 1399,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 28241,
+        "vote_count": 28242,
         "year": 2011
       },
       {
@@ -9497,7 +9497,7 @@
         "tmdb_id": 82856,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 11423,
+        "vote_count": 11424,
         "year": 2019
       },
       {
@@ -10572,22 +10572,6 @@
         },
         {
           "genres": [
-            "Action & Adventure",
-            "Mistero",
-            "Sci-Fi & Fantasy"
-          ],
-          "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
-          "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
-          "runtime": 0,
-          "title": "Stranger Things",
-          "tmdb_id": 66732,
-          "type": "tv",
-          "vote": 8.5,
-          "vote_count": 22190,
-          "year": 2016
-        },
-        {
-          "genres": [
             "Dramma"
           ],
           "overview": "Chernobyl è una miniserie televisiva statunitense e britannica, creata e scritta da Craig Mazin e diretta da Johan Renck. Le cinque puntate drammatizzano la vera storia di una delle peggiori catastrofi create dall'uomo a oltre 30 anni dall'accaduto e segue gli uomini e le donne c",
@@ -10602,6 +10586,22 @@
         },
         {
           "genres": [
+            "Action & Adventure",
+            "Mistero",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
+          "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+          "runtime": 0,
+          "title": "Stranger Things",
+          "tmdb_id": 66732,
+          "type": "tv",
+          "vote": 8.5,
+          "vote_count": 22191,
+          "year": 2016
+        },
+        {
+          "genres": [
             "Sci-Fi & Fantasy",
             "Dramma",
             "Action & Adventure"
@@ -10613,7 +10613,7 @@
           "tmdb_id": 1399,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 28241,
+          "vote_count": 28242,
           "year": 2011
         },
         {
@@ -10659,7 +10659,7 @@
           "tmdb_id": 60574,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 11566,
+          "vote_count": 11567,
           "year": 2013
         },
         {
@@ -11327,7 +11327,7 @@
           "tmdb_id": 105,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 22835,
+          "vote_count": 22838,
           "year": 1985
         },
         {
