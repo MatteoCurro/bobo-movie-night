@@ -57,6 +57,7 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node tests/player-manager.cjs
+          node tests/verified-audio.cjs
           node tests/index-inline.cjs
           node --check bobo-friends.js
           node --check bobo-library.js
@@ -66,6 +67,7 @@ jobs:
           python3 -m py_compile scripts/build_catalog_ledger.py
           python3 -m py_compile scripts/sync_tmdb_catalog.py
           python3 tests/sync_tmdb_catalog.py
+          python3 tests/platform-anime.py
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
@@ -201,7 +203,7 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json _site/data/
+          cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json data/verified-audio.json _site/data/
           cp -R data/episodes _site/data/
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
@@ -210,7 +212,7 @@ jobs:
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
-          cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js _site/
+          cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js _site/
           test -s _site/bobo-players.js && test -s _site/data/player-sources.json
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
           # The TV installation page is a separate directory; it must be part

@@ -70,6 +70,7 @@
         <button id="watch-open-external" type="button" class="quiet-button">↗ Apri il player in una nuova scheda</button>
       </div>
       <p id="watch-source-note" class="player-caption" aria-live="polite">Per l’audio italiano VixSrc resta la prima scelta; altri servizi potrebbero offrire soltanto audio originale e sottotitoli.</p>
+      <p id="watch-official-audio" class="player-caption" hidden aria-live="polite"></p>
       <p id="watch-auto-next-status" class="player-caption" aria-live="polite" hidden></p>
       <details id="watch-player-diagnostics" class="bobo-player-diagnostics" hidden>
         <summary>Diagnostica avanzamento episodi</summary>
@@ -103,8 +104,19 @@
         <h2 id="watch-settings-title">Impostazioni riproduzione</h2>
         <button type="button" id="watch-settings-close" aria-label="Chiudi impostazioni">×</button>
       </div>
-      <p>La sorgente rimane memorizzata su questo dispositivo. Solo VixSrc documenta una preferenza per l'audio italiano.</p>
+      <p>VixSrc e VidCore richiedono l'audio italiano dove disponibile. Non tutte le sorgenti possiedono il doppiaggio.</p>
       <div id="watch-provider-options" role="radiogroup" aria-label="Servizi di riproduzione"></div>
+      <div class="autonext-settings" id="watch-audio-check">
+        <h3>Lingua effettivamente ascoltata</h3>
+        <p>Per questo film o episodio puoi annotare che cosa hai sentito. È un riscontro personale salvato soltanto sul dispositivo, non una garanzia sugli altri titoli.</p>
+        <label for="watch-audio-result" class="autonext-limit-label">Verifica sulla sorgente selezionata</label>
+        <select id="watch-audio-result">
+          <option value="">Non verificata</option>
+          <option value="ita">Audio doppiato in italiano</option>
+          <option value="sub-ita">Audio originale con sottotitoli italiani</option>
+          <option value="original">Solo audio originale / altro</option>
+        </select>
+      </div>
       <div class="autonext-settings">
         <h3>Serie TV · riproduzione consecutiva</h3>
         <label class="autonext-switch"><input id="watch-auto-next-enabled" type="checkbox"> <span>Passa automaticamente all'episodio successivo quando termina quello in corso</span></label>
@@ -128,5 +140,6 @@
   <script src="bobo-players.js" defer></script>
   <script src="bobo-related.js" defer></script>
   <script src="bobo-watch.js" defer></script>
+  <script src="bobo-official-audio.js" defer></script>
 </body>
 </html>
