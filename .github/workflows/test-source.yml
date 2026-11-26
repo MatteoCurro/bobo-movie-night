@@ -17,12 +17,18 @@ jobs:
           python3 -m py_compile scripts/sync_tmdb_catalog.py scripts/build_discovery.py scripts/build_poster_index.py
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
+          python3 tests/related-index.py
+          python3 tests/critic-links.py
+          python3 tests/multi-ratings.py
           python3 tests/archive-metrics.py
           python3 tests/incremental_catalog.py
       - name: Validate site scripts
         run: |
           node --check bobo-players.js
           node --check bobo-watch.js
+          node --check bobo-critic.js
+          node --check bobo-multi-ratings.js
+          node --check bobo-related.js
           node tests/player-manager.cjs
           node --check bobo-reviews.js
           node tests/platform-labels.cjs
