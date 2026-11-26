@@ -587,13 +587,17 @@ body>header .search-wrap{max-width:420px;flex:1 1 260px;min-width:135px;}
     opacity:1;visibility:visible;transform:translateY(0);
   }
   .bobo-item-wrap>.bobo-quick-open:hover{background:#c7f1ec}
-  /* Editorial platform labels are meaningful metadata, not hover actions.
-     Keep them visible on desktop and mobile, including keyboard and touch. */
+  /* Source badges remain after the main button on mobile, but float over the
+     poster at desktop when additional information is requested. */
   .bobo-item-wrap .bobo-tile>.bobo-source-tags,
   .bobo-item-wrap .bobo-result>.bobo-source-tags{
-    display:flex;position:absolute;z-index:7;top:37px;left:9px;right:9px;
+    display:flex;position:absolute;z-index:5;top:34px;left:9px;right:9px;
     margin:0!important;padding:0!important;max-width:calc(100% - 18px);
-    opacity:1;visibility:visible;pointer-events:none;
+    opacity:0;visibility:hidden;pointer-events:none;
+  }
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-tile>.bobo-source-tags,
+  .bobo-item-wrap:is(:hover,:focus-within) .bobo-result>.bobo-source-tags{
+    opacity:1;visibility:visible;
   }
 }
 @media(max-width:640px){
