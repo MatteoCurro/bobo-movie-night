@@ -31,6 +31,10 @@ PROVIDERS = [
     {"id": "paramount", "label": "Paramount+", "names": ("paramount plus", "paramount+"), "fallback": 531},
     {"id": "skygo", "label": "Sky Go", "names": ("sky go",), "fallback": 29},
     {"id": "now", "label": "NOW", "names": ("now tv", "now"), "fallback": 39},
+    {"id": "hbo", "label": "HBO Max", "names": ("hbo max", "max"), "fallback": 1899},
+    {"id": "rai", "label": "RaiPlay", "names": ("rai play", "raiplay"), "fallback": 222},
+    {"id": "mediaset", "label": "Mediaset Infinity", "names": ("mediaset infinity",), "fallback": 359},
+    {"id": "crunchyroll", "label": "Crunchyroll", "names": ("crunchyroll",), "fallback": 283},
 ]
 TOKEN = os.environ.get("TMDB_ACCESS_TOKEN", "").strip()
 TODAY = dt.date.today()
