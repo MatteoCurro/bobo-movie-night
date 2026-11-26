@@ -209,12 +209,12 @@ def build(today=None):
         raise SystemExit("No quality spotlight: preserving previous newsletter")
 
     groups = []
-    def section(ident_, title, subtitle, keys, count=2):
+    def section(ident_, title, subtitle, keys, count=2, reasons=None):
         chosen = pick(keys, count, selected, ident_)
         if len(chosen) >= 2:
             groups.append({
                 "id": ident_, "title": title, "subtitle": subtitle,
-                "items": [headline_card(candidates[k], "") for k in chosen],
+                "items": [headline_card(candidates[k], (reasons or {}).get(k, "")) for k in chosen],
             })
 
     # Show at least one title explicitly sharing the edition's theme.
@@ -224,6 +224,23 @@ def build(today=None):
             "subtitle": "Altre due scelte che esplorano questo stesso universo",
             "items": [headline_card(candidates[k], "Un'altra prospettiva sul tema della settimana") for k in focused[:2]],
         })
+    # Award-winning cinema is a periodic column, not a permanent Oscars list.
+    award_reasons = {}
+    for group in get("data/cinema/explore.json").get("awards") or []:
+        if group.get("event") != "Oscar" or group.get("category") not in (
+                "Miglior film", "Miglior regia", "Miglior film d'animazione",
+                "Miglior sceneggiatura originale", "Miglior colonna sonora"):
+            continue
+        for film in group.get("films") or []:
+            try:
+                k = f"movie:{int(film['id'])}"
+            except (KeyError, ValueError, TypeError):
+                continue
+            if k in candidates:
+                award_reasons.setdefault(k, "Oscar · " + str(group["category"]))
+    if today.isocalendar().week % 3 == 0 and len(award_reasons) >= 2 and len(groups) < 3:
+        section("awards", "Storie da premio", "Un viaggio fra i riconoscimenti del cinema",
+                list(award_reasons), reasons=award_reasons)
     series = [k for k in candidates if k.startswith("tv:") and int(candidates[k].get("year") or 0) >= 2010]
     hidden = [ident(x) for x in byid.get("hidden", {}).get("items") or []]
     classic = [ident(x) for x in byid.get("classics", {}).get("items") or []]
