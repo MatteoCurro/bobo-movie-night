@@ -181,3 +181,13 @@
  .bobo-cinema-fact p{margin-top:7px}
  .bobo-person-landmark{grid-template-columns:95px 1fr}
 }
+
+.bobo-awards-digest{display:flex;align-items:center;gap:15px;margin:0 0 20px;padding:16px 19px;border:1px solid rgba(223,190,130,.24);border-radius:6px;background:linear-gradient(110deg,#2e2d2c,#1b262c)}
+.bobo-awards-digest[hidden],.bobo-awards-expand[hidden]{display:none!important}
+.bobo-awards-digest-label{flex:none;color:#e3c590;font:650 10px var(--bobo-font-mono,monospace);letter-spacing:.12em}
+.bobo-awards-digest-counts{display:flex;align-items:baseline;flex-wrap:wrap;gap:16px}
+.bobo-awards-digest-counts strong{font:650 19px var(--bobo-font-display,inherit);color:#f7ead4}
+.bobo-awards-digest-counts span{color:#c8d1d1;font-size:13px}
+.bobo-awards-expand{margin:15px 0 8px;border:1px solid #5a676f;background:#21323a;border-radius:5px;padding:10px 16px;color:#dfefec;cursor:pointer;font:600 12px var(--bobo-font-body,inherit)}
+.bobo-awards-expand:hover{border-color:#a4d9d4;background:#2d4650}
+@media(max-width:650px){.bobo-awards-digest{display:block}.bobo-awards-digest-counts{margin-top:10px}}
