@@ -182,8 +182,40 @@ def extract_credits(kind, mid, payload):
                      "photo": portrait(row.get("profile_path"))})
         if len(crew) >= 8:
             break
-    return {"source": "tmdb", "checked_at": TODAY, "cast": cast, "crew": crew,
-            "tagline": str(payload.get("tagline") or "")[:250]}
+    # Reuse fields from the same TMDB detail response: no extra API calls,
+    # no movie catalog bloat, no IMDb scraping or uncertain title matching.
+    facts = {}
+    if kind == "movie":
+        for output, source in (("original_title", "original_title"),
+                               ("original_language", "original_language"),
+                               ("release_date", "release_date")):
+            raw = str(payload.get(source) or "").strip()
+            if raw:
+                facts[output] = raw[:180]
+        for output, source in (("budget_usd", "budget"), ("revenue_usd", "revenue")):
+            try:
+                amount = int(payload.get(source) or 0)
+            except (ValueError, TypeError):
+                amount = 0
+            if amount > 0:
+                facts[output] = amount
+        for output, source, name in (
+            ("companies", "production_companies", "name"),
+            ("countries", "production_countries", "name"),
+            ("languages", "spoken_languages", "english_name"),
+        ):
+            values = [str(item.get(name) or "").strip()[:100]
+                      for item in payload.get(source) or [] if isinstance(item, dict)]
+            if any(values):
+                facts[output] = [v for v in dict.fromkeys(values) if v][:8]
+    entry = {"source": "tmdb", "checked_at": TODAY, "cast": cast, "crew": crew,
+             "tagline": str(payload.get("tagline") or "")[:250]}
+    if facts:
+        entry["facts"] = facts
+    imdb_id = str(payload.get("imdb_id") or "")
+    if kind == "movie" and re.fullmatch(r"tt\d{7,10}", imdb_id):
+        entry["imdb_id"] = imdb_id
+    return entry
 
 
 def stub_person(person, known):
@@ -313,7 +345,7 @@ def sync(root=Path(".")):
         kind, midstr = key.split(":")
         mid = int(midstr)
         existing = credits.get(mid, key)
-        if existing and not expires(existing.get("checked_at"), 365):
+        if existing and existing.get("facts") and existing.get("imdb_id") and not expires(existing.get("checked_at"), 365):
             continue
         try:
             payload = tmdb(f"/{kind}/{mid}", {"language": "it-IT",
@@ -324,8 +356,11 @@ def sync(root=Path(".")):
             print(f"::warning::Credits {key}: {exc}")
             continue
         if existing:
-            for key_to_keep in ("awards", "awards_checked_at"):
-                if key_to_keep in existing:
+            for key_to_keep in ("awards", "awards_checked_at", "oscar_index",
+                                "oscar_current", "imdb_metadata", "imdb_id", "facts"):
+                if key_to_keep in existing and (key_to_keep not in entry or key_to_keep in
+                                                ("awards", "awards_checked_at", "oscar_index",
+                                                 "oscar_current", "imdb_metadata")):
                     entry[key_to_keep] = existing[key_to_keep]
         credits.put(mid, key, entry)
         work = {"type": kind, "tmdb_id": mid, "title": titles[key]["title"],
