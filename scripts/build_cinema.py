@@ -361,6 +361,12 @@ def sync(root=Path(".")):
         if saved and expires(saved.get("awards_checked_at"), 180):
             awards_target.append(mid)
     award_checked = 0
+    wikidata_status_path = root / "data/cinema/wikidata-status.json"
+    wikidata_status = load(wikidata_status_path, {})
+    # Avoid hitting a slow public SPARQL endpoint twice on the same day.
+    if awards_target and not expires(wikidata_status.get("last_failure"), 1):
+        print("::notice::Wikidata cooldown active; Oscar archive remains available")
+        awards_target = []
     if awards_target:
         try:
             entries = wikidata_awards(awards_target)
@@ -368,11 +374,16 @@ def sync(root=Path(".")):
                 key = media_key("movie", mid)
                 prior = credits.get(mid, key)
                 updated = dict(prior)
-                updated["awards"] = entries.get(str(mid), [])
+                # Never replace independent licensed Oscar records with a sparse
+                # Wikidata result. Both providers can coexist with provenance.
+                external = [a for a in prior.get("awards", [])
+                            if a.get("source") != "wikidata"]
+                updated["awards"] = external + entries.get(str(mid), [])
                 updated["awards_checked_at"] = TODAY
                 credits.put(mid, key, updated)
                 award_checked += 1
         except (urllib.error.URLError, TimeoutError, ValueError, KeyError) as exc:
+            write(wikidata_status_path, {"last_failure": TODAY})
             print(f"::warning::Wikidata unavailable; awards retained for retry: {exc}")
     credits.flush()
     people.flush()
