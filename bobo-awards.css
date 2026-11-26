@@ -35,3 +35,7 @@
 .bobo-awards-poster-placeholder{display:flex;height:100%;align-items:center;justify-content:center;font-size:55px;color:#789099}
 .bobo-awards-note{margin-top:60px;border-top:1px solid #304951;padding-top:21px;color:#96abb3;font:11px/1.7 var(--bobo-font-mono,monospace)}
 @media(max-width:650px){.bobo-awards-glyph{display:none}.bobo-awards-hero{padding:25px}.bobo-awards-toolbar{align-items:stretch}.bobo-awards-select{flex-direction:column;align-items:flex-start}.bobo-awards-select select{max-width:none;width:100%}.bobo-awards-grid{grid-template-columns:repeat(auto-fill,minmax(109px,1fr));gap:17px 10px}}
+
+#bobo-awards-more{display:block;margin:28px auto 0;padding:11px 21px;border:1px solid #52787b;background:#1e343b;color:#ddf3ee;border-radius:5px;cursor:pointer;font:600 12px var(--bobo-font-body,inherit)}
+#bobo-awards-more[hidden]{display:none!important}
+#bobo-awards-more:hover{background:#284750;border-color:#9bcfc8}
