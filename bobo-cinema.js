@@ -137,7 +137,7 @@
       a.append(img);
     } else a.append(node('span', 'bobo-work-placeholder', '🎬'));
     a.append(node('strong', '', work.title || 'Titolo'));
-    const description = [work.year, work.type === 'tv' ? 'Serie TV' : 'Film', work.character]
+    const description = [work.year, work.type === 'tv' ? 'Serie TV' : 'Film', work.character || work.role]
       .filter(Boolean).join(' · ');
     a.append(node('small', '', description));
     return a;
@@ -162,11 +162,15 @@
     if (death) bioFacts.push('Morte: ' + death);
     byId('person-facts').textContent = bioFacts.join(' · ');
     const bio = (person.biography || '').trim();
-    if (bio) {
+    // Never show untranslated English text in the Italian interface.
+    const hasItalianBio = !!bio && person.biography_language !== 'en';
+    if (hasItalianBio) {
       byId('person-biography').textContent = bio;
       byId('person-bio-section').hidden = false;
-      if (person.biography_language === 'en')
+      if (person.biography_translation === 'automatic')
         byId('person-language-note').hidden = false;
+    } else {
+      byId('person-pending').hidden = false;
     }
     const listing = byId('person-works');
     const works = Array.isArray(person.filmography) && person.filmography.length ?
@@ -181,7 +185,6 @@
       if (listing.children.length >= 42) break;
     }
     byId('person-works-section').hidden = !listing.children.length;
-    if (!bio && !person.checked_at) byId('person-pending').hidden = false;
   }
   async function person() {
     if (!byId('person-main')) return;
