@@ -96,6 +96,7 @@ jobs:
           python3 tests/sync_tmdb_catalog.py
           python3 tests/platform-anime.py
           python3 tests/archive-metrics.py
+          python3 tests/review-catalog-backfill.py
           python3 tests/related-index.py
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
