@@ -44,11 +44,21 @@ def normalize(raw):
 def apply_one(store: Shards, mid: int, raw):
     key = "movie:" + str(mid)
     cached = store.get(mid, key) or {}
-    if cached.get("oscar_index") == "2023":
-        return False
+    def historical_duplicate(a):
+        if a.get("event") != "Oscar" or a.get("source") != "wikidata":
+            return False
+        award_year = str(a.get("year") or "")
+        # The independent archive records the film's eligible year, while
+        # Wikidata can record the next year's Oscar ceremony. Both describe
+        # the same recognition, so prefer one complete historical source.
+        return not award_year or (award_year[:4].isdigit() and int(award_year[:4]) <= 2024)
+
     awards = list(cached.get("awards") or [])
-    # Retain Cannes and previous Wikidata results; authoritative source is stated on each record.
-    awards = [a for a in awards if a.get("source") != SOURCE]
+    if cached.get("oscar_index") == "2023" and not any(historical_duplicate(a) for a in awards):
+        return False
+    # Preserve Cannes and any newer awards not covered by the historical index.
+    awards = [a for a in awards
+              if a.get("source") != SOURCE and not historical_duplicate(a)]
     awards.extend(normalize(raw))
     updated = dict(cached)
     updated["awards"] = awards
