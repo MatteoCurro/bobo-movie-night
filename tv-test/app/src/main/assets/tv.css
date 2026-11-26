@@ -447,3 +447,20 @@ body {background:#090e14}
  .browse-controls{padding:13px}
  .browse-chip{min-height:41px;font-size:14px;padding:8px 12px}
 }
+
+
+/* Pagination is a visible destination, not a hidden infinite-scroll trigger. */
+.tv-more {
+ display:flex;justify-content:center;align-items:center;
+ width:max-content;max-width:100%;min-width:310px;
+ min-height:60px;margin:22px auto 40px;padding:13px 25px;
+ background:#294c45!important;color:#efffeb!important;
+ border:2px solid #9dd98f;border-radius:10px;
+ font-size:19px;font-weight:800;letter-spacing:.01em;
+ box-shadow:none;transition:none!important;
+}
+.tv-more:focus,.tv-more:focus-visible {
+ outline:4px solid #b9ff8b;outline-offset:4px;
+ background:#b9ff8b!important;color:#13251f!important;
+}
+.browse-results-title span {font-variant-numeric:tabular-nums}
