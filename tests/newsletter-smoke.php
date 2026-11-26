@@ -7,11 +7,11 @@ if(!is_array($feed)||!in_array(($feed['schema']??0),[1,2],true)) {
 }
 $unsubscribe='https://movieaccount.curromatteo.it/unsubscribe.html#id=preview&token=preview';
 $example=$feed;
-if(($example['schema']??0)===1) {
+if(($example['magazine_schema']??0)!==2) {
     if(count($example['weekly']??[])<2)throw new RuntimeException('Too few recommendations');
     // Produce a realistic v2 preview even before the next scheduled catalog sync.
     $example=[
-        'schema'=>2,
+        'schema'=>1, 'magazine_schema'=>2,
         'edition'=>[
             'id'=>'preview', 'theme'=>'space',
             'eyebrow'=>'IL CLUB / EDIZIONE SPECIALE',
