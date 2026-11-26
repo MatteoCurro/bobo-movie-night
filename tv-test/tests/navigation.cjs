@@ -11,7 +11,11 @@ const implementation=src.slice(a,b);
 function suite(elements,initial){
  const actions={pageScroll:[],pageTop:[],railScroll:[]};
  const header={hidden:false,getBoundingClientRect:()=>({height:92})};
- const document={activeElement:initial,getElementById:()=>header};
+ const document={
+  activeElement:initial,getElementById:()=>header,
+  querySelector:s=>s==='.tab.active'||s==='.tab'?elements.find(x=>x.nav)||null:null,
+  querySelectorAll:s=>s==='.browse-chip-row'?Array.from(new Set(elements.map(x=>x.filterRow).filter(Boolean))):[]
+ };
  const window={
   innerHeight:1080,
   scrollTo:x=>actions.pageTop.push(x),
@@ -25,6 +29,7 @@ function suite(elements,initial){
    if(selector==='[hidden]')return null;
    if(selector==='.rail,.season-list')return el.rail||null;
    if(selector==='.results')return el.grid||null;
+   if(selector==='.browse-chip-row')return el.filterRow||null;
    if(selector==='#topbar')return el.nav||null;
    return null;
   };
@@ -77,4 +82,34 @@ function el(x,y,w,h,extra={}){
  assert.equal(test.actions.pageTop.length,1,'focusing sticky navigation returns to actual page top');
  assert.equal(test.actions.pageTop[0].top,0);
 }
-console.log('TV directional navigation passed: rail, grid and sticky header.');
+
+{
+ // Regression: on the FIRST row of a movie/series grid, Up must escape to navigation.
+ const nav={};
+ const home=el(75,20,140,52,{nav});
+ const grid={querySelectorAll:()=>[]};
+ const card=el(75,360,150,220,{grid});
+ grid.querySelectorAll=()=>[card];
+ const test=suite([home,card],card);
+ test.move('ArrowUp');
+ assert.equal(test.document.activeElement,home,'Up on the first catalog row must reach the top navigation');
+ assert.equal(test.actions.pageTop.length,1,'navbar must scroll the document to the top');
+}
+{
+ // Filter rows must be fully navigable with the remote, including returning to the navbar.
+ const nav={};
+ const home=el(50,16,140,50,{nav});
+ const row1={},row2={};
+ const genre=el(80,200,110,44,{filterRow:row1});
+ const period=el(80,265,110,44,{filterRow:row2});
+ row1.querySelectorAll=()=>[genre];row2.querySelectorAll=()=>[period];
+ const test=suite([home,genre,period],genre);
+ test.move('ArrowDown');
+ assert.equal(test.document.activeElement,period,'Down selects the next filter row');
+ test.move('ArrowUp');
+ assert.equal(test.document.activeElement,genre,'Up returns to the previous filter row');
+ test.move('ArrowUp');
+ assert.equal(test.document.activeElement,home,'Up from the first filter returns to navbar');
+}
+
+console.log('TV directional navigation passed: rails, grid boundaries, filter rows and navbar.');
