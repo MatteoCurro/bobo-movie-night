@@ -84,6 +84,8 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node --check bobo-analytics.js
+          php -l backend/htdocs/api.php
+          php -l backend/bin/admin.php
           node --check bobo-cinema.js
           node tests/watch-dossier.cjs
           node --check bobo-related.js
@@ -321,6 +323,18 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/audit_distribution.py --repo --dist _site
+
+      - name: Package PHP admin update for separate deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: bobo-backend-admin-update
+          path: |
+            backend/htdocs/api.php
+            backend/htdocs/admin.html
+            backend/htdocs/admin.js
+            backend/htdocs/admin.css
+            backend/README.md
+          retention-days: 14
 
       - name: Package site for private Gandi hosting
         uses: actions/upload-artifact@v4
