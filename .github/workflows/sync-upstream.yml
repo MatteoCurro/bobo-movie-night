@@ -57,6 +57,8 @@ jobs:
           python3 scripts/build_person_search.py
           python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
+          python3 scripts/build_cinema_explore.py
+          python3 scripts/enrich_person_facts.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
 
@@ -67,6 +69,8 @@ jobs:
           node --check bobo-players.js
           node --check bobo-watch.js
           node --check bobo-cinema.js
+          node --check bobo-discover.js
+          node --check bobo-awards.js
           node tests/player-manager.cjs
           node --check bobo-reviews.js
           node tests/platform-labels.cjs
@@ -87,6 +91,8 @@ jobs:
           python3 tests/cinema.py
           python3 -m py_compile scripts/build_person_search.py
           python3 tests/person-search.py
+          python3 -m py_compile scripts/build_cinema_explore.py scripts/enrich_person_facts.py
+          python3 tests/cinema-explore.py
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
@@ -94,6 +100,7 @@ jobs:
           python3 tests/critic-links.py
           python3 tests/multi-ratings.py
           test -s data/cinema/person-search.json
+          test -s data/cinema/explore.json
           test -s data/enrichment.json
           test -d data/episodes
           python3 - <<'PY'
@@ -238,12 +245,14 @@ jobs:
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
           test -s _site/data/catalog-status.json
-          cp discover.html bobo-discover.css bobo-discover.js _site/
+          cp discover.html bobo-discover.css bobo-discover.js awards.html bobo-awards.css bobo-awards.js informazioni.html _site/
+          test -s _site/awards.html && test -s _site/bobo-awards.js && test -s _site/informazioni.html
           cp bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js bobo-critic.js bobo-multi-ratings.js _site/
-          cp person.html bobo-cinema.js bobo-cinema.css _site/
+          cp person.html director.html bobo-cinema.js bobo-cinema.css _site/
+          test -s _site/director.html && test -s _site/data/cinema/explore.json
           test -s _site/person.html && test -s _site/bobo-cinema.js && test -s _site/bobo-cinema.css
           test -s _site/bobo-players.js && test -s _site/data/player-sources.json
           cp favorites.html bobo-favorites.js bobo-favorites.css _site/
