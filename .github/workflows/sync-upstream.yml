@@ -41,6 +41,9 @@ jobs:
           BOBO_CREDITS_BATCH: '160'
           BOBO_PEOPLE_BATCH: '36'
           BOBO_AWARDS_BATCH: '40'
+          BOBO_IMDB_BATCH: '280'
+          BOBO_IMDB_YEAR_BATCH: '3'
+          BOBO_OSCAR_CURRENT_BATCH: '140'
           BOBO_QUOTE_SOURCES_BATCH: '180'
         shell: bash
         run: |
@@ -64,6 +67,7 @@ jobs:
           python3 scripts/localize_cinema_people.py
           python3 scripts/build_oscar_backfill.py
           python3 scripts/build_oscar_current.py
+          python3 scripts/import_imdb_metadata.py
           python3 scripts/build_cinema_explore.py
           python3 scripts/build_story_connections.py
           python3 scripts/enrich_person_facts.py
