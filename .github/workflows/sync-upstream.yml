@@ -298,11 +298,11 @@ jobs:
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
           test -s _site/data/admin-analytics.json
-          test -s _site/bobo-analytics.js
           test -s _site/data/seasonal.json
           cp discover.html bobo-discover.css bobo-discover.js awards.html bobo-awards.css bobo-awards.js informazioni.html _site/
           test -s _site/awards.html && test -s _site/bobo-awards.js && test -s _site/informazioni.html
           cp bobo-analytics.js bobo-ui.css bobo-ui.js bobo-retro.css bobo-polish.css bobo-friends.js bobo-library.js bobo-cloud.css bobo-cloud.js bobo-enhance.js _site/
+          test -s _site/bobo-analytics.js
           mkdir -p _site/assets
           cp -R assets/flaticon _site/assets/
           cp watch.html bobo-watch.js bobo-watch.css bobo-players.js bobo-related.js bobo-official-audio.js bobo-reviews.js bobo-critic.js bobo-multi-ratings.js _site/

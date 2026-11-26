@@ -57,8 +57,11 @@ with tempfile.TemporaryDirectory() as tmp:
     save(root/"data/catalog-metrics.json",{"current":{"series_with_episode_data":1,"reviewed_titles":1},
          "history":[{"updated_at":"2026-11-26T01:01:01Z","movies":2,"series":1,"total_titles":3}],
          "runs":[{"updated_at":"2026-11-26T01:01:01Z","new_movies_last_run":2}]})
+    save(root/"data/cinema/imdb-import-status.json",{"years":{"2024":{"known_titles":12,"updated":3,"checked_at":"2026-11-26T12:00:00Z"}}})
     data=analytics.build(root)
     assert data["catalog"]["total"]==3
+    assert {entry["name"] for entry in data["catalog"]["years"]}=={"1998","2023","2024"}
+    assert data["source_status"]["last_imdb_check"]=="2026-11-26T12:00:00Z"
     assert data["catalog"]["movies"]==2 and data["catalog"]["series"]==1
     assert data["finances"]["with_revenue"]==1
     assert data["finances"]["total_known_revenue_usd"]==5000000

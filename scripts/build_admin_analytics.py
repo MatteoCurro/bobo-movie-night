@@ -267,17 +267,17 @@ def build(root=Path(".")):
                       key=lambda row: -(row["ratio"] or 0))[:20]
     updated = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     imdb_state = load(root / "data/cinema/imdb-import-status.json")
-    years = imdb_state.get("years") or {}
+    imdb_check_years = imdb_state.get("years") or {}
     imdb_years = [{
         "year": year,
         "known_titles": int(detail.get("known_titles") or 0),
         "updated": int(detail.get("updated") or 0),
         "checked_at": detail.get("checked_at", "")
-    } for year,detail in sorted(years.items(),reverse=True)
+    } for year,detail in sorted(imdb_check_years.items(),reverse=True)
       if isinstance(detail,dict)]
     source_status = {
         "imdb_years": imdb_years,
-        "last_imdb_check": max((v.get("checked_at","") for v in years.values()
+        "last_imdb_check": max((v.get("checked_at","") for v in imdb_check_years.values()
                                 if isinstance(v,dict)),default=""),
         "portrait": load(root / "data/cinema/portrait-status.json"),
         "connections": connections,
