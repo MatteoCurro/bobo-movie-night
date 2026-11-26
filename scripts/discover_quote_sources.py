@@ -45,7 +45,10 @@ def fetch_pages(titles):
     })
     with urllib.request.urlopen(request, timeout=17) as response:
         data = json.load(response)
-    return data.get("query", {}).get("pages", [])
+    if not isinstance(data, dict) or not isinstance(data.get("query"), dict) or \
+       not isinstance(data["query"].get("pages"), list):
+        raise ValueError("Wikiquote API response does not include verified pages")
+    return data["query"]["pages"]
 
 
 def valid_page(page):
