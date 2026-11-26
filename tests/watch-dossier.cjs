@@ -70,12 +70,13 @@ class MutationObserverStub{
 }
 const anchor='  void watch();\n';
 assert(filmScript.includes(anchor));
-vm.runInNewContext(filmScript.replace(anchor,
-  '  globalThis.__testing={renderCredits,renderQuote,observeOpinions};\n'+anchor),{
+const context={
   document:doc,location:{search:'?type=movie&id=238'},URLSearchParams,
   MutationObserver:MutationObserverStub,console,Intl,Date
-});
-const helpers=globalThis.__testing;
+};
+vm.runInNewContext(filmScript.replace(anchor,
+  '  globalThis.__testing={renderCredits,renderQuote,observeOpinions};\n'+anchor),context);
+const helpers=context.__testing;
 assert(helpers);
 ready=true;
 const entry={crew:[{id:8,name:'Regista Test',job:'Director'},
