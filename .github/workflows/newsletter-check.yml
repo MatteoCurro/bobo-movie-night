@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - "backend/lib/newsletter.php"
+      - "backend/lib/newsletter-magazine.php"
+      - "scripts/build_newsletter_digest.py"
+      - "tests/newsletter-magazine.py"
       - "backend/htdocs/admin.html"
       - "backend/htdocs/admin.js"
       - "tests/newsletter-smoke.php"
@@ -20,6 +23,9 @@ jobs:
       - name: Check PHP and admin JavaScript
         run: |
           php -l backend/lib/newsletter.php
+          php -l backend/lib/newsletter-magazine.php
+          python3 -m py_compile scripts/build_newsletter_digest.py
+          python3 tests/newsletter-magazine.py
           node --check backend/htdocs/admin.js
           php tests/newsletter-smoke.php
       - name: Export newsletter preview (without sending emails)
