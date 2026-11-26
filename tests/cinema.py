@@ -38,6 +38,15 @@ profile = mod.hydrate_person(42, {"id": 42, "name": "Persona Uno", "known_for": 
                                           {"media_type": "movie", "id": 999}]}})
 assert profile["biography"] == "Biografia"
 assert len(profile["filmography"]) == 1 and profile["filmography"][0]["title"] == "Film A"
+assert profile["biography_language"] == "it"
+# Directors and writers: only titles credited on TMDB, never recommendations.
+director = mod.hydrate_person(7, {"id": 7, "name": "Regista", "known_for": []}, titles,
+    {"name": "Regista", "combined_credits": {"cast": [], "crew": [
+        {"media_type": "movie", "id": 1, "job": "Director"},
+        {"media_type": "movie", "id": 999, "job": "Director"},
+        {"media_type": "tv", "id": 2, "job": "Writer"}]}})
+assert len(director["filmography"]) == 2
+assert {w["role"] for w in director["filmography"]} == {"Regia", "Sceneggiatura"}
 
 rows = [{"tmdb": {"value": "1"}, "awardLabel": {"value": "Premio Oscar al miglior film"},
          "award": {"value": "http://www.wikidata.org/entity/Q555"},
