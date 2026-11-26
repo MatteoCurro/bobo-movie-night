@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="bobo-retro.css">
   <link rel="stylesheet" href="bobo-polish.css">
   <link rel="stylesheet" href="bobo-cloud.css">
+  <link rel="stylesheet" href="bobo-cinema.css">
   <script defer src="bobo-friends.js"></script>
   <script defer src="bobo-library.js"></script>
   <script defer src="bobo-cloud.js"></script>
@@ -91,9 +92,15 @@
       <div id="watch-episode-list" class="episode-list"></div>
     </section>
 
-    <section id="watch-info-section" class="section info-section" hidden aria-labelledby="watch-about">
-      <h2 id="watch-about">Informazioni</h2>
-      <p id="watch-about-body"></p>
+    <section id="watch-cast-section" class="section bobo-cinema-section" hidden aria-labelledby="watch-cast-heading">
+      <div class="section-heading"><h2 id="watch-cast-heading">Cast e troupe</h2></div>
+      <div id="watch-crew" class="bobo-crew"></div>
+      <div id="watch-cast-grid" class="bobo-actor-grid"></div>
+    </section>
+    <section id="watch-awards-section" class="section bobo-cinema-section" hidden aria-labelledby="watch-awards-heading">
+      <div class="section-heading"><h2 id="watch-awards-heading">Premi e riconoscimenti</h2></div>
+      <div id="watch-awards-list" class="bobo-award-grid"></div>
+      <p class="section-subtitle">Riconoscimenti indicizzati da Wikidata. Le categorie e le candidature sono distinte; la copertura è progressiva e non esaustiva.</p>
     </section>
     <section id="watch-critic-section" class="section bobo-critic-section" aria-labelledby="watch-critic-heading" hidden>
       <div class="section-heading"><h2 id="watch-critic-heading">Il parere della critica</h2></div>
@@ -152,6 +159,7 @@
   <script src="bobo-players.js" defer></script>
   <script src="bobo-related.js" defer></script>
   <script src="bobo-watch.js" defer></script>
+  <script src="bobo-cinema.js" defer></script>
   <script src="bobo-official-audio.js" defer></script>
   <script src="bobo-reviews.js" defer></script>
   <script src="bobo-critic.js" defer></script>

@@ -53,6 +53,7 @@ jobs:
           python3 scripts/build_critic_links.py
           python3 scripts/build_multi_ratings.py
           python3 scripts/build_related_index.py
+          python3 scripts/build_cinema.py
           python3 scripts/build_catalog_metrics.py
           python3 scripts/build_poster_index.py
 
@@ -62,6 +63,7 @@ jobs:
           node --check bobo-ui.js
           node --check bobo-players.js
           node --check bobo-watch.js
+          node --check bobo-cinema.js
           node tests/player-manager.cjs
           node --check bobo-reviews.js
           node tests/platform-labels.cjs
@@ -78,6 +80,8 @@ jobs:
           python3 tests/platform-anime.py
           python3 tests/archive-metrics.py
           python3 tests/related-index.py
+          python3 -m py_compile scripts/build_cinema.py
+          python3 tests/cinema.py
           python3 tests/critic-links.py
           python3 tests/multi-ratings.py
           test -s data/enrichment.json
@@ -189,7 +193,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
+          git add index.html data/cinema/ data/related/ data/catalog-metrics.json data/reviews.json data/critic-reviews.json data/multi-ratings.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0

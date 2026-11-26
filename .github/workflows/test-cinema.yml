@@ -1,0 +1,42 @@
+name: Bobo · Cinema smoke checks
+
+on:
+  pull_request:
+    paths:
+      - 'bobo-cinema.js'
+      - 'bobo-cinema.css'
+      - 'person.html'
+      - 'watch.html'
+      - 'bobo-watch.js'
+      - 'scripts/build_cinema.py'
+      - 'tests/cinema.py'
+      - '.github/workflows/test-cinema.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax and basic integration checks
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/build_cinema.py
+          python3 tests/cinema.py
+          node --check bobo-cinema.js
+          node --check bobo-watch.js
+          python3 - <<'PY'
+          from pathlib import Path
+          watch=Path('watch.html').read_text()
+          js=Path('bobo-watch.js').read_text()
+          assert 'id="watch-about-body"' not in watch
+          assert "byId('watch-about-body')" not in js
+          assert 'watch-overview' in watch and 'watch-cast-grid' in watch and 'watch-awards-list' in watch
+          assert 'src="bobo-cinema.js"' in watch
+          assert 'id="person-main"' in Path('person.html').read_text()
+          assert Path('bobo-cinema.css').is_file()
+          print('Watch and person integration OK')
+          PY

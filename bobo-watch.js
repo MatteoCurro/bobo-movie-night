@@ -525,10 +525,8 @@
     if (type === 'tv') meta.push(seasons.length+' stagioni');
     byId('watch-meta').textContent = meta.join('  ·  ');
     byId('watch-genres').textContent = (info.genres||[]).join(' · ');
-    const overview = info.overview || 'Trama non disponibile nel catalogo.';
-    byId('watch-overview').textContent = overview;
-    byId('watch-about-body').textContent = overview;
-    byId('watch-info-section').hidden = false;
+    // The synopsis belongs to the hero; never repeat it in a lower section.
+    byId('watch-overview').textContent = info.overview || 'Trama non disponibile nel catalogo.';
     // TMDB backdrops are served at w1280 on large screens (w780 on mobile).
     // Posters have their own size tiers, so never request w1280 for a poster.
     const backdrop=thumbnailURL(info.backdrop,'w1280');
