@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "updated_at": "2026-11-26",
+  "notes": "Playback URLs only. Italian audio is confirmed as a preference ONLY for VixSrc; other services are not verified for Italian dubbing. Disable provider without app deployment.",
+  "providers": {
+    "vix": {
+      "enabled": true,
+      "priority": 0,
+      "base": "https://vixsrc.to"
+    },
+    "vidlink": {
+      "enabled": true,
+      "priority": 1,
+      "base": "https://vidlink.pro"
+    },
+    "vidsrc": {
+      "enabled": true,
+      "priority": 2,
+      "base": "https://vidsrc.sh"
+    },
+    "vidrift": {
+      "enabled": false,
+      "priority": 3,
+      "base": "https://embed.vidrift.net"
+    },
+    "vidrock": {
+      "enabled": false,
+      "priority": 4,
+      "base": "https://vidrock.net"
+    }
+  }
+}
