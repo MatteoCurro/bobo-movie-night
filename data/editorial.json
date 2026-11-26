@@ -1,9 +1,26 @@
 {
-  "generated_at": "2026-11-26T09:55:20+00:00",
+  "generated_at": "2026-11-26T10:35:20+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
     "movie:1007757": [
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
+      },
       {
         "genres": [
           "Famiglia",
@@ -19,7 +36,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11349,
+        "vote_count": 11352,
         "year": 2023
       },
       {
@@ -55,7 +72,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9414,
+        "vote_count": 9415,
         "year": 2022
       },
       {
@@ -94,54 +111,35 @@
       },
       {
         "genres": [
+          "Fantasy",
           "Animazione",
-          "Avventura",
-          "Commedia",
-          "Famiglia"
+          "Avventura"
         ],
-        "overview": "Nella mente dell'ormai adolescente Riley, il quartier generale viene improvvisamente demolito per far posto a qualcosa di completamente inaspettato. Gioia, Tristezza, Rabbia, Paura e Disgusto, che a detta loro gestiscono da tempo un'attività di successo, non sanno come comportars",
-        "poster": "https://image.tmdb.org/t/p/w342/mVkg1k4Iun40ZFiBQPFAxJHRZBu.jpg",
-        "runtime": 97,
-        "title": "Inside Out 2",
-        "tmdb_id": 1022789,
+        "overview": "Sophie ha diciotto anni e ogni giorno lavora instancabilmente nel negozio di cappelli del suo defunto padre. Un giorno, durante una rara escursione in città, per caso incontra il Mago Howl. Howl è ardito e bello, ma come tutti i maghi un po' smidollato. La Strega della Spazzatura",
+        "poster": "https://image.tmdb.org/t/p/w342/5Sr9s8ZesaDKQhZl2fMuvOxIaxQ.jpg",
+        "runtime": 0,
+        "title": "Il castello errante di Howl",
+        "tmdb_id": 4935,
         "type": "movie",
-        "vote": 7.5,
-        "vote_count": 7195,
-        "year": 2024
-      },
-      {
-        "genres": [
-          "Azione",
-          "Avventura",
-          "Animazione",
-          "Famiglia"
-        ],
-        "overview": "Bob Parr ha rinunciato ai suoi giorni da supereroe per dedicarsi al perito assicurativo e crescere i suoi tre figli con la moglie un tempo eroica in periferia. Ma quando riceve un incarico misterioso, è il momento di tornare a indossare il costume.",
-        "poster": "https://image.tmdb.org/t/p/w342/YC2HuIkt6JOyOInuSRnRR9iVLE.jpg",
-        "runtime": 115,
-        "title": "Gli Incredibili - Una \"normale\" famiglia di supereroi",
-        "tmdb_id": 9806,
-        "type": "movie",
-        "vote": 7.7,
-        "vote_count": 19582,
+        "vote": 8.4,
+        "vote_count": 11703,
         "year": 2004
       },
       {
         "genres": [
-          "Famiglia",
-          "Commedia",
-          "Animazione",
-          "Avventura"
+          "Avventura",
+          "Fantasy",
+          "Animazione"
         ],
-        "overview": "Guidati da Woody, i giocattoli di Andy vivono felici nella sua stanza fino al compleanno di Andy che porta Buzz Lightyear sulla scena. Temendo di perdere il suo posto nel cuore di Andy, Woody trama contro Buzz. Ma quando le circostanze separano Buzz e Woody dal loro proprietario,",
-        "poster": "https://image.tmdb.org/t/p/w342/9E1UvfLS9PIO9c8TJEOQ7kfFq3Z.jpg",
-        "runtime": 81,
-        "title": "Toy Story - Il mondo dei giocattoli",
-        "tmdb_id": 862,
+        "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+        "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+        "runtime": 0,
+        "title": "Princess Mononoke",
+        "tmdb_id": 128,
         "type": "movie",
-        "vote": 8.0,
-        "vote_count": 20881,
-        "year": 1995
+        "vote": 8.3,
+        "vote_count": 9494,
+        "year": 1997
       }
     ],
     "movie:1022256": [
@@ -253,6 +251,135 @@
         "year": 2017
       }
     ],
+    "movie:10494": [
+      {
+        "genres": [
+          "Action & Adventure",
+          "Commedia",
+          "Animazione"
+        ],
+        "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
+        "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+        "runtime": 0,
+        "title": "One Piece",
+        "tmdb_id": 37854,
+        "type": "tv",
+        "vote": 8.8,
+        "vote_count": 5673,
+        "year": 1999
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Thriller"
+        ],
+        "overview": "Un uomo di trent'anni è insofferente su tutto e la notte non riesce più a dormire. In cerca di qualche luogo dove scaricare la propria ansia si mette a frequentare quei corsi dove gruppi di malati gravi si riuniscono e confessano agli altri le rispettive situazioni. Mentre si las",
+        "poster": "https://image.tmdb.org/t/p/w342/rtNLQ8HbPElzEfrHjrzSr07prKT.jpg",
+        "runtime": 139,
+        "title": "Fight Club",
+        "tmdb_id": 550,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 33440,
+        "year": 1999
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+        "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+        "runtime": 0,
+        "title": "Princess Mononoke",
+        "tmdb_id": 128,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9494,
+        "year": 1997
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Crime",
+          "Mistero",
+          "Thriller"
+        ],
+        "overview": "Un killer astuto e spietato sta uccidendo a raffica, nei modi più raccapriccianti, personaggi scelti con cura. Sulle sue tracce ci sono il giovane e ambizioso Mills, alla prima missione, e l'esperto Somerset, ormai prossimo alla pensione; personalità opposte che mal si tollerano ",
+        "poster": "https://image.tmdb.org/t/p/w342/1XHq0Z7BkjeQ9J5CLmWD0xX0DuB.jpg",
+        "runtime": 128,
+        "title": "Seven",
+        "tmdb_id": 807,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 24294,
+        "year": 1995
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Fry, giovane fattorino senza stimoli, consegna una pizza a un laboratorio scientifico e qui rimane intrappolato in una camera criogenica la quale si riapre solo mille anni più tardi. Dopo lo stupore e l’entusiasmo iniziali per essere finito nella New York del 3000, Fry scopre di ",
+        "poster": "https://image.tmdb.org/t/p/w342/xsw6c2dXj2Htf45yQCSWV6z3377.jpg",
+        "runtime": 0,
+        "title": "Futurama",
+        "tmdb_id": 615,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 4004,
+        "year": 1999
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Animazione"
+        ],
+        "overview": "Stanley \"Stan\" Marsh, Eric Cartman e Kyle Broflosky e Kenneth \"Kenny\" McCormick, quattro ragazzi che frequentano la scuola elementare e vivono nella cittadina di South Park, in Colorado. Pestiferi, osceni e sfacciatamente intelligenti i ragazzacci affrontano temi di attualità con",
+        "poster": "https://image.tmdb.org/t/p/w342/2n7yTDBKvBf3B4NRcxnGTTSuPTJ.jpg",
+        "runtime": 0,
+        "title": "South Park",
+        "tmdb_id": 2190,
+        "type": "tv",
+        "vote": 8.3,
+        "vote_count": 5297,
+        "year": 1997
+      }
+    ],
     "movie:105": [
       {
         "genres": [
@@ -315,7 +442,7 @@
         "tmdb_id": 687163,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 9026,
+        "vote_count": 9029,
         "year": 2026
       },
       {
@@ -332,7 +459,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       },
       {
@@ -348,7 +475,7 @@
         "tmdb_id": 346698,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 11857,
+        "vote_count": 11861,
         "year": 2023
       },
       {
@@ -399,7 +526,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       },
       {
@@ -451,8 +578,25 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11349,
+        "vote_count": 11352,
         "year": 2023
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
       },
       {
         "genres": [
@@ -469,7 +613,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9414,
+        "vote_count": 9415,
         "year": 2022
       },
       {
@@ -505,24 +649,6 @@
         "vote": 8.0,
         "vote_count": 20881,
         "year": 1995
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Commedia",
-          "Fantasy",
-          "Avventura",
-          "Famiglia"
-        ],
-        "overview": "Shrek, un orco dal cuore d'oro, insieme al suo \"destriero\" Ciuchino cerca di tornare in possesso della sua palude, ora occupata dai personaggi delle fiabe, i quali sono stati imprigionati dal perfido Lord Farquaad, tiranno della terra di Duloc. L'orco e l'inseparabile asinello de",
-        "poster": "https://image.tmdb.org/t/p/w342/qqxK3j98UZ12mbRXgnAbVKAPwHu.jpg",
-        "runtime": 89,
-        "title": "Shrek",
-        "tmdb_id": 808,
-        "type": "movie",
-        "vote": 7.8,
-        "vote_count": 19639,
-        "year": 2001
       }
     ],
     "movie:120": [
@@ -652,7 +778,7 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11186,
+        "vote_count": 11188,
         "year": 2022
       }
     ],
@@ -783,7 +909,7 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11186,
+        "vote_count": 11188,
         "year": 2022
       }
     ],
@@ -914,11 +1040,322 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11186,
+        "vote_count": 11188,
         "year": 2022
       }
     ],
+    "movie:128": [
+      {
+        "genres": [
+          "Fantasy",
+          "Animazione",
+          "Avventura"
+        ],
+        "overview": "Sophie ha diciotto anni e ogni giorno lavora instancabilmente nel negozio di cappelli del suo defunto padre. Un giorno, durante una rara escursione in città, per caso incontra il Mago Howl. Howl è ardito e bello, ma come tutti i maghi un po' smidollato. La Strega della Spazzatura",
+        "poster": "https://image.tmdb.org/t/p/w342/5Sr9s8ZesaDKQhZl2fMuvOxIaxQ.jpg",
+        "runtime": 0,
+        "title": "Il castello errante di Howl",
+        "tmdb_id": 4935,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 11703,
+        "year": 2004
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Animazione",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "Una piccola creatura del bosco e un maestoso uccello si scambiano improvvisamente di corpo e devono fare squadra per sopravvivere all'avventura più folle della loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/uCRXsCpMZJDrxAAXJC2xHOz6r9T.jpg",
+        "runtime": 102,
+        "title": "Swapped - Al tuo posto",
+        "tmdb_id": 1007757,
+        "type": "movie",
+        "vote": 8.8,
+        "vote_count": 2316,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Azione"
+        ],
+        "overview": "L'Avatar Aang, l'ultimo dominatore dell'aria, scopre un antico potere che potrebbe salvare la sua civiltà dall'estinzione. Insieme ai suoi amici, deve trovarlo prima che cada nelle mani sbagliate e distrugga la pace per cui hanno sacrificato tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4Nil4DQfBGymHuL2Q9nQwg27orY.jpg",
+        "runtime": 100,
+        "title": "Avatar Aang: L’ultimo dominatore dell’aria",
+        "tmdb_id": 980431,
+        "type": "movie",
+        "vote": 9.0,
+        "vote_count": 1476,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Fantasy",
+          "Avventura",
+          "Famiglia"
+        ],
+        "overview": "Shrek, un orco dal cuore d'oro, insieme al suo \"destriero\" Ciuchino cerca di tornare in possesso della sua palude, ora occupata dai personaggi delle fiabe, i quali sono stati imprigionati dal perfido Lord Farquaad, tiranno della terra di Duloc. L'orco e l'inseparabile asinello de",
+        "poster": "https://image.tmdb.org/t/p/w342/qqxK3j98UZ12mbRXgnAbVKAPwHu.jpg",
+        "runtime": 89,
+        "title": "Shrek",
+        "tmdb_id": 808,
+        "type": "movie",
+        "vote": 7.8,
+        "vote_count": 19639,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Famiglia",
+          "Commedia",
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "Un idraulico di Brooklyn di nome Mario viaggia attraverso il Regno dei Funghi con una principessa di nome Peach e un fungo antropomorfo di nome Toad per trovare il fratello di Mario, Luigi, e salvare il mondo da uno spietato mostro sputafuoco di nome Bowser.",
+        "poster": "https://image.tmdb.org/t/p/w342/tOFwmYtHWvbMCyegqOEclUB8IvV.jpg",
+        "runtime": 92,
+        "title": "Super Mario Bros. Il Film",
+        "tmdb_id": 502356,
+        "type": "movie",
+        "vote": 7.6,
+        "vote_count": 11352,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Commedia",
+          "Famiglia"
+        ],
+        "overview": "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a caro prezzo: ben otto delle sue nove vite sono andate bruciate.  Dovrà così intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, che gli permetterà di recuperare le s",
+        "poster": "https://image.tmdb.org/t/p/w342/v8xkTiSL2q680uCFuhc50mSea7q.jpg",
+        "runtime": 100,
+        "title": "Il gatto con gli stivali 2 - L'ultimo desiderio",
+        "tmdb_id": 315162,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 9415,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Azione",
+          "Avventura",
+          "Fantascienza"
+        ],
+        "overview": "Dopo essersi riunito con Gwen Stacy, l'amichevole Spider-Man di Brooklyn Miles Morales viene catapultato nelle pieghe del multiverso, dove incontra la squadra di Spider-Eroi incaricata di proteggerne l'esistenza. Ma quando i protettori del multiverso si dimostrano intransigenti s",
+        "poster": "https://image.tmdb.org/t/p/w342/7pgJHduD3OVwF3EGFnGBq0nOUYv.jpg",
+        "runtime": 140,
+        "title": "Spider-Man: Across the Spider-Verse",
+        "tmdb_id": 569094,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9597,
+        "year": 2023
+      }
+    ],
+    "movie:129": [
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Fantasy",
+          "Avventura",
+          "Famiglia"
+        ],
+        "overview": "Shrek, un orco dal cuore d'oro, insieme al suo \"destriero\" Ciuchino cerca di tornare in possesso della sua palude, ora occupata dai personaggi delle fiabe, i quali sono stati imprigionati dal perfido Lord Farquaad, tiranno della terra di Duloc. L'orco e l'inseparabile asinello de",
+        "poster": "https://image.tmdb.org/t/p/w342/qqxK3j98UZ12mbRXgnAbVKAPwHu.jpg",
+        "runtime": 89,
+        "title": "Shrek",
+        "tmdb_id": 808,
+        "type": "movie",
+        "vote": 7.8,
+        "vote_count": 19639,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Animazione",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "Una piccola creatura del bosco e un maestoso uccello si scambiano improvvisamente di corpo e devono fare squadra per sopravvivere all'avventura più folle della loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/uCRXsCpMZJDrxAAXJC2xHOz6r9T.jpg",
+        "runtime": 102,
+        "title": "Swapped - Al tuo posto",
+        "tmdb_id": 1007757,
+        "type": "movie",
+        "vote": 8.8,
+        "vote_count": 2316,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Famiglia",
+          "Commedia",
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "Un idraulico di Brooklyn di nome Mario viaggia attraverso il Regno dei Funghi con una principessa di nome Peach e un fungo antropomorfo di nome Toad per trovare il fratello di Mario, Luigi, e salvare il mondo da uno spietato mostro sputafuoco di nome Bowser.",
+        "poster": "https://image.tmdb.org/t/p/w342/tOFwmYtHWvbMCyegqOEclUB8IvV.jpg",
+        "runtime": 92,
+        "title": "Super Mario Bros. Il Film",
+        "tmdb_id": 502356,
+        "type": "movie",
+        "vote": 7.6,
+        "vote_count": 11352,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Commedia",
+          "Famiglia"
+        ],
+        "overview": "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a caro prezzo: ben otto delle sue nove vite sono andate bruciate.  Dovrà così intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, che gli permetterà di recuperare le s",
+        "poster": "https://image.tmdb.org/t/p/w342/v8xkTiSL2q680uCFuhc50mSea7q.jpg",
+        "runtime": 100,
+        "title": "Il gatto con gli stivali 2 - L'ultimo desiderio",
+        "tmdb_id": 315162,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 9415,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "L'adorabile Sulley e il suo sprazzante spalla Mike Wazowski sono la squadra di paura più importante di Monsters, Inc., la fabbrica di elaborazione delle urla a Monstropolis. Quando una bambina di nome Boo entra nel loro mondo, sono i mostri a spaventarsi da morire, e spetta a Sul",
+        "poster": "https://image.tmdb.org/t/p/w342/su4evXIbNM4aLRpG7961KsukPc7.jpg",
+        "runtime": 92,
+        "title": "Monsters & Co.",
+        "tmdb_id": 585,
+        "type": "movie",
+        "vote": 7.9,
+        "vote_count": 20569,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Fantasy",
+          "Animazione",
+          "Avventura"
+        ],
+        "overview": "Sophie ha diciotto anni e ogni giorno lavora instancabilmente nel negozio di cappelli del suo defunto padre. Un giorno, durante una rara escursione in città, per caso incontra il Mago Howl. Howl è ardito e bello, ma come tutti i maghi un po' smidollato. La Strega della Spazzatura",
+        "poster": "https://image.tmdb.org/t/p/w342/5Sr9s8ZesaDKQhZl2fMuvOxIaxQ.jpg",
+        "runtime": 0,
+        "title": "Il castello errante di Howl",
+        "tmdb_id": 4935,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 11703,
+        "year": 2004
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+        "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+        "runtime": 0,
+        "title": "Princess Mononoke",
+        "tmdb_id": 128,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9494,
+        "year": 1997
+      },
+      {
+        "genres": [
+          "Famiglia",
+          "Animazione",
+          "Fantascienza",
+          "Avventura"
+        ],
+        "overview": "L'epica avventura segue il viaggio di un robot - l'unità ROZZUM 7134, abbreviato Roz - che dopo un naufragio si ritrova su un'isola disabitata dove dovrà imparare ad adattarsi all’ostile ambiente circostante, costruendo gradualmente relazioni con gli altri animali dell’isola e ad",
+        "poster": "https://image.tmdb.org/t/p/w342/rTLuc7yMbrkl1V9uocfoRcjJqdm.jpg",
+        "runtime": 102,
+        "title": "Il robot selvaggio",
+        "tmdb_id": 1184918,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 6890,
+        "year": 2024
+      }
+    ],
     "movie:1291559": [
+      {
+        "genres": [
+          "Animazione",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Ogaki. Il liceale Shoya Ishida sta per saltare dal ponte per suicidarsi, ma all'ultimo desiste. Cinque anni prima, ai tempi della scuola elementare, nella classe di Shoya arriva Shoko Nishimiya, una ragazza sordomuta: l'accoglienza dei suoi compagni da timida diviene in breve tem",
+        "poster": "https://image.tmdb.org/t/p/w342/kebTSlQRdLCh8sLqkh0B0KaR8i.jpg",
+        "runtime": 0,
+        "title": "La Forma della Voce",
+        "tmdb_id": 378064,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 4794,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Romance",
+          "Dramma"
+        ],
+        "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
+        "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
+        "runtime": 0,
+        "title": "Your Name.",
+        "tmdb_id": 372058,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 13231,
+        "year": 2016
+      },
       {
         "genres": [
           "Commedia",
@@ -949,22 +1386,6 @@
         "vote": 7.9,
         "vote_count": 28141,
         "year": 1997
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Romance",
-          "Dramma"
-        ],
-        "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
-        "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
-        "runtime": 0,
-        "title": "Your Name.",
-        "tmdb_id": 372058,
-        "type": "movie",
-        "vote": 8.5,
-        "vote_count": 13231,
-        "year": 2017
       },
       {
         "genres": [
@@ -1027,21 +1448,6 @@
         "vote": 8.7,
         "vote_count": 1315,
         "year": 2025
-      },
-      {
-        "genres": [
-          "Sci-Fi & Fantasy",
-          "Dramma"
-        ],
-        "overview": "Quando una misteriosa nave spaziale si schianta sulla Terra, una giovane donna (Sydney Chandler) e un gruppo di soldati tattici fanno una scoperta fatidica che li mette faccia a faccia con la più grande minaccia per il pianeta.",
-        "poster": "https://image.tmdb.org/t/p/w342/oSQwD0JCeqezgmVj9UtxDAn1B2a.jpg",
-        "runtime": 0,
-        "title": "Alien: Pianeta Terra",
-        "tmdb_id": 157239,
-        "type": "tv",
-        "vote": 7.3,
-        "vote_count": 1215,
-        "year": 2025
       }
     ],
     "movie:13": [
@@ -1094,6 +1500,38 @@
       },
       {
         "genres": [
+          "Animazione",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Ogaki. Il liceale Shoya Ishida sta per saltare dal ponte per suicidarsi, ma all'ultimo desiste. Cinque anni prima, ai tempi della scuola elementare, nella classe di Shoya arriva Shoko Nishimiya, una ragazza sordomuta: l'accoglienza dei suoi compagni da timida diviene in breve tem",
+        "poster": "https://image.tmdb.org/t/p/w342/kebTSlQRdLCh8sLqkh0B0KaR8i.jpg",
+        "runtime": 0,
+        "title": "La Forma della Voce",
+        "tmdb_id": 378064,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 4794,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Romance",
+          "Dramma"
+        ],
+        "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
+        "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
+        "runtime": 0,
+        "title": "Your Name.",
+        "tmdb_id": 372058,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 13231,
+        "year": 2016
+      },
+      {
+        "genres": [
           "Dramma",
           "Romance"
         ],
@@ -1139,37 +1577,141 @@
         "vote": 7.8,
         "vote_count": 3929,
         "year": 2021
+      }
+    ],
+    "movie:1311031": [
+      {
+        "genres": [
+          "Animazione",
+          "Azione",
+          "Romance",
+          "Fantasy"
+        ],
+        "overview": "In una brutale guerra tra diavoli, cacciatori e nemici segreti, una misteriosa ragazza di nome Reze è entrata nel mondo di Denji, che affronta la sua battaglia più mortale, alimentata dall'amore in un mondo in cui la sopravvivenza non conosce regole.",
+        "poster": "https://image.tmdb.org/t/p/w342/2tWxSWFoMdhUlzE9wVnPHr8rmED.jpg",
+        "runtime": 0,
+        "title": "Chainsaw Man: La storia di Reze",
+        "tmdb_id": 1218925,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 1322,
+        "year": 2025
       },
       {
         "genres": [
-          "Commedia",
-          "Dramma"
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Azione"
         ],
-        "overview": "L'insicuro Otis sa tutto sul sesso, grazie alla madre terapeuta. Così la ribelle Maeve gli propone di fondare una clinica all'interno della scuola.",
-        "poster": "https://image.tmdb.org/t/p/w342/pmwsSCcz8aZOJXsTTrNs8LzGMwt.jpg",
-        "runtime": 0,
-        "title": "Sex Education",
-        "tmdb_id": 81356,
-        "type": "tv",
-        "vote": 8.2,
-        "vote_count": 8097,
-        "year": 2019
+        "overview": "L'Avatar Aang, l'ultimo dominatore dell'aria, scopre un antico potere che potrebbe salvare la sua civiltà dall'estinzione. Insieme ai suoi amici, deve trovarlo prima che cada nelle mani sbagliate e distrugga la pace per cui hanno sacrificato tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4Nil4DQfBGymHuL2Q9nQwg27orY.jpg",
+        "runtime": 100,
+        "title": "Avatar Aang: L’ultimo dominatore dell’aria",
+        "tmdb_id": 980431,
+        "type": "movie",
+        "vote": 9.0,
+        "vote_count": 1476,
+        "year": 2026
       },
       {
         "genres": [
-          "Action & Adventure",
-          "Dramma",
-          "Commedia"
+          "Avventura",
+          "Azione",
+          "Fantasy"
         ],
-        "overview": "Acerrimi nemici. Dojo in guerra. Volti nuovi. Daniel e Johnny riaccendono vecchie rivalità della West Valley.",
-        "poster": "https://image.tmdb.org/t/p/w342/6GDW4EsgsXlYrL1ASb5eCHQK4er.jpg",
+        "overview": "Ogni leggenda ha un prezzo. Ogni ritorno richiede un sacrificio. Mentre il mare diventa il suo più grande nemico, Ulisse affronta un cammino fatto di illusioni, battaglie e prove impossibili. Un'epica odissea che mette alla prova il coraggio di un uomo contro il volere degli dèi.",
+        "poster": "https://image.tmdb.org/t/p/w342/qQhInj9fw3S2bMbiEujVldthgKe.jpg",
+        "runtime": 173,
+        "title": "Odissea",
+        "tmdb_id": 1368337,
+        "type": "movie",
+        "vote": 8.0,
+        "vote_count": 5494,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Animazione",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "Una piccola creatura del bosco e un maestoso uccello si scambiano improvvisamente di corpo e devono fare squadra per sopravvivere all'avventura più folle della loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/uCRXsCpMZJDrxAAXJC2xHOz6r9T.jpg",
+        "runtime": 102,
+        "title": "Swapped - Al tuo posto",
+        "tmdb_id": 1007757,
+        "type": "movie",
+        "vote": 8.8,
+        "vote_count": 2316,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Azione",
+          "Avventura",
+          "Fantascienza"
+        ],
+        "overview": "Dopo essersi riunito con Gwen Stacy, l'amichevole Spider-Man di Brooklyn Miles Morales viene catapultato nelle pieghe del multiverso, dove incontra la squadra di Spider-Eroi incaricata di proteggerne l'esistenza. Ma quando i protettori del multiverso si dimostrano intransigenti s",
+        "poster": "https://image.tmdb.org/t/p/w342/7pgJHduD3OVwF3EGFnGBq0nOUYv.jpg",
+        "runtime": 140,
+        "title": "Spider-Man: Across the Spider-Verse",
+        "tmdb_id": 569094,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9597,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Fantasy",
+          "Animazione",
+          "Avventura"
+        ],
+        "overview": "Sophie ha diciotto anni e ogni giorno lavora instancabilmente nel negozio di cappelli del suo defunto padre. Un giorno, durante una rara escursione in città, per caso incontra il Mago Howl. Howl è ardito e bello, ma come tutti i maghi un po' smidollato. La Strega della Spazzatura",
+        "poster": "https://image.tmdb.org/t/p/w342/5Sr9s8ZesaDKQhZl2fMuvOxIaxQ.jpg",
         "runtime": 0,
-        "title": "Cobra Kai",
-        "tmdb_id": 77169,
-        "type": "tv",
-        "vote": 8.2,
-        "vote_count": 7072,
-        "year": 2018
+        "title": "Il castello errante di Howl",
+        "tmdb_id": 4935,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 11703,
+        "year": 2004
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+        "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+        "runtime": 0,
+        "title": "Princess Mononoke",
+        "tmdb_id": 128,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9494,
+        "year": 1997
       }
     ],
     "movie:1339713": [
@@ -1409,7 +1951,7 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11186,
+        "vote_count": 11188,
         "year": 2022
       },
       {
@@ -1459,7 +2001,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -1723,7 +2265,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       },
       {
@@ -1803,7 +2345,7 @@
         "tmdb_id": 76600,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 14930,
+        "vote_count": 14934,
         "year": 2022
       },
       {
@@ -2310,7 +2852,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -2327,7 +2869,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       }
     ],
@@ -2601,7 +3143,7 @@
         "tmdb_id": 502356,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 11349,
+        "vote_count": 11352,
         "year": 2023
       },
       {
@@ -2635,7 +3177,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9414,
+        "vote_count": 9415,
         "year": 2022
       },
       {
@@ -2798,6 +3340,276 @@
         "year": 2006
       }
     ],
+    "movie:372058": [
+      {
+        "genres": [
+          "Animazione",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Ogaki. Il liceale Shoya Ishida sta per saltare dal ponte per suicidarsi, ma all'ultimo desiste. Cinque anni prima, ai tempi della scuola elementare, nella classe di Shoya arriva Shoko Nishimiya, una ragazza sordomuta: l'accoglienza dei suoi compagni da timida diviene in breve tem",
+        "poster": "https://image.tmdb.org/t/p/w342/kebTSlQRdLCh8sLqkh0B0KaR8i.jpg",
+        "runtime": 0,
+        "title": "La Forma della Voce",
+        "tmdb_id": 378064,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 4794,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Los Angeles. Mia sogna di poter recitare ma intanto, mentre passa da un provino all'altro, serve caffè e cappuccini alle star. Sebastian è un musicista jazz che si guadagna da vivere suonando nei piano bar in cui nessuno si interessa a ciò che propone. I due si scontrano e si inc",
+        "poster": "https://image.tmdb.org/t/p/w342/cWYy1YTVaZRAuxLtX1tYNvtzAt1.jpg",
+        "runtime": 126,
+        "title": "La La Land",
+        "tmdb_id": 313369,
+        "type": "movie",
+        "vote": 7.9,
+        "vote_count": 18776,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Avventura",
+          "Dramma",
+          "Commedia"
+        ],
+        "overview": "Quando l'undicenne Riley si trasferisce in una nuova città, le sue Emozioni si uniscono per aiutarla ad affrontare il cambiamento. Gioia, Paura, Rabbia, Disgusto e Tristezza collaborano tra loro, ma quando Gioia e Tristezza si smarriscono, devono intraprendere un viaggio attraver",
+        "poster": "https://image.tmdb.org/t/p/w342/gsylhwWIeQwX3s2zmjLQuBLlleX.jpg",
+        "runtime": 95,
+        "title": "Inside Out",
+        "tmdb_id": 150540,
+        "type": "movie",
+        "vote": 7.9,
+        "vote_count": 24217,
+        "year": 2015
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Forrest Gump - un ragazzo non proprio idiota, ma dal basso coefficiente d'intelligenza - racconta la sua storia a coloro che, uno dopo l'altro, si siedono vicino a lui in attesa dell'autobus. È stato in Vietnam, ha stretto la mano a tre presidenti, ha incontrato Elvis, ha assisti",
+        "poster": "https://image.tmdb.org/t/p/w342/gsbmOBQKIzO3q57pITk9Ol4urV2.jpg",
+        "runtime": 137,
+        "title": "Forrest Gump",
+        "tmdb_id": 13,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 30970,
+        "year": 1994
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Dramma",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Quando Mark Grayson eredita i superpoteri a 17 anni, si unisce a suo padre come uno dei più grandi supereroi della Terra. Tutti i suoi sogni sembrano essersi avverati, finché un evento scioccante non cambia tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
+        "runtime": 0,
+        "title": "INVINCIBLE",
+        "tmdb_id": 95557,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 6181,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Dramma",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "In questa serie animata musicale per adulti Charlie, la principessa dell’Inferno, persegue l’arduo scopo di riabilitare i demoni per ridurre in maniera pacifica la questione del sovrappopolamento nel suo regno. Per mettere fine allo sterminio annuale imposto dal Paradiso, apre un",
+        "poster": "https://image.tmdb.org/t/p/w342/aVYHMW8pdzJ9qG1OGRMKyGy9xor.jpg",
+        "runtime": 0,
+        "title": "Hazbin Hotel",
+        "tmdb_id": 94954,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 1682,
+        "year": 2024
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Mistero",
+          "Dramma"
+        ],
+        "overview": "Rapita dal quartiere a luci rosse, la giovane Maomao viene venduta come inserviente al Palazzo Imperiale. Figlia di un esperto farmacista, la ragazza possiede uno sconfinato talento medico e un'ossessione per i veleni che catturano subito l'attenzione dell'affascinante eunuco Jin",
+        "poster": "https://image.tmdb.org/t/p/w342/xwmAzaKHI8jxikuCGCja8gNIqpz.jpg",
+        "runtime": 0,
+        "title": "Il monologo della Speziale",
+        "tmdb_id": 220542,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 720,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Dramma",
+          "Mistero"
+        ],
+        "overview": "Bruce Wayne, alias Batman, è impegnato nella crociata contro il crimine che invade le strade della sua città: Gotham City. Nonostante salvi numerosi civili e aiuti spesso la polizia tutti quanti dubitano di lui e hanno paura di incontrarlo. Ad aiutare Batman ci saranno però il su",
+        "poster": "https://image.tmdb.org/t/p/w342/159cvXOaHeZ7FFlk6t4hgjFkx4x.jpg",
+        "runtime": 0,
+        "title": "Batman: The Animated Series",
+        "tmdb_id": 2098,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1947,
+        "year": 1992
+      }
+    ],
+    "movie:378064": [
+      {
+        "genres": [
+          "Animazione",
+          "Romance",
+          "Dramma"
+        ],
+        "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
+        "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
+        "runtime": 0,
+        "title": "Your Name.",
+        "tmdb_id": 372058,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 13231,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Los Angeles. Mia sogna di poter recitare ma intanto, mentre passa da un provino all'altro, serve caffè e cappuccini alle star. Sebastian è un musicista jazz che si guadagna da vivere suonando nei piano bar in cui nessuno si interessa a ciò che propone. I due si scontrano e si inc",
+        "poster": "https://image.tmdb.org/t/p/w342/cWYy1YTVaZRAuxLtX1tYNvtzAt1.jpg",
+        "runtime": 126,
+        "title": "La La Land",
+        "tmdb_id": 313369,
+        "type": "movie",
+        "vote": 7.9,
+        "vote_count": 18776,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Avventura",
+          "Dramma",
+          "Commedia"
+        ],
+        "overview": "Quando l'undicenne Riley si trasferisce in una nuova città, le sue Emozioni si uniscono per aiutarla ad affrontare il cambiamento. Gioia, Paura, Rabbia, Disgusto e Tristezza collaborano tra loro, ma quando Gioia e Tristezza si smarriscono, devono intraprendere un viaggio attraver",
+        "poster": "https://image.tmdb.org/t/p/w342/gsylhwWIeQwX3s2zmjLQuBLlleX.jpg",
+        "runtime": 95,
+        "title": "Inside Out",
+        "tmdb_id": 150540,
+        "type": "movie",
+        "vote": 7.9,
+        "vote_count": 24217,
+        "year": 2015
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Forrest Gump - un ragazzo non proprio idiota, ma dal basso coefficiente d'intelligenza - racconta la sua storia a coloro che, uno dopo l'altro, si siedono vicino a lui in attesa dell'autobus. È stato in Vietnam, ha stretto la mano a tre presidenti, ha incontrato Elvis, ha assisti",
+        "poster": "https://image.tmdb.org/t/p/w342/gsbmOBQKIzO3q57pITk9Ol4urV2.jpg",
+        "runtime": 137,
+        "title": "Forrest Gump",
+        "tmdb_id": 13,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 30970,
+        "year": 1994
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Dramma",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Quando Mark Grayson eredita i superpoteri a 17 anni, si unisce a suo padre come uno dei più grandi supereroi della Terra. Tutti i suoi sogni sembrano essersi avverati, finché un evento scioccante non cambia tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
+        "runtime": 0,
+        "title": "INVINCIBLE",
+        "tmdb_id": 95557,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 6181,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Dramma",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "In questa serie animata musicale per adulti Charlie, la principessa dell’Inferno, persegue l’arduo scopo di riabilitare i demoni per ridurre in maniera pacifica la questione del sovrappopolamento nel suo regno. Per mettere fine allo sterminio annuale imposto dal Paradiso, apre un",
+        "poster": "https://image.tmdb.org/t/p/w342/aVYHMW8pdzJ9qG1OGRMKyGy9xor.jpg",
+        "runtime": 0,
+        "title": "Hazbin Hotel",
+        "tmdb_id": 94954,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 1682,
+        "year": 2024
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Mistero",
+          "Dramma"
+        ],
+        "overview": "Rapita dal quartiere a luci rosse, la giovane Maomao viene venduta come inserviente al Palazzo Imperiale. Figlia di un esperto farmacista, la ragazza possiede uno sconfinato talento medico e un'ossessione per i veleni che catturano subito l'attenzione dell'affascinante eunuco Jin",
+        "poster": "https://image.tmdb.org/t/p/w342/xwmAzaKHI8jxikuCGCja8gNIqpz.jpg",
+        "runtime": 0,
+        "title": "Il monologo della Speziale",
+        "tmdb_id": 220542,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 720,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Dramma",
+          "Mistero"
+        ],
+        "overview": "Bruce Wayne, alias Batman, è impegnato nella crociata contro il crimine che invade le strade della sua città: Gotham City. Nonostante salvi numerosi civili e aiuti spesso la polizia tutti quanti dubitano di lui e hanno paura di incontrarlo. Ad aiutare Batman ci saranno però il su",
+        "poster": "https://image.tmdb.org/t/p/w342/159cvXOaHeZ7FFlk6t4hgjFkx4x.jpg",
+        "runtime": 0,
+        "title": "Batman: The Animated Series",
+        "tmdb_id": 2098,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1947,
+        "year": 1992
+      }
+    ],
     "movie:396194": [
       {
         "genres": [
@@ -2858,7 +3670,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12974,
+        "vote_count": 12978,
         "year": 2023
       },
       {
@@ -2937,7 +3749,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12974,
+        "vote_count": 12978,
         "year": 2023
       },
       {
@@ -3081,7 +3893,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12974,
+        "vote_count": 12978,
         "year": 2023
       },
       {
@@ -3176,6 +3988,145 @@
         "vote": 8.0,
         "vote_count": 2988,
         "year": 2022
+      }
+    ],
+    "movie:4935": [
+      {
+        "genres": [
+          "Animazione",
+          "Famiglia",
+          "Fantasy",
+          "Avventura"
+        ],
+        "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+        "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+        "runtime": 0,
+        "title": "La città incantata",
+        "tmdb_id": 129,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 19288,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+        "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+        "runtime": 0,
+        "title": "Princess Mononoke",
+        "tmdb_id": 128,
+        "type": "movie",
+        "vote": 8.3,
+        "vote_count": 9494,
+        "year": 1997
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Animazione",
+          "Famiglia",
+          "Fantasy"
+        ],
+        "overview": "Una piccola creatura del bosco e un maestoso uccello si scambiano improvvisamente di corpo e devono fare squadra per sopravvivere all'avventura più folle della loro vita.",
+        "poster": "https://image.tmdb.org/t/p/w342/uCRXsCpMZJDrxAAXJC2xHOz6r9T.jpg",
+        "runtime": 102,
+        "title": "Swapped - Al tuo posto",
+        "tmdb_id": 1007757,
+        "type": "movie",
+        "vote": 8.8,
+        "vote_count": 2316,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Fantasy",
+          "Avventura",
+          "Famiglia"
+        ],
+        "overview": "Shrek, un orco dal cuore d'oro, insieme al suo \"destriero\" Ciuchino cerca di tornare in possesso della sua palude, ora occupata dai personaggi delle fiabe, i quali sono stati imprigionati dal perfido Lord Farquaad, tiranno della terra di Duloc. L'orco e l'inseparabile asinello de",
+        "poster": "https://image.tmdb.org/t/p/w342/qqxK3j98UZ12mbRXgnAbVKAPwHu.jpg",
+        "runtime": 89,
+        "title": "Shrek",
+        "tmdb_id": 808,
+        "type": "movie",
+        "vote": 7.8,
+        "vote_count": 19639,
+        "year": 2001
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Azione"
+        ],
+        "overview": "L'Avatar Aang, l'ultimo dominatore dell'aria, scopre un antico potere che potrebbe salvare la sua civiltà dall'estinzione. Insieme ai suoi amici, deve trovarlo prima che cada nelle mani sbagliate e distrugga la pace per cui hanno sacrificato tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4Nil4DQfBGymHuL2Q9nQwg27orY.jpg",
+        "runtime": 100,
+        "title": "Avatar Aang: L’ultimo dominatore dell’aria",
+        "tmdb_id": 980431,
+        "type": "movie",
+        "vote": 9.0,
+        "vote_count": 1476,
+        "year": 2026
+      },
+      {
+        "genres": [
+          "Famiglia",
+          "Commedia",
+          "Avventura",
+          "Fantasy",
+          "Animazione"
+        ],
+        "overview": "Un idraulico di Brooklyn di nome Mario viaggia attraverso il Regno dei Funghi con una principessa di nome Peach e un fungo antropomorfo di nome Toad per trovare il fratello di Mario, Luigi, e salvare il mondo da uno spietato mostro sputafuoco di nome Bowser.",
+        "poster": "https://image.tmdb.org/t/p/w342/tOFwmYtHWvbMCyegqOEclUB8IvV.jpg",
+        "runtime": 92,
+        "title": "Super Mario Bros. Il Film",
+        "tmdb_id": 502356,
+        "type": "movie",
+        "vote": 7.6,
+        "vote_count": 11352,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Avventura",
+          "Fantasy",
+          "Commedia",
+          "Famiglia"
+        ],
+        "overview": "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a caro prezzo: ben otto delle sue nove vite sono andate bruciate.  Dovrà così intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, che gli permetterà di recuperare le s",
+        "poster": "https://image.tmdb.org/t/p/w342/v8xkTiSL2q680uCFuhc50mSea7q.jpg",
+        "runtime": 100,
+        "title": "Il gatto con gli stivali 2 - L'ultimo desiderio",
+        "tmdb_id": 315162,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 9415,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Avventura",
+          "Fantasy",
+          "Azione"
+        ],
+        "overview": "Le forze di Sauron hanno attaccato la capitale di Gondor, Minas Tirith, nel suo assedio finale contro l'umanità. Tenuto da un debole sovrintendente, quello che una volta era un fastoso regno non ha mai avuto così bisogno del proprio re. Mentre Gandalf tenta disperatamente di spin",
+        "poster": "https://image.tmdb.org/t/p/w342/eCua9No8HqVxGajDQrG8mvRCtJM.jpg",
+        "runtime": 201,
+        "title": "Il Signore degli Anelli - Il ritorno del re",
+        "tmdb_id": 122,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 27908,
+        "year": 2003
       }
     ],
     "movie:496243": [
@@ -3747,7 +4698,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9164,
+        "vote_count": 9171,
         "year": 2023
       },
       {
@@ -3811,7 +4762,7 @@
         "tmdb_id": 76600,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 14930,
+        "vote_count": 14934,
         "year": 2022
       }
     ],
@@ -4370,7 +5321,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -4454,7 +5405,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       },
       {
@@ -4552,7 +5503,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -4584,7 +5535,7 @@
         "tmdb_id": 766507,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 8150,
+        "vote_count": 8153,
         "year": 2022
       },
       {
@@ -4808,7 +5759,7 @@
         "tmdb_id": 414906,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 12954,
+        "vote_count": 12957,
         "year": 2022
       },
       {
@@ -4889,7 +5840,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -4939,7 +5890,7 @@
         "tmdb_id": 603692,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 8569,
+        "vote_count": 8571,
         "year": 2023
       },
       {
@@ -5085,7 +6036,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12974,
+        "vote_count": 12978,
         "year": 2023
       },
       {
@@ -5148,7 +6099,7 @@
         "tmdb_id": 361743,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 11964,
+        "vote_count": 11968,
         "year": 2022
       },
       {
@@ -5323,7 +6274,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9595,
+        "vote_count": 9597,
         "year": 2023
       },
       {
@@ -5435,7 +6386,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9164,
+        "vote_count": 9171,
         "year": 2023
       }
     ],
@@ -5833,6 +6784,138 @@
         "vote": 8.6,
         "vote_count": 3706,
         "year": 2013
+      }
+    ],
+    "tv:12971": [
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+        "runtime": 0,
+        "title": "Naruto",
+        "tmdb_id": 46260,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 6205,
+        "year": 2002
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1714,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
       }
     ],
     "tv:1396": [
@@ -6352,6 +7435,952 @@
         "year": 2013
       }
     ],
+    "tv:31910": [
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+        "runtime": 0,
+        "title": "Naruto",
+        "tmdb_id": 46260,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 6205,
+        "year": 2002
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1714,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
+      }
+    ],
+    "tv:35610": [
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+        "runtime": 0,
+        "title": "Naruto",
+        "tmdb_id": 46260,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 6205,
+        "year": 2002
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1714,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+        "runtime": 0,
+        "title": "Naruto Shippuden",
+        "tmdb_id": 31910,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 8870,
+        "year": 2007
+      }
+    ],
+    "tv:37854": [
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Luz, un'adolescente umana sicura di sé, si imbatte accidentalmente in un portale verso un nuovo mondo magico dove fa amicizia con una strega ribelle, Eda, e un adorabile piccolo guerriero, King. Pur non avendo abilità magiche, Luz realizza il suo sogno di diventare una strega svo",
+        "poster": "https://image.tmdb.org/t/p/w342/qjTcI7gO8z4yOKmbHX4qe98kYCA.jpg",
+        "runtime": 0,
+        "title": "The Owl House - Aspirante strega",
+        "tmdb_id": 92685,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1864,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3670,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mordecai la ghiandaia azzurra, e Rigby il procione sono amici per la pelle e lavorano – o meglio, fanno finta di lavorare – per Benson, un distributore di gomme da masticare che amministra un grande parco. Gli altri personaggi che popolano lo spazio verde sono Skips, uno yeti ing",
+        "poster": "https://image.tmdb.org/t/p/w342/mS5SLxMYcKfUxA0utBSR5MOAWWr.jpg",
+        "runtime": 0,
+        "title": "Regular Show",
+        "tmdb_id": 31132,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2352,
+        "year": 2010
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
+        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
+        "runtime": 0,
+        "title": "Anfibia",
+        "tmdb_id": 85349,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 376,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Fry, giovane fattorino senza stimoli, consegna una pizza a un laboratorio scientifico e qui rimane intrappolato in una camera criogenica la quale si riapre solo mille anni più tardi. Dopo lo stupore e l’entusiasmo iniziali per essere finito nella New York del 3000, Fry scopre di ",
+        "poster": "https://image.tmdb.org/t/p/w342/xsw6c2dXj2Htf45yQCSWV6z3377.jpg",
+        "runtime": 0,
+        "title": "Futurama",
+        "tmdb_id": 615,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 4004,
+        "year": 1999
+      }
+    ],
+    "tv:45790": [
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3670,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+        "runtime": 0,
+        "title": "Naruto",
+        "tmdb_id": 46260,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 6205,
+        "year": 2002
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
+      }
+    ],
+    "tv:46260": [
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+        "runtime": 0,
+        "title": "InuYasha",
+        "tmdb_id": 35610,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2120,
+        "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1714,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+        "runtime": 0,
+        "title": "Naruto Shippuden",
+        "tmdb_id": 31910,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 8870,
+        "year": 2007
+      }
+    ],
+    "tv:46298": [
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1714,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3670,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mordecai la ghiandaia azzurra, e Rigby il procione sono amici per la pelle e lavorano – o meglio, fanno finta di lavorare – per Benson, un distributore di gomme da masticare che amministra un grande parco. Gli altri personaggi che popolano lo spazio verde sono Skips, uno yeti ing",
+        "poster": "https://image.tmdb.org/t/p/w342/mS5SLxMYcKfUxA0utBSR5MOAWWr.jpg",
+        "runtime": 0,
+        "title": "Regular Show",
+        "tmdb_id": 31132,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2352,
+        "year": 2010
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+        "runtime": 0,
+        "title": "Naruto",
+        "tmdb_id": 46260,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 6205,
+        "year": 2002
+      }
+    ],
+    "tv:57706": [
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Luz, un'adolescente umana sicura di sé, si imbatte accidentalmente in un portale verso un nuovo mondo magico dove fa amicizia con una strega ribelle, Eda, e un adorabile piccolo guerriero, King. Pur non avendo abilità magiche, Luz realizza il suo sogno di diventare una strega svo",
+        "poster": "https://image.tmdb.org/t/p/w342/qjTcI7gO8z4yOKmbHX4qe98kYCA.jpg",
+        "runtime": 0,
+        "title": "The Owl House - Aspirante strega",
+        "tmdb_id": 92685,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1864,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3670,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mordecai la ghiandaia azzurra, e Rigby il procione sono amici per la pelle e lavorano – o meglio, fanno finta di lavorare – per Benson, un distributore di gomme da masticare che amministra un grande parco. Gli altri personaggi che popolano lo spazio verde sono Skips, uno yeti ing",
+        "poster": "https://image.tmdb.org/t/p/w342/mS5SLxMYcKfUxA0utBSR5MOAWWr.jpg",
+        "runtime": 0,
+        "title": "Regular Show",
+        "tmdb_id": 31132,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 2352,
+        "year": 2010
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
+        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
+        "runtime": 0,
+        "title": "Anfibia",
+        "tmdb_id": 85349,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 376,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Sono passati cinque anni dal 23° torneo Tenkaichi e Goku vive pacificamente in montagna con Chichi e suo figlio Gohan. Un giorno, un'astronave sospetta arriva sulla Terra alla ricerca di un certo Kaarot.",
+        "poster": "https://image.tmdb.org/t/p/w342/b5JAc3LgLLO4KPivkQa6v2haDIg.jpg",
+        "runtime": 0,
+        "title": "Dragon Ball Z",
+        "tmdb_id": 12971,
+        "type": "tv",
+        "vote": 8.4,
+        "vote_count": 5090,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      }
+    ],
     "tv:60059": [
       {
         "genres": [
@@ -6631,6 +8660,23 @@
       },
       {
         "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
           "Animazione",
           "Commedia",
           "Action & Adventure",
@@ -6684,24 +8730,6 @@
       },
       {
         "genres": [
-          "Mistero",
-          "Sci-Fi & Fantasy",
-          "Animazione",
-          "Famiglia",
-          "Commedia"
-        ],
-        "overview": "I due fratellastri Wirt e Greg si ritrovano improvvisamente smarriti alla deriva del tempo all'interno dell'Ignoto, una foresta tetra e misteriosa. Sperando di ritrovare la strada verso casa, i giovani iniziano un lungo viaggio guidati da un saggio taglialegna e da Beatrice, un b",
-        "poster": "https://image.tmdb.org/t/p/w342/8uHxhk6ey9EgFqWavj9jAa1JKIH.jpg",
-        "runtime": 0,
-        "title": "Over the Garden Wall - Avventura nella foresta dei misteri",
-        "tmdb_id": 61617,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1868,
-        "year": 2014
-      },
-      {
-        "genres": [
           "Animazione",
           "Action & Adventure",
           "Sci-Fi & Fantasy"
@@ -6722,32 +8750,33 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
-        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
         "runtime": 0,
-        "title": "Arcane",
-        "tmdb_id": 94605,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 6347,
-        "year": 2021
+        "vote_count": 2278,
+        "year": 2011
       },
       {
         "genres": [
-          "Animazione",
-          "Dramma",
+          "Mistero",
           "Sci-Fi & Fantasy",
-          "Action & Adventure"
+          "Animazione",
+          "Famiglia",
+          "Commedia"
         ],
-        "overview": "Quando Mark Grayson eredita i superpoteri a 17 anni, si unisce a suo padre come uno dei più grandi supereroi della Terra. Tutti i suoi sogni sembrano essersi avverati, finché un evento scioccante non cambia tutto.",
-        "poster": "https://image.tmdb.org/t/p/w342/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
+        "overview": "I due fratellastri Wirt e Greg si ritrovano improvvisamente smarriti alla deriva del tempo all'interno dell'Ignoto, una foresta tetra e misteriosa. Sperando di ritrovare la strada verso casa, i giovani iniziano un lungo viaggio guidati da un saggio taglialegna e da Beatrice, un b",
+        "poster": "https://image.tmdb.org/t/p/w342/8uHxhk6ey9EgFqWavj9jAa1JKIH.jpg",
         "runtime": 0,
-        "title": "INVINCIBLE",
-        "tmdb_id": 95557,
+        "title": "Over the Garden Wall - Avventura nella foresta dei misteri",
+        "tmdb_id": 61617,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 6181,
-        "year": 2021
+        "vote_count": 1868,
+        "year": 2014
       }
     ],
     "tv:63174": [
@@ -7167,6 +9196,38 @@
       },
       {
         "genres": [
+          "Animazione",
+          "Dramma",
+          "Romance"
+        ],
+        "overview": "Ogaki. Il liceale Shoya Ishida sta per saltare dal ponte per suicidarsi, ma all'ultimo desiste. Cinque anni prima, ai tempi della scuola elementare, nella classe di Shoya arriva Shoko Nishimiya, una ragazza sordomuta: l'accoglienza dei suoi compagni da timida diviene in breve tem",
+        "poster": "https://image.tmdb.org/t/p/w342/kebTSlQRdLCh8sLqkh0B0KaR8i.jpg",
+        "runtime": 0,
+        "title": "La Forma della Voce",
+        "tmdb_id": 378064,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 4794,
+        "year": 2016
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Romance",
+          "Dramma"
+        ],
+        "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
+        "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
+        "runtime": 0,
+        "title": "Your Name.",
+        "tmdb_id": 372058,
+        "type": "movie",
+        "vote": 8.5,
+        "vote_count": 13231,
+        "year": 2016
+      },
+      {
+        "genres": [
           "Dramma"
         ],
         "overview": "Chernobyl è una miniserie televisiva statunitense e britannica, creata e scritta da Craig Mazin e diretta da Johan Renck. Le cinque puntate drammatizzano la vera storia di una delle peggiori catastrofi create dall'uomo a oltre 30 anni dall'accaduto e segue gli uomini e le donne c",
@@ -7239,38 +9300,6 @@
         "type": "tv",
         "vote": 8.2,
         "vote_count": 19823,
-        "year": 2017
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Famiglia"
-        ],
-        "overview": "Dopo aver trascorso la propria infanzia in diversi orfanotrofi, la giovane Anna viene mandata per errore a vivere con gli anziani fratelli Marilla e Matthew Cuthbert. Dopo un'iniziale diffidenza nei confronti di Anna, i due fratelli cominceranno a conoscerla meglio, e la bambina ",
-        "poster": "https://image.tmdb.org/t/p/w342/5D1XeIBMGSurVybggoiedC4uIcP.jpg",
-        "runtime": 0,
-        "title": "Chiamatemi Anna",
-        "tmdb_id": 70785,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 5029,
-        "year": 2017
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Sci-Fi & Fantasy",
-          "Mistero"
-        ],
-        "overview": "La scomparsa di un bambino dà il via a una frenetica ricerca di risposte e quattro famiglie finiscono per svelare un incredibile mistero che dura da tre generazioni.",
-        "poster": "https://image.tmdb.org/t/p/w342/dXmLXRtjCUfkocm9aWVyqGjFAF4.jpg",
-        "runtime": 0,
-        "title": "Dark",
-        "tmdb_id": 70523,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 8020,
         "year": 2017
       }
     ],
@@ -7427,6 +9456,22 @@
       {
         "genres": [
           "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
@@ -7518,22 +9563,6 @@
         "vote": 7.2,
         "vote_count": 4147,
         "year": 2022
-      },
-      {
-        "genres": [
-          "Action & Adventure",
-          "Mistero",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
-        "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
-        "runtime": 0,
-        "title": "Stranger Things",
-        "tmdb_id": 66732,
-        "type": "tv",
-        "vote": 8.5,
-        "vote_count": 22190,
-        "year": 2016
       }
     ],
     "tv:84773": [
@@ -7568,6 +9597,22 @@
         "vote": 8.7,
         "vote_count": 6347,
         "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
       },
       {
         "genres": [
@@ -7646,23 +9691,6 @@
         "type": "tv",
         "vote": 8.2,
         "vote_count": 3339,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Sci-Fi & Fantasy",
-          "Action & Adventure",
-          "Mistero"
-        ],
-        "overview": "Una potente maga nel corpo di una donna cieca incontra un uomo di una famiglia prestigiosa, che vuole il suo aiuto per cambiare il suo destino.",
-        "poster": "https://image.tmdb.org/t/p/w342/pGs6UA4rPUZEokDyTwAGdRvwrAD.jpg",
-        "runtime": 0,
-        "title": "Alchemy of Souls",
-        "tmdb_id": 135157,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 832,
         "year": 2022
       }
     ],
@@ -7794,6 +9822,22 @@
       {
         "genres": [
           "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4759,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
           "Dramma",
           "Sci-Fi & Fantasy",
           "Action & Adventure"
@@ -7878,21 +9922,20 @@
       },
       {
         "genres": [
-          "Animazione",
-          "Action & Adventure",
           "Commedia",
-          "Sci-Fi & Fantasy",
-          "Famiglia"
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
         ],
-        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
-        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
         "runtime": 0,
-        "title": "Anfibia",
-        "tmdb_id": 85349,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
-        "year": 2019
+        "vote_count": 1562,
+        "year": 1989
       },
       {
         "genres": [
@@ -7900,31 +9943,15 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "Un gruppo di mutanti usa le proprie doti incredibili per proteggere un mondo che li odia e li teme.",
-        "poster": "https://image.tmdb.org/t/p/w342/gU4ezBtf2K9t4AsYjbSsYd8Gzga.jpg",
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
         "runtime": 0,
-        "title": "X-Men '97",
-        "tmdb_id": 138502,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 935,
-        "year": 2024
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1714,
-        "year": 2012
+        "vote_count": 2278,
+        "year": 2011
       }
     ],
     "tv:94997": [
@@ -8058,6 +10085,143 @@
         "vote_count": 1442,
         "year": 2023
       }
+    ],
+    "tv:95479": [
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6347,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Luz, un'adolescente umana sicura di sé, si imbatte accidentalmente in un portale verso un nuovo mondo magico dove fa amicizia con una strega ribelle, Eda, e un adorabile piccolo guerriero, King. Pur non avendo abilità magiche, Luz realizza il suo sogno di diventare una strega svo",
+        "poster": "https://image.tmdb.org/t/p/w342/qjTcI7gO8z4yOKmbHX4qe98kYCA.jpg",
+        "runtime": 0,
+        "title": "The Owl House - Aspirante strega",
+        "tmdb_id": 92685,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 1864,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Dramma",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Quando Mark Grayson eredita i superpoteri a 17 anni, si unisce a suo padre come uno dei più grandi supereroi della Terra. Tutti i suoi sogni sembrano essersi avverati, finché un evento scioccante non cambia tutto.",
+        "poster": "https://image.tmdb.org/t/p/w342/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
+        "runtime": 0,
+        "title": "INVINCIBLE",
+        "tmdb_id": 95557,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 6181,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Dopo gli eventi di Loki, il multiverso cade nella follia, mostrando degli universi in cui alcuni dei più importanti momenti del Marvel Cinematic Universe si svolgono in maniera differente...",
+        "poster": "https://image.tmdb.org/t/p/w342/blQIK1T9DxluV867Sm3McMbDC3L.jpg",
+        "runtime": 0,
+        "title": "What If...?",
+        "tmdb_id": 91363,
+        "type": "tv",
+        "vote": 8.0,
+        "vote_count": 4781,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Famiglia"
+        ],
+        "overview": "Le avventure della tredicenne Anne Boonchuy egocentrica che viene magicamente trasportata nel mondo fittizio di Amphibia, una palude rurale piena di rane.  Con l'aiuto di una giovane rana eccitabile di nome Sprig, Anne si trasformerà in un eroe e scoprirà la prima vera amicizia d",
+        "poster": "https://image.tmdb.org/t/p/w342/7ov9VoZYdwBlbDcFr72nxIw1L12.jpg",
+        "runtime": 0,
+        "title": "Anfibia",
+        "tmdb_id": 85349,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 376,
+        "year": 2019
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Commedia",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
+        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
+        "runtime": 0,
+        "title": "Rick and Morty",
+        "tmdb_id": 60625,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 11628,
+        "year": 2013
+      },
+      {
+        "genres": [
+          "Commedia",
+          "Action & Adventure",
+          "Animazione",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+        "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+        "runtime": 0,
+        "title": "Ranma ½",
+        "tmdb_id": 57706,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1562,
+        "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+        "runtime": 0,
+        "title": "Hunter x Hunter",
+        "tmdb_id": 46298,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2278,
+        "year": 2011
+      }
     ]
   },
   "schema": 1,
@@ -8093,7 +10257,7 @@
           "tmdb_id": 687163,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 9026,
+          "vote_count": 9029,
           "year": 2026
         },
         {
@@ -8172,7 +10336,7 @@
           "tmdb_id": 569094,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 9595,
+          "vote_count": 9597,
           "year": 2023
         },
         {
@@ -8230,6 +10394,37 @@
     {
       "id": "hidden",
       "items": [
+        {
+          "genres": [
+            "Animazione",
+            "Dramma",
+            "Romance"
+          ],
+          "overview": "Ogaki. Il liceale Shoya Ishida sta per saltare dal ponte per suicidarsi, ma all'ultimo desiste. Cinque anni prima, ai tempi della scuola elementare, nella classe di Shoya arriva Shoko Nishimiya, una ragazza sordomuta: l'accoglienza dei suoi compagni da timida diviene in breve tem",
+          "poster": "https://image.tmdb.org/t/p/w342/kebTSlQRdLCh8sLqkh0B0KaR8i.jpg",
+          "runtime": 0,
+          "title": "La Forma della Voce",
+          "tmdb_id": 378064,
+          "type": "movie",
+          "vote": 8.4,
+          "vote_count": 4794,
+          "year": 2016
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Thriller"
+          ],
+          "overview": "Di fronte allo scarso successo commerciale, la cantante Mima che deve abbandonare il microcosmo rosa confetto delle idol per essere \"rilanciata\" come attrice, in un mondo dove invece diventerà solo carne da macello. Ottiene la parte di una ragazza psicologicamente instabile nel s",
+          "poster": "https://image.tmdb.org/t/p/w342/kmBiiP02Bl86dmfMsaem0jaWpWI.jpg",
+          "runtime": 0,
+          "title": "Perfect Blue",
+          "tmdb_id": 10494,
+          "type": "movie",
+          "vote": 8.3,
+          "vote_count": 3460,
+          "year": 1998
+        },
         {
           "genres": [
             "Crime",
@@ -8546,6 +10741,239 @@
       ],
       "subtitle": "Serie apprezzate da un pubblico significativo",
       "title": "Serie da divorare"
+    },
+    {
+      "id": "anime",
+      "items": [
+        {
+          "genres": [
+            "Animazione",
+            "Famiglia",
+            "Fantasy",
+            "Avventura"
+          ],
+          "overview": "La piccola Chihiro non sopporta l'idea di traslocare e di perdere i propri amici, ma non può far niente per impedirlo. Proprio quando la famiglia è in viaggio verso la nuova casa, il padre imbocca una strada sterrata che termina davanti a un tunnel misterioso. I genitori sceglier",
+          "poster": "https://image.tmdb.org/t/p/w342/3PV6lq9BNmoyyDXr5tdNeeESEMn.jpg",
+          "runtime": 0,
+          "title": "La città incantata",
+          "tmdb_id": 129,
+          "type": "movie",
+          "vote": 8.5,
+          "vote_count": 19288,
+          "year": 2001
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Romance",
+            "Dramma"
+          ],
+          "overview": "Mitsuha è una studentessa che vive in una piccola città rurale e desidera trasferirsi a Tokyo, nella grande metropoli dove ogni sogno si può realizzare. Taki è uno studente di liceo che vive proprio a Tokyo, ha un lavoro part-time in un ristorante italiano, ma vorrebbe lavorare n",
+          "poster": "https://image.tmdb.org/t/p/w342/uyOd5E0dNTp2AJAJWv0V3asf31u.jpg",
+          "runtime": 0,
+          "title": "Your Name.",
+          "tmdb_id": 372058,
+          "type": "movie",
+          "vote": 8.5,
+          "vote_count": 13231,
+          "year": 2016
+        },
+        {
+          "genres": [
+            "Action & Adventure",
+            "Commedia",
+            "Animazione"
+          ],
+          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
+          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+          "runtime": 0,
+          "title": "One Piece",
+          "tmdb_id": 37854,
+          "type": "tv",
+          "vote": 8.8,
+          "vote_count": 5673,
+          "year": 1999
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+          "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+          "runtime": 0,
+          "title": "Naruto Shippuden",
+          "tmdb_id": 31910,
+          "type": "tv",
+          "vote": 8.5,
+          "vote_count": 8870,
+          "year": 2007
+        },
+        {
+          "genres": [
+            "Fantasy",
+            "Animazione",
+            "Avventura"
+          ],
+          "overview": "Sophie ha diciotto anni e ogni giorno lavora instancabilmente nel negozio di cappelli del suo defunto padre. Un giorno, durante una rara escursione in città, per caso incontra il Mago Howl. Howl è ardito e bello, ma come tutti i maghi un po' smidollato. La Strega della Spazzatura",
+          "poster": "https://image.tmdb.org/t/p/w342/5Sr9s8ZesaDKQhZl2fMuvOxIaxQ.jpg",
+          "runtime": 0,
+          "title": "Il castello errante di Howl",
+          "tmdb_id": 4935,
+          "type": "movie",
+          "vote": 8.4,
+          "vote_count": 11703,
+          "year": 2004
+        },
+        {
+          "genres": [
+            "Avventura",
+            "Fantasy",
+            "Animazione"
+          ],
+          "overview": "In seguito allo scontro con un animale posseduto da un demone il principe Ashitaka viene contaminato da una maledizione mortale. Si mette dunque in viaggio per scoprirne l'origine e chiedere una cura al grande Dio Bestia, l'unico in grado di guarirlo. Arrivato nelle regioni da cu",
+          "poster": "https://image.tmdb.org/t/p/w342/3alL6upCn0GX9Rp1RXtGzmJbEQa.jpg",
+          "runtime": 0,
+          "title": "Princess Mononoke",
+          "tmdb_id": 128,
+          "type": "movie",
+          "vote": 8.3,
+          "vote_count": 9494,
+          "year": 1997
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Sci-Fi & Fantasy",
+            "Action & Adventure"
+          ],
+          "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+          "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+          "runtime": 0,
+          "title": "Jujutsu Kaisen",
+          "tmdb_id": 95479,
+          "type": "tv",
+          "vote": 8.6,
+          "vote_count": 4759,
+          "year": 2020
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Azione",
+            "Fantasy"
+          ],
+          "overview": "Tanjiro Kamado è un ragazzo unitosi a un’organizzazione dedita alla caccia dei demoni chiamata Squadra dei cacciatori di demoni dopo che la sorella minore Nezuko è diventata una di questi mostri. Acquisendo sempre più forza e approfondendo i legami di amicizia con i suoi compagni",
+          "poster": "https://image.tmdb.org/t/p/w342/bq88RHSdnT2rpt4ki9CJUxHz2gH.jpg",
+          "runtime": 0,
+          "title": "Demon Slayer: Il Castello dell'Infinito - Parte 1",
+          "tmdb_id": 1311031,
+          "type": "movie",
+          "vote": 8.8,
+          "vote_count": 2406,
+          "year": 2025
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
+          "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
+          "runtime": 0,
+          "title": "Naruto",
+          "tmdb_id": 46260,
+          "type": "tv",
+          "vote": 8.4,
+          "vote_count": 6205,
+          "year": 2002
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Sci-Fi & Fantasy",
+            "Action & Adventure"
+          ],
+          "overview": "Sono passati cinque anni dal 23° torneo Tenkaichi e Goku vive pacificamente in montagna con Chichi e suo figlio Gohan. Un giorno, un'astronave sospetta arriva sulla Terra alla ricerca di un certo Kaarot.",
+          "poster": "https://image.tmdb.org/t/p/w342/b5JAc3LgLLO4KPivkQa6v2haDIg.jpg",
+          "runtime": 0,
+          "title": "Dragon Ball Z",
+          "tmdb_id": 12971,
+          "type": "tv",
+          "vote": 8.4,
+          "vote_count": 5090,
+          "year": 1989
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
+          "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
+          "runtime": 0,
+          "title": "Hunter x Hunter",
+          "tmdb_id": 46298,
+          "type": "tv",
+          "vote": 8.7,
+          "vote_count": 2278,
+          "year": 2011
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
+          "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
+          "runtime": 0,
+          "title": "InuYasha",
+          "tmdb_id": 35610,
+          "type": "tv",
+          "vote": 8.6,
+          "vote_count": 2120,
+          "year": 2000
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+          "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+          "runtime": 0,
+          "title": "Le bizzarre avventure di JoJo",
+          "tmdb_id": 45790,
+          "type": "tv",
+          "vote": 8.6,
+          "vote_count": 1714,
+          "year": 2012
+        },
+        {
+          "genres": [
+            "Commedia",
+            "Action & Adventure",
+            "Animazione",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "Tornati in Giappone dopo un allenamento in Cina, Ranma Saotome e suo padre Genma vengono ospitati dalla famiglia Tendo per unire le rispettive scuole di arti marziali. Qui il ragazzo scopre di dover sposare la giovane Akane, ma la convivenza viene stravolta da un bizzarro segreto",
+          "poster": "https://image.tmdb.org/t/p/w342/6LmWAQFMD2j8gTUGgmD8vq7xxyA.jpg",
+          "runtime": 0,
+          "title": "Ranma ½",
+          "tmdb_id": 57706,
+          "type": "tv",
+          "vote": 8.6,
+          "vote_count": 1562,
+          "year": 1989
+        }
+      ],
+      "subtitle": "Animazione giapponese dal catalogo Bobo; lingua del player da verificare",
+      "title": "Anime da scoprire"
     },
     {
       "id": "cinephiles",
@@ -8999,7 +11427,7 @@
           "tmdb_id": 603692,
           "type": "movie",
           "vote": 7.7,
-          "vote_count": 8569,
+          "vote_count": 8571,
           "year": 2023
         },
         {
@@ -9046,7 +11474,7 @@
           "tmdb_id": 346698,
           "type": "movie",
           "vote": 6.9,
-          "vote_count": 11857,
+          "vote_count": 11861,
           "year": 2023
         },
         {

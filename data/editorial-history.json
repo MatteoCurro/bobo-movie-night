@@ -12,6 +12,8 @@
         "movie:1339713",
         "tv:94997",
         "movie:1184918",
+        "movie:378064",
+        "movie:10494",
         "movie:466420",
         "movie:866398",
         "movie:1022256",
@@ -32,6 +34,20 @@
         "tv:76479",
         "tv:69050",
         "tv:75006",
+        "movie:129",
+        "movie:372058",
+        "tv:37854",
+        "tv:31910",
+        "movie:4935",
+        "movie:128",
+        "tv:95479",
+        "movie:1311031",
+        "tv:46260",
+        "tv:12971",
+        "tv:46298",
+        "tv:35610",
+        "tv:45790",
+        "tv:57706",
         "tv:1396",
         "movie:278",
         "movie:238",
@@ -97,6 +113,17 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:10494": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-26",
       "last_seen": "2026-11-26",
       "sources": [
         "bobo-editorial",
@@ -229,6 +256,28 @@
         "bobo-editorial"
       ]
     },
+    "movie:128": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:129": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "movie:1291559": {
       "categories": [
         "hidden"
@@ -246,6 +295,17 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:1311031": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
       "last_seen": "2026-11-26",
       "sources": [
         "bobo-editorial",
@@ -518,12 +578,25 @@
     },
     "movie:372058": {
       "categories": [
-        "hidden"
+        "hidden",
+        "anime"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
       "sources": [
-        "bobo-editorial"
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:378064": {
+      "categories": [
+        "hidden"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "movie:396194": {
@@ -554,6 +627,17 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "movie:4935": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
       "last_seen": "2026-11-26",
       "sources": [
         "bobo-editorial",
@@ -857,6 +941,17 @@
       "last_seen": "2026-11-26",
       "sources": [
         "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:12971": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
       ]
@@ -1191,6 +1286,17 @@
         "bobo-editorial"
       ]
     },
+    "tv:31910": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "tv:329394": {
       "categories": [
         "cinephiles"
@@ -1211,14 +1317,70 @@
         "bobo-editorial"
       ]
     },
+    "tv:35610": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
     "tv:37854": {
       "categories": [
-        "cinephiles"
+        "cinephiles",
+        "anime"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
       "sources": [
         "tmdb-trending",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:45790": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:46260": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:46298": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:57706": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
+      "last_seen": "2026-11-26",
+      "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
       ]
@@ -1361,6 +1523,17 @@
         "week"
       ],
       "first_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
+      "sources": [
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:95479": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-26",
       "last_seen": "2026-11-26",
       "sources": [
         "bobo-editorial",
