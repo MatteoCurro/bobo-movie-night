@@ -206,7 +206,12 @@
   function renderUnified() {
     update();
     if (!ready()) return;
-    if (isHome()) return;
+    if (isHome()) {
+      peopleMatches = [];
+      renderPeopleMatches();
+      updateDecadeShortcutState();
+      return;
+    }
     lastResults = applyUnifiedFilters(allItems());
     renderPeopleMatches();
     updateDecadeShortcutState();
