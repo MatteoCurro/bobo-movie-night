@@ -123,7 +123,7 @@ def build(root=Path(".")):
                 offer(other, 32, "Stessa regia · " + director_name)
         for other, pids in associated.items():
             if len(pids) > 1:
-                offer(other, 30 + min(len(pids), 4), f"{len(pids)} interpreti in comune")
+                offer(other, 35 + min(len(pids), 4), f"{len(pids)} interpreti in comune")
             elif len(pids) == 1:
                 pid = next(iter(pids))
                 offer(other, 14, "Con " + current_cast[pid])
