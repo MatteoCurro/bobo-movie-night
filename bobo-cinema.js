@@ -50,7 +50,8 @@
     let hasDirector=false;
     for(const group of roles){
       const seen=new Set();
-      const matches=crew.filter(person=>person&&validId(String(person.id))&&person.job===group.job&&
+      const matches=crew.filter(person=>person&&validId(String(person.id))&&
+        (person.job===group.job||(group.job==='Writer'&&person.job==='Screenplay'))&&
         !seen.has(person.id)&&seen.add(person.id)).slice(0,3);
       if(!matches.length)continue;
       if(group.job==='Director')hasDirector=true;
