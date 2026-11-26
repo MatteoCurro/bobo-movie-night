@@ -135,6 +135,67 @@
     }
     section.hidden=false;
   }
+  function addMetadataRow(host, label, value) {
+    if (!host || value === null || value === undefined || value === '') return;
+    const text = Array.isArray(value) ? value.filter(Boolean).slice(0, 8).join(' · ') : String(value);
+    if (!text) return;
+    const row = node('div', 'bobo-metadata-row');
+    row.append(node('dt', '', label), node('dd', '', text));
+    host.append(row);
+  }
+  function renderExtraFacts(entry) {
+    if (filmType !== 'movie' || !entry) return;
+    const facts = entry.facts || {};
+    const imdb = entry.imdb_metadata || {};
+    const shortFacts = byId('watch-film-facts');
+    const details = byId('watch-extra-facts');
+    const more = byId('watch-extra-facts-grid');
+    if (!shortFacts || !details || !more) return;
+    // The synopsis, awards and reviews have their own dedicated chapters.
+    addMetadataRow(shortFacts, 'Titolo originale', facts.original_title);
+    addMetadataRow(shortFacts, 'Paesi di produzione', facts.countries);
+    addMetadataRow(shortFacts, 'Lingue originali', facts.languages);
+    more.textContent = '';
+    addMetadataRow(more, 'Case di produzione', facts.companies);
+    const usd = value => Number.isFinite(Number(value)) && Number(value) > 0 ?
+      new Intl.NumberFormat('it-IT', {style:'currency', currency:'USD',
+        maximumFractionDigits:0}).format(Number(value)) : '';
+    addMetadataRow(more, 'Budget dichiarato', usd(facts.budget_usd));
+    addMetadataRow(more, 'Incassi mondiali', usd(facts.revenue_usd));
+    const groups = [
+      ['Colonna sonora', 'composers'], ['Fotografia', 'cinematographers'],
+      ['Montaggio', 'editors'], ['Scenografia', 'production_designers'],
+      ['Costumi', 'costume_designers'], ['Luoghi delle riprese', 'filming_locations'],
+      ['Temi', 'interests']
+    ];
+    groups.forEach(([label, key]) => addMetadataRow(more, label, imdb[key]));
+    if (Number(imdb.rating) > 0) {
+      const votes = Number(imdb.votes) > 0 ?
+        ' · ' + new Intl.NumberFormat('it-IT').format(Number(imdb.votes)) + ' voti' : '';
+      addMetadataRow(more, 'Voto IMDb', Number(imdb.rating).toFixed(1) + '/10' + votes);
+    }
+    if (Number.isFinite(Number(imdb.metascore)) && imdb.metascore !== undefined)
+      addMetadataRow(more, 'Metascore', Number(imdb.metascore) + '/100');
+    if (Number(imdb.user_reviews) > 0)
+      addMetadataRow(more, 'Recensioni utenti su IMDb', new Intl.NumberFormat('it-IT').format(imdb.user_reviews));
+    if (Number(imdb.critic_reviews) > 0)
+      addMetadataRow(more, 'Recensioni critiche su IMDb', new Intl.NumberFormat('it-IT').format(imdb.critic_reviews));
+    if (Number(imdb.award_wins) > 0 || Number(imdb.award_nominations) > 0) {
+      addMetadataRow(more, 'Tutti i riconoscimenti IMDb',
+        Number(imdb.award_wins || 0) + ' vittorie · ' +
+        Number(imdb.award_nominations || 0) + ' candidature non vinte');
+    }
+    if (more.children.length) {
+      if (imdb.source === 'imdb-licensed' && /^tt\d{7,10}$/.test(entry.imdb_id || '')) {
+        const source = node('a', 'bobo-metadata-source', 'Fonte: IMDb · dati importati su licenza ↗');
+        source.href = 'https://www.imdb.com/title/' + entry.imdb_id + '/';
+        source.target = '_blank';
+        source.rel = 'noopener noreferrer';
+        more.append(source);
+      }
+      details.hidden = false;
+    }
+  }
   function renderAwards(entry) {
     const section = byId('watch-awards-section');
     const host = byId('watch-awards-list');
@@ -212,6 +273,13 @@
           '&category=' + encodeURIComponent(category);
         card.append(awardsLink);
       }
+      if (award.event === 'Oscar' &&
+          /^https:\/\/www\.oscars\.org\/oscars\/ceremonies\/20\d{2}$/.test(award.source_url || '')) {
+        const primary = node('a', 'bobo-award-source', 'Fonte: Academy Awards ↗');
+        primary.href = award.source_url; primary.target = '_blank';
+        primary.rel = 'noopener noreferrer';
+        card.append(primary);
+      }
       host.append(card);
     }
     section.hidden = !host.children.length;
@@ -285,6 +353,7 @@
       const records=await shard('credits',filmId);
       const entry=records&&records[filmType+':'+filmId];
       renderCredits(entry);
+      renderExtraFacts(entry);
       renderAwards(entry);
     }catch(e){
       // Cast metadata is optional; title, synopsis and player still work.
