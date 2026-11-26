@@ -48,7 +48,7 @@ with tempfile.TemporaryDirectory() as tmp:
         **{f"tv:{i}": {"vote_average": 7.6, "vote_count": 370 + i} for i in range(16, 25)},
     }})
     save(root, "data/cinema/theme-index.json", {"items": {
-        f"movie:{i}": {"topics": ["space sci fi"], "keywords": []}
+        f"movie:{i}": {"topics": ["space sci fi"], "keywords": ["christmas"]}
         for i in range(1, 10)
     }})
     save(root, "data/seasonal.json", {"seasons": [
