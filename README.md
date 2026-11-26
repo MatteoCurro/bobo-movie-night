@@ -91,3 +91,14 @@ La selezione VidSrc non è validata come funzionante; non esiste un fallback aut
 Metadati e immagini: [TMDB](https://www.themoviedb.org/). L'archivio iniziale è stato derivato da CasaFlix; successivamente è gestito da Bobo. Questo progetto non è approvato o certificato da TMDB.
 
 Player: servizi esterni; disponibilità e condizioni di accesso dipendono dai rispettivi fornitori.
+
+## Cast, persone e premi (arricchimento incrementale)
+
+- Le pagine `watch.html?type=movie&id=...` e `watch.html?type=tv&id=...` espongono il cast con il personaggio interpretato e i principali crediti di regia/sceneggiatura. Il testo della sinossi compare soltanto nell'hero.
+- I volti aprono `person.html?id=...`, scheda con fotografia, nascita, biografia (italiano ove disponibile, altrimenti lingua originale indicata) e film/serie **presenti nel catalogo Bobo**. I link possono usare anche una scheda essenziale prima che la biografia sia stata sincronizzata.
+- Solo i premi Oscar/Cannes supportati dai dati strutturati indicizzati di Wikidata vengono visualizzati. Categorie, candidature e premi vinti restano distinti e tracciati alla fonte. Non si deve interpretare il dato come esaustivo o ufficialmente verificato dall'Academy/dal Festival. Nessun premio viene inventato da un voto aggregato.
+- Il job `scripts/build_cinema.py` esegue backfill con limiti predefiniti **32 titoli, 12 persone, 24 verifiche premi** per run, nei normali due cicli giornalieri già presenti; i limiti si configurano con `BOBO_CREDITS_BATCH`, `BOBO_PEOPLE_BATCH` e `BOBO_AWARDS_BATCH` (con tetti massimi nel codice). Dati memorizzati in file sharded `data/cinema/{credits,people}/*.json` e salvati nel repository senza appesantire i JSON del catalogo o il caricamento delle home.
+- Le credenziali TMDB sono quelle già presenti nei segreti di GitHub Actions. In loro assenza le cache vengono conservate. I browser non espongono credenziali e non interrogano direttamente Wikidata.
+- Le trame lunghe non vengono generate artificialmente: quando esisteranno fonti editoriali con diritti di riproduzione, saranno inserite separatamente dalla sinossi breve, con fonte e versione.
+
+Per controllare le funzioni offline: `python3 tests/cinema.py` e `node --check bobo-cinema.js`. Le pagine cast/premi diventano popolate man mano che i job producono i file JSON dopo il merge sulla branch di pubblicazione.
