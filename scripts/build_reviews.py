@@ -80,17 +80,27 @@ def candidate_ids(root:Path)->list[tuple[str,int]]:
         k=(kind,tid)
         if kind not in ("tv","movie") or tid<=0 or k in seen:continue
         seen.add(k);results.append(k)
+    evidence=read(root/"data/editorial-evidence.json",{"titles":{}}).get("titles",{})
     candidates=[]
     for kind,file in (("movie","movies.json"),("tv","tv.json")):
         for film in read(root/"data"/file,{"items":[]}).get("items",[]):
             if not isinstance(film,dict):continue
             try:
                 tid=int(film.get("tmdb_id") or 0)
-                vote=float(film.get("vote") or 0)
-                votes=int(film.get("vote_count") or 0)
+                proof=evidence.get(kind+":"+str(tid),{})
+                vote=float(film.get("vote") or proof.get("vote_average") or 0)
+                # Bobo's base catalog deliberately stores a compact vote
+                # average, not the number of votes. The verified count lives
+                # in the separate editorial-evidence index when available.
+                votes=int(film.get("vote_count") or proof.get("vote_count") or 0)
                 year=int(film.get("year") or 0)
-            except (TypeError,ValueError):continue
-            if tid<=0 or (kind,tid) in seen or vote<5.5 or votes<100:
+            except (TypeError,ValueError,AttributeError):continue
+            if tid<=0 or (kind,tid) in seen or vote<5.5 or not film.get("poster"):
+                continue
+            # Verified popular titles first. Unverified sample size is not
+            # passed off as a real count: these films have a conservative
+            # quality/year fallback solely for candidate discovery.
+            if votes<100 and not (votes==0 and vote>=7.0 and year>=1970):
                 continue
             candidates.append((votes,vote,year,kind,tid))
     candidates.sort(reverse=True)
