@@ -73,6 +73,15 @@
     factHost.hidden=false;
     section.hidden=false;
   }
+  function sourceLink(uri){
+    const host=document.getElementById('watch-quote-resources');
+    const anchor=document.getElementById('watch-quote-source-link');
+    if(!host||!anchor||typeof uri!=='string'||
+       !/^https:\/\/it\.wikiquote\.org\/wiki\/[A-Za-z0-9_%().,;!'-]+$/.test(uri))return;
+    anchor.href=uri;
+    host.hidden=false;
+    section.hidden=false;
+  }
   function render(verified,generic,paired){
     const used=new Set([kind+':'+id,...(paired||[])]),rows=[];
     for(const source of [verified,generic]){
@@ -109,6 +118,7 @@
     if(context){
       reunion(context.together);
       fact(context.fact);
+      sourceLink(context.quote_source);
     }
     let generic=related&&related.items&&related.items[kind+':'+id];
     if(!Array.isArray(generic)||!generic.length){
