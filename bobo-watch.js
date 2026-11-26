@@ -20,7 +20,7 @@
   let item = null;
   let seasons = [];
   let episodeStills = {};
-  const platformNames = {netflix:'Netflix',prime:'Prime Video',disney:'Disney+',apple:'Apple TV+',paramount:'Paramount+',skygo:'Sky Go',now:'NOW'};
+  const platformNames = {netflix:'Netflix',prime:'Prime Video',disney:'Disney+',apple:'Apple TV+',paramount:'Paramount+',skygo:'Sky Go',now:'NOW',hbo:'HBO Max',rai:'RaiPlay',mediaset:'Mediaset Infinity',crunchyroll:'Crunchyroll'};
   let selectedSeason = 1;
   let selectedEpisode = 1;
   let playing = false;
