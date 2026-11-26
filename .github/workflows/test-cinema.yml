@@ -9,6 +9,10 @@ on:
       - 'watch.html'
       - 'bobo-watch.js'
       - 'scripts/build_cinema.py'
+      - 'scripts/build_person_search.py'
+      - 'tests/person-search.py'
+      - 'bobo-ui.js'
+      - 'bobo-polish.css'
       - 'scripts/localize_cinema_people.py'
       - 'tests/person-localization.py'
       - 'scripts/build_oscar_backfill.py'
@@ -31,6 +35,9 @@ jobs:
           set -euo pipefail
           python3 -m py_compile scripts/build_cinema.py
           python3 tests/cinema.py
+          python3 -m py_compile scripts/build_person_search.py
+          python3 tests/person-search.py
+          node --check bobo-ui.js
           python3 -m py_compile scripts/localize_cinema_people.py
           python3 tests/person-localization.py
           python3 -m py_compile scripts/build_oscar_backfill.py
