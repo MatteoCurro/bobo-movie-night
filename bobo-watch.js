@@ -713,6 +713,11 @@
     byId('watch-settings').addEventListener('click',function (event) {
       if (event.target === this) settings(false);
     });
+    document.addEventListener('keydown',function (event) {
+      if (event.key === 'Escape' && theaterFallback) exitTheater();
+      if (event.key === 'Escape' && !byId('watch-settings').hidden) settings(false);
+    });
+    loadTitle();
   }
   document.addEventListener('DOMContentLoaded',setup);
 }());
