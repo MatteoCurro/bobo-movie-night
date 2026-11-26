@@ -49,7 +49,8 @@ jobs:
           python3 scripts/prepare_flaticon.py
           python3 scripts/build_catalog_ledger.py
           python3 scripts/build_reviews.py
-          python3 scripts/build_catalog_metrics.py
+          python3 scripts/build_related_index.py
+          python3 scripts/build_catalog_metrics.py scripts/build_related_index.py
           python3 scripts/build_poster_index.py
 
       - name: Validate Bobo enhancements
@@ -182,7 +183,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/catalog-metrics.json data/reviews.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
+          git add index.html data/related/ data/catalog-metrics.json data/reviews.json data/editorial.json data/editorial-history.json data/editorial-evidence.json data/movies.json data/tv.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/episodes/ data/catalog-status.json data/newsletter.json assets/flaticon/ .nojekyll
           if git diff --cached --quiet; then
             echo "Already up to date."
             exit 0
@@ -210,6 +211,7 @@ jobs:
           cp index.html _site/index.html
           cp data/movies.json data/tv.json data/editorial.json data/discovery.json data/catalog-ledger.json data/poster-index.json data/enrichment.json data/catalog-status.json data/newsletter.json data/player-sources.json data/verified-audio.json data/reviews.json data/catalog-metrics.json _site/data/
           cp -R data/episodes _site/data/
+          cp -R data/related _site/data/
           test -d _site/data/episodes
           test -s _site/data/enrichment.json
           test -s _site/data/catalog-status.json
