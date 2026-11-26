@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#10151b;--bg2:#15212b;--line:#38515c;--accent:#a6dbd2;--green:#c5f38d;--fg:#f4fbfa;--muted:#abbec2}
+*{box-sizing:border-box}
+html{background:var(--bg);font:18px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg);overscroll-behavior:contain}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 42% 9%,#1a313c 0%,#10151b 62%)}
+button,input{font:inherit}button{color:inherit;border:0;cursor:pointer;outline:none}button:disabled{opacity:.32;cursor:default}
+[hidden]{display:none!important}
+.topbar{position:sticky;top:0;z-index:40;height:88px;display:flex;align-items:center;justify-content:space-between;gap:45px;padding:0 70px;background:rgba(14,22,29,.97);border-bottom:1px solid #38515c77;backdrop-filter:blur(14px)}
+.logo{font-size:36px;line-height:1;font-weight:950;letter-spacing:-.06em;white-space:nowrap}.logo span,.player-brand span{color:var(--green)}.logo small{font:600 10px/1 monospace;text-transform:uppercase;display:block;letter-spacing:.33em;margin-top:4px;color:#b0d6d4}
+nav{display:flex;gap:14px;align-items:center;justify-content:center;flex:1}.tab{padding:11px 24px;font-size:18px;font-weight:700;border-radius:8px;background:transparent;color:#c3d4d7}.tab.active{background:#2e4853;color:white}
+.top-hint{font:600 12px/1 monospace;letter-spacing:.2em;color:#86aab0}
+main{padding:30px 70px 75px;min-height:calc(100vh - 88px);outline:0}
+.hero{position:relative;min-height:340px;border-radius:18px;overflow:hidden;display:flex;align-items:flex-end;background:linear-gradient(108deg,#13202a,#263f4d);margin:0 0 30px;isolation:isolate}
+.hero-art{position:absolute;inset:0;background-position:80% center;background-size:cover;z-index:-2;opacity:.8}
+.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,17,22,.98) 1%,rgba(11,17,22,.88) 35%,rgba(11,17,22,.12) 94%),linear-gradient(0deg,#10151baa,transparent 75%);z-index:-1}
+.hero-content{width:min(75%,820px);padding:37px 45px}.eyebrow{text-transform:uppercase;letter-spacing:.23em;font:800 12px monospace;color:var(--green)}
+h1{font-size:clamp(34px,3.1vw,59px);line-height:1.08;margin:10px 0 16px;letter-spacing:-.035em}
+h2{font-size:26px;letter-spacing:-.025em;margin:0 0 17px}p{margin:0}.synopsis{font-size:18px;line-height:1.45;color:#d3e2e4;max-width:760px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{font-size:16px;color:var(--muted);margin:12px 0 18px}
+.action{padding:14px 25px;min-width:145px;border-radius:8px;background:var(--green);color:#14252a;font-weight:850;font-size:19px;display:inline-flex;gap:10px;align-items:center;justify-content:center}
+.action.secondary{background:#2d424d;color:#ecfbf9}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:23px}
+.shelf{margin-bottom:38px;scroll-margin-top:115px}.shelf-head{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 15px}.shelf-note{font:500 14px monospace;color:#91b2b8}
+.rail{display:flex;gap:20px;overflow-x:auto;padding:7px 8px 22px;scrollbar-width:none;scroll-behavior:smooth;scroll-snap-type:x proximity}.rail::-webkit-scrollbar{display:none}
+.poster{flex:0 0 clamp(154px,13.3vw,235px);width:clamp(154px,13.3vw,235px);background:none;text-align:left;padding:0;position:relative;scroll-snap-align:start}
+.poster-art{display:block;position:relative;aspect-ratio:2/3;border-radius:9px;overflow:hidden;background:linear-gradient(130deg,#284050,#121c25);box-shadow:0 11px 18px #0005}
+.poster-art img{width:100%;height:100%;display:block;object-fit:cover}.poster-art .poster-placeholder{padding:20px;display:grid;place-items:center;height:100%;text-align:center;font-weight:750}
+.poster-title{display:block;font-size:14px;font-weight:700;line-height:1.3;margin-top:12px;color:#e7f4f3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.poster-sub{display:block;font-size:12px;color:#91b6ba;margin-top:3px}
+.poster:focus .poster-art,.episode:focus,.tab:focus,.action:focus,.season:focus,.search-result:focus,.search-input:focus{outline:4px solid var(--green);outline-offset:5px;box-shadow:0 0 0 8px rgba(7,15,20,.82),0 0 38px #d0fc91a6}
+.poster:focus{transform:scale(1.045);z-index:5}
+button:focus-visible{outline:4px solid var(--green)!important;outline-offset:4px}
+.poster:focus .poster-title{color:var(--green)}
+section,button{scroll-margin-top:112px;scroll-margin-bottom:55px}
+.section-header{display:flex;align-items:center;gap:25px;margin:9px 0 25px}
+.section-header h1{margin:0}.section-desc{color:var(--muted);font-size:16px}
+.results{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:25px 19px}
+.results .poster{width:100%;max-width:none;min-width:0}
+.detail-backdrop{min-height:360px}.detail-backdrop .hero-content{padding:40px 45px}
+.season-list{display:flex;gap:13px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:11px 7px 21px}.season{padding:13px 22px;background:#29414d;color:#e8f8f5;border-radius:8px;flex:none;font-weight:700}.season.active{background:var(--green);color:#172730}
+.episodes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:4px 0 30px}
+.episode{min-height:90px;text-align:left;padding:18px;background:#1e303b;border:1px solid #45616d;border-radius:10px}
+.episode strong{display:block;font-size:17px;margin-bottom:6px}.episode span{display:block;color:#bad0d4;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.episode.active{border-color:var(--green);background:#284439}
+.search-bar{max-width:980px;margin:15px 0 30px}.search-label{display:block;font-weight:800;margin-bottom:13px;font-size:19px}
+.search-input{width:100%;padding:20px 24px;background:#20313c;color:white;border:2px solid #6b8590;border-radius:10px;font-size:23px}
+.search-input::placeholder{color:#9db1b8}
+.loading{display:flex;align-items:center;flex-direction:column;justify-content:center;min-height:55vh;color:#d6eced;gap:22px;font-size:23px}
+.spinner{width:42px;height:42px;border-radius:50%;border:4px solid #3f6675;border-top-color:var(--green);animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.message{font-size:20px;color:#c1d6da;padding:15px}
+.player{position:fixed;z-index:90;inset:0;background:#000}.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.player-top{position:absolute;left:35px;top:20px;right:35px;z-index:5;display:flex;gap:25px;align-items:center;padding:12px 22px;background:linear-gradient(90deg,#101a22ed,#101a2208);pointer-events:none;opacity:.8}
+.player-brand{font-weight:900;font-size:25px}.player-top #playing-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:18px}
+.start-guide{position:absolute;top:37%;left:50%;transform:translateX(-50%);pointer-events:none;z-index:5;padding:14px 24px;border-radius:8px;background:#0d1823cc;color:#f5fcfa;font-size:20px;text-align:center}
+.player-hud{position:absolute;left:4%;right:4%;bottom:4%;z-index:6;background:linear-gradient(90deg,#0b1318f5,#10262cf0);border:1px solid #54777b99;border-radius:12px;padding:18px 28px;pointer-events:none;transition:opacity .25s}
+.player-hud.quiet{opacity:0}.player-hud-primary{display:flex;gap:25px;align-items:center;font-size:19px}.player-hud-primary #play-symbol{font-size:28px;color:var(--green)}#play-timestamp{margin-left:auto;color:#c6d9dc;font:600 17px monospace}
+.hud-progress{height:6px;margin:15px 0;background:#44616b;border-radius:10px;overflow:hidden}.hud-progress>div{height:100%;width:0;background:var(--green);transition:width .2s}
+.player-hud-guide{display:flex;justify-content:space-between;gap:16px;color:#d7ecec;font:650 16px monospace}
+#player-note{font-size:13px;margin-top:12px;color:#9fb7bb}
+#toast{position:fixed;z-index:150;bottom:40px;left:50%;transform:translateX(-50%);padding:12px 21px;border-radius:8px;background:#2a4651;color:white;box-shadow:0 5px 30px #0008;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}
+@media(max-width:1050px){.topbar{padding:0 32px;gap:18px}.tab{padding:11px}.top-hint{display:none}main{padding:28px 35px}.results{grid-template-columns:repeat(4,1fr)}.episodes{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* TV artwork already contains the title: only the focused title is shown in the header. */
+.poster-title,.poster-sub{display:none!important}
+.top-hint{max-width:330px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 16px/1.3 system-ui,sans-serif;letter-spacing:0;color:#cfe8e4}
+
+/* TV: use the existing Bobo brand type, not the Android default. */
+:root{--bobo-font-display:'Space Grotesk','Segoe UI',sans-serif;--bobo-font-body:'DM Sans','Segoe UI',sans-serif;--bobo-font-mono:'IBM Plex Mono',monospace}
+html,body,button,input{font-family:var(--bobo-font-body)}
+h1,h2,.logo,.player-brand,.poster-focus-info{font-family:var(--bobo-font-display)}
+.eyebrow,.meta,.shelf-note,.top-hint,.player-hud-guide{font-family:var(--bobo-font-mono)}
+/* Focus ring is fully INSIDE the art so clipped carousels cannot cut it away. */
+.poster:focus,.poster:focus-visible{outline:none!important;transform:none;z-index:5}
+.poster:focus .poster-art,.poster:focus-visible .poster-art{outline:none;box-shadow:0 10px 28px #0009}
+.poster:focus .poster-art::after,.poster:focus-visible .poster-art::after{
+ content:"";position:absolute;inset:0;z-index:5;box-sizing:border-box;
+ border:5px solid var(--green);border-radius:9px;pointer-events:none;
+ box-shadow:inset 0 0 0 2px #071216;
+}
+.poster:focus .poster-art::before,.poster:focus-visible .poster-art::before{
+ content:attr(data-focus-title) "\A" attr(data-focus-meta);
+ white-space:pre-line;position:absolute;left:0;right:0;bottom:0;z-index:4;
+ padding:70px 15px 21px;color:#f3faf8;text-align:left;
+ background:linear-gradient(0deg,rgba(6,13,18,.98),rgba(6,13,18,.82) 46%,transparent);
+ font:650 16px/1.5 var(--bobo-font-display);word-break:break-word;pointer-events:none;
+}
+.rail{padding:12px 15px 22px;margin:0 -15px;scroll-padding-inline:15px}
+.results{padding:8px 7px 18px;gap:24px 17px}
+.player-top{transition:opacity .25s ease}
+.player-top.quiet{opacity:0!important;visibility:hidden!important}
+.start-guide{display:none!important}
+.player-hud.quiet{opacity:0;visibility:hidden}
+.player-hud{transition:opacity .22s ease,visibility .22s}
+
+/* APK v1.2: search remains usable with Android TV's on-screen keyboard. */
+#search-done{margin:12px 0 0;min-height:47px;padding:10px 22px;font-size:17px}
+body.tv-search-editing #search-results{
+ display:flex!important;grid-template-columns:none!important;
+ gap:15px;overflow-x:auto;overflow-y:hidden;
+ height:min(240px,28vh);max-height:240px;
+ padding:9px 10px 5px;scrollbar-width:none;
+}
+body.tv-search-editing #search-results::-webkit-scrollbar{display:none}
+body.tv-search-editing #search-results .poster{
+ flex:0 0 125px!important;width:125px!important;height:190px!important;
+}
+body.tv-search-editing #search-results .poster-art{width:125px;height:188px;aspect-ratio:auto}
+body.tv-search-editing #search-results .poster:focus .poster-art::before{padding:35px 9px 12px;font-size:12px}
+body.tv-search-editing main{padding-top:14px}
+body.tv-search-editing .section-header{margin-bottom:10px}
+body.tv-search-editing .search-bar{margin:0 0 12px}
+body.tv-search-editing .search-input{padding:12px 18px;max-width:760px}
+body.tv-search-editing #search-done{margin:8px 0 0}
+body.tv-search-editing #search-message{font-size:13px;padding:4px}
+/* TV account and saved collection use the same spatial D-pad focus. */
+.account-screen{max-width:970px;padding:27px 16px 30px}
+.account-screen h1{font-size:clamp(38px,3.5vw,62px);margin:14px 0 22px}
+.account-screen .section-desc{font-size:20px;line-height:1.5;max-width:810px}
+.account-form{display:grid;max-width:680px;gap:12px;margin:35px 0 15px;
+ padding:27px 30px;border:1px solid #425d66;background:#162530;border-radius:12px}
+.account-form label{font:650 16px var(--bobo-font-body);color:#d8ece8}
+.account-form input{font:500 19px var(--bobo-font-body);padding:14px 17px;
+ border:2px solid #5c7e87;border-radius:8px;background:#0e1d27;color:white}
+.account-form input:focus{border-color:var(--green);outline:3px solid #c5f38d}
+.account-form .actions{margin-top:10px}
+.account-help{font-size:17px;line-height:1.6;color:#a5bcbf;max-width:700px}
+.account-help strong{font-family:var(--bobo-font-mono);color:#d8e7e6;word-break:break-word}
+#tv-login-error{font-size:16px;color:#f3c4b6;min-height:22px}
+#tv-favorite{min-width:225px}
+.topbar{gap:16px}
+nav{gap:6px}
+.tab{padding:11px 15px;font-size:17px;white-space:nowrap}
+@media(max-width:1300px){.top-hint{display:none}.topbar{padding:0 28px}.tab{font-size:15px;padding:10px 12px}}
+/* Make the long press transport hint legible while minimizing the footprint. */
+.player-hud-guide{font-size:14px}
+.player-hud-primary{font-family:var(--bobo-font-display)}
+
+/* TV 1.3 — quieter cinematic treatment, with more legible D-pad selection. */
+:root{--bg:#0c1219;--bg2:#14232c;--fg:#f5faf8;--line:#334b55}
+body{background:radial-gradient(ellipse at 67% 4%,#1b303c 0%,#101b24 39%,#0c1219 78%)}
+.topbar{background:rgba(10,17,24,.95);border-color:#334d564d;box-shadow:0 10px 24px #0003}
+.logo{font-size:34px;letter-spacing:-.055em}
+.tab{border-radius:13px;transition:background .16s,color .16s;line-height:1.2}
+.tab.active{background:#28404b;box-shadow:inset 0 0 0 1px #4b747b77;color:var(--fg)}
+.tab:focus-visible,.action:focus-visible,.season:focus-visible{outline-offset:3px!important}
+.hero{border-radius:20px;box-shadow:0 16px 35px #0005;border:1px solid #ffffff11}
+.hero:before{background:linear-gradient(90deg,rgba(9,16,22,.96) 4%,rgba(9,16,22,.83) 38%,rgba(9,16,22,.10) 93%),linear-gradient(0deg,#0c1219a8,transparent 75%)}
+.poster-art{border-radius:13px;box-shadow:0 11px 22px #0006;transition:transform .18s ease,box-shadow .18s ease}
+.poster:focus .poster-art,.poster:focus-visible .poster-art{transform:translateY(-4px);box-shadow:0 17px 29px #000b}
+.poster:focus .poster-art::after,.poster:focus-visible .poster-art::after{border-radius:13px;border-width:4px}
+.shelf{margin-bottom:34px}.shelf-head h2{font-size:27px}
+.action{border-radius:12px;min-height:54px}.action.secondary{background:#29404b}
+.account-screen{padding:35px 18px 40px}
+.account-status{display:inline-flex;align-items:center;gap:8px;color:#bbddcb;background:#1c3b36;
+ border:1px solid #416657;border-radius:999px;padding:9px 15px;margin:17px 0 4px;font-size:16px}
+.account-form{border-radius:18px;background:linear-gradient(145deg,#182b35,#111e27);box-shadow:0 15px 38px #0004}
+.tv-update-pill{flex-shrink:0;border:1px solid #a7e2a69a;border-radius:999px;background:#294735;
+ color:#d9ffd5;font-size:15px;font-weight:800;padding:12px 17px;white-space:nowrap}
+.tv-update-pill:focus-visible{outline:4px solid var(--green);outline-offset:4px}
+@media(max-width:1300px){.tv-update-pill{padding:9px 11px;font-size:13px}}
+
+
+/* TV 1.3.1 — visual refresh: editorial home, more immersive artwork and clear D-pad focus.
+   Restrict the changes to the native APK: playback styles remain unchanged. */
+:root {
+ --bg: #090e14;
+ --bg2: #111c26;
+ --line: #33424d;
+ --green: #b9ff8b;
+ --accent: #91e9d4;
+ --fg: #fbfffc;
+ --muted: #aebdc5;
+ --tv-panel: #172430;
+}
+html { background: var(--bg); }
+body {
+ background:
+  radial-gradient(ellipse 68% 42% at 83% 10%, rgba(31,77,82,.27), transparent 76%),
+  radial-gradient(ellipse 64% 32% at 12% 44%, rgba(19,41,63,.33), transparent 88%),
+  #090e14;
+}
+.topbar {
+ height: 92px; padding: 0 58px; gap: 24px;
+ background: rgba(8,13,20,.97);
+ border-bottom: 1px solid rgba(186,221,221,.13);
+ box-shadow: 0 18px 50px rgba(0,0,0,.22);
+}
+.logo { font-size: 38px; letter-spacing: -.065em; text-shadow: 0 2px 26px #0009; }
+.logo span { color: var(--green); }
+.logo small { color: #afc2be; letter-spacing: .29em; }
+nav { justify-content: flex-start; gap: 6px; }
+.tab {
+ font-size: 18px; font-weight: 750; padding: 13px 19px;
+ background: none; color: #b0c1c7;
+ border: 1px solid transparent; border-radius: 999px;
+ transition: background .17s ease, border-color .17s ease, color .17s ease;
+}
+.tab.active {
+ background: linear-gradient(145deg,#263c42,#1b3037);
+ border-color: rgba(175,234,207,.30);
+ color: #eaffdf;
+ box-shadow: inset 0 0 0 1px #24413c, 0 9px 18px #0003;
+}
+.tab:focus-visible {
+ background:#263c41;outline:3px solid var(--green)!important;outline-offset:3px!important;
+}
+main { padding: 32px 60px 90px; min-height: calc(100vh - 92px); }
+.hero {
+ min-height: 470px;
+ border-radius: 24px;
+ margin: 0 0 40px;
+ align-items: center;
+ background: #12232e;
+ border: 1px solid rgba(194,237,222,.16);
+ box-shadow: 0 30px 75px #0009, 0 2px 0 rgba(255,255,255,.02) inset;
+}
+.hero-art {
+ opacity: 1;
+ background-position: 75% 34%;
+ transform: scale(1.02);
+ filter: saturate(1.13) contrast(1.09);
+}
+.hero:before {
+ background:
+  linear-gradient(90deg, #071016 0%, rgba(7,16,22,.98) 22%, rgba(7,16,22,.78) 47%, rgba(7,16,22,.05) 88%),
+  linear-gradient(0deg, rgba(7,16,22,.91), transparent 36%, transparent 72%,rgba(7,16,22,.11));
+}
+.hero:after {
+ content:""; position:absolute; inset:0; pointer-events:none;
+ border-radius:inherit;
+ box-shadow: inset 0 0 80px #070e14a8;
+ z-index:-1;
+}
+.hero-content { width: min(65%, 900px); padding: 44px 55px; }
+.eyebrow { color: var(--green); font-size:14px; font-weight:800; letter-spacing:.18em; }
+.hero .eyebrow { display:inline-flex;align-items:center;gap:12px; }
+.hero .eyebrow:before {
+ content:"";display:inline-block;width:8px;height:8px;border-radius:50%;
+ background:var(--green);box-shadow:0 0 0 5px #b9ff8b20,0 0 19px #b9ff8b7c;
+}
+.hero h1 {
+ font-size:clamp(44px,4.4vw,82px);
+ line-height:1.02;letter-spacing:-.057em;
+ margin:25px 0 17px;
+ max-width:830px;
+ text-wrap:balance;
+ text-shadow: 0 4px 24px #000b;
+}
+.hero .meta {
+ color:#d9e8e6; font-size:17px; margin:0 0 22px;
+ letter-spacing:.02em;
+}
+.hero .synopsis {
+ font-size:20px;line-height:1.55;max-width:760px;
+ color:#d7e5e5;-webkit-line-clamp:3;
+}
+.hero .actions { margin-top:27px; }
+.action {
+ border-radius: 11px; min-height:60px;
+ padding: 15px 30px; font-size:19px;
+ background: var(--green);
+ color:#10251a;
+ box-shadow: 0 13px 34px rgba(103,189,93,.12);
+ transition: background .17s ease,transform .17s ease;
+}
+.action.secondary {
+ background:rgba(35,57,67,.94);
+ color:#f2fff8;
+ box-shadow: inset 0 0 0 1px #5177808c;
+}
+.action:focus-visible { transform:translateY(-2px); }
+.shelf { margin-bottom: 47px; }
+.shelf-head {
+ align-items:center;gap:18px;
+ margin:0 0 20px;
+ border-left:4px solid var(--green);
+ padding:3px 0 3px 17px;
+}
+.shelf-head h2 { font-size:29px;letter-spacing:-.04em;font-weight:750;line-height:1.2; }
+.shelf-note {
+ margin-left:auto; padding:7px 13px;
+ background:#1e2e35; color:#aecdce;
+ border-radius:99px;font-size:13px;letter-spacing:.03em;
+}
+.rail {gap:21px;padding:15px 16px 26px;margin:0 -16px;scroll-padding-inline:16px;}
+.poster { flex-basis:clamp(158px,14.6vw,244px); width:clamp(158px,14.6vw,244px); }
+.poster-art {
+ border-radius:16px;
+ background:linear-gradient(150deg,#253d42,#111d2b);
+ box-shadow:0 13px 28px #0009;
+ border:1px solid #cadfc015;
+}
+.poster-art img {filter:saturate(.94);transition:filter .2s;}
+.poster:focus .poster-art,.poster:focus-visible .poster-art {
+ transform:translateY(-6px) scale(1.035);
+ box-shadow:0 22px 40px #000d,0 0 0 2px rgba(185,255,139,.35);
+}
+.poster:focus .poster-art img,.poster:focus-visible .poster-art img {filter:saturate(1.16) brightness(1.06);}
+.poster:focus .poster-art::after,.poster:focus-visible .poster-art::after {
+ border-radius:16px;border:5px solid var(--green);
+ box-shadow:inset 0 0 0 1px #0e2515,0 0 20px #b9ff8b22;
+}
+.poster:focus .poster-art::before,.poster:focus-visible .poster-art::before {
+ padding:65px 18px 24px;font-size:17px;line-height:1.4;font-weight:700;
+ background:linear-gradient(0deg,#060b0ff5 6%,#071216dc 49%,transparent);
+}
+.results {gap:26px 20px;padding-top:16px;}
+.results .poster{width:100%;}
+.section-header {
+ display:flex; align-items:baseline; justify-content:space-between;
+ gap:25px; padding-bottom:23px; margin:10px 0 26px;
+ border-bottom:1px solid #5072743e;
+}
+.section-header h1 {font-size:52px;letter-spacing:-.05em;}
+.section-header .section-desc {color:#c1d1d5;font-size:17px;}
+.detail-backdrop {min-height:440px;}
+.season {border-radius:999px;min-height:53px;padding:13px 25px;background:#1d303b;}
+.season.active {background:var(--green);}
+.episode {
+ min-height:105px;padding:20px 21px;
+ border-radius:13px;background:#15252f;border-color:#36515e;
+ transition:border-color .18s,background .18s;
+}
+.episode:focus-visible {background:#2a413e;outline-color:var(--green)!important;}
+.episode.active {border-color:var(--green);background:#1b3630;}
+.account-screen {background:radial-gradient(ellipse at 100% 3%,#1b3d3c70,transparent 65%);border-radius:22px;}
+#toast {
+ background:#d4ffb3; color:#12251e;
+ border-radius:999px; padding:16px 26px;
+ font-size:18px;font-weight:800;
+ box-shadow:0 20px 45px #000b;
+}
+@media(max-width:1450px) {
+ .topbar{padding:0 32px;gap:16px;}
+ .tab{padding:11px 13px;font-size:16px;}
+ main{padding:27px 36px 80px;}
+ .hero{min-height:395px;}
+ .hero-content{width:min(74%,800px);padding:32px 40px;}
+ .hero h1{font-size:clamp(42px,4vw,65px);}
+ .hero .synopsis{font-size:18px;}
+}
+@media(max-width:1050px) {
+ .topbar{height:84px;}
+ .logo{font-size:30px;}
+ .tab{padding:10px 11px;font-size:14px;}
+ .hero{min-height:345px;}
+ .hero h1{font-size:42px;}
+ .shelf-head h2{font-size:24px;}
+ .section-header h1{font-size:40px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .action,.poster-art,.poster-art img{transition:none!important;}
+}
+
+/* Home edition masthead and badges belong only to the TV catalog. */
+.home-kicker {
+ display:flex; justify-content:space-between; align-items:center;
+ padding:2px 3px 21px; gap:18px;
+}
+.home-kicker .eyebrow { color:#b9ff8b;font-size:13px; }
+.home-kicker-count {
+ background:rgba(23,41,47,.82); color:#d7e5df;
+ padding:9px 15px;border-radius:99px;
+ border:1px solid rgba(151,207,194,.23);
+ font:700 14px/1.2 var(--bobo-font-mono);
+}
+.poster-type {
+ display:none; position:absolute; left:13px; top:12px; z-index:4;
+ background:#b9ff8b; color:#11231b;
+ font:900 11px/1.2 var(--bobo-font-mono);
+ letter-spacing:.09em; padding:8px 10px;border-radius:8px;
+ box-shadow:0 6px 15px #0008;
+}
+.poster:focus .poster-type,.poster:focus-visible .poster-type{display:block;}
