@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-28T03:55:13+00:00",
+  "generated_at": "2026-11-28T15:35:05+00:00",
   "method": "TMDB, selezione automatica con campione minimo e punteggio bayesiano; non recensioni indipendenti.",
   "region": "IT",
   "related": {
@@ -18,7 +18,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
       },
       {
@@ -72,7 +72,7 @@
         "tmdb_id": 808,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 19644,
+        "vote_count": 19646,
         "year": 2001
       },
       {
@@ -90,7 +90,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       },
       {
@@ -107,7 +107,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6899,
+        "vote_count": 6900,
         "year": 2024
       },
       {
@@ -140,7 +140,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11713,
+        "vote_count": 11714,
         "year": 2004
       }
     ],
@@ -188,7 +188,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4794,
+        "vote_count": 4797,
         "year": 2026
       },
       {
@@ -204,7 +204,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17479,
+        "vote_count": 17482,
         "year": 2014
       },
       {
@@ -249,7 +249,7 @@
         "tmdb_id": 354912,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 21947,
+        "vote_count": 21948,
         "year": 2017
       }
     ],
@@ -282,7 +282,7 @@
         "tmdb_id": 550,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 33459,
+        "vote_count": 33460,
         "year": 1999
       },
       {
@@ -314,7 +314,7 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
       },
       {
@@ -346,7 +346,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24310,
+        "vote_count": 24311,
         "year": 1995
       },
       {
@@ -363,7 +363,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
       },
       {
@@ -397,7 +397,7 @@
         "tmdb_id": 696806,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 5296,
+        "vote_count": 5297,
         "year": 2022
       },
       {
@@ -414,7 +414,7 @@
         "tmdb_id": 284053,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 22827,
+        "vote_count": 22828,
         "year": 2017
       },
       {
@@ -430,7 +430,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7165,
+        "vote_count": 7172,
         "year": 2026
       },
       {
@@ -445,7 +445,7 @@
         "tmdb_id": 687163,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 9056,
+        "vote_count": 9057,
         "year": 2026
       },
       {
@@ -462,7 +462,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -494,7 +494,7 @@
         "tmdb_id": 157336,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 42049,
+        "vote_count": 42053,
         "year": 2014
       },
       {
@@ -511,7 +511,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6899,
+        "vote_count": 6900,
         "year": 2024
       }
     ],
@@ -530,7 +530,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -547,7 +547,7 @@
         "tmdb_id": 1007757,
         "type": "movie",
         "vote": 8.8,
-        "vote_count": 2317,
+        "vote_count": 2318,
         "year": 2026
       },
       {
@@ -599,7 +599,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
       },
       {
@@ -617,7 +617,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       },
       {
@@ -634,7 +634,7 @@
         "tmdb_id": 9806,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 19590,
+        "vote_count": 19591,
         "year": 2004
       },
       {
@@ -651,7 +651,7 @@
         "tmdb_id": 862,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 20895,
+        "vote_count": 20896,
         "year": 1995
       }
     ],
@@ -685,7 +685,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27921,
+        "vote_count": 27922,
         "year": 2003
       },
       {
@@ -701,7 +701,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5553,
+        "vote_count": 5576,
         "year": 2026
       },
       {
@@ -717,7 +717,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23160,
+        "vote_count": 23161,
         "year": 2003
       },
       {
@@ -784,7 +784,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20399,
+        "vote_count": 20402,
         "year": 2012
       }
     ],
@@ -802,7 +802,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27921,
+        "vote_count": 27922,
         "year": 2003
       },
       {
@@ -818,7 +818,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28976,
+        "vote_count": 28978,
         "year": 2001
       },
       {
@@ -834,7 +834,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23160,
+        "vote_count": 23161,
         "year": 2003
       },
       {
@@ -850,7 +850,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5553,
+        "vote_count": 5576,
         "year": 2026
       },
       {
@@ -917,7 +917,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20399,
+        "vote_count": 20402,
         "year": 2012
       }
     ],
@@ -951,7 +951,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28976,
+        "vote_count": 28978,
         "year": 2001
       },
       {
@@ -967,7 +967,7 @@
         "tmdb_id": 22,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 23160,
+        "vote_count": 23161,
         "year": 2003
       },
       {
@@ -983,7 +983,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5553,
+        "vote_count": 5576,
         "year": 2026
       },
       {
@@ -1050,7 +1050,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20399,
+        "vote_count": 20402,
         "year": 2012
       }
     ],
@@ -1068,7 +1068,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11713,
+        "vote_count": 11714,
         "year": 2004
       },
       {
@@ -1085,7 +1085,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
       },
       {
@@ -1102,7 +1102,7 @@
         "tmdb_id": 1007757,
         "type": "movie",
         "vote": 8.8,
-        "vote_count": 2317,
+        "vote_count": 2318,
         "year": 2026
       },
       {
@@ -1155,7 +1155,7 @@
         "tmdb_id": 808,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 19644,
+        "vote_count": 19646,
         "year": 2001
       },
       {
@@ -1191,7 +1191,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       }
     ],
@@ -1211,7 +1211,7 @@
         "tmdb_id": 808,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 19644,
+        "vote_count": 19646,
         "year": 2001
       },
       {
@@ -1228,7 +1228,7 @@
         "tmdb_id": 1007757,
         "type": "movie",
         "vote": 8.8,
-        "vote_count": 2317,
+        "vote_count": 2318,
         "year": 2026
       },
       {
@@ -1282,7 +1282,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       },
       {
@@ -1315,7 +1315,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11713,
+        "vote_count": 11714,
         "year": 2004
       },
       {
@@ -1381,7 +1381,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30984,
+        "vote_count": 30986,
         "year": 1994
       },
       {
@@ -1396,7 +1396,7 @@
         "tmdb_id": 597,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 28151,
+        "vote_count": 28152,
         "year": 1997
       },
       {
@@ -1412,7 +1412,7 @@
         "tmdb_id": 313369,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 18787,
+        "vote_count": 18789,
         "year": 2016
       },
       {
@@ -1443,7 +1443,7 @@
         "tmdb_id": 11216,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 5075,
+        "vote_count": 5076,
         "year": 1988
       },
       {
@@ -1458,7 +1458,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       }
     ],
@@ -1476,7 +1476,7 @@
         "tmdb_id": 313369,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 18787,
+        "vote_count": 18789,
         "year": 2016
       },
       {
@@ -1523,7 +1523,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -1538,7 +1538,7 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
         "year": 2022
       },
       {
@@ -1554,7 +1554,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -1605,7 +1605,7 @@
         "tmdb_id": 1218925,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -1656,7 +1656,7 @@
         "tmdb_id": 1368337,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 5553,
+        "vote_count": 5576,
         "year": 2026
       },
       {
@@ -1673,7 +1673,7 @@
         "tmdb_id": 1007757,
         "type": "movie",
         "vote": 8.8,
-        "vote_count": 2317,
+        "vote_count": 2318,
         "year": 2026
       },
       {
@@ -1690,7 +1690,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -1706,7 +1706,7 @@
         "tmdb_id": 4935,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 11713,
+        "vote_count": 11714,
         "year": 2004
       },
       {
@@ -1723,8 +1723,133 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
+      }
+    ],
+    "movie:1339713": [
+      {
+        "genres": [
+          "Horror",
+          "Azione",
+          "Thriller"
+        ],
+        "overview": "Tornati nella regione natia con un discreto bottino e con abbondanti alcolici dalla malavita di Chicago, i gemelli Smoke e Stack trasformano una baracca in un locale di ballo e gioco clandestino per la popolazione nera. La festa notturna innesca una gioia contagiosa, ma presto si",
+        "poster": "https://image.tmdb.org/t/p/w342/gGhvLVcdWQanE1XuPkC3iE4PJN9.jpg",
+        "runtime": 137,
+        "title": "I peccatori",
+        "tmdb_id": 1233413,
+        "type": "movie",
+        "vote": 7.5,
+        "vote_count": 5633,
+        "year": 2025
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Una guardia giurata problematica inizia a lavorare da Freddy Fazbear's Pizza. Mentre trascorre la sua prima notte di lavoro, si rende conto che il turno di notte da Freddy non sarà così facile da superare.",
+        "poster": "https://image.tmdb.org/t/p/w342/mmxEjGy1wHy4Frf8Uk1k7mdbW6A.jpg",
+        "runtime": 110,
+        "title": "Five Nights at Freddy's",
+        "tmdb_id": 507089,
+        "type": "movie",
+        "vote": 7.2,
+        "vote_count": 5304,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller",
+          "Crime"
+        ],
+        "overview": "I quattro sopravvissuti agli omicidi compiuti da Ghostface, le sorelle Sam e Tara Carpenter, insieme ai gemelli Chad e Mindy Meeks, si lasciano alle spalle quanto accaduto a Woodsboro per iniziare un nuovo capitolo della loro vita trasferendosi a New York. Ma anche nella grande m",
+        "poster": "https://image.tmdb.org/t/p/w342/iz0rgk4HReWQvSdRkYdchmrHmm5.jpg",
+        "runtime": 123,
+        "title": "Scream 6",
+        "tmdb_id": 934433,
+        "type": "movie",
+        "vote": 6.9,
+        "vote_count": 3426,
+        "year": 2023
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Micheal, a soli 6 anni ammazza la sorella e viene internato ma dopo 15 anni fugge per recarsi al suo paese. E' il 31 Ottobre, e secondo l'antica tradizione americana è la notte in cui si esorcizzano le streghe, grazie a questa concomitanza Micheal può mietere altre vittime.",
+        "poster": "https://image.tmdb.org/t/p/w342/uxLqrN38fSQEUVpM4S1suhnW3X.jpg",
+        "runtime": 91,
+        "title": "Halloween - La notte delle streghe",
+        "tmdb_id": 948,
+        "type": "movie",
+        "vote": 7.6,
+        "vote_count": 6554,
+        "year": 1978
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Il bambino tanto atteso da Katherine Torn (Lee Remick) muore alla nascita. Il marito, l’ambasciatore italiano a Roma Robert Thorn (Gregory Peck), non sa come dirglielo. Su consiglio di Padre Spiletto (Martin Benson), direttore dell’ospedale, e senza dir nulla alla moglie, Robert ",
+        "poster": "https://image.tmdb.org/t/p/w342/q3Iflttxm969nxQN1zffecCGU5s.jpg",
+        "runtime": 111,
+        "title": "Il presagio",
+        "tmdb_id": 794,
+        "type": "movie",
+        "vote": 7.4,
+        "vote_count": 2573,
+        "year": 1976
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "Finney Shaw, un timido ma intelligente ragazzo di 13 anni, viene rapito da un sadico assassino che lo rinchiude in un seminterrato insonorizzato dove le urla servono a poco. Quando un telefono disconnesso inizia a squillare sul muro, Finney scopre di poter sentire le voci delle p",
+        "poster": "https://image.tmdb.org/t/p/w342/jj7zRPozCiKgresivgdE2OtyIAh.jpg",
+        "runtime": 102,
+        "title": "Black Phone",
+        "tmdb_id": 756999,
+        "type": "movie",
+        "vote": 7.5,
+        "vote_count": 6243,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "overview": "L'aspirante scrittore Jack Torrance si trasferisce tra i monti per trovare il giusto isolamento che gli permetterà di completare il suo romanzo. L'uomo accetta quindi l'incarico di custode invernale di un enorme albergo tra le montagne, dove lo seguono la moglie e il figlioletto ",
+        "poster": "https://image.tmdb.org/t/p/w342/shTUOizWjurXOl5Bp2riMvSNIbZ.jpg",
+        "runtime": 142,
+        "title": "Shining",
+        "tmdb_id": 694,
+        "type": "movie",
+        "vote": 8.2,
+        "vote_count": 19760,
+        "year": 1980
+      },
+      {
+        "genres": [
+          "Horror",
+          "Thriller",
+          "Mistero"
+        ],
+        "overview": "Marion Crane, impiegata in una società immobiliare, scappa con 40.000$ rubati dalle casse della ditta. Durante la fuga verso casa del fidanzato però, decide di fermarsi nel Motel gestito dal giovane Norman Bates e dalla madre, che però vive rintanata nella casa attigua al Motel s",
+        "poster": "https://image.tmdb.org/t/p/w342/tdqX0MWaFHuGwUygYn7j6eluOdP.jpg",
+        "runtime": 109,
+        "title": "Psyco",
+        "tmdb_id": 539,
+        "type": "movie",
+        "vote": 8.4,
+        "vote_count": 11492,
+        "year": 1960
       }
     ],
     "movie:1368337": [
@@ -1758,7 +1883,7 @@
         "tmdb_id": 122,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 27921,
+        "vote_count": 27922,
         "year": 2003
       },
       {
@@ -1790,7 +1915,7 @@
         "tmdb_id": 120,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 28976,
+        "vote_count": 28978,
         "year": 2001
       },
       {
@@ -1840,7 +1965,7 @@
         "tmdb_id": 49051,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 20399,
+        "vote_count": 20402,
         "year": 2012
       },
       {
@@ -1856,7 +1981,7 @@
         "tmdb_id": 453395,
         "type": "movie",
         "vote": 7.2,
-        "vote_count": 11194,
+        "vote_count": 11196,
         "year": 2022
       }
     ],
@@ -1906,7 +2031,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25391,
+        "vote_count": 25392,
         "year": 2012
       },
       {
@@ -2006,7 +2131,7 @@
         "tmdb_id": 286217,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 22195,
+        "vote_count": 22196,
         "year": 2015
       },
       {
@@ -2038,7 +2163,7 @@
         "tmdb_id": 100402,
         "type": "movie",
         "vote": 7.7,
-        "vote_count": 20789,
+        "vote_count": 20790,
         "year": 2014
       },
       {
@@ -2054,7 +2179,7 @@
         "tmdb_id": 99861,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 25417,
+        "vote_count": 25420,
         "year": 2015
       },
       {
@@ -2086,7 +2211,7 @@
         "tmdb_id": 68721,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 24217,
+        "vote_count": 24219,
         "year": 2013
       },
       {
@@ -2120,7 +2245,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24227,
+        "vote_count": 24228,
         "year": 2015
       }
     ],
@@ -2138,7 +2263,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7165,
+        "vote_count": 7172,
         "year": 2026
       },
       {
@@ -2155,7 +2280,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -2171,7 +2296,7 @@
         "tmdb_id": 11,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 23239,
+        "vote_count": 23240,
         "year": 1977
       },
       {
@@ -2187,7 +2312,7 @@
         "tmdb_id": 99861,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 25417,
+        "vote_count": 25420,
         "year": 2015
       },
       {
@@ -2203,7 +2328,7 @@
         "tmdb_id": 823464,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 4997,
+        "vote_count": 4998,
         "year": 2024
       },
       {
@@ -2268,7 +2393,7 @@
         "tmdb_id": 240,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 14672,
+        "vote_count": 14675,
         "year": 1974
       },
       {
@@ -2284,7 +2409,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -2330,7 +2455,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -2345,7 +2470,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -2361,7 +2486,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -2376,7 +2501,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19197,
+        "vote_count": 19199,
         "year": 2008
       }
     ],
@@ -2393,7 +2518,7 @@
         "tmdb_id": 238,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 24065,
+        "vote_count": 24071,
         "year": 1972
       },
       {
@@ -2409,7 +2534,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -2455,7 +2580,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -2470,7 +2595,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -2486,7 +2611,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -2501,7 +2626,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19197,
+        "vote_count": 19199,
         "year": 2008
       }
     ],
@@ -2519,7 +2644,7 @@
         "tmdb_id": 210577,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 20751,
+        "vote_count": 20752,
         "year": 2014
       },
       {
@@ -2536,7 +2661,7 @@
         "tmdb_id": 205596,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 18717,
+        "vote_count": 18718,
         "year": 2014
       },
       {
@@ -2551,7 +2676,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4794,
+        "vote_count": 4797,
         "year": 2026
       },
       {
@@ -2566,7 +2691,7 @@
         "tmdb_id": 550,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 33459,
+        "vote_count": 33460,
         "year": 1999
       },
       {
@@ -2582,7 +2707,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -2598,7 +2723,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       },
       {
@@ -2648,7 +2773,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37498,
+        "vote_count": 37501,
         "year": 2008
       },
       {
@@ -2664,7 +2789,7 @@
         "tmdb_id": 10138,
         "type": "movie",
         "vote": 6.9,
-        "vote_count": 23294,
+        "vote_count": 23296,
         "year": 2010
       },
       {
@@ -2680,7 +2805,7 @@
         "tmdb_id": 19995,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 35100,
+        "vote_count": 35101,
         "year": 2009
       },
       {
@@ -2696,7 +2821,7 @@
         "tmdb_id": 1771,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 23574,
+        "vote_count": 23576,
         "year": 2011
       },
       {
@@ -2712,7 +2837,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7165,
+        "vote_count": 7172,
         "year": 2026
       },
       {
@@ -2761,7 +2886,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       }
     ],
@@ -2779,7 +2904,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28776,
+        "vote_count": 28777,
         "year": 2019
       },
       {
@@ -2845,7 +2970,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15096,
+        "vote_count": 15099,
         "year": 1990
       },
       {
@@ -2876,7 +3001,7 @@
         "tmdb_id": 278,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 31953,
+        "vote_count": 31955,
         "year": 1994
       },
       {
@@ -2892,7 +3017,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       }
     ],
@@ -2910,7 +3035,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       },
       {
@@ -2926,7 +3051,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -2972,7 +3097,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -2987,7 +3112,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -3003,7 +3128,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -3018,7 +3143,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19197,
+        "vote_count": 19199,
         "year": 2008
       }
     ],
@@ -3128,7 +3253,7 @@
         "tmdb_id": 313369,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 18787,
+        "vote_count": 18789,
         "year": 2016
       },
       {
@@ -3146,7 +3271,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24227,
+        "vote_count": 24228,
         "year": 2015
       },
       {
@@ -3162,7 +3287,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30984,
+        "vote_count": 30986,
         "year": 1994
       },
       {
@@ -3263,7 +3388,7 @@
         "tmdb_id": 313369,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 18787,
+        "vote_count": 18789,
         "year": 2016
       },
       {
@@ -3281,7 +3406,7 @@
         "tmdb_id": 150540,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 24227,
+        "vote_count": 24228,
         "year": 2015
       },
       {
@@ -3297,7 +3422,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30984,
+        "vote_count": 30986,
         "year": 1994
       },
       {
@@ -3428,7 +3553,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12993,
+        "vote_count": 12995,
         "year": 2023
       },
       {
@@ -3443,7 +3568,7 @@
         "tmdb_id": 936075,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 4794,
+        "vote_count": 4797,
         "year": 2026
       },
       {
@@ -3459,7 +3584,7 @@
         "tmdb_id": 424,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 18245,
+        "vote_count": 18247,
         "year": 1993
       },
       {
@@ -3475,7 +3600,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17479,
+        "vote_count": 17482,
         "year": 2014
       },
       {
@@ -3507,7 +3632,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12993,
+        "vote_count": 12995,
         "year": 2023
       },
       {
@@ -3524,7 +3649,7 @@
         "tmdb_id": 205596,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 18717,
+        "vote_count": 18718,
         "year": 2014
       },
       {
@@ -3570,7 +3695,7 @@
         "tmdb_id": 423,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 10679,
+        "vote_count": 10680,
         "year": 2002
       },
       {
@@ -3586,7 +3711,7 @@
         "tmdb_id": 16869,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 25242,
+        "vote_count": 25244,
         "year": 2009
       },
       {
@@ -3602,7 +3727,7 @@
         "tmdb_id": 14537,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 1337,
+        "vote_count": 1338,
         "year": 1962
       },
       {
@@ -3636,7 +3761,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -3652,7 +3777,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -3667,7 +3792,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -3683,7 +3808,7 @@
         "tmdb_id": 872585,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 12993,
+        "vote_count": 12995,
         "year": 2023
       },
       {
@@ -3763,7 +3888,7 @@
         "tmdb_id": 129,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 19299,
+        "vote_count": 19305,
         "year": 2001
       },
       {
@@ -3796,7 +3921,7 @@
         "tmdb_id": 1007757,
         "type": "movie",
         "vote": 8.8,
-        "vote_count": 2317,
+        "vote_count": 2318,
         "year": 2026
       },
       {
@@ -3814,7 +3939,7 @@
         "tmdb_id": 808,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 19644,
+        "vote_count": 19646,
         "year": 2001
       },
       {
@@ -3885,7 +4010,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       }
     ],
@@ -3918,7 +4043,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28776,
+        "vote_count": 28777,
         "year": 2019
       },
       {
@@ -3934,7 +4059,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -3949,7 +4074,7 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
         "year": 2022
       },
       {
@@ -3965,7 +4090,7 @@
         "tmdb_id": 718930,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 8205,
+        "vote_count": 8207,
         "year": 2022
       },
       {
@@ -4061,7 +4186,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -4107,7 +4232,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -4122,7 +4247,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -4138,7 +4263,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       }
     ],
@@ -4158,7 +4283,7 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
       },
       {
@@ -4176,7 +4301,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -4245,7 +4370,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       },
       {
@@ -4262,7 +4387,7 @@
         "tmdb_id": 269149,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 18796,
+        "vote_count": 18798,
         "year": 2016
       },
       {
@@ -4297,7 +4422,7 @@
         "tmdb_id": 240,
         "type": "movie",
         "vote": 8.6,
-        "vote_count": 14672,
+        "vote_count": 14675,
         "year": 1974
       },
       {
@@ -4312,7 +4437,7 @@
         "tmdb_id": 238,
         "type": "movie",
         "vote": 8.7,
-        "vote_count": 24065,
+        "vote_count": 24071,
         "year": 1972
       },
       {
@@ -4328,7 +4453,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -4358,7 +4483,7 @@
         "tmdb_id": 87108,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 8595,
+        "vote_count": 8596,
         "year": 2019
       },
       {
@@ -4374,7 +4499,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -4422,7 +4547,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -4438,7 +4563,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       },
       {
@@ -4454,7 +4579,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17479,
+        "vote_count": 17482,
         "year": 2014
       },
       {
@@ -4486,7 +4611,7 @@
         "tmdb_id": 475557,
         "type": "movie",
         "vote": 8.1,
-        "vote_count": 28776,
+        "vote_count": 28777,
         "year": 2019
       },
       {
@@ -4518,7 +4643,7 @@
         "tmdb_id": 210577,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 20751,
+        "vote_count": 20752,
         "year": 2014
       },
       {
@@ -4535,7 +4660,7 @@
         "tmdb_id": 205596,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 18717,
+        "vote_count": 18718,
         "year": 2014
       }
     ],
@@ -4554,7 +4679,7 @@
         "tmdb_id": 324857,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 18323,
+        "vote_count": 18324,
         "year": 2018
       },
       {
@@ -4571,7 +4696,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6899,
+        "vote_count": 6900,
         "year": 2024
       },
       {
@@ -4603,7 +4728,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9179,
+        "vote_count": 9181,
         "year": 2023
       },
       {
@@ -4619,7 +4744,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7165,
+        "vote_count": 7172,
         "year": 2026
       },
       {
@@ -4635,7 +4760,7 @@
         "tmdb_id": 823464,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 4997,
+        "vote_count": 4998,
         "year": 2024
       },
       {
@@ -4793,7 +4918,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37498,
+        "vote_count": 37501,
         "year": 2008
       },
       {
@@ -4859,7 +4984,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25391,
+        "vote_count": 25392,
         "year": 2012
       },
       {
@@ -4875,7 +5000,7 @@
         "tmdb_id": 718930,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 8205,
+        "vote_count": 8207,
         "year": 2022
       }
     ],
@@ -4893,7 +5018,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30984,
+        "vote_count": 30986,
         "year": 1994
       },
       {
@@ -4908,7 +5033,7 @@
         "tmdb_id": 37165,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 21309,
+        "vote_count": 21311,
         "year": 1998
       },
       {
@@ -4924,7 +5049,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -4939,7 +5064,7 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
         "year": 2022
       },
       {
@@ -4955,7 +5080,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -5005,7 +5130,7 @@
         "tmdb_id": 88329,
         "type": "tv",
         "vote": 7.8,
-        "vote_count": 3931,
+        "vote_count": 3932,
         "year": 2021
       }
     ],
@@ -5021,7 +5146,7 @@
         "tmdb_id": 87108,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 8595,
+        "vote_count": 8596,
         "year": 2019
       },
       {
@@ -5037,7 +5162,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -5053,7 +5178,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -5069,7 +5194,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -5090,20 +5215,6 @@
       },
       {
         "genres": [
-          "Dramma"
-        ],
-        "overview": "Un drama multigenerazionale incentrato su un triangolo amoroso che si viene a creare tra una ragazza e due fratelli, sul rapporto in continua evoluzione tra le madri e i loro figli e sul potere duraturo delle forti amicizie femminili. È un racconto di formazione sull’amore, sulle",
-        "poster": "https://image.tmdb.org/t/p/w342/26JYpcClxonDcBSoqQ4qWn27n39.jpg",
-        "runtime": 0,
-        "title": "L'estate nei tuoi occhi",
-        "tmdb_id": 194766,
-        "type": "tv",
-        "vote": 8.0,
-        "vote_count": 1168,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Crime",
           "Dramma",
           "Commedia"
@@ -5115,7 +5226,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -5130,7 +5241,23 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
+        "year": 2022
+      },
+      {
+        "genres": [
+          "Mistero",
+          "Dramma",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "In una città da incubo nel centro dell’America che intrappola tutti coloro che entrano, i residenti riluttanti combattono per rimanere in vita e cercano una via d’uscita. Ma sono afflitti dalle minacce della foresta circostante, comprese le terrificanti creature notturne.",
+        "poster": "https://image.tmdb.org/t/p/w342/oRTAA5VqHi2W2rfkiJ3fHiGfI9M.jpg",
+        "runtime": 0,
+        "title": "FROM",
+        "tmdb_id": 124364,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 4483,
         "year": 2022
       }
     ],
@@ -5148,7 +5275,7 @@
         "tmdb_id": 1054867,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 4589,
+        "vote_count": 4591,
         "year": 2025
       },
       {
@@ -5164,7 +5291,7 @@
         "tmdb_id": 807,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 24310,
+        "vote_count": 24311,
         "year": 1995
       },
       {
@@ -5180,7 +5307,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       },
       {
@@ -5196,7 +5323,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -5228,7 +5355,7 @@
         "tmdb_id": 718930,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 8205,
+        "vote_count": 8207,
         "year": 2022
       },
       {
@@ -5260,7 +5387,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       }
     ],
@@ -5278,7 +5405,7 @@
         "tmdb_id": 969681,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 7165,
+        "vote_count": 7172,
         "year": 2026
       },
       {
@@ -5295,7 +5422,7 @@
         "tmdb_id": 1184918,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 6899,
+        "vote_count": 6900,
         "year": 2024
       },
       {
@@ -5312,7 +5439,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -5328,7 +5455,7 @@
         "tmdb_id": 83533,
         "type": "movie",
         "vote": 7.6,
-        "vote_count": 4745,
+        "vote_count": 4747,
         "year": 2025
       },
       {
@@ -5344,7 +5471,7 @@
         "tmdb_id": 1061474,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 5809,
+        "vote_count": 5810,
         "year": 2025
       },
       {
@@ -5376,7 +5503,7 @@
         "tmdb_id": 157336,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 42049,
+        "vote_count": 42053,
         "year": 2014
       },
       {
@@ -5392,7 +5519,7 @@
         "tmdb_id": 105,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 22851,
+        "vote_count": 22852,
         "year": 1985
       }
     ],
@@ -5490,7 +5617,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -5595,7 +5722,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -5613,7 +5740,7 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
       },
       {
@@ -5665,7 +5792,7 @@
         "tmdb_id": 315162,
         "type": "movie",
         "vote": 8.2,
-        "vote_count": 9420,
+        "vote_count": 9421,
         "year": 2022
       }
     ],
@@ -5683,7 +5810,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       },
       {
@@ -5699,7 +5826,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -5745,7 +5872,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -5760,7 +5887,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -5776,7 +5903,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -5791,7 +5918,7 @@
         "tmdb_id": 1396,
         "type": "tv",
         "vote": 9.0,
-        "vote_count": 19197,
+        "vote_count": 19199,
         "year": 2008
       }
     ],
@@ -5858,7 +5985,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -5922,7 +6049,7 @@
         "tmdb_id": 274,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 18932,
+        "vote_count": 18933,
         "year": 1991
       }
     ],
@@ -5989,7 +6116,7 @@
         "tmdb_id": 155,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 37498,
+        "vote_count": 37501,
         "year": 2008
       },
       {
@@ -6038,7 +6165,7 @@
         "tmdb_id": 49026,
         "type": "movie",
         "vote": 7.8,
-        "vote_count": 25391,
+        "vote_count": 25392,
         "year": 2012
       },
       {
@@ -6054,7 +6181,7 @@
         "tmdb_id": 718930,
         "type": "movie",
         "vote": 7.4,
-        "vote_count": 8205,
+        "vote_count": 8207,
         "year": 2022
       }
     ],
@@ -6072,7 +6199,7 @@
         "tmdb_id": 244786,
         "type": "movie",
         "vote": 8.4,
-        "vote_count": 17479,
+        "vote_count": 17482,
         "year": 2014
       },
       {
@@ -6087,7 +6214,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -6132,7 +6259,7 @@
         "tmdb_id": 273240,
         "type": "tv",
         "vote": 8.8,
-        "vote_count": 928,
+        "vote_count": 929,
         "year": 2026
       },
       {
@@ -6199,7 +6326,7 @@
         "tmdb_id": 569094,
         "type": "movie",
         "vote": 8.3,
-        "vote_count": 9606,
+        "vote_count": 9608,
         "year": 2023
       },
       {
@@ -6215,7 +6342,7 @@
         "tmdb_id": 1061474,
         "type": "movie",
         "vote": 7.3,
-        "vote_count": 5809,
+        "vote_count": 5810,
         "year": 2025
       },
       {
@@ -6247,7 +6374,7 @@
         "tmdb_id": 823464,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 4997,
+        "vote_count": 4998,
         "year": 2024
       },
       {
@@ -6279,7 +6406,7 @@
         "tmdb_id": 653346,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 4595,
+        "vote_count": 4596,
         "year": 2024
       },
       {
@@ -6311,7 +6438,7 @@
         "tmdb_id": 447365,
         "type": "movie",
         "vote": 7.9,
-        "vote_count": 9179,
+        "vote_count": 9181,
         "year": 2023
       }
     ],
@@ -6345,7 +6472,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -6366,20 +6493,6 @@
       },
       {
         "genres": [
-          "Dramma"
-        ],
-        "overview": "Un drama multigenerazionale incentrato su un triangolo amoroso che si viene a creare tra una ragazza e due fratelli, sul rapporto in continua evoluzione tra le madri e i loro figli e sul potere duraturo delle forti amicizie femminili. È un racconto di formazione sull’amore, sulle",
-        "poster": "https://image.tmdb.org/t/p/w342/26JYpcClxonDcBSoqQ4qWn27n39.jpg",
-        "runtime": 0,
-        "title": "L'estate nei tuoi occhi",
-        "tmdb_id": 194766,
-        "type": "tv",
-        "vote": 8.0,
-        "vote_count": 1168,
-        "year": 2022
-      },
-      {
-        "genres": [
           "Crime",
           "Dramma",
           "Commedia"
@@ -6391,7 +6504,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -6406,7 +6519,7 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
         "year": 2022
       },
       {
@@ -6422,7 +6535,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4481,
+        "vote_count": 4483,
         "year": 2022
       },
       {
@@ -6437,8 +6550,24 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Mistero",
+          "Dramma"
+        ],
+        "overview": "Rapita dal quartiere a luci rosse, la giovane Maomao viene venduta come inserviente al Palazzo Imperiale. Figlia di un esperto farmacista, la ragazza possiede uno sconfinato talento medico e un'ossessione per i veleni che catturano subito l'attenzione dell'affascinante eunuco Jin",
+        "poster": "https://image.tmdb.org/t/p/w342/xwmAzaKHI8jxikuCGCja8gNIqpz.jpg",
+        "runtime": 0,
+        "title": "Il monologo della Speziale",
+        "tmdb_id": 220542,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 721,
+        "year": 2023
       }
     ],
     "tv:108978": [
@@ -6456,7 +6585,7 @@
         "tmdb_id": 105248,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 2173,
+        "vote_count": 2174,
         "year": 2022
       },
       {
@@ -6553,7 +6682,7 @@
         "tmdb_id": 1412,
         "type": "tv",
         "vote": 6.8,
-        "vote_count": 6581,
+        "vote_count": 6582,
         "year": 2012
       },
       {
@@ -6569,7 +6698,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       }
     ],
@@ -6624,7 +6753,7 @@
         "tmdb_id": 124364,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 4481,
+        "vote_count": 4483,
         "year": 2022
       },
       {
@@ -6656,7 +6785,7 @@
         "tmdb_id": 92749,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3814,
+        "vote_count": 3815,
         "year": 2022
       },
       {
@@ -6689,7 +6818,7 @@
         "tmdb_id": 135157,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 833,
+        "vote_count": 834,
         "year": 2022
       },
       {
@@ -6756,7 +6885,7 @@
         "tmdb_id": 135157,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 833,
+        "vote_count": 834,
         "year": 2022
       },
       {
@@ -6788,7 +6917,7 @@
         "tmdb_id": 85271,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 13080,
+        "vote_count": 13081,
         "year": 2021
       },
       {
@@ -6837,7 +6966,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8027,
+        "vote_count": 8028,
         "year": 2017
       }
     ],
@@ -6945,22 +7074,6 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
         "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
         "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
         "runtime": 0,
@@ -6968,8 +7081,24 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+        "runtime": 0,
+        "title": "Naruto Shippuden",
+        "tmdb_id": 31910,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 8871,
+        "year": 2007
       }
     ],
     "tv:12971": [
@@ -7077,22 +7206,6 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
         "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
         "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
         "runtime": 0,
@@ -7100,8 +7213,24 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+        "runtime": 0,
+        "title": "Naruto Shippuden",
+        "tmdb_id": 31910,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 8871,
+        "year": 2007
       }
     ],
     "tv:136315": [
@@ -7118,7 +7247,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -7134,7 +7263,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -7150,7 +7279,7 @@
         "tmdb_id": 88329,
         "type": "tv",
         "vote": 7.8,
-        "vote_count": 3931,
+        "vote_count": 3932,
         "year": 2021
       },
       {
@@ -7196,7 +7325,7 @@
         "tmdb_id": 13,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 30984,
+        "vote_count": 30986,
         "year": 1994
       },
       {
@@ -7233,6 +7362,141 @@
         "year": 2024
       }
     ],
+    "tv:13916": [
+      {
+        "genres": [
+          "Mistero",
+          "Sci-Fi & Fantasy",
+          "Animazione",
+          "Famiglia",
+          "Commedia"
+        ],
+        "overview": "I due fratellastri Wirt e Greg si ritrovano improvvisamente smarriti alla deriva del tempo all'interno dell'Ignoto, una foresta tetra e misteriosa. Sperando di ritrovare la strada verso casa, i giovani iniziano un lungo viaggio guidati da un saggio taglialegna e da Beatrice, un b",
+        "poster": "https://image.tmdb.org/t/p/w342/8uHxhk6ey9EgFqWavj9jAa1JKIH.jpg",
+        "runtime": 0,
+        "title": "Over the Garden Wall - Avventura nella foresta dei misteri",
+        "tmdb_id": 61617,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1869,
+        "year": 2014
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Animazione",
+          "Commedia",
+          "Famiglia",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
+        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
+        "runtime": 0,
+        "title": "Gravity Falls",
+        "tmdb_id": 40075,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 3671,
+        "year": 2012
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
+        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
+        "runtime": 0,
+        "title": "Naruto Shippuden",
+        "tmdb_id": 31910,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 8871,
+        "year": 2007
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I fratelli Katara e Sokka risvegliano il giovane Aang da un lungo sonno e scoprono che è un Avatar le cui arti marziali possono sconfiggere la malvagia Nazione del Fuoco.",
+        "poster": "https://image.tmdb.org/t/p/w342/l7pRUq999FxqT0SuwB22JLcBIZY.jpg",
+        "runtime": 0,
+        "title": "Avatar - La leggenda di Aang",
+        "tmdb_id": 246,
+        "type": "tv",
+        "vote": 8.8,
+        "vote_count": 5258,
+        "year": 2005
+      },
+      {
+        "genres": [
+          "Dramma",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "I fratelli Sam e Dean Winchester viaggiano attraverso l'America in una Chevy Impala nera del 1967 indagando e combattendo eventi paranormali e altri eventi inspiegabili, molti dei quali basati su leggende metropolitane americane e folklore, nonché su creature soprannaturali class",
+        "poster": "https://image.tmdb.org/t/p/w342/8iixmfGx5EIFPdpNvB2JvI3VIqX.jpg",
+        "runtime": 0,
+        "title": "Supernatural",
+        "tmdb_id": 1622,
+        "type": "tv",
+        "vote": 8.3,
+        "vote_count": 8864,
+        "year": 2005
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Sci-Fi & Fantasy",
+          "Action & Adventure"
+        ],
+        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
+        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
+        "runtime": 0,
+        "title": "Jujutsu Kaisen",
+        "tmdb_id": 95479,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 4760,
+        "year": 2020
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+        "runtime": 0,
+        "title": "Arcane",
+        "tmdb_id": 94605,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 6351,
+        "year": 2021
+      },
+      {
+        "genres": [
+          "Action & Adventure",
+          "Mistero",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La scomparsa di un ragazzino in una cittadina porta alla luce un mistero in cui si mescolano esperimenti segreti, spaventose forze soprannaturali e una strana bambina.",
+        "poster": "https://image.tmdb.org/t/p/w342/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+        "runtime": 0,
+        "title": "Stranger Things",
+        "tmdb_id": 66732,
+        "type": "tv",
+        "vote": 8.5,
+        "vote_count": 22202,
+        "year": 2016
+      }
+    ],
     "tv:1396": [
       {
         "genres": [
@@ -7247,7 +7511,7 @@
         "tmdb_id": 5920,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 5048,
+        "vote_count": 5049,
         "year": 2008
       },
       {
@@ -7263,7 +7527,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -7309,7 +7573,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -7324,7 +7588,7 @@
         "tmdb_id": 247718,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1325,
+        "vote_count": 1326,
         "year": 2025
       },
       {
@@ -7340,7 +7604,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -7355,7 +7619,7 @@
         "tmdb_id": 769,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 15096,
+        "vote_count": 15099,
         "year": 1990
       }
     ],
@@ -7405,7 +7669,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -7521,7 +7785,7 @@
         "tmdb_id": 106646,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 27027,
+        "vote_count": 27029,
         "year": 2013
       },
       {
@@ -7537,7 +7801,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -7552,7 +7816,7 @@
         "tmdb_id": 136315,
         "type": "tv",
         "vote": 8.2,
-        "vote_count": 2064,
+        "vote_count": 2065,
         "year": 2022
       },
       {
@@ -7614,134 +7878,8 @@
         "tmdb_id": 661374,
         "type": "movie",
         "vote": 7.0,
-        "vote_count": 7438,
+        "vote_count": 7439,
         "year": 2022
-      }
-    ],
-    "tv:194766": [
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Mistero"
-        ],
-        "overview": "Questa arguta spy story segue le vicende di una disfunzionale squadra di agenti dell'MI5 e del loro odioso capo, il famigerato Jackson Lamb, mentre navigano tra le luci e le ombre del mondo dello spionaggio per difendere l'Inghilterra da forze sinistre.",
-        "poster": "https://image.tmdb.org/t/p/w342/9VCkgs1zefGI2qjJzr1gSwAmzmf.jpg",
-        "runtime": 0,
-        "title": "Slow Horses",
-        "tmdb_id": 95480,
-        "type": "tv",
-        "vote": 8.1,
-        "vote_count": 1164,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Sci-Fi & Fantasy",
-          "Dramma",
-          "Action & Adventure"
-        ],
-        "overview": "La serie prequel vede la dinastia Targaryen all'apice assoluto del suo potere, con più di 15 draghi sotto il loro giogo. La maggior parte degli imperi, che siano reali o immaginari, crollano quando raggiungono tali poteri e tali altezze. Nel caso dei Targaryen, la loro lenta cadu",
-        "poster": "https://image.tmdb.org/t/p/w342/paD01zRRCY3lXo038pvs2Avu0Q7.jpg",
-        "runtime": 0,
-        "title": "House of the Dragon",
-        "tmdb_id": 94997,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 7358,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Crime",
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Tulsa King segue il capo della mafia newyorkese Dwight \"Il Generale\" Manfredi, appena uscito di prigione dopo 25 anni ed esiliato a Tulsa, in Oklahoma. Rendendosi conto che la sua famiglia mafiosa potrebbe non avere in mente i suoi interessi, Dwight costruisce lentamente una \"ban",
-        "poster": "https://image.tmdb.org/t/p/w342/bbhGWT5ln5dTFKP2DBCELOwK3jA.jpg",
-        "runtime": 0,
-        "title": "Tulsa King",
-        "tmdb_id": 153312,
-        "type": "tv",
-        "vote": 8.3,
-        "vote_count": 2981,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Dramma",
-          "Commedia"
-        ],
-        "overview": "Carmy, un giovane chef di cucina raffinata, torna a casa a Chicago per gestire il negozio di sandwich di famiglia. Mentre lotta per trasformare il negozio e sé stesso, lavora insieme a un team di cucina sopra le righe che alla fine si rivela essere la sua famiglia scelta.",
-        "poster": "https://image.tmdb.org/t/p/w342/eKfVzzEazSIjJMrw9ADa2x8ksLz.jpg",
-        "runtime": 0,
-        "title": "The Bear",
-        "tmdb_id": 136315,
-        "type": "tv",
-        "vote": 8.2,
-        "vote_count": 2064,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Mistero",
-          "Dramma",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "In una città da incubo nel centro dell’America che intrappola tutti coloro che entrano, i residenti riluttanti combattono per rimanere in vita e cercano una via d’uscita. Ma sono afflitti dalle minacce della foresta circostante, comprese le terrificanti creature notturne.",
-        "poster": "https://image.tmdb.org/t/p/w342/oRTAA5VqHi2W2rfkiJ3fHiGfI9M.jpg",
-        "runtime": 0,
-        "title": "FROM",
-        "tmdb_id": 124364,
-        "type": "tv",
-        "vote": 8.5,
-        "vote_count": 4481,
-        "year": 2022
-      },
-      {
-        "genres": [
-          "Dramma"
-        ],
-        "overview": "Vent'anni dopo la distruzione della civiltà moderna, Joel, uno scaltro sopravvissuto, viene incaricato di far uscire la quattordicenne Ellie da una zona di quarantena sotto stretta sorveglianza. Quello che inizia come un lavoro relativamente facile si trasforma presto in un viagg",
-        "poster": "https://image.tmdb.org/t/p/w342/u0xTEHOd8pw6SLGRL5fZyDpoaew.jpg",
-        "runtime": 0,
-        "title": "The Last of Us",
-        "tmdb_id": 100088,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 7545,
-        "year": 2023
-      },
-      {
-        "genres": [
-          "Crime",
-          "Storia",
-          "Dramma"
-        ],
-        "overview": "All’inizio del XX secolo, la scoperta del petrolio trasformò l’esistenza degli Osage che diventarono da un giorno all’altro immensamente ricchi. L’improvviso benessere di questi nativi americani attirò l’interesse dei bianchi che iniziarono a manipolare, estorcere e sottrarre con",
-        "poster": "https://image.tmdb.org/t/p/w342/l7CXClIApqEWrUaaSNFBMvFtKQ2.jpg",
-        "runtime": 206,
-        "title": "Killers of the Flower Moon",
-        "tmdb_id": 466420,
-        "type": "movie",
-        "vote": 7.4,
-        "vote_count": 4510,
-        "year": 2023
-      },
-      {
-        "genres": [
-          "Documentario",
-          "Dramma"
-        ],
-        "overview": "Il conduttore racconta la sua vita e la storia evoluzionistica della vita sulla Terra, soffrendo per la scomparsa di aree selvagge e proponendo prospettive per il futuro.",
-        "poster": "https://image.tmdb.org/t/p/w342/zSKwyUDKDHiFU5syTTvQRDcGBPS.jpg",
-        "runtime": 83,
-        "title": "David Attenborough: una vita sul nostro pianeta",
-        "tmdb_id": 664280,
-        "type": "movie",
-        "vote": 8.4,
-        "vote_count": 484,
-        "year": 2020
       }
     ],
     "tv:247718": [
@@ -7773,7 +7911,7 @@
         "tmdb_id": 249042,
         "type": "tv",
         "vote": 7.8,
-        "vote_count": 1906,
+        "vote_count": 1907,
         "year": 2025
       },
       {
@@ -7822,7 +7960,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -7838,7 +7976,7 @@
         "tmdb_id": 153312,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 2981,
+        "vote_count": 2982,
         "year": 2022
       },
       {
@@ -7961,22 +8099,6 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
         "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
         "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
         "runtime": 0,
@@ -7984,7 +8106,7 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
       },
       {
@@ -8002,6 +8124,22 @@
         "vote": 8.4,
         "vote_count": 5092,
         "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "In seguito alla comparsa dei misteriosi \"Gate\", portali popolati da mostri che minacciano l'umanità, speciali combattenti noti come Hunter affrontano le creature. Il giovane Sung Jinwoo, considerato il più debole tra gli Hunter di grado E, rischia la vita quotidiana per pagare le",
+        "poster": "https://image.tmdb.org/t/p/w342/eCD7WS9h4lCT8N4Xavc9u8R1IGk.jpg",
+        "runtime": 0,
+        "title": "Solo Leveling",
+        "tmdb_id": 127532,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2107,
+        "year": 2024
       }
     ],
     "tv:35610": [
@@ -8092,22 +8230,6 @@
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
         "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
         "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
         "runtime": 0,
@@ -8133,6 +8255,22 @@
         "vote": 8.4,
         "vote_count": 5092,
         "year": 1989
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "In seguito alla comparsa dei misteriosi \"Gate\", portali popolati da mostri che minacciano l'umanità, speciali combattenti noti come Hunter affrontano le creature. Il giovane Sung Jinwoo, considerato il più debole tra gli Hunter di grado E, rischia la vita quotidiana per pagare le",
+        "poster": "https://image.tmdb.org/t/p/w342/eCD7WS9h4lCT8N4Xavc9u8R1IGk.jpg",
+        "runtime": 0,
+        "title": "Solo Leveling",
+        "tmdb_id": 127532,
+        "type": "tv",
+        "vote": 8.7,
+        "vote_count": 2107,
+        "year": 2024
       }
     ],
     "tv:37854": [
@@ -8185,7 +8323,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -8256,7 +8394,7 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
       },
       {
@@ -8272,142 +8410,8 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
-      }
-    ],
-    "tv:45790": [
-      {
-        "genres": [
-          "Animazione",
-          "Commedia",
-          "Sci-Fi & Fantasy",
-          "Action & Adventure"
-        ],
-        "overview": "Rick è uno scienziato che si è trasferito dalla famiglia di sua figlia Beth, una veterinaria e cardiochirurga per equini. Passa la maggior parte del suo tempo inventando vari gadget high-tech e portando con sé il giovane nipote Morty (e successivamente la nipote Summer) in perico",
-        "poster": "https://image.tmdb.org/t/p/w342/owhkU6KRqdXoUQpjV8uyZGPtX58.jpg",
-        "runtime": 0,
-        "title": "Rick and Morty",
-        "tmdb_id": 60625,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 11633,
-        "year": 2013
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Mostri, animali rari, tesori e meraviglie, terre selvagge e luoghi inesplorati. La parola \"sconosciuto\" reca in sé un enorme fascino e vi sono persone incredibili al mondo attratte da tale potere. Esse sono conosciute con il nome di \"Hunter\"! Gon vuole diventare uno di loro, come",
-        "poster": "https://image.tmdb.org/t/p/w342/9WxfAQquTun9ATkV6iAeFHMkqxv.jpg",
-        "runtime": 0,
-        "title": "Hunter x Hunter",
-        "tmdb_id": 46298,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 2280,
-        "year": 2011
-      },
-      {
-        "genres": [
-          "Action & Adventure",
-          "Animazione",
-          "Commedia",
-          "Famiglia",
-          "Mistero",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "I due fratelli gemelli Diper e Mable Pines decidono di trascorrere l'estate presso l'ostello del loro vecchio prozio Stan, nella bizzarra ed enigmatica cittadina di Gravity Falls. Ben presto, le vacanze dei fratelli Pines prendono una piega inaspettata, trasformandosi in continue",
-        "poster": "https://image.tmdb.org/t/p/w342/qwi3p6PzKfQZ4YXBzv3CP5pO2dE.jpg",
-        "runtime": 0,
-        "title": "Gravity Falls",
-        "tmdb_id": 40075,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 3671,
-        "year": 2012
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Sci-Fi & Fantasy",
-          "Action & Adventure"
-        ],
-        "overview": "Dotato di una straordinaria forza fisica, il liceale Yuji Itadori ingoia il dito dello Spettro  Bifronte per salvare il suo amico, diventando l'ospite di Ryomen Sukuna, il Re delle Maledizioni. Sotto la tutela del potente stregone Satoru Gojo, Yuji entra nell'Istituto di Magia di",
-        "poster": "https://image.tmdb.org/t/p/w342/zKFkzRn1UyE11Jv9CJjVmvmQFvR.jpg",
-        "runtime": 0,
-        "title": "Jujutsu Kaisen",
-        "tmdb_id": 95479,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 4760,
-        "year": 2020
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
-        "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
-        "runtime": 0,
-        "title": "Arcane",
-        "tmdb_id": 94605,
-        "type": "tv",
-        "vote": 8.7,
-        "vote_count": 6351,
-        "year": 2021
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "Naruto è un giovane ninja ribelle ed emarginato a causa di un demone sigillato nel suo corpo. Nonostante sia sempre lasciato ai margini dagli abitanti del Villaggio della Foglia, lui sogna di diventare Hokage per difendere tutti.",
-        "poster": "https://image.tmdb.org/t/p/w342/mErFfyQuQ9kkbsR30d8CkZf0Z6s.jpg",
-        "runtime": 0,
-        "title": "Naruto",
-        "tmdb_id": 46260,
-        "type": "tv",
-        "vote": 8.4,
-        "vote_count": 6206,
-        "year": 2002
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La giovane Kagome Higurashi, apparentemente una normale studentessa di scuola media, viene suo malgrado attratta nell'antico pozzo custodito nel tempio shinto della sua famiglia, e si ritrova così a viaggiare a ritroso nel tempo di cinquecento anni, sino all'epoca Sengoku.",
-        "poster": "https://image.tmdb.org/t/p/w342/5pMVrmb6tGmNAH0sX7guM9WbrU3.jpg",
-        "runtime": 0,
-        "title": "InuYasha",
-        "tmdb_id": 35610,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 2120,
-        "year": 2000
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La serie si svolge due anni e mezzo dopo che Naruto parte per allenarsi con Jiraiya. Al suo ritorno, Naruto scopre che tutti lo hanno superato di grado, e lui è rimasto indietro. Tuttavia, l'obiettivo di Naruto è sempre quello di salvare Sasuke, per questo dovrà affrontare nemici",
-        "poster": "https://image.tmdb.org/t/p/w342/qOxedwaJzdms2alAmIEHEnDeDzg.jpg",
-        "runtime": 0,
-        "title": "Naruto Shippuden",
-        "tmdb_id": 31910,
-        "type": "tv",
-        "vote": 8.5,
-        "vote_count": 8871,
-        "year": 2007
       }
     ],
     "tv:46260": [
@@ -8424,7 +8428,7 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
       },
       {
@@ -8491,22 +8495,6 @@
         "vote": 8.7,
         "vote_count": 2280,
         "year": 2011
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
       },
       {
         "genres": [
@@ -8539,25 +8527,25 @@
         "vote": 8.4,
         "vote_count": 5092,
         "year": 1989
-      }
-    ],
-    "tv:46298": [
+      },
       {
         "genres": [
           "Animazione",
           "Action & Adventure",
           "Sci-Fi & Fantasy"
         ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "overview": "In seguito alla comparsa dei misteriosi \"Gate\", portali popolati da mostri che minacciano l'umanità, speciali combattenti noti come Hunter affrontano le creature. Il giovane Sung Jinwoo, considerato il più debole tra gli Hunter di grado E, rischia la vita quotidiana per pagare le",
+        "poster": "https://image.tmdb.org/t/p/w342/eCD7WS9h4lCT8N4Xavc9u8R1IGk.jpg",
         "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
+        "title": "Solo Leveling",
+        "tmdb_id": 127532,
         "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
-      },
+        "vote": 8.7,
+        "vote_count": 2107,
+        "year": 2024
+      }
+    ],
+    "tv:46298": [
       {
         "genres": [
           "Animazione",
@@ -8574,6 +8562,22 @@
         "vote": 8.7,
         "vote_count": 11633,
         "year": 2013
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1717,
+        "year": 2012
       },
       {
         "genres": [
@@ -8672,7 +8676,7 @@
         "tmdb_id": 35610,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 2120,
+        "vote_count": 2121,
         "year": 2000
       }
     ],
@@ -8801,7 +8805,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       }
     ],
@@ -8818,7 +8822,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -8834,7 +8838,7 @@
         "tmdb_id": 106646,
         "type": "movie",
         "vote": 8.0,
-        "vote_count": 27027,
+        "vote_count": 27029,
         "year": 2013
       },
       {
@@ -8899,7 +8903,7 @@
         "tmdb_id": 1412,
         "type": "tv",
         "vote": 6.8,
-        "vote_count": 6581,
+        "vote_count": 6582,
         "year": 2012
       },
       {
@@ -8915,7 +8919,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -8987,7 +8991,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -9022,24 +9026,8 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
-      },
-      {
-        "genres": [
-          "Animazione",
-          "Action & Adventure",
-          "Sci-Fi & Fantasy"
-        ],
-        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-        "runtime": 0,
-        "title": "Le bizzarre avventure di JoJo",
-        "tmdb_id": 45790,
-        "type": "tv",
-        "vote": 8.6,
-        "vote_count": 1715,
-        "year": 2012
       },
       {
         "genres": [
@@ -9074,6 +9062,22 @@
         "vote": 8.6,
         "vote_count": 1869,
         "year": 2014
+      },
+      {
+        "genres": [
+          "Animazione",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
+        "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
+        "runtime": 0,
+        "title": "Le bizzarre avventure di JoJo",
+        "tmdb_id": 45790,
+        "type": "tv",
+        "vote": 8.6,
+        "vote_count": 1717,
+        "year": 2012
       }
     ],
     "tv:63174": [
@@ -9091,7 +9095,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8027,
+        "vote_count": 8028,
         "year": 2017
       },
       {
@@ -9141,7 +9145,7 @@
         "tmdb_id": 105248,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 2173,
+        "vote_count": 2174,
         "year": 2022
       },
       {
@@ -9157,7 +9161,7 @@
         "tmdb_id": 66732,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 22201,
+        "vote_count": 22202,
         "year": 2016
       },
       {
@@ -9188,7 +9192,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -9222,7 +9226,7 @@
         "tmdb_id": 92749,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3814,
+        "vote_count": 3815,
         "year": 2022
       },
       {
@@ -9258,7 +9262,7 @@
         "tmdb_id": 135157,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 833,
+        "vote_count": 834,
         "year": 2022
       },
       {
@@ -9289,7 +9293,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -9323,7 +9327,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8027,
+        "vote_count": 8028,
         "year": 2017
       },
       {
@@ -9358,7 +9362,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8027,
+        "vote_count": 8028,
         "year": 2017
       },
       {
@@ -9374,7 +9378,7 @@
         "tmdb_id": 78191,
         "type": "tv",
         "vote": 8.0,
-        "vote_count": 4193,
+        "vote_count": 4194,
         "year": 2018
       },
       {
@@ -9406,7 +9410,7 @@
         "tmdb_id": 95480,
         "type": "tv",
         "vote": 8.1,
-        "vote_count": 1164,
+        "vote_count": 1165,
         "year": 2022
       },
       {
@@ -9422,7 +9426,7 @@
         "tmdb_id": 5920,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 5048,
+        "vote_count": 5049,
         "year": 2008
       },
       {
@@ -9438,7 +9442,7 @@
         "tmdb_id": 4057,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 4236,
+        "vote_count": 4237,
         "year": 2005
       },
       {
@@ -9534,7 +9538,7 @@
         "tmdb_id": 87108,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 8595,
+        "vote_count": 8596,
         "year": 2019
       },
       {
@@ -9550,7 +9554,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -9565,7 +9569,7 @@
         "tmdb_id": 60059,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 7139,
+        "vote_count": 7140,
         "year": 2015
       },
       {
@@ -9581,7 +9585,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -9712,7 +9716,7 @@
         "tmdb_id": 135157,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 833,
+        "vote_count": 834,
         "year": 2022
       },
       {
@@ -9747,7 +9751,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -9827,7 +9831,7 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
       },
       {
@@ -9858,7 +9862,7 @@
         "tmdb_id": 84773,
         "type": "tv",
         "vote": 7.2,
-        "vote_count": 4158,
+        "vote_count": 4160,
         "year": 2022
       }
     ],
@@ -9956,7 +9960,7 @@
         "tmdb_id": 92749,
         "type": "tv",
         "vote": 7.6,
-        "vote_count": 3814,
+        "vote_count": 3815,
         "year": 2022
       },
       {
@@ -10006,7 +10010,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -10022,7 +10026,7 @@
         "tmdb_id": 496243,
         "type": "movie",
         "vote": 8.5,
-        "vote_count": 21802,
+        "vote_count": 21804,
         "year": 2019
       },
       {
@@ -10197,7 +10201,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -10214,7 +10218,7 @@
         "tmdb_id": 105248,
         "type": "tv",
         "vote": 8.5,
-        "vote_count": 2173,
+        "vote_count": 2174,
         "year": 2022
       },
       {
@@ -10314,7 +10318,7 @@
         "tmdb_id": 135157,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 833,
+        "vote_count": 834,
         "year": 2022
       },
       {
@@ -10330,7 +10334,7 @@
         "tmdb_id": 75006,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 10230,
+        "vote_count": 10231,
         "year": 2019
       },
       {
@@ -10379,7 +10383,7 @@
         "tmdb_id": 202411,
         "type": "tv",
         "vote": 7.7,
-        "vote_count": 1443,
+        "vote_count": 1444,
         "year": 2023
       }
     ],
@@ -10415,7 +10419,7 @@
         "tmdb_id": 92685,
         "type": "tv",
         "vote": 8.7,
-        "vote_count": 1864,
+        "vote_count": 1865,
         "year": 2020
       },
       {
@@ -10466,7 +10470,7 @@
         "tmdb_id": 85349,
         "type": "tv",
         "vote": 8.6,
-        "vote_count": 376,
+        "vote_count": 377,
         "year": 2019
       },
       {
@@ -10549,7 +10553,7 @@
         "tmdb_id": 78191,
         "type": "tv",
         "vote": 8.0,
-        "vote_count": 4193,
+        "vote_count": 4194,
         "year": 2018
       },
       {
@@ -10582,7 +10586,7 @@
         "tmdb_id": 70523,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 8027,
+        "vote_count": 8028,
         "year": 2017
       },
       {
@@ -10598,7 +10602,7 @@
         "tmdb_id": 5920,
         "type": "tv",
         "vote": 8.4,
-        "vote_count": 5048,
+        "vote_count": 5049,
         "year": 2008
       },
       {
@@ -10614,7 +10618,7 @@
         "tmdb_id": 4057,
         "type": "tv",
         "vote": 8.3,
-        "vote_count": 4236,
+        "vote_count": 4237,
         "year": 2005
       },
       {
@@ -10668,7 +10672,7 @@
           "tmdb_id": 687163,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 9056,
+          "vote_count": 9057,
           "year": 2026
         },
         {
@@ -10684,7 +10688,7 @@
           "tmdb_id": 969681,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 7165,
+          "vote_count": 7172,
           "year": 2026
         },
         {
@@ -10699,7 +10703,7 @@
           "tmdb_id": 936075,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 4794,
+          "vote_count": 4797,
           "year": 2026
         },
         {
@@ -10715,7 +10719,7 @@
           "tmdb_id": 119051,
           "type": "tv",
           "vote": 8.3,
-          "vote_count": 10999,
+          "vote_count": 11000,
           "year": 2022
         },
         {
@@ -10732,8 +10736,24 @@
           "tmdb_id": 569094,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 9606,
+          "vote_count": 9608,
           "year": 2023
+        },
+        {
+          "genres": [
+            "Sci-Fi & Fantasy",
+            "Dramma",
+            "Action & Adventure"
+          ],
+          "overview": "La serie prequel vede la dinastia Targaryen all'apice assoluto del suo potere, con più di 15 draghi sotto il loro giogo. La maggior parte degli imperi, che siano reali o immaginari, crollano quando raggiungono tali poteri e tali altezze. Nel caso dei Targaryen, la loro lenta cadu",
+          "poster": "https://image.tmdb.org/t/p/w342/paD01zRRCY3lXo038pvs2Avu0Q7.jpg",
+          "runtime": 0,
+          "title": "House of the Dragon",
+          "tmdb_id": 94997,
+          "type": "tv",
+          "vote": 8.4,
+          "vote_count": 7358,
+          "year": 2022
         },
         {
           "genres": [
@@ -10763,39 +10783,22 @@
           "tmdb_id": 1007757,
           "type": "movie",
           "vote": 8.8,
-          "vote_count": 2317,
+          "vote_count": 2318,
           "year": 2026
         },
         {
           "genres": [
-            "Sci-Fi & Fantasy",
-            "Dramma",
-            "Action & Adventure"
+            "Horror",
+            "Thriller"
           ],
-          "overview": "La serie prequel vede la dinastia Targaryen all'apice assoluto del suo potere, con più di 15 draghi sotto il loro giogo. La maggior parte degli imperi, che siano reali o immaginari, crollano quando raggiungono tali poteri e tali altezze. Nel caso dei Targaryen, la loro lenta cadu",
-          "poster": "https://image.tmdb.org/t/p/w342/paD01zRRCY3lXo038pvs2Avu0Q7.jpg",
-          "runtime": 0,
-          "title": "House of the Dragon",
-          "tmdb_id": 94997,
-          "type": "tv",
-          "vote": 8.4,
-          "vote_count": 7358,
-          "year": 2022
-        },
-        {
-          "genres": [
-            "Avventura",
-            "Azione",
-            "Fantasy"
-          ],
-          "overview": "Ogni leggenda ha un prezzo. Ogni ritorno richiede un sacrificio. Mentre il mare diventa il suo più grande nemico, Ulisse affronta un cammino fatto di illusioni, battaglie e prove impossibili. Un'epica odissea che mette alla prova il coraggio di un uomo contro il volere degli dèi.",
-          "poster": "https://image.tmdb.org/t/p/w342/qQhInj9fw3S2bMbiEujVldthgKe.jpg",
-          "runtime": 173,
-          "title": "Odissea",
-          "tmdb_id": 1368337,
+          "overview": "Dopo aver spezzato il misterioso bastoncino del desiderio per conquistare il cuore della ragazza che ama un romantico senza speranza ottiene esattamente ciò che ha chiesto ma presto scopre che alcuni desideri hanno un prezzo sinistro e pericoloso.",
+          "poster": "https://image.tmdb.org/t/p/w342/kwprCwsIV4LvAqJC1dmiTAdZDJ1.jpg",
+          "runtime": 110,
+          "title": "Obsession",
+          "tmdb_id": 1339713,
           "type": "movie",
-          "vote": 8.0,
-          "vote_count": 5553,
+          "vote": 8.2,
+          "vote_count": 6775,
           "year": 2026
         },
         {
@@ -10812,7 +10815,7 @@
           "tmdb_id": 1184918,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 6899,
+          "vote_count": 6900,
           "year": 2024
         }
       ],
@@ -10866,7 +10869,7 @@
           "tmdb_id": 10494,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 3461,
+          "vote_count": 3462,
           "year": 1998
         },
         {
@@ -10987,7 +10990,7 @@
           "tmdb_id": 1291559,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 240,
+          "vote_count": 241,
           "year": 2024
         },
         {
@@ -11045,7 +11048,7 @@
           "tmdb_id": 66732,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 22201,
+          "vote_count": 22202,
           "year": 2016
         },
         {
@@ -11059,7 +11062,7 @@
           "tmdb_id": 87108,
           "type": "tv",
           "vote": 8.7,
-          "vote_count": 8595,
+          "vote_count": 8596,
           "year": 2019
         },
         {
@@ -11090,24 +11093,8 @@
           "tmdb_id": 60059,
           "type": "tv",
           "vote": 8.7,
-          "vote_count": 7139,
+          "vote_count": 7140,
           "year": 2015
-        },
-        {
-          "genres": [
-            "Animazione",
-            "Action & Adventure",
-            "Sci-Fi & Fantasy"
-          ],
-          "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
-          "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
-          "runtime": 0,
-          "title": "Arcane",
-          "tmdb_id": 94605,
-          "type": "tv",
-          "vote": 8.7,
-          "vote_count": 6351,
-          "year": 2021
         },
         {
           "genres": [
@@ -11136,7 +11123,7 @@
           "tmdb_id": 63174,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 15811,
+          "vote_count": 15812,
           "year": 2016
         },
         {
@@ -11152,6 +11139,22 @@
           "vote": 8.4,
           "vote_count": 12993,
           "year": 2017
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Action & Adventure",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "Due sorelle combattono sui fronti opposti di una guerra tra tecnologia magica, convinzioni antitetiche e le stridenti contraddizioni delle città di Piltover e Zaun.",
+          "poster": "https://image.tmdb.org/t/p/w342/87C0wecB8bHb1PsrKBI4kJiEkgV.jpg",
+          "runtime": 0,
+          "title": "Arcane",
+          "tmdb_id": 94605,
+          "type": "tv",
+          "vote": 8.7,
+          "vote_count": 6351,
+          "year": 2021
         },
         {
           "genres": [
@@ -11197,7 +11200,7 @@
           "tmdb_id": 75006,
           "type": "tv",
           "vote": 8.4,
-          "vote_count": 10230,
+          "vote_count": 10231,
           "year": 2019
         }
       ],
@@ -11207,6 +11210,22 @@
     {
       "id": "anime",
       "items": [
+        {
+          "genres": [
+            "Action & Adventure",
+            "Commedia",
+            "Animazione"
+          ],
+          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
+          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
+          "runtime": 0,
+          "title": "One Piece",
+          "tmdb_id": 37854,
+          "type": "tv",
+          "vote": 8.8,
+          "vote_count": 5672,
+          "year": 1999
+        },
         {
           "genres": [
             "Animazione",
@@ -11221,7 +11240,7 @@
           "tmdb_id": 129,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 19299,
+          "vote_count": 19305,
           "year": 2001
         },
         {
@@ -11239,22 +11258,6 @@
           "vote": 8.5,
           "vote_count": 13239,
           "year": 2016
-        },
-        {
-          "genres": [
-            "Action & Adventure",
-            "Commedia",
-            "Animazione"
-          ],
-          "overview": "Un ragazzo con un cappello di paglia e dal corpo interamente fatto di gomma parte per l'avventura con un unico sogno: diventare il Re dei pirati. Ma per farlo, come prima cosa dovrà raggruppare una valida ciurma...",
-          "poster": "https://image.tmdb.org/t/p/w342/8f33Q5AuM2G5ZqFeusbIqDjr3cI.jpg",
-          "runtime": 0,
-          "title": "One Piece",
-          "tmdb_id": 37854,
-          "type": "tv",
-          "vote": 8.8,
-          "vote_count": 5672,
-          "year": 1999
         },
         {
           "genres": [
@@ -11285,8 +11288,24 @@
           "tmdb_id": 4935,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 11713,
+          "vote_count": 11714,
           "year": 2004
+        },
+        {
+          "genres": [
+            "Animazione",
+            "Mistero",
+            "Sci-Fi & Fantasy"
+          ],
+          "overview": "Uno studente delle scuole superiori che trova un quaderno dai poteri soprannaturali chiamato Death Note, gettato sulla Terra dallo shinigami Ryuk. L'oggetto dona all'utilizzatore il potere di uccidere chiunque, semplicemente scrivendo il suo nome sul quaderno mentre ci si raffigu",
+          "poster": "https://image.tmdb.org/t/p/w342/iigTJJskR1PcjjXqxdyJwVB3BoU.jpg",
+          "runtime": 0,
+          "title": "Death Note",
+          "tmdb_id": 13916,
+          "type": "tv",
+          "vote": 8.6,
+          "vote_count": 5296,
+          "year": 2006
         },
         {
           "genres": [
@@ -11413,24 +11432,8 @@
           "tmdb_id": 35610,
           "type": "tv",
           "vote": 8.6,
-          "vote_count": 2120,
+          "vote_count": 2121,
           "year": 2000
-        },
-        {
-          "genres": [
-            "Animazione",
-            "Action & Adventure",
-            "Sci-Fi & Fantasy"
-          ],
-          "overview": "La secolare ed epica saga della famiglia Joestar si snoda attraverso generazioni e diverse epoche storiche, seguendo i discendenti del casato contrassegnati dal soprannome \"JoJo\". Dagli scontri contro minacce vampiresche condotti tramite l'energia dell'Onde Magnetica fino alle ba",
-          "poster": "https://image.tmdb.org/t/p/w342/saqAUkE10gq9HYczLy5P4EDETfR.jpg",
-          "runtime": 0,
-          "title": "Le bizzarre avventure di JoJo",
-          "tmdb_id": 45790,
-          "type": "tv",
-          "vote": 8.6,
-          "vote_count": 1715,
-          "year": 2012
         }
       ],
       "subtitle": "Animazione giapponese dal catalogo Bobo; lingua del player da verificare",
@@ -11451,7 +11454,7 @@
           "tmdb_id": 1396,
           "type": "tv",
           "vote": 9.0,
-          "vote_count": 19197,
+          "vote_count": 19199,
           "year": 2008
         },
         {
@@ -11466,7 +11469,7 @@
           "tmdb_id": 278,
           "type": "movie",
           "vote": 8.7,
-          "vote_count": 31953,
+          "vote_count": 31955,
           "year": 1994
         },
         {
@@ -11481,7 +11484,7 @@
           "tmdb_id": 238,
           "type": "movie",
           "vote": 8.7,
-          "vote_count": 24065,
+          "vote_count": 24071,
           "year": 1972
         },
         {
@@ -11497,7 +11500,7 @@
           "tmdb_id": 155,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 37498,
+          "vote_count": 37501,
           "year": 2008
         },
         {
@@ -11513,7 +11516,7 @@
           "tmdb_id": 424,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 18245,
+          "vote_count": 18247,
           "year": 1993
         },
         {
@@ -11529,7 +11532,7 @@
           "tmdb_id": 157336,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 42049,
+          "vote_count": 42053,
           "year": 2014
         },
         {
@@ -11544,7 +11547,7 @@
           "tmdb_id": 240,
           "type": "movie",
           "vote": 8.6,
-          "vote_count": 14672,
+          "vote_count": 14675,
           "year": 1974
         },
         {
@@ -11560,7 +11563,7 @@
           "tmdb_id": 122,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 27921,
+          "vote_count": 27922,
           "year": 2003
         },
         {
@@ -11608,7 +11611,7 @@
           "tmdb_id": 13,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 30984,
+          "vote_count": 30986,
           "year": 1994
         },
         {
@@ -11624,7 +11627,7 @@
           "tmdb_id": 496243,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 21802,
+          "vote_count": 21804,
           "year": 2019
         }
       ],
@@ -11647,7 +11650,7 @@
           "tmdb_id": 120,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 28976,
+          "vote_count": 28978,
           "year": 2001
         },
         {
@@ -11662,7 +11665,7 @@
           "tmdb_id": 550,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 33459,
+          "vote_count": 33460,
           "year": 1999
         },
         {
@@ -11693,7 +11696,7 @@
           "tmdb_id": 769,
           "type": "movie",
           "vote": 8.5,
-          "vote_count": 15096,
+          "vote_count": 15099,
           "year": 1990
         },
         {
@@ -11740,7 +11743,7 @@
           "tmdb_id": 807,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 24310,
+          "vote_count": 24311,
           "year": 1995
         },
         {
@@ -11772,7 +11775,7 @@
           "tmdb_id": 244786,
           "type": "movie",
           "vote": 8.4,
-          "vote_count": 17479,
+          "vote_count": 17482,
           "year": 2014
         },
         {
@@ -11788,7 +11791,7 @@
           "tmdb_id": 105,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 22851,
+          "vote_count": 22852,
           "year": 1985
         },
         {
@@ -11804,7 +11807,7 @@
           "tmdb_id": 274,
           "type": "movie",
           "vote": 8.3,
-          "vote_count": 18932,
+          "vote_count": 18933,
           "year": 1991
         },
         {
@@ -11830,6 +11833,22 @@
       "items": [
         {
           "genres": [
+            "Avventura",
+            "Azione",
+            "Fantasy"
+          ],
+          "overview": "Ogni leggenda ha un prezzo. Ogni ritorno richiede un sacrificio. Mentre il mare diventa il suo più grande nemico, Ulisse affronta un cammino fatto di illusioni, battaglie e prove impossibili. Un'epica odissea che mette alla prova il coraggio di un uomo contro il volere degli dèi.",
+          "poster": "https://image.tmdb.org/t/p/w342/qQhInj9fw3S2bMbiEujVldthgKe.jpg",
+          "runtime": 173,
+          "title": "Odissea",
+          "tmdb_id": 1368337,
+          "type": "movie",
+          "vote": 8.0,
+          "vote_count": 5576,
+          "year": 2026
+        },
+        {
+          "genres": [
             "Mistero",
             "Dramma",
             "Sci-Fi & Fantasy"
@@ -11841,7 +11860,7 @@
           "tmdb_id": 124364,
           "type": "tv",
           "vote": 8.5,
-          "vote_count": 4481,
+          "vote_count": 4483,
           "year": 2022
         },
         {
@@ -11856,7 +11875,7 @@
           "tmdb_id": 247718,
           "type": "tv",
           "vote": 8.7,
-          "vote_count": 1325,
+          "vote_count": 1326,
           "year": 2025
         },
         {
@@ -11872,7 +11891,7 @@
           "tmdb_id": 153312,
           "type": "tv",
           "vote": 8.3,
-          "vote_count": 2981,
+          "vote_count": 2982,
           "year": 2022
         },
         {
@@ -11918,7 +11937,7 @@
           "tmdb_id": 136315,
           "type": "tv",
           "vote": 8.2,
-          "vote_count": 2064,
+          "vote_count": 2065,
           "year": 2022
         },
         {
@@ -11934,7 +11953,7 @@
           "tmdb_id": 718930,
           "type": "movie",
           "vote": 7.4,
-          "vote_count": 8205,
+          "vote_count": 8207,
           "year": 2022
         },
         {
@@ -11949,7 +11968,7 @@
           "tmdb_id": 84773,
           "type": "tv",
           "vote": 7.2,
-          "vote_count": 4158,
+          "vote_count": 4160,
           "year": 2022
         },
         {
@@ -11965,21 +11984,7 @@
           "tmdb_id": 95480,
           "type": "tv",
           "vote": 8.1,
-          "vote_count": 1164,
-          "year": 2022
-        },
-        {
-          "genres": [
-            "Dramma"
-          ],
-          "overview": "Un drama multigenerazionale incentrato su un triangolo amoroso che si viene a creare tra una ragazza e due fratelli, sul rapporto in continua evoluzione tra le madri e i loro figli e sul potere duraturo delle forti amicizie femminili. È un racconto di formazione sull’amore, sulle",
-          "poster": "https://image.tmdb.org/t/p/w342/26JYpcClxonDcBSoqQ4qWn27n39.jpg",
-          "runtime": 0,
-          "title": "L'estate nei tuoi occhi",
-          "tmdb_id": 194766,
-          "type": "tv",
-          "vote": 8.0,
-          "vote_count": 1168,
+          "vote_count": 1165,
           "year": 2022
         }
       ],

@@ -7,10 +7,10 @@
         "movie:936075",
         "tv:119051",
         "movie:569094",
+        "tv:94997",
         "tv:100088",
         "movie:1007757",
-        "tv:94997",
-        "movie:1368337",
+        "movie:1339713",
         "movie:1184918",
         "movie:378064",
         "movie:508965",
@@ -29,18 +29,19 @@
         "tv:87108",
         "tv:1399",
         "tv:60059",
-        "tv:94605",
         "tv:60574",
         "tv:63174",
         "tv:71712",
+        "tv:94605",
         "tv:76479",
         "tv:69050",
         "tv:75006",
+        "tv:37854",
         "movie:129",
         "movie:372058",
-        "tv:37854",
         "tv:31910",
         "movie:4935",
+        "tv:13916",
         "movie:128",
         "tv:95479",
         "movie:1311031",
@@ -49,7 +50,6 @@
         "tv:127532",
         "tv:46298",
         "tv:35610",
-        "tv:45790",
         "tv:1396",
         "movie:278",
         "movie:238",
@@ -74,6 +74,7 @@
         "movie:105",
         "movie:274",
         "movie:510",
+        "movie:1368337",
         "tv:124364",
         "tv:247718",
         "tv:153312",
@@ -82,8 +83,7 @@
         "tv:136315",
         "movie:718930",
         "tv:84773",
-        "tv:95480",
-        "tv:194766"
+        "tv:95480"
       ],
       "week": "2026-W48"
     }
@@ -320,7 +320,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1045,6 +1045,17 @@
       "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
+      ]
+    },
+    "tv:13916": {
+      "categories": [
+        "anime"
+      ],
+      "first_seen": "2026-11-28",
+      "last_seen": "2026-11-28",
+      "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
       ]
