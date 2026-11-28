@@ -9,8 +9,8 @@
         "movie:569094",
         "tv:100088",
         "movie:1007757",
-        "movie:1339713",
         "tv:94997",
+        "movie:1368337",
         "movie:1184918",
         "movie:378064",
         "movie:508965",
@@ -29,10 +29,10 @@
         "tv:87108",
         "tv:1399",
         "tv:60059",
+        "tv:94605",
         "tv:60574",
         "tv:63174",
         "tv:71712",
-        "tv:94605",
         "tv:76479",
         "tv:69050",
         "tv:75006",
@@ -71,19 +71,19 @@
         "movie:807",
         "movie:1891",
         "movie:244786",
+        "movie:105",
         "movie:274",
         "movie:510",
-        "movie:105",
-        "movie:1368337",
         "tv:124364",
-        "tv:153312",
         "tv:247718",
+        "tv:153312",
         "tv:108978",
         "movie:603692",
         "tv:136315",
         "movie:718930",
         "tv:84773",
-        "tv:95480"
+        "tv:95480",
+        "tv:194766"
       ],
       "week": "2026-W48"
     }
@@ -95,7 +95,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -116,7 +116,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -127,7 +127,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -138,7 +138,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -199,7 +199,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -210,7 +210,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -221,7 +221,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -243,7 +243,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -264,7 +264,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -275,7 +275,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -286,7 +286,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -298,7 +298,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -309,7 +309,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -328,10 +328,11 @@
     },
     "movie:1368337": {
       "categories": [
-        "new"
+        "new",
+        "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -396,7 +397,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -418,7 +419,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -460,7 +461,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -482,7 +483,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -494,7 +495,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -505,7 +506,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -516,7 +517,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -527,7 +528,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -539,7 +540,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -573,7 +574,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -585,7 +586,7 @@
         "anime"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -596,7 +597,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -607,7 +608,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -619,7 +620,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -630,7 +631,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -641,7 +642,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -653,7 +654,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -665,7 +666,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -676,7 +677,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-27",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -687,7 +688,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -698,7 +699,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -709,7 +710,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -720,7 +721,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -741,7 +742,7 @@
         "new"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -753,7 +754,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -764,7 +765,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -775,7 +776,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -786,7 +787,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -797,7 +798,7 @@
         "new"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -809,7 +810,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -830,7 +831,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -863,7 +864,7 @@
         "classics"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -874,7 +875,7 @@
         "hidden"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -919,7 +920,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -941,7 +942,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -953,7 +954,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -964,7 +965,7 @@
         "new"
       ],
       "first_seen": "2026-11-27",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -976,7 +977,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -987,7 +988,7 @@
         "new"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -999,7 +1000,7 @@
         "anime"
       ],
       "first_seen": "2026-11-27",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1010,7 +1011,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1041,7 +1042,7 @@
         "new"
       ],
       "first_seen": "2026-11-27",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
@@ -1053,7 +1054,7 @@
         "cinephiles"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1064,7 +1065,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count",
@@ -1076,7 +1077,7 @@
         "new"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -1104,6 +1105,18 @@
       "last_seen": "2026-11-25",
       "sources": [
         "bobo-editorial"
+      ]
+    },
+    "tv:194766": {
+      "categories": [
+        "new"
+      ],
+      "first_seen": "2026-11-28",
+      "last_seen": "2026-11-28",
+      "sources": [
+        "streaming-observation",
+        "bobo-editorial",
+        "tmdb-vote-count"
       ]
     },
     "tv:211031": {
@@ -1153,7 +1166,7 @@
         "new"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -1366,7 +1379,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1397,7 +1410,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1409,7 +1422,7 @@
         "anime"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -1422,7 +1435,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1433,7 +1446,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1444,7 +1457,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1466,7 +1479,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1477,7 +1490,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count",
@@ -1489,7 +1502,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count",
@@ -1501,7 +1514,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1512,7 +1525,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1523,7 +1536,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1534,7 +1547,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1545,7 +1558,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1556,7 +1569,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1567,7 +1580,7 @@
         "new"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "tmdb-trending",
         "bobo-editorial",
@@ -1580,7 +1593,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1591,7 +1604,7 @@
         "mini"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1602,7 +1615,7 @@
         "week"
       ],
       "first_seen": "2026-11-25",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1613,7 +1626,7 @@
         "anime"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "bobo-editorial",
         "tmdb-vote-count"
@@ -1624,7 +1637,7 @@
         "new"
       ],
       "first_seen": "2026-11-27",
-      "last_seen": "2026-11-27",
+      "last_seen": "2026-11-28",
       "sources": [
         "streaming-observation",
         "bobo-editorial",
